@@ -68,6 +68,10 @@ export interface ProtectedFile {
  * Complete application configuration state.
  */
 export interface AppConfig {
+  /** Base image name (e.g., "node", "node-slim") */
+  baseImage: string;
+  /** Node.js version for the base image */
+  nodeVersion: string;
   /** Software package configuration */
   software: SoftwareConfig;
   /** List of environment variables for .env file */
@@ -103,7 +107,7 @@ export const defaultSoftwareConfig: SoftwareConfig = {
   python: {
     id: 'python',
     enabled: false,
-    version: 'latest',
+    version: '3',
     hasVersionSelection: true,
   },
 };
@@ -112,8 +116,10 @@ export const defaultSoftwareConfig: SoftwareConfig = {
  * Default application configuration.
  */
 export const defaultAppConfig: AppConfig = {
+  baseImage: 'node',
+  nodeVersion: '24',
   software: defaultSoftwareConfig,
   envVariables: [],
   protectedFiles: [],
-  claudeMdContent: '# Project Instructions\n\nAdd your project-specific instructions for Claude here.\n',
+  claudeMdContent: '# Project Instructions\n\n',
 };

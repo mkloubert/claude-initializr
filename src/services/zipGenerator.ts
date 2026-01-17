@@ -38,7 +38,7 @@ export async function generateZipFile(config: AppConfig): Promise<Blob> {
   const zip = new JSZip();
 
   // Generate Dockerfile with software selections
-  const dockerfileReplacements = generateDockerfileReplacements(config.software);
+  const dockerfileReplacements = generateDockerfileReplacements(config.baseImage, config.nodeVersion, config.software);
   const dockerfileContent = processDockerfile(dockerfileReplacements);
   zip.file('Dockerfile', dockerfileContent);
 

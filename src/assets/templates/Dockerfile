@@ -1,9 +1,11 @@
-FROM node:20
+FROM ### {{TEMPLATE: BASE_IMAGE}} ###:### {{TEMPLATE: NODE_VERSION}} ###
 
 ARG TZ
 ENV TZ="$TZ"
 
 ARG CLAUDE_CODE_VERSION=latest
+
+### {{TEMPLATE: DOCKER_ARGS}} ###
 
 # Install basic development tools and iptables/ipset
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -25,7 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   jq \
   nano \
   vim \
-  ### {{TEMPLATE: MORE_APT_PACKAGES}} ###
+### {{TEMPLATE: MORE_APT_PACKAGES}} ###
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Ensure default node user has access to /usr/local/share
@@ -57,9 +59,7 @@ RUN ARCH=$(dpkg --print-architecture) && \
 
 USER root
 
-
 ### {{TEMPLATE: RUN_AS_ROOT_USER_EXTENSIONS}} ###
-
 
 # Set up non-root user
 USER node
@@ -88,9 +88,7 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 # Install Claude
 RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
 
-
 ### {{TEMPLATE: RUN_AS_NODE_USER_EXTENSIONS}} ###
-
 
 # Copy and set up firewall script
 COPY init-firewall.sh /usr/local/bin/

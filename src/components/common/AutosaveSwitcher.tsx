@@ -19,38 +19,34 @@
 // DEALINGS IN THE SOFTWARE.
 
 import { useTranslation } from 'react-i18next';
-import MDEditor from '@uiw/react-md-editor';
+import { Button } from '@/components/ui/button';
 import { useConfig } from '@/contexts';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Save, SaveOff } from 'lucide-react';
 
 /**
- * Markdown editor for CLAUDE.md file content.
+ * Toggle button for enabling/disabling autosave functionality.
  */
-export function ClaudeMdEditor() {
+export function AutosaveSwitcher() {
   const { t } = useTranslation();
-  const { config, setClaudeMdContent } = useConfig();
+  const { autosaveEnabled, setAutosaveEnabled } = useConfig();
+
+  const toggleAutosave = () => {
+    setAutosaveEnabled(!autosaveEnabled);
+  };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t('claudeMd.title')}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div data-color-mode="light" className="wmde-markdown-var">
-          <MDEditor
-            value={config.claudeMdContent}
-            onChange={(value) => setClaudeMdContent(value ?? '')}
-            height={400}
-            preview="edit"
-            aria-label={t('claudeMd.title')}
-          />
-        </div>
-      </CardContent>
-    </Card>
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={toggleAutosave}
+      aria-label={autosaveEnabled ? t('autosave.disable') : t('autosave.enable')}
+      title={autosaveEnabled ? t('autosave.disable') : t('autosave.enable')}
+    >
+      {autosaveEnabled ? (
+        <Save className="h-5 w-5" aria-hidden="true" />
+      ) : (
+        <SaveOff className="h-5 w-5" aria-hidden="true" />
+      )}
+    </Button>
   );
 }

@@ -19,11 +19,14 @@
 // DEALINGS IN THE SOFTWARE.
 
 import { useTranslation } from 'react-i18next';
-import { LanguageSwitcher, ThemeSwitcher } from '@/components/common';
+import { SiGithub, SiPaypal } from 'react-icons/si';
+import { AutosaveSwitcher, LanguageSwitcher, ResetButton, ThemeSwitcher } from '@/components/common';
+import { Button } from '@/components/ui/button';
+import { GITHUB_URL, PAYPAL_URL } from '@/config';
 import logoImage from '@/assets/logo.png';
 
 /**
- * Application header with logo, title, and language switcher.
+ * Application header with logo, title, and navigation links.
  */
 export function Header() {
   const { t } = useTranslation();
@@ -43,6 +46,32 @@ export function Header() {
           </h1>
         </div>
         <nav aria-label={t('nav.header')} className="flex items-center gap-1">
+          {GITHUB_URL && (
+            <Button variant="ghost" size="icon" asChild>
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t('links.github')}
+              >
+                <SiGithub className="h-5 w-5" aria-hidden="true" />
+              </a>
+            </Button>
+          )}
+          {PAYPAL_URL && (
+            <Button variant="ghost" size="icon" asChild>
+              <a
+                href={PAYPAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t('links.paypal')}
+              >
+                <SiPaypal className="h-5 w-5" aria-hidden="true" />
+              </a>
+            </Button>
+          )}
+          <ResetButton />
+          <AutosaveSwitcher />
           <ThemeSwitcher />
           <LanguageSwitcher />
         </nav>

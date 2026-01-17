@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "Claude Initializr",
+    "description": "Claude Code를 안전하게 실행하기 위한 Docker 구성 파일 생성"
+  },
+  "welcome": {
+    "close": "환영 메시지 닫기",
+    "description": "Claude Code는 Anthropic의 강력한 AI 코딩 어시스턴트로, 컴퓨터에서 직접 코드를 읽고, 쓰고, 실행할 수 있습니다. 매우 유용하지만, 파일 시스템과 터미널 접근 권한을 가진 AI를 실행하려면 보안을 신중히 고려해야 합니다.",
+    "purpose": "이 도구는 격리된 컨테이너 환경에서 Claude Code를 실행할 수 있는 완전한 Docker 구성을 생성합니다. 코드는 보호된 상태로 유지되면서 Claude가 개발, 디버깅, 리팩토링을 계속 도와줄 수 있습니다.",
+    "features": {
+      "title": "구성할 수 있는 항목:",
+      "dockerfile": "설치할 개발 도구 선택 (TypeScript, Python, ffmpeg, ImageMagick)",
+      "compose": "환경 변수(API 키 등) 설정 및 민감한 파일 접근 보호",
+      "claudeMd": "Claude가 각 세션 시작 시 읽는 프로젝트별 지침 작성"
+    },
+    "security": {
+      "title": "포함된 보안 기능:",
+      "firewall": "Anthropic API, npm, GitHub에만 연결을 허용하는 네트워크 방화벽",
+      "isolation": "호스트 시스템 및 로컬 네트워크로부터 완전한 격리",
+      "readonly": "민감한 파일은 빈 읽기 전용 파일로 마운트",
+      "capabilities": "모든 Linux 기능 제거, 권한 상승 불허"
+    },
+    "privacy": {
+      "title": "개인정보 보호 안내:",
+      "description": "설정은 브라우저에 로컬로 저장(localStorage)되어 돌아올 때 유지됩니다. 보안상의 이유로 환경 변수 값은 저장되지 않습니다 – 변수 이름만 저장됩니다. 어떤 서버로도 데이터가 전송되지 않습니다. 헤더의 저장 아이콘을 사용하여 언제든지 자동 저장을 비활성화할 수 있습니다 – 이렇게 하면 저장된 모든 데이터도 지워집니다."
+    }
+  },
+  "nav": {
+    "header": "헤더 탐색"
+  },
+  "tabs": {
+    "software": "소프트웨어",
+    "preview": "미리보기",
+    "envVariables": "환경",
+    "env": "환경",
+    "protectedFiles": "보호된 파일",
+    "protected": "보호됨"
+  },
+  "language": {
+    "switch": "언어"
+  },
+  "theme": {
+    "switch": "테마 전환"
+  },
+  "autosave": {
+    "enable": "자동 저장 활성화",
+    "disable": "자동 저장 비활성화"
+  },
+  "reset": {
+    "button": "기본값으로 재설정",
+    "title": "설정 재설정",
+    "description": "모든 설정을 기본값으로 재설정하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "cancel": "취소",
+    "confirm": "재설정"
+  },
+  "software": {
+    "baseImage": "베이스 이미지",
+    "baseImageDesc": "Docker 베이스 이미지는 컨테이너의 기반을 결정합니다. 기본 'node' 이미지에는 Node.js와 npm이 포함됩니다. 더 작은 이미지를 위해 'node:22-slim', 추가 시스템 라이브러리를 위해 'node:22-bookworm' 등의 변형을 사용할 수도 있습니다.",
+    "image": "이미지",
+    "typescript": "TypeScript",
+    "typescriptDesc": "TypeScript 컴파일러(tsc)와 ts-node를 설치하여 TypeScript를 직접 실행. TypeScript 프로젝트에 필수적이며, 타입 검사, JavaScript로 컴파일, 수동 컴파일 없이 .ts 파일 실행이 가능.",
+    "ffmpeg": "ffmpeg",
+    "ffmpegDesc": "오디오 및 비디오 파일 처리를 위한 강력한 멀티미디어 프레임워크. 형식 변환, 비디오 편집, 오디오 추출, 스트리밍, 미디어 분석이 가능. 미디어 파일 작업 프로젝트에 필요.",
+    "imagemagick": "ImageMagick",
+    "imagemagickDesc": "200개 이상의 형식을 지원하는 종합 이미지 처리 제품군. 크기 조정, 자르기, 형식 변환, 워터마크, 프로그래밍 방식 이미지 조작 도구 제공. 자동화된 이미지 워크플로우에 이상적.",
+    "python": "Python 3",
+    "pythonDesc": "pip 패키지 관리자와 함께 Python 3 인터프리터 설치. Python 스크립트 실행, Python 패키지 설치, Python 기반 도구 사용이 가능. 데이터 처리, 스크립팅, AI/ML 작업에 유용.",
+    "version": "버전",
+    "latest": "최신"
+  },
+  "env": {
+    "description": "정의된 환경 변수가 없습니다.",
+    "key": "키",
+    "value": "값",
+    "add": "변수 추가",
+    "remove": "제거",
+    "keyPlaceholder": "변수_이름",
+    "valuePlaceholder": "값"
+  },
+  "claudeMd": {
+    "title": "CLAUDE.md",
+    "description": "CLAUDE.md 파일에는 Claude가 각 세션 시작 시 읽는 프로젝트별 지침이 포함됩니다. 여기에 코딩 가이드라인, 프로젝트 구조 설명, 선호 기술 또는 Claude가 프로젝트를 더 잘 이해하는 데 도움이 되는 기타 컨텍스트를 작성하세요."
+  },
+  "protectedFiles": {
+    "description": "정의된 보호 파일이 없습니다.",
+    "path": "파일 경로",
+    "add": "경로 추가",
+    "remove": "제거",
+    "pathPlaceholder": ".env.local",
+    "help": "경로는 /workspace/를 기준으로 합니다. 이 파일들은 민감한 데이터 접근을 방지하기 위해 빈 읽기 전용 파일로 마운트됩니다."
+  },
+  "preview": {
+    "dockerfile": "Dockerfile",
+    "dockerfileDesc": "Dockerfile은 컨테이너에 설치할 소프트웨어를 정의합니다. Node.js와 Claude Code 외에도 TypeScript, Python, ffmpeg, ImageMagick 같은 추가 도구를 포함할 수 있습니다. 선택한 소프트웨어는 Claude가 명령을 실행할 때 사용 가능합니다.",
+    "dockerCompose": "docker-compose.yaml",
+    "dockerComposeDesc": "docker-compose.yaml 파일은 컨테이너 시작 방법을 제어합니다. 환경 변수(API 키 등)를 여기서 정의할 수 있습니다. 보호된 파일은 Claude가 .env 파일 같은 민감한 데이터에 접근하지 못하도록 빈 읽기 전용 파일로 마운트됩니다."
+  },
+  "download": {
+    "button": "ZIP 다운로드",
+    "generating": "생성 중...",
+    "filename": "claude-docker-config.zip"
+  },
+  "links": {
+    "github": "GitHub 저장소",
+    "paypal": "PayPal로 지원"
+  },
+  "footer": {
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
+  "errors": {
+    "invalidEnvKey": "잘못된 변수 이름입니다. 문자, 숫자, 밑줄만 사용하세요.",
+    "duplicateEnvKey": "이 변수 이름은 이미 존재합니다.",
+    "invalidPath": "경로는 상대 경로여야 하며(앞에 / 없음) ..를 포함할 수 없습니다"
+  }
+}

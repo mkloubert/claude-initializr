@@ -23,7 +23,7 @@ import dockerComposeTemplate from '../assets/templates/docker-compose.yaml?raw';
 import initFirewallTemplate from '../assets/templates/init-firewall.sh?raw';
 import claudeSettingsTemplate from '../assets/templates/workspace/.claude/settings.json?raw';
 
-import type { PlaceholderReplacements, TemplatePlaceholder } from '../types';
+import type { PlaceholderReplacements } from '../types';
 
 /**
  * Get the raw Dockerfile template content.
@@ -54,13 +54,6 @@ export function getClaudeSettingsTemplate(): string {
 }
 
 /**
- * Creates a placeholder pattern for the given placeholder name.
- */
-function createPlaceholderPattern(name: TemplatePlaceholder): RegExp {
-  return new RegExp(`### \\{\\{TEMPLATE: ${name}\\}\\} ###`, 'g');
-}
-
-/**
  * Replace placeholders in a template string with the provided values.
  *
  * @param template - The template string containing placeholders
@@ -75,13 +68,18 @@ export function replacePlaceholders(
 
   for (const [placeholder, value] of Object.entries(replacements)) {
     if (value !== undefined) {
-      const pattern = createPlaceholderPattern(placeholder as TemplatePlaceholder);
+      // When value is empty, also remove the trailing newline
+      const suffix = value === '' ? '\\n?' : '';
+      const pattern = new RegExp(`### \\{\\{TEMPLATE: ${placeholder}\\}\\} ###${suffix}`, 'g');
       result = result.replace(pattern, value);
     }
   }
 
   // Remove any remaining unreplaced placeholders (clean up empty ones)
   result = result.replace(/### \{\{TEMPLATE: [A-Z_]+\}\} ###\n?/g, '');
+
+  // Reduce multiple consecutive empty lines to a single empty line
+  result = result.replace(/\n{3,}/g, '\n\n');
 
   return result;
 }

@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "Claude Initializr",
+    "description": "Claude Code'u güvenli bir şekilde çalıştırmak için Docker yapılandırma dosyaları oluşturun"
+  },
+  "welcome": {
+    "close": "Hoş geldiniz mesajını kapat",
+    "description": "Claude Code, Anthropic'in doğrudan makinenizde kod okuyabilen, yazabilen ve çalıştırabilen güçlü AI kodlama asistanıdır. İnanılmaz derecede yararlı olmasına rağmen, dosya sistemi ve terminal erişimine sahip bir AI çalıştırmak, güvenlik konusunda dikkatli değerlendirme gerektirir.",
+    "purpose": "Bu araç, Claude Code'u izole bir konteyner ortamında çalıştırmanızı sağlayan eksiksiz bir Docker yapılandırması oluşturur. Kodunuz korunurken Claude size geliştirme, hata ayıklama ve yeniden düzenleme konularında yardımcı olmaya devam edebilir.",
+    "features": {
+      "title": "Yapılandırabilecekleriniz:",
+      "dockerfile": "Hangi geliştirme araçlarının kurulacağını seçin (TypeScript, Python, ffmpeg, ImageMagick)",
+      "compose": "Ortam değişkenlerini (API anahtarınız gibi) ayarlayın ve hassas dosyaları erişimden koruyun",
+      "claudeMd": "Claude'un her oturumun başında okuduğu projeye özel talimatlar yazın"
+    },
+    "security": {
+      "title": "Dahil edilen güvenlik özellikleri:",
+      "firewall": "Yalnızca Anthropic API, npm ve GitHub'a bağlantılara izin veren ağ güvenlik duvarı",
+      "isolation": "Ana sistemden ve yerel ağdan tam izolasyon",
+      "readonly": "Hassas dosyalar boş salt okunur dosyalar olarak bağlanır",
+      "capabilities": "Tüm Linux yetenekleri kaldırıldı, ayrıcalık yükseltmeye izin verilmiyor"
+    },
+    "privacy": {
+      "title": "Gizlilik bildirimi:",
+      "description": "Ayarlarınız tarayıcınızda yerel olarak (localStorage) saklanır, böylece geri döndüğünüzde korunur. Güvenlik nedeniyle, ortam değişkenlerinin değerleri asla saklanmaz – yalnızca değişken adları kaydedilir. Hiçbir veri herhangi bir sunucuya gönderilmez. Başlıktaki kaydet simgesini kullanarak otomatik kaydetmeyi istediğiniz zaman devre dışı bırakabilirsiniz – bu ayrıca tüm kaydedilmiş verileri de temizleyecektir."
+    }
+  },
+  "nav": {
+    "header": "Başlık navigasyonu"
+  },
+  "tabs": {
+    "software": "Yazılım",
+    "preview": "Önizleme",
+    "envVariables": "Ortam",
+    "env": "Ortam",
+    "protectedFiles": "Korumalı dosyalar",
+    "protected": "Korumalı"
+  },
+  "language": {
+    "switch": "Dil"
+  },
+  "theme": {
+    "switch": "Temayı değiştir"
+  },
+  "autosave": {
+    "enable": "Otomatik kaydetmeyi etkinleştir",
+    "disable": "Otomatik kaydetmeyi devre dışı bırak"
+  },
+  "reset": {
+    "button": "Varsayılanlara sıfırla",
+    "title": "Ayarları sıfırla",
+    "description": "Tüm ayarları varsayılan değerlerine sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "cancel": "İptal",
+    "confirm": "Sıfırla"
+  },
+  "software": {
+    "baseImage": "Temel imaj",
+    "baseImageDesc": "Docker temel imajı konteynerinizin temelini belirler. Varsayılan 'node' imajı Node.js ve npm içerir. Daha küçük imajlar için 'node:22-slim' veya ek sistem kütüphaneleri için 'node:22-bookworm' gibi varyantları da kullanabilirsiniz.",
+    "image": "İmaj",
+    "typescript": "TypeScript",
+    "typescriptDesc": "TypeScript'i doğrudan çalıştırmak için TypeScript derleyicisini (tsc) ve ts-node'u kurar. TypeScript projeleri için gereklidir, tür kontrolü, JavaScript'e derleme ve .ts dosyalarını manuel derleme olmadan çalıştırmayı sağlar.",
+    "ffmpeg": "ffmpeg",
+    "ffmpegDesc": "Ses ve video dosyalarını işlemek için güçlü bir multimedya çerçevesi. Format dönüştürme, video düzenleme, ses çıkarma, akış ve medya analizi sağlar. Medya dosyalarıyla çalışan projeler için gereklidir.",
+    "imagemagick": "ImageMagick",
+    "imagemagickDesc": "200'den fazla formatı destekleyen kapsamlı bir görüntü işleme paketi. Yeniden boyutlandırma, kırpma, format dönüştürme, filigran ve programatik görüntü manipülasyonu için araçlar sağlar. Otomatik görüntü iş akışları için idealdir.",
+    "python": "Python 3",
+    "pythonDesc": "pip paket yöneticisiyle Python 3 yorumlayıcısını kurar. Python betiklerini çalıştırmayı, Python paketlerini kurmayı ve Python tabanlı araçları kullanmayı sağlar. Veri işleme, betik yazma ve AI/ML görevleri için yararlıdır.",
+    "version": "Sürüm",
+    "latest": "en son"
+  },
+  "env": {
+    "description": "Tanımlanmış ortam değişkeni yok.",
+    "key": "Anahtar",
+    "value": "Değer",
+    "add": "Değişken ekle",
+    "remove": "Kaldır",
+    "keyPlaceholder": "DEGISKEN_ADI",
+    "valuePlaceholder": "değer"
+  },
+  "claudeMd": {
+    "title": "CLAUDE.md",
+    "description": "CLAUDE.md dosyası, Claude'un her oturumun başında okuduğu projeye özel talimatları içerir. Burası kodlama yönergeleri, proje yapısı açıklamaları, tercih edilen teknolojiler veya Claude'un projeyi daha iyi anlamasına yardımcı olan diğer bağlamlar için doğru yerdir."
+  },
+  "protectedFiles": {
+    "description": "Tanımlanmış korumalı dosya yok.",
+    "path": "Dosya yolu",
+    "add": "Yol ekle",
+    "remove": "Kaldır",
+    "pathPlaceholder": ".env.local",
+    "help": "Yollar /workspace/'e görelidir. Bu dosyalar, hassas verilere erişimi önlemek için boş salt okunur dosyalar olarak bağlanacaktır."
+  },
+  "preview": {
+    "dockerfile": "Dockerfile",
+    "dockerfileDesc": "Dockerfile, konteynere hangi yazılımın kurulacağını tanımlar. Node.js ve Claude Code'a ek olarak TypeScript, Python, ffmpeg veya ImageMagick gibi ek araçlar dahil edilebilir. Seçilen yazılım, Claude komutları çalıştırdığında kullanılabilir olacaktır.",
+    "dockerCompose": "docker-compose.yaml",
+    "dockerComposeDesc": "docker-compose.yaml dosyası konteynerin nasıl başlatılacağını kontrol eder. Ortam değişkenleri (API anahtarları gibi) burada tanımlanabilir. Korumalı dosyalar, Claude'un .env dosyaları gibi hassas verilere erişmesini önlemek için boş salt okunur dosyalar olarak bağlanır."
+  },
+  "download": {
+    "button": "ZIP İndir",
+    "generating": "Oluşturuluyor...",
+    "filename": "claude-docker-config.zip"
+  },
+  "links": {
+    "github": "GitHub Deposu",
+    "paypal": "PayPal ile Destekle"
+  },
+  "footer": {
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
+  "errors": {
+    "invalidEnvKey": "Geçersiz değişken adı. Yalnızca harf, rakam ve alt çizgi kullanın.",
+    "duplicateEnvKey": "Bu değişken adı zaten mevcut.",
+    "invalidPath": "Yol göreceli olmalı (başında / olmamalı) ve .. içeremez"
+  }
+}

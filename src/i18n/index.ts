@@ -21,17 +21,51 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from './locales/en.json';
+import ar from './locales/ar.json';
 import de from './locales/de.json';
+import el from './locales/el.json';
+import en from './locales/en.json';
+import es from './locales/es.json';
+import fr from './locales/fr.json';
+import he from './locales/he.json';
+import hi from './locales/hi.json';
+import it from './locales/it.json';
+import ja from './locales/ja.json';
+import ko from './locales/ko.json';
+import nl from './locales/nl.json';
+import pl from './locales/pl.json';
+import pt from './locales/pt.json';
+import tr from './locales/tr.json';
+import uk from './locales/uk.json';
+import ur from './locales/ur.json';
+import zh from './locales/zh.json';
 
 const resources = {
-  en: { translation: en },
+  ar: { translation: ar },
   de: { translation: de },
+  el: { translation: el },
+  en: { translation: en },
+  es: { translation: es },
+  fr: { translation: fr },
+  he: { translation: he },
+  hi: { translation: hi },
+  it: { translation: it },
+  ja: { translation: ja },
+  ko: { translation: ko },
+  nl: { translation: nl },
+  pl: { translation: pl },
+  pt: { translation: pt },
+  tr: { translation: tr },
+  uk: { translation: uk },
+  ur: { translation: ur },
+  zh: { translation: zh },
 };
+
+export const supportedLanguages = Object.keys(resources);
 
 const storedLanguage = localStorage.getItem('language');
 const browserLanguage = navigator.language.split('-')[0];
-const defaultLanguage = storedLanguage || (browserLanguage === 'de' ? 'de' : 'en');
+const defaultLanguage = storedLanguage || (supportedLanguages.includes(browserLanguage) ? browserLanguage : 'en');
 
 i18n.use(initReactI18next).init({
   resources,

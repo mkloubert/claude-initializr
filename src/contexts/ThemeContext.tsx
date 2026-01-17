@@ -28,21 +28,17 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window === 'undefined') return 'system';
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'light' || stored === 'dark' || stored === 'system') {
-      return stored;
-    }
-    return 'system';
-  });
-
+  // Always start with system preference - toggle is session-only
   const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window === 'undefined') return 'light';
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
-  const resolvedTheme = theme === 'system' ? systemTheme : theme;
+  // Session-only override (null means use system)
+  const [sessionOverride, setSessionOverride] = useState<'light' | 'dark' | null>(null);
+
+  const theme: Theme = sessionOverride ?? 'system';
+  const resolvedTheme = sessionOverride ?? systemTheme;
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -59,9 +55,17 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     root.classList.add(resolvedTheme);
   }, [resolvedTheme]);
 
+  // Clear any old persisted theme from localStorage
+  useEffect(() => {
+    localStorage.removeItem(STORAGE_KEY);
+  }, []);
+
   const setTheme = useCallback((newTheme: Theme) => {
-    setThemeState(newTheme);
-    localStorage.setItem(STORAGE_KEY, newTheme);
+    if (newTheme === 'system') {
+      setSessionOverride(null);
+    } else {
+      setSessionOverride(newTheme);
+    }
   }, []);
 
   const value = useMemo(

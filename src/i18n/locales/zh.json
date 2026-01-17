@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "Claude Initializr",
+    "description": "生成Docker配置文件以安全运行Claude Code"
+  },
+  "welcome": {
+    "close": "关闭欢迎消息",
+    "description": "Claude Code是Anthropic强大的AI编程助手，可以直接在您的机器上读取、编写和执行代码。虽然非常有用，但运行具有文件系统和终端访问权限的AI需要仔细考虑安全性。",
+    "purpose": "此工具生成完整的Docker配置，允许您在隔离的容器环境中运行Claude Code。您的代码保持受保护状态，同时Claude仍可帮助您开发、调试和重构。",
+    "features": {
+      "title": "您可以配置的内容：",
+      "dockerfile": "选择要安装的开发工具（TypeScript、Python、ffmpeg、ImageMagick）",
+      "compose": "设置环境变量（如您的API密钥）并保护敏感文件免受访问",
+      "claudeMd": "编写Claude在每次会话开始时读取的项目特定说明"
+    },
+    "security": {
+      "title": "包含的安全功能：",
+      "firewall": "网络防火墙仅允许连接到Anthropic API、npm和GitHub",
+      "isolation": "与主机系统和本地网络完全隔离",
+      "readonly": "敏感文件挂载为空的只读文件",
+      "capabilities": "删除所有Linux功能，不允许权限提升"
+    },
+    "privacy": {
+      "title": "隐私声明：",
+      "description": "您的设置本地存储在浏览器中（localStorage），以便在您返回时保留。出于安全原因，环境变量的值永远不会被存储——只保存变量名。没有数据发送到任何服务器。您可以随时使用标题中的保存图标禁用自动保存——这也将清除所有存储的数据。"
+    }
+  },
+  "nav": {
+    "header": "页眉导航"
+  },
+  "tabs": {
+    "software": "软件",
+    "preview": "预览",
+    "envVariables": "环境",
+    "env": "环境",
+    "protectedFiles": "受保护文件",
+    "protected": "受保护"
+  },
+  "language": {
+    "switch": "语言"
+  },
+  "theme": {
+    "switch": "切换主题"
+  },
+  "autosave": {
+    "enable": "启用自动保存",
+    "disable": "禁用自动保存"
+  },
+  "reset": {
+    "button": "重置为默认值",
+    "title": "重置设置",
+    "description": "您确定要将所有设置重置为默认值吗？此操作无法撤消。",
+    "cancel": "取消",
+    "confirm": "重置"
+  },
+  "software": {
+    "baseImage": "基础镜像",
+    "baseImageDesc": "Docker基础镜像决定了容器的基础。默认的'node'镜像包含Node.js和npm。您还可以使用'node:22-slim'等变体获得更小的镜像，或使用'node:22-bookworm'获得额外的系统库。",
+    "image": "镜像",
+    "typescript": "TypeScript",
+    "typescriptDesc": "安装TypeScript编译器（tsc）和ts-node以直接运行TypeScript。对TypeScript项目必不可少，可进行类型检查、编译为JavaScript和运行.ts文件而无需手动编译。",
+    "ffmpeg": "ffmpeg",
+    "ffmpegDesc": "用于处理音频和视频文件的强大多媒体框架。支持格式转换、视频编辑、音频提取、流媒体和媒体分析。处理媒体文件的项目需要它。",
+    "imagemagick": "ImageMagick",
+    "imagemagickDesc": "支持200多种格式的综合图像处理套件。提供调整大小、裁剪、格式转换、水印和编程图像处理的工具。非常适合自动化图像工作流程。",
+    "python": "Python 3",
+    "pythonDesc": "安装带有pip包管理器的Python 3解释器。可以运行Python脚本、安装Python包和使用基于Python的工具。适用于数据处理、脚本编写和AI/ML任务。",
+    "version": "版本",
+    "latest": "最新"
+  },
+  "env": {
+    "description": "未定义环境变量。",
+    "key": "键",
+    "value": "值",
+    "add": "添加变量",
+    "remove": "删除",
+    "keyPlaceholder": "变量名称",
+    "valuePlaceholder": "值"
+  },
+  "claudeMd": {
+    "title": "CLAUDE.md",
+    "description": "CLAUDE.md文件包含Claude在每次会话开始时读取的项目特定说明。这是编码指南、项目结构说明、首选技术或任何其他帮助Claude更好理解项目的上下文的地方。"
+  },
+  "protectedFiles": {
+    "description": "未定义受保护文件。",
+    "path": "文件路径",
+    "add": "添加路径",
+    "remove": "删除",
+    "pathPlaceholder": ".env.local",
+    "help": "路径相对于/workspace/。这些文件将挂载为空的只读文件，以防止访问敏感数据。"
+  },
+  "preview": {
+    "dockerfile": "Dockerfile",
+    "dockerfileDesc": "Dockerfile定义在容器中安装哪些软件。除了Node.js和Claude Code外，还可以包含TypeScript、Python、ffmpeg或ImageMagick等附加工具。当Claude执行命令时，所选软件将可用。",
+    "dockerCompose": "docker-compose.yaml",
+    "dockerComposeDesc": "docker-compose.yaml文件控制容器的启动方式。可以在此定义环境变量（如API密钥）。受保护文件挂载为空的只读文件，以防止Claude访问.env文件等敏感数据。"
+  },
+  "download": {
+    "button": "下载ZIP",
+    "generating": "生成中...",
+    "filename": "claude-docker-config.zip"
+  },
+  "links": {
+    "github": "GitHub仓库",
+    "paypal": "通过PayPal支持"
+  },
+  "footer": {
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
+  "errors": {
+    "invalidEnvKey": "变量名无效。只能使用字母、数字和下划线。",
+    "duplicateEnvKey": "此变量名已存在。",
+    "invalidPath": "路径必须是相对路径（不能以/开头）且不能包含.."
+  }
+}

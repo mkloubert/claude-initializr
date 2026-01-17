@@ -18,24 +18,13 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { getClaudeSettingsTemplate } from '@/services';
-import { CodePreview } from './CodePreview';
+/// <reference types="vite/client" />
 
-/**
- * Preview component for the .claude/settings.json file.
- */
-export function SettingsJsonPreview() {
-  // For now, settings.json is static - just display the template
-  const settingsContent = getClaudeSettingsTemplate();
+interface ImportMetaEnv {
+  readonly VITE_GITHUB_URL: string;
+  readonly VITE_PAYPAL_URL: string;
+}
 
-  // Pretty-print JSON
-  let formattedContent: string;
-  try {
-    const parsed = JSON.parse(settingsContent);
-    formattedContent = JSON.stringify(parsed, null, 2);
-  } catch {
-    formattedContent = settingsContent;
-  }
-
-  return <CodePreview code={formattedContent} language="json" />;
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }

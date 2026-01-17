@@ -28,6 +28,17 @@ export interface ConfigContextValue {
   /** Current application configuration */
   config: AppConfig;
 
+  /** Whether autosave to localStorage is enabled */
+  autosaveEnabled: boolean;
+  /** Toggle autosave on/off */
+  setAutosaveEnabled: (enabled: boolean) => void;
+
+  // Base image actions
+  /** Update the base image name */
+  setBaseImage: (image: string) => void;
+  /** Update the Node.js version for the base image */
+  setNodeVersion: (version: string) => void;
+
   // Software configuration actions
   /** Toggle a software package on/off */
   toggleSoftware: (softwareId: keyof SoftwareConfig) => void;

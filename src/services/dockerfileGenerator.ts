@@ -21,6 +21,25 @@
 import type { SoftwareConfig } from '@/types';
 
 /**
+ * Generate Docker ARG definitions for software versions.
+ */
+export function generateDockerArgs(software: SoftwareConfig): string {
+  const args: string[] = [];
+
+  if (software.typescript.enabled) {
+    const version = software.typescript.version || 'latest';
+    args.push(`ARG TYPESCRIPT_VERSION=${version}`);
+  }
+
+  if (software.python.enabled) {
+    const version = software.python.version || '3';
+    args.push(`ARG PYTHON_VERSION=${version}`);
+  }
+
+  return args.join('\n');
+}
+
+/**
  * Generate additional APT packages based on selected software.
  */
 export function generateAptPackages(software: SoftwareConfig): string {
@@ -35,14 +54,20 @@ export function generateAptPackages(software: SoftwareConfig): string {
   }
 
   if (software.python.enabled) {
-    packages.push('python3', 'python3-pip', 'python3-venv');
+    // Use ARG variable for Python version (e.g., python3.11, python3.12)
+    packages.push(
+      'python${PYTHON_VERSION}',
+      'python${PYTHON_VERSION}-venv',
+      'python3-pip'
+    );
   }
 
   if (packages.length === 0) {
     return '';
   }
 
-  return packages.join(' \\\n  ');
+  // Indent packages and add line continuations
+  return '  ' + packages.join(' \\\n  ') + ' \\';
 }
 
 /**
@@ -55,7 +80,7 @@ export function generateRootUserExtensions(software: SoftwareConfig): string {
   if (software.python.enabled) {
     commands.push(
       '# Create Python symlinks for easier access',
-      'RUN ln -sf /usr/bin/python3 /usr/local/bin/python && \\',
+      'RUN ln -sf /usr/bin/python${PYTHON_VERSION} /usr/local/bin/python && \\',
       '    ln -sf /usr/bin/pip3 /usr/local/bin/pip'
     );
   }
@@ -69,13 +94,11 @@ export function generateRootUserExtensions(software: SoftwareConfig): string {
 export function generateNodeUserExtensions(software: SoftwareConfig): string {
   const commands: string[] = [];
 
-  // TypeScript installation (as node user via npm)
+  // TypeScript installation (as node user via npm) - uses ARG for version
   if (software.typescript.enabled) {
-    const version = software.typescript.version || 'latest';
-    const packageSpec = version === 'latest' ? 'typescript' : `typescript@${version}`;
     commands.push(
       '# Install TypeScript globally',
-      `RUN npm install -g ${packageSpec}`
+      'RUN npm install -g typescript@${TYPESCRIPT_VERSION}'
     );
   }
 
@@ -83,14 +106,24 @@ export function generateNodeUserExtensions(software: SoftwareConfig): string {
 }
 
 /**
- * Generate all Dockerfile placeholder replacements based on software configuration.
+ * Generate all Dockerfile placeholder replacements based on configuration.
  */
-export function generateDockerfileReplacements(software: SoftwareConfig): {
+export function generateDockerfileReplacements(
+  baseImage: string,
+  nodeVersion: string,
+  software: SoftwareConfig
+): {
+  BASE_IMAGE: string;
+  NODE_VERSION: string;
+  DOCKER_ARGS: string;
   MORE_APT_PACKAGES: string;
   RUN_AS_ROOT_USER_EXTENSIONS: string;
   RUN_AS_NODE_USER_EXTENSIONS: string;
 } {
   return {
+    BASE_IMAGE: baseImage,
+    NODE_VERSION: nodeVersion,
+    DOCKER_ARGS: generateDockerArgs(software),
     MORE_APT_PACKAGES: generateAptPackages(software),
     RUN_AS_ROOT_USER_EXTENSIONS: generateRootUserExtensions(software),
     RUN_AS_NODE_USER_EXTENSIONS: generateNodeUserExtensions(software),

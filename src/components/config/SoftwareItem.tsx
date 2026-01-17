@@ -18,6 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
@@ -28,17 +29,19 @@ interface SoftwareItemProps {
   software: SoftwarePackage;
   labelKey: string;
   descriptionKey: string;
+  icon?: ReactNode;
   onToggle: () => void;
   onVersionChange: (version: string) => void;
 }
 
 /**
- * Individual software item with checkbox and optional version input.
+ * Individual software item with checkbox, icon, and optional version input.
  */
 export function SoftwareItem({
   software,
   labelKey,
   descriptionKey,
+  icon,
   onToggle,
   onVersionChange,
 }: SoftwareItemProps) {
@@ -55,6 +58,11 @@ export function SoftwareItem({
           onCheckedChange={onToggle}
           aria-describedby={`${checkboxId}-description`}
         />
+        {icon && (
+          <div className="flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
+            {icon}
+          </div>
+        )}
         <div className="grid gap-1">
           <Label
             htmlFor={checkboxId}

@@ -19,9 +19,8 @@
 // DEALINGS IN THE SOFTWARE.
 
 export { SoftwareItem } from './SoftwareItem';
-export { SoftwareSelector } from './SoftwareSelector';
 export { EnvRow } from './EnvRow';
-export { EnvEditor } from './EnvEditor';
-export { ClaudeMdEditor } from './ClaudeMdEditor';
 export { ProtectedFileRow } from './ProtectedFileRow';
-export { ProtectedFilesEditor } from './ProtectedFilesEditor';
+export { DockerfileCard } from './DockerfileCard';
+export { DockerComposeCard } from './DockerComposeCard';
+export { ClaudeMdCard } from './ClaudeMdCard';

@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "Claude Initializr",
+    "description": "Claude Codeを安全に実行するためのDocker設定ファイルを生成"
+  },
+  "welcome": {
+    "close": "ウェルカムメッセージを閉じる",
+    "description": "Claude CodeはAnthropicの強力なAIコーディングアシスタントで、あなたのマシン上で直接コードを読み取り、書き込み、実行できます。非常に便利ですが、ファイルシステムとターミナルへのアクセス権を持つAIを実行するには、セキュリティを慎重に考慮する必要があります。",
+    "purpose": "このツールは、Claude Codeを分離されたコンテナ環境で実行できる完全なDocker設定を生成します。あなたのコードは保護されたまま、Claudeは開発、デバッグ、リファクタリングを引き続きサポートできます。",
+    "features": {
+      "title": "設定できる内容：",
+      "dockerfile": "インストールする開発ツールを選択（TypeScript、Python、ffmpeg、ImageMagick）",
+      "compose": "環境変数（APIキーなど）を設定し、機密ファイルをアクセスから保護",
+      "claudeMd": "Claudeが各セッション開始時に読むプロジェクト固有の指示を記述"
+    },
+    "security": {
+      "title": "含まれるセキュリティ機能：",
+      "firewall": "Anthropic API、npm、GitHubへの接続のみを許可するネットワークファイアウォール",
+      "isolation": "ホストシステムとローカルネットワークからの完全な分離",
+      "readonly": "機密ファイルは空の読み取り専用ファイルとしてマウント",
+      "capabilities": "すべてのLinux機能を削除、権限昇格を許可しない"
+    },
+    "privacy": {
+      "title": "プライバシーに関する注意：",
+      "description": "設定はブラウザにローカル保存（localStorage）され、戻ったときに保持されます。セキュリティ上の理由から、環境変数の値は保存されません—変数名のみが保存されます。データはサーバーに送信されません。ヘッダーの保存アイコンを使用していつでも自動保存を無効にできます—これにより、保存されたすべてのデータもクリアされます。"
+    }
+  },
+  "nav": {
+    "header": "ヘッダーナビゲーション"
+  },
+  "tabs": {
+    "software": "ソフトウェア",
+    "preview": "プレビュー",
+    "envVariables": "環境",
+    "env": "環境",
+    "protectedFiles": "保護ファイル",
+    "protected": "保護"
+  },
+  "language": {
+    "switch": "言語"
+  },
+  "theme": {
+    "switch": "テーマを切り替え"
+  },
+  "autosave": {
+    "enable": "自動保存を有効化",
+    "disable": "自動保存を無効化"
+  },
+  "reset": {
+    "button": "デフォルトにリセット",
+    "title": "設定をリセット",
+    "description": "すべての設定をデフォルト値にリセットしてもよろしいですか？この操作は元に戻せません。",
+    "cancel": "キャンセル",
+    "confirm": "リセット"
+  },
+  "software": {
+    "baseImage": "ベースイメージ",
+    "baseImageDesc": "Dockerベースイメージはコンテナの基盤を決定します。デフォルトの'node'イメージにはNode.jsとnpmが含まれています。'node:22-slim'で小さいイメージ、'node:22-bookworm'で追加のシステムライブラリを使用することもできます。",
+    "image": "イメージ",
+    "typescript": "TypeScript",
+    "typescriptDesc": "TypeScriptコンパイラ（tsc）とts-nodeをインストールしてTypeScriptを直接実行。TypeScriptプロジェクトに必須で、型チェック、JavaScriptへのコンパイル、手動コンパイルなしでの.tsファイル実行が可能。",
+    "ffmpeg": "ffmpeg",
+    "ffmpegDesc": "音声・動画ファイルを処理する強力なマルチメディアフレームワーク。フォーマット変換、動画編集、音声抽出、ストリーミング、メディア分析が可能。メディアファイルを扱うプロジェクトに必要。",
+    "imagemagick": "ImageMagick",
+    "imagemagickDesc": "200以上のフォーマットをサポートする包括的な画像処理スイート。リサイズ、切り抜き、フォーマット変換、透かし、プログラムによる画像操作のツールを提供。自動画像ワークフローに最適。",
+    "python": "Python 3",
+    "pythonDesc": "pipパッケージマネージャー付きのPython 3インタープリターをインストール。Pythonスクリプトの実行、Pythonパッケージのインストール、Pythonベースのツールの使用が可能。データ処理、スクリプト、AI/MLタスクに便利。",
+    "version": "バージョン",
+    "latest": "最新"
+  },
+  "env": {
+    "description": "環境変数が定義されていません。",
+    "key": "キー",
+    "value": "値",
+    "add": "変数を追加",
+    "remove": "削除",
+    "keyPlaceholder": "変数名",
+    "valuePlaceholder": "値"
+  },
+  "claudeMd": {
+    "title": "CLAUDE.md",
+    "description": "CLAUDE.mdファイルには、Claudeが各セッション開始時に読むプロジェクト固有の指示が含まれています。ここはコーディングガイドライン、プロジェクト構造の説明、優先技術、またはClaudeがプロジェクトをより理解するのに役立つその他のコンテキストを記述する場所です。"
+  },
+  "protectedFiles": {
+    "description": "保護ファイルが定義されていません。",
+    "path": "ファイルパス",
+    "add": "パスを追加",
+    "remove": "削除",
+    "pathPlaceholder": ".env.local",
+    "help": "パスは/workspace/からの相対パスです。これらのファイルは機密データへのアクセスを防ぐため、空の読み取り専用ファイルとしてマウントされます。"
+  },
+  "preview": {
+    "dockerfile": "Dockerfile",
+    "dockerfileDesc": "Dockerfileはコンテナにインストールするソフトウェアを定義します。Node.jsとClaude Codeに加えて、TypeScript、Python、ffmpeg、ImageMagickなどの追加ツールを含めることができます。選択したソフトウェアはClaudeがコマンドを実行するときに利用可能になります。",
+    "dockerCompose": "docker-compose.yaml",
+    "dockerComposeDesc": "docker-compose.yamlファイルはコンテナの起動方法を制御します。環境変数（APIキーなど）をここで定義できます。保護ファイルは空の読み取り専用ファイルとしてマウントされ、Claudeが.envファイルなどの機密データにアクセスするのを防ぎます。"
+  },
+  "download": {
+    "button": "ZIPをダウンロード",
+    "generating": "生成中...",
+    "filename": "claude-docker-config.zip"
+  },
+  "links": {
+    "github": "GitHubリポジトリ",
+    "paypal": "PayPalでサポート"
+  },
+  "footer": {
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
+  "errors": {
+    "invalidEnvKey": "無効な変数名です。文字、数字、アンダースコアのみを使用してください。",
+    "duplicateEnvKey": "この変数名は既に存在します。",
+    "invalidPath": "パスは相対パス（先頭に/なし）で、..を含めることはできません"
+  }
+}

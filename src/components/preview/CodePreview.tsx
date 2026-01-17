@@ -19,8 +19,8 @@
 // DEALINGS IN THE SOFTWARE.
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useTheme } from '@/contexts';
 
 interface CodePreviewProps {
   code: string;
@@ -34,23 +34,30 @@ interface CodePreviewProps {
 export function CodePreview({
   code,
   language,
-  maxHeight = '500px',
+  maxHeight = '400px',
 }: CodePreviewProps) {
+  const { resolvedTheme } = useTheme();
+  const syntaxTheme = resolvedTheme === 'dark' ? oneDark : oneLight;
+
   return (
-    <ScrollArea className="rounded-md border" style={{ maxHeight }}>
+    <div
+      className="overflow-auto rounded-md border"
+      style={{ maxHeight }}
+    >
       <SyntaxHighlighter
         language={language}
-        style={oneDark}
+        style={syntaxTheme}
         customStyle={{
           margin: 0,
           borderRadius: '0.375rem',
           fontSize: '0.875rem',
+          minWidth: 'fit-content',
         }}
         showLineNumbers
         wrapLines
       >
         {code}
       </SyntaxHighlighter>
-    </ScrollArea>
+    </div>
   );
 }

@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "Claude Initializr",
+    "description": "Genera file di configurazione Docker per eseguire Claude Code in modo sicuro"
+  },
+  "welcome": {
+    "close": "Chiudi messaggio di benvenuto",
+    "description": "Claude Code è il potente assistente di codifica AI di Anthropic che può leggere, scrivere ed eseguire codice direttamente sulla tua macchina. Sebbene incredibilmente utile, eseguire un'IA con accesso al file system e al terminale richiede un'attenta considerazione della sicurezza.",
+    "purpose": "Questo strumento genera una configurazione Docker completa che ti permette di eseguire Claude Code in un ambiente container isolato. Il tuo codice rimane protetto mentre Claude può ancora aiutarti a sviluppare, debuggare e refactorizzare.",
+    "features": {
+      "title": "Cosa puoi configurare:",
+      "dockerfile": "Scegli quali strumenti di sviluppo installare (TypeScript, Python, ffmpeg, ImageMagick)",
+      "compose": "Imposta variabili d'ambiente (come la tua chiave API) e proteggi file sensibili dall'accesso",
+      "claudeMd": "Scrivi istruzioni specifiche del progetto che Claude legge all'inizio di ogni sessione"
+    },
+    "security": {
+      "title": "Funzionalità di sicurezza incluse:",
+      "firewall": "Firewall di rete che consente solo connessioni all'API Anthropic, npm e GitHub",
+      "isolation": "Isolamento completo dal sistema host e dalla rete locale",
+      "readonly": "File sensibili montati come file vuoti in sola lettura",
+      "capabilities": "Tutte le capability Linux rimosse, nessuna escalation di privilegi consentita"
+    },
+    "privacy": {
+      "title": "Informativa sulla privacy:",
+      "description": "Le tue impostazioni sono memorizzate localmente nel tuo browser (localStorage) in modo che vengano conservate al tuo ritorno. Per motivi di sicurezza, i valori delle variabili d'ambiente non vengono mai memorizzati – vengono salvati solo i nomi delle variabili. Nessun dato viene inviato a nessun server. Puoi disabilitare il salvataggio automatico in qualsiasi momento usando l'icona di salvataggio nell'intestazione – questo cancellerà anche tutti i dati memorizzati."
+    }
+  },
+  "nav": {
+    "header": "Navigazione intestazione"
+  },
+  "tabs": {
+    "software": "Software",
+    "preview": "Anteprima",
+    "envVariables": "Ambiente",
+    "env": "Amb.",
+    "protectedFiles": "File protetti",
+    "protected": "Protetti"
+  },
+  "language": {
+    "switch": "Lingua"
+  },
+  "theme": {
+    "switch": "Cambia tema"
+  },
+  "autosave": {
+    "enable": "Attiva salvataggio automatico",
+    "disable": "Disattiva salvataggio automatico"
+  },
+  "reset": {
+    "button": "Ripristina valori predefiniti",
+    "title": "Ripristina impostazioni",
+    "description": "Sei sicuro di voler ripristinare tutte le impostazioni ai valori predefiniti? Questa azione non può essere annullata.",
+    "cancel": "Annulla",
+    "confirm": "Ripristina"
+  },
+  "software": {
+    "baseImage": "Immagine base",
+    "baseImageDesc": "L'immagine base Docker determina la fondazione del tuo container. L'immagine predefinita 'node' include Node.js e npm. Puoi anche usare varianti come 'node:22-slim' per immagini più piccole o 'node:22-bookworm' per librerie di sistema aggiuntive.",
+    "image": "Immagine",
+    "typescript": "TypeScript",
+    "typescriptDesc": "Installa il compilatore TypeScript (tsc) e ts-node per eseguire TypeScript direttamente. Essenziale per progetti TypeScript, permette la verifica dei tipi, la compilazione in JavaScript e l'esecuzione di file .ts senza compilazione manuale.",
+    "ffmpeg": "ffmpeg",
+    "ffmpegDesc": "Un potente framework multimediale per elaborare file audio e video. Permette conversione di formato, editing video, estrazione audio, streaming e analisi dei media. Richiesto per progetti che lavorano con file multimediali.",
+    "imagemagick": "ImageMagick",
+    "imagemagickDesc": "Una suite completa di elaborazione immagini che supporta oltre 200 formati. Fornisce strumenti per ridimensionamento, ritaglio, conversione di formato, watermark e manipolazione programmatica delle immagini. Ideale per workflow automatizzati di immagini.",
+    "python": "Python 3",
+    "pythonDesc": "Installa l'interprete Python 3 con il gestore di pacchetti pip. Permette di eseguire script Python, installare pacchetti Python e usare strumenti basati su Python. Utile per elaborazione dati, scripting e attività AI/ML.",
+    "version": "Versione",
+    "latest": "ultima"
+  },
+  "env": {
+    "description": "Nessuna variabile d'ambiente definita.",
+    "key": "Chiave",
+    "value": "Valore",
+    "add": "Aggiungi variabile",
+    "remove": "Rimuovi",
+    "keyPlaceholder": "NOME_VARIABILE",
+    "valuePlaceholder": "valore"
+  },
+  "claudeMd": {
+    "title": "CLAUDE.md",
+    "description": "Il file CLAUDE.md contiene istruzioni specifiche del progetto che Claude legge all'inizio di ogni sessione. Questo è il posto per linee guida di codifica, spiegazioni della struttura del progetto, tecnologie preferite o qualsiasi altro contesto che aiuti Claude a capire meglio il progetto."
+  },
+  "protectedFiles": {
+    "description": "Nessun file protetto definito.",
+    "path": "Percorso file",
+    "add": "Aggiungi percorso",
+    "remove": "Rimuovi",
+    "pathPlaceholder": ".env.local",
+    "help": "I percorsi sono relativi a /workspace/. Questi file saranno montati come file vuoti in sola lettura per prevenire l'accesso a dati sensibili."
+  },
+  "preview": {
+    "dockerfile": "Dockerfile",
+    "dockerfileDesc": "Il Dockerfile definisce quale software viene installato nel container. Oltre a Node.js e Claude Code, possono essere inclusi strumenti aggiuntivi come TypeScript, Python, ffmpeg o ImageMagick. Il software selezionato sarà disponibile quando Claude eseguirà comandi.",
+    "dockerCompose": "docker-compose.yaml",
+    "dockerComposeDesc": "Il file docker-compose.yaml controlla come viene avviato il container. Le variabili d'ambiente (come le chiavi API) possono essere definite qui. I file protetti sono montati come file vuoti in sola lettura per impedire a Claude di accedere a dati sensibili come i file .env."
+  },
+  "download": {
+    "button": "Scarica ZIP",
+    "generating": "Generazione...",
+    "filename": "claude-docker-config.zip"
+  },
+  "links": {
+    "github": "Repository GitHub",
+    "paypal": "Supporta via PayPal"
+  },
+  "footer": {
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
+  "errors": {
+    "invalidEnvKey": "Nome variabile non valido. Usa solo lettere, numeri e underscore.",
+    "duplicateEnvKey": "Questo nome di variabile esiste già.",
+    "invalidPath": "Il percorso deve essere relativo (senza / iniziale) e non può contenere .."
+  }
+}

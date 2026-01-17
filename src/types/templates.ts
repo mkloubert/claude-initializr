@@ -22,6 +22,9 @@
  * Placeholder names used in Dockerfile template.
  */
 export type DockerfilePlaceholder =
+  | 'BASE_IMAGE'
+  | 'NODE_VERSION'
+  | 'DOCKER_ARGS'
   | 'MORE_APT_PACKAGES'
   | 'RUN_AS_ROOT_USER_EXTENSIONS'
   | 'RUN_AS_NODE_USER_EXTENSIONS';

@@ -3,39 +3,73 @@
     "title": "Claude Initializr",
     "description": "Generate Docker configuration files for running Claude Code securely"
   },
+  "welcome": {
+    "close": "Close welcome message",
+    "description": "Claude Code is Anthropic's powerful AI coding assistant that can read, write, and execute code directly on your machine. While incredibly useful, running an AI with file system and terminal access requires careful consideration of security.",
+    "purpose": "This tool generates a complete Docker configuration that lets you run Claude Code in an isolated container environment. Your code stays protected while Claude can still help you develop, debug, and refactor.",
+    "features": {
+      "title": "What you can configure:",
+      "dockerfile": "Choose which development tools to install (TypeScript, Python, ffmpeg, ImageMagick)",
+      "compose": "Set environment variables (like your API key) and protect sensitive files from being accessed",
+      "claudeMd": "Write project-specific instructions that Claude reads at the start of each session"
+    },
+    "security": {
+      "title": "Security features included:",
+      "firewall": "Network firewall that only allows connections to Anthropic API, npm, and GitHub",
+      "isolation": "Complete isolation from your host system and local network",
+      "readonly": "Sensitive files mounted as empty read-only files",
+      "capabilities": "All Linux capabilities dropped, no privilege escalation allowed"
+    },
+    "privacy": {
+      "title": "Privacy notice:",
+      "description": "Your settings are stored locally in your browser (localStorage) so they are preserved when you return. For security reasons, environment variable values are never stored – only the variable names are saved. No data is sent to any server. You can disable autosave at any time using the save icon in the header – this will also clear all stored data."
+    }
+  },
   "nav": {
-    "configuration": "Configuration",
-    "preview": "Preview",
     "header": "Header navigation"
   },
+  "tabs": {
+    "software": "Software",
+    "preview": "Preview",
+    "envVariables": "Environment",
+    "env": "Env",
+    "protectedFiles": "Protected Files",
+    "protected": "Protected"
+  },
   "language": {
-    "en": "English",
-    "de": "German",
     "switch": "Language"
   },
   "theme": {
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System",
     "switch": "Toggle theme"
   },
+  "autosave": {
+    "enable": "Enable autosave",
+    "disable": "Disable autosave"
+  },
+  "reset": {
+    "button": "Reset to defaults",
+    "title": "Reset Settings",
+    "description": "Are you sure you want to reset all settings to their default values? This action cannot be undone.",
+    "cancel": "Cancel",
+    "confirm": "Reset"
+  },
   "software": {
-    "title": "Software Selection",
-    "description": "Select additional software to install in the container",
+    "baseImage": "Base Image",
+    "baseImageDesc": "The Docker base image determines the foundation of your container. The default 'node' image includes Node.js and npm. You can also use variants like 'node:22-slim' for smaller images or 'node:22-bookworm' for additional system libraries.",
+    "image": "Image",
     "typescript": "TypeScript",
-    "typescriptDesc": "TypeScript compiler and tools",
+    "typescriptDesc": "Installs the TypeScript compiler (tsc) and ts-node for running TypeScript directly. Essential for TypeScript projects, enabling type checking, compilation to JavaScript, and running .ts files without manual compilation.",
     "ffmpeg": "ffmpeg",
-    "ffmpegDesc": "Audio and video processing",
+    "ffmpegDesc": "A powerful multimedia framework for processing audio and video files. Enables format conversion, video editing, audio extraction, streaming, and media analysis. Required for projects that work with media files.",
     "imagemagick": "ImageMagick",
-    "imagemagickDesc": "Image manipulation tools",
+    "imagemagickDesc": "A comprehensive image processing suite supporting over 200 formats. Provides tools for resizing, cropping, format conversion, watermarking, and programmatic image manipulation. Ideal for automated image workflows.",
     "python": "Python 3",
-    "pythonDesc": "Python interpreter and pip",
+    "pythonDesc": "Installs the Python 3 interpreter with pip package manager. Enables running Python scripts, installing Python packages, and using Python-based tools. Useful for data processing, scripting, and AI/ML tasks.",
     "version": "Version",
     "latest": "latest"
   },
   "env": {
-    "title": "Environment Variables",
-    "description": "Configure environment variables for the .env file",
+    "description": "No environment variables defined.",
     "key": "Key",
     "value": "Value",
     "add": "Add Variable",
@@ -45,11 +79,10 @@
   },
   "claudeMd": {
     "title": "CLAUDE.md",
-    "description": "Edit the CLAUDE.md file with instructions for Claude"
+    "description": "The CLAUDE.md file contains project-specific instructions that Claude reads at the start of each session. This is the place for coding guidelines, project structure explanations, preferred technologies, or any other context that helps Claude understand the project better."
   },
   "protectedFiles": {
-    "title": "Protected Files",
-    "description": "Specify files to protect by mounting them as read-only empty files",
+    "description": "No protected files defined.",
     "path": "File Path",
     "add": "Add Path",
     "remove": "Remove",
@@ -57,16 +90,19 @@
     "help": "Paths are relative to /workspace/. These files will be mounted as empty read-only files to prevent access to sensitive data."
   },
   "preview": {
-    "title": "File Preview",
-    "description": "Preview the generated configuration files",
     "dockerfile": "Dockerfile",
+    "dockerfileDesc": "The Dockerfile defines which software is installed in the container. In addition to Node.js and Claude Code, additional tools like TypeScript, Python, ffmpeg or ImageMagick can be included. The selected software will be available when Claude executes commands.",
     "dockerCompose": "docker-compose.yaml",
-    "settingsJson": ".claude/settings.json"
+    "dockerComposeDesc": "The docker-compose.yaml file controls how the container is started. Environment variables (like API keys) can be defined here. Protected files are mounted as empty read-only files to prevent Claude from accessing sensitive data like .env files."
   },
   "download": {
     "button": "Download ZIP",
     "generating": "Generating...",
     "filename": "claude-docker-config.zip"
+  },
+  "links": {
+    "github": "GitHub Repository",
+    "paypal": "Support via PayPal"
   },
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"

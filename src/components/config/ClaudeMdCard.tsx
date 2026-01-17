@@ -19,54 +19,41 @@
 // DEALINGS IN THE SOFTWARE.
 
 import { useTranslation } from 'react-i18next';
+import MDEditor from '@uiw/react-md-editor';
+import { useConfig, useTheme } from '@/contexts';
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { DockerfilePreview } from './DockerfilePreview';
-import { DockerComposePreview } from './DockerComposePreview';
-import { SettingsJsonPreview } from './SettingsJsonPreview';
 
 /**
- * Tabs component for previewing generated configuration files.
+ * Card component for CLAUDE.md file editing.
+ * No preview tab as the editor has built-in preview functionality.
  */
-export function PreviewTabs() {
+export function ClaudeMdCard() {
   const { t } = useTranslation();
+  const { config, setClaudeMdContent } = useConfig();
+  const { resolvedTheme } = useTheme();
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t('preview.title')}</CardTitle>
+        <CardTitle>{t('claudeMd.title')}</CardTitle>
+        <CardDescription>{t('claudeMd.description')}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="dockerfile">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="dockerfile">
-              {t('preview.dockerfile')}
-            </TabsTrigger>
-            <TabsTrigger value="docker-compose">
-              {t('preview.dockerCompose')}
-            </TabsTrigger>
-            <TabsTrigger value="settings">
-              {t('preview.settingsJson')}
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="dockerfile" className="mt-4">
-            <DockerfilePreview />
-          </TabsContent>
-
-          <TabsContent value="docker-compose" className="mt-4">
-            <DockerComposePreview />
-          </TabsContent>
-
-          <TabsContent value="settings" className="mt-4">
-            <SettingsJsonPreview />
-          </TabsContent>
-        </Tabs>
+        <div data-color-mode={resolvedTheme} className="wmde-markdown-var">
+          <MDEditor
+            value={config.claudeMdContent}
+            onChange={(value) => setClaudeMdContent(value ?? '')}
+            height={400}
+            preview="edit"
+            aria-label={t('claudeMd.title')}
+          />
+        </div>
       </CardContent>
     </Card>
   );
