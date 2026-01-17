@@ -47,7 +47,7 @@ import { Package, Eye, Wand2, Loader2, Plus, X, Terminal } from 'lucide-react';
 const DockerfilePreview = lazy(() =>
   import('@/components/preview/DockerfilePreview').then((m) => ({ default: m.DockerfilePreview }))
 );
-import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm, SiGo } from 'react-icons/si';
+import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm, SiGo, SiFlutter } from 'react-icons/si';
 import { TbBrandPython } from 'react-icons/tb';
 import type { DockerfileUser, SoftwareConfig } from '@/types';
 
@@ -96,6 +96,12 @@ const softwareMetadata: Record<string, {
     descriptionKey: 'software.golangDesc',
     icon: <SiGo className="h-5 w-5" aria-hidden="true" />,
   },
+  flutter: {
+    id: 'flutter',
+    labelKey: 'software.flutter',
+    descriptionKey: 'software.flutterDesc',
+    icon: <SiFlutter className="h-5 w-5" aria-hidden="true" />,
+  },
 };
 
 /**
@@ -108,7 +114,6 @@ export function DockerfileCard() {
     setBaseImage,
     setNodeVersion,
     toggleSoftware,
-    setSoftwareVersion,
     addCustomAptPackages,
     removeCustomAptPackage,
     addCustomNpmPackages,
@@ -208,9 +213,6 @@ export function DockerfileCard() {
                     descriptionKey={meta.descriptionKey}
                     icon={meta.icon}
                     onToggle={() => toggleSoftware(meta.id)}
-                    onVersionChange={(version) =>
-                      setSoftwareVersion(meta.id, version)
-                    }
                     missingRecommendations={missingRecommendations}
                     softwareLabels={Object.fromEntries(
                       Object.entries(softwareMetadata).map(([id, m]) => [id, t(m.labelKey)])

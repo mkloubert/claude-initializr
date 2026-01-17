@@ -37,11 +37,13 @@
 - **베이스 이미지**: Docker 베이스 이미지 이름과 버전 구성 (기본값: `node:24`)
 - **소프트웨어 선택**: 설치할 추가 소프트웨어 선택:
   - ffmpeg (오디오/비디오 처리)
-  - Go (버전 선택 가능)
+  - Flutter (Dart 및 Android SDK 포함)
+  - Go
   - ImageMagick (이미지 처리)
-  - Python 3 (버전 선택 가능)
-  - TypeScript (버전 선택 가능)
+  - Python 3
+  - TypeScript
   - uv (빠른 Python 패키지 설치 도구, Python 권장)
+- **버전 구성**: 소프트웨어 버전은 Docker 빌드 인수로 구성 (예: `--build-arg GO_VERSION=1.22.0`)
 - **사용자 정의 APT 패키지**: 컨테이너에 설치할 추가 Debian/Ubuntu 패키지 추가
 - **사용자 정의 NPM 패키지**: 전역으로 설치할 추가 NPM 패키지 추가, `root` 또는 `node` 사용자로 설치 옵션
 - **사용자 정의 RUN 명령어**: `root` 또는 `node` 사용자로 실행할 사용자 정의 Dockerfile RUN 명령어 추가
@@ -237,6 +239,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
    ```
 
@@ -244,6 +248,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |-----------|--------|------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go 버전 JSON API URL ("latest" 선택 시만) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go 아카이브 다운로드 기본 URL |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | Flutter 릴리스 JSON API URL ("latest" 선택 시만) |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Flutter 아카이브 다운로드 기본 URL |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv 설치 스크립트 URL |
 
 5. 컨테이너에 연결:

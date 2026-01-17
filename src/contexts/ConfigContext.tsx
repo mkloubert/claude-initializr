@@ -29,7 +29,6 @@ import {
   type EnvVariable,
   type ProtectedFile,
   type SoftwareConfig,
-  type SoftwarePackage,
 } from '../types';
 import { ConfigContext, type ConfigContextValue } from './configContextValue';
 
@@ -69,11 +68,12 @@ function saveAutosavePreference(enabled: boolean): void {
 /**
  * Storage format for persisted configuration.
  * Note: Environment variable values are NOT stored for security reasons.
+ * Note: Software versions are configured via Docker build arguments, not stored.
  */
 interface StoredConfig {
   baseImage?: string;
   nodeVersion?: string;
-  software?: Partial<Record<keyof SoftwareConfig, { enabled?: boolean; version?: string }>>;
+  software?: Partial<Record<keyof SoftwareConfig, { enabled?: boolean }>>;
   customAptPackages?: string[];
   customNpmPackages?: Array<{ name: string; installAs: DockerfileUser }>;
   customRunCommands?: Array<{ command: string; runAs: DockerfileUser }>;
@@ -83,10 +83,24 @@ interface StoredConfig {
 }
 
 /**
+ * Generates a unique ID, with fallback for environments without crypto.randomUUID.
+ */
+function generateId(): string {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    // Fallback for older environments
+    return `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+  }
+}
+
+/**
  * Safely loads configuration from localStorage.
- * Returns default config if nothing is stored or parsing fails.
+ * Returns default config if nothing is stored, parsing fails, or data is corrupted.
+ * This function is designed to NEVER throw - it always returns a valid config.
  */
 function loadConfigFromStorage(): AppConfig {
+  // SSR safety check
   if (typeof window === 'undefined') {
     return defaultAppConfig;
   }
@@ -97,103 +111,115 @@ function loadConfigFromStorage(): AppConfig {
       return defaultAppConfig;
     }
 
-    const parsed: StoredConfig = JSON.parse(stored);
+    const parsed: unknown = JSON.parse(stored);
+
+    // Ensure parsed is a non-null object
+    if (typeof parsed !== 'object' || parsed === null) {
+      return defaultAppConfig;
+    }
+
+    // Type assertion after validation
+    const data = parsed as Record<string, unknown>;
 
     // Merge stored values with defaults, validating each field
     const software: SoftwareConfig = { ...defaultSoftwareConfig };
 
-    if (parsed.software && typeof parsed.software === 'object') {
+    const softwareData = data.software;
+    if (softwareData && typeof softwareData === 'object' && softwareData !== null) {
+      const softwareRecord = softwareData as Record<string, unknown>;
       for (const key of Object.keys(defaultSoftwareConfig) as Array<keyof SoftwareConfig>) {
-        const storedSoftware = parsed.software[key];
-        if (storedSoftware && typeof storedSoftware === 'object') {
+        const storedSoftware = softwareRecord[key];
+        if (storedSoftware && typeof storedSoftware === 'object' && storedSoftware !== null) {
+          const entry = storedSoftware as Record<string, unknown>;
           software[key] = {
             ...defaultSoftwareConfig[key],
-            enabled: typeof storedSoftware.enabled === 'boolean'
-              ? storedSoftware.enabled
+            enabled: typeof entry.enabled === 'boolean'
+              ? entry.enabled
               : defaultSoftwareConfig[key].enabled,
-            version: typeof storedSoftware.version === 'string'
-              ? storedSoftware.version
-              : defaultSoftwareConfig[key].version,
           };
         }
       }
     }
 
     // Restore custom APT packages
-    const customAptPackages: string[] = Array.isArray(parsed.customAptPackages)
-      ? parsed.customAptPackages.filter((pkg): pkg is string => typeof pkg === 'string' && pkg.length > 0)
+    const customAptPackages: string[] = Array.isArray(data.customAptPackages)
+      ? data.customAptPackages.filter((pkg): pkg is string => typeof pkg === 'string' && pkg.length > 0)
       : [];
 
     // Restore custom NPM packages
-    const customNpmPackages: CustomNpmPackage[] = Array.isArray(parsed.customNpmPackages)
-      ? parsed.customNpmPackages
+    const customNpmPackages: CustomNpmPackage[] = Array.isArray(data.customNpmPackages)
+      ? data.customNpmPackages
         .filter((pkg): pkg is { name: string; installAs: DockerfileUser } =>
           typeof pkg === 'object' &&
           pkg !== null &&
-          typeof pkg.name === 'string' &&
-          pkg.name.length > 0 &&
-          (pkg.installAs === 'node' || pkg.installAs === 'root')
+          typeof (pkg as Record<string, unknown>).name === 'string' &&
+          ((pkg as Record<string, unknown>).name as string).length > 0 &&
+          ((pkg as Record<string, unknown>).installAs === 'node' || (pkg as Record<string, unknown>).installAs === 'root')
         )
         .map((pkg) => ({
-          id: crypto.randomUUID(),
+          id: generateId(),
           name: pkg.name,
           installAs: pkg.installAs,
         }))
       : [];
 
     // Restore custom RUN commands
-    const customRunCommands: CustomRunCommand[] = Array.isArray(parsed.customRunCommands)
-      ? parsed.customRunCommands
+    const customRunCommands: CustomRunCommand[] = Array.isArray(data.customRunCommands)
+      ? data.customRunCommands
         .filter((cmd): cmd is { command: string; runAs: DockerfileUser } =>
           typeof cmd === 'object' &&
           cmd !== null &&
-          typeof cmd.command === 'string' &&
-          cmd.command.length > 0 &&
-          (cmd.runAs === 'node' || cmd.runAs === 'root')
+          typeof (cmd as Record<string, unknown>).command === 'string' &&
+          ((cmd as Record<string, unknown>).command as string).length > 0 &&
+          ((cmd as Record<string, unknown>).runAs === 'node' || (cmd as Record<string, unknown>).runAs === 'root')
         )
         .map((cmd) => ({
-          id: crypto.randomUUID(),
+          id: generateId(),
           command: cmd.command,
           runAs: cmd.runAs,
         }))
       : [];
 
     // Restore env variables (keys only, values are empty)
-    const envVariables: EnvVariable[] = Array.isArray(parsed.envVariableKeys)
-      ? parsed.envVariableKeys
+    const envVariables: EnvVariable[] = Array.isArray(data.envVariableKeys)
+      ? data.envVariableKeys
         .filter((key): key is string => typeof key === 'string' && key.length > 0)
         .map((key) => ({
-          id: crypto.randomUUID(),
+          id: generateId(),
           key,
           value: '',
         }))
       : [];
 
     // Restore protected files
-    const protectedFiles: ProtectedFile[] = Array.isArray(parsed.protectedFilePaths)
-      ? parsed.protectedFilePaths
+    const protectedFiles: ProtectedFile[] = Array.isArray(data.protectedFilePaths)
+      ? data.protectedFilePaths
         .filter((path): path is string => typeof path === 'string' && path.length > 0)
         .map((path) => ({
-          id: crypto.randomUUID(),
+          id: generateId(),
           path,
         }))
       : [];
 
     return {
-      baseImage: typeof parsed.baseImage === 'string' ? parsed.baseImage : defaultAppConfig.baseImage,
-      nodeVersion: typeof parsed.nodeVersion === 'string' ? parsed.nodeVersion : defaultAppConfig.nodeVersion,
+      baseImage: typeof data.baseImage === 'string' && data.baseImage.length > 0
+        ? data.baseImage
+        : defaultAppConfig.baseImage,
+      nodeVersion: typeof data.nodeVersion === 'string' && data.nodeVersion.length > 0
+        ? data.nodeVersion
+        : defaultAppConfig.nodeVersion,
       software,
       customAptPackages,
       customNpmPackages,
       customRunCommands,
       envVariables,
       protectedFiles,
-      claudeMdContent: typeof parsed.claudeMdContent === 'string'
-        ? parsed.claudeMdContent
+      claudeMdContent: typeof data.claudeMdContent === 'string'
+        ? data.claudeMdContent
         : defaultAppConfig.claudeMdContent,
     };
   } catch {
-    // If parsing fails, return default config
+    // If anything fails, return default config - app should never crash
     return defaultAppConfig;
   }
 }
@@ -201,47 +227,73 @@ function loadConfigFromStorage(): AppConfig {
 /**
  * Saves configuration to localStorage.
  * Note: Environment variable values are NOT stored for security reasons.
+ * This function is designed to NEVER throw - it silently fails on any error.
  */
 function saveConfigToStorage(config: AppConfig): void {
+  // SSR safety check
   if (typeof window === 'undefined') {
     return;
   }
 
   try {
+    // Defensive checks to prevent crashes from corrupted state
+    if (!config || typeof config !== 'object') {
+      return;
+    }
+
     const toStore: StoredConfig = {
-      baseImage: config.baseImage,
-      nodeVersion: config.nodeVersion,
-      software: Object.fromEntries(
-        (Object.keys(config.software) as Array<keyof SoftwareConfig>).map((key) => [
-          key,
-          {
-            enabled: config.software[key].enabled,
-            version: config.software[key].version,
-          },
-        ])
-      ),
-      customAptPackages: config.customAptPackages,
-      customNpmPackages: config.customNpmPackages.map((pkg) => ({
-        name: pkg.name,
-        installAs: pkg.installAs,
-      })),
-      customRunCommands: config.customRunCommands.map((cmd) => ({
-        command: cmd.command,
-        runAs: cmd.runAs,
-      })),
+      baseImage: typeof config.baseImage === 'string' ? config.baseImage : defaultAppConfig.baseImage,
+      nodeVersion: typeof config.nodeVersion === 'string' ? config.nodeVersion : defaultAppConfig.nodeVersion,
+      software: config.software && typeof config.software === 'object'
+        ? Object.fromEntries(
+          (Object.keys(defaultSoftwareConfig) as Array<keyof SoftwareConfig>).map((key) => [
+            key,
+            {
+              enabled: config.software[key]?.enabled ?? defaultSoftwareConfig[key].enabled,
+            },
+          ])
+        )
+        : undefined,
+      customAptPackages: Array.isArray(config.customAptPackages)
+        ? config.customAptPackages.filter((pkg) => typeof pkg === 'string')
+        : [],
+      customNpmPackages: Array.isArray(config.customNpmPackages)
+        ? config.customNpmPackages
+          .filter((pkg) => pkg && typeof pkg === 'object' && typeof pkg.name === 'string')
+          .map((pkg) => ({
+            name: pkg.name,
+            installAs: pkg.installAs === 'root' ? 'root' : 'node',
+          }))
+        : [],
+      customRunCommands: Array.isArray(config.customRunCommands)
+        ? config.customRunCommands
+          .filter((cmd) => cmd && typeof cmd === 'object' && typeof cmd.command === 'string')
+          .map((cmd) => ({
+            command: cmd.command,
+            runAs: cmd.runAs === 'root' ? 'root' : 'node',
+          }))
+        : [],
       // Only store keys, NOT values for security
-      envVariableKeys: config.envVariables
-        .map((env) => env.key)
-        .filter((key) => key.length > 0),
-      protectedFilePaths: config.protectedFiles
-        .map((file) => file.path)
-        .filter((path) => path.length > 0),
-      claudeMdContent: config.claudeMdContent,
+      envVariableKeys: Array.isArray(config.envVariables)
+        ? config.envVariables
+          .filter((env) => env && typeof env === 'object' && typeof env.key === 'string')
+          .map((env) => env.key)
+          .filter((key) => key.length > 0)
+        : [],
+      protectedFilePaths: Array.isArray(config.protectedFiles)
+        ? config.protectedFiles
+          .filter((file) => file && typeof file === 'object' && typeof file.path === 'string')
+          .map((file) => file.path)
+          .filter((path) => path.length > 0)
+        : [],
+      claudeMdContent: typeof config.claudeMdContent === 'string'
+        ? config.claudeMdContent
+        : defaultAppConfig.claudeMdContent,
     };
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
   } catch {
-    // Silently fail if storage is not available
+    // Silently fail if storage is not available or any error occurs
   }
 }
 
@@ -314,26 +366,10 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
         [softwareId]: {
           ...prev.software[softwareId],
           enabled: !prev.software[softwareId].enabled,
-        } satisfies SoftwarePackage,
+        },
       },
     }));
   }, []);
-
-  const setSoftwareVersion = useCallback(
-    (softwareId: keyof SoftwareConfig, version: string) => {
-      setConfig((prev) => ({
-        ...prev,
-        software: {
-          ...prev.software,
-          [softwareId]: {
-            ...prev.software[softwareId],
-            version,
-          } satisfies SoftwarePackage,
-        },
-      }));
-    },
-    []
-  );
 
   // Helper function to get all APT packages from enabled software
   const getBuiltInAptPackages = useCallback((software: SoftwareConfig): string[] => {
@@ -583,7 +619,6 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       setBaseImage,
       setNodeVersion,
       toggleSoftware,
-      setSoftwareVersion,
       addCustomAptPackages,
       removeCustomAptPackage,
       getAllAptPackages,
@@ -610,7 +645,6 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       setBaseImage,
       setNodeVersion,
       toggleSoftware,
-      setSoftwareVersion,
       addCustomAptPackages,
       removeCustomAptPackage,
       getAllAptPackages,

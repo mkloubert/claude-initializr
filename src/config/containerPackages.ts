@@ -57,7 +57,8 @@ export const optionalAptPackages: Record<string, string[]> = {
   ffmpeg: ['ffmpeg'],
   imagemagick: ['imagemagick'],
   python: ['python3', 'python3-pip', 'python3-venv'],
-  uv: ['curl'],
+  uv: ['wget'],
+  flutter: ['wget', 'xz-utils', 'zip', 'libglu1-mesa', 'openjdk-17-jdk'],
 };
 
 /**
@@ -76,6 +77,7 @@ export const softwareInstallOrder: string[] = [
   'python',
   'uv',
   'golang',
+  'flutter',
   'typescript',
   'ffmpeg',
   'imagemagick',

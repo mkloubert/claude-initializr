@@ -42,8 +42,6 @@ export interface ConfigContextValue {
   // Software configuration actions
   /** Toggle a software package on/off */
   toggleSoftware: (softwareId: keyof SoftwareConfig) => void;
-  /** Update the version for a software package */
-  setSoftwareVersion: (softwareId: keyof SoftwareConfig, version: string) => void;
 
   // Custom APT packages actions
   /** Add custom APT packages (comma-separated input supported, duplicates ignored) */

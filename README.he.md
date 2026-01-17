@@ -39,11 +39,13 @@
 - **תמונת בסיס**: הגדרת שם וגרסה של תמונת Docker הבסיס (ברירת מחדל: `node:24`)
 - **בחירת תוכנות**: בחרו תוכנות נוספות להתקנה:
   - ffmpeg (עיבוד אודיו/וידאו)
-  - Go (עם בחירת גרסה)
+  - Flutter (כולל Dart ו-Android SDK)
+  - Go
   - ImageMagick (עיבוד תמונות)
-  - Python 3 (עם בחירת גרסה)
-  - TypeScript (עם בחירת גרסה)
+  - Python 3
+  - TypeScript
   - uv (מתקין חבילות Python מהיר, ממליץ על Python)
+- **הגדרת גרסאות**: גרסאות התוכנות מוגדרות באמצעות ארגומנטי build של Docker (לדוגמה: `--build-arg GO_VERSION=1.22.0`)
 - **חבילות APT מותאמות**: הוספת חבילות Debian/Ubuntu נוספות להתקנה בקונטיינר
 - **חבילות NPM מותאמות**: הוספת חבילות NPM נוספות להתקנה גלובלית, עם אפשרות להתקנה כמשתמש `root` או `node`
 - **פקודות RUN מותאמות**: הוספת פקודות shell מותאמות להרצה במהלך בניית תמונת Docker, עם אפשרות להרצה כמשתמש `root` או `node`
@@ -239,6 +241,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
    ```
 
@@ -246,6 +250,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |---------------|-------------|-------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | כתובת URL ל-API JSON של גרסאות Go (רק עבור "latest") |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | כתובת URL בסיסית להורדת ארכיוני Go |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | כתובת URL ל-API JSON של גרסאות Flutter (רק עבור "latest") |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | כתובת URL בסיסית להורדת ארכיוני Flutter |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | כתובת URL לסקריפט התקנת uv |
 
 5. התחברות לקונטיינר:

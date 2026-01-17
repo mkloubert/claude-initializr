@@ -39,11 +39,13 @@
 - **بیس امیج**: Docker بیس امیج کا نام اور ورژن کنفیگر کریں (ڈیفالٹ: `node:24`)
 - **سافٹ ویئر کا انتخاب**: انسٹال کرنے کے لیے اضافی سافٹ ویئر منتخب کریں:
   - ffmpeg (آڈیو/ویڈیو پروسیسنگ)
-  - Go (ورژن کے انتخاب کے ساتھ)
+  - Flutter (Dart اور Android SDK شامل ہے)
+  - Go
   - ImageMagick (امیج پروسیسنگ)
-  - Python 3 (ورژن کے انتخاب کے ساتھ)
-  - TypeScript (ورژن کے انتخاب کے ساتھ)
+  - Python 3
+  - TypeScript
   - uv (تیز Python پیکیج انسٹالر، Python کی سفارش کرتا ہے)
+- **ورژن کنفیگریشن**: سافٹ ویئر ورژن Docker بلڈ آرگیومینٹس کے ذریعے کنفیگر کیے جاتے ہیں (مثال: `--build-arg GO_VERSION=1.22.0`)
 - **حسب ضرورت APT پیکجز**: کنٹینر میں انسٹال کرنے کے لیے اضافی Debian/Ubuntu پیکجز شامل کریں
 - **حسب ضرورت NPM پیکجز**: عالمی طور پر انسٹال کرنے کے لیے اضافی NPM پیکجز شامل کریں، `root` یا `node` صارف کے طور پر انسٹال کرنے کا آپشن
 - **حسب ضرورت RUN کمانڈز**: Docker امیج بلڈ کے دوران چلانے کے لیے حسب ضرورت shell کمانڈز شامل کریں، `root` یا `node` صارف کے طور پر چلانے کا آپشن
@@ -239,6 +241,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
    ```
 
@@ -246,6 +250,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |-------------|--------|-------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go ورژن JSON API URL (صرف "latest" کے لیے) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go آرکائیو ڈاؤن لوڈ کے لیے بیس URL |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | Flutter ریلیز JSON API URL (صرف "latest" کے لیے) |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Flutter آرکائیو ڈاؤن لوڈ کے لیے بیس URL |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv انسٹال سکرپٹ URL |
 
 5. کنٹینر سے کنیکٹ کریں:

@@ -37,11 +37,13 @@
 - **Temel İmaj**: Docker temel imaj adını ve sürümünü yapılandırın (varsayılan: `node:24`)
 - **Yazılım Seçimi**: Yüklenecek ek yazılımları seçin:
   - ffmpeg (ses/video işleme)
-  - Go (sürüm seçimi ile)
+  - Flutter (Dart ve Android SDK içerir)
+  - Go
   - ImageMagick (görüntü işleme)
-  - Python 3 (sürüm seçimi ile)
-  - TypeScript (sürüm seçimi ile)
+  - Python 3
+  - TypeScript
   - uv (hızlı Python paket yükleyicisi, Python önerir)
+- **Sürüm Yapılandırması**: Yazılım sürümleri Docker build argümanları ile yapılandırılır (örn. `--build-arg GO_VERSION=1.22.0`)
 - **Özel APT Paketleri**: Konteynere yüklenecek ek Debian/Ubuntu paketleri ekleyin
 - **Özel NPM Paketleri**: Global olarak yüklenecek ek NPM paketleri ekleyin, `root` veya `node` kullanıcısı olarak yükleme seçeneği ile
 - **Özel RUN Komutları**: Docker imajı oluşturulurken çalıştırılacak özel shell komutları ekleyin, `root` veya `node` kullanıcısı olarak çalıştırma seçeneği ile
@@ -237,6 +239,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
    ```
 
@@ -244,6 +248,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |------------------|------------|----------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go sürüm JSON API URL'si (yalnızca "latest" için) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go arşiv indirmeleri için temel URL |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | Flutter sürüm JSON API URL'si (yalnızca "latest" için) |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Flutter arşiv indirmeleri için temel URL |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv kurulum betiği URL'si |
 
 5. Konteynere bağlanın:

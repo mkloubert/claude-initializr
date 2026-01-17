@@ -69,6 +69,8 @@
     "uvDesc": "Rust ile yazılmış son derece hızlı bir Python paket yükleyicisi ve çözümleyicisi olan uv'yi kurar. Daha hızlı bağımlılık yönetimi için pip, pip-tools ve virtualenv'in yerini alabilir.",
     "golang": "Go",
     "golangDesc": "Resmi derleyici ve araçlarla Go (Golang) programlama dilini kurar. Hızlı, statik olarak derlenmiş programlar, CLI araçları, web sunucuları ve sistem yazılımı oluşturmak için idealdir.",
+    "flutter": "Flutter",
+    "flutterDesc": "Dart ve Android geliştirme araçlarıyla Flutter SDK'yı kurar. Tek bir kod tabanından mobil, web ve masaüstü için çapraz platform uygulamalar oluşturun. Android SDK ve komut satırı araçlarını içerir.",
     "version": "Sürüm",
     "latest": "en son",
     "recommendsHint": "Önerilen: {{packages}}"

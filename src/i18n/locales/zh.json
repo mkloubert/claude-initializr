@@ -69,6 +69,8 @@
     "uvDesc": "安装uv，一个用Rust编写的极速Python包安装和解析工具。可替代pip、pip-tools和virtualenv，实现更快的依赖管理。",
     "golang": "Go",
     "golangDesc": "安装带有官方编译器和工具的Go（Golang）编程语言。非常适合构建快速、静态编译的程序、CLI工具、Web服务器和系统软件。",
+    "flutter": "Flutter",
+    "flutterDesc": "安装包含Dart和Android开发工具的Flutter SDK。从单一代码库构建跨平台的移动、网页和桌面应用程序。包含Android SDK和命令行工具。",
     "version": "版本",
     "latest": "最新",
     "recommendsHint": "推荐: {{packages}}"

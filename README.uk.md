@@ -37,11 +37,13 @@
 - **Базовий образ**: Налаштування назви та версії базового Docker образу (за замовчуванням: `node:24`)
 - **Вибір програмного забезпечення**: Виберіть додаткове ПЗ для встановлення:
   - ffmpeg (обробка аудіо/відео)
-  - Go (з вибором версії)
+  - Flutter (включає Dart та Android SDK)
+  - Go
   - ImageMagick (обробка зображень)
-  - Python 3 (з вибором версії)
-  - TypeScript (з вибором версії)
+  - Python 3
+  - TypeScript
   - uv (швидкий інсталятор пакетів Python, рекомендує Python)
+- **Налаштування версій**: Версії програмного забезпечення налаштовуються через аргументи збірки Docker (напр. `--build-arg GO_VERSION=1.22.0`)
 - **Користувацькі пакети APT**: Додайте додаткові пакети Debian/Ubuntu для встановлення в контейнер
 - **Користувацькі пакети NPM**: Додайте додаткові NPM пакети для глобального встановлення з можливістю встановлення від імені користувача `root` або `node`
 - **Користувацькі команди RUN**: Додайте користувацькі shell-команди для виконання під час збірки Docker-образу з можливістю виконання від імені користувача `root` або `node`
@@ -237,6 +239,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
    ```
 
@@ -244,6 +248,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |-----------------|------------------|------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL JSON API версій Go (тільки для "latest") |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Базова URL для завантаження архівів Go |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | URL JSON API релізів Flutter (тільки для "latest") |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Базова URL для завантаження архівів Flutter |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL скрипта встановлення uv |
 
 5. Підключіться до контейнера:

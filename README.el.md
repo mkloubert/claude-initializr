@@ -37,11 +37,13 @@
 - **Βασική Εικόνα**: Ρυθμίστε το όνομα και την έκδοση της βασικής εικόνας Docker (προεπιλογή: `node:24`)
 - **Επιλογή Λογισμικού**: Επιλέξτε επιπλέον λογισμικό για εγκατάσταση:
   - ffmpeg (επεξεργασία ήχου/βίντεο)
-  - Go (με επιλογή έκδοσης)
+  - Flutter (περιλαμβάνει Dart και Android SDK)
+  - Go
   - ImageMagick (επεξεργασία εικόνας)
-  - Python 3 (με επιλογή έκδοσης)
-  - TypeScript (με επιλογή έκδοσης)
+  - Python 3
+  - TypeScript
   - uv (γρήγορος εγκαταστάτης πακέτων Python, συνιστά Python)
+- **Ρύθμιση Εκδόσεων**: Οι εκδόσεις λογισμικού ρυθμίζονται μέσω παραμέτρων build του Docker (π.χ. `--build-arg GO_VERSION=1.22.0`)
 - **Προσαρμοσμένα Πακέτα APT**: Προσθέστε επιπλέον πακέτα Debian/Ubuntu για εγκατάσταση στο container
 - **Προσαρμοσμένα Πακέτα NPM**: Προσθέστε επιπλέον πακέτα NPM για καθολική εγκατάσταση, με την επιλογή εγκατάστασης ως χρήστης `root` ή `node`
 - **Προσαρμοσμένες Εντολές RUN**: Προσθέστε προσαρμοσμένες εντολές shell για εκτέλεση κατά τη δημιουργία της εικόνας Docker, με την επιλογή εκτέλεσης ως χρήστης `root` ή `node`
@@ -237,6 +239,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
    ```
 
@@ -244,6 +248,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |------------------|------------|-----------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL για το JSON API εκδόσεων Go (μόνο για "latest") |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Βασική URL για λήψεις αρχείων Go |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | URL για το JSON API εκδόσεων Flutter (μόνο για "latest") |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Βασική URL για λήψεις αρχείων Flutter |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL για το σενάριο εγκατάστασης uv |
 
 5. Συνδεθείτε στο container:

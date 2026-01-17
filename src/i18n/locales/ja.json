@@ -69,6 +69,8 @@
     "uvDesc": "Rustで書かれた超高速Pythonパッケージインストーラーおよびリゾルバーのuvをインストール。pip、pip-tools、virtualenvを置き換えてより高速な依存関係管理が可能。",
     "golang": "Go",
     "golangDesc": "公式コンパイラとツール付きのGo（Golang）プログラミング言語をインストール。高速で静的にコンパイルされたプログラム、CLIツール、Webサーバー、システムソフトウェアの構築に最適。",
+    "flutter": "Flutter",
+    "flutterDesc": "DartとAndroid開発ツールを含むFlutter SDKをインストール。単一のコードベースからモバイル、ウェブ、デスクトップ向けのクロスプラットフォームアプリを構築できます。Android SDKとコマンドラインツールが含まれています。",
     "version": "バージョン",
     "latest": "最新",
     "recommendsHint": "推奨: {{packages}}"

@@ -37,11 +37,13 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
 - **Basisimage**: Configureer de naam en versie van het Docker-basisimage (standaard: `node:24`)
 - **Softwareselectie**: Kies extra software om te installeren:
   - ffmpeg (audio-/videoverwerking)
-  - Go (met versieselectie)
+  - Flutter (inclusief Dart en Android SDK)
+  - Go
   - ImageMagick (beeldverwerking)
-  - Python 3 (met versieselectie)
-  - TypeScript (met versieselectie)
+  - Python 3
+  - TypeScript
   - uv (snelle Python-pakketinstaller, beveelt Python aan)
+- **Versieconfiguratie**: Softwareversies worden geconfigureerd via Docker build-argumenten (bijv. `--build-arg GO_VERSION=1.22.0`)
 - **Aangepaste APT-pakketten**: Voeg extra Debian/Ubuntu-pakketten toe om in de container te installeren
 - **Aangepaste NPM-pakketten**: Voeg extra NPM-pakketten toe om globaal te installeren, met de optie om als `root` of `node` gebruiker te installeren
 - **Aangepaste RUN-opdrachten**: Voeg aangepaste shell-opdrachten toe om uit te voeren tijdens de Docker-image build, met de optie om als `root` of `node` gebruiker uit te voeren
@@ -237,6 +239,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://mijn-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://mijn-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://mijn-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://mijn-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://mijn-mirror.example.com/uv/install.sh
    ```
 
@@ -244,6 +248,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |----------------|-----------|--------------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL voor Go-versie JSON API (alleen bij "latest") |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Basis-URL voor Go-archiefdownloads |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | URL voor Flutter releases JSON API (alleen bij "latest") |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Basis-URL voor Flutter-archiefdownloads |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL voor uv-installatiescript |
 
 5. Verbind met de container:

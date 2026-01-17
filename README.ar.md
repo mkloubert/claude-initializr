@@ -39,11 +39,13 @@
 - **الصورة الأساسية**: قم بتكوين اسم وإصدار صورة Docker الأساسية (الافتراضي: `node:24`)
 - **اختيار البرامج**: اختر برامج إضافية للتثبيت:
   - ffmpeg (معالجة الصوت/الفيديو)
-  - Go (مع اختيار الإصدار)
+  - Flutter (يتضمن Dart و Android SDK)
+  - Go
   - ImageMagick (معالجة الصور)
-  - Python 3 (مع اختيار الإصدار)
-  - TypeScript (مع اختيار الإصدار)
+  - Python 3
+  - TypeScript
   - uv (مثبّت حزم Python سريع، يوصي بـ Python)
+- **تكوين الإصدارات**: يتم تكوين إصدارات البرامج عبر وسائط بناء Docker (مثال: `--build-arg GO_VERSION=1.22.0`)
 - **حزم APT مخصصة**: أضف حزم Debian/Ubuntu إضافية للتثبيت في الحاوية
 - **حزم NPM مخصصة**: أضف حزم NPM إضافية للتثبيت عالمياً، مع خيار التثبيت كمستخدم `root` أو `node`
 - **أوامر RUN مخصصة**: أضف أوامر shell مخصصة للتنفيذ أثناء بناء صورة Docker، مع خيار التشغيل كمستخدم `root` أو `node`
@@ -239,6 +241,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
    ```
 
@@ -246,6 +250,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |-------------|-----------|-------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | عنوان URL لواجهة JSON لإصدارات Go (فقط عند اختيار "latest") |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | عنوان URL الأساسي لتنزيل أرشيفات Go |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | عنوان URL لواجهة JSON لإصدارات Flutter (فقط عند اختيار "latest") |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | عنوان URL الأساسي لتنزيل أرشيفات Flutter |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | عنوان URL لسكربت تثبيت uv |
 
 5. الاتصال بالحاوية:

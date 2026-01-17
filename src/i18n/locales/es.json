@@ -69,6 +69,8 @@
     "uvDesc": "Instala uv, un instalador y resolvedor de paquetes Python extremadamente rápido escrito en Rust. Puede reemplazar pip, pip-tools y virtualenv para una gestión de dependencias más rápida.",
     "golang": "Go",
     "golangDesc": "Instala el lenguaje de programación Go (Golang) con el compilador y herramientas oficiales. Ideal para crear programas rápidos compilados estáticamente, herramientas CLI, servidores web y software de sistema.",
+    "flutter": "Flutter",
+    "flutterDesc": "Instala el SDK de Flutter con Dart y herramientas de desarrollo Android. Cree aplicaciones multiplataforma para móviles, web y escritorio desde una única base de código. Incluye el SDK de Android y herramientas de línea de comandos.",
     "version": "Versión",
     "latest": "última",
     "recommendsHint": "Recomendado: {{packages}}"

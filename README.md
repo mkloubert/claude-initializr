@@ -37,11 +37,13 @@ A web application to generate Docker configuration files for running [Claude Cod
 - **Base Image**: Configure the Docker base image name and version (default: `node:24`)
 - **Software Selection**: Choose additional software to install:
   - ffmpeg (audio/video processing)
-  - Go (with version selection)
+  - Flutter (includes Dart and Android SDK)
+  - Go
   - ImageMagick (image processing)
-  - Python 3 (with version selection)
-  - TypeScript (with version selection)
+  - Python 3
+  - TypeScript
   - uv (fast Python package installer, recommends Python)
+- **Version Configuration**: Software versions are configured via Docker build arguments (e.g., `--build-arg GO_VERSION=1.22.0`)
 - **Custom APT Packages**: Add additional Debian/Ubuntu packages to install in the container
 - **Custom NPM Packages**: Add additional NPM packages to install globally, with the option to install as `root` or `node` user
 - **Custom RUN Commands**: Add custom shell commands to execute during Docker image build, with the option to run as `root` or `node` user
@@ -229,6 +231,25 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose up --build
    ```
 
+   **Optional: Custom Software Versions**
+
+   Software versions can be configured via build arguments. Use `latest` for dynamic version fetching or specify an explicit version:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_VERSION=1.22.0 \
+     --build-arg FLUTTER_VERSION=3.24.0 \
+     --build-arg PYTHON_VERSION=3.12 \
+     --build-arg TYPESCRIPT_VERSION=5.6.0
+   ```
+
+   | Build Argument | Default | Description |
+   |----------------|---------|-------------|
+   | `GO_VERSION` | `latest` | Go version (`latest` or specific like `1.22.0`) |
+   | `FLUTTER_VERSION` | `latest` | Flutter version (`latest` or specific like `3.24.0`) |
+   | `PYTHON_VERSION` | `3` | Python version (e.g., `3`, `3.12`) |
+   | `TYPESCRIPT_VERSION` | `latest` | TypeScript version (`latest` or specific like `5.6.0`) |
+
    **Optional: Custom Download URLs**
 
    If you need to use a mirror or proxy for package downloads, you can override the default URLs during build. All URLs support query parameters:
@@ -237,12 +258,17 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
-     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases
    ```
 
    | Build Argument | Default | Description |
    |----------------|---------|-------------|
-   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL for Go version JSON API (only when "latest" is selected) |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | URL for Flutter releases JSON API (used when `FLUTTER_VERSION=latest`) |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Base URL for Flutter archive downloads |
+   | `ANDROID_CMDLINE_TOOLS_URL` | `https://dl.google.com/android/repository` | Base URL for Android command-line tools |
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL for Go version JSON API (used when `GO_VERSION=latest`) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Base URL for Go archive downloads |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL for uv install script |
 

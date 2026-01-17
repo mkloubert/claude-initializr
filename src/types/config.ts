@@ -20,16 +20,13 @@
 
 /**
  * Configuration for a single software package that can be installed.
+ * Version configuration is handled via Docker build arguments.
  */
 export interface SoftwarePackage {
   /** Unique identifier for the software */
   id: string;
   /** Whether the software is enabled for installation */
   enabled: boolean;
-  /** Version to install (e.g., "latest", "3.12") */
-  version: string;
-  /** Whether version selection is available for this software */
-  hasVersionSelection: boolean;
   /** Optional list of software IDs that this package recommends (soft dependency) */
   recommends?: string[];
 }
@@ -44,6 +41,7 @@ export interface SoftwareConfig {
   python: SoftwarePackage;
   uv: SoftwarePackage;
   golang: SoftwarePackage;
+  flutter: SoftwarePackage;
 }
 
 /**
@@ -133,39 +131,31 @@ export const defaultSoftwareConfig: SoftwareConfig = {
   typescript: {
     id: 'typescript',
     enabled: false,
-    version: 'latest',
-    hasVersionSelection: true,
   },
   ffmpeg: {
     id: 'ffmpeg',
     enabled: false,
-    version: 'latest',
-    hasVersionSelection: false,
   },
   imagemagick: {
     id: 'imagemagick',
     enabled: false,
-    version: 'latest',
-    hasVersionSelection: false,
   },
   python: {
     id: 'python',
     enabled: false,
-    version: '3',
-    hasVersionSelection: true,
   },
   uv: {
     id: 'uv',
     enabled: false,
-    version: 'latest',
-    hasVersionSelection: false,
     recommends: ['python'],
   },
   golang: {
     id: 'golang',
     enabled: false,
-    version: 'latest',
-    hasVersionSelection: true,
+  },
+  flutter: {
+    id: 'flutter',
+    enabled: false,
   },
 };
 

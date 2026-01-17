@@ -37,11 +37,13 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 - **Basis-Image**: Konfigurieren Sie den Namen und die Version des Docker-Basis-Images (Standard: `node:24`)
 - **Software-Auswahl**: Wählen Sie zusätzliche Software zur Installation:
   - ffmpeg (Audio-/Videoverarbeitung)
-  - Go (mit Versionsauswahl)
+  - Flutter (enthält Dart und Android SDK)
+  - Go
   - ImageMagick (Bildverarbeitung)
-  - Python 3 (mit Versionsauswahl)
-  - TypeScript (mit Versionsauswahl)
+  - Python 3
+  - TypeScript
   - uv (schneller Python-Paketinstaller, empfiehlt Python)
+- **Versionskonfiguration**: Software-Versionen werden über Docker-Build-Argumente konfiguriert (z.B. `--build-arg GO_VERSION=1.22.0`)
 - **Benutzerdefinierte APT-Pakete**: Fügen Sie zusätzliche Debian/Ubuntu-Pakete zur Installation im Container hinzu
 - **Benutzerdefinierte NPM-Pakete**: Fügen Sie zusätzliche NPM-Pakete zur globalen Installation hinzu, mit der Option als `root` oder `node` Benutzer zu installieren
 - **Benutzerdefinierte RUN-Befehle**: Fügen Sie benutzerdefinierte Shell-Befehle hinzu, die während des Docker-Image-Builds ausgeführt werden, mit der Option als `root` oder `node` Benutzer auszuführen
@@ -229,6 +231,25 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose up --build
    ```
 
+   **Optional: Benutzerdefinierte Software-Versionen**
+
+   Software-Versionen können über Build-Argumente konfiguriert werden. Verwenden Sie `latest` für dynamische Versionserkennung oder geben Sie eine explizite Version an:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_VERSION=1.22.0 \
+     --build-arg FLUTTER_VERSION=3.24.0 \
+     --build-arg PYTHON_VERSION=3.12 \
+     --build-arg TYPESCRIPT_VERSION=5.6.0
+   ```
+
+   | Build-Argument | Standard | Beschreibung |
+   |----------------|----------|--------------|
+   | `GO_VERSION` | `latest` | Go-Version (`latest` oder spezifisch wie `1.22.0`) |
+   | `FLUTTER_VERSION` | `latest` | Flutter-Version (`latest` oder spezifisch wie `3.24.0`) |
+   | `PYTHON_VERSION` | `3` | Python-Version (z.B. `3`, `3.12`) |
+   | `TYPESCRIPT_VERSION` | `latest` | TypeScript-Version (`latest` oder spezifisch wie `5.6.0`) |
+
    **Optional: Benutzerdefinierte Download-URLs**
 
    Wenn Sie einen Mirror oder Proxy für Paket-Downloads verwenden möchten, können Sie die Standard-URLs beim Build überschreiben. Alle URLs unterstützen Query-Parameter:
@@ -242,7 +263,7 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
    | Build-Argument | Standard | Beschreibung |
    |----------------|----------|--------------|
-   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL für Go-Versions-JSON-API (nur bei "latest") |
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL für Go-Versions-JSON-API (verwendet bei `GO_VERSION=latest`) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Basis-URL für Go-Archiv-Downloads |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL für uv-Installationsskript |
 

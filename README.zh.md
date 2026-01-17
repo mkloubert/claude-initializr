@@ -37,11 +37,13 @@
 - **基础镜像**：配置 Docker 基础镜像名称和版本（默认：`node:24`）
 - **软件选择**：选择要安装的额外软件：
   - ffmpeg（音视频处理）
-  - Go（可选择版本）
+  - Flutter（包含 Dart 和 Android SDK）
+  - Go
   - ImageMagick（图像处理）
-  - Python 3（可选择版本）
-  - TypeScript（可选择版本）
+  - Python 3
+  - TypeScript
   - uv（快速 Python 包安装工具，推荐 Python）
+- **版本配置**：软件版本通过 Docker 构建参数配置（例如：`--build-arg GO_VERSION=1.22.0`）
 - **自定义 APT 包**：添加要在容器中安装的额外 Debian/Ubuntu 软件包
 - **自定义 NPM 包**：添加要全局安装的额外 NPM 包，可选择以 `root` 或 `node` 用户身份安装
 - **自定义 RUN 命令**：添加以 `root` 或 `node` 用户身份执行的自定义 Dockerfile RUN 命令
@@ -237,6 +239,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
+     --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
    ```
 
@@ -244,6 +248,8 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    |----------|--------|------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go 版本 JSON API URL（仅当选择 "latest" 时） |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go 归档下载基础 URL |
+   | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | Flutter 版本 JSON API URL（仅当选择 "latest" 时） |
+   | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Flutter 归档下载基础 URL |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv 安装脚本 URL |
 
 5. 连接到容器：
