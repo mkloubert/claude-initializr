@@ -49,6 +49,11 @@ const ClaudeMdCard = lazy(() =>
   import('@/components/config/ClaudeMdCard').then((m) => ({ default: m.ClaudeMdCard }))
 );
 
+// Lazy load the settings card
+const SettingsJsonCard = lazy(() =>
+  import('@/components/config/SettingsJsonCard').then((m) => ({ default: m.SettingsJsonCard }))
+);
+
 const WELCOME_DISMISSED_KEY = 'claude-initializr-welcome-dismissed';
 
 /**
@@ -175,6 +180,17 @@ export default function Home() {
             }
           >
             <ClaudeMdCard />
+          </Suspense>
+          <Suspense
+            fallback={
+              <Card>
+                <CardContent className="flex items-center justify-center py-12">
+                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                </CardContent>
+              </Card>
+            }
+          >
+            <SettingsJsonCard />
           </Suspense>
         </div>
       </div>

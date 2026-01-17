@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "پاتھ /workspace/ سے متعلق ہیں۔ یہ فائلیں حساس ڈیٹا تک رسائی روکنے کے لیے خالی صرف پڑھنے والی فائلوں کے طور پر ماؤنٹ کی جائیں گی۔"
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "Claude Code کی اجازتوں کو ترتیب دیں تاکہ یہ کنٹرول کیا جا سکے کہ کون سی فائلیں پڑھی، ترمیم کی یا حاصل کی جا سکتی ہیں۔ محفوظ فائلیں خود بخود انکار کے قواعد کے طور پر شامل ہو جاتی ہیں۔",
+    "permissions": "اجازتیں",
+    "directive": "ہدایت",
+    "pattern": "پیٹرن",
+    "patternPlaceholder": "src/** یا .env",
+    "addRule": "قاعدہ شامل کریں",
+    "removeRule": "قاعدہ ہٹائیں",
+    "allow": "اجازت دیں",
+    "ask": "پوچھیں",
+    "deny": "انکار کریں",
+    "noAllowRules": "کوئی اجازت کا قاعدہ متعین نہیں۔",
+    "noAskRules": "کوئی پوچھنے کا قاعدہ متعین نہیں۔",
+    "noDenyRules": "کوئی انکار کا قاعدہ متعین نہیں۔",
+    "help": "Read(), Edit() اور WebFetch() آپریشنز کے لیے اجازت کے قواعد متعین کریں۔ پیٹرن recursive مماثلت کے لیے src/** جیسی glob syntax کی حمایت کرتے ہیں۔"
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile یہ متعین کرتا ہے کہ کنٹینر میں کون سا سافٹ ویئر انسٹال ہوتا ہے۔ Node.js اور Claude Code کے علاوہ، TypeScript، Python، Go، ffmpeg یا ImageMagick جیسے اضافی ٹولز شامل کیے جا سکتے ہیں۔ منتخب سافٹ ویئر Claude کی جانب سے کمانڈز چلاتے وقت دستیاب ہوگا۔",

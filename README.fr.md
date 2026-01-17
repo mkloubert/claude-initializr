@@ -59,6 +59,19 @@ Une application web pour générer des fichiers de configuration Docker permetta
 - Fonctionnalité de prévisualisation intégrée
 - Rédigez des instructions spécifiques au projet pour Claude
 
+### Configuration de settings.json
+
+- **Règles de permission**: Configurez les permissions de Claude Code pour contrôler l'accès aux fichiers
+  - `Allow` - Règles pour les opérations automatiquement autorisées
+  - `Ask` - Règles nécessitant une confirmation de l'utilisateur
+  - `Deny` - Règles toujours refusées
+- **Directives supportées**:
+  - `Read()` - Contrôle quels fichiers Claude peut lire (ex: `Read(src/**)`)
+  - `Edit()` - Contrôle quels fichiers Claude peut modifier (ex: `Edit(.env)`)
+  - `WebFetch()` - Contrôle l'accès réseau (ex: `WebFetch(https://api.github.com:*)`)
+- **Intégration automatique**: Les fichiers protégés sont automatiquement ajoutés comme règles de refus `Read()`
+- **Support des patterns Glob**: Utilisez des patterns comme `src/**` pour la correspondance récursive
+
 ### Fonctionnalités générales
 
 - **Prévisualisation en direct** : Visualisez les aperçus en temps réel des fichiers de configuration générés
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **Modifier CLAUDE.md** : Rédigez les instructions pour Claude dans l'éditeur Markdown
 
-7. **Prévisualiser** : Vérifiez les fichiers de configuration générés dans les onglets de prévisualisation
+7. **Configurer les permissions**: Configurez les règles de permission dans la carte settings.json
+   - Ajoutez des règles `Allow` pour les opérations auto-approuvées
+   - Ajoutez des règles `Ask` pour les opérations nécessitant confirmation
+   - Ajoutez des règles `Deny` pour les opérations interdites
+   - Les fichiers protégés sont automatiquement ajoutés comme règles de refus `Read()`
 
-8. **Télécharger** : Cliquez sur "Télécharger ZIP" pour obtenir tous les fichiers
+8. **Prévisualiser** : Vérifiez les fichiers de configuration générés dans les onglets de prévisualisation
+
+9. **Télécharger** : Cliquez sur "Télécharger ZIP" pour obtenir tous les fichiers
 
 ## Utilisation des fichiers générés
 

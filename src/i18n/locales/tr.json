@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "Yollar /workspace/'e görelidir. Bu dosyalar, hassas verilere erişimi önlemek için boş salt okunur dosyalar olarak bağlanacaktır."
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "Hangi dosyaların okunabileceğini, düzenlenebileceğini veya getirilebileceğini kontrol etmek için Claude Code izinlerini yapılandırın. Korunan dosyalar otomatik olarak reddetme kuralları olarak eklenir.",
+    "permissions": "İzinler",
+    "directive": "Yönerge",
+    "pattern": "Desen",
+    "patternPlaceholder": "src/** veya .env",
+    "addRule": "Kural ekle",
+    "removeRule": "Kuralı kaldır",
+    "allow": "İzin ver",
+    "ask": "Sor",
+    "deny": "Reddet",
+    "noAllowRules": "İzin kuralı tanımlanmamış.",
+    "noAskRules": "Sorma kuralı tanımlanmamış.",
+    "noDenyRules": "Reddetme kuralı tanımlanmamış.",
+    "help": "Read(), Edit() ve WebFetch() işlemleri için izin kuralları tanımlayın. Desenler, özyinelemeli eşleştirme için src/** gibi glob sözdizimini destekler."
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile, konteynere hangi yazılımın kurulacağını tanımlar. Node.js ve Claude Code'a ek olarak TypeScript, Python, Go, ffmpeg veya ImageMagick gibi ek araçlar dahil edilebilir. Seçilen yazılım, Claude komutları çalıştırdığında kullanılabilir olacaktır.",

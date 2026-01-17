@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "المسارات نسبية إلى /workspace/. سيتم تثبيت هذه الملفات كملفات فارغة للقراءة فقط لمنع الوصول إلى البيانات الحساسة."
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "قم بتكوين أذونات Claude Code للتحكم في الملفات التي يمكن قراءتها أو تحريرها أو جلبها. تتم إضافة الملفات المحمية تلقائيًا كقواعد رفض.",
+    "permissions": "الأذونات",
+    "directive": "التوجيه",
+    "pattern": "النمط",
+    "patternPlaceholder": "src/** أو .env",
+    "addRule": "إضافة قاعدة",
+    "removeRule": "إزالة القاعدة",
+    "allow": "السماح",
+    "ask": "السؤال",
+    "deny": "الرفض",
+    "noAllowRules": "لم يتم تحديد قواعد السماح.",
+    "noAskRules": "لم يتم تحديد قواعد السؤال.",
+    "noDenyRules": "لم يتم تحديد قواعد الرفض.",
+    "help": "حدد قواعد الأذونات لعمليات Read() و Edit() و WebFetch(). تدعم الأنماط صيغة glob مثل src/** للمطابقة التكرارية."
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "يحدد Dockerfile البرامج المثبتة في الحاوية. بالإضافة إلى Node.js وClaude Code، يمكن تضمين أدوات إضافية مثل TypeScript وPython وGo وffmpeg أو ImageMagick. ستكون البرامج المختارة متاحة عندما ينفذ Claude الأوامر.",

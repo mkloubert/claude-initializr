@@ -22,4 +22,5 @@ export * from './templateService';
 export * from './dockerfileGenerator';
 export * from './envGenerator';
 export * from './volumeGenerator';
+export * from './settingsGenerator';
 export * from './zipGenerator';

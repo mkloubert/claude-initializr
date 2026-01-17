@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "路径相对于/workspace/。这些文件将挂载为空的只读文件，以防止访问敏感数据。"
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "配置 Claude Code 权限以控制哪些文件可以被读取、编辑或获取。受保护的文件会自动添加为拒绝规则。",
+    "permissions": "权限",
+    "directive": "指令",
+    "pattern": "模式",
+    "patternPlaceholder": "src/** 或 .env",
+    "addRule": "添加规则",
+    "removeRule": "删除规则",
+    "allow": "允许",
+    "ask": "询问",
+    "deny": "拒绝",
+    "noAllowRules": "未定义允许规则。",
+    "noAskRules": "未定义询问规则。",
+    "noDenyRules": "未定义拒绝规则。",
+    "help": "为 Read()、Edit() 和 WebFetch() 操作定义权限规则。模式支持 glob 语法，如 src/** 用于递归匹配。"
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile定义在容器中安装哪些软件。除了Node.js和Claude Code外，还可以包含TypeScript、Python、Go、ffmpeg或ImageMagick等附加工具。当Claude执行命令时，所选软件将可用。",

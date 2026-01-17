@@ -25,11 +25,11 @@ import {
   processDockerfile,
   processDockerCompose,
   getInitFirewallTemplate,
-  getClaudeSettingsTemplate,
 } from './templateService';
 import { generateDockerfileReplacements } from './dockerfileGenerator';
 import { generateEnvFileContent } from './envGenerator';
 import { generateDockerComposeReplacements } from './volumeGenerator';
+import { generateSettingsJson } from './settingsGenerator';
 
 /**
  * Generate a ZIP file containing all Docker configuration files.
@@ -71,19 +71,11 @@ export async function generateZipFile(config: AppConfig): Promise<Blob> {
     // Include CLAUDE.md
     workspace.file('CLAUDE.md', config.claudeMdContent);
 
-    // Include .claude/settings.json
+    // Include .claude/settings.json with configured permissions
     const claudeFolder = workspace.folder('.claude');
     if (claudeFolder) {
-      const settingsContent = getClaudeSettingsTemplate();
-      // Pretty-print JSON
-      let formattedSettings: string;
-      try {
-        const parsed = JSON.parse(settingsContent);
-        formattedSettings = JSON.stringify(parsed, null, 2);
-      } catch {
-        formattedSettings = settingsContent;
-      }
-      claudeFolder.file('settings.json', formattedSettings);
+      const settingsContent = generateSettingsJson(config.claudePermissions);
+      claudeFolder.file('settings.json', settingsContent);
     }
   }
 

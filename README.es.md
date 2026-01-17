@@ -59,6 +59,19 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
 - Funcionalidad de vista previa integrada
 - Escriba instrucciones específicas del proyecto para Claude
 
+### Configuración de settings.json
+
+- **Reglas de permisos**: Configura los permisos de Claude Code para controlar el acceso a archivos
+  - `Allow` - Reglas para operaciones automáticamente permitidas
+  - `Ask` - Reglas que requieren confirmación del usuario
+  - `Deny` - Reglas que siempre se deniegan
+- **Directivas soportadas**:
+  - `Read()` - Controla qué archivos puede leer Claude (ej: `Read(src/**)`)
+  - `Edit()` - Controla qué archivos puede modificar Claude (ej: `Edit(.env)`)
+  - `WebFetch()` - Controla el acceso a la red (ej: `WebFetch(https://api.github.com:*)`)
+- **Integración automática**: Los archivos protegidos se agregan automáticamente como reglas de denegación `Read()`
+- **Soporte de patrones Glob**: Usa patrones como `src/**` para coincidencia recursiva
+
 ### Características generales
 
 - **Vista previa en vivo**: Vea vistas previas en tiempo real de los archivos de configuración generados
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **Editar CLAUDE.md**: Escriba instrucciones para Claude en el editor Markdown
 
-7. **Vista previa**: Verifique los archivos de configuración generados en las pestañas de vista previa
+7. **Configurar permisos**: Configura las reglas de permisos en la tarjeta settings.json
+   - Agrega reglas `Allow` para operaciones auto-aprobadas
+   - Agrega reglas `Ask` para operaciones que requieren confirmación
+   - Agrega reglas `Deny` para operaciones prohibidas
+   - Los archivos protegidos se agregan automáticamente como reglas de denegación `Read()`
 
-8. **Descargar**: Haga clic en "Descargar ZIP" para obtener todos los archivos
+8. **Vista previa**: Verifique los archivos de configuración generados en las pestañas de vista previa
+
+9. **Descargar**: Haga clic en "Descargar ZIP" para obtener todos los archivos
 
 ## Uso de los archivos generados
 

@@ -59,6 +59,19 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
 - Ingebouwde voorbeeldfunctionaliteit
 - Schrijf projectspecifieke instructies voor Claude
 
+### settings.json Configuratie
+
+- **Machtigingsregels**: Configureer Claude Code machtigingen om bestandstoegang te beheren
+  - `Allow` - Regels voor automatisch toegestane operaties
+  - `Ask` - Regels die gebruikersbevestiging vereisen
+  - `Deny` - Regels die altijd worden geweigerd
+- **Ondersteunde richtlijnen**:
+  - `Read()` - Bepaalt welke bestanden Claude kan lezen (bijv: `Read(src/**)`)
+  - `Edit()` - Bepaalt welke bestanden Claude kan wijzigen (bijv: `Edit(.env)`)
+  - `WebFetch()` - Bepaalt netwerktoegang (bijv: `WebFetch(https://api.github.com:*)`)
+- **Automatische integratie**: Beschermde bestanden worden automatisch toegevoegd als `Read()` weigeringsregels
+- **Glob-patroon ondersteuning**: Gebruik patronen zoals `src/**` voor recursieve matching
+
 ### Algemene functies
 
 - **Live preview**: Bekijk real-time voorbeelden van gegenereerde configuratiebestanden
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **Bewerk CLAUDE.md**: Schrijf instructies voor Claude in de Markdown-editor
 
-7. **Preview**: Controleer de gegenereerde configuratiebestanden in de preview-tabbladen
+7. **Machtigingen configureren**: Stel machtigingsregels in via de settings.json kaart
+   - Voeg `Allow` regels toe voor auto-goedgekeurde operaties
+   - Voeg `Ask` regels toe voor operaties die bevestiging vereisen
+   - Voeg `Deny` regels toe voor verboden operaties
+   - Beschermde bestanden worden automatisch toegevoegd als `Read()` weigeringsregels
 
-8. **Download**: Klik op "Download ZIP" om alle bestanden te krijgen
+8. **Preview**: Controleer de gegenereerde configuratiebestanden in de preview-tabbladen
+
+9. **Download**: Klik op "Download ZIP" om alle bestanden te krijgen
 
 ## Gebruik van de gegenereerde bestanden
 

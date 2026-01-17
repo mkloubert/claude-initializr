@@ -59,6 +59,19 @@ Uma aplicação web para gerar arquivos de configuração Docker para executar o
 - Funcionalidade de visualização integrada
 - Escreva instruções específicas do projeto para o Claude
 
+### Configuração do settings.json
+
+- **Regras de permissão**: Configure as permissões do Claude Code para controlar o acesso a arquivos
+  - `Allow` - Regras para operações automaticamente permitidas
+  - `Ask` - Regras que requerem confirmação do usuário
+  - `Deny` - Regras sempre negadas
+- **Diretivas suportadas**:
+  - `Read()` - Controla quais arquivos Claude pode ler (ex: `Read(src/**)`)
+  - `Edit()` - Controla quais arquivos Claude pode modificar (ex: `Edit(.env)`)
+  - `WebFetch()` - Controla acesso à rede (ex: `WebFetch(https://api.github.com:*)`)
+- **Integração automática**: Arquivos protegidos são adicionados automaticamente como regras de negação `Read()`
+- **Suporte a padrões Glob**: Use padrões como `src/**` para correspondência recursiva
+
 ### Funcionalidades gerais
 
 - **Visualização ao vivo**: Veja visualizações em tempo real dos arquivos de configuração gerados
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **Edite CLAUDE.md**: Escreva instruções para o Claude no editor Markdown
 
-7. **Visualize**: Verifique os arquivos de configuração gerados nas abas de visualização
+7. **Configurar permissões**: Configure as regras de permissão no cartão settings.json
+   - Adicione regras `Allow` para operações auto-aprovadas
+   - Adicione regras `Ask` para operações que requerem confirmação
+   - Adicione regras `Deny` para operações proibidas
+   - Arquivos protegidos são adicionados automaticamente como regras de negação `Read()`
 
-8. **Baixe**: Clique em "Baixar ZIP" para obter todos os arquivos
+8. **Visualize**: Verifique os arquivos de configuração gerados nas abas de visualização
+
+9. **Baixe**: Clique em "Baixar ZIP" para obter todos os arquivos
 
 ## Usando os arquivos gerados
 

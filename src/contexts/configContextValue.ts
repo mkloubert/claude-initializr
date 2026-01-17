@@ -19,7 +19,13 @@
 // DEALINGS IN THE SOFTWARE.
 
 import { createContext } from 'react';
-import type { AppConfig, DockerfileUser, SoftwareConfig } from '../types';
+import type {
+  AppConfig,
+  DockerfileUser,
+  PermissionCategory,
+  PermissionDirectiveType,
+  SoftwareConfig,
+} from '../types';
 
 /**
  * Context value interface for configuration state and actions.
@@ -88,6 +94,24 @@ export interface ConfigContextValue {
   // CLAUDE.md actions
   /** Update the CLAUDE.md content */
   setClaudeMdContent: (content: string) => void;
+
+  // Claude permissions actions
+  /** Add a permission rule to a category */
+  addPermissionRule: (category: PermissionCategory) => void;
+  /** Update a permission rule's directive */
+  updatePermissionDirective: (
+    category: PermissionCategory,
+    id: string,
+    directive: PermissionDirectiveType
+  ) => void;
+  /** Update a permission rule's pattern */
+  updatePermissionPattern: (
+    category: PermissionCategory,
+    id: string,
+    pattern: string
+  ) => void;
+  /** Remove a permission rule */
+  removePermissionRule: (category: PermissionCategory, id: string) => void;
 
   // Utility actions
   /** Reset configuration to defaults */

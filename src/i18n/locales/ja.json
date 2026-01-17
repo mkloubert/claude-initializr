@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "パスは/workspace/からの相対パスです。これらのファイルは機密データへのアクセスを防ぐため、空の読み取り専用ファイルとしてマウントされます。"
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "Claude Codeのパーミッションを設定して、読み取り、編集、取得できるファイルを制御します。保護されたファイルは自動的に拒否ルールとして追加されます。",
+    "permissions": "パーミッション",
+    "directive": "ディレクティブ",
+    "pattern": "パターン",
+    "patternPlaceholder": "src/** または .env",
+    "addRule": "ルールを追加",
+    "removeRule": "ルールを削除",
+    "allow": "許可",
+    "ask": "確認",
+    "deny": "拒否",
+    "noAllowRules": "許可ルールが定義されていません。",
+    "noAskRules": "確認ルールが定義されていません。",
+    "noDenyRules": "拒否ルールが定義されていません。",
+    "help": "Read()、Edit()、WebFetch()操作のパーミッションルールを定義します。パターンはsrc/**のようなglobシンタックスで再帰的なマッチングをサポートします。"
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfileはコンテナにインストールするソフトウェアを定義します。Node.jsとClaude Codeに加えて、TypeScript、Python、Go、ffmpeg、ImageMagickなどの追加ツールを含めることができます。選択したソフトウェアはClaudeがコマンドを実行するときに利用可能になります。",

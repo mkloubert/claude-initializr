@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "Os caminhos são relativos a /workspace/. Esses arquivos serão montados como arquivos vazios somente leitura para evitar acesso a dados sensíveis."
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "Configure as permissões do Claude Code para controlar quais arquivos podem ser lidos, editados ou buscados. Arquivos protegidos são adicionados automaticamente como regras de negação.",
+    "permissions": "Permissões",
+    "directive": "Diretiva",
+    "pattern": "Padrão",
+    "patternPlaceholder": "src/** ou .env",
+    "addRule": "Adicionar regra",
+    "removeRule": "Remover regra",
+    "allow": "Permitir",
+    "ask": "Perguntar",
+    "deny": "Negar",
+    "noAllowRules": "Nenhuma regra de permissão definida.",
+    "noAskRules": "Nenhuma regra de consulta definida.",
+    "noDenyRules": "Nenhuma regra de negação definida.",
+    "help": "Defina regras de permissão para operações Read(), Edit() e WebFetch(). Os padrões suportam sintaxe glob como src/** para correspondência recursiva."
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "O Dockerfile define qual software é instalado no contêiner. Além de Node.js e Claude Code, ferramentas adicionais como TypeScript, Python, Go, ffmpeg ou ImageMagick podem ser incluídas. O software selecionado estará disponível quando Claude executar comandos.",

@@ -21,13 +21,18 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
   defaultAppConfig,
+  defaultClaudePermissions,
   defaultSoftwareConfig,
   defaultTelemetryEnvVariables,
   type AppConfig,
+  type ClaudePermissions,
   type CustomNpmPackage,
   type CustomRunCommand,
   type DockerfileUser,
   type EnvVariable,
+  type PermissionCategory,
+  type PermissionDirectiveType,
+  type PermissionRule,
   type ProtectedFile,
   type SoftwareConfig,
 } from '../types';
@@ -67,6 +72,14 @@ function saveAutosavePreference(enabled: boolean): void {
 }
 
 /**
+ * Stored permission rule format (without id).
+ */
+interface StoredPermissionRule {
+  directive: PermissionDirectiveType;
+  pattern: string;
+}
+
+/**
  * Storage format for persisted configuration.
  * Note: Environment variable values are NOT stored for security reasons.
  * Note: Software versions are configured via Docker build arguments, not stored.
@@ -81,6 +94,11 @@ interface StoredConfig {
   envVariableKeys?: string[];
   protectedFilePaths?: string[];
   claudeMdContent?: string;
+  claudePermissions?: {
+    allow?: StoredPermissionRule[];
+    ask?: StoredPermissionRule[];
+    deny?: StoredPermissionRule[];
+  };
 }
 
 /**
@@ -224,6 +242,33 @@ function loadConfigFromStorage(): AppConfig {
         }))
       : [];
 
+    // Helper to restore permission rules
+    const restorePermissionRules = (rules: unknown): PermissionRule[] => {
+      if (!Array.isArray(rules)) return [];
+      return rules
+        .filter((rule): rule is StoredPermissionRule =>
+          typeof rule === 'object' &&
+          rule !== null &&
+          ['Read', 'Edit', 'WebFetch'].includes((rule as Record<string, unknown>).directive as string) &&
+          typeof (rule as Record<string, unknown>).pattern === 'string'
+        )
+        .map((rule) => ({
+          id: generateId(),
+          directive: rule.directive,
+          pattern: rule.pattern,
+        }));
+    };
+
+    // Restore Claude permissions
+    const storedPermissions = data.claudePermissions as StoredConfig['claudePermissions'];
+    const claudePermissions: ClaudePermissions = storedPermissions && typeof storedPermissions === 'object'
+      ? {
+        allow: restorePermissionRules(storedPermissions.allow),
+        ask: restorePermissionRules(storedPermissions.ask),
+        deny: restorePermissionRules(storedPermissions.deny),
+      }
+      : defaultClaudePermissions;
+
     return ensureEnvVariables({
       baseImage: typeof data.baseImage === 'string' && data.baseImage.length > 0
         ? data.baseImage
@@ -240,6 +285,7 @@ function loadConfigFromStorage(): AppConfig {
       claudeMdContent: typeof data.claudeMdContent === 'string'
         ? data.claudeMdContent
         : defaultAppConfig.claudeMdContent,
+      claudePermissions,
     });
   } catch {
     // If anything fails, return default config with telemetry vars initialized
@@ -314,6 +360,28 @@ function saveConfigToStorage(config: AppConfig): void {
       claudeMdContent: typeof config.claudeMdContent === 'string'
         ? config.claudeMdContent
         : defaultAppConfig.claudeMdContent,
+      claudePermissions: config.claudePermissions && typeof config.claudePermissions === 'object'
+        ? {
+          allow: Array.isArray(config.claudePermissions.allow)
+            ? config.claudePermissions.allow.map((rule) => ({
+              directive: rule.directive,
+              pattern: rule.pattern,
+            }))
+            : [],
+          ask: Array.isArray(config.claudePermissions.ask)
+            ? config.claudePermissions.ask.map((rule) => ({
+              directive: rule.directive,
+              pattern: rule.pattern,
+            }))
+            : [],
+          deny: Array.isArray(config.claudePermissions.deny)
+            ? config.claudePermissions.deny.map((rule) => ({
+              directive: rule.directive,
+              pattern: rule.pattern,
+            }))
+            : [],
+        }
+        : undefined,
     };
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
@@ -608,19 +676,106 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
   }, []);
 
   const updateProtectedFile = useCallback((id: string, path: string) => {
-    setConfig((prev) => ({
-      ...prev,
-      protectedFiles: prev.protectedFiles.map((file) =>
+    setConfig((prev) => {
+      // Find the old path for this file
+      const oldFile = prev.protectedFiles.find((file) => file.id === id);
+      const oldPath = oldFile?.path ?? '';
+
+      // Update protected files
+      const newProtectedFiles = prev.protectedFiles.map((file) =>
         file.id === id ? { ...file, path } : file
-      ),
-    }));
+      );
+
+      // Start with a copy of deny rules
+      let newDenyRules = prev.claudePermissions.deny.map((rule) => ({ ...rule }));
+
+      // Remove old deny rules (Read and Edit) if old path was not empty
+      if (oldPath.trim().length > 0) {
+        newDenyRules = newDenyRules.filter(
+          (rule) => !(
+            (rule.directive === 'Read' || rule.directive === 'Edit') &&
+            rule.pattern === oldPath
+          )
+        );
+      }
+
+      // Add new deny rules (Read and Edit) if new path is not empty
+      if (path.trim().length > 0) {
+        // Add Read deny rule if it doesn't exist
+        const readRuleExists = newDenyRules.some(
+          (rule) => rule.directive === 'Read' && rule.pattern === path
+        );
+        if (!readRuleExists) {
+          newDenyRules = [...newDenyRules, {
+            id: generateId(),
+            directive: 'Read' as const,
+            pattern: path,
+          }];
+        }
+
+        // Add Edit deny rule if it doesn't exist
+        const editRuleExists = newDenyRules.some(
+          (rule) => rule.directive === 'Edit' && rule.pattern === path
+        );
+        if (!editRuleExists) {
+          newDenyRules = [...newDenyRules, {
+            id: generateId(),
+            directive: 'Edit' as const,
+            pattern: path,
+          }];
+        }
+      }
+
+      // Create completely new claudePermissions object with new array references
+      const newClaudePermissions: ClaudePermissions = {
+        allow: prev.claudePermissions.allow.map((rule) => ({ ...rule })),
+        ask: prev.claudePermissions.ask.map((rule) => ({ ...rule })),
+        deny: newDenyRules,
+      };
+
+      return {
+        ...prev,
+        protectedFiles: newProtectedFiles,
+        claudePermissions: newClaudePermissions,
+      };
+    });
   }, []);
 
   const removeProtectedFile = useCallback((id: string) => {
-    setConfig((prev) => ({
-      ...prev,
-      protectedFiles: prev.protectedFiles.filter((file) => file.id !== id),
-    }));
+    setConfig((prev) => {
+      // Find the file to get its path
+      const fileToRemove = prev.protectedFiles.find((file) => file.id === id);
+      const pathToRemove = fileToRemove?.path ?? '';
+
+      // Remove the protected file
+      const newProtectedFiles = prev.protectedFiles.filter((file) => file.id !== id);
+
+      // Start with a copy of deny rules
+      let newDenyRules = prev.claudePermissions.deny.map((rule) => ({ ...rule }));
+
+      // Remove corresponding deny rules (Read and Edit) if path was not empty
+      if (pathToRemove.trim().length > 0) {
+        newDenyRules = newDenyRules.filter(
+          (rule) => !(
+            (rule.directive === 'Read' || rule.directive === 'Edit') &&
+            rule.pattern === pathToRemove
+          )
+        );
+      }
+
+      // Create completely new claudePermissions object with new array references
+      const newClaudePermissions: ClaudePermissions = {
+        allow: prev.claudePermissions.allow.map((rule) => ({ ...rule })),
+        ask: prev.claudePermissions.ask.map((rule) => ({ ...rule })),
+        deny: newDenyRules,
+      };
+
+      return {
+        ...prev,
+        protectedFiles: newProtectedFiles,
+        claudePermissions: newClaudePermissions,
+      };
+    });
   }, []);
 
   // CLAUDE.md actions
@@ -628,6 +783,62 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     setConfig((prev) => ({
       ...prev,
       claudeMdContent: content,
+    }));
+  }, []);
+
+  // Claude permissions actions
+  const addPermissionRule = useCallback((category: PermissionCategory) => {
+    const newRule: PermissionRule = {
+      id: crypto.randomUUID(),
+      directive: 'Read',
+      pattern: '',
+    };
+    setConfig((prev) => ({
+      ...prev,
+      claudePermissions: {
+        ...prev.claudePermissions,
+        [category]: [...prev.claudePermissions[category], newRule],
+      },
+    }));
+  }, []);
+
+  const updatePermissionDirective = useCallback(
+    (category: PermissionCategory, id: string, directive: PermissionDirectiveType) => {
+      setConfig((prev) => ({
+        ...prev,
+        claudePermissions: {
+          ...prev.claudePermissions,
+          [category]: prev.claudePermissions[category].map((rule) =>
+            rule.id === id ? { ...rule, directive } : rule
+          ),
+        },
+      }));
+    },
+    []
+  );
+
+  const updatePermissionPattern = useCallback(
+    (category: PermissionCategory, id: string, pattern: string) => {
+      setConfig((prev) => ({
+        ...prev,
+        claudePermissions: {
+          ...prev.claudePermissions,
+          [category]: prev.claudePermissions[category].map((rule) =>
+            rule.id === id ? { ...rule, pattern } : rule
+          ),
+        },
+      }));
+    },
+    []
+  );
+
+  const removePermissionRule = useCallback((category: PermissionCategory, id: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      claudePermissions: {
+        ...prev.claudePermissions,
+        [category]: prev.claudePermissions[category].filter((rule) => rule.id !== id),
+      },
     }));
   }, []);
 
@@ -661,6 +872,10 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       updateProtectedFile,
       removeProtectedFile,
       setClaudeMdContent,
+      addPermissionRule,
+      updatePermissionDirective,
+      updatePermissionPattern,
+      removePermissionRule,
       resetConfig,
     }),
     [
@@ -687,6 +902,10 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       updateProtectedFile,
       removeProtectedFile,
       setClaudeMdContent,
+      addPermissionRule,
+      updatePermissionDirective,
+      updatePermissionPattern,
+      removePermissionRule,
       resetConfig,
     ]
   );

@@ -101,6 +101,50 @@ export interface CustomRunCommand {
 }
 
 /**
+ * Permission directive types for Claude Code settings.
+ * Reference: https://code.claude.com/docs/en/settings
+ */
+export type PermissionDirectiveType = 'Read' | 'Edit' | 'WebFetch';
+
+/**
+ * Permission category for organizing rules.
+ */
+export type PermissionCategory = 'allow' | 'ask' | 'deny';
+
+/**
+ * A single permission rule entry.
+ */
+export interface PermissionRule {
+  /** Unique identifier for the rule (used as React key) */
+  id: string;
+  /** The directive type (Read, Edit, WebFetch) */
+  directive: PermissionDirectiveType;
+  /** The path or pattern argument (e.g., "src/**", ".env") */
+  pattern: string;
+}
+
+/**
+ * Claude Code settings.json permissions configuration.
+ */
+export interface ClaudePermissions {
+  /** Rules for automatically allowed operations */
+  allow: PermissionRule[];
+  /** Rules that require user confirmation */
+  ask: PermissionRule[];
+  /** Rules that are always denied */
+  deny: PermissionRule[];
+}
+
+/**
+ * Default empty permissions configuration.
+ */
+export const defaultClaudePermissions: ClaudePermissions = {
+  allow: [],
+  ask: [],
+  deny: [],
+};
+
+/**
  * Complete application configuration state.
  */
 export interface AppConfig {
@@ -122,6 +166,8 @@ export interface AppConfig {
   protectedFiles: ProtectedFile[];
   /** Content of the CLAUDE.md file */
   claudeMdContent: string;
+  /** Claude Code settings.json permissions */
+  claudePermissions: ClaudePermissions;
 }
 
 /**
@@ -172,6 +218,7 @@ export const defaultAppConfig: AppConfig = {
   envVariables: undefined,
   protectedFiles: [],
   claudeMdContent: '# Project Instructions\n\n',
+  claudePermissions: defaultClaudePermissions,
 };
 
 /**

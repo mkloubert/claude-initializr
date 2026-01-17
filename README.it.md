@@ -59,6 +59,19 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
 - Funzionalità di anteprima integrata
 - Scrivi istruzioni specifiche per il progetto per Claude
 
+### Configurazione settings.json
+
+- **Regole di permesso**: Configura i permessi di Claude Code per controllare l'accesso ai file
+  - `Allow` - Regole per operazioni automaticamente consentite
+  - `Ask` - Regole che richiedono conferma dell'utente
+  - `Deny` - Regole sempre negate
+- **Direttive supportate**:
+  - `Read()` - Controlla quali file Claude può leggere (es: `Read(src/**)`)
+  - `Edit()` - Controlla quali file Claude può modificare (es: `Edit(.env)`)
+  - `WebFetch()` - Controlla l'accesso alla rete (es: `WebFetch(https://api.github.com:*)`)
+- **Integrazione automatica**: I file protetti vengono aggiunti automaticamente come regole di negazione `Read()`
+- **Supporto pattern Glob**: Usa pattern come `src/**` per la corrispondenza ricorsiva
+
 ### Funzionalità generali
 
 - **Anteprima live**: Visualizza anteprime in tempo reale dei file di configurazione generati
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **Modifica CLAUDE.md**: Scrivi le istruzioni per Claude nell'editor Markdown
 
-7. **Anteprima**: Controlla i file di configurazione generati nelle schede di anteprima
+7. **Configura permessi**: Imposta le regole di permesso nella scheda settings.json
+   - Aggiungi regole `Allow` per operazioni auto-approvate
+   - Aggiungi regole `Ask` per operazioni che richiedono conferma
+   - Aggiungi regole `Deny` per operazioni vietate
+   - I file protetti vengono aggiunti automaticamente come regole di negazione `Read()`
 
-8. **Scarica**: Clicca su "Scarica ZIP" per ottenere tutti i file
+8. **Anteprima**: Controlla i file di configurazione generati nelle schede di anteprima
+
+9. **Scarica**: Clicca su "Scarica ZIP" per ottenere tutti i file
 
 ## Utilizzo dei file generati
 

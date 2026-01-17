@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "Paden zijn relatief ten opzichte van /workspace/. Deze bestanden worden gemount als lege alleen-lezen bestanden om toegang tot gevoelige gegevens te voorkomen."
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "Configureer Claude Code-machtigingen om te bepalen welke bestanden kunnen worden gelezen, bewerkt of opgehaald. Beschermde bestanden worden automatisch toegevoegd als weigeringsregels.",
+    "permissions": "Machtigingen",
+    "directive": "Richtlijn",
+    "pattern": "Patroon",
+    "patternPlaceholder": "src/** of .env",
+    "addRule": "Regel toevoegen",
+    "removeRule": "Regel verwijderen",
+    "allow": "Toestaan",
+    "ask": "Vragen",
+    "deny": "Weigeren",
+    "noAllowRules": "Geen toestemmingsregels gedefinieerd.",
+    "noAskRules": "Geen vraagregels gedefinieerd.",
+    "noDenyRules": "Geen weigeringsregels gedefinieerd.",
+    "help": "Definieer machtigingsregels voor Read(), Edit() en WebFetch() operaties. Patronen ondersteunen glob-syntaxis zoals src/** voor recursieve matching."
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Het Dockerfile definieert welke software in de container wordt geïnstalleerd. Naast Node.js en Claude Code kunnen extra tools zoals TypeScript, Python, Go, ffmpeg of ImageMagick worden toegevoegd. De geselecteerde software is beschikbaar wanneer Claude commando's uitvoert.",

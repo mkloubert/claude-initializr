@@ -18,11 +18,20 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-export { SoftwareItem } from './SoftwareItem';
-export { EnvRow } from './EnvRow';
-export { ProtectedFileRow } from './ProtectedFileRow';
-export { PermissionRuleRow } from './PermissionRuleRow';
-export { DockerfileCard } from './DockerfileCard';
-export { DockerComposeCard } from './DockerComposeCard';
-export { ClaudeMdCard } from './ClaudeMdCard';
-export { SettingsJsonCard } from './SettingsJsonCard';
+import { useMemo } from 'react';
+import { useConfig } from '@/contexts';
+import { generateSettingsJson } from '@/services';
+import { CodePreview } from './CodePreview';
+
+/**
+ * Preview component for the generated settings.json.
+ */
+export function SettingsJsonPreview() {
+  const { config } = useConfig();
+
+  const settingsContent = useMemo(() => {
+    return generateSettingsJson(config.claudePermissions);
+  }, [config.claudePermissions]);
+
+  return <CodePreview code={settingsContent} language="json" />;
+}

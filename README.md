@@ -59,6 +59,19 @@ A web application to generate Docker configuration files for running [Claude Cod
 - Built-in preview functionality
 - Write project-specific instructions for Claude
 
+### settings.json Configuration
+
+- **Permission Rules**: Configure Claude Code permissions to control file access
+  - `Allow` - Rules for automatically allowed operations
+  - `Ask` - Rules that require user confirmation
+  - `Deny` - Rules that are always denied
+- **Supported Directives**:
+  - `Read()` - Control which files Claude can read (e.g., `Read(src/**)`)
+  - `Edit()` - Control which files Claude can modify (e.g., `Edit(.env)`)
+  - `WebFetch()` - Control network access (e.g., `WebFetch(https://api.github.com:*)`)
+- **Automatic Integration**: Protected files are automatically added as `Read()` deny rules
+- **Glob Pattern Support**: Use patterns like `src/**` for recursive matching
+
 ### General Features
 
 - **Live Preview**: See real-time previews of generated configuration files
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **Edit CLAUDE.md**: Write instructions for Claude in the Markdown editor
 
-7. **Preview**: Check the generated configuration files in the preview tabs
+7. **Configure Permissions**: Set up permission rules in the settings.json card
+   - Add `Allow` rules for operations that should be auto-approved
+   - Add `Ask` rules for operations requiring confirmation
+   - Add `Deny` rules for forbidden operations
+   - Protected files are automatically added as `Read()` deny rules
 
-8. **Download**: Click "Download ZIP" to get all files
+8. **Preview**: Check the generated configuration files in the preview tabs
+
+9. **Download**: Click "Download ZIP" to get all files
 
 ## Using the Generated Files
 

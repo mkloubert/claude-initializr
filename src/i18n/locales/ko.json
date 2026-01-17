@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "경로는 /workspace/를 기준으로 합니다. 이 파일들은 민감한 데이터 접근을 방지하기 위해 빈 읽기 전용 파일로 마운트됩니다."
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "Claude Code 권한을 구성하여 읽기, 편집 또는 가져올 수 있는 파일을 제어합니다. 보호된 파일은 자동으로 거부 규칙으로 추가됩니다.",
+    "permissions": "권한",
+    "directive": "지시문",
+    "pattern": "패턴",
+    "patternPlaceholder": "src/** 또는 .env",
+    "addRule": "규칙 추가",
+    "removeRule": "규칙 제거",
+    "allow": "허용",
+    "ask": "확인",
+    "deny": "거부",
+    "noAllowRules": "허용 규칙이 정의되지 않았습니다.",
+    "noAskRules": "확인 규칙이 정의되지 않았습니다.",
+    "noDenyRules": "거부 규칙이 정의되지 않았습니다.",
+    "help": "Read(), Edit(), WebFetch() 작업에 대한 권한 규칙을 정의합니다. 패턴은 재귀 매칭을 위해 src/**와 같은 glob 구문을 지원합니다."
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile은 컨테이너에 설치할 소프트웨어를 정의합니다. Node.js와 Claude Code 외에도 TypeScript, Python, Go, ffmpeg, ImageMagick 같은 추가 도구를 포함할 수 있습니다. 선택한 소프트웨어는 Claude가 명령을 실행할 때 사용 가능합니다.",

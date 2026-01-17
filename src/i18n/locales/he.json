@@ -125,6 +125,23 @@
     "pathPlaceholder": ".env.local",
     "help": "הנתיבים הם יחסיים ל-/workspace/. קבצים אלה יותקנו כקבצים ריקים לקריאה בלבד כדי למנוע גישה לנתונים רגישים."
   },
+  "settings": {
+    "title": "settings.json",
+    "description": "הגדר הרשאות Claude Code כדי לשלוט אילו קבצים ניתן לקרוא, לערוך או לאחזר. קבצים מוגנים מתווספים אוטומטית ככללי דחייה.",
+    "permissions": "הרשאות",
+    "directive": "הוראה",
+    "pattern": "תבנית",
+    "patternPlaceholder": "src/** או .env",
+    "addRule": "הוסף כלל",
+    "removeRule": "הסר כלל",
+    "allow": "אפשר",
+    "ask": "שאל",
+    "deny": "דחה",
+    "noAllowRules": "לא הוגדרו כללי אישור.",
+    "noAskRules": "לא הוגדרו כללי שאלה.",
+    "noDenyRules": "לא הוגדרו כללי דחייה.",
+    "help": "הגדר כללי הרשאות לפעולות Read(), Edit() ו-WebFetch(). תבניות תומכות בתחביר glob כמו src/** להתאמה רקורסיבית."
+  },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "ה-Dockerfile מגדיר אילו תוכנות מותקנות בקונטיינר. בנוסף ל-Node.js ו-Claude Code, ניתן לכלול כלים נוספים כמו TypeScript, Python, Go, ffmpeg או ImageMagick. התוכנה שנבחרה תהיה זמינה כאשר Claude מריץ פקודות.",

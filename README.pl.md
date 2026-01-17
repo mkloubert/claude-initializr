@@ -59,6 +59,19 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
 - Wbudowana funkcja podglądu
 - Pisanie instrukcji specyficznych dla projektu dla Claude
 
+### Konfiguracja settings.json
+
+- **Reguły uprawnień**: Skonfiguruj uprawnienia Claude Code do kontroli dostępu do plików
+  - `Allow` - Reguły dla automatycznie dozwolonych operacji
+  - `Ask` - Reguły wymagające potwierdzenia użytkownika
+  - `Deny` - Reguły zawsze odmawiane
+- **Obsługiwane dyrektywy**:
+  - `Read()` - Kontroluje które pliki Claude może czytać (np: `Read(src/**)`)
+  - `Edit()` - Kontroluje które pliki Claude może modyfikować (np: `Edit(.env)`)
+  - `WebFetch()` - Kontroluje dostęp do sieci (np: `WebFetch(https://api.github.com:*)`)
+- **Automatyczna integracja**: Chronione pliki są automatycznie dodawane jako reguły odmowy `Read()`
+- **Obsługa wzorców Glob**: Użyj wzorców jak `src/**` do rekursywnego dopasowania
+
 ### Funkcje ogólne
 
 - **Podgląd na żywo**: Zobacz podglądy generowanych plików konfiguracyjnych w czasie rzeczywistym
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **Edytuj CLAUDE.md**: Napisz instrukcje dla Claude w edytorze Markdown
 
-7. **Podgląd**: Sprawdź wygenerowane pliki konfiguracyjne w kartach podglądu
+7. **Konfiguruj uprawnienia**: Ustaw reguły uprawnień w karcie settings.json
+   - Dodaj reguły `Allow` dla automatycznie zatwierdzanych operacji
+   - Dodaj reguły `Ask` dla operacji wymagających potwierdzenia
+   - Dodaj reguły `Deny` dla zabronionych operacji
+   - Chronione pliki są automatycznie dodawane jako reguły odmowy `Read()`
 
-8. **Pobierz**: Kliknij "Pobierz ZIP" aby pobrać wszystkie pliki
+8. **Podgląd**: Sprawdź wygenerowane pliki konfiguracyjne w kartach podglądu
+
+9. **Pobierz**: Kliknij "Pobierz ZIP" aby pobrać wszystkie pliki
 
 ## Używanie wygenerowanych plików
 

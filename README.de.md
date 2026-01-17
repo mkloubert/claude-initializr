@@ -59,6 +59,19 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 - Integrierte Vorschaufunktion
 - Schreiben Sie projektspezifische Anweisungen für Claude
 
+### settings.json Konfiguration
+
+- **Berechtigungsregeln**: Konfiguriere Claude Code Berechtigungen zur Kontrolle des Dateizugriffs
+  - `Allow` - Regeln für automatisch erlaubte Operationen
+  - `Ask` - Regeln, die Benutzerbestätigung erfordern
+  - `Deny` - Regeln, die immer verweigert werden
+- **Unterstützte Direktiven**:
+  - `Read()` - Steuert, welche Dateien Claude lesen kann (z.B. `Read(src/**)`)
+  - `Edit()` - Steuert, welche Dateien Claude ändern kann (z.B. `Edit(.env)`)
+  - `WebFetch()` - Steuert Netzwerkzugriff (z.B. `WebFetch(https://api.github.com:*)`)
+- **Automatische Integration**: Geschützte Dateien werden automatisch als `Read()` Deny-Regeln hinzugefügt
+- **Glob-Pattern-Unterstützung**: Verwende Muster wie `src/**` für rekursive Übereinstimmung
+
 ### Allgemeine Funktionen
 
 - **Live-Vorschau**: Sehen Sie Echtzeit-Vorschauen der generierten Konfigurationsdateien
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **CLAUDE.md bearbeiten**: Schreiben Sie Anweisungen für Claude im Markdown-Editor
 
-7. **Vorschau**: Überprüfen Sie die generierten Konfigurationsdateien in den Vorschau-Tabs
+7. **Berechtigungen konfigurieren**: Richten Sie Berechtigungsregeln in der settings.json Karte ein
+   - Fügen Sie `Allow` Regeln für automatisch genehmigte Operationen hinzu
+   - Fügen Sie `Ask` Regeln für Operationen mit Bestätigung hinzu
+   - Fügen Sie `Deny` Regeln für verbotene Operationen hinzu
+   - Geschützte Dateien werden automatisch als `Read()` Deny-Regeln hinzugefügt
 
-8. **Herunterladen**: Klicken Sie auf "ZIP herunterladen", um alle Dateien zu erhalten
+8. **Vorschau**: Überprüfen Sie die generierten Konfigurationsdateien in den Vorschau-Tabs
+
+9. **Herunterladen**: Klicken Sie auf "ZIP herunterladen", um alle Dateien zu erhalten
 
 ## Verwendung der generierten Dateien
 

@@ -59,6 +59,19 @@
 - Yerleşik önizleme işlevi
 - Claude için projeye özel talimatlar yazın
 
+### settings.json Yapılandırması
+
+- **İzin Kuralları**: Dosya erişimini yönetmek için Claude Code izinlerini yapılandırın
+  - `Allow` - Otomatik olarak izin verilen işlemler için kurallar
+  - `Ask` - Kullanıcı onayı gerektiren kurallar
+  - `Deny` - Her zaman reddedilen kurallar
+- **Desteklenen Direktifler**:
+  - `Read()` - Claude'un hangi dosyaları okuyabileceğini belirler (örn: `Read(src/**)`)
+  - `Edit()` - Claude'un hangi dosyaları düzenleyebileceğini belirler (örn: `Edit(.env)`)
+  - `WebFetch()` - Ağ erişimini kontrol eder (örn: `WebFetch(https://api.github.com:*)`)
+- **Otomatik Entegrasyon**: Korunan dosyalar otomatik olarak `Read()` reddetme kuralları olarak eklenir
+- **Glob Desen Desteği**: Özyinelemeli eşleştirme için `src/**` gibi desenler kullanın
+
 ### Genel Özellikler
 
 - **Canlı Önizleme**: Oluşturulan yapılandırma dosyalarının gerçek zamanlı önizlemelerini görün
@@ -209,9 +222,15 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 6. **CLAUDE.md'yi Düzenleyin**: Markdown editöründe Claude için talimatlar yazın
 
-7. **Önizleme**: Oluşturulan yapılandırma dosyalarını önizleme sekmelerinde kontrol edin
+7. **İzinleri Yapılandırın**: settings.json kartı aracılığıyla izin kurallarını ayarlayın
+   - Otomatik onaylanan işlemler için `Allow` kuralları ekleyin
+   - Onay gerektiren işlemler için `Ask` kuralları ekleyin
+   - Yasaklanan işlemler için `Deny` kuralları ekleyin
+   - Korunan dosyalar otomatik olarak `Read()` reddetme kuralları olarak eklenir
 
-8. **İndirin**: Tüm dosyaları almak için "ZIP İndir"e tıklayın
+8. **Önizleme**: Oluşturulan yapılandırma dosyalarını önizleme sekmelerinde kontrol edin
+
+9. **İndirin**: Tüm dosyaları almak için "ZIP İndir"e tıklayın
 
 ## Oluşturulan Dosyaları Kullanma
 
