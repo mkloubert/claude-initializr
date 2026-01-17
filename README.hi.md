@@ -201,6 +201,15 @@ VITE_GITHUB_URL=https://github.com/mkloubert/claude-initializr
 
 # PayPal डोनेशन URL (वैकल्पिक, छिपाने के लिए खाली छोड़ें)
 VITE_PAYPAL_URL=https://paypal.me/mjkloubert
+
+# Claude Code permissions documentation URL (optional)
+VITE_PERMISSIONS_DOCS_URL=https://docs.anthropic.com/en/docs/claude-code/settings#permission-settings
+
+# Author website URL (optional)
+VITE_AUTHOR_URL=https://marcel.coffee
+
+# Author name displayed in footer (optional)
+VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ```
 
 ## उपयोग

@@ -57,12 +57,29 @@ export function generateProtectedFileVolumes(files: ProtectedFile[]): string {
 }
 
 /**
- * Generate docker-compose placeholder replacement for protected files.
+ * Generate the platform line for docker-compose.yaml.
+ * Returns empty string if platform is not set.
  */
-export function generateDockerComposeReplacements(files: ProtectedFile[]): {
+export function generatePlatformLine(platform: string): string {
+  const trimmed = platform.trim();
+  if (trimmed.length === 0) {
+    return '';
+  }
+  return `platform: ${trimmed}`;
+}
+
+/**
+ * Generate docker-compose placeholder replacement for protected files and platform.
+ */
+export function generateDockerComposeReplacements(
+  files: ProtectedFile[],
+  dockerPlatform: string = ''
+): {
   EMPTY_FILE_LINKS: string;
+  PLATFORM: string;
 } {
   return {
     EMPTY_FILE_LINKS: generateProtectedFileVolumes(files),
+    PLATFORM: generatePlatformLine(dockerPlatform),
   };
 }

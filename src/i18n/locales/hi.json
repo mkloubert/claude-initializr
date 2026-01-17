@@ -31,6 +31,7 @@
   "tabs": {
     "software": "सॉफ्टवेयर",
     "preview": "पूर्वावलोकन",
+    "settings": "सेटिंग्स",
     "envVariables": "वातावरण",
     "env": "वाता.",
     "protectedFiles": "संरक्षित फ़ाइलें",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "कस्टम APT पैकेज",
     "description": "कंटेनर में इंस्टॉल करने के लिए अतिरिक्त Debian/Ubuntu पैकेज जोड़ें।",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "उदाहरण: curl, graphviz, tree, sqlite3...",
     "add": "पैकेज जोड़ें",
     "remove": "{{package}} हटाएं"
   },
   "npmPackages": {
     "title": "कस्टम NPM पैकेज",
     "description": "कंटेनर में ग्लोबली इंस्टॉल करने के लिए अतिरिक्त NPM पैकेज जोड़ें।",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "उदाहरण: eslint, prettier, tsx...",
     "add": "पैकेज जोड़ें",
     "remove": "{{package}} हटाएं",
     "installAs": "के रूप में इंस्टॉल करें",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "कस्टम RUN कमांड",
     "description": "Docker इमेज बिल्ड के दौरान चलाने के लिए कस्टम shell कमांड जोड़ें।",
-    "placeholder": "flutter doctor",
+    "placeholder": "उदाहरण: flutter doctor",
     "add": "कमांड जोड़ें",
     "remove": "कमांड हटाएं",
     "runAs": "के रूप में चलाएं",
@@ -110,8 +111,8 @@
     "value": "मान",
     "add": "वेरिएबल जोड़ें",
     "remove": "हटाएं",
-    "keyPlaceholder": "वेरिएबल_नाम",
-    "valuePlaceholder": "मान"
+    "keyPlaceholder": "उदाहरण: वेरिएबल_नाम",
+    "valuePlaceholder": "उदाहरण: मान"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "फ़ाइल पथ",
     "add": "पथ जोड़ें",
     "remove": "हटाएं",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "उदाहरण: .env.local",
     "help": "पथ /workspace/ के सापेक्ष हैं। ये फ़ाइलें संवेदनशील डेटा तक पहुंच रोकने के लिए खाली केवल-पठनीय फ़ाइलों के रूप में माउंट की जाएंगी।"
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "अनुमतियाँ",
     "directive": "निर्देश",
     "pattern": "पैटर्न",
-    "patternPlaceholder": "src/** या .env",
+    "patternPlaceholder": "उदाहरण: src/** या .env",
     "addRule": "नियम जोड़ें",
     "removeRule": "नियम हटाएं",
     "allow": "अनुमति दें",
@@ -140,13 +141,19 @@
     "noAllowRules": "कोई अनुमति नियम परिभाषित नहीं।",
     "noAskRules": "कोई पूछें नियम परिभाषित नहीं।",
     "noDenyRules": "कोई अस्वीकार नियम परिभाषित नहीं।",
-    "help": "Read(), Edit() और WebFetch() संचालन के लिए अनुमति नियम परिभाषित करें। पैटर्न पुनरावर्ती मिलान के लिए src/** जैसे glob सिंटैक्स का समर्थन करते हैं।"
+    "help": "Read(), Edit() और WebFetch() संचालन के लिए अनुमति नियम परिभाषित करें। पैटर्न पुनरावर्ती मिलान के लिए src/** जैसे glob सिंटैक्स का समर्थन करते हैं।",
+    "learnMore": "अधिक जानें"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile परिभाषित करता है कि कंटेनर में कौन सा सॉफ्टवेयर इंस्टॉल होता है। Node.js और Claude Code के अलावा, TypeScript, Python, Go, ffmpeg या ImageMagick जैसे अतिरिक्त टूल शामिल किए जा सकते हैं। चयनित सॉफ्टवेयर Claude द्वारा कमांड निष्पादित करते समय उपलब्ध होगा।",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "docker-compose.yaml फ़ाइल नियंत्रित करती है कि कंटेनर कैसे शुरू होता है। एनवायरनमेंट वेरिएबल (जैसे API कुंजियां) यहां परिभाषित की जा सकती हैं। संरक्षित फ़ाइलें खाली केवल-पठनीय फ़ाइलों के रूप में माउंट की जाती हैं ताकि Claude को .env फ़ाइलों जैसे संवेदनशील डेटा तक पहुंचने से रोका जा सके।"
+  },
+  "dockerCompose": {
+    "platform": "प्लेटफॉर्म",
+    "platformDesc": "कंटेनर के लिए एक विशिष्ट प्लेटफॉर्म सेट करें (जैसे linux/amd64)। डिफ़ॉल्ट प्लेटफॉर्म का उपयोग करने के लिए खाली छोड़ें। इसका उपयोग तब करें जब बेस इमेज आपकी आर्किटेक्चर का समर्थन नहीं करती हैं।",
+    "platformPlaceholder": "उदाहरण: linux/amd64"
   },
   "download": {
     "button": "ZIP डाउनलोड करें",

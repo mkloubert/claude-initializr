@@ -31,6 +31,7 @@
   "tabs": {
     "software": "ソフトウェア",
     "preview": "プレビュー",
+    "settings": "設定",
     "envVariables": "環境",
     "env": "環境",
     "protectedFiles": "保護ファイル",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "カスタムAPTパッケージ",
     "description": "コンテナにインストールする追加のDebian/Ubuntuパッケージを追加します。",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "例: curl, graphviz, tree, sqlite3...",
     "add": "パッケージを追加",
     "remove": "{{package}}を削除"
   },
   "npmPackages": {
     "title": "カスタムNPMパッケージ",
     "description": "コンテナにグローバルインストールする追加のNPMパッケージを追加します。",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "例: eslint, prettier, tsx...",
     "add": "パッケージを追加",
     "remove": "{{package}}を削除",
     "installAs": "インストールユーザー",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "カスタムRUNコマンド",
     "description": "Dockerイメージビルド時に実行するカスタムシェルコマンドを追加します。",
-    "placeholder": "flutter doctor",
+    "placeholder": "例: flutter doctor",
     "add": "コマンドを追加",
     "remove": "コマンドを削除",
     "runAs": "実行ユーザー",
@@ -110,8 +111,8 @@
     "value": "値",
     "add": "変数を追加",
     "remove": "削除",
-    "keyPlaceholder": "変数名",
-    "valuePlaceholder": "値"
+    "keyPlaceholder": "例: 変数名",
+    "valuePlaceholder": "例: 値"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "ファイルパス",
     "add": "パスを追加",
     "remove": "削除",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "例: .env.local",
     "help": "パスは/workspace/からの相対パスです。これらのファイルは機密データへのアクセスを防ぐため、空の読み取り専用ファイルとしてマウントされます。"
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "パーミッション",
     "directive": "ディレクティブ",
     "pattern": "パターン",
-    "patternPlaceholder": "src/** または .env",
+    "patternPlaceholder": "例: src/** または .env",
     "addRule": "ルールを追加",
     "removeRule": "ルールを削除",
     "allow": "許可",
@@ -140,13 +141,19 @@
     "noAllowRules": "許可ルールが定義されていません。",
     "noAskRules": "確認ルールが定義されていません。",
     "noDenyRules": "拒否ルールが定義されていません。",
-    "help": "Read()、Edit()、WebFetch()操作のパーミッションルールを定義します。パターンはsrc/**のようなglobシンタックスで再帰的なマッチングをサポートします。"
+    "help": "Read()、Edit()、WebFetch()操作のパーミッションルールを定義します。パターンはsrc/**のようなglobシンタックスで再帰的なマッチングをサポートします。",
+    "learnMore": "詳しく見る"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfileはコンテナにインストールするソフトウェアを定義します。Node.jsとClaude Codeに加えて、TypeScript、Python、Go、ffmpeg、ImageMagickなどの追加ツールを含めることができます。選択したソフトウェアはClaudeがコマンドを実行するときに利用可能になります。",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "docker-compose.yamlファイルはコンテナの起動方法を制御します。環境変数（APIキーなど）をここで定義できます。保護ファイルは空の読み取り専用ファイルとしてマウントされ、Claudeが.envファイルなどの機密データにアクセスするのを防ぎます。"
+  },
+  "dockerCompose": {
+    "platform": "プラットフォーム",
+    "platformDesc": "コンテナ用の特定のプラットフォームを設定します（例：linux/amd64）。デフォルトのプラットフォームを使用する場合は空のままにしてください。ベースイメージがアーキテクチャをサポートしていない場合に使用します。",
+    "platformPlaceholder": "例: linux/amd64"
   },
   "download": {
     "button": "ZIPをダウンロード",

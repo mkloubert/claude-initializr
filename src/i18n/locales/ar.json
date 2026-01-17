@@ -31,6 +31,7 @@
   "tabs": {
     "software": "البرامج",
     "preview": "معاينة",
+    "settings": "الإعدادات",
     "envVariables": "البيئة",
     "env": "بيئة",
     "protectedFiles": "الملفات المحمية",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "حزم APT مخصصة",
     "description": "أضف حزم Debian/Ubuntu إضافية للتثبيت في الحاوية.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "مثال: curl, graphviz, tree, sqlite3...",
     "add": "إضافة حزم",
     "remove": "إزالة {{package}}"
   },
   "npmPackages": {
     "title": "حزم NPM مخصصة",
     "description": "أضف حزم NPM إضافية للتثبيت العام في الحاوية.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "مثال: eslint, prettier, tsx...",
     "add": "إضافة حزم",
     "remove": "إزالة {{package}}",
     "installAs": "التثبيت كـ",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "أوامر RUN مخصصة",
     "description": "أضف أوامر shell مخصصة للتنفيذ أثناء بناء صورة Docker.",
-    "placeholder": "flutter doctor",
+    "placeholder": "مثال: flutter doctor",
     "add": "إضافة أمر",
     "remove": "إزالة الأمر",
     "runAs": "التشغيل كـ",
@@ -110,8 +111,8 @@
     "value": "القيمة",
     "add": "إضافة متغير",
     "remove": "إزالة",
-    "keyPlaceholder": "اسم_المتغير",
-    "valuePlaceholder": "القيمة"
+    "keyPlaceholder": "مثال: اسم_المتغير",
+    "valuePlaceholder": "مثال: القيمة"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "مسار الملف",
     "add": "إضافة مسار",
     "remove": "إزالة",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "مثال: .env.local",
     "help": "المسارات نسبية إلى /workspace/. سيتم تثبيت هذه الملفات كملفات فارغة للقراءة فقط لمنع الوصول إلى البيانات الحساسة."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "الأذونات",
     "directive": "التوجيه",
     "pattern": "النمط",
-    "patternPlaceholder": "src/** أو .env",
+    "patternPlaceholder": "مثال: src/** أو .env",
     "addRule": "إضافة قاعدة",
     "removeRule": "إزالة القاعدة",
     "allow": "السماح",
@@ -140,13 +141,19 @@
     "noAllowRules": "لم يتم تحديد قواعد السماح.",
     "noAskRules": "لم يتم تحديد قواعد السؤال.",
     "noDenyRules": "لم يتم تحديد قواعد الرفض.",
-    "help": "حدد قواعد الأذونات لعمليات Read() و Edit() و WebFetch(). تدعم الأنماط صيغة glob مثل src/** للمطابقة التكرارية."
+    "help": "حدد قواعد الأذونات لعمليات Read() و Edit() و WebFetch(). تدعم الأنماط صيغة glob مثل src/** للمطابقة التكرارية.",
+    "learnMore": "اعرف المزيد"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "يحدد Dockerfile البرامج المثبتة في الحاوية. بالإضافة إلى Node.js وClaude Code، يمكن تضمين أدوات إضافية مثل TypeScript وPython وGo وffmpeg أو ImageMagick. ستكون البرامج المختارة متاحة عندما ينفذ Claude الأوامر.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "يتحكم ملف docker-compose.yaml في كيفية بدء الحاوية. يمكن تعريف متغيرات البيئة (مثل مفاتيح API) هنا. يتم تثبيت الملفات المحمية كملفات فارغة للقراءة فقط لمنع Claude من الوصول إلى البيانات الحساسة مثل ملفات .env."
+  },
+  "dockerCompose": {
+    "platform": "المنصة",
+    "platformDesc": "حدد منصة محددة للحاوية (مثل linux/amd64). اتركه فارغًا لاستخدام المنصة الافتراضية. استخدم هذا عندما لا تدعم الصور الأساسية معماريتك.",
+    "platformPlaceholder": "مثال: linux/amd64"
   },
   "download": {
     "button": "تحميل ZIP",

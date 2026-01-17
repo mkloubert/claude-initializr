@@ -31,6 +31,7 @@
   "tabs": {
     "software": "Logiciels",
     "preview": "Aperçu",
+    "settings": "Paramètres",
     "envVariables": "Environnement",
     "env": "Env.",
     "protectedFiles": "Fichiers protégés",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "Paquets APT personnalisés",
     "description": "Ajoutez des paquets Debian/Ubuntu supplémentaires à installer dans le conteneur.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "Exemple : curl, graphviz, tree, sqlite3...",
     "add": "Ajouter des paquets",
     "remove": "Supprimer {{package}}"
   },
   "npmPackages": {
     "title": "Paquets NPM personnalisés",
     "description": "Ajoutez des paquets NPM supplémentaires à installer globalement dans le conteneur.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "Exemple : eslint, prettier, tsx...",
     "add": "Ajouter des paquets",
     "remove": "Supprimer {{package}}",
     "installAs": "Installer en tant que",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "Commandes RUN personnalisées",
     "description": "Ajoutez des commandes shell personnalisées à exécuter lors de la construction de l'image Docker.",
-    "placeholder": "flutter doctor",
+    "placeholder": "Exemple : flutter doctor",
     "add": "Ajouter une commande",
     "remove": "Supprimer la commande",
     "runAs": "Exécuter en tant que",
@@ -110,8 +111,8 @@
     "value": "Valeur",
     "add": "Ajouter une variable",
     "remove": "Supprimer",
-    "keyPlaceholder": "NOM_VARIABLE",
-    "valuePlaceholder": "valeur"
+    "keyPlaceholder": "Exemple : NOM_VARIABLE",
+    "valuePlaceholder": "Exemple : valeur"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "Chemin du fichier",
     "add": "Ajouter un chemin",
     "remove": "Supprimer",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "Exemple : .env.local",
     "help": "Les chemins sont relatifs à /workspace/. Ces fichiers seront montés comme fichiers vides en lecture seule pour empêcher l'accès aux données sensibles."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "Permissions",
     "directive": "Directive",
     "pattern": "Motif",
-    "patternPlaceholder": "src/** ou .env",
+    "patternPlaceholder": "Exemple : src/** ou .env",
     "addRule": "Ajouter une règle",
     "removeRule": "Supprimer la règle",
     "allow": "Autoriser",
@@ -140,13 +141,19 @@
     "noAllowRules": "Aucune règle d'autorisation définie.",
     "noAskRules": "Aucune règle de demande définie.",
     "noDenyRules": "Aucune règle de refus définie.",
-    "help": "Définissez des règles de permission pour les opérations Read(), Edit() et WebFetch(). Les motifs supportent la syntaxe glob comme src/** pour la correspondance récursive."
+    "help": "Définissez des règles de permission pour les opérations Read(), Edit() et WebFetch(). Les motifs supportent la syntaxe glob comme src/** pour la correspondance récursive.",
+    "learnMore": "En savoir plus"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Le Dockerfile définit quels logiciels sont installés dans le conteneur. En plus de Node.js et Claude Code, des outils supplémentaires comme TypeScript, Python, Go, ffmpeg ou ImageMagick peuvent être inclus. Les logiciels sélectionnés seront disponibles lorsque Claude exécutera des commandes.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "Le fichier docker-compose.yaml contrôle le démarrage du conteneur. Les variables d'environnement (comme les clés API) peuvent être définies ici. Les fichiers protégés sont montés comme fichiers vides en lecture seule pour empêcher Claude d'accéder aux données sensibles comme les fichiers .env."
+  },
+  "dockerCompose": {
+    "platform": "Plateforme",
+    "platformDesc": "Définissez une plateforme spécifique pour le conteneur (ex: linux/amd64). Laissez vide pour utiliser la plateforme par défaut. Utilisez ceci lorsque les images de base ne prennent pas en charge votre architecture.",
+    "platformPlaceholder": "Exemple : linux/amd64"
   },
   "download": {
     "button": "Télécharger ZIP",

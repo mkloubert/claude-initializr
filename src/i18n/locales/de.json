@@ -31,6 +31,7 @@
   "tabs": {
     "software": "Software",
     "preview": "Vorschau",
+    "settings": "Einstellungen",
     "envVariables": "Umgebung",
     "env": "Umg.",
     "protectedFiles": "Geschützte Dateien",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "Benutzerdefinierte APT-Pakete",
     "description": "Zusätzliche Debian/Ubuntu-Pakete, die im Container installiert werden sollen.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "Beispiel: curl, graphviz, tree, sqlite3...",
     "add": "Pakete hinzufügen",
     "remove": "{{package}} entfernen"
   },
   "npmPackages": {
     "title": "Benutzerdefinierte NPM-Pakete",
     "description": "Zusätzliche NPM-Pakete, die global im Container installiert werden sollen.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "Beispiel: eslint, prettier, tsx...",
     "add": "Pakete hinzufügen",
     "remove": "{{package}} entfernen",
     "installAs": "Installieren als",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "Benutzerdefinierte RUN-Befehle",
     "description": "Füge benutzerdefinierte Shell-Befehle hinzu, die während des Docker-Image-Builds ausgeführt werden.",
-    "placeholder": "flutter doctor",
+    "placeholder": "Beispiel: flutter doctor",
     "add": "Befehl hinzufügen",
     "remove": "Befehl entfernen",
     "runAs": "Ausführen als",
@@ -110,8 +111,8 @@
     "value": "Wert",
     "add": "Variable hinzufügen",
     "remove": "Entfernen",
-    "keyPlaceholder": "VARIABLEN_NAME",
-    "valuePlaceholder": "Wert"
+    "keyPlaceholder": "Beispiel: VARIABLEN_NAME",
+    "valuePlaceholder": "Beispiel: Wert"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "Dateipfad",
     "add": "Pfad hinzufügen",
     "remove": "Entfernen",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "Beispiel: .env.local",
     "help": "Pfade sind relativ zu /workspace/. Diese Dateien werden als leere schreibgeschützte Dateien eingebunden, um den Zugriff auf sensible Daten zu verhindern."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "Berechtigungen",
     "directive": "Direktive",
     "pattern": "Muster",
-    "patternPlaceholder": "src/** oder .env",
+    "patternPlaceholder": "Beispiel: src/** oder .env",
     "addRule": "Regel hinzufügen",
     "removeRule": "Regel entfernen",
     "allow": "Erlauben",
@@ -140,13 +141,19 @@
     "noAllowRules": "Keine Erlauben-Regeln definiert.",
     "noAskRules": "Keine Nachfragen-Regeln definiert.",
     "noDenyRules": "Keine Verweigern-Regeln definiert.",
-    "help": "Definiere Berechtigungsregeln für Read(), Edit() und WebFetch() Operationen. Muster unterstützen Glob-Syntax wie src/** für rekursive Übereinstimmung."
+    "help": "Definiere Berechtigungsregeln für Read(), Edit() und WebFetch() Operationen. Muster unterstützen Glob-Syntax wie src/** für rekursive Übereinstimmung.",
+    "learnMore": "Mehr erfahren"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Das Dockerfile legt fest, welche Software im Container installiert wird. Neben Node.js und Claude Code können zusätzliche Tools wie TypeScript, Python, Go, ffmpeg oder ImageMagick hinzugefügt werden. Die ausgewählte Software steht Claude bei der Ausführung von Befehlen zur Verfügung.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "Die docker-compose.yaml steuert, wie der Container gestartet wird. Hier können Umgebungsvariablen (wie API-Schlüssel) definiert werden. Geschützte Dateien werden als leere, schreibgeschützte Dateien eingebunden, um Claude den Zugriff auf sensible Daten wie .env-Dateien zu verwehren."
+  },
+  "dockerCompose": {
+    "platform": "Plattform",
+    "platformDesc": "Lege eine spezifische Plattform für den Container fest (z.B. linux/amd64). Leer lassen für die Standard-Plattform. Verwende dies, wenn Basis-Images deine Architektur nicht unterstützen.",
+    "platformPlaceholder": "Beispiel: linux/amd64"
   },
   "download": {
     "button": "ZIP herunterladen",

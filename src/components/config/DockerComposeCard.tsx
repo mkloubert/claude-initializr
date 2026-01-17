@@ -30,6 +30,8 @@ import {
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Table,
   TableBody,
@@ -40,7 +42,7 @@ import {
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { EnvRow } from './EnvRow';
 import { ProtectedFileRow } from './ProtectedFileRow';
-import { Variable, ShieldAlert, Eye, Plus, Loader2 } from 'lucide-react';
+import { Variable, ShieldAlert, Eye, Plus, Loader2, Container } from 'lucide-react';
 
 // Lazy load the preview component to reduce initial bundle size
 const DockerComposePreview = lazy(() =>
@@ -55,6 +57,7 @@ export function DockerComposeCard() {
   const { t } = useTranslation();
   const {
     config,
+    setDockerPlatform,
     addEnvVariable,
     updateEnvVariable,
     removeEnvVariable,
@@ -96,8 +99,13 @@ export function DockerComposeCard() {
         <CardDescription>{t('preview.dockerComposeDesc')}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="env">
-          <TabsList className="grid w-full grid-cols-3">
+        <Tabs defaultValue="settings">
+          <TabsList className="grid w-full grid-cols-4">
+            <TabsTrigger value="settings" className="gap-2">
+              <Container className="h-4 w-4" aria-hidden="true" />
+              <span className="hidden sm:inline">{t('tabs.settings')}</span>
+              <span className="sm:hidden">{t('tabs.settings')}</span>
+            </TabsTrigger>
             <TabsTrigger value="env" className="gap-2">
               <Variable className="h-4 w-4" aria-hidden="true" />
               <span className="hidden sm:inline">{t('tabs.envVariables')}</span>
@@ -115,6 +123,22 @@ export function DockerComposeCard() {
               <span>{t('tabs.preview')}</span>
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="settings" className="mt-4 space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="docker-platform">{t('dockerCompose.platform')}</Label>
+              <Input
+                id="docker-platform"
+                value={config.dockerPlatform}
+                onChange={(e) => setDockerPlatform(e.target.value)}
+                placeholder={t('dockerCompose.platformPlaceholder')}
+                aria-describedby="docker-platform-description"
+              />
+              <p id="docker-platform-description" className="text-sm text-muted-foreground">
+                {t('dockerCompose.platformDesc')}
+              </p>
+            </div>
+          </TabsContent>
 
           <TabsContent value="env" className="mt-4 space-y-4">
             <div className="flex justify-end">

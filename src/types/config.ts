@@ -152,6 +152,8 @@ export interface AppConfig {
   baseImage: string;
   /** Node.js version for the base image */
   nodeVersion: string;
+  /** Docker platform for the dev service (e.g., "linux/amd64"), empty = not set */
+  dockerPlatform: string;
   /** Software package configuration */
   software: SoftwareConfig;
   /** Custom APT packages to install */
@@ -211,6 +213,7 @@ export const defaultSoftwareConfig: SoftwareConfig = {
 export const defaultAppConfig: AppConfig = {
   baseImage: 'node',
   nodeVersion: '24',
+  dockerPlatform: '',
   software: defaultSoftwareConfig,
   customAptPackages: [],
   customNpmPackages: [],

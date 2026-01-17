@@ -31,6 +31,7 @@
   "tabs": {
     "software": "سافٹ ویئر",
     "preview": "پیش نظارہ",
+    "settings": "ترتیبات",
     "envVariables": "ماحول",
     "env": "ماحول",
     "protectedFiles": "محفوظ فائلیں",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "اپنی مرضی کے APT پیکیجز",
     "description": "کنٹینر میں انسٹال کرنے کے لیے اضافی Debian/Ubuntu پیکیجز شامل کریں۔",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "مثال: curl, graphviz, tree, sqlite3...",
     "add": "پیکیجز شامل کریں",
     "remove": "{{package}} ہٹائیں"
   },
   "npmPackages": {
     "title": "اپنی مرضی کے NPM پیکیجز",
     "description": "کنٹینر میں گلوبل طور پر انسٹال کرنے کے لیے اضافی NPM پیکیجز شامل کریں۔",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "مثال: eslint, prettier, tsx...",
     "add": "پیکیجز شامل کریں",
     "remove": "{{package}} ہٹائیں",
     "installAs": "کے طور پر انسٹال کریں",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "اپنی مرضی کے RUN کمانڈز",
     "description": "Docker امیج بلڈ کے دوران چلانے کے لیے اپنی مرضی کے shell کمانڈز شامل کریں۔",
-    "placeholder": "flutter doctor",
+    "placeholder": "مثال: flutter doctor",
     "add": "کمانڈ شامل کریں",
     "remove": "کمانڈ ہٹائیں",
     "runAs": "کے طور پر چلائیں",
@@ -110,8 +111,8 @@
     "value": "قدر",
     "add": "متغیر شامل کریں",
     "remove": "ہٹائیں",
-    "keyPlaceholder": "متغیر_نام",
-    "valuePlaceholder": "قدر"
+    "keyPlaceholder": "مثال: متغیر_نام",
+    "valuePlaceholder": "مثال: قدر"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "فائل پاتھ",
     "add": "پاتھ شامل کریں",
     "remove": "ہٹائیں",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "مثال: .env.local",
     "help": "پاتھ /workspace/ سے متعلق ہیں۔ یہ فائلیں حساس ڈیٹا تک رسائی روکنے کے لیے خالی صرف پڑھنے والی فائلوں کے طور پر ماؤنٹ کی جائیں گی۔"
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "اجازتیں",
     "directive": "ہدایت",
     "pattern": "پیٹرن",
-    "patternPlaceholder": "src/** یا .env",
+    "patternPlaceholder": "مثال: src/** یا .env",
     "addRule": "قاعدہ شامل کریں",
     "removeRule": "قاعدہ ہٹائیں",
     "allow": "اجازت دیں",
@@ -140,13 +141,19 @@
     "noAllowRules": "کوئی اجازت کا قاعدہ متعین نہیں۔",
     "noAskRules": "کوئی پوچھنے کا قاعدہ متعین نہیں۔",
     "noDenyRules": "کوئی انکار کا قاعدہ متعین نہیں۔",
-    "help": "Read(), Edit() اور WebFetch() آپریشنز کے لیے اجازت کے قواعد متعین کریں۔ پیٹرن recursive مماثلت کے لیے src/** جیسی glob syntax کی حمایت کرتے ہیں۔"
+    "help": "Read(), Edit() اور WebFetch() آپریشنز کے لیے اجازت کے قواعد متعین کریں۔ پیٹرن recursive مماثلت کے لیے src/** جیسی glob syntax کی حمایت کرتے ہیں۔",
+    "learnMore": "مزید جانیں"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile یہ متعین کرتا ہے کہ کنٹینر میں کون سا سافٹ ویئر انسٹال ہوتا ہے۔ Node.js اور Claude Code کے علاوہ، TypeScript، Python، Go، ffmpeg یا ImageMagick جیسے اضافی ٹولز شامل کیے جا سکتے ہیں۔ منتخب سافٹ ویئر Claude کی جانب سے کمانڈز چلاتے وقت دستیاب ہوگا۔",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "docker-compose.yaml فائل کنٹرول کرتی ہے کہ کنٹینر کیسے شروع ہوتا ہے۔ ماحولیاتی متغیرات (جیسے API کلیدیں) یہاں متعین کی جا سکتی ہیں۔ محفوظ فائلیں خالی صرف پڑھنے والی فائلوں کے طور پر ماؤنٹ کی جاتی ہیں تاکہ Claude کو .env فائلوں جیسے حساس ڈیٹا تک رسائی سے روکا جا سکے۔"
+  },
+  "dockerCompose": {
+    "platform": "پلیٹ فارم",
+    "platformDesc": "کنٹینر کے لیے ایک مخصوص پلیٹ فارم سیٹ کریں (مثال: linux/amd64)۔ ڈیفالٹ پلیٹ فارم استعمال کرنے کے لیے خالی چھوڑیں۔ جب بیس امیجز آپ کے آرکیٹیکچر کو سپورٹ نہیں کرتے تو اسے استعمال کریں۔",
+    "platformPlaceholder": "مثال: linux/amd64"
   },
   "download": {
     "button": "ZIP ڈاؤن لوڈ کریں",

@@ -31,6 +31,7 @@
   "tabs": {
     "software": "소프트웨어",
     "preview": "미리보기",
+    "settings": "설정",
     "envVariables": "환경",
     "env": "환경",
     "protectedFiles": "보호된 파일",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "사용자 정의 APT 패키지",
     "description": "컨테이너에 설치할 추가 Debian/Ubuntu 패키지를 추가하세요.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "예: curl, graphviz, tree, sqlite3...",
     "add": "패키지 추가",
     "remove": "{{package}} 제거"
   },
   "npmPackages": {
     "title": "사용자 정의 NPM 패키지",
     "description": "컨테이너에 전역으로 설치할 추가 NPM 패키지를 추가하세요.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "예: eslint, prettier, tsx...",
     "add": "패키지 추가",
     "remove": "{{package}} 제거",
     "installAs": "설치 사용자",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "사용자 정의 RUN 명령",
     "description": "Docker 이미지 빌드 중 실행할 사용자 정의 쉘 명령을 추가하세요.",
-    "placeholder": "flutter doctor",
+    "placeholder": "예: flutter doctor",
     "add": "명령 추가",
     "remove": "명령 제거",
     "runAs": "실행 사용자",
@@ -110,8 +111,8 @@
     "value": "값",
     "add": "변수 추가",
     "remove": "제거",
-    "keyPlaceholder": "변수_이름",
-    "valuePlaceholder": "값"
+    "keyPlaceholder": "예: 변수_이름",
+    "valuePlaceholder": "예: 값"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "파일 경로",
     "add": "경로 추가",
     "remove": "제거",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "예: .env.local",
     "help": "경로는 /workspace/를 기준으로 합니다. 이 파일들은 민감한 데이터 접근을 방지하기 위해 빈 읽기 전용 파일로 마운트됩니다."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "권한",
     "directive": "지시문",
     "pattern": "패턴",
-    "patternPlaceholder": "src/** 또는 .env",
+    "patternPlaceholder": "예: src/** 또는 .env",
     "addRule": "규칙 추가",
     "removeRule": "규칙 제거",
     "allow": "허용",
@@ -140,13 +141,19 @@
     "noAllowRules": "허용 규칙이 정의되지 않았습니다.",
     "noAskRules": "확인 규칙이 정의되지 않았습니다.",
     "noDenyRules": "거부 규칙이 정의되지 않았습니다.",
-    "help": "Read(), Edit(), WebFetch() 작업에 대한 권한 규칙을 정의합니다. 패턴은 재귀 매칭을 위해 src/**와 같은 glob 구문을 지원합니다."
+    "help": "Read(), Edit(), WebFetch() 작업에 대한 권한 규칙을 정의합니다. 패턴은 재귀 매칭을 위해 src/**와 같은 glob 구문을 지원합니다.",
+    "learnMore": "자세히 알아보기"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile은 컨테이너에 설치할 소프트웨어를 정의합니다. Node.js와 Claude Code 외에도 TypeScript, Python, Go, ffmpeg, ImageMagick 같은 추가 도구를 포함할 수 있습니다. 선택한 소프트웨어는 Claude가 명령을 실행할 때 사용 가능합니다.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "docker-compose.yaml 파일은 컨테이너 시작 방법을 제어합니다. 환경 변수(API 키 등)를 여기서 정의할 수 있습니다. 보호된 파일은 Claude가 .env 파일 같은 민감한 데이터에 접근하지 못하도록 빈 읽기 전용 파일로 마운트됩니다."
+  },
+  "dockerCompose": {
+    "platform": "플랫폼",
+    "platformDesc": "컨테이너에 특정 플랫폼을 설정합니다(예: linux/amd64). 기본 플랫폼을 사용하려면 비워 두세요. 베이스 이미지가 아키텍처를 지원하지 않을 때 사용하세요.",
+    "platformPlaceholder": "예: linux/amd64"
   },
   "download": {
     "button": "ZIP 다운로드",

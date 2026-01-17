@@ -23,6 +23,9 @@
 interface ImportMetaEnv {
   readonly VITE_GITHUB_URL: string;
   readonly VITE_PAYPAL_URL: string;
+  readonly VITE_PERMISSIONS_DOCS_URL: string;
+  readonly VITE_AUTHOR_URL: string;
+  readonly VITE_AUTHOR_NAME: string;
 }
 
 interface ImportMeta {

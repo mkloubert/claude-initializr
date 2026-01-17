@@ -31,6 +31,7 @@
   "tabs": {
     "software": "Yazılım",
     "preview": "Önizleme",
+    "settings": "Ayarlar",
     "envVariables": "Ortam",
     "env": "Ortam",
     "protectedFiles": "Korumalı dosyalar",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "Özel APT Paketleri",
     "description": "Konteynere kurulacak ek Debian/Ubuntu paketleri ekleyin.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "Örnek: curl, graphviz, tree, sqlite3...",
     "add": "Paket ekle",
     "remove": "{{package}} paketini kaldır"
   },
   "npmPackages": {
     "title": "Özel NPM Paketleri",
     "description": "Konteynere global olarak kurulacak ek NPM paketleri ekleyin.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "Örnek: eslint, prettier, tsx...",
     "add": "Paket ekle",
     "remove": "{{package}} paketini kaldır",
     "installAs": "Olarak kur",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "Özel RUN Komutları",
     "description": "Docker imajı oluşturulurken çalıştırılacak özel shell komutları ekleyin.",
-    "placeholder": "flutter doctor",
+    "placeholder": "Örnek: flutter doctor",
     "add": "Komut ekle",
     "remove": "Komutu kaldır",
     "runAs": "Olarak çalıştır",
@@ -110,8 +111,8 @@
     "value": "Değer",
     "add": "Değişken ekle",
     "remove": "Kaldır",
-    "keyPlaceholder": "DEGISKEN_ADI",
-    "valuePlaceholder": "değer"
+    "keyPlaceholder": "Örnek: DEGISKEN_ADI",
+    "valuePlaceholder": "Örnek: değer"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "Dosya yolu",
     "add": "Yol ekle",
     "remove": "Kaldır",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "Örnek: .env.local",
     "help": "Yollar /workspace/'e görelidir. Bu dosyalar, hassas verilere erişimi önlemek için boş salt okunur dosyalar olarak bağlanacaktır."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "İzinler",
     "directive": "Yönerge",
     "pattern": "Desen",
-    "patternPlaceholder": "src/** veya .env",
+    "patternPlaceholder": "Örnek: src/** veya .env",
     "addRule": "Kural ekle",
     "removeRule": "Kuralı kaldır",
     "allow": "İzin ver",
@@ -140,13 +141,19 @@
     "noAllowRules": "İzin kuralı tanımlanmamış.",
     "noAskRules": "Sorma kuralı tanımlanmamış.",
     "noDenyRules": "Reddetme kuralı tanımlanmamış.",
-    "help": "Read(), Edit() ve WebFetch() işlemleri için izin kuralları tanımlayın. Desenler, özyinelemeli eşleştirme için src/** gibi glob sözdizimini destekler."
+    "help": "Read(), Edit() ve WebFetch() işlemleri için izin kuralları tanımlayın. Desenler, özyinelemeli eşleştirme için src/** gibi glob sözdizimini destekler.",
+    "learnMore": "Daha fazla bilgi"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile, konteynere hangi yazılımın kurulacağını tanımlar. Node.js ve Claude Code'a ek olarak TypeScript, Python, Go, ffmpeg veya ImageMagick gibi ek araçlar dahil edilebilir. Seçilen yazılım, Claude komutları çalıştırdığında kullanılabilir olacaktır.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "docker-compose.yaml dosyası konteynerin nasıl başlatılacağını kontrol eder. Ortam değişkenleri (API anahtarları gibi) burada tanımlanabilir. Korumalı dosyalar, Claude'un .env dosyaları gibi hassas verilere erişmesini önlemek için boş salt okunur dosyalar olarak bağlanır."
+  },
+  "dockerCompose": {
+    "platform": "Platform",
+    "platformDesc": "Konteyner için belirli bir platform ayarlayın (örn: linux/amd64). Varsayılan platformu kullanmak için boş bırakın. Temel imajlar mimarinizi desteklemediğinde bunu kullanın.",
+    "platformPlaceholder": "Örnek: linux/amd64"
   },
   "download": {
     "button": "ZIP İndir",

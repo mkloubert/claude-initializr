@@ -49,8 +49,11 @@ export async function generateZipFile(config: AppConfig): Promise<Blob> {
   const dockerfileContent = processDockerfile(dockerfileReplacements);
   zip.file('Dockerfile', dockerfileContent);
 
-  // Generate docker-compose.yaml with protected file mounts
-  const dockerComposeReplacements = generateDockerComposeReplacements(config.protectedFiles);
+  // Generate docker-compose.yaml with protected file mounts and platform
+  const dockerComposeReplacements = generateDockerComposeReplacements(
+    config.protectedFiles,
+    config.dockerPlatform
+  );
   const dockerComposeContent = processDockerCompose(dockerComposeReplacements);
   zip.file('docker-compose.yaml', dockerComposeContent);
 

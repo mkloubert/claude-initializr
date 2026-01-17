@@ -44,6 +44,8 @@ export interface ConfigContextValue {
   setBaseImage: (image: string) => void;
   /** Update the Node.js version for the base image */
   setNodeVersion: (version: string) => void;
+  /** Update the Docker platform (e.g., "linux/amd64") */
+  setDockerPlatform: (platform: string) => void;
 
   // Software configuration actions
   /** Toggle a software package on/off */

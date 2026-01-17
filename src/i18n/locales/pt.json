@@ -31,6 +31,7 @@
   "tabs": {
     "software": "Software",
     "preview": "Visualização",
+    "settings": "Configurações",
     "envVariables": "Ambiente",
     "env": "Amb.",
     "protectedFiles": "Arquivos protegidos",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "Pacotes APT personalizados",
     "description": "Adicione pacotes Debian/Ubuntu adicionais para instalar no contêiner.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "Exemplo: curl, graphviz, tree, sqlite3...",
     "add": "Adicionar pacotes",
     "remove": "Remover {{package}}"
   },
   "npmPackages": {
     "title": "Pacotes NPM personalizados",
     "description": "Adicione pacotes NPM adicionais para instalar globalmente no contêiner.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "Exemplo: eslint, prettier, tsx...",
     "add": "Adicionar pacotes",
     "remove": "Remover {{package}}",
     "installAs": "Instalar como",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "Comandos RUN personalizados",
     "description": "Adicione comandos shell personalizados para executar durante a construção da imagem Docker.",
-    "placeholder": "flutter doctor",
+    "placeholder": "Exemplo: flutter doctor",
     "add": "Adicionar comando",
     "remove": "Remover comando",
     "runAs": "Executar como",
@@ -110,8 +111,8 @@
     "value": "Valor",
     "add": "Adicionar variável",
     "remove": "Remover",
-    "keyPlaceholder": "NOME_VARIAVEL",
-    "valuePlaceholder": "valor"
+    "keyPlaceholder": "Exemplo: NOME_VARIAVEL",
+    "valuePlaceholder": "Exemplo: valor"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "Caminho do arquivo",
     "add": "Adicionar caminho",
     "remove": "Remover",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "Exemplo: .env.local",
     "help": "Os caminhos são relativos a /workspace/. Esses arquivos serão montados como arquivos vazios somente leitura para evitar acesso a dados sensíveis."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "Permissões",
     "directive": "Diretiva",
     "pattern": "Padrão",
-    "patternPlaceholder": "src/** ou .env",
+    "patternPlaceholder": "Exemplo: src/** ou .env",
     "addRule": "Adicionar regra",
     "removeRule": "Remover regra",
     "allow": "Permitir",
@@ -140,13 +141,19 @@
     "noAllowRules": "Nenhuma regra de permissão definida.",
     "noAskRules": "Nenhuma regra de consulta definida.",
     "noDenyRules": "Nenhuma regra de negação definida.",
-    "help": "Defina regras de permissão para operações Read(), Edit() e WebFetch(). Os padrões suportam sintaxe glob como src/** para correspondência recursiva."
+    "help": "Defina regras de permissão para operações Read(), Edit() e WebFetch(). Os padrões suportam sintaxe glob como src/** para correspondência recursiva.",
+    "learnMore": "Saiba mais"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "O Dockerfile define qual software é instalado no contêiner. Além de Node.js e Claude Code, ferramentas adicionais como TypeScript, Python, Go, ffmpeg ou ImageMagick podem ser incluídas. O software selecionado estará disponível quando Claude executar comandos.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "O arquivo docker-compose.yaml controla como o contêiner é iniciado. Variáveis de ambiente (como chaves API) podem ser definidas aqui. Arquivos protegidos são montados como arquivos vazios somente leitura para evitar que Claude acesse dados sensíveis como arquivos .env."
+  },
+  "dockerCompose": {
+    "platform": "Plataforma",
+    "platformDesc": "Define uma plataforma específica para o contêiner (ex: linux/amd64). Deixe vazio para usar a plataforma padrão. Use quando as imagens base não suportam sua arquitetura.",
+    "platformPlaceholder": "Exemplo: linux/amd64"
   },
   "download": {
     "button": "Baixar ZIP",

@@ -31,6 +31,7 @@
   "tabs": {
     "software": "Software",
     "preview": "Voorbeeld",
+    "settings": "Instellingen",
     "envVariables": "Omgeving",
     "env": "Omg.",
     "protectedFiles": "Beschermde bestanden",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "Aangepaste APT-pakketten",
     "description": "Voeg extra Debian/Ubuntu-pakketten toe om in de container te installeren.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "Voorbeeld: curl, graphviz, tree, sqlite3...",
     "add": "Pakketten toevoegen",
     "remove": "{{package}} verwijderen"
   },
   "npmPackages": {
     "title": "Aangepaste NPM-pakketten",
     "description": "Voeg extra NPM-pakketten toe om globaal in de container te installeren.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "Voorbeeld: eslint, prettier, tsx...",
     "add": "Pakketten toevoegen",
     "remove": "{{package}} verwijderen",
     "installAs": "Installeren als",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "Aangepaste RUN-opdrachten",
     "description": "Voeg aangepaste shell-opdrachten toe die tijdens de Docker-image build worden uitgevoerd.",
-    "placeholder": "flutter doctor",
+    "placeholder": "Voorbeeld: flutter doctor",
     "add": "Opdracht toevoegen",
     "remove": "Opdracht verwijderen",
     "runAs": "Uitvoeren als",
@@ -110,8 +111,8 @@
     "value": "Waarde",
     "add": "Variabele toevoegen",
     "remove": "Verwijderen",
-    "keyPlaceholder": "VARIABELE_NAAM",
-    "valuePlaceholder": "waarde"
+    "keyPlaceholder": "Voorbeeld: VARIABELE_NAAM",
+    "valuePlaceholder": "Voorbeeld: waarde"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "Bestandspad",
     "add": "Pad toevoegen",
     "remove": "Verwijderen",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "Voorbeeld: .env.local",
     "help": "Paden zijn relatief ten opzichte van /workspace/. Deze bestanden worden gemount als lege alleen-lezen bestanden om toegang tot gevoelige gegevens te voorkomen."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "Machtigingen",
     "directive": "Richtlijn",
     "pattern": "Patroon",
-    "patternPlaceholder": "src/** of .env",
+    "patternPlaceholder": "Voorbeeld: src/** of .env",
     "addRule": "Regel toevoegen",
     "removeRule": "Regel verwijderen",
     "allow": "Toestaan",
@@ -140,13 +141,19 @@
     "noAllowRules": "Geen toestemmingsregels gedefinieerd.",
     "noAskRules": "Geen vraagregels gedefinieerd.",
     "noDenyRules": "Geen weigeringsregels gedefinieerd.",
-    "help": "Definieer machtigingsregels voor Read(), Edit() en WebFetch() operaties. Patronen ondersteunen glob-syntaxis zoals src/** voor recursieve matching."
+    "help": "Definieer machtigingsregels voor Read(), Edit() en WebFetch() operaties. Patronen ondersteunen glob-syntaxis zoals src/** voor recursieve matching.",
+    "learnMore": "Meer informatie"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Het Dockerfile definieert welke software in de container wordt geïnstalleerd. Naast Node.js en Claude Code kunnen extra tools zoals TypeScript, Python, Go, ffmpeg of ImageMagick worden toegevoegd. De geselecteerde software is beschikbaar wanneer Claude commando's uitvoert.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "Het docker-compose.yaml-bestand regelt hoe de container wordt gestart. Omgevingsvariabelen (zoals API-sleutels) kunnen hier worden gedefinieerd. Beschermde bestanden worden gemount als lege alleen-lezen bestanden om te voorkomen dat Claude toegang krijgt tot gevoelige gegevens zoals .env-bestanden."
+  },
+  "dockerCompose": {
+    "platform": "Platform",
+    "platformDesc": "Stel een specifiek platform in voor de container (bijv. linux/amd64). Laat leeg om het standaardplatform te gebruiken. Gebruik dit wanneer basis-images je architectuur niet ondersteunen.",
+    "platformPlaceholder": "Voorbeeld: linux/amd64"
   },
   "download": {
     "button": "ZIP downloaden",

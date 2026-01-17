@@ -31,6 +31,7 @@
   "tabs": {
     "software": "Software",
     "preview": "Preview",
+    "settings": "Settings",
     "envVariables": "Environment",
     "env": "Env",
     "protectedFiles": "Protected Files",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "Custom APT Packages",
     "description": "Add additional Debian/Ubuntu packages to install in the container.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "Example: curl, graphviz, tree, sqlite3...",
     "add": "Add packages",
     "remove": "Remove {{package}}"
   },
   "npmPackages": {
     "title": "Custom NPM Packages",
     "description": "Add additional NPM packages to install globally in the container.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "Example: eslint, prettier, tsx...",
     "add": "Add packages",
     "remove": "Remove {{package}}",
     "installAs": "Install as",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "Custom RUN Commands",
     "description": "Add custom shell commands to execute during Docker image build.",
-    "placeholder": "flutter doctor",
+    "placeholder": "Example: flutter doctor",
     "add": "Add command",
     "remove": "Remove command",
     "runAs": "Run as",
@@ -110,8 +111,8 @@
     "value": "Value",
     "add": "Add Variable",
     "remove": "Remove",
-    "keyPlaceholder": "VARIABLE_NAME",
-    "valuePlaceholder": "value"
+    "keyPlaceholder": "Example: VARIABLE_NAME",
+    "valuePlaceholder": "Example: value"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "File Path",
     "add": "Add Path",
     "remove": "Remove",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "Example: .env.local",
     "help": "Paths are relative to /workspace/. These files will be mounted as empty read-only files to prevent access to sensitive data."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "Permissions",
     "directive": "Directive",
     "pattern": "Pattern",
-    "patternPlaceholder": "src/** or .env",
+    "patternPlaceholder": "Example: src/** or .env",
     "addRule": "Add Rule",
     "removeRule": "Remove rule",
     "allow": "Allow",
@@ -140,13 +141,19 @@
     "noAllowRules": "No allow rules defined.",
     "noAskRules": "No ask rules defined.",
     "noDenyRules": "No deny rules defined.",
-    "help": "Define permission rules for Read(), Edit(), and WebFetch() operations. Patterns support glob syntax like src/** for recursive matching."
+    "help": "Define permission rules for Read(), Edit(), and WebFetch() operations. Patterns support glob syntax like src/** for recursive matching.",
+    "learnMore": "Learn more"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "The Dockerfile defines which software is installed in the container. In addition to Node.js and Claude Code, additional tools like TypeScript, Python, Go, ffmpeg or ImageMagick can be included. The selected software will be available when Claude executes commands.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "The docker-compose.yaml file controls how the container is started. Environment variables (like API keys) can be defined here. Protected files are mounted as empty read-only files to prevent Claude from accessing sensitive data like .env files."
+  },
+  "dockerCompose": {
+    "platform": "Platform",
+    "platformDesc": "Set a specific platform for the container (e.g., linux/amd64). Leave empty to use the default platform. Use this when base images do not support your architecture.",
+    "platformPlaceholder": "Example: linux/amd64"
   },
   "download": {
     "button": "Download ZIP",

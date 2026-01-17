@@ -21,6 +21,7 @@
 import { useMemo, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/contexts';
+import { PERMISSIONS_DOCS_URL } from '@/config/env';
 import {
   Card,
   CardContent,
@@ -40,6 +41,7 @@ import {
   CheckCircle,
   HelpCircle,
   XCircle,
+  ExternalLink,
 } from 'lucide-react';
 import type { PermissionCategory } from '@/types';
 
@@ -162,7 +164,18 @@ export function SettingsJsonCard() {
           <TabsContent value="permissions" className="mt-4 space-y-6">
             <Alert>
               <Shield className="h-4 w-4" />
-              <AlertDescription>{t('settings.help')}</AlertDescription>
+              <AlertDescription>
+                {t('settings.help')}{' '}
+                <a
+                  href={PERMISSIONS_DOCS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-medium text-primary underline-offset-4 hover:underline"
+                >
+                  {t('settings.learnMore')}
+                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                </a>
+              </AlertDescription>
             </Alert>
 
             {renderPermissionSection(

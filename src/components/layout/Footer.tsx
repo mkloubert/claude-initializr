@@ -19,6 +19,7 @@
 // DEALINGS IN THE SOFTWARE.
 
 import { useTranslation } from 'react-i18next';
+import { AUTHOR_URL, AUTHOR_NAME } from '@/config/env';
 
 /**
  * Application footer with copyright information.
@@ -26,11 +27,25 @@ import { useTranslation } from 'react-i18next';
 export function Footer() {
   const { t } = useTranslation();
 
+  // Split the copyright text to make the author name a link
+  // The copyright format is "© 2026 Marcel Joachim Kloubert"
+  const copyrightText = t('footer.copyright');
+  const parts = copyrightText.split(AUTHOR_NAME);
+
   return (
     <footer className="border-t bg-muted/50">
       <div className="container mx-auto flex h-12 items-center justify-center px-4">
         <p className="text-sm text-muted-foreground">
-          {t('footer.copyright')}
+          {parts[0]}
+          <a
+            href={AUTHOR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium hover:text-foreground hover:underline underline-offset-4"
+          >
+            {AUTHOR_NAME}
+          </a>
+          {parts[1]}
         </p>
       </div>
     </footer>

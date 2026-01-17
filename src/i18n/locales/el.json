@@ -31,6 +31,7 @@
   "tabs": {
     "software": "Λογισμικό",
     "preview": "Προεπισκόπηση",
+    "settings": "Ρυθμίσεις",
     "envVariables": "Περιβάλλον",
     "env": "Περιβ.",
     "protectedFiles": "Προστατευμένα αρχεία",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "Προσαρμοσμένα πακέτα APT",
     "description": "Προσθέστε επιπλέον πακέτα Debian/Ubuntu για εγκατάσταση στο container.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "Παράδειγμα: curl, graphviz, tree, sqlite3...",
     "add": "Προσθήκη πακέτων",
     "remove": "Αφαίρεση {{package}}"
   },
   "npmPackages": {
     "title": "Προσαρμοσμένα πακέτα NPM",
     "description": "Προσθέστε επιπλέον πακέτα NPM για καθολική εγκατάσταση στο container.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "Παράδειγμα: eslint, prettier, tsx...",
     "add": "Προσθήκη πακέτων",
     "remove": "Αφαίρεση {{package}}",
     "installAs": "Εγκατάσταση ως",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "Προσαρμοσμένες εντολές RUN",
     "description": "Προσθέστε προσαρμοσμένες εντολές shell για εκτέλεση κατά τη δημιουργία της εικόνας Docker.",
-    "placeholder": "flutter doctor",
+    "placeholder": "Παράδειγμα: flutter doctor",
     "add": "Προσθήκη εντολής",
     "remove": "Αφαίρεση εντολής",
     "runAs": "Εκτέλεση ως",
@@ -110,8 +111,8 @@
     "value": "Τιμή",
     "add": "Προσθήκη μεταβλητής",
     "remove": "Αφαίρεση",
-    "keyPlaceholder": "ONOMA_METAVLITIS",
-    "valuePlaceholder": "τιμή"
+    "keyPlaceholder": "Παράδειγμα: ONOMA_METAVLITIS",
+    "valuePlaceholder": "Παράδειγμα: τιμή"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "Διαδρομή αρχείου",
     "add": "Προσθήκη διαδρομής",
     "remove": "Αφαίρεση",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "Παράδειγμα: .env.local",
     "help": "Οι διαδρομές είναι σχετικές με /workspace/. Αυτά τα αρχεία θα προσαρτηθούν ως κενά αρχεία μόνο για ανάγνωση για να αποτρέψουν την πρόσβαση σε ευαίσθητα δεδομένα."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "Δικαιώματα",
     "directive": "Οδηγία",
     "pattern": "Μοτίβο",
-    "patternPlaceholder": "src/** ή .env",
+    "patternPlaceholder": "Παράδειγμα: src/** ή .env",
     "addRule": "Προσθήκη κανόνα",
     "removeRule": "Αφαίρεση κανόνα",
     "allow": "Επιτρέπεται",
@@ -140,13 +141,19 @@
     "noAllowRules": "Δεν έχουν οριστεί κανόνες επιτρέπεται.",
     "noAskRules": "Δεν έχουν οριστεί κανόνες ερώτησης.",
     "noDenyRules": "Δεν έχουν οριστεί κανόνες απόρριψης.",
-    "help": "Ορίστε κανόνες δικαιωμάτων για λειτουργίες Read(), Edit() και WebFetch(). Τα μοτίβα υποστηρίζουν σύνταξη glob όπως src/** για αναδρομική αντιστοίχιση."
+    "help": "Ορίστε κανόνες δικαιωμάτων για λειτουργίες Read(), Edit() και WebFetch(). Τα μοτίβα υποστηρίζουν σύνταξη glob όπως src/** για αναδρομική αντιστοίχιση.",
+    "learnMore": "Μάθετε περισσότερα"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Το Dockerfile ορίζει ποιο λογισμικό εγκαθίσταται στο container. Εκτός από το Node.js και το Claude Code, μπορούν να συμπεριληφθούν επιπλέον εργαλεία όπως TypeScript, Python, Go, ffmpeg ή ImageMagick. Το επιλεγμένο λογισμικό θα είναι διαθέσιμο όταν ο Claude εκτελεί εντολές.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "Το αρχείο docker-compose.yaml ελέγχει πώς ξεκινά το container. Οι μεταβλητές περιβάλλοντος (όπως τα κλειδιά API) μπορούν να οριστούν εδώ. Τα προστατευμένα αρχεία προσαρτώνται ως κενά αρχεία μόνο για ανάγνωση για να αποτρέψουν τον Claude από την πρόσβαση σε ευαίσθητα δεδομένα όπως αρχεία .env."
+  },
+  "dockerCompose": {
+    "platform": "Πλατφόρμα",
+    "platformDesc": "Ορίστε μια συγκεκριμένη πλατφόρμα για το container (π.χ. linux/amd64). Αφήστε κενό για να χρησιμοποιήσετε την προεπιλεγμένη πλατφόρμα. Χρησιμοποιήστε το όταν οι βασικές εικόνες δεν υποστηρίζουν την αρχιτεκτονική σας.",
+    "platformPlaceholder": "Παράδειγμα: linux/amd64"
   },
   "download": {
     "button": "Λήψη ZIP",

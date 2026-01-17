@@ -30,9 +30,12 @@ export function DockerComposePreview() {
   const { config } = useConfig();
 
   const dockerComposeContent = useMemo(() => {
-    const replacements = generateDockerComposeReplacements(config.protectedFiles);
+    const replacements = generateDockerComposeReplacements(
+      config.protectedFiles,
+      config.dockerPlatform
+    );
     return processDockerCompose(replacements);
-  }, [config.protectedFiles]);
+  }, [config.protectedFiles, config.dockerPlatform]);
 
   return <CodePreview code={dockerComposeContent} language="yaml" />;
 }

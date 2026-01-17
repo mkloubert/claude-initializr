@@ -31,6 +31,7 @@
   "tabs": {
     "software": "软件",
     "preview": "预览",
+    "settings": "设置",
     "envVariables": "环境",
     "env": "环境",
     "protectedFiles": "受保护文件",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "自定义APT软件包",
     "description": "添加要在容器中安装的额外Debian/Ubuntu软件包。",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "示例: curl, graphviz, tree, sqlite3...",
     "add": "添加软件包",
     "remove": "删除 {{package}}"
   },
   "npmPackages": {
     "title": "自定义NPM软件包",
     "description": "添加要在容器中全局安装的额外NPM软件包。",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "示例: eslint, prettier, tsx...",
     "add": "添加软件包",
     "remove": "删除 {{package}}",
     "installAs": "安装用户",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "自定义RUN命令",
     "description": "添加在Docker镜像构建期间执行的自定义shell命令。",
-    "placeholder": "flutter doctor",
+    "placeholder": "示例: flutter doctor",
     "add": "添加命令",
     "remove": "删除命令",
     "runAs": "运行用户",
@@ -110,8 +111,8 @@
     "value": "值",
     "add": "添加变量",
     "remove": "删除",
-    "keyPlaceholder": "变量名称",
-    "valuePlaceholder": "值"
+    "keyPlaceholder": "示例: 变量名称",
+    "valuePlaceholder": "示例: 值"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "文件路径",
     "add": "添加路径",
     "remove": "删除",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "示例: .env.local",
     "help": "路径相对于/workspace/。这些文件将挂载为空的只读文件，以防止访问敏感数据。"
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "权限",
     "directive": "指令",
     "pattern": "模式",
-    "patternPlaceholder": "src/** 或 .env",
+    "patternPlaceholder": "示例: src/** 或 .env",
     "addRule": "添加规则",
     "removeRule": "删除规则",
     "allow": "允许",
@@ -140,13 +141,19 @@
     "noAllowRules": "未定义允许规则。",
     "noAskRules": "未定义询问规则。",
     "noDenyRules": "未定义拒绝规则。",
-    "help": "为 Read()、Edit() 和 WebFetch() 操作定义权限规则。模式支持 glob 语法，如 src/** 用于递归匹配。"
+    "help": "为 Read()、Edit() 和 WebFetch() 操作定义权限规则。模式支持 glob 语法，如 src/** 用于递归匹配。",
+    "learnMore": "了解更多"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile定义在容器中安装哪些软件。除了Node.js和Claude Code外，还可以包含TypeScript、Python、Go、ffmpeg或ImageMagick等附加工具。当Claude执行命令时，所选软件将可用。",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "docker-compose.yaml文件控制容器的启动方式。可以在此定义环境变量（如API密钥）。受保护文件挂载为空的只读文件，以防止Claude访问.env文件等敏感数据。"
+  },
+  "dockerCompose": {
+    "platform": "平台",
+    "platformDesc": "为容器设置特定平台（例如linux/amd64）。留空以使用默认平台。当基础镜像不支持您的架构时使用此选项。",
+    "platformPlaceholder": "示例: linux/amd64"
   },
   "download": {
     "button": "下载ZIP",

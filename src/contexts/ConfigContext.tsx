@@ -87,6 +87,7 @@ interface StoredPermissionRule {
 interface StoredConfig {
   baseImage?: string;
   nodeVersion?: string;
+  dockerPlatform?: string;
   software?: Partial<Record<keyof SoftwareConfig, { enabled?: boolean }>>;
   customAptPackages?: string[];
   customNpmPackages?: Array<{ name: string; installAs: DockerfileUser }>;
@@ -276,6 +277,9 @@ function loadConfigFromStorage(): AppConfig {
       nodeVersion: typeof data.nodeVersion === 'string' && data.nodeVersion.length > 0
         ? data.nodeVersion
         : defaultAppConfig.nodeVersion,
+      dockerPlatform: typeof data.dockerPlatform === 'string'
+        ? data.dockerPlatform
+        : defaultAppConfig.dockerPlatform,
       software,
       customAptPackages,
       customNpmPackages,
@@ -313,6 +317,7 @@ function saveConfigToStorage(config: AppConfig): void {
     const toStore: StoredConfig = {
       baseImage: typeof config.baseImage === 'string' ? config.baseImage : defaultAppConfig.baseImage,
       nodeVersion: typeof config.nodeVersion === 'string' ? config.nodeVersion : defaultAppConfig.nodeVersion,
+      dockerPlatform: typeof config.dockerPlatform === 'string' ? config.dockerPlatform : defaultAppConfig.dockerPlatform,
       software: config.software && typeof config.software === 'object'
         ? Object.fromEntries(
           (Object.keys(defaultSoftwareConfig) as Array<keyof SoftwareConfig>).map((key) => [
@@ -447,6 +452,13 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     setConfig((prev) => ({
       ...prev,
       nodeVersion: version,
+    }));
+  }, []);
+
+  const setDockerPlatform = useCallback((platform: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      dockerPlatform: platform,
     }));
   }, []);
 
@@ -854,6 +866,7 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       setAutosaveEnabled,
       setBaseImage,
       setNodeVersion,
+      setDockerPlatform,
       toggleSoftware,
       addCustomAptPackages,
       removeCustomAptPackage,
@@ -884,6 +897,7 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       setAutosaveEnabled,
       setBaseImage,
       setNodeVersion,
+      setDockerPlatform,
       toggleSoftware,
       addCustomAptPackages,
       removeCustomAptPackage,

@@ -31,6 +31,7 @@
   "tabs": {
     "software": "Oprogramowanie",
     "preview": "Podgląd",
+    "settings": "Ustawienia",
     "envVariables": "Środowisko",
     "env": "Środ.",
     "protectedFiles": "Chronione pliki",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "Niestandardowe pakiety APT",
     "description": "Dodaj dodatkowe pakiety Debian/Ubuntu do zainstalowania w kontenerze.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "Przykład: curl, graphviz, tree, sqlite3...",
     "add": "Dodaj pakiety",
     "remove": "Usuń {{package}}"
   },
   "npmPackages": {
     "title": "Niestandardowe pakiety NPM",
     "description": "Dodaj dodatkowe pakiety NPM do globalnej instalacji w kontenerze.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "Przykład: eslint, prettier, tsx...",
     "add": "Dodaj pakiety",
     "remove": "Usuń {{package}}",
     "installAs": "Instaluj jako",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "Niestandardowe polecenia RUN",
     "description": "Dodaj niestandardowe polecenia shell do wykonania podczas budowania obrazu Docker.",
-    "placeholder": "flutter doctor",
+    "placeholder": "Przykład: flutter doctor",
     "add": "Dodaj polecenie",
     "remove": "Usuń polecenie",
     "runAs": "Uruchom jako",
@@ -110,8 +111,8 @@
     "value": "Wartość",
     "add": "Dodaj zmienną",
     "remove": "Usuń",
-    "keyPlaceholder": "NAZWA_ZMIENNEJ",
-    "valuePlaceholder": "wartość"
+    "keyPlaceholder": "Przykład: NAZWA_ZMIENNEJ",
+    "valuePlaceholder": "Przykład: wartość"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "Ścieżka pliku",
     "add": "Dodaj ścieżkę",
     "remove": "Usuń",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "Przykład: .env.local",
     "help": "Ścieżki są względne do /workspace/. Te pliki będą montowane jako puste pliki tylko do odczytu, aby zapobiec dostępowi do wrażliwych danych."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "Uprawnienia",
     "directive": "Dyrektywa",
     "pattern": "Wzorzec",
-    "patternPlaceholder": "src/** lub .env",
+    "patternPlaceholder": "Przykład: src/** lub .env",
     "addRule": "Dodaj regułę",
     "removeRule": "Usuń regułę",
     "allow": "Zezwól",
@@ -140,13 +141,19 @@
     "noAllowRules": "Brak zdefiniowanych reguł zezwolenia.",
     "noAskRules": "Brak zdefiniowanych reguł zapytania.",
     "noDenyRules": "Brak zdefiniowanych reguł odmowy.",
-    "help": "Zdefiniuj reguły uprawnień dla operacji Read(), Edit() i WebFetch(). Wzorce obsługują składnię glob, taką jak src/** dla dopasowania rekursywnego."
+    "help": "Zdefiniuj reguły uprawnień dla operacji Read(), Edit() i WebFetch(). Wzorce obsługują składnię glob, taką jak src/** dla dopasowania rekursywnego.",
+    "learnMore": "Dowiedz się więcej"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile definiuje, jakie oprogramowanie jest instalowane w kontenerze. Oprócz Node.js i Claude Code można dołączyć dodatkowe narzędzia jak TypeScript, Python, Go, ffmpeg lub ImageMagick. Wybrane oprogramowanie będzie dostępne, gdy Claude wykonuje polecenia.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "Plik docker-compose.yaml kontroluje sposób uruchamiania kontenera. Zmienne środowiskowe (jak klucze API) mogą być tu zdefiniowane. Chronione pliki są montowane jako puste pliki tylko do odczytu, aby uniemożliwić Claude dostęp do wrażliwych danych jak pliki .env."
+  },
+  "dockerCompose": {
+    "platform": "Platforma",
+    "platformDesc": "Ustaw konkretną platformę dla kontenera (np. linux/amd64). Pozostaw puste, aby użyć domyślnej platformy. Użyj tego, gdy obrazy bazowe nie obsługują Twojej architektury.",
+    "platformPlaceholder": "Przykład: linux/amd64"
   },
   "download": {
     "button": "Pobierz ZIP",

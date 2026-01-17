@@ -31,6 +31,7 @@
   "tabs": {
     "software": "תוכנה",
     "preview": "תצוגה מקדימה",
+    "settings": "הגדרות",
     "envVariables": "סביבה",
     "env": "סביבה",
     "protectedFiles": "קבצים מוגנים",
@@ -78,14 +79,14 @@
   "aptPackages": {
     "title": "חבילות APT מותאמות אישית",
     "description": "הוסף חבילות Debian/Ubuntu נוספות להתקנה בקונטיינר.",
-    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "placeholder": "דוגמה: curl, graphviz, tree, sqlite3...",
     "add": "הוסף חבילות",
     "remove": "הסר {{package}}"
   },
   "npmPackages": {
     "title": "חבילות NPM מותאמות אישית",
     "description": "הוסף חבילות NPM נוספות להתקנה גלובלית בקונטיינר.",
-    "placeholder": "eslint, prettier, tsx...",
+    "placeholder": "דוגמה: eslint, prettier, tsx...",
     "add": "הוסף חבילות",
     "remove": "הסר {{package}}",
     "installAs": "התקן בתור",
@@ -96,7 +97,7 @@
   "runCommands": {
     "title": "פקודות RUN מותאמות אישית",
     "description": "הוסף פקודות shell מותאמות אישית להרצה במהלך בניית תמונת Docker.",
-    "placeholder": "flutter doctor",
+    "placeholder": "דוגמה: flutter doctor",
     "add": "הוסף פקודה",
     "remove": "הסר פקודה",
     "runAs": "הרץ בתור",
@@ -110,8 +111,8 @@
     "value": "ערך",
     "add": "הוסף משתנה",
     "remove": "הסר",
-    "keyPlaceholder": "שם_משתנה",
-    "valuePlaceholder": "ערך"
+    "keyPlaceholder": "דוגמה: שם_משתנה",
+    "valuePlaceholder": "דוגמה: ערך"
   },
   "claudeMd": {
     "title": "CLAUDE.md",
@@ -122,7 +123,7 @@
     "path": "נתיב קובץ",
     "add": "הוסף נתיב",
     "remove": "הסר",
-    "pathPlaceholder": ".env.local",
+    "pathPlaceholder": "דוגמה: .env.local",
     "help": "הנתיבים הם יחסיים ל-/workspace/. קבצים אלה יותקנו כקבצים ריקים לקריאה בלבד כדי למנוע גישה לנתונים רגישים."
   },
   "settings": {
@@ -131,7 +132,7 @@
     "permissions": "הרשאות",
     "directive": "הוראה",
     "pattern": "תבנית",
-    "patternPlaceholder": "src/** או .env",
+    "patternPlaceholder": "דוגמה: src/** או .env",
     "addRule": "הוסף כלל",
     "removeRule": "הסר כלל",
     "allow": "אפשר",
@@ -140,13 +141,19 @@
     "noAllowRules": "לא הוגדרו כללי אישור.",
     "noAskRules": "לא הוגדרו כללי שאלה.",
     "noDenyRules": "לא הוגדרו כללי דחייה.",
-    "help": "הגדר כללי הרשאות לפעולות Read(), Edit() ו-WebFetch(). תבניות תומכות בתחביר glob כמו src/** להתאמה רקורסיבית."
+    "help": "הגדר כללי הרשאות לפעולות Read(), Edit() ו-WebFetch(). תבניות תומכות בתחביר glob כמו src/** להתאמה רקורסיבית.",
+    "learnMore": "למידע נוסף"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "ה-Dockerfile מגדיר אילו תוכנות מותקנות בקונטיינר. בנוסף ל-Node.js ו-Claude Code, ניתן לכלול כלים נוספים כמו TypeScript, Python, Go, ffmpeg או ImageMagick. התוכנה שנבחרה תהיה זמינה כאשר Claude מריץ פקודות.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "קובץ docker-compose.yaml שולט באופן שבו הקונטיינר מופעל. משתני סביבה (כמו מפתחות API) יכולים להיות מוגדרים כאן. קבצים מוגנים מותקנים כקבצים ריקים לקריאה בלבד כדי למנוע מ-Claude גישה לנתונים רגישים כמו קבצי .env."
+  },
+  "dockerCompose": {
+    "platform": "פלטפורמה",
+    "platformDesc": "הגדר פלטפורמה ספציפית לקונטיינר (לדוגמה linux/amd64). השאר ריק כדי להשתמש בפלטפורמה ברירת המחדל. השתמש בזה כאשר תמונות הבסיס אינן תומכות בארכיטקטורה שלך.",
+    "platformPlaceholder": "דוגמה: linux/amd64"
   },
   "download": {
     "button": "הורד ZIP",
