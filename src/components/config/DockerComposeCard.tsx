@@ -63,14 +63,22 @@ export function DockerComposeCard() {
     removeProtectedFile,
   } = useConfig();
 
-  const existingKeys = config.envVariables.map((v) => v.key);
+  const envVariables = useMemo(
+    () => config.envVariables ?? [],
+    [config.envVariables]
+  );
+
+  const existingKeys = useMemo(
+    () => envVariables.map((v) => v.key),
+    [envVariables]
+  );
 
   const sortedEnvVariables = useMemo(
     () =>
-      [...config.envVariables].sort((a, b) =>
+      [...envVariables].sort((a, b) =>
         a.key.localeCompare(b.key, undefined, { sensitivity: 'base' })
       ),
-    [config.envVariables]
+    [envVariables]
   );
 
   const sortedProtectedFiles = useMemo(
@@ -115,7 +123,7 @@ export function DockerComposeCard() {
                 <span>{t('env.add')}</span>
               </Button>
             </div>
-            {config.envVariables.length === 0 ? (
+            {envVariables.length === 0 ? (
               <p className="py-4 text-center text-sm text-muted-foreground">
                 {t('env.description')}
               </p>

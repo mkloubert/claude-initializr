@@ -22,6 +22,7 @@ import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react
 import {
   defaultAppConfig,
   defaultSoftwareConfig,
+  defaultTelemetryEnvVariables,
   type AppConfig,
   type CustomNpmPackage,
   type CustomRunCommand,
@@ -95,6 +96,24 @@ function generateId(): string {
 }
 
 /**
+ * Ensures envVariables is initialized with default telemetry-disabling variables
+ * if it's undefined or null.
+ */
+function ensureEnvVariables(config: AppConfig): AppConfig {
+  if (config.envVariables === undefined || config.envVariables === null) {
+    return {
+      ...config,
+      envVariables: defaultTelemetryEnvVariables.map((env) => ({
+        id: generateId(),
+        key: env.key,
+        value: env.value,
+      })),
+    };
+  }
+  return config;
+}
+
+/**
  * Safely loads configuration from localStorage.
  * Returns default config if nothing is stored, parsing fails, or data is corrupted.
  * This function is designed to NEVER throw - it always returns a valid config.
@@ -102,20 +121,20 @@ function generateId(): string {
 function loadConfigFromStorage(): AppConfig {
   // SSR safety check
   if (typeof window === 'undefined') {
-    return defaultAppConfig;
+    return ensureEnvVariables(defaultAppConfig);
   }
 
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) {
-      return defaultAppConfig;
+      return ensureEnvVariables(defaultAppConfig);
     }
 
     const parsed: unknown = JSON.parse(stored);
 
     // Ensure parsed is a non-null object
     if (typeof parsed !== 'object' || parsed === null) {
-      return defaultAppConfig;
+      return ensureEnvVariables(defaultAppConfig);
     }
 
     // Type assertion after validation
@@ -181,15 +200,19 @@ function loadConfigFromStorage(): AppConfig {
       : [];
 
     // Restore env variables (keys only, values are empty)
-    const envVariables: EnvVariable[] = Array.isArray(data.envVariableKeys)
-      ? data.envVariableKeys
-        .filter((key): key is string => typeof key === 'string' && key.length > 0)
-        .map((key) => ({
-          id: generateId(),
-          key,
-          value: '',
-        }))
-      : [];
+    // If envVariableKeys exists in storage (even if empty), it means user has explicitly set them
+    // If envVariableKeys doesn't exist, set to undefined (will be initialized at the end)
+    const envVariables: EnvVariable[] | undefined = data.envVariableKeys !== undefined
+      ? (Array.isArray(data.envVariableKeys)
+        ? data.envVariableKeys
+          .filter((key): key is string => typeof key === 'string' && key.length > 0)
+          .map((key) => ({
+            id: generateId(),
+            key,
+            value: '',
+          }))
+        : [])
+      : undefined;
 
     // Restore protected files
     const protectedFiles: ProtectedFile[] = Array.isArray(data.protectedFilePaths)
@@ -201,7 +224,7 @@ function loadConfigFromStorage(): AppConfig {
         }))
       : [];
 
-    return {
+    return ensureEnvVariables({
       baseImage: typeof data.baseImage === 'string' && data.baseImage.length > 0
         ? data.baseImage
         : defaultAppConfig.baseImage,
@@ -217,10 +240,10 @@ function loadConfigFromStorage(): AppConfig {
       claudeMdContent: typeof data.claudeMdContent === 'string'
         ? data.claudeMdContent
         : defaultAppConfig.claudeMdContent,
-    };
+    });
   } catch {
-    // If anything fails, return default config - app should never crash
-    return defaultAppConfig;
+    // If anything fails, return default config with telemetry vars initialized
+    return ensureEnvVariables(defaultAppConfig);
   }
 }
 
@@ -274,12 +297,14 @@ function saveConfigToStorage(config: AppConfig): void {
           }))
         : [],
       // Only store keys, NOT values for security
-      envVariableKeys: Array.isArray(config.envVariables)
+      // If envVariables is undefined, don't store envVariableKeys to preserve "not yet initialized" state
+      // If envVariables is an array (even empty), store the keys to preserve "explicitly set" state
+      envVariableKeys: config.envVariables !== undefined && config.envVariables !== null
         ? config.envVariables
           .filter((env) => env && typeof env === 'object' && typeof env.key === 'string')
           .map((env) => env.key)
           .filter((key) => key.length > 0)
-        : [],
+        : undefined,
       protectedFilePaths: Array.isArray(config.protectedFiles)
         ? config.protectedFiles
           .filter((file) => file && typeof file === 'object' && typeof file.path === 'string')
@@ -547,7 +572,7 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     };
     setConfig((prev) => ({
       ...prev,
-      envVariables: [...prev.envVariables, newVariable],
+      envVariables: [...(prev.envVariables ?? []), newVariable],
     }));
   }, []);
 
@@ -555,7 +580,7 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     (id: string, field: 'key' | 'value', value: string) => {
       setConfig((prev) => ({
         ...prev,
-        envVariables: prev.envVariables.map((envVar) =>
+        envVariables: (prev.envVariables ?? []).map((envVar) =>
           envVar.id === id ? { ...envVar, [field]: value } : envVar
         ),
       }));
@@ -566,7 +591,7 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
   const removeEnvVariable = useCallback((id: string) => {
     setConfig((prev) => ({
       ...prev,
-      envVariables: prev.envVariables.filter((envVar) => envVar.id !== id),
+      envVariables: (prev.envVariables ?? []).filter((envVar) => envVar.id !== id),
     }));
   }, []);
 

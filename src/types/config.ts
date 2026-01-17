@@ -116,8 +116,8 @@ export interface AppConfig {
   customNpmPackages: CustomNpmPackage[];
   /** Custom RUN commands for the Dockerfile */
   customRunCommands: CustomRunCommand[];
-  /** List of environment variables for .env file */
-  envVariables: EnvVariable[];
+  /** List of environment variables for .env file (undefined = use defaults on next load) */
+  envVariables: EnvVariable[] | undefined;
   /** List of files to protect with .empty mount */
   protectedFiles: ProtectedFile[];
   /** Content of the CLAUDE.md file */
@@ -169,7 +169,20 @@ export const defaultAppConfig: AppConfig = {
   customAptPackages: [],
   customNpmPackages: [],
   customRunCommands: [],
-  envVariables: [],
+  envVariables: undefined,
   protectedFiles: [],
   claudeMdContent: '# Project Instructions\n\n',
 };
+
+/**
+ * Default telemetry-disabling environment variables for Claude Code.
+ * These are automatically added when envVariables is undefined (initial load).
+ */
+export const defaultTelemetryEnvVariables: Array<{ key: string; value: string }> = [
+  { key: 'CLAUDE_CODE_ENABLE_TELEMETRY', value: '0' },
+  { key: 'CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC', value: '1' },
+  { key: 'DISABLE_TELEMETRY', value: '1' },
+  { key: 'DISABLE_ERROR_REPORTING', value: '1' },
+  { key: 'DISABLE_BUG_COMMAND', value: '1' },
+  { key: 'CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY', value: '1' },
+];
