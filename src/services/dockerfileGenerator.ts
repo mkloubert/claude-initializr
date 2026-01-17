@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import type { SoftwareConfig } from '@/types';
+import type { CustomNpmPackage, SoftwareConfig } from '@/types';
 
 /**
  * Generate Docker ARG definitions for software versions.
@@ -40,9 +40,9 @@ export function generateDockerArgs(software: SoftwareConfig): string {
 }
 
 /**
- * Generate additional APT packages based on selected software.
+ * Generate additional APT packages based on selected software and custom packages.
  */
-export function generateAptPackages(software: SoftwareConfig): string {
+export function generateAptPackages(software: SoftwareConfig, customPackages: string[] = []): string {
   const packages: string[] = [];
 
   if (software.ffmpeg.enabled) {
@@ -62,6 +62,11 @@ export function generateAptPackages(software: SoftwareConfig): string {
     );
   }
 
+  // Add custom packages (already deduplicated by the config layer)
+  if (customPackages.length > 0) {
+    packages.push(...customPackages);
+  }
+
   if (packages.length === 0) {
     return '';
   }
@@ -73,7 +78,10 @@ export function generateAptPackages(software: SoftwareConfig): string {
 /**
  * Generate Dockerfile commands to run as root user.
  */
-export function generateRootUserExtensions(software: SoftwareConfig): string {
+export function generateRootUserExtensions(
+  software: SoftwareConfig,
+  customNpmPackages: CustomNpmPackage[] = []
+): string {
   const commands: string[] = [];
 
   // Python symlinks (run as root for /usr/local/bin access)
@@ -85,13 +93,28 @@ export function generateRootUserExtensions(software: SoftwareConfig): string {
     );
   }
 
+  // Custom NPM packages to install as root
+  const rootNpmPackages = customNpmPackages
+    .filter((pkg) => pkg.installAs === 'root')
+    .map((pkg) => pkg.name);
+
+  if (rootNpmPackages.length > 0) {
+    commands.push(
+      '# Install custom global NPM packages (as root)',
+      `RUN npm install -g ${rootNpmPackages.join(' ')}`
+    );
+  }
+
   return commands.join('\n');
 }
 
 /**
  * Generate Dockerfile commands to run as node user.
  */
-export function generateNodeUserExtensions(software: SoftwareConfig): string {
+export function generateNodeUserExtensions(
+  software: SoftwareConfig,
+  customNpmPackages: CustomNpmPackage[] = []
+): string {
   const commands: string[] = [];
 
   // TypeScript installation (as node user via npm) - uses ARG for version
@@ -99,6 +122,18 @@ export function generateNodeUserExtensions(software: SoftwareConfig): string {
     commands.push(
       '# Install TypeScript globally',
       'RUN npm install -g typescript@${TYPESCRIPT_VERSION}'
+    );
+  }
+
+  // Custom NPM packages to install as node user
+  const nodeNpmPackages = customNpmPackages
+    .filter((pkg) => pkg.installAs === 'node')
+    .map((pkg) => pkg.name);
+
+  if (nodeNpmPackages.length > 0) {
+    commands.push(
+      '# Install custom global NPM packages (as node)',
+      `RUN npm install -g ${nodeNpmPackages.join(' ')}`
     );
   }
 
@@ -111,7 +146,9 @@ export function generateNodeUserExtensions(software: SoftwareConfig): string {
 export function generateDockerfileReplacements(
   baseImage: string,
   nodeVersion: string,
-  software: SoftwareConfig
+  software: SoftwareConfig,
+  customAptPackages: string[] = [],
+  customNpmPackages: CustomNpmPackage[] = []
 ): {
   BASE_IMAGE: string;
   NODE_VERSION: string;
@@ -124,8 +161,8 @@ export function generateDockerfileReplacements(
     BASE_IMAGE: baseImage,
     NODE_VERSION: nodeVersion,
     DOCKER_ARGS: generateDockerArgs(software),
-    MORE_APT_PACKAGES: generateAptPackages(software),
-    RUN_AS_ROOT_USER_EXTENSIONS: generateRootUserExtensions(software),
-    RUN_AS_NODE_USER_EXTENSIONS: generateNodeUserExtensions(software),
+    MORE_APT_PACKAGES: generateAptPackages(software, customAptPackages),
+    RUN_AS_ROOT_USER_EXTENSIONS: generateRootUserExtensions(software, customNpmPackages),
+    RUN_AS_NODE_USER_EXTENSIONS: generateNodeUserExtensions(software, customNpmPackages),
   };
 }

@@ -68,6 +68,24 @@
     "version": "バージョン",
     "latest": "最新"
   },
+  "aptPackages": {
+    "title": "カスタムAPTパッケージ",
+    "description": "コンテナにインストールする追加のDebian/Ubuntuパッケージを追加します。",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "パッケージを追加",
+    "remove": "{{package}}を削除"
+  },
+  "npmPackages": {
+    "title": "カスタムNPMパッケージ",
+    "description": "コンテナにグローバルインストールする追加のNPMパッケージを追加します。",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "パッケージを追加",
+    "remove": "{{package}}を削除",
+    "installAs": "インストールユーザー",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "{{package}}のインストールユーザーを切り替え"
+  },
   "env": {
     "description": "環境変数が定義されていません。",
     "key": "キー",

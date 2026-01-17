@@ -68,6 +68,24 @@
     "version": "Wersja",
     "latest": "najnowsza"
   },
+  "aptPackages": {
+    "title": "Niestandardowe pakiety APT",
+    "description": "Dodaj dodatkowe pakiety Debian/Ubuntu do zainstalowania w kontenerze.",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "Dodaj pakiety",
+    "remove": "Usuń {{package}}"
+  },
+  "npmPackages": {
+    "title": "Niestandardowe pakiety NPM",
+    "description": "Dodaj dodatkowe pakiety NPM do globalnej instalacji w kontenerze.",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "Dodaj pakiety",
+    "remove": "Usuń {{package}}",
+    "installAs": "Instaluj jako",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Przełącz użytkownika instalacji dla {{package}}"
+  },
   "env": {
     "description": "Brak zdefiniowanych zmiennych środowiskowych.",
     "key": "Klucz",

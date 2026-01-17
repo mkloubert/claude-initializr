@@ -23,7 +23,9 @@ import {
   defaultAppConfig,
   defaultSoftwareConfig,
   type AppConfig,
+  type CustomNpmPackage,
   type EnvVariable,
+  type NpmInstallUser,
   type ProtectedFile,
   type SoftwareConfig,
   type SoftwarePackage,
@@ -71,6 +73,8 @@ interface StoredConfig {
   baseImage?: string;
   nodeVersion?: string;
   software?: Partial<Record<keyof SoftwareConfig, { enabled?: boolean; version?: string }>>;
+  customAptPackages?: string[];
+  customNpmPackages?: Array<{ name: string; installAs: NpmInstallUser }>;
   envVariableKeys?: string[];
   protectedFilePaths?: string[];
   claudeMdContent?: string;
@@ -113,6 +117,28 @@ function loadConfigFromStorage(): AppConfig {
       }
     }
 
+    // Restore custom APT packages
+    const customAptPackages: string[] = Array.isArray(parsed.customAptPackages)
+      ? parsed.customAptPackages.filter((pkg): pkg is string => typeof pkg === 'string' && pkg.length > 0)
+      : [];
+
+    // Restore custom NPM packages
+    const customNpmPackages: CustomNpmPackage[] = Array.isArray(parsed.customNpmPackages)
+      ? parsed.customNpmPackages
+        .filter((pkg): pkg is { name: string; installAs: NpmInstallUser } =>
+          typeof pkg === 'object' &&
+          pkg !== null &&
+          typeof pkg.name === 'string' &&
+          pkg.name.length > 0 &&
+          (pkg.installAs === 'node' || pkg.installAs === 'root')
+        )
+        .map((pkg) => ({
+          id: crypto.randomUUID(),
+          name: pkg.name,
+          installAs: pkg.installAs,
+        }))
+      : [];
+
     // Restore env variables (keys only, values are empty)
     const envVariables: EnvVariable[] = Array.isArray(parsed.envVariableKeys)
       ? parsed.envVariableKeys
@@ -138,6 +164,8 @@ function loadConfigFromStorage(): AppConfig {
       baseImage: typeof parsed.baseImage === 'string' ? parsed.baseImage : defaultAppConfig.baseImage,
       nodeVersion: typeof parsed.nodeVersion === 'string' ? parsed.nodeVersion : defaultAppConfig.nodeVersion,
       software,
+      customAptPackages,
+      customNpmPackages,
       envVariables,
       protectedFiles,
       claudeMdContent: typeof parsed.claudeMdContent === 'string'
@@ -172,6 +200,11 @@ function saveConfigToStorage(config: AppConfig): void {
           },
         ])
       ),
+      customAptPackages: config.customAptPackages,
+      customNpmPackages: config.customNpmPackages.map((pkg) => ({
+        name: pkg.name,
+        installAs: pkg.installAs,
+      })),
       // Only store keys, NOT values for security
       envVariableKeys: config.envVariables
         .map((env) => env.key)
@@ -278,6 +311,127 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     []
   );
 
+  // Helper function to get all APT packages from enabled software
+  const getBuiltInAptPackages = useCallback((software: SoftwareConfig): string[] => {
+    const packages: string[] = [];
+    if (software.ffmpeg.enabled) {
+      packages.push('ffmpeg');
+    }
+    if (software.imagemagick.enabled) {
+      packages.push('imagemagick');
+    }
+    if (software.python.enabled) {
+      // Python packages use variable substitution, but we track the base names
+      packages.push('python3', 'python3-pip', 'python3-venv');
+    }
+    return packages;
+  }, []);
+
+  // Custom APT packages actions
+  const addCustomAptPackages = useCallback((input: string) => {
+    setConfig((prev) => {
+      // Parse comma-separated input and clean up package names
+      const newPackages = input
+        .split(',')
+        .map((pkg) => pkg.trim().toLowerCase())
+        .filter((pkg) => pkg.length > 0 && /^[a-z0-9][a-z0-9+.-]*$/.test(pkg));
+
+      if (newPackages.length === 0) {
+        return prev;
+      }
+
+      // Get all existing packages (built-in + custom)
+      const builtInPackages = getBuiltInAptPackages(prev.software);
+      const existingPackages = new Set([
+        ...builtInPackages,
+        ...prev.customAptPackages,
+      ]);
+
+      // Filter out duplicates
+      const uniqueNewPackages = newPackages.filter((pkg) => !existingPackages.has(pkg));
+
+      if (uniqueNewPackages.length === 0) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        customAptPackages: [...prev.customAptPackages, ...uniqueNewPackages].sort((a, b) =>
+          a.localeCompare(b, undefined, { sensitivity: 'base' })
+        ),
+      };
+    });
+  }, [getBuiltInAptPackages]);
+
+  const removeCustomAptPackage = useCallback((packageName: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      customAptPackages: prev.customAptPackages.filter((pkg) => pkg !== packageName),
+    }));
+  }, []);
+
+  const getAllAptPackages = useCallback((): string[] => {
+    const builtInPackages = getBuiltInAptPackages(config.software);
+    return [...new Set([...builtInPackages, ...config.customAptPackages])].sort((a, b) =>
+      a.localeCompare(b, undefined, { sensitivity: 'base' })
+    );
+  }, [config.software, config.customAptPackages, getBuiltInAptPackages]);
+
+  // Custom NPM packages actions
+  const addCustomNpmPackages = useCallback((input: string, installAs: NpmInstallUser) => {
+    setConfig((prev) => {
+      // Parse comma-separated input and clean up package names
+      // NPM package names can include @scope/name format
+      const newPackages = input
+        .split(',')
+        .map((pkg) => pkg.trim())
+        .filter((pkg) => pkg.length > 0 && /^(@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(pkg));
+
+      if (newPackages.length === 0) {
+        return prev;
+      }
+
+      // Get existing package names
+      const existingNames = new Set(prev.customNpmPackages.map((pkg) => pkg.name));
+
+      // Filter out duplicates
+      const uniqueNewPackages = newPackages.filter((pkg) => !existingNames.has(pkg));
+
+      if (uniqueNewPackages.length === 0) {
+        return prev;
+      }
+
+      const newNpmPackages: CustomNpmPackage[] = uniqueNewPackages.map((name) => ({
+        id: crypto.randomUUID(),
+        name,
+        installAs,
+      }));
+
+      return {
+        ...prev,
+        customNpmPackages: [...prev.customNpmPackages, ...newNpmPackages].sort((a, b) =>
+          a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+        ),
+      };
+    });
+  }, []);
+
+  const removeCustomNpmPackage = useCallback((id: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      customNpmPackages: prev.customNpmPackages.filter((pkg) => pkg.id !== id),
+    }));
+  }, []);
+
+  const updateCustomNpmPackageUser = useCallback((id: string, installAs: NpmInstallUser) => {
+    setConfig((prev) => ({
+      ...prev,
+      customNpmPackages: prev.customNpmPackages.map((pkg) =>
+        pkg.id === id ? { ...pkg, installAs } : pkg
+      ),
+    }));
+  }, []);
+
   // Environment variables actions
   const addEnvVariable = useCallback(() => {
     const newVariable: EnvVariable = {
@@ -360,6 +514,12 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       setNodeVersion,
       toggleSoftware,
       setSoftwareVersion,
+      addCustomAptPackages,
+      removeCustomAptPackage,
+      getAllAptPackages,
+      addCustomNpmPackages,
+      removeCustomNpmPackage,
+      updateCustomNpmPackageUser,
       addEnvVariable,
       updateEnvVariable,
       removeEnvVariable,
@@ -377,6 +537,12 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       setNodeVersion,
       toggleSoftware,
       setSoftwareVersion,
+      addCustomAptPackages,
+      removeCustomAptPackage,
+      getAllAptPackages,
+      addCustomNpmPackages,
+      removeCustomNpmPackage,
+      updateCustomNpmPackageUser,
       addEnvVariable,
       updateEnvVariable,
       removeEnvVariable,

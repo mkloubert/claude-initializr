@@ -68,6 +68,24 @@
     "version": "גרסה",
     "latest": "אחרונה"
   },
+  "aptPackages": {
+    "title": "חבילות APT מותאמות אישית",
+    "description": "הוסף חבילות Debian/Ubuntu נוספות להתקנה בקונטיינר.",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "הוסף חבילות",
+    "remove": "הסר {{package}}"
+  },
+  "npmPackages": {
+    "title": "חבילות NPM מותאמות אישית",
+    "description": "הוסף חבילות NPM נוספות להתקנה גלובלית בקונטיינר.",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "הוסף חבילות",
+    "remove": "הסר {{package}}",
+    "installAs": "התקן בתור",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "החלף משתמש התקנה עבור {{package}}"
+  },
   "env": {
     "description": "לא הוגדרו משתני סביבה.",
     "key": "מפתח",

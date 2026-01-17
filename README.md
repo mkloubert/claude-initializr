@@ -18,6 +18,8 @@ A web application to generate Docker configuration files for running [Claude Cod
   - Python 3 (with version selection)
   - ffmpeg (audio/video processing)
   - ImageMagick (image processing)
+- **Custom APT Packages**: Add additional Debian/Ubuntu packages to install in the container
+- **Custom NPM Packages**: Add additional NPM packages to install globally, with the option to install as `root` or `node` user
 
 ### docker-compose.yaml Configuration
 
@@ -167,15 +169,20 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **Select Software**: Choose which additional software to install in your container
 
-3. **Set Environment Variables**: Add any environment variables your project needs (e.g., `ANTHROPIC_API_KEY`)
+3. **Add Custom Packages**:
+   - Add custom APT packages (e.g., `curl`, `graphviz`, `sqlite3`)
+   - Add custom NPM packages to install globally (e.g., `eslint`, `prettier`)
+   - Choose whether NPM packages should be installed as `node` (default) or `root` user
 
-4. **Protect Sensitive Files**: Add paths to files that should be protected (e.g., `.env.local`)
+4. **Set Environment Variables**: Add any environment variables your project needs (e.g., `ANTHROPIC_API_KEY`)
 
-5. **Edit CLAUDE.md**: Write instructions for Claude in the Markdown editor
+5. **Protect Sensitive Files**: Add paths to files that should be protected (e.g., `.env.local`)
 
-6. **Preview**: Check the generated configuration files in the preview tabs
+6. **Edit CLAUDE.md**: Write instructions for Claude in the Markdown editor
 
-7. **Download**: Click "Download ZIP" to get all files
+7. **Preview**: Check the generated configuration files in the preview tabs
+
+8. **Download**: Click "Download ZIP" to get all files
 
 ## Using the Generated Files
 

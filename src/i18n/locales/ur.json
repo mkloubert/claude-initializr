@@ -68,6 +68,24 @@
     "version": "ورژن",
     "latest": "تازہ ترین"
   },
+  "aptPackages": {
+    "title": "اپنی مرضی کے APT پیکیجز",
+    "description": "کنٹینر میں انسٹال کرنے کے لیے اضافی Debian/Ubuntu پیکیجز شامل کریں۔",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "پیکیجز شامل کریں",
+    "remove": "{{package}} ہٹائیں"
+  },
+  "npmPackages": {
+    "title": "اپنی مرضی کے NPM پیکیجز",
+    "description": "کنٹینر میں گلوبل طور پر انسٹال کرنے کے لیے اضافی NPM پیکیجز شامل کریں۔",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "پیکیجز شامل کریں",
+    "remove": "{{package}} ہٹائیں",
+    "installAs": "کے طور پر انسٹال کریں",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "{{package}} کے لیے انسٹالیشن صارف تبدیل کریں"
+  },
   "env": {
     "description": "کوئی ماحولیاتی متغیرات متعین نہیں۔",
     "key": "کلید",

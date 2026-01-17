@@ -68,6 +68,24 @@
     "version": "Версія",
     "latest": "остання"
   },
+  "aptPackages": {
+    "title": "Користувацькі APT-пакети",
+    "description": "Додайте додаткові пакети Debian/Ubuntu для встановлення в контейнері.",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "Додати пакети",
+    "remove": "Видалити {{package}}"
+  },
+  "npmPackages": {
+    "title": "Користувацькі NPM-пакети",
+    "description": "Додайте додаткові NPM-пакети для глобального встановлення в контейнері.",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "Додати пакети",
+    "remove": "Видалити {{package}}",
+    "installAs": "Встановити як",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Змінити користувача встановлення для {{package}}"
+  },
   "env": {
     "description": "Змінні середовища не визначено.",
     "key": "Ключ",

@@ -68,6 +68,24 @@
     "version": "Sürüm",
     "latest": "en son"
   },
+  "aptPackages": {
+    "title": "Özel APT Paketleri",
+    "description": "Konteynere kurulacak ek Debian/Ubuntu paketleri ekleyin.",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "Paket ekle",
+    "remove": "{{package}} paketini kaldır"
+  },
+  "npmPackages": {
+    "title": "Özel NPM Paketleri",
+    "description": "Konteynere global olarak kurulacak ek NPM paketleri ekleyin.",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "Paket ekle",
+    "remove": "{{package}} paketini kaldır",
+    "installAs": "Olarak kur",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "{{package}} için kurulum kullanıcısını değiştir"
+  },
   "env": {
     "description": "Tanımlanmış ortam değişkeni yok.",
     "key": "Anahtar",

@@ -68,6 +68,24 @@
     "version": "संस्करण",
     "latest": "नवीनतम"
   },
+  "aptPackages": {
+    "title": "कस्टम APT पैकेज",
+    "description": "कंटेनर में इंस्टॉल करने के लिए अतिरिक्त Debian/Ubuntu पैकेज जोड़ें।",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "पैकेज जोड़ें",
+    "remove": "{{package}} हटाएं"
+  },
+  "npmPackages": {
+    "title": "कस्टम NPM पैकेज",
+    "description": "कंटेनर में ग्लोबली इंस्टॉल करने के लिए अतिरिक्त NPM पैकेज जोड़ें।",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "पैकेज जोड़ें",
+    "remove": "{{package}} हटाएं",
+    "installAs": "के रूप में इंस्टॉल करें",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "{{package}} के लिए इंस्टॉलेशन उपयोगकर्ता बदलें"
+  },
   "env": {
     "description": "कोई एनवायरनमेंट वेरिएबल परिभाषित नहीं।",
     "key": "कुंजी",

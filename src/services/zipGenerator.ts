@@ -37,8 +37,14 @@ import { generateDockerComposeReplacements } from './volumeGenerator';
 export async function generateZipFile(config: AppConfig): Promise<Blob> {
   const zip = new JSZip();
 
-  // Generate Dockerfile with software selections
-  const dockerfileReplacements = generateDockerfileReplacements(config.baseImage, config.nodeVersion, config.software);
+  // Generate Dockerfile with software selections and custom packages
+  const dockerfileReplacements = generateDockerfileReplacements(
+    config.baseImage,
+    config.nodeVersion,
+    config.software,
+    config.customAptPackages,
+    config.customNpmPackages
+  );
   const dockerfileContent = processDockerfile(dockerfileReplacements);
   zip.file('Dockerfile', dockerfileContent);
 

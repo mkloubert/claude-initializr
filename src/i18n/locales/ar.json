@@ -68,6 +68,24 @@
     "version": "الإصدار",
     "latest": "الأحدث"
   },
+  "aptPackages": {
+    "title": "حزم APT مخصصة",
+    "description": "أضف حزم Debian/Ubuntu إضافية للتثبيت في الحاوية.",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "إضافة حزم",
+    "remove": "إزالة {{package}}"
+  },
+  "npmPackages": {
+    "title": "حزم NPM مخصصة",
+    "description": "أضف حزم NPM إضافية للتثبيت العام في الحاوية.",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "إضافة حزم",
+    "remove": "إزالة {{package}}",
+    "installAs": "التثبيت كـ",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "تبديل مستخدم التثبيت لـ {{package}}"
+  },
   "env": {
     "description": "لم يتم تعريف متغيرات البيئة.",
     "key": "المفتاح",

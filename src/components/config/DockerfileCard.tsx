@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useMemo, lazy, Suspense, type ReactNode } from 'react';
+import { useMemo, useState, lazy, Suspense, type ReactNode, type KeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/contexts';
 import {
@@ -29,17 +29,26 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { SoftwareItem } from './SoftwareItem';
-import { Package, Eye, Wand2, Loader2 } from 'lucide-react';
+import { Package, Eye, Wand2, Loader2, Plus, X, Terminal } from 'lucide-react';
 
 // Lazy load the preview component to reduce initial bundle size
 const DockerfilePreview = lazy(() =>
   import('@/components/preview/DockerfilePreview').then((m) => ({ default: m.DockerfilePreview }))
 );
-import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs } from 'react-icons/si';
-import type { SoftwareConfig } from '@/types';
+import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm } from 'react-icons/si';
+import type { NpmInstallUser, SoftwareConfig } from '@/types';
 
 /**
  * Software metadata for rendering.
@@ -81,7 +90,21 @@ const softwareMetadata: Array<{
  */
 export function DockerfileCard() {
   const { t } = useTranslation();
-  const { config, setBaseImage, setNodeVersion, toggleSoftware, setSoftwareVersion } = useConfig();
+  const {
+    config,
+    setBaseImage,
+    setNodeVersion,
+    toggleSoftware,
+    setSoftwareVersion,
+    addCustomAptPackages,
+    removeCustomAptPackage,
+    addCustomNpmPackages,
+    removeCustomNpmPackage,
+    updateCustomNpmPackageUser,
+  } = useConfig();
+  const [aptInput, setAptInput] = useState('');
+  const [npmInput, setNpmInput] = useState('');
+  const [npmInstallAs, setNpmInstallAs] = useState<NpmInstallUser>('node');
 
   const sortedSoftwareMetadata = useMemo(
     () =>
@@ -166,6 +189,175 @@ export function DockerfileCard() {
                   }
                 />
               ))}
+
+              {/* Custom APT Packages */}
+              <div className="rounded-lg border p-3 mt-2">
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <Package className="h-5 w-5 text-blue-600" aria-hidden="true" />
+                    <div className="flex flex-col">
+                      <span className="font-medium">{t('aptPackages.title')}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {t('aptPackages.description')}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Label htmlFor="apt-packages" className="sr-only">
+                      {t('aptPackages.placeholder')}
+                    </Label>
+                    <Input
+                      id="apt-packages"
+                      type="text"
+                      value={aptInput}
+                      onChange={(e) => setAptInput(e.target.value)}
+                      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                        if (e.key === 'Enter' && aptInput.trim()) {
+                          e.preventDefault();
+                          addCustomAptPackages(aptInput);
+                          setAptInput('');
+                        }
+                      }}
+                      placeholder={t('aptPackages.placeholder')}
+                      className="flex-1"
+                      aria-label={t('aptPackages.placeholder')}
+                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={() => {
+                        if (aptInput.trim()) {
+                          addCustomAptPackages(aptInput);
+                          setAptInput('');
+                        }
+                      }}
+                      aria-label={t('aptPackages.add')}
+                    >
+                      <Plus className="h-4 w-4" aria-hidden="true" />
+                    </Button>
+                  </div>
+                  {config.customAptPackages.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {config.customAptPackages.map((pkg) => (
+                        <Badge
+                          key={pkg}
+                          variant="secondary"
+                          className="flex items-center gap-1 pr-1"
+                        >
+                          {pkg}
+                          <button
+                            type="button"
+                            onClick={() => removeCustomAptPackage(pkg)}
+                            className="ml-1 rounded-full p-0.5 hover:bg-muted-foreground/20 focus:outline-none focus:ring-2 focus:ring-ring"
+                            aria-label={t('aptPackages.remove', { package: pkg })}
+                          >
+                            <X className="h-3 w-3" aria-hidden="true" />
+                          </button>
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Custom NPM Packages */}
+              <div className="rounded-lg border p-3">
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <SiNpm className="h-5 w-5 text-red-600" aria-hidden="true" />
+                    <div className="flex flex-col">
+                      <span className="font-medium">{t('npmPackages.title')}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {t('npmPackages.description')}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Label htmlFor="npm-packages" className="sr-only">
+                      {t('npmPackages.placeholder')}
+                    </Label>
+                    <Input
+                      id="npm-packages"
+                      type="text"
+                      value={npmInput}
+                      onChange={(e) => setNpmInput(e.target.value)}
+                      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                        if (e.key === 'Enter' && npmInput.trim()) {
+                          e.preventDefault();
+                          addCustomNpmPackages(npmInput, npmInstallAs);
+                          setNpmInput('');
+                        }
+                      }}
+                      placeholder={t('npmPackages.placeholder')}
+                      className="flex-1"
+                      aria-label={t('npmPackages.placeholder')}
+                    />
+                    <Select
+                      value={npmInstallAs}
+                      onValueChange={(value: NpmInstallUser) => setNpmInstallAs(value)}
+                    >
+                      <SelectTrigger className="w-24" aria-label={t('npmPackages.installAs')}>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="node">{t('npmPackages.userNode')}</SelectItem>
+                        <SelectItem value="root">{t('npmPackages.userRoot')}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={() => {
+                        if (npmInput.trim()) {
+                          addCustomNpmPackages(npmInput, npmInstallAs);
+                          setNpmInput('');
+                        }
+                      }}
+                      aria-label={t('npmPackages.add')}
+                    >
+                      <Plus className="h-4 w-4" aria-hidden="true" />
+                    </Button>
+                  </div>
+                  {config.customNpmPackages.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {config.customNpmPackages.map((pkg) => (
+                        <Badge
+                          key={pkg.id}
+                          variant="secondary"
+                          className="flex items-center gap-1 pr-1"
+                        >
+                          <span className="flex items-center gap-1">
+                            {pkg.name}
+                            <button
+                              type="button"
+                              onClick={() => updateCustomNpmPackageUser(
+                                pkg.id,
+                                pkg.installAs === 'node' ? 'root' : 'node'
+                              )}
+                              className="ml-1 rounded px-1 text-xs font-normal bg-muted hover:bg-muted-foreground/20 focus:outline-none focus:ring-2 focus:ring-ring"
+                              aria-label={t('npmPackages.toggleUser', { package: pkg.name })}
+                              title={t('npmPackages.installAs') + ': ' + t(`npmPackages.user${pkg.installAs === 'node' ? 'Node' : 'Root'}`)}
+                            >
+                              <Terminal className="h-3 w-3 inline mr-0.5" aria-hidden="true" />
+                              {pkg.installAs}
+                            </button>
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => removeCustomNpmPackage(pkg.id)}
+                            className="ml-1 rounded-full p-0.5 hover:bg-muted-foreground/20 focus:outline-none focus:ring-2 focus:ring-ring"
+                            aria-label={t('npmPackages.remove', { package: pkg.name })}
+                          >
+                            <X className="h-3 w-3" aria-hidden="true" />
+                          </button>
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </TabsContent>
 

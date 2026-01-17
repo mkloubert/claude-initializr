@@ -65,6 +65,23 @@ export interface ProtectedFile {
 }
 
 /**
+ * User context for installing NPM packages.
+ */
+export type NpmInstallUser = 'node' | 'root';
+
+/**
+ * A custom NPM package to install globally.
+ */
+export interface CustomNpmPackage {
+  /** Unique identifier for the package (used as React key) */
+  id: string;
+  /** NPM package name (e.g., "typescript", "@scope/package") */
+  name: string;
+  /** User context for installation (node or root) */
+  installAs: NpmInstallUser;
+}
+
+/**
  * Complete application configuration state.
  */
 export interface AppConfig {
@@ -74,6 +91,10 @@ export interface AppConfig {
   nodeVersion: string;
   /** Software package configuration */
   software: SoftwareConfig;
+  /** Custom APT packages to install */
+  customAptPackages: string[];
+  /** Custom NPM packages to install globally */
+  customNpmPackages: CustomNpmPackage[];
   /** List of environment variables for .env file */
   envVariables: EnvVariable[];
   /** List of files to protect with .empty mount */
@@ -119,6 +140,8 @@ export const defaultAppConfig: AppConfig = {
   baseImage: 'node',
   nodeVersion: '24',
   software: defaultSoftwareConfig,
+  customAptPackages: [],
+  customNpmPackages: [],
   envVariables: [],
   protectedFiles: [],
   claudeMdContent: '# Project Instructions\n\n',

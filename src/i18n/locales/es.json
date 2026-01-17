@@ -68,6 +68,24 @@
     "version": "Versión",
     "latest": "última"
   },
+  "aptPackages": {
+    "title": "Paquetes APT personalizados",
+    "description": "Añade paquetes Debian/Ubuntu adicionales para instalar en el contenedor.",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "Añadir paquetes",
+    "remove": "Eliminar {{package}}"
+  },
+  "npmPackages": {
+    "title": "Paquetes NPM personalizados",
+    "description": "Añade paquetes NPM adicionales para instalar globalmente en el contenedor.",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "Añadir paquetes",
+    "remove": "Eliminar {{package}}",
+    "installAs": "Instalar como",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Cambiar usuario de instalación para {{package}}"
+  },
   "env": {
     "description": "No hay variables de entorno definidas.",
     "key": "Clave",

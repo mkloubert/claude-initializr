@@ -30,9 +30,15 @@ export function DockerfilePreview() {
   const { config } = useConfig();
 
   const dockerfileContent = useMemo(() => {
-    const replacements = generateDockerfileReplacements(config.baseImage, config.nodeVersion, config.software);
+    const replacements = generateDockerfileReplacements(
+      config.baseImage,
+      config.nodeVersion,
+      config.software,
+      config.customAptPackages,
+      config.customNpmPackages
+    );
     return processDockerfile(replacements);
-  }, [config.baseImage, config.nodeVersion, config.software]);
+  }, [config.baseImage, config.nodeVersion, config.software, config.customAptPackages, config.customNpmPackages]);
 
   return <CodePreview code={dockerfileContent} language="dockerfile" />;
 }

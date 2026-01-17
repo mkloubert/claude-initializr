@@ -68,6 +68,24 @@
     "version": "版本",
     "latest": "最新"
   },
+  "aptPackages": {
+    "title": "自定义APT软件包",
+    "description": "添加要在容器中安装的额外Debian/Ubuntu软件包。",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "添加软件包",
+    "remove": "删除 {{package}}"
+  },
+  "npmPackages": {
+    "title": "自定义NPM软件包",
+    "description": "添加要在容器中全局安装的额外NPM软件包。",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "添加软件包",
+    "remove": "删除 {{package}}",
+    "installAs": "安装用户",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "切换 {{package}} 的安装用户"
+  },
   "env": {
     "description": "未定义环境变量。",
     "key": "键",

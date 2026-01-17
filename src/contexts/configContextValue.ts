@@ -19,7 +19,7 @@
 // DEALINGS IN THE SOFTWARE.
 
 import { createContext } from 'react';
-import type { AppConfig, SoftwareConfig } from '../types';
+import type { AppConfig, NpmInstallUser, SoftwareConfig } from '../types';
 
 /**
  * Context value interface for configuration state and actions.
@@ -44,6 +44,22 @@ export interface ConfigContextValue {
   toggleSoftware: (softwareId: keyof SoftwareConfig) => void;
   /** Update the version for a software package */
   setSoftwareVersion: (softwareId: keyof SoftwareConfig, version: string) => void;
+
+  // Custom APT packages actions
+  /** Add custom APT packages (comma-separated input supported, duplicates ignored) */
+  addCustomAptPackages: (packages: string) => void;
+  /** Remove a custom APT package */
+  removeCustomAptPackage: (packageName: string) => void;
+  /** Get list of all APT packages (from software + custom) */
+  getAllAptPackages: () => string[];
+
+  // Custom NPM packages actions
+  /** Add custom NPM packages (comma-separated input supported, duplicates ignored) */
+  addCustomNpmPackages: (packages: string, installAs: NpmInstallUser) => void;
+  /** Remove a custom NPM package */
+  removeCustomNpmPackage: (id: string) => void;
+  /** Update the install user for a custom NPM package */
+  updateCustomNpmPackageUser: (id: string, installAs: NpmInstallUser) => void;
 
   // Environment variables actions
   /** Add a new environment variable */

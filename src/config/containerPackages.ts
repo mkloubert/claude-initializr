@@ -18,5 +18,50 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-export * from './env';
-export * from './containerPackages';
+/**
+ * Base APT packages that are always installed in the container.
+ * These come from the Dockerfile template.
+ */
+export const baseAptPackages: string[] = [
+  'aggregate',
+  'dnsutils',
+  'fzf',
+  'gh',
+  'git',
+  'gnupg2',
+  'iptables',
+  'ipset',
+  'iproute2',
+  'jq',
+  'less',
+  'man-db',
+  'nano',
+  'procps',
+  'sudo',
+  'unzip',
+  'vim',
+  'zsh',
+];
+
+/**
+ * Base NPM packages that are always installed globally in the container.
+ */
+export const baseNpmPackages: string[] = [
+  '@anthropic-ai/claude-code',
+];
+
+/**
+ * Optional APT packages mapped to software config keys.
+ */
+export const optionalAptPackages: Record<string, string[]> = {
+  ffmpeg: ['ffmpeg'],
+  imagemagick: ['imagemagick'],
+  python: ['python3', 'python3-pip', 'python3-venv'],
+};
+
+/**
+ * Optional NPM packages mapped to software config keys.
+ */
+export const optionalNpmPackages: Record<string, string[]> = {
+  typescript: ['typescript'],
+};

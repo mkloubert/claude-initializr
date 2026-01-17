@@ -68,6 +68,24 @@
     "version": "Έκδοση",
     "latest": "τελευταία"
   },
+  "aptPackages": {
+    "title": "Προσαρμοσμένα πακέτα APT",
+    "description": "Προσθέστε επιπλέον πακέτα Debian/Ubuntu για εγκατάσταση στο container.",
+    "placeholder": "curl, graphviz, tree, sqlite3...",
+    "add": "Προσθήκη πακέτων",
+    "remove": "Αφαίρεση {{package}}"
+  },
+  "npmPackages": {
+    "title": "Προσαρμοσμένα πακέτα NPM",
+    "description": "Προσθέστε επιπλέον πακέτα NPM για καθολική εγκατάσταση στο container.",
+    "placeholder": "eslint, prettier, @types/node...",
+    "add": "Προσθήκη πακέτων",
+    "remove": "Αφαίρεση {{package}}",
+    "installAs": "Εγκατάσταση ως",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Εναλλαγή χρήστη εγκατάστασης για {{package}}"
+  },
   "env": {
     "description": "Δεν έχουν οριστεί μεταβλητές περιβάλλοντος.",
     "key": "Κλειδί",
