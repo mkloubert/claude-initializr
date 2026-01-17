@@ -1,0 +1,46 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      #args:
+      #  UID: ${UID-1000}
+      #  GID: ${GID-1000}
+
+    # Only your project folder is visible
+    volumes:
+      - ./workspace:/workspace
+      - ./workspace/CLAUDE.md:/workspace/CLAUDE.md:ro
+      - ./workspace/.empty:/workspace/.empty:ro
+      ### {{TEMPLATE: EMPTY_FILE_LINKS}} ###
+
+    working_dir: /workspace
+
+    env_file:
+      - ./.env
+
+    # user: "${UID-1000}:${GID-1000}"   # matches host permissions
+
+    cap_drop:
+      - ALL                        # drop all kernel capabilities
+    security_opt:
+      - no-new-privileges:true     # no privilege escalation
+      # seccomp: Docker's default profile remains active (recommended)
+      # AppArmor/SELinux also apply if active on the host
+
+    # Resource limits (optional but recommended)
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4g
+        reservations:
+          cpus: '0.5'
+          memory: 512m
+
+    # Network stays on (Claude needs internet for Auth/API)
+    # If you want to build completely offline, you can set "network_mode: none" here,
+    # but then the CLI won't work.
+    # network_mode: none
+
+    tty: true

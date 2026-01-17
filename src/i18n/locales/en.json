@@ -1,0 +1,79 @@
+{
+  "app": {
+    "title": "Claude Initializr",
+    "description": "Generate Docker configuration files for running Claude Code securely"
+  },
+  "nav": {
+    "configuration": "Configuration",
+    "preview": "Preview",
+    "header": "Header navigation"
+  },
+  "language": {
+    "en": "English",
+    "de": "German",
+    "switch": "Language"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "switch": "Toggle theme"
+  },
+  "software": {
+    "title": "Software Selection",
+    "description": "Select additional software to install in the container",
+    "typescript": "TypeScript",
+    "typescriptDesc": "TypeScript compiler and tools",
+    "ffmpeg": "ffmpeg",
+    "ffmpegDesc": "Audio and video processing",
+    "imagemagick": "ImageMagick",
+    "imagemagickDesc": "Image manipulation tools",
+    "python": "Python 3",
+    "pythonDesc": "Python interpreter and pip",
+    "version": "Version",
+    "latest": "latest"
+  },
+  "env": {
+    "title": "Environment Variables",
+    "description": "Configure environment variables for the .env file",
+    "key": "Key",
+    "value": "Value",
+    "add": "Add Variable",
+    "remove": "Remove",
+    "keyPlaceholder": "VARIABLE_NAME",
+    "valuePlaceholder": "value"
+  },
+  "claudeMd": {
+    "title": "CLAUDE.md",
+    "description": "Edit the CLAUDE.md file with instructions for Claude"
+  },
+  "protectedFiles": {
+    "title": "Protected Files",
+    "description": "Specify files to protect by mounting them as read-only empty files",
+    "path": "File Path",
+    "add": "Add Path",
+    "remove": "Remove",
+    "pathPlaceholder": ".env.local",
+    "help": "Paths are relative to /workspace/. These files will be mounted as empty read-only files to prevent access to sensitive data."
+  },
+  "preview": {
+    "title": "File Preview",
+    "description": "Preview the generated configuration files",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "docker-compose.yaml",
+    "settingsJson": ".claude/settings.json"
+  },
+  "download": {
+    "button": "Download ZIP",
+    "generating": "Generating...",
+    "filename": "claude-docker-config.zip"
+  },
+  "footer": {
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
+  "errors": {
+    "invalidEnvKey": "Invalid variable name. Use only letters, numbers, and underscores.",
+    "duplicateEnvKey": "This variable name already exists.",
+    "invalidPath": "Path must be relative (no leading /) and cannot contain .."
+  }
+}

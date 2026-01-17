@@ -1,0 +1,79 @@
+{
+  "app": {
+    "title": "Claude Initializr",
+    "description": "Docker-Konfigurationsdateien für sicheres Ausführen von Claude Code generieren"
+  },
+  "nav": {
+    "configuration": "Konfiguration",
+    "preview": "Vorschau",
+    "header": "Kopfzeilen-Navigation"
+  },
+  "language": {
+    "en": "Englisch",
+    "de": "Deutsch",
+    "switch": "Sprache"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System",
+    "switch": "Design wechseln"
+  },
+  "software": {
+    "title": "Software-Auswahl",
+    "description": "Wählen Sie zusätzliche Software für die Installation im Container",
+    "typescript": "TypeScript",
+    "typescriptDesc": "TypeScript-Compiler und Werkzeuge",
+    "ffmpeg": "ffmpeg",
+    "ffmpegDesc": "Audio- und Videoverarbeitung",
+    "imagemagick": "ImageMagick",
+    "imagemagickDesc": "Bildbearbeitungswerkzeuge",
+    "python": "Python 3",
+    "pythonDesc": "Python-Interpreter und pip",
+    "version": "Version",
+    "latest": "aktuell"
+  },
+  "env": {
+    "title": "Umgebungsvariablen",
+    "description": "Konfigurieren Sie Umgebungsvariablen für die .env-Datei",
+    "key": "Schlüssel",
+    "value": "Wert",
+    "add": "Variable hinzufügen",
+    "remove": "Entfernen",
+    "keyPlaceholder": "VARIABLEN_NAME",
+    "valuePlaceholder": "Wert"
+  },
+  "claudeMd": {
+    "title": "CLAUDE.md",
+    "description": "Bearbeiten Sie die CLAUDE.md-Datei mit Anweisungen für Claude"
+  },
+  "protectedFiles": {
+    "title": "Geschützte Dateien",
+    "description": "Geben Sie Dateien an, die durch schreibgeschützte leere Dateien geschützt werden sollen",
+    "path": "Dateipfad",
+    "add": "Pfad hinzufügen",
+    "remove": "Entfernen",
+    "pathPlaceholder": ".env.local",
+    "help": "Pfade sind relativ zu /workspace/. Diese Dateien werden als leere schreibgeschützte Dateien eingebunden, um den Zugriff auf sensible Daten zu verhindern."
+  },
+  "preview": {
+    "title": "Dateivorschau",
+    "description": "Vorschau der generierten Konfigurationsdateien",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "docker-compose.yaml",
+    "settingsJson": ".claude/settings.json"
+  },
+  "download": {
+    "button": "ZIP herunterladen",
+    "generating": "Wird generiert...",
+    "filename": "claude-docker-config.zip"
+  },
+  "footer": {
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
+  "errors": {
+    "invalidEnvKey": "Ungültiger Variablenname. Verwenden Sie nur Buchstaben, Zahlen und Unterstriche.",
+    "duplicateEnvKey": "Dieser Variablenname existiert bereits.",
+    "invalidPath": "Pfad muss relativ sein (kein führendes /) und darf kein .. enthalten"
+  }
+}
