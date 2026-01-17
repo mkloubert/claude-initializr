@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "कस्टम NPM पैकेज",
     "description": "कंटेनर में ग्लोबली इंस्टॉल करने के लिए अतिरिक्त NPM पैकेज जोड़ें।",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "पैकेज जोड़ें",
     "remove": "{{package}} हटाएं",
     "installAs": "के रूप में इंस्टॉल करें",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "{{package}} के लिए इंस्टॉलेशन उपयोगकर्ता बदलें"
+  },
+  "runCommands": {
+    "title": "कस्टम RUN कमांड",
+    "description": "Docker इमेज बिल्ड के दौरान चलाने के लिए कस्टम shell कमांड जोड़ें।",
+    "placeholder": "flutter doctor",
+    "add": "कमांड जोड़ें",
+    "remove": "कमांड हटाएं",
+    "runAs": "के रूप में चलाएं",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "कमांड के लिए रन उपयोगकर्ता बदलें"
   },
   "env": {
     "description": "कोई एनवायरनमेंट वेरिएबल परिभाषित नहीं।",

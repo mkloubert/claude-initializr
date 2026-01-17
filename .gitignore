@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# custom
+/CLAUDE.md
+/MILESTONE.md
+/TASKS.md
+/.claude/*.local.json

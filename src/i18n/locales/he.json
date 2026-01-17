@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "חבילות NPM מותאמות אישית",
     "description": "הוסף חבילות NPM נוספות להתקנה גלובלית בקונטיינר.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "הוסף חבילות",
     "remove": "הסר {{package}}",
     "installAs": "התקן בתור",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "החלף משתמש התקנה עבור {{package}}"
+  },
+  "runCommands": {
+    "title": "פקודות RUN מותאמות אישית",
+    "description": "הוסף פקודות shell מותאמות אישית להרצה במהלך בניית תמונת Docker.",
+    "placeholder": "flutter doctor",
+    "add": "הוסף פקודה",
+    "remove": "הסר פקודה",
+    "runAs": "הרץ בתור",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "החלף משתמש הרצה עבור פקודה"
   },
   "env": {
     "description": "לא הוגדרו משתני סביבה.",

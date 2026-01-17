@@ -42,6 +42,7 @@ A web application to generate Docker configuration files for running [Claude Cod
   - ImageMagick (image processing)
 - **Custom APT Packages**: Add additional Debian/Ubuntu packages to install in the container
 - **Custom NPM Packages**: Add additional NPM packages to install globally, with the option to install as `root` or `node` user
+- **Custom RUN Commands**: Add custom shell commands to execute during Docker image build, with the option to run as `root` or `node` user
 
 ### docker-compose.yaml Configuration
 
@@ -191,10 +192,12 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **Select Software**: Choose which additional software to install in your container
 
-3. **Add Custom Packages**:
+3. **Add Custom Packages & Commands**:
    - Add custom APT packages (e.g., `curl`, `graphviz`, `sqlite3`)
    - Add custom NPM packages to install globally (e.g., `eslint`, `prettier`)
    - Choose whether NPM packages should be installed as `node` (default) or `root` user
+   - Add custom RUN commands to execute during build (e.g., `pip install numpy`)
+   - Choose whether RUN commands should run as `node` (default) or `root` user
 
 4. **Set Environment Variables**: Add any environment variables your project needs (e.g., `ANTHROPIC_API_KEY`)
 

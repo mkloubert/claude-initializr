@@ -42,6 +42,7 @@ Uma aplicação web para gerar arquivos de configuração Docker para executar o
   - ImageMagick (processamento de imagens)
 - **Pacotes APT personalizados**: Adicione pacotes Debian/Ubuntu adicionais para instalar no container
 - **Pacotes NPM personalizados**: Adicione pacotes NPM adicionais para instalar globalmente, com a opção de instalar como usuário `root` ou `node`
+- **Comandos RUN personalizados**: Adicione comandos shell personalizados para executar durante a construção da imagem Docker, com a opção de executar como usuário `root` ou `node`
 
 ### Configuração docker-compose.yaml
 
@@ -191,10 +192,12 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **Selecione o software**: Escolha qual software adicional instalar no seu container
 
-3. **Adicione pacotes personalizados**:
+3. **Adicione pacotes e comandos personalizados**:
    - Adicione pacotes APT personalizados (ex., `curl`, `graphviz`, `sqlite3`)
    - Adicione pacotes NPM personalizados para instalar globalmente (ex., `eslint`, `prettier`)
    - Escolha se os pacotes NPM devem ser instalados como usuário `node` (padrão) ou `root`
+   - Adicione comandos RUN personalizados para executar durante a construção (ex., `pip install numpy`)
+   - Escolha se os comandos RUN devem ser executados como usuário `node` (padrão) ou `root`
 
 4. **Defina variáveis de ambiente**: Adicione quaisquer variáveis de ambiente que seu projeto precise (ex., `ANTHROPIC_API_KEY`)
 

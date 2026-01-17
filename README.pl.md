@@ -42,6 +42,7 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
   - ImageMagick (przetwarzanie obrazów)
 - **Niestandardowe pakiety APT**: Dodaj dodatkowe pakiety Debian/Ubuntu do zainstalowania w kontenerze
 - **Niestandardowe pakiety NPM**: Dodaj dodatkowe pakiety NPM do zainstalowania globalnie, z opcją instalacji jako użytkownik `root` lub `node`
+- **Niestandardowe polecenia RUN**: Dodaj niestandardowe polecenia shell do wykonania podczas budowania obrazu Docker, z opcją uruchomienia jako użytkownik `root` lub `node`
 
 ### Konfiguracja docker-compose.yaml
 
@@ -191,10 +192,12 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **Wybierz oprogramowanie**: Wybierz dodatkowe oprogramowanie do zainstalowania w kontenerze
 
-3. **Dodaj niestandardowe pakiety**:
+3. **Dodaj niestandardowe pakiety i polecenia**:
    - Dodaj niestandardowe pakiety APT (np. `curl`, `graphviz`, `sqlite3`)
    - Dodaj niestandardowe pakiety NPM do instalacji globalnej (np. `eslint`, `prettier`)
    - Wybierz czy pakiety NPM mają być instalowane jako użytkownik `node` (domyślnie) czy `root`
+   - Dodaj niestandardowe polecenia RUN do wykonania podczas budowania (np. `pip install numpy`)
+   - Wybierz czy polecenia RUN mają być uruchamiane jako użytkownik `node` (domyślnie) czy `root`
 
 4. **Ustaw zmienne środowiskowe**: Dodaj zmienne środowiskowe potrzebne dla Twojego projektu (np. `ANTHROPIC_API_KEY`)
 

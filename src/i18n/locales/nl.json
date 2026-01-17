@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "Aangepaste NPM-pakketten",
     "description": "Voeg extra NPM-pakketten toe om globaal in de container te installeren.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "Pakketten toevoegen",
     "remove": "{{package}} verwijderen",
     "installAs": "Installeren als",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "Installatiegebruiker wisselen voor {{package}}"
+  },
+  "runCommands": {
+    "title": "Aangepaste RUN-opdrachten",
+    "description": "Voeg aangepaste shell-opdrachten toe die tijdens de Docker-image build worden uitgevoerd.",
+    "placeholder": "flutter doctor",
+    "add": "Opdracht toevoegen",
+    "remove": "Opdracht verwijderen",
+    "runAs": "Uitvoeren als",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Uitvoergebruiker voor opdracht wisselen"
   },
   "env": {
     "description": "Geen omgevingsvariabelen gedefinieerd.",

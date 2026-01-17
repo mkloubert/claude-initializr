@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "Custom NPM Packages",
     "description": "Add additional NPM packages to install globally in the container.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "Add packages",
     "remove": "Remove {{package}}",
     "installAs": "Install as",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "Toggle install user for {{package}}"
+  },
+  "runCommands": {
+    "title": "Custom RUN Commands",
+    "description": "Add custom shell commands to execute during Docker image build.",
+    "placeholder": "flutter doctor",
+    "add": "Add command",
+    "remove": "Remove command",
+    "runAs": "Run as",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Toggle run user for command"
   },
   "env": {
     "description": "No environment variables defined.",

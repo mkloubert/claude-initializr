@@ -42,6 +42,7 @@
   - ImageMagick (görüntü işleme)
 - **Özel APT Paketleri**: Konteynere yüklenecek ek Debian/Ubuntu paketleri ekleyin
 - **Özel NPM Paketleri**: Global olarak yüklenecek ek NPM paketleri ekleyin, `root` veya `node` kullanıcısı olarak yükleme seçeneği ile
+- **Özel RUN Komutları**: Docker imajı oluşturulurken çalıştırılacak özel shell komutları ekleyin, `root` veya `node` kullanıcısı olarak çalıştırma seçeneği ile
 
 ### docker-compose.yaml Yapılandırması
 
@@ -191,10 +192,12 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **Yazılım Seçin**: Konteynerinize yüklenecek ek yazılımı seçin
 
-3. **Özel Paketler Ekleyin**:
+3. **Özel Paketler ve Komutlar Ekleyin**:
    - Özel APT paketleri ekleyin (örn., `curl`, `graphviz`, `sqlite3`)
    - Global olarak yüklenecek özel NPM paketleri ekleyin (örn., `eslint`, `prettier`)
    - NPM paketlerinin `node` (varsayılan) veya `root` kullanıcısı olarak yüklenip yüklenmeyeceğini seçin
+   - Oluşturma sırasında çalıştırılacak özel RUN komutları ekleyin (örn., `pip install numpy`)
+   - RUN komutlarının `node` (varsayılan) veya `root` kullanıcısı olarak çalıştırılıp çalıştırılmayacağını seçin
 
 4. **Ortam Değişkenlerini Ayarlayın**: Projenizin ihtiyaç duyduğu ortam değişkenlerini ekleyin (örn., `ANTHROPIC_API_KEY`)
 

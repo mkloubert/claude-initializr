@@ -24,8 +24,9 @@ import {
   defaultSoftwareConfig,
   type AppConfig,
   type CustomNpmPackage,
+  type CustomRunCommand,
+  type DockerfileUser,
   type EnvVariable,
-  type NpmInstallUser,
   type ProtectedFile,
   type SoftwareConfig,
   type SoftwarePackage,
@@ -74,7 +75,8 @@ interface StoredConfig {
   nodeVersion?: string;
   software?: Partial<Record<keyof SoftwareConfig, { enabled?: boolean; version?: string }>>;
   customAptPackages?: string[];
-  customNpmPackages?: Array<{ name: string; installAs: NpmInstallUser }>;
+  customNpmPackages?: Array<{ name: string; installAs: DockerfileUser }>;
+  customRunCommands?: Array<{ command: string; runAs: DockerfileUser }>;
   envVariableKeys?: string[];
   protectedFilePaths?: string[];
   claudeMdContent?: string;
@@ -125,7 +127,7 @@ function loadConfigFromStorage(): AppConfig {
     // Restore custom NPM packages
     const customNpmPackages: CustomNpmPackage[] = Array.isArray(parsed.customNpmPackages)
       ? parsed.customNpmPackages
-        .filter((pkg): pkg is { name: string; installAs: NpmInstallUser } =>
+        .filter((pkg): pkg is { name: string; installAs: DockerfileUser } =>
           typeof pkg === 'object' &&
           pkg !== null &&
           typeof pkg.name === 'string' &&
@@ -136,6 +138,23 @@ function loadConfigFromStorage(): AppConfig {
           id: crypto.randomUUID(),
           name: pkg.name,
           installAs: pkg.installAs,
+        }))
+      : [];
+
+    // Restore custom RUN commands
+    const customRunCommands: CustomRunCommand[] = Array.isArray(parsed.customRunCommands)
+      ? parsed.customRunCommands
+        .filter((cmd): cmd is { command: string; runAs: DockerfileUser } =>
+          typeof cmd === 'object' &&
+          cmd !== null &&
+          typeof cmd.command === 'string' &&
+          cmd.command.length > 0 &&
+          (cmd.runAs === 'node' || cmd.runAs === 'root')
+        )
+        .map((cmd) => ({
+          id: crypto.randomUUID(),
+          command: cmd.command,
+          runAs: cmd.runAs,
         }))
       : [];
 
@@ -166,6 +185,7 @@ function loadConfigFromStorage(): AppConfig {
       software,
       customAptPackages,
       customNpmPackages,
+      customRunCommands,
       envVariables,
       protectedFiles,
       claudeMdContent: typeof parsed.claudeMdContent === 'string'
@@ -204,6 +224,10 @@ function saveConfigToStorage(config: AppConfig): void {
       customNpmPackages: config.customNpmPackages.map((pkg) => ({
         name: pkg.name,
         installAs: pkg.installAs,
+      })),
+      customRunCommands: config.customRunCommands.map((cmd) => ({
+        command: cmd.command,
+        runAs: cmd.runAs,
       })),
       // Only store keys, NOT values for security
       envVariableKeys: config.envVariables
@@ -378,7 +402,7 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
   }, [config.software, config.customAptPackages, getBuiltInAptPackages]);
 
   // Custom NPM packages actions
-  const addCustomNpmPackages = useCallback((input: string, installAs: NpmInstallUser) => {
+  const addCustomNpmPackages = useCallback((input: string, installAs: DockerfileUser) => {
     setConfig((prev) => {
       // Parse comma-separated input and clean up package names
       // NPM package names can include @scope/name format
@@ -423,11 +447,57 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     }));
   }, []);
 
-  const updateCustomNpmPackageUser = useCallback((id: string, installAs: NpmInstallUser) => {
+  const updateCustomNpmPackageUser = useCallback((id: string, installAs: DockerfileUser) => {
     setConfig((prev) => ({
       ...prev,
       customNpmPackages: prev.customNpmPackages.map((pkg) =>
         pkg.id === id ? { ...pkg, installAs } : pkg
+      ),
+    }));
+  }, []);
+
+  // Custom RUN commands actions
+  const addCustomRunCommand = useCallback((command: string, runAs: DockerfileUser) => {
+    setConfig((prev) => {
+      const trimmedCommand = command.trim();
+      if (trimmedCommand.length === 0) {
+        return prev;
+      }
+
+      const newCommand: CustomRunCommand = {
+        id: crypto.randomUUID(),
+        command: trimmedCommand,
+        runAs,
+      };
+
+      return {
+        ...prev,
+        customRunCommands: [...prev.customRunCommands, newCommand],
+      };
+    });
+  }, []);
+
+  const removeCustomRunCommand = useCallback((id: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      customRunCommands: prev.customRunCommands.filter((cmd) => cmd.id !== id),
+    }));
+  }, []);
+
+  const updateCustomRunCommandText = useCallback((id: string, command: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      customRunCommands: prev.customRunCommands.map((cmd) =>
+        cmd.id === id ? { ...cmd, command } : cmd
+      ),
+    }));
+  }, []);
+
+  const updateCustomRunCommandUser = useCallback((id: string, runAs: DockerfileUser) => {
+    setConfig((prev) => ({
+      ...prev,
+      customRunCommands: prev.customRunCommands.map((cmd) =>
+        cmd.id === id ? { ...cmd, runAs } : cmd
       ),
     }));
   }, []);
@@ -520,6 +590,10 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       addCustomNpmPackages,
       removeCustomNpmPackage,
       updateCustomNpmPackageUser,
+      addCustomRunCommand,
+      removeCustomRunCommand,
+      updateCustomRunCommandText,
+      updateCustomRunCommandUser,
       addEnvVariable,
       updateEnvVariable,
       removeEnvVariable,
@@ -543,6 +617,10 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       addCustomNpmPackages,
       removeCustomNpmPackage,
       updateCustomNpmPackageUser,
+      addCustomRunCommand,
+      removeCustomRunCommand,
+      updateCustomRunCommandText,
+      updateCustomRunCommandUser,
       addEnvVariable,
       updateEnvVariable,
       removeEnvVariable,

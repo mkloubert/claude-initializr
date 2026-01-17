@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "Користувацькі NPM-пакети",
     "description": "Додайте додаткові NPM-пакети для глобального встановлення в контейнері.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "Додати пакети",
     "remove": "Видалити {{package}}",
     "installAs": "Встановити як",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "Змінити користувача встановлення для {{package}}"
+  },
+  "runCommands": {
+    "title": "Користувацькі команди RUN",
+    "description": "Додайте користувацькі shell-команди для виконання під час збірки Docker-образу.",
+    "placeholder": "flutter doctor",
+    "add": "Додати команду",
+    "remove": "Видалити команду",
+    "runAs": "Виконати як",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Змінити користувача виконання для команди"
   },
   "env": {
     "description": "Змінні середовища не визначено.",

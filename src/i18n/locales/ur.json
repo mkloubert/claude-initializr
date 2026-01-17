@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "اپنی مرضی کے NPM پیکیجز",
     "description": "کنٹینر میں گلوبل طور پر انسٹال کرنے کے لیے اضافی NPM پیکیجز شامل کریں۔",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "پیکیجز شامل کریں",
     "remove": "{{package}} ہٹائیں",
     "installAs": "کے طور پر انسٹال کریں",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "{{package}} کے لیے انسٹالیشن صارف تبدیل کریں"
+  },
+  "runCommands": {
+    "title": "اپنی مرضی کے RUN کمانڈز",
+    "description": "Docker امیج بلڈ کے دوران چلانے کے لیے اپنی مرضی کے shell کمانڈز شامل کریں۔",
+    "placeholder": "flutter doctor",
+    "add": "کمانڈ شامل کریں",
+    "remove": "کمانڈ ہٹائیں",
+    "runAs": "کے طور پر چلائیں",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "کمانڈ کے لیے رن صارف تبدیل کریں"
   },
   "env": {
     "description": "کوئی ماحولیاتی متغیرات متعین نہیں۔",

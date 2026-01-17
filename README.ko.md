@@ -42,6 +42,7 @@
   - ImageMagick (이미지 처리)
 - **사용자 정의 APT 패키지**: 컨테이너에 설치할 추가 Debian/Ubuntu 패키지 추가
 - **사용자 정의 NPM 패키지**: 전역으로 설치할 추가 NPM 패키지 추가, `root` 또는 `node` 사용자로 설치 옵션
+- **사용자 정의 RUN 명령어**: `root` 또는 `node` 사용자로 실행할 사용자 정의 Dockerfile RUN 명령어 추가
 
 ### docker-compose.yaml 구성
 
@@ -191,10 +192,12 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **소프트웨어 선택**: 컨테이너에 설치할 추가 소프트웨어 선택
 
-3. **사용자 정의 패키지 추가**:
+3. **사용자 정의 패키지 및 명령어 추가**:
    - 사용자 정의 APT 패키지 추가 (예: `curl`, `graphviz`, `sqlite3`)
    - 전역으로 설치할 사용자 정의 NPM 패키지 추가 (예: `eslint`, `prettier`)
    - NPM 패키지를 `node` (기본값) 또는 `root` 사용자로 설치할지 선택
+   - 빌드 중 실행할 사용자 정의 RUN 명령어 추가
+   - 각 RUN 명령어를 `node` 또는 `root` 사용자로 실행할지 선택
 
 4. **환경 변수 설정**: 프로젝트에 필요한 환경 변수 추가 (예: `ANTHROPIC_API_KEY`)
 

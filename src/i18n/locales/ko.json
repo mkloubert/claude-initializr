@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "사용자 정의 NPM 패키지",
     "description": "컨테이너에 전역으로 설치할 추가 NPM 패키지를 추가하세요.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "패키지 추가",
     "remove": "{{package}} 제거",
     "installAs": "설치 사용자",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "{{package}}의 설치 사용자 전환"
+  },
+  "runCommands": {
+    "title": "사용자 정의 RUN 명령",
+    "description": "Docker 이미지 빌드 중 실행할 사용자 정의 쉘 명령을 추가하세요.",
+    "placeholder": "flutter doctor",
+    "add": "명령 추가",
+    "remove": "명령 제거",
+    "runAs": "실행 사용자",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "명령의 실행 사용자 전환"
   },
   "env": {
     "description": "정의된 환경 변수가 없습니다.",

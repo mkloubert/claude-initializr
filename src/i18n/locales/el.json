@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "Προσαρμοσμένα πακέτα NPM",
     "description": "Προσθέστε επιπλέον πακέτα NPM για καθολική εγκατάσταση στο container.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "Προσθήκη πακέτων",
     "remove": "Αφαίρεση {{package}}",
     "installAs": "Εγκατάσταση ως",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "Εναλλαγή χρήστη εγκατάστασης για {{package}}"
+  },
+  "runCommands": {
+    "title": "Προσαρμοσμένες εντολές RUN",
+    "description": "Προσθέστε προσαρμοσμένες εντολές shell για εκτέλεση κατά τη δημιουργία της εικόνας Docker.",
+    "placeholder": "flutter doctor",
+    "add": "Προσθήκη εντολής",
+    "remove": "Αφαίρεση εντολής",
+    "runAs": "Εκτέλεση ως",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Εναλλαγή χρήστη εκτέλεσης για την εντολή"
   },
   "env": {
     "description": "Δεν έχουν οριστεί μεταβλητές περιβάλλοντος.",

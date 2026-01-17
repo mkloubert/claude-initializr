@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "deny": ["Read(**/.env.local)"]
+  },
+  "plugins": [
+    "feature-dev@claude-plugins-official",
+    "frontend-design@claude-plugins-official",
+    "security-guidance@claude-plugins-official",
+    "code-review@claude-plugins-official",
+    "code-simplifier@claude-plugins-official",
+    "typescript-lsp@claude-plugins-official",
+    "pyright-lsp@claude-plugins-official"
+  ]
+}

@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "حزم NPM مخصصة",
     "description": "أضف حزم NPM إضافية للتثبيت العام في الحاوية.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "إضافة حزم",
     "remove": "إزالة {{package}}",
     "installAs": "التثبيت كـ",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "تبديل مستخدم التثبيت لـ {{package}}"
+  },
+  "runCommands": {
+    "title": "أوامر RUN مخصصة",
+    "description": "أضف أوامر shell مخصصة للتنفيذ أثناء بناء صورة Docker.",
+    "placeholder": "flutter doctor",
+    "add": "إضافة أمر",
+    "remove": "إزالة الأمر",
+    "runAs": "التشغيل كـ",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "تبديل مستخدم التشغيل للأمر"
   },
   "env": {
     "description": "لم يتم تعريف متغيرات البيئة.",

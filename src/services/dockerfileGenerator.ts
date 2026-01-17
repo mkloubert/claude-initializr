@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import type { CustomNpmPackage, SoftwareConfig } from '@/types';
+import type { CustomNpmPackage, CustomRunCommand, SoftwareConfig } from '@/types';
 
 /**
  * Generate Docker ARG definitions for software versions.
@@ -80,7 +80,8 @@ export function generateAptPackages(software: SoftwareConfig, customPackages: st
  */
 export function generateRootUserExtensions(
   software: SoftwareConfig,
-  customNpmPackages: CustomNpmPackage[] = []
+  customNpmPackages: CustomNpmPackage[] = [],
+  customRunCommands: CustomRunCommand[] = []
 ): string {
   const commands: string[] = [];
 
@@ -105,6 +106,16 @@ export function generateRootUserExtensions(
     );
   }
 
+  // Custom RUN commands to execute as root
+  const rootRunCommands = customRunCommands.filter((cmd) => cmd.runAs === 'root');
+
+  if (rootRunCommands.length > 0) {
+    commands.push('# Custom commands (as root)');
+    for (const cmd of rootRunCommands) {
+      commands.push(`RUN ${cmd.command}`);
+    }
+  }
+
   return commands.join('\n');
 }
 
@@ -113,7 +124,8 @@ export function generateRootUserExtensions(
  */
 export function generateNodeUserExtensions(
   software: SoftwareConfig,
-  customNpmPackages: CustomNpmPackage[] = []
+  customNpmPackages: CustomNpmPackage[] = [],
+  customRunCommands: CustomRunCommand[] = []
 ): string {
   const commands: string[] = [];
 
@@ -137,6 +149,16 @@ export function generateNodeUserExtensions(
     );
   }
 
+  // Custom RUN commands to execute as node user
+  const nodeRunCommands = customRunCommands.filter((cmd) => cmd.runAs === 'node');
+
+  if (nodeRunCommands.length > 0) {
+    commands.push('# Custom commands (as node)');
+    for (const cmd of nodeRunCommands) {
+      commands.push(`RUN ${cmd.command}`);
+    }
+  }
+
   return commands.join('\n');
 }
 
@@ -148,7 +170,8 @@ export function generateDockerfileReplacements(
   nodeVersion: string,
   software: SoftwareConfig,
   customAptPackages: string[] = [],
-  customNpmPackages: CustomNpmPackage[] = []
+  customNpmPackages: CustomNpmPackage[] = [],
+  customRunCommands: CustomRunCommand[] = []
 ): {
   BASE_IMAGE: string;
   NODE_VERSION: string;
@@ -162,7 +185,7 @@ export function generateDockerfileReplacements(
     NODE_VERSION: nodeVersion,
     DOCKER_ARGS: generateDockerArgs(software),
     MORE_APT_PACKAGES: generateAptPackages(software, customAptPackages),
-    RUN_AS_ROOT_USER_EXTENSIONS: generateRootUserExtensions(software, customNpmPackages),
-    RUN_AS_NODE_USER_EXTENSIONS: generateNodeUserExtensions(software, customNpmPackages),
+    RUN_AS_ROOT_USER_EXTENSIONS: generateRootUserExtensions(software, customNpmPackages, customRunCommands),
+    RUN_AS_NODE_USER_EXTENSIONS: generateNodeUserExtensions(software, customNpmPackages, customRunCommands),
   };
 }

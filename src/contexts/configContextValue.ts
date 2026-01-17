@@ -19,7 +19,7 @@
 // DEALINGS IN THE SOFTWARE.
 
 import { createContext } from 'react';
-import type { AppConfig, NpmInstallUser, SoftwareConfig } from '../types';
+import type { AppConfig, DockerfileUser, SoftwareConfig } from '../types';
 
 /**
  * Context value interface for configuration state and actions.
@@ -55,11 +55,21 @@ export interface ConfigContextValue {
 
   // Custom NPM packages actions
   /** Add custom NPM packages (comma-separated input supported, duplicates ignored) */
-  addCustomNpmPackages: (packages: string, installAs: NpmInstallUser) => void;
+  addCustomNpmPackages: (packages: string, installAs: DockerfileUser) => void;
   /** Remove a custom NPM package */
   removeCustomNpmPackage: (id: string) => void;
   /** Update the install user for a custom NPM package */
-  updateCustomNpmPackageUser: (id: string, installAs: NpmInstallUser) => void;
+  updateCustomNpmPackageUser: (id: string, installAs: DockerfileUser) => void;
+
+  // Custom RUN commands actions
+  /** Add a custom RUN command */
+  addCustomRunCommand: (command: string, runAs: DockerfileUser) => void;
+  /** Remove a custom RUN command */
+  removeCustomRunCommand: (id: string) => void;
+  /** Update the command text for a custom RUN command */
+  updateCustomRunCommandText: (id: string, command: string) => void;
+  /** Update the run user for a custom RUN command */
+  updateCustomRunCommandUser: (id: string, runAs: DockerfileUser) => void;
 
   // Environment variables actions
   /** Add a new environment variable */

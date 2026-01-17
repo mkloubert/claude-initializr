@@ -43,7 +43,8 @@ export async function generateZipFile(config: AppConfig): Promise<Blob> {
     config.nodeVersion,
     config.software,
     config.customAptPackages,
-    config.customNpmPackages
+    config.customNpmPackages,
+    config.customRunCommands
   );
   const dockerfileContent = processDockerfile(dockerfileReplacements);
   zip.file('Dockerfile', dockerfileContent);

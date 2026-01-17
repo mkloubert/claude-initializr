@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "Niestandardowe pakiety NPM",
     "description": "Dodaj dodatkowe pakiety NPM do globalnej instalacji w kontenerze.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "Dodaj pakiety",
     "remove": "Usuń {{package}}",
     "installAs": "Instaluj jako",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "Przełącz użytkownika instalacji dla {{package}}"
+  },
+  "runCommands": {
+    "title": "Niestandardowe polecenia RUN",
+    "description": "Dodaj niestandardowe polecenia shell do wykonania podczas budowania obrazu Docker.",
+    "placeholder": "flutter doctor",
+    "add": "Dodaj polecenie",
+    "remove": "Usuń polecenie",
+    "runAs": "Uruchom jako",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Przełącz użytkownika wykonania dla polecenia"
   },
   "env": {
     "description": "Brak zdefiniowanych zmiennych środowiskowych.",

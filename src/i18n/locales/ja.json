@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "カスタムNPMパッケージ",
     "description": "コンテナにグローバルインストールする追加のNPMパッケージを追加します。",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "パッケージを追加",
     "remove": "{{package}}を削除",
     "installAs": "インストールユーザー",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "{{package}}のインストールユーザーを切り替え"
+  },
+  "runCommands": {
+    "title": "カスタムRUNコマンド",
+    "description": "Dockerイメージビルド時に実行するカスタムシェルコマンドを追加します。",
+    "placeholder": "flutter doctor",
+    "add": "コマンドを追加",
+    "remove": "コマンドを削除",
+    "runAs": "実行ユーザー",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "コマンドの実行ユーザーを切り替え"
   },
   "env": {
     "description": "環境変数が定義されていません。",

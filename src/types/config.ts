@@ -65,9 +65,14 @@ export interface ProtectedFile {
 }
 
 /**
- * User context for installing NPM packages.
+ * User context for installing NPM packages or running commands.
  */
-export type NpmInstallUser = 'node' | 'root';
+export type DockerfileUser = 'node' | 'root';
+
+/**
+ * @deprecated Use DockerfileUser instead
+ */
+export type NpmInstallUser = DockerfileUser;
 
 /**
  * A custom NPM package to install globally.
@@ -78,7 +83,19 @@ export interface CustomNpmPackage {
   /** NPM package name (e.g., "typescript", "@scope/package") */
   name: string;
   /** User context for installation (node or root) */
-  installAs: NpmInstallUser;
+  installAs: DockerfileUser;
+}
+
+/**
+ * A custom RUN command for the Dockerfile.
+ */
+export interface CustomRunCommand {
+  /** Unique identifier for the command (used as React key) */
+  id: string;
+  /** The shell command to execute (without RUN prefix) */
+  command: string;
+  /** User context for execution (node or root) */
+  runAs: DockerfileUser;
 }
 
 /**
@@ -95,6 +112,8 @@ export interface AppConfig {
   customAptPackages: string[];
   /** Custom NPM packages to install globally */
   customNpmPackages: CustomNpmPackage[];
+  /** Custom RUN commands for the Dockerfile */
+  customRunCommands: CustomRunCommand[];
   /** List of environment variables for .env file */
   envVariables: EnvVariable[];
   /** List of files to protect with .empty mount */
@@ -142,6 +161,7 @@ export const defaultAppConfig: AppConfig = {
   software: defaultSoftwareConfig,
   customAptPackages: [],
   customNpmPackages: [],
+  customRunCommands: [],
   envVariables: [],
   protectedFiles: [],
   claudeMdContent: '# Project Instructions\n\n',

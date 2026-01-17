@@ -48,7 +48,7 @@ const DockerfilePreview = lazy(() =>
   import('@/components/preview/DockerfilePreview').then((m) => ({ default: m.DockerfilePreview }))
 );
 import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm } from 'react-icons/si';
-import type { NpmInstallUser, SoftwareConfig } from '@/types';
+import type { DockerfileUser, SoftwareConfig } from '@/types';
 
 /**
  * Software metadata for rendering.
@@ -101,10 +101,15 @@ export function DockerfileCard() {
     addCustomNpmPackages,
     removeCustomNpmPackage,
     updateCustomNpmPackageUser,
+    addCustomRunCommand,
+    removeCustomRunCommand,
+    updateCustomRunCommandUser,
   } = useConfig();
   const [aptInput, setAptInput] = useState('');
   const [npmInput, setNpmInput] = useState('');
-  const [npmInstallAs, setNpmInstallAs] = useState<NpmInstallUser>('node');
+  const [npmInstallAs, setNpmInstallAs] = useState<DockerfileUser>('node');
+  const [runCommandInput, setRunCommandInput] = useState('');
+  const [runCommandAs, setRunCommandAs] = useState<DockerfileUser>('node');
 
   const sortedSoftwareMetadata = useMemo(
     () =>
@@ -295,7 +300,7 @@ export function DockerfileCard() {
                     />
                     <Select
                       value={npmInstallAs}
-                      onValueChange={(value: NpmInstallUser) => setNpmInstallAs(value)}
+                      onValueChange={(value: DockerfileUser) => setNpmInstallAs(value)}
                     >
                       <SelectTrigger className="w-24" aria-label={t('npmPackages.installAs')}>
                         <SelectValue />
@@ -353,6 +358,103 @@ export function DockerfileCard() {
                             <X className="h-3 w-3" aria-hidden="true" />
                           </button>
                         </Badge>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Custom RUN Commands */}
+              <div className="rounded-lg border p-3">
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <Terminal className="h-5 w-5 text-amber-600" aria-hidden="true" />
+                    <div className="flex flex-col">
+                      <span className="font-medium">{t('runCommands.title')}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {t('runCommands.description')}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Label htmlFor="run-command" className="sr-only">
+                      {t('runCommands.placeholder')}
+                    </Label>
+                    <Input
+                      id="run-command"
+                      type="text"
+                      value={runCommandInput}
+                      onChange={(e) => setRunCommandInput(e.target.value)}
+                      onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+                        if (e.key === 'Enter' && runCommandInput.trim()) {
+                          e.preventDefault();
+                          addCustomRunCommand(runCommandInput, runCommandAs);
+                          setRunCommandInput('');
+                        }
+                      }}
+                      placeholder={t('runCommands.placeholder')}
+                      className="flex-1"
+                      aria-label={t('runCommands.placeholder')}
+                    />
+                    <Select
+                      value={runCommandAs}
+                      onValueChange={(value: DockerfileUser) => setRunCommandAs(value)}
+                    >
+                      <SelectTrigger className="w-24" aria-label={t('runCommands.runAs')}>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="node">{t('runCommands.userNode')}</SelectItem>
+                        <SelectItem value="root">{t('runCommands.userRoot')}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={() => {
+                        if (runCommandInput.trim()) {
+                          addCustomRunCommand(runCommandInput, runCommandAs);
+                          setRunCommandInput('');
+                        }
+                      }}
+                      aria-label={t('runCommands.add')}
+                    >
+                      <Plus className="h-4 w-4" aria-hidden="true" />
+                    </Button>
+                  </div>
+                  {config.customRunCommands.length > 0 && (
+                    <div className="flex flex-col gap-2">
+                      {config.customRunCommands.map((cmd) => (
+                        <div
+                          key={cmd.id}
+                          className="flex items-center gap-2 rounded-md bg-muted p-2"
+                        >
+                          <code className="flex-1 text-sm font-mono truncate" title={cmd.command}>
+                            {cmd.command}
+                          </code>
+                          <button
+                            type="button"
+                            onClick={() => updateCustomRunCommandUser(
+                              cmd.id,
+                              cmd.runAs === 'node' ? 'root' : 'node'
+                            )}
+                            className="rounded px-2 py-0.5 text-xs font-normal bg-background hover:bg-muted-foreground/20 focus:outline-none focus:ring-2 focus:ring-ring"
+                            aria-label={t('runCommands.toggleUser', { command: cmd.command })}
+                            title={t('runCommands.runAs') + ': ' + t(`runCommands.user${cmd.runAs === 'node' ? 'Node' : 'Root'}`)}
+                          >
+                            <Terminal className="h-3 w-3 inline mr-0.5" aria-hidden="true" />
+                            {cmd.runAs}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => removeCustomRunCommand(cmd.id)}
+                            className="rounded-full p-0.5 hover:bg-muted-foreground/20 focus:outline-none focus:ring-2 focus:ring-ring"
+                            aria-label={t('runCommands.remove', { command: cmd.command })}
+                          >
+                            <X className="h-3 w-3" aria-hidden="true" />
+                          </button>
+                        </div>
                       ))}
                     </div>
                   )}

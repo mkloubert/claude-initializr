@@ -42,6 +42,7 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
   - ImageMagick (Bildverarbeitung)
 - **Benutzerdefinierte APT-Pakete**: Fügen Sie zusätzliche Debian/Ubuntu-Pakete zur Installation im Container hinzu
 - **Benutzerdefinierte NPM-Pakete**: Fügen Sie zusätzliche NPM-Pakete zur globalen Installation hinzu, mit der Option als `root` oder `node` Benutzer zu installieren
+- **Benutzerdefinierte RUN-Befehle**: Fügen Sie benutzerdefinierte Shell-Befehle hinzu, die während des Docker-Image-Builds ausgeführt werden, mit der Option als `root` oder `node` Benutzer auszuführen
 
 ### docker-compose.yaml Konfiguration
 
@@ -191,10 +192,12 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **Software auswählen**: Wählen Sie, welche zusätzliche Software in Ihrem Container installiert werden soll
 
-3. **Benutzerdefinierte Pakete hinzufügen**:
+3. **Benutzerdefinierte Pakete & Befehle hinzufügen**:
    - Fügen Sie benutzerdefinierte APT-Pakete hinzu (z.B. `curl`, `graphviz`, `sqlite3`)
    - Fügen Sie benutzerdefinierte NPM-Pakete zur globalen Installation hinzu (z.B. `eslint`, `prettier`)
    - Wählen Sie, ob NPM-Pakete als `node` (Standard) oder `root` Benutzer installiert werden sollen
+   - Fügen Sie benutzerdefinierte RUN-Befehle zur Ausführung während des Builds hinzu (z.B. `pip install numpy`)
+   - Wählen Sie, ob RUN-Befehle als `node` (Standard) oder `root` Benutzer ausgeführt werden sollen
 
 4. **Umgebungsvariablen festlegen**: Fügen Sie alle Umgebungsvariablen hinzu, die Ihr Projekt benötigt (z.B. `ANTHROPIC_API_KEY`)
 

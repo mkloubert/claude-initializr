@@ -42,6 +42,7 @@
   - ImageMagick（图像处理）
 - **自定义 APT 包**：添加要在容器中安装的额外 Debian/Ubuntu 软件包
 - **自定义 NPM 包**：添加要全局安装的额外 NPM 包，可选择以 `root` 或 `node` 用户身份安装
+- **自定义 RUN 命令**：添加以 `root` 或 `node` 用户身份执行的自定义 Dockerfile RUN 命令
 
 ### docker-compose.yaml 配置
 
@@ -191,10 +192,12 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **选择软件**：选择要在容器中安装的额外软件
 
-3. **添加自定义包**：
+3. **添加自定义包和命令**：
    - 添加自定义 APT 包（例如 `curl`、`graphviz`、`sqlite3`）
    - 添加要全局安装的自定义 NPM 包（例如 `eslint`、`prettier`）
    - 选择 NPM 包是以 `node`（默认）还是 `root` 用户身份安装
+   - 添加在构建过程中执行的自定义 RUN 命令
+   - 选择每个 RUN 命令是以 `node` 还是 `root` 用户身份执行
 
 4. **设置环境变量**：添加项目需要的任何环境变量（例如 `ANTHROPIC_API_KEY`）
 

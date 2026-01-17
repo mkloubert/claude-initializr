@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "自定义NPM软件包",
     "description": "添加要在容器中全局安装的额外NPM软件包。",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "添加软件包",
     "remove": "删除 {{package}}",
     "installAs": "安装用户",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "切换 {{package}} 的安装用户"
+  },
+  "runCommands": {
+    "title": "自定义RUN命令",
+    "description": "添加在Docker镜像构建期间执行的自定义shell命令。",
+    "placeholder": "flutter doctor",
+    "add": "添加命令",
+    "remove": "删除命令",
+    "runAs": "运行用户",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "切换命令的运行用户"
   },
   "env": {
     "description": "未定义环境变量。",

@@ -42,6 +42,7 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
   - ImageMagick (beeldverwerking)
 - **Aangepaste APT-pakketten**: Voeg extra Debian/Ubuntu-pakketten toe om in de container te installeren
 - **Aangepaste NPM-pakketten**: Voeg extra NPM-pakketten toe om globaal te installeren, met de optie om als `root` of `node` gebruiker te installeren
+- **Aangepaste RUN-opdrachten**: Voeg aangepaste shell-opdrachten toe om uit te voeren tijdens de Docker-image build, met de optie om als `root` of `node` gebruiker uit te voeren
 
 ### docker-compose.yaml Configuratie
 
@@ -191,10 +192,12 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
 
 2. **Selecteer software**: Kies welke extra software in uw container moet worden geïnstalleerd
 
-3. **Voeg aangepaste pakketten toe**:
+3. **Voeg aangepaste pakketten en opdrachten toe**:
    - Voeg aangepaste APT-pakketten toe (bijv. `curl`, `graphviz`, `sqlite3`)
    - Voeg aangepaste NPM-pakketten toe om globaal te installeren (bijv. `eslint`, `prettier`)
    - Kies of NPM-pakketten moeten worden geïnstalleerd als `node` (standaard) of `root` gebruiker
+   - Voeg aangepaste RUN-opdrachten toe om tijdens de build uit te voeren (bijv. `pip install numpy`)
+   - Kies of RUN-opdrachten moeten worden uitgevoerd als `node` (standaard) of `root` gebruiker
 
 4. **Stel omgevingsvariabelen in**: Voeg eventuele omgevingsvariabelen toe die uw project nodig heeft (bijv. `ANTHROPIC_API_KEY`)
 

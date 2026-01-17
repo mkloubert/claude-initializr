@@ -78,13 +78,24 @@
   "npmPackages": {
     "title": "Özel NPM Paketleri",
     "description": "Konteynere global olarak kurulacak ek NPM paketleri ekleyin.",
-    "placeholder": "eslint, prettier, @types/node...",
+    "placeholder": "eslint, prettier, tsx...",
     "add": "Paket ekle",
     "remove": "{{package}} paketini kaldır",
     "installAs": "Olarak kur",
     "userNode": "node",
     "userRoot": "root",
     "toggleUser": "{{package}} için kurulum kullanıcısını değiştir"
+  },
+  "runCommands": {
+    "title": "Özel RUN Komutları",
+    "description": "Docker imajı oluşturulurken çalıştırılacak özel shell komutları ekleyin.",
+    "placeholder": "flutter doctor",
+    "add": "Komut ekle",
+    "remove": "Komutu kaldır",
+    "runAs": "Olarak çalıştır",
+    "userNode": "node",
+    "userRoot": "root",
+    "toggleUser": "Komut için çalıştırma kullanıcısını değiştir"
   },
   "env": {
     "description": "Tanımlanmış ortam değişkeni yok.",
