@@ -1,5 +1,27 @@
 # Claude Initializr
 
+**🌐 Read in other languages:**
+[🌍 العربية](README.ar.md) ·
+[🇨🇳 中文](README.zh.md) ·
+[🇳🇱 Nederlands](README.nl.md) ·
+[🇬🇧 English](README.md) ·
+[🇫🇷 Français](README.fr.md) ·
+[🇩🇪 Deutsch](README.de.md) ·
+[🇬🇷 Ελληνικά](README.el.md) ·
+[🇮🇱 עברית](README.he.md) ·
+[🇮🇳 हिन्दी](README.hi.md) ·
+[🇮🇹 Italiano](README.it.md) ·
+[🇯🇵 日本語](README.ja.md) ·
+[🇰🇷 한국어](README.ko.md) ·
+[🇵🇱 Polski](README.pl.md) ·
+[🇵🇹 Português](README.pt.md) ·
+[🇪🇸 Español](README.es.md) ·
+[🇹🇷 Türkçe](README.tr.md) ·
+[🇺🇦 Українська](README.uk.md) ·
+[🇵🇰 اردو](README.ur.md)
+
+---
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/mkloubert/claude-initializr)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/mjkloubert)

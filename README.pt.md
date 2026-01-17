@@ -1,0 +1,358 @@
+# Claude Initializr
+
+**🌐 Ler em outros idiomas:**
+[🌍 العربية](README.ar.md) ·
+[🇨🇳 中文](README.zh.md) ·
+[🇳🇱 Nederlands](README.nl.md) ·
+[🇬🇧 English](README.md) ·
+[🇫🇷 Français](README.fr.md) ·
+[🇩🇪 Deutsch](README.de.md) ·
+[🇬🇷 Ελληνικά](README.el.md) ·
+[🇮🇱 עברית](README.he.md) ·
+[🇮🇳 हिन्दी](README.hi.md) ·
+[🇮🇹 Italiano](README.it.md) ·
+[🇯🇵 日本語](README.ja.md) ·
+[🇰🇷 한국어](README.ko.md) ·
+[🇵🇱 Polski](README.pl.md) ·
+[🇵🇹 Português](README.pt.md) ·
+[🇪🇸 Español](README.es.md) ·
+[🇹🇷 Türkçe](README.tr.md) ·
+[🇺🇦 Українська](README.uk.md) ·
+[🇵🇰 اردو](README.ur.md)
+
+---
+
+[![Licença: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/mkloubert/claude-initializr)
+[![Doar](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/mjkloubert)
+
+Uma aplicação web para gerar arquivos de configuração Docker para executar o [Claude Code](https://docs.anthropic.com/en/docs/claude-code) com segurança em um ambiente containerizado.
+
+**Demo ao vivo:** [https://claude.kloubert.dev](https://claude.kloubert.dev)
+
+## Funcionalidades
+
+### Configuração do Dockerfile
+
+- **Imagem base**: Configure o nome e a versão da imagem Docker base (padrão: `node:24`)
+- **Seleção de software**: Escolha software adicional para instalar:
+  - TypeScript (com seleção de versão)
+  - Python 3 (com seleção de versão)
+  - ffmpeg (processamento de áudio/vídeo)
+  - ImageMagick (processamento de imagens)
+- **Pacotes APT personalizados**: Adicione pacotes Debian/Ubuntu adicionais para instalar no container
+- **Pacotes NPM personalizados**: Adicione pacotes NPM adicionais para instalar globalmente, com a opção de instalar como usuário `root` ou `node`
+
+### Configuração docker-compose.yaml
+
+- **Variáveis de ambiente**: Configure variáveis de ambiente para seu arquivo `.env`
+- **Arquivos protegidos**: Especifique arquivos que devem ser protegidos montando arquivos vazios somente leitura (impede acesso a arquivos sensíveis como `.env.local`)
+
+### Editor CLAUDE.md
+
+- Editor Markdown com destaque de sintaxe
+- Funcionalidade de visualização integrada
+- Escreva instruções específicas do projeto para o Claude
+
+### Funcionalidades gerais
+
+- **Visualização ao vivo**: Veja visualizações em tempo real dos arquivos de configuração gerados
+- **Download ZIP**: Baixe todos os arquivos como um arquivo ZIP pronto para uso
+- **Salvamento automático**: As configurações são salvas automaticamente no localStorage do seu navegador (habilitado por padrão)
+- **Suporte multilíngue**: Disponível em 18 idiomas:
+  - 🌍 Árabe
+  - 🇨🇳 Chinês
+  - 🇳🇱 Holandês
+  - 🇬🇧 Inglês
+  - 🇫🇷 Francês
+  - 🇩🇪 Alemão
+  - 🇬🇷 Grego
+  - 🇮🇱 Hebraico
+  - 🇮🇳 Hindi
+  - 🇮🇹 Italiano
+  - 🇯🇵 Japonês
+  - 🇰🇷 Coreano
+  - 🇵🇱 Polonês
+  - 🇵🇹 Português
+  - 🇪🇸 Espanhol
+  - 🇹🇷 Turco
+  - 🇺🇦 Ucraniano
+  - 🇵🇰 Urdu
+- **Tema escuro/claro**: Detecção automática de tema com alternância manual
+- **Suporte PWA**: Instalável como Progressive Web App
+- **Totalmente acessível**: Compatível com WCAG com navegação por teclado e suporte a leitores de tela
+- **Design responsivo**: Otimizado para desktop e tablet
+
+### Mecanismo de salvamento automático
+
+A função de salvamento automático pode ser ativada/desativada usando o ícone de salvar no cabeçalho:
+
+| Ícone           | Estado       | Comportamento                                                         |
+| --------------- | ------------ | --------------------------------------------------------------------- |
+| 💾 (Salvar)     | Habilitado   | Todas as alterações são salvas automaticamente no localStorage        |
+| 🚫💾 (Desligado)| Desabilitado | As alterações não são salvas; os dados existentes são apagados        |
+
+**Como funciona:**
+
+- **Habilitar salvamento automático**: Salva imediatamente as configurações atuais no localStorage
+- **Desabilitar salvamento automático**: Limpa todas as configurações salvas do localStorage
+- Sua preferência de salvamento automático é lembrada entre sessões
+
+### Privacidade e armazenamento de dados
+
+Esta aplicação respeita sua privacidade:
+
+- **Apenas armazenamento local**: Todas as configurações são armazenadas localmente no seu navegador (localStorage)
+- **Sem comunicação com servidor**: Nenhum dado é enviado para nenhum servidor
+- **Seguro por design**: Os **valores** das variáveis de ambiente **nunca são armazenados** - apenas os nomes das variáveis são salvos
+- **Controle total**: Você pode desabilitar o salvamento automático a qualquer momento usando o interruptor no cabeçalho, que também limpa todos os dados armazenados
+- **Tema baseado em sessão**: A preferência de tema é redefinida para o padrão do sistema ao recarregar a página
+
+## Funcionalidades de segurança
+
+A configuração Docker gerada inclui medidas de segurança abrangentes:
+
+### Firewall de rede
+
+O script `init-firewall.sh` implementa isolamento de rede rigoroso:
+
+- **Firewall baseado em iptables** com política DROP para todo o tráfego de saída
+- **Abordagem apenas allowlist** - apenas domínios autorizados são acessíveis:
+  - `api.anthropic.com` - API Claude
+  - `npm registry` - Instalação de pacotes
+  - `github.com` - Operações Git
+  - `sentry.io` - Relatório de erros
+- **Resolução automática de IP do GitHub** para endpoints web, API e git
+- **Isolamento de rede do host** - impede acesso à rede local
+- **Verificação de firewall** - testes garantem que as regras são aplicadas corretamente
+
+### Endurecimento de segurança Docker
+
+- **Remoção de capabilities**: Todas as capabilities Linux são removidas (`cap_drop: ALL`)
+- **Sem escalação de privilégios**: `no-new-privileges:true`
+- **Limites de recursos**: Restrições de CPU e memória
+- **Montagens somente leitura**: Arquivos protegidos são montados como somente leitura
+- **Execução não-root**: Executa como usuário `node`
+
+## Ferramentas pré-instaladas
+
+O container gerado inclui:
+
+| Categoria               | Ferramentas                         |
+| ----------------------- | ----------------------------------- |
+| **Shell**               | zsh com tema Powerline10k, bash     |
+| **Editores**            | nano, vim                           |
+| **Controle de versão**  | git, git-delta, GitHub CLI (gh)     |
+| **Utilitários**         | fzf, jq, less, unzip, man-db        |
+| **Rede**                | iptables, ipset, iproute2, dnsutils |
+
+## Começando
+
+### Pré-requisitos
+
+- Node.js 20 ou superior
+- npm 10 ou superior
+
+### Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/mkloubert/claude-initializr.git
+cd claude-initializr
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
+
+# Compile para produção
+npm run build
+
+# Visualize a compilação de produção
+npm run preview
+```
+
+### Variáveis de ambiente
+
+Personalize a aplicação usando variáveis de ambiente. Crie um arquivo `.env`:
+
+```bash
+# URL do repositório GitHub (opcional, deixe vazio para ocultar)
+VITE_GITHUB_URL=https://github.com/mkloubert/claude-initializr
+
+# URL de doação PayPal (opcional, deixe vazio para ocultar)
+VITE_PAYPAL_URL=https://paypal.me/mjkloubert
+```
+
+## Uso
+
+1. **Configure a imagem base**: Defina o nome e a versão da imagem Docker base (ex., `node:24` ou `node:22-slim`)
+
+2. **Selecione o software**: Escolha qual software adicional instalar no seu container
+
+3. **Adicione pacotes personalizados**:
+   - Adicione pacotes APT personalizados (ex., `curl`, `graphviz`, `sqlite3`)
+   - Adicione pacotes NPM personalizados para instalar globalmente (ex., `eslint`, `prettier`)
+   - Escolha se os pacotes NPM devem ser instalados como usuário `node` (padrão) ou `root`
+
+4. **Defina variáveis de ambiente**: Adicione quaisquer variáveis de ambiente que seu projeto precise (ex., `ANTHROPIC_API_KEY`)
+
+5. **Proteja arquivos sensíveis**: Adicione caminhos para arquivos que devem ser protegidos (ex., `.env.local`)
+
+6. **Edite CLAUDE.md**: Escreva instruções para o Claude no editor Markdown
+
+7. **Visualize**: Verifique os arquivos de configuração gerados nas abas de visualização
+
+8. **Baixe**: Clique em "Baixar ZIP" para obter todos os arquivos
+
+## Usando os arquivos gerados
+
+1. Extraia o arquivo ZIP no diretório do seu projeto
+
+2. Copie os arquivos do seu projeto para a pasta `workspace` (ou monte seu projeto existente)
+
+3. Defina sua chave API no arquivo `.env`:
+
+   ```bash
+   ANTHROPIC_API_KEY=sua-chave-api-aqui
+   ```
+
+4. Compile e inicie o container:
+
+   ```bash
+   docker compose up --build
+   ```
+
+5. Conecte-se ao container:
+
+   ```bash
+   docker compose exec claude zsh
+   ```
+
+6. Inicialize o firewall (requer senha sudo):
+
+   ```bash
+   sudo /usr/local/bin/init-firewall.sh
+   ```
+
+7. Inicie o Claude Code:
+   ```bash
+   claude
+   ```
+
+## Estrutura de arquivos gerados
+
+```
+├── workspace/
+│   ├── .claude/
+│   │   └── settings.json    # Configurações do Claude
+│   ├── .empty               # Arquivo vazio para montagens protegidas
+│   └── CLAUDE.md            # Suas instruções para o Claude
+├── .env                     # Variáveis de ambiente
+├── Dockerfile               # Definição do container
+├── docker-compose.yaml      # Configuração Docker Compose
+└── init-firewall.sh         # Script de firewall de rede
+```
+
+## Solução de problemas
+
+### Problemas de firewall
+
+Se você encontrar problemas de rede após habilitar o firewall:
+
+```bash
+# Verifique o status do firewall
+sudo iptables -L -n
+
+# Veja conexões bloqueadas
+sudo iptables -L -n -v | grep DROP
+
+# Redefina o firewall (permite todo o tráfego)
+sudo iptables -F
+```
+
+### Container não inicia
+
+```bash
+# Verifique os logs
+docker compose logs
+
+# Reconstrua sem cache
+docker compose build --no-cache
+```
+
+### Permissão negada
+
+Certifique-se de que o diretório workspace tenha as permissões corretas:
+
+```bash
+chmod -R 755 workspace
+```
+
+### Redefinir configurações da aplicação
+
+Para limpar todas as configurações salvas e começar do zero, abra o console de desenvolvedor do seu navegador e execute:
+
+```javascript
+localStorage.removeItem("claude-initializr-config");
+localStorage.removeItem("claude-initializr-welcome-dismissed");
+localStorage.removeItem("claude-initializr-autosave");
+```
+
+Em seguida, recarregue a página.
+
+Alternativamente, você pode desabilitar o salvamento automático usando o interruptor no cabeçalho para impedir que as configurações sejam salvas.
+
+## Stack tecnológico
+
+- [React 19](https://react.dev/) com TypeScript e React Compiler
+- [Vite](https://vite.dev/) como bundler
+- [Tailwind CSS v4](https://tailwindcss.com/) com espaço de cores OKLCH
+- [shadcn/ui](https://ui.shadcn.com/) componentes (40+ componentes)
+- [react-router](https://reactrouter.com/) para roteamento
+- [i18next](https://www.i18next.com/) para internacionalização
+- [JSZip](https://stuk.github.io/jszip/) para geração de ZIP
+- [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) para visualizações de código
+
+## Contribuir
+
+Contribuições são bem-vindas! Sinta-se à vontade para enviar um Pull Request.
+
+1. Faça fork do repositório
+2. Crie seu branch de feature (`git checkout -b feature/feature-incrivel`)
+3. Faça commit das suas alterações (`git commit -m 'Adicionar feature incrível'`)
+4. Faça push para o branch (`git push origin feature/feature-incrivel`)
+5. Abra um Pull Request
+
+### Adicionar um novo idioma
+
+1. Crie um novo arquivo de locale em `src/i18n/locales/` (ex., `fr.json`)
+2. Copie a estrutura de `en.json`
+3. Traduza todas as strings
+4. Adicione o idioma em `src/i18n/index.ts`
+5. Adicione a opção de idioma em `LanguageSwitcher.tsx`
+
+## Acessibilidade
+
+Esta aplicação é projetada para ser totalmente acessível:
+
+- Estrutura HTML semântica (`<header>`, `<main>`, `<footer>`)
+- Labels ARIA em todos os elementos interativos
+- Suporte a navegação por teclado
+- Compatível com leitores de tela
+- Esquemas de cores de alto contraste
+- Indicadores de foco em elementos interativos
+
+## Apoio
+
+Se você achar este projeto útil, considere apoiá-lo:
+
+- ⭐ Dê uma estrela no repositório no [GitHub](https://github.com/mkloubert/claude-initializr)
+- 💝 [Doar via PayPal](https://paypal.me/mjkloubert)
+
+## Licença
+
+Licença MIT - veja [LICENSE](./LICENSE) para detalhes.
+
+Copyright © 2026 Marcel Joachim Kloubert

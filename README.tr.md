@@ -1,0 +1,358 @@
+# Claude Initializr
+
+**🌐 Diğer dillerde okuyun:**
+[🌍 العربية](README.ar.md) ·
+[🇨🇳 中文](README.zh.md) ·
+[🇳🇱 Nederlands](README.nl.md) ·
+[🇬🇧 English](README.md) ·
+[🇫🇷 Français](README.fr.md) ·
+[🇩🇪 Deutsch](README.de.md) ·
+[🇬🇷 Ελληνικά](README.el.md) ·
+[🇮🇱 עברית](README.he.md) ·
+[🇮🇳 हिन्दी](README.hi.md) ·
+[🇮🇹 Italiano](README.it.md) ·
+[🇯🇵 日本語](README.ja.md) ·
+[🇰🇷 한국어](README.ko.md) ·
+[🇵🇱 Polski](README.pl.md) ·
+[🇵🇹 Português](README.pt.md) ·
+[🇪🇸 Español](README.es.md) ·
+[🇹🇷 Türkçe](README.tr.md) ·
+[🇺🇦 Українська](README.uk.md) ·
+[🇵🇰 اردو](README.ur.md)
+
+---
+
+[![Lisans: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/mkloubert/claude-initializr)
+[![Bağış](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/mjkloubert)
+
+[Claude Code](https://docs.anthropic.com/en/docs/claude-code)'u konteynerize ortamda güvenli bir şekilde çalıştırmak için Docker yapılandırma dosyaları oluşturan bir web uygulaması.
+
+**Canlı Demo:** [https://claude.kloubert.dev](https://claude.kloubert.dev)
+
+## Özellikler
+
+### Dockerfile Yapılandırması
+
+- **Temel İmaj**: Docker temel imaj adını ve sürümünü yapılandırın (varsayılan: `node:24`)
+- **Yazılım Seçimi**: Yüklenecek ek yazılımları seçin:
+  - TypeScript (sürüm seçimi ile)
+  - Python 3 (sürüm seçimi ile)
+  - ffmpeg (ses/video işleme)
+  - ImageMagick (görüntü işleme)
+- **Özel APT Paketleri**: Konteynere yüklenecek ek Debian/Ubuntu paketleri ekleyin
+- **Özel NPM Paketleri**: Global olarak yüklenecek ek NPM paketleri ekleyin, `root` veya `node` kullanıcısı olarak yükleme seçeneği ile
+
+### docker-compose.yaml Yapılandırması
+
+- **Ortam Değişkenleri**: `.env` dosyanız için ortam değişkenlerini yapılandırın
+- **Korunan Dosyalar**: Boş salt okunur dosyalar monte ederek korunması gereken dosyaları belirtin (`.env.local` gibi hassas dosyalara erişimi önler)
+
+### CLAUDE.md Editörü
+
+- Sözdizimi vurgulama özellikli Markdown editörü
+- Yerleşik önizleme işlevi
+- Claude için projeye özel talimatlar yazın
+
+### Genel Özellikler
+
+- **Canlı Önizleme**: Oluşturulan yapılandırma dosyalarının gerçek zamanlı önizlemelerini görün
+- **ZIP İndirme**: Tüm dosyaları kullanıma hazır ZIP arşivi olarak indirin
+- **Otomatik Kaydetme**: Ayarlar tarayıcınızın localStorage'ına otomatik olarak kaydedilir (varsayılan olarak etkin)
+- **Çoklu Dil Desteği**: 18 dilde mevcut:
+  - 🌍 Arapça
+  - 🇨🇳 Çince
+  - 🇳🇱 Flemenkçe
+  - 🇬🇧 İngilizce
+  - 🇫🇷 Fransızca
+  - 🇩🇪 Almanca
+  - 🇬🇷 Yunanca
+  - 🇮🇱 İbranice
+  - 🇮🇳 Hintçe
+  - 🇮🇹 İtalyanca
+  - 🇯🇵 Japonca
+  - 🇰🇷 Korece
+  - 🇵🇱 Lehçe
+  - 🇵🇹 Portekizce
+  - 🇪🇸 İspanyolca
+  - 🇹🇷 Türkçe
+  - 🇺🇦 Ukraynaca
+  - 🇵🇰 Urduca
+- **Koyu/Açık Tema**: Manuel geçiş ile otomatik tema algılama
+- **PWA Desteği**: Progressive Web App olarak yüklenebilir
+- **Tam Erişilebilirlik**: Klavye navigasyonu ve ekran okuyucu desteği ile WCAG uyumlu
+- **Duyarlı Tasarım**: Masaüstü ve tablet için optimize edilmiş
+
+### Otomatik Kaydetme Mekanizması
+
+Otomatik kaydetme özelliği başlıktaki kaydetme simgesi kullanılarak açılıp kapatılabilir:
+
+| Simge           | Durum      | Davranış                                                          |
+| --------------- | ---------- | ----------------------------------------------------------------- |
+| 💾 (Kaydet)     | Etkin      | Tüm değişiklikler localStorage'a otomatik olarak kaydedilir       |
+| 🚫💾 (Kapalı)   | Devre Dışı | Değişiklikler kaydedilmez; mevcut kaydedilmiş veriler silinir     |
+
+**Nasıl çalışır:**
+
+- **Otomatik kaydetmeyi etkinleştirme**: Mevcut ayarları hemen localStorage'a kaydeder
+- **Otomatik kaydetmeyi devre dışı bırakma**: Tüm kaydedilmiş ayarları localStorage'dan siler
+- Otomatik kaydetme tercihiniz oturumlar arasında hatırlanır
+
+### Gizlilik ve Veri Depolama
+
+Bu uygulama gizliliğinize saygı duyar:
+
+- **Yalnızca Yerel Depolama**: Tüm ayarlar tarayıcınızda yerel olarak saklanır (localStorage)
+- **Sunucu İletişimi Yok**: Hiçbir veri asla herhangi bir sunucuya gönderilmez
+- **Tasarım Gereği Güvenli**: Ortam değişkeni **değerleri asla saklanmaz** - yalnızca değişken adları kaydedilir
+- **Tam Kontrol**: Başlıktaki geçiş anahtarını kullanarak otomatik kaydetmeyi istediğiniz zaman devre dışı bırakabilirsiniz, bu da tüm saklanan verileri siler
+- **Oturum Tabanlı Tema**: Tema tercihi sayfa yenilendiğinde sistem varsayılanına sıfırlanır
+
+## Güvenlik Özellikleri
+
+Oluşturulan Docker yapılandırması kapsamlı güvenlik önlemleri içerir:
+
+### Ağ Güvenlik Duvarı
+
+`init-firewall.sh` betiği sıkı ağ izolasyonu uygular:
+
+- **iptables tabanlı güvenlik duvarı** tüm giden trafik için DROP politikası ile
+- **Yalnızca izin listesi yaklaşımı** - yalnızca onaylı alan adlarına erişilebilir:
+  - `api.anthropic.com` - Claude API
+  - `npm registry` - Paket yükleme
+  - `github.com` - Git işlemleri
+  - `sentry.io` - Hata raporlama
+- **Otomatik GitHub IP çözümleme** web, API ve git uç noktaları için
+- **Ana bilgisayar ağ izolasyonu** - yerel ağa erişimi önler
+- **Güvenlik duvarı doğrulaması** - testler kuralların doğru uygulandığından emin olur
+
+### Docker Güvenlik Sertleştirme
+
+- **Yetenek kaldırma**: Tüm Linux yetenekleri kaldırılır (`cap_drop: ALL`)
+- **Ayrıcalık yükseltme yok**: `no-new-privileges:true`
+- **Kaynak sınırları**: CPU ve bellek kısıtlamaları
+- **Salt okunur bağlamalar**: Korunan dosyalar salt okunur olarak bağlanır
+- **Root olmayan çalıştırma**: `node` kullanıcısı olarak çalışır
+
+## Önceden Yüklenmiş Araçlar
+
+Oluşturulan konteyner şunları içerir:
+
+| Kategori           | Araçlar                             |
+| ------------------ | ----------------------------------- |
+| **Kabuk**          | zsh (Powerline10k teması ile), bash |
+| **Editörler**      | nano, vim                           |
+| **Sürüm Kontrolü** | git, git-delta, GitHub CLI (gh)     |
+| **Araçlar**        | fzf, jq, less, unzip, man-db        |
+| **Ağ**             | iptables, ipset, iproute2, dnsutils |
+
+## Başlarken
+
+### Gereksinimler
+
+- Node.js 20 veya üstü
+- npm 10 veya üstü
+
+### Kurulum
+
+```bash
+# Depoyu klonlayın
+git clone https://github.com/mkloubert/claude-initializr.git
+cd claude-initializr
+
+# Bağımlılıkları yükleyin
+npm install
+
+# Geliştirme sunucusunu başlatın
+npm run dev
+
+# Üretim için derleyin
+npm run build
+
+# Üretim derlemesini önizleyin
+npm run preview
+```
+
+### Ortam Değişkenleri
+
+Ortam değişkenlerini kullanarak uygulamayı özelleştirin. Bir `.env` dosyası oluşturun:
+
+```bash
+# GitHub depo URL'si (isteğe bağlı, gizlemek için boş bırakın)
+VITE_GITHUB_URL=https://github.com/mkloubert/claude-initializr
+
+# PayPal bağış URL'si (isteğe bağlı, gizlemek için boş bırakın)
+VITE_PAYPAL_URL=https://paypal.me/mjkloubert
+```
+
+## Kullanım
+
+1. **Temel İmajı Yapılandırın**: Docker temel imaj adını ve sürümünü ayarlayın (örn., `node:24` veya `node:22-slim`)
+
+2. **Yazılım Seçin**: Konteynerinize yüklenecek ek yazılımı seçin
+
+3. **Özel Paketler Ekleyin**:
+   - Özel APT paketleri ekleyin (örn., `curl`, `graphviz`, `sqlite3`)
+   - Global olarak yüklenecek özel NPM paketleri ekleyin (örn., `eslint`, `prettier`)
+   - NPM paketlerinin `node` (varsayılan) veya `root` kullanıcısı olarak yüklenip yüklenmeyeceğini seçin
+
+4. **Ortam Değişkenlerini Ayarlayın**: Projenizin ihtiyaç duyduğu ortam değişkenlerini ekleyin (örn., `ANTHROPIC_API_KEY`)
+
+5. **Hassas Dosyaları Koruyun**: Korunması gereken dosyaların yollarını ekleyin (örn., `.env.local`)
+
+6. **CLAUDE.md'yi Düzenleyin**: Markdown editöründe Claude için talimatlar yazın
+
+7. **Önizleme**: Oluşturulan yapılandırma dosyalarını önizleme sekmelerinde kontrol edin
+
+8. **İndirin**: Tüm dosyaları almak için "ZIP İndir"e tıklayın
+
+## Oluşturulan Dosyaları Kullanma
+
+1. ZIP dosyasını proje dizininize çıkarın
+
+2. Proje dosyalarınızı `workspace` klasörüne kopyalayın (veya mevcut projenizi bağlayın)
+
+3. API anahtarınızı `.env` dosyasında ayarlayın:
+
+   ```bash
+   ANTHROPIC_API_KEY=api-anahtariniz-buraya
+   ```
+
+4. Konteyneri derleyin ve çalıştırın:
+
+   ```bash
+   docker compose up --build
+   ```
+
+5. Konteynere bağlanın:
+
+   ```bash
+   docker compose exec claude zsh
+   ```
+
+6. Güvenlik duvarını başlatın (sudo şifresi gerektirir):
+
+   ```bash
+   sudo /usr/local/bin/init-firewall.sh
+   ```
+
+7. Claude Code'u başlatın:
+   ```bash
+   claude
+   ```
+
+## Oluşturulan Dosya Yapısı
+
+```
+├── workspace/
+│   ├── .claude/
+│   │   └── settings.json    # Claude ayarları
+│   ├── .empty               # Korunan bağlamalar için boş dosya
+│   └── CLAUDE.md            # Claude talimatlarınız
+├── .env                     # Ortam değişkenleri
+├── Dockerfile               # Konteyner tanımı
+├── docker-compose.yaml      # Docker Compose yapılandırması
+└── init-firewall.sh         # Ağ güvenlik duvarı betiği
+```
+
+## Sorun Giderme
+
+### Güvenlik Duvarı Sorunları
+
+Güvenlik duvarını etkinleştirdikten sonra ağ sorunlarıyla karşılaşırsanız:
+
+```bash
+# Güvenlik duvarı durumunu kontrol edin
+sudo iptables -L -n
+
+# Engellenen bağlantıları görüntüleyin
+sudo iptables -L -n -v | grep DROP
+
+# Güvenlik duvarını sıfırlayın (tüm trafiğe izin verir)
+sudo iptables -F
+```
+
+### Konteyner Başlamıyor
+
+```bash
+# Günlükleri kontrol edin
+docker compose logs
+
+# Önbellek olmadan yeniden derleyin
+docker compose build --no-cache
+```
+
+### İzin Reddedildi
+
+Workspace dizininin doğru izinlere sahip olduğundan emin olun:
+
+```bash
+chmod -R 755 workspace
+```
+
+### Uygulama Ayarlarını Sıfırlama
+
+Tüm kaydedilmiş ayarları temizlemek ve sıfırdan başlamak için tarayıcınızın geliştirici konsolunu açın ve çalıştırın:
+
+```javascript
+localStorage.removeItem("claude-initializr-config");
+localStorage.removeItem("claude-initializr-welcome-dismissed");
+localStorage.removeItem("claude-initializr-autosave");
+```
+
+Ardından sayfayı yenileyin.
+
+Alternatif olarak, ayarların kaydedilmesini önlemek için başlıktaki geçiş anahtarını kullanarak otomatik kaydetmeyi devre dışı bırakabilirsiniz.
+
+## Teknoloji Yığını
+
+- [React 19](https://react.dev/) TypeScript ve React Compiler ile
+- [Vite](https://vite.dev/) paketleyici olarak
+- [Tailwind CSS v4](https://tailwindcss.com/) OKLCH renk uzayı ile
+- [shadcn/ui](https://ui.shadcn.com/) bileşenleri (40+ bileşen)
+- [react-router](https://reactrouter.com/) yönlendirme için
+- [i18next](https://www.i18next.com/) uluslararasılaştırma için
+- [JSZip](https://stuk.github.io/jszip/) ZIP oluşturma için
+- [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) kod önizlemeleri için
+
+## Katkıda Bulunma
+
+Katkılar memnuniyetle karşılanır! Lütfen bir Pull Request göndermekten çekinmeyin.
+
+1. Depoyu forklayın
+2. Özellik dalınızı oluşturun (`git checkout -b feature/harika-ozellik`)
+3. Değişikliklerinizi commit edin (`git commit -m 'Harika özellik ekle'`)
+4. Dala push edin (`git push origin feature/harika-ozellik`)
+5. Bir Pull Request açın
+
+### Yeni Dil Ekleme
+
+1. `src/i18n/locales/` içinde yeni bir yerel dosya oluşturun (örn., `fr.json`)
+2. Yapıyı `en.json`'dan kopyalayın
+3. Tüm dizeleri çevirin
+4. Dili `src/i18n/index.ts`'e ekleyin
+5. Dil seçeneğini `LanguageSwitcher.tsx`'e ekleyin
+
+## Erişilebilirlik
+
+Bu uygulama tamamen erişilebilir olacak şekilde tasarlanmıştır:
+
+- Anlamsal HTML yapısı (`<header>`, `<main>`, `<footer>`)
+- Tüm etkileşimli öğelerde ARIA etiketleri
+- Klavye navigasyonu desteği
+- Ekran okuyucu uyumlu
+- Yüksek kontrastlı renk şemaları
+- Etkileşimli öğelerde odak göstergeleri
+
+## Destek
+
+Bu projeyi faydalı buluyorsanız, desteklemeyi düşünün:
+
+- ⭐ [GitHub](https://github.com/mkloubert/claude-initializr)'da depoya yıldız verin
+- 💝 [PayPal ile bağış yapın](https://paypal.me/mjkloubert)
+
+## Lisans
+
+MIT Lisansı - ayrıntılar için [LICENSE](./LICENSE) dosyasına bakın.
+
+Telif Hakkı © 2026 Marcel Joachim Kloubert
