@@ -47,7 +47,7 @@ import { Package, Eye, Wand2, Loader2, Plus, X, Terminal } from 'lucide-react';
 const DockerfilePreview = lazy(() =>
   import('@/components/preview/DockerfilePreview').then((m) => ({ default: m.DockerfilePreview }))
 );
-import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm } from 'react-icons/si';
+import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm, SiGo } from 'react-icons/si';
 import { TbBrandPython } from 'react-icons/tb';
 import type { DockerfileUser, SoftwareConfig } from '@/types';
 
@@ -89,6 +89,12 @@ const softwareMetadata: Record<string, {
     labelKey: 'software.uv',
     descriptionKey: 'software.uvDesc',
     icon: <TbBrandPython className="h-5 w-5" aria-hidden="true" />,
+  },
+  golang: {
+    id: 'golang',
+    labelKey: 'software.golang',
+    descriptionKey: 'software.golangDesc',
+    icon: <SiGo className="h-5 w-5" aria-hidden="true" />,
   },
 };
 

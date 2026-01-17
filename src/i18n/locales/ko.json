@@ -9,7 +9,7 @@
     "purpose": "이 도구는 격리된 컨테이너 환경에서 Claude Code를 실행할 수 있는 완전한 Docker 구성을 생성합니다. 코드는 보호된 상태로 유지되면서 Claude가 개발, 디버깅, 리팩토링을 계속 도와줄 수 있습니다.",
     "features": {
       "title": "구성할 수 있는 항목:",
-      "dockerfile": "설치할 개발 도구 선택 (TypeScript, Python, ffmpeg, ImageMagick)",
+      "dockerfile": "설치할 개발 도구 선택 (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "환경 변수(API 키 등) 설정 및 민감한 파일 접근 보호",
       "claudeMd": "Claude가 각 세션 시작 시 읽는 프로젝트별 지침 작성"
     },
@@ -67,6 +67,8 @@
     "pythonDesc": "pip 패키지 관리자와 함께 Python 3 인터프리터 설치. Python 스크립트 실행, Python 패키지 설치, Python 기반 도구 사용이 가능. 데이터 처리, 스크립팅, AI/ML 작업에 유용.",
     "uv": "uv",
     "uvDesc": "Rust로 작성된 매우 빠른 Python 패키지 설치 및 해결 도구인 uv를 설치. pip, pip-tools, virtualenv를 대체하여 더 빠른 의존성 관리가 가능.",
+    "golang": "Go",
+    "golangDesc": "공식 컴파일러와 도구가 포함된 Go(Golang) 프로그래밍 언어를 설치. 빠르고 정적으로 컴파일된 프로그램, CLI 도구, 웹 서버, 시스템 소프트웨어 구축에 이상적.",
     "version": "버전",
     "latest": "최신",
     "recommendsHint": "권장: {{packages}}"
@@ -123,7 +125,7 @@
   },
   "preview": {
     "dockerfile": "Dockerfile",
-    "dockerfileDesc": "Dockerfile은 컨테이너에 설치할 소프트웨어를 정의합니다. Node.js와 Claude Code 외에도 TypeScript, Python, ffmpeg, ImageMagick 같은 추가 도구를 포함할 수 있습니다. 선택한 소프트웨어는 Claude가 명령을 실행할 때 사용 가능합니다.",
+    "dockerfileDesc": "Dockerfile은 컨테이너에 설치할 소프트웨어를 정의합니다. Node.js와 Claude Code 외에도 TypeScript, Python, Go, ffmpeg, ImageMagick 같은 추가 도구를 포함할 수 있습니다. 선택한 소프트웨어는 Claude가 명령을 실행할 때 사용 가능합니다.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "docker-compose.yaml 파일은 컨테이너 시작 방법을 제어합니다. 환경 변수(API 키 등)를 여기서 정의할 수 있습니다. 보호된 파일은 Claude가 .env 파일 같은 민감한 데이터에 접근하지 못하도록 빈 읽기 전용 파일로 마운트됩니다."
   },

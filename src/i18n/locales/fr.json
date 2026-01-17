@@ -9,7 +9,7 @@
     "purpose": "Cet outil génère une configuration Docker complète qui vous permet d'exécuter Claude Code dans un environnement de conteneur isolé. Votre code reste protégé tandis que Claude peut toujours vous aider à développer, déboguer et refactoriser.",
     "features": {
       "title": "Ce que vous pouvez configurer :",
-      "dockerfile": "Choisissez les outils de développement à installer (TypeScript, Python, ffmpeg, ImageMagick)",
+      "dockerfile": "Choisissez les outils de développement à installer (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Définissez des variables d'environnement (comme votre clé API) et protégez les fichiers sensibles",
       "claudeMd": "Écrivez des instructions spécifiques au projet que Claude lit au début de chaque session"
     },
@@ -67,6 +67,8 @@
     "pythonDesc": "Installe l'interpréteur Python 3 avec le gestionnaire de paquets pip. Permet d'exécuter des scripts Python, d'installer des paquets Python et d'utiliser des outils basés sur Python. Utile pour le traitement de données, les scripts et les tâches IA/ML.",
     "uv": "uv",
     "uvDesc": "Installe uv, un installateur et résolveur de paquets Python extrêmement rapide écrit en Rust. Il peut remplacer pip, pip-tools et virtualenv pour une gestion des dépendances plus rapide.",
+    "golang": "Go",
+    "golangDesc": "Installe le langage de programmation Go (Golang) avec le compilateur et les outils officiels. Idéal pour créer des programmes rapides compilés statiquement, des outils CLI, des serveurs web et des logiciels système.",
     "version": "Version",
     "latest": "dernière",
     "recommendsHint": "Recommandé : {{packages}}"
@@ -123,7 +125,7 @@
   },
   "preview": {
     "dockerfile": "Dockerfile",
-    "dockerfileDesc": "Le Dockerfile définit quels logiciels sont installés dans le conteneur. En plus de Node.js et Claude Code, des outils supplémentaires comme TypeScript, Python, ffmpeg ou ImageMagick peuvent être inclus. Les logiciels sélectionnés seront disponibles lorsque Claude exécutera des commandes.",
+    "dockerfileDesc": "Le Dockerfile définit quels logiciels sont installés dans le conteneur. En plus de Node.js et Claude Code, des outils supplémentaires comme TypeScript, Python, Go, ffmpeg ou ImageMagick peuvent être inclus. Les logiciels sélectionnés seront disponibles lorsque Claude exécutera des commandes.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "Le fichier docker-compose.yaml contrôle le démarrage du conteneur. Les variables d'environnement (comme les clés API) peuvent être définies ici. Les fichiers protégés sont montés comme fichiers vides en lecture seule pour empêcher Claude d'accéder aux données sensibles comme les fichiers .env."
   },

@@ -37,6 +37,7 @@
 - **基础镜像**：配置 Docker 基础镜像名称和版本（默认：`node:24`）
 - **软件选择**：选择要安装的额外软件：
   - ffmpeg（音视频处理）
+  - Go（可选择版本）
   - ImageMagick（图像处理）
   - Python 3（可选择版本）
   - TypeScript（可选择版本）
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **可选：自定义下载 URL**
+
+   如果您需要使用镜像或代理进行包下载，可以在构建时覆盖默认 URL。所有 URL 都支持查询参数：
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | 构建参数 | 默认值 | 描述 |
+   |----------|--------|------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go 版本 JSON API URL（仅当选择 "latest" 时） |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go 归档下载基础 URL |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv 安装脚本 URL |
 
 5. 连接到容器：
 

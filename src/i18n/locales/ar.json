@@ -9,7 +9,7 @@
     "purpose": "تنشئ هذه الأداة تكوين Docker كامل يتيح لك تشغيل Claude Code في بيئة حاوية معزولة. يبقى كودك محمياً بينما يستطيع Claude الاستمرار في مساعدتك في التطوير والتصحيح وإعادة الهيكلة.",
     "features": {
       "title": "ما يمكنك تكوينه:",
-      "dockerfile": "اختر أدوات التطوير المراد تثبيتها (TypeScript، Python، ffmpeg، ImageMagick)",
+      "dockerfile": "اختر أدوات التطوير المراد تثبيتها (TypeScript، Python، Go، ffmpeg، ImageMagick)",
       "compose": "عيّن متغيرات البيئة (مثل مفتاح API الخاص بك) واحمِ الملفات الحساسة من الوصول",
       "claudeMd": "اكتب تعليمات خاصة بالمشروع يقرأها Claude في بداية كل جلسة"
     },
@@ -67,6 +67,8 @@
     "pythonDesc": "يثبّت مفسر Python 3 مع مدير الحزم pip. يتيح تشغيل نصوص Python وتثبيت حزم Python واستخدام أدوات Python. مفيد لمعالجة البيانات والنصوص ومهام AI/ML.",
     "uv": "uv",
     "uvDesc": "يثبّت uv، مثبّت ومحلل حزم Python سريع للغاية مكتوب بلغة Rust. يمكن أن يحل محل pip وpip-tools وvirtualenv لإدارة تبعيات أسرع.",
+    "golang": "Go",
+    "golangDesc": "يثبّت لغة البرمجة Go (Golang) مع المترجم والأدوات الرسمية. مثالي لإنشاء برامج سريعة مترجمة بشكل ثابت وأدوات CLI وخوادم الويب وبرامج النظام.",
     "version": "الإصدار",
     "latest": "الأحدث",
     "recommendsHint": "موصى به: {{packages}}"
@@ -123,7 +125,7 @@
   },
   "preview": {
     "dockerfile": "Dockerfile",
-    "dockerfileDesc": "يحدد Dockerfile البرامج المثبتة في الحاوية. بالإضافة إلى Node.js وClaude Code، يمكن تضمين أدوات إضافية مثل TypeScript وPython وffmpeg أو ImageMagick. ستكون البرامج المختارة متاحة عندما ينفذ Claude الأوامر.",
+    "dockerfileDesc": "يحدد Dockerfile البرامج المثبتة في الحاوية. بالإضافة إلى Node.js وClaude Code، يمكن تضمين أدوات إضافية مثل TypeScript وPython وGo وffmpeg أو ImageMagick. ستكون البرامج المختارة متاحة عندما ينفذ Claude الأوامر.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "يتحكم ملف docker-compose.yaml في كيفية بدء الحاوية. يمكن تعريف متغيرات البيئة (مثل مفاتيح API) هنا. يتم تثبيت الملفات المحمية كملفات فارغة للقراءة فقط لمنع Claude من الوصول إلى البيانات الحساسة مثل ملفات .env."
   },

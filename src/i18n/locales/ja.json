@@ -9,7 +9,7 @@
     "purpose": "このツールは、Claude Codeを分離されたコンテナ環境で実行できる完全なDocker設定を生成します。あなたのコードは保護されたまま、Claudeは開発、デバッグ、リファクタリングを引き続きサポートできます。",
     "features": {
       "title": "設定できる内容：",
-      "dockerfile": "インストールする開発ツールを選択（TypeScript、Python、ffmpeg、ImageMagick）",
+      "dockerfile": "インストールする開発ツールを選択（TypeScript、Python、Go、ffmpeg、ImageMagick）",
       "compose": "環境変数（APIキーなど）を設定し、機密ファイルをアクセスから保護",
       "claudeMd": "Claudeが各セッション開始時に読むプロジェクト固有の指示を記述"
     },
@@ -67,6 +67,8 @@
     "pythonDesc": "pipパッケージマネージャー付きのPython 3インタープリターをインストール。Pythonスクリプトの実行、Pythonパッケージのインストール、Pythonベースのツールの使用が可能。データ処理、スクリプト、AI/MLタスクに便利。",
     "uv": "uv",
     "uvDesc": "Rustで書かれた超高速Pythonパッケージインストーラーおよびリゾルバーのuvをインストール。pip、pip-tools、virtualenvを置き換えてより高速な依存関係管理が可能。",
+    "golang": "Go",
+    "golangDesc": "公式コンパイラとツール付きのGo（Golang）プログラミング言語をインストール。高速で静的にコンパイルされたプログラム、CLIツール、Webサーバー、システムソフトウェアの構築に最適。",
     "version": "バージョン",
     "latest": "最新",
     "recommendsHint": "推奨: {{packages}}"
@@ -123,7 +125,7 @@
   },
   "preview": {
     "dockerfile": "Dockerfile",
-    "dockerfileDesc": "Dockerfileはコンテナにインストールするソフトウェアを定義します。Node.jsとClaude Codeに加えて、TypeScript、Python、ffmpeg、ImageMagickなどの追加ツールを含めることができます。選択したソフトウェアはClaudeがコマンドを実行するときに利用可能になります。",
+    "dockerfileDesc": "Dockerfileはコンテナにインストールするソフトウェアを定義します。Node.jsとClaude Codeに加えて、TypeScript、Python、Go、ffmpeg、ImageMagickなどの追加ツールを含めることができます。選択したソフトウェアはClaudeがコマンドを実行するときに利用可能になります。",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "docker-compose.yamlファイルはコンテナの起動方法を制御します。環境変数（APIキーなど）をここで定義できます。保護ファイルは空の読み取り専用ファイルとしてマウントされ、Claudeが.envファイルなどの機密データにアクセスするのを防ぎます。"
   },

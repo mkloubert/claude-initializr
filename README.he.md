@@ -39,6 +39,7 @@
 - **תמונת בסיס**: הגדרת שם וגרסה של תמונת Docker הבסיס (ברירת מחדל: `node:24`)
 - **בחירת תוכנות**: בחרו תוכנות נוספות להתקנה:
   - ffmpeg (עיבוד אודיו/וידאו)
+  - Go (עם בחירת גרסה)
   - ImageMagick (עיבוד תמונות)
   - Python 3 (עם בחירת גרסה)
   - TypeScript (עם בחירת גרסה)
@@ -229,6 +230,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **אופציונלי: כתובות URL מותאמות אישית להורדה**
+
+   אם אתם צריכים להשתמש במראה או פרוקסי להורדת חבילות, תוכלו לדרוס את כתובות ה-URL המוגדרות כברירת מחדל בזמן הבנייה. כל כתובות ה-URL תומכות בפרמטרי שאילתה:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | ארגומנט בנייה | ברירת מחדל | תיאור |
+   |---------------|-------------|-------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | כתובת URL ל-API JSON של גרסאות Go (רק עבור "latest") |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | כתובת URL בסיסית להורדת ארכיוני Go |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | כתובת URL לסקריפט התקנת uv |
 
 5. התחברות לקונטיינר:
 

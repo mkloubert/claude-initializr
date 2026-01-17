@@ -43,6 +43,7 @@ export interface SoftwareConfig {
   imagemagick: SoftwarePackage;
   python: SoftwarePackage;
   uv: SoftwarePackage;
+  golang: SoftwarePackage;
 }
 
 /**
@@ -159,6 +160,12 @@ export const defaultSoftwareConfig: SoftwareConfig = {
     version: 'latest',
     hasVersionSelection: false,
     recommends: ['python'],
+  },
+  golang: {
+    id: 'golang',
+    enabled: false,
+    version: 'latest',
+    hasVersionSelection: true,
   },
 };
 

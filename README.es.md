@@ -37,6 +37,7 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
 - **Imagen base**: Configure el nombre y la versión de la imagen Docker base (predeterminado: `node:24`)
 - **Selección de software**: Elija software adicional para instalar:
   - ffmpeg (procesamiento de audio/video)
+  - Go (con selección de versión)
   - ImageMagick (procesamiento de imágenes)
   - Python 3 (con selección de versión)
   - TypeScript (con selección de versión)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **Opcional: URLs de descarga personalizadas**
+
+   Si necesita usar un mirror o proxy para las descargas de paquetes, puede sobrescribir las URLs predeterminadas durante la construcción. Todas las URLs soportan parámetros de consulta:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://mi-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://mi-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://mi-mirror.example.com/uv/install.sh
+   ```
+
+   | Argumento de build | Predeterminado | Descripción |
+   |--------------------|----------------|-------------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL de la API JSON de versiones de Go (solo para "latest") |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | URL base para descargas de archivos Go |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL del script de instalación de uv |
 
 5. Conectarse al contenedor:
 

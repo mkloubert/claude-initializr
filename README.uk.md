@@ -37,6 +37,7 @@
 - **Базовий образ**: Налаштування назви та версії базового Docker образу (за замовчуванням: `node:24`)
 - **Вибір програмного забезпечення**: Виберіть додаткове ПЗ для встановлення:
   - ffmpeg (обробка аудіо/відео)
+  - Go (з вибором версії)
   - ImageMagick (обробка зображень)
   - Python 3 (з вибором версії)
   - TypeScript (з вибором версії)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **Опціонально: Користувацькі URL-адреси завантаження**
+
+   Якщо вам потрібно використовувати дзеркало або проксі для завантаження пакетів, ви можете перевизначити URL-адреси за замовчуванням під час збірки. Всі URL-адреси підтримують параметри запиту:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | Аргумент збірки | За замовчуванням | Опис |
+   |-----------------|------------------|------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL JSON API версій Go (тільки для "latest") |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Базова URL для завантаження архівів Go |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL скрипта встановлення uv |
 
 5. Підключіться до контейнера:
 

@@ -37,6 +37,7 @@
 - **Temel İmaj**: Docker temel imaj adını ve sürümünü yapılandırın (varsayılan: `node:24`)
 - **Yazılım Seçimi**: Yüklenecek ek yazılımları seçin:
   - ffmpeg (ses/video işleme)
+  - Go (sürüm seçimi ile)
   - ImageMagick (görüntü işleme)
   - Python 3 (sürüm seçimi ile)
   - TypeScript (sürüm seçimi ile)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **İsteğe bağlı: Özel indirme URL'leri**
+
+   Paket indirmeleri için bir ayna veya proxy kullanmanız gerekiyorsa, derleme sırasında varsayılan URL'leri geçersiz kılabilirsiniz. Tüm URL'ler sorgu parametrelerini destekler:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | Derleme Argümanı | Varsayılan | Açıklama |
+   |------------------|------------|----------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go sürüm JSON API URL'si (yalnızca "latest" için) |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go arşiv indirmeleri için temel URL |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv kurulum betiği URL'si |
 
 5. Konteynere bağlanın:
 

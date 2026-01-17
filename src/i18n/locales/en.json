@@ -9,7 +9,7 @@
     "purpose": "This tool generates a complete Docker configuration that lets you run Claude Code in an isolated container environment. Your code stays protected while Claude can still help you develop, debug, and refactor.",
     "features": {
       "title": "What you can configure:",
-      "dockerfile": "Choose which development tools to install (TypeScript, Python, ffmpeg, ImageMagick)",
+      "dockerfile": "Choose which development tools to install (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Set environment variables (like your API key) and protect sensitive files from being accessed",
       "claudeMd": "Write project-specific instructions that Claude reads at the start of each session"
     },
@@ -67,6 +67,8 @@
     "pythonDesc": "Installs the Python 3 interpreter with pip package manager. Enables running Python scripts, installing Python packages, and using Python-based tools. Useful for data processing, scripting, and AI/ML tasks.",
     "uv": "uv",
     "uvDesc": "Installs uv, an extremely fast Python package installer and resolver written in Rust. It can replace pip, pip-tools, and virtualenv for faster dependency management.",
+    "golang": "Go",
+    "golangDesc": "Installs the Go programming language (Golang) with the official compiler and tools. Ideal for building fast, statically compiled programs, CLI tools, web servers, and system software.",
     "version": "Version",
     "latest": "latest",
     "recommendsHint": "Recommended: {{packages}}"
@@ -123,7 +125,7 @@
   },
   "preview": {
     "dockerfile": "Dockerfile",
-    "dockerfileDesc": "The Dockerfile defines which software is installed in the container. In addition to Node.js and Claude Code, additional tools like TypeScript, Python, ffmpeg or ImageMagick can be included. The selected software will be available when Claude executes commands.",
+    "dockerfileDesc": "The Dockerfile defines which software is installed in the container. In addition to Node.js and Claude Code, additional tools like TypeScript, Python, Go, ffmpeg or ImageMagick can be included. The selected software will be available when Claude executes commands.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "The docker-compose.yaml file controls how the container is started. Environment variables (like API keys) can be defined here. Protected files are mounted as empty read-only files to prevent Claude from accessing sensitive data like .env files."
   },

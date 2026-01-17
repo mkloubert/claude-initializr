@@ -75,6 +75,7 @@ export const optionalNpmPackages: Record<string, string[]> = {
 export const softwareInstallOrder: string[] = [
   'python',
   'uv',
+  'golang',
   'typescript',
   'ffmpeg',
   'imagemagick',

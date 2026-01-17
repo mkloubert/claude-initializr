@@ -37,6 +37,7 @@ A web application to generate Docker configuration files for running [Claude Cod
 - **Base Image**: Configure the Docker base image name and version (default: `node:24`)
 - **Software Selection**: Choose additional software to install:
   - ffmpeg (audio/video processing)
+  - Go (with version selection)
   - ImageMagick (image processing)
   - Python 3 (with version selection)
   - TypeScript (with version selection)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **Optional: Custom Download URLs**
+
+   If you need to use a mirror or proxy for package downloads, you can override the default URLs during build. All URLs support query parameters:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | Build Argument | Default | Description |
+   |----------------|---------|-------------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL for Go version JSON API (only when "latest" is selected) |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Base URL for Go archive downloads |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL for uv install script |
 
 5. Connect to the container:
 

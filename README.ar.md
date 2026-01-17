@@ -39,6 +39,7 @@
 - **الصورة الأساسية**: قم بتكوين اسم وإصدار صورة Docker الأساسية (الافتراضي: `node:24`)
 - **اختيار البرامج**: اختر برامج إضافية للتثبيت:
   - ffmpeg (معالجة الصوت/الفيديو)
+  - Go (مع اختيار الإصدار)
   - ImageMagick (معالجة الصور)
   - Python 3 (مع اختيار الإصدار)
   - TypeScript (مع اختيار الإصدار)
@@ -229,6 +230,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **اختياري: عناوين URL مخصصة للتنزيل**
+
+   إذا كنت بحاجة إلى استخدام مرآة أو وكيل لتنزيل الحزم، يمكنك تجاوز عناوين URL الافتراضية أثناء البناء. جميع عناوين URL تدعم معلمات الاستعلام:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | وسيط البناء | الافتراضي | الوصف |
+   |-------------|-----------|-------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | عنوان URL لواجهة JSON لإصدارات Go (فقط عند اختيار "latest") |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | عنوان URL الأساسي لتنزيل أرشيفات Go |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | عنوان URL لسكربت تثبيت uv |
 
 5. الاتصال بالحاوية:
 

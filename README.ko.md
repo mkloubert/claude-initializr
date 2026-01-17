@@ -37,6 +37,7 @@
 - **베이스 이미지**: Docker 베이스 이미지 이름과 버전 구성 (기본값: `node:24`)
 - **소프트웨어 선택**: 설치할 추가 소프트웨어 선택:
   - ffmpeg (오디오/비디오 처리)
+  - Go (버전 선택 가능)
   - ImageMagick (이미지 처리)
   - Python 3 (버전 선택 가능)
   - TypeScript (버전 선택 가능)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **선택 사항: 사용자 정의 다운로드 URL**
+
+   패키지 다운로드에 미러 또는 프록시를 사용해야 하는 경우, 빌드 시 기본 URL을 재정의할 수 있습니다. 모든 URL은 쿼리 매개변수를 지원합니다:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | 빌드 인수 | 기본값 | 설명 |
+   |-----------|--------|------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go 버전 JSON API URL ("latest" 선택 시만) |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go 아카이브 다운로드 기본 URL |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv 설치 스크립트 URL |
 
 5. 컨테이너에 연결:
 

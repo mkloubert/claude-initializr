@@ -37,6 +37,7 @@
 - **बेस इमेज**: Docker बेस इमेज का नाम और संस्करण कॉन्फ़िगर करें (डिफ़ॉल्ट: `node:24`)
 - **सॉफ्टवेयर चयन**: इंस्टॉल करने के लिए अतिरिक्त सॉफ्टवेयर चुनें:
   - ffmpeg (ऑडियो/वीडियो प्रोसेसिंग)
+  - Go (संस्करण चयन के साथ)
   - ImageMagick (इमेज प्रोसेसिंग)
   - Python 3 (संस्करण चयन के साथ)
   - TypeScript (संस्करण चयन के साथ)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **वैकल्पिक: कस्टम डाउनलोड URLs**
+
+   यदि आपको पैकेज डाउनलोड के लिए मिरर या प्रॉक्सी का उपयोग करना है, तो आप बिल्ड के दौरान डिफ़ॉल्ट URLs को ओवरराइड कर सकते हैं। सभी URLs क्वेरी पैरामीटर का समर्थन करते हैं:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | बिल्ड आर्गुमेंट | डिफ़ॉल्ट | विवरण |
+   |-----------------|----------|--------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go वर्जन JSON API URL (केवल "latest" के लिए) |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go आर्काइव डाउनलोड के लिए बेस URL |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv इंस्टॉल स्क्रिप्ट URL |
 
 5. कंटेनर से कनेक्ट करें:
 

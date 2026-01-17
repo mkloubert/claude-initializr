@@ -37,6 +37,7 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
 - **Basisimage**: Configureer de naam en versie van het Docker-basisimage (standaard: `node:24`)
 - **Softwareselectie**: Kies extra software om te installeren:
   - ffmpeg (audio-/videoverwerking)
+  - Go (met versieselectie)
   - ImageMagick (beeldverwerking)
   - Python 3 (met versieselectie)
   - TypeScript (met versieselectie)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **Optioneel: Aangepaste download-URL's**
+
+   Als u een mirror of proxy nodig heeft voor pakketdownloads, kunt u de standaard-URL's overschrijven tijdens het bouwen. Alle URL's ondersteunen queryparameters:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://mijn-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://mijn-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://mijn-mirror.example.com/uv/install.sh
+   ```
+
+   | Build-argument | Standaard | Beschrijving |
+   |----------------|-----------|--------------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL voor Go-versie JSON API (alleen bij "latest") |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Basis-URL voor Go-archiefdownloads |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL voor uv-installatiescript |
 
 5. Verbind met de container:
 

@@ -37,6 +37,7 @@
 - **ベースイメージ**：Dockerベースイメージの名前とバージョンを設定（デフォルト：`node:24`）
 - **ソフトウェア選択**：インストールする追加ソフトウェアを選択：
   - ffmpeg（オーディオ/ビデオ処理）
+  - Go（バージョン選択可能）
   - ImageMagick（画像処理）
   - Python 3（バージョン選択可能）
   - TypeScript（バージョン選択可能）
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **オプション：カスタムダウンロードURL**
+
+   パッケージダウンロードにミラーやプロキシを使用する必要がある場合、ビルド時にデフォルトのURLを上書きできます。すべてのURLはクエリパラメータをサポートしています：
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | ビルド引数 | デフォルト | 説明 |
+   |------------|------------|------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | GoバージョンJSON API URL（"latest"選択時のみ） |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Goアーカイブダウンロードのベースの URL |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uvインストールスクリプトURL |
 
 5. コンテナに接続：
 

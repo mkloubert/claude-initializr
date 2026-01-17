@@ -37,6 +37,7 @@ Une application web pour générer des fichiers de configuration Docker permetta
 - **Image de base** : Configurez le nom et la version de l'image Docker de base (par défaut : `node:24`)
 - **Sélection de logiciels** : Choisissez des logiciels supplémentaires à installer :
   - ffmpeg (traitement audio/vidéo)
+  - Go (avec sélection de version)
   - ImageMagick (traitement d'images)
   - Python 3 (avec sélection de version)
   - TypeScript (avec sélection de version)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **Optionnel : URLs de téléchargement personnalisées**
+
+   Si vous devez utiliser un miroir ou un proxy pour les téléchargements de paquets, vous pouvez remplacer les URLs par défaut lors de la construction. Toutes les URLs supportent les paramètres de requête :
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://mon-miroir.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://mon-miroir.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://mon-miroir.example.com/uv/install.sh
+   ```
+
+   | Argument de build | Défaut | Description |
+   |-------------------|--------|-------------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL de l'API JSON des versions Go (uniquement pour "latest") |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | URL de base pour les téléchargements d'archives Go |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL du script d'installation uv |
 
 5. Se connecter au conteneur :
 

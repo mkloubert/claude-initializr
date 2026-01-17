@@ -37,6 +37,7 @@
 - **Βασική Εικόνα**: Ρυθμίστε το όνομα και την έκδοση της βασικής εικόνας Docker (προεπιλογή: `node:24`)
 - **Επιλογή Λογισμικού**: Επιλέξτε επιπλέον λογισμικό για εγκατάσταση:
   - ffmpeg (επεξεργασία ήχου/βίντεο)
+  - Go (με επιλογή έκδοσης)
   - ImageMagick (επεξεργασία εικόνας)
   - Python 3 (με επιλογή έκδοσης)
   - TypeScript (με επιλογή έκδοσης)
@@ -227,6 +228,23 @@ VITE_PAYPAL_URL=https://paypal.me/mjkloubert
    ```bash
    docker compose up --build
    ```
+
+   **Προαιρετικό: Προσαρμοσμένες διευθύνσεις URL λήψης**
+
+   Αν χρειάζεστε mirror ή proxy για τις λήψεις πακέτων, μπορείτε να αντικαταστήσετε τις προεπιλεγμένες διευθύνσεις URL κατά τη δημιουργία. Όλες οι διευθύνσεις URL υποστηρίζουν παραμέτρους ερωτήματος:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
+     --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
+   ```
+
+   | Παράμετρος build | Προεπιλογή | Περιγραφή |
+   |------------------|------------|-----------|
+   | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL για το JSON API εκδόσεων Go (μόνο για "latest") |
+   | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Βασική URL για λήψεις αρχείων Go |
+   | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL για το σενάριο εγκατάστασης uv |
 
 5. Συνδεθείτε στο container:
 

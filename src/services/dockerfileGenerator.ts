@@ -37,6 +37,26 @@ export function generateDockerArgs(software: SoftwareConfig): string {
     args.push(`ARG PYTHON_VERSION=${version}`);
   }
 
+  if (software.uv.enabled) {
+    // Install script URL for uv (can be overridden for mirrors/proxies, supports query parameters)
+    args.push('ARG UV_INSTALL_SCRIPT_URL=https://astral.sh/uv/install.sh');
+  }
+
+  if (software.golang.enabled) {
+    const version = software.golang.version || 'latest';
+    // URLs for Go (can be overridden for mirrors/proxies, both support query parameters)
+    if (version === 'latest') {
+      // JSON API URL for fetching latest version info
+      args.push('ARG GO_JSON_URL=https://go.dev/dl/?mode=json');
+    }
+    // Base URL for downloading Go archives
+    args.push('ARG GO_DOWNLOAD_URL=https://go.dev/dl');
+    // Only add version ARG for specific versions (not 'latest' which is fetched dynamically)
+    if (version !== 'latest') {
+      args.push(`ARG GO_VERSION=${version}`);
+    }
+  }
+
   return args.join('\n');
 }
 
@@ -92,9 +112,58 @@ const rootCommandsByKey: Record<string, RootCommandGenerator> = {
   ],
   uv: () => [
     '# Install uv (Python package manager) system-wide',
-    'RUN curl -LsSf https://astral.sh/uv/install.sh \\',
+    'RUN curl -LsSf "${UV_INSTALL_SCRIPT_URL}" \\',
     '    | env UV_INSTALL_DIR=/usr/local/bin INSTALLER_NO_MODIFY_PATH=1 sh',
   ],
+  golang: (software: SoftwareConfig) => {
+    const version = software.golang.version || 'latest';
+    // Architecture mapping: dpkg architecture -> Go architecture
+    const archMapping = [
+      '        amd64) GO_ARCH=amd64 ;; \\',
+      '        arm64) GO_ARCH=arm64 ;; \\',
+      '        armhf) GO_ARCH=armv6l ;; \\',
+      '        armel) GO_ARCH=armv6l ;; \\',
+      '        i386) GO_ARCH=386 ;; \\',
+      '        ppc64el) GO_ARCH=ppc64le ;; \\',
+      '        ppc64) GO_ARCH=ppc64 ;; \\',
+      '        s390x) GO_ARCH=s390x ;; \\',
+      '        riscv64) GO_ARCH=riscv64 ;; \\',
+      '        mips64el) GO_ARCH=mips64le ;; \\',
+      '        mipsel) GO_ARCH=mipsle ;; \\',
+      '        mips) GO_ARCH=mips ;; \\',
+      '        loong64) GO_ARCH=loong64 ;; \\',
+      '        *) echo "Unsupported architecture: $ARCH" && exit 1 ;; \\',
+    ];
+
+    if (version === 'latest') {
+      // Dynamic fetch from go.dev API using jq
+      return [
+        '# Install Go (latest version, fetched dynamically)',
+        'RUN ARCH=$(dpkg --print-architecture) && \\',
+        '    case "$ARCH" in \\',
+        ...archMapping,
+        '    esac && \\',
+        '    GO_FILE=$(wget -qO- "${GO_JSON_URL}" | \\',
+        '        jq -r \'.[0].files[] | select(.os == "linux" and .arch == "\'"$GO_ARCH"\'" and .kind == "archive") | .filename\') && \\',
+        '    wget -qO- "${GO_DOWNLOAD_URL}/${GO_FILE}" | tar -xzC /usr/local && \\',
+        '    /usr/local/go/bin/go version',
+        'ENV PATH="/usr/local/go/bin:${PATH}"',
+      ];
+    } else {
+      // Specific version using ARG
+      return [
+        '# Install Go (architecture-aware, piped to tar for efficiency)',
+        'RUN ARCH=$(dpkg --print-architecture) && \\',
+        '    case "$ARCH" in \\',
+        ...archMapping,
+        '    esac && \\',
+        '    wget -qO- "${GO_DOWNLOAD_URL}/go${GO_VERSION}.linux-${GO_ARCH}.tar.gz" \\',
+        '        | tar -xzC /usr/local && \\',
+        '    /usr/local/go/bin/go version',
+        'ENV PATH="/usr/local/go/bin:${PATH}"',
+      ];
+    }
+  },
 };
 
 /**

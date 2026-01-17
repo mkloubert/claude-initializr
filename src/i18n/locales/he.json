@@ -9,7 +9,7 @@
     "purpose": "כלי זה מייצר תצורת Docker מלאה שמאפשרת לך להריץ את Claude Code בסביבת קונטיינר מבודדת. הקוד שלך נשאר מוגן בעוד Claude עדיין יכול לעזור לך לפתח, לדבג ולשפר קוד.",
     "features": {
       "title": "מה אפשר להגדיר:",
-      "dockerfile": "בחר אילו כלי פיתוח להתקין (TypeScript, Python, ffmpeg, ImageMagick)",
+      "dockerfile": "בחר אילו כלי פיתוח להתקין (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "הגדר משתני סביבה (כמו מפתח ה-API שלך) והגן על קבצים רגישים מפני גישה",
       "claudeMd": "כתוב הנחיות ספציפיות לפרויקט ש-Claude קורא בתחילת כל הפעלה"
     },
@@ -67,6 +67,8 @@
     "pythonDesc": "מתקין את מפרש Python 3 עם מנהל החבילות pip. מאפשר הרצת סקריפטי Python, התקנת חבילות Python ושימוש בכלים מבוססי Python. שימושי לעיבוד נתונים, סקריפטים ומשימות AI/ML.",
     "uv": "uv",
     "uvDesc": "מתקין את uv, מתקין ומפתר חבילות Python מהיר במיוחד שנכתב ב-Rust. יכול להחליף את pip, pip-tools ו-virtualenv לניהול תלויות מהיר יותר.",
+    "golang": "Go",
+    "golangDesc": "מתקין את שפת התכנות Go (Golang) עם הקומפיילר והכלים הרשמיים. אידיאלי ליצירת תוכניות מהירות מקומפלות סטטית, כלי CLI, שרתי אינטרנט ותוכנות מערכת.",
     "version": "גרסה",
     "latest": "אחרונה",
     "recommendsHint": "מומלץ: {{packages}}"
@@ -123,7 +125,7 @@
   },
   "preview": {
     "dockerfile": "Dockerfile",
-    "dockerfileDesc": "ה-Dockerfile מגדיר אילו תוכנות מותקנות בקונטיינר. בנוסף ל-Node.js ו-Claude Code, ניתן לכלול כלים נוספים כמו TypeScript, Python, ffmpeg או ImageMagick. התוכנה שנבחרה תהיה זמינה כאשר Claude מריץ פקודות.",
+    "dockerfileDesc": "ה-Dockerfile מגדיר אילו תוכנות מותקנות בקונטיינר. בנוסף ל-Node.js ו-Claude Code, ניתן לכלול כלים נוספים כמו TypeScript, Python, Go, ffmpeg או ImageMagick. התוכנה שנבחרה תהיה זמינה כאשר Claude מריץ פקודות.",
     "dockerCompose": "docker-compose.yaml",
     "dockerComposeDesc": "קובץ docker-compose.yaml שולט באופן שבו הקונטיינר מופעל. משתני סביבה (כמו מפתחות API) יכולים להיות מוגדרים כאן. קבצים מוגנים מותקנים כקבצים ריקים לקריאה בלבד כדי למנוע מ-Claude גישה לנתונים רגישים כמו קבצי .env."
   },
