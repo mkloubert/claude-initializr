@@ -36,24 +36,24 @@ A web application to generate Docker configuration files for running [Claude Cod
 - **ZIP Download**: Download all files as a ready-to-use ZIP archive
 - **Autosave**: Settings are automatically saved to your browser's localStorage (enabled by default)
 - **Multi-language Support**: Available in 18 languages:
-  - 🌍 العربية (Arabic)
-  - 🇩🇪 Deutsch (German)
-  - 🇬🇷 Ελληνικά (Greek)
+  - 🌍 Arabic
+  - 🇨🇳 Chinese
+  - 🇳🇱 Dutch
   - 🇬🇧 English
-  - 🇪🇸 Español (Spanish)
-  - 🇫🇷 Français (French)
-  - 🇮🇱 עברית (Hebrew)
-  - 🇮🇳 हिन्दी (Hindi)
-  - 🇮🇹 Italiano (Italian)
-  - 🇯🇵 日本語 (Japanese)
-  - 🇰🇷 한국어 (Korean)
-  - 🇳🇱 Nederlands (Dutch)
-  - 🇵🇱 Polski (Polish)
-  - 🇵🇹 Português (Portuguese)
-  - 🇹🇷 Türkçe (Turkish)
-  - 🇺🇦 Українська (Ukrainian)
-  - 🇵🇰 اردو (Urdu)
-  - 🇨🇳 中文 (Chinese)
+  - 🇫🇷 French
+  - 🇩🇪 German
+  - 🇬🇷 Greek
+  - 🇮🇱 Hebrew
+  - 🇮🇳 Hindi
+  - 🇮🇹 Italian
+  - 🇯🇵 Japanese
+  - 🇰🇷 Korean
+  - 🇵🇱 Polish
+  - 🇵🇹 Portuguese
+  - 🇪🇸 Spanish
+  - 🇹🇷 Turkish
+  - 🇺🇦 Ukrainian
+  - 🇵🇰 Urdu
 - **Dark/Light Theme**: Automatic theme detection with manual toggle
 - **PWA Support**: Installable as a Progressive Web App
 - **Fully Accessible**: WCAG compliant with keyboard navigation and screen reader support

@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useMemo } from 'react';
+import { useMemo, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/contexts';
 import {
@@ -40,8 +40,12 @@ import {
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { EnvRow } from './EnvRow';
 import { ProtectedFileRow } from './ProtectedFileRow';
-import { DockerComposePreview } from '@/components/preview/DockerComposePreview';
-import { Variable, ShieldAlert, Eye, Plus } from 'lucide-react';
+import { Variable, ShieldAlert, Eye, Plus, Loader2 } from 'lucide-react';
+
+// Lazy load the preview component to reduce initial bundle size
+const DockerComposePreview = lazy(() =>
+  import('@/components/preview/DockerComposePreview').then((m) => ({ default: m.DockerComposePreview }))
+);
 
 /**
  * Card component for docker-compose.yaml configuration with tabs for env variables,
@@ -175,7 +179,15 @@ export function DockerComposeCard() {
           </TabsContent>
 
           <TabsContent value="preview" className="mt-4">
-            <DockerComposePreview />
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center py-8">
+                  <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                </div>
+              }
+            >
+              <DockerComposePreview />
+            </Suspense>
           </TabsContent>
         </Tabs>
       </CardContent>

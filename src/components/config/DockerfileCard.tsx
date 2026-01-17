@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useMemo, type ReactNode } from 'react';
+import { useMemo, lazy, Suspense, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/contexts';
 import {
@@ -32,8 +32,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { SoftwareItem } from './SoftwareItem';
-import { DockerfilePreview } from '@/components/preview/DockerfilePreview';
-import { Package, Eye, Wand2 } from 'lucide-react';
+import { Package, Eye, Wand2, Loader2 } from 'lucide-react';
+
+// Lazy load the preview component to reduce initial bundle size
+const DockerfilePreview = lazy(() =>
+  import('@/components/preview/DockerfilePreview').then((m) => ({ default: m.DockerfilePreview }))
+);
 import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs } from 'react-icons/si';
 import type { SoftwareConfig } from '@/types';
 
@@ -166,7 +170,15 @@ export function DockerfileCard() {
           </TabsContent>
 
           <TabsContent value="preview" className="mt-4">
-            <DockerfilePreview />
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center py-8">
+                  <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                </div>
+              }
+            >
+              <DockerfilePreview />
+            </Suspense>
           </TabsContent>
         </Tabs>
       </CardContent>

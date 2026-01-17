@@ -18,13 +18,12 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MainLayout } from '@/components/layout';
 import {
   DockerfileCard,
   DockerComposeCard,
-  ClaudeMdCard,
 } from '@/components/config';
 import { DownloadButton } from '@/components/common';
 import {
@@ -42,7 +41,13 @@ import {
   Lock,
   X,
   Info,
+  Loader2,
 } from 'lucide-react';
+
+// Lazy load the markdown editor card to reduce initial bundle size (~1.7MB)
+const ClaudeMdCard = lazy(() =>
+  import('@/components/config/ClaudeMdCard').then((m) => ({ default: m.ClaudeMdCard }))
+);
 
 const WELCOME_DISMISSED_KEY = 'claude-initializr-welcome-dismissed';
 
@@ -160,7 +165,17 @@ export default function Home() {
         <div className="space-y-6">
           <DockerfileCard />
           <DockerComposeCard />
-          <ClaudeMdCard />
+          <Suspense
+            fallback={
+              <Card>
+                <CardContent className="flex items-center justify-center py-12">
+                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                </CardContent>
+              </Card>
+            }
+          >
+            <ClaudeMdCard />
+          </Suspense>
         </div>
       </div>
     </MainLayout>
