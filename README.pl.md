@@ -36,10 +36,11 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
 
 - **Obraz bazowy**: Konfiguracja nazwy i wersji bazowego obrazu Docker (domyślnie: `node:24`)
 - **Wybór oprogramowania**: Wybierz dodatkowe oprogramowanie do zainstalowania:
-  - TypeScript (z wyborem wersji)
-  - Python 3 (z wyborem wersji)
   - ffmpeg (przetwarzanie audio/wideo)
   - ImageMagick (przetwarzanie obrazów)
+  - Python 3 (z wyborem wersji)
+  - TypeScript (z wyborem wersji)
+  - uv (szybki instalator pakietów Python, zaleca Python)
 - **Niestandardowe pakiety APT**: Dodaj dodatkowe pakiety Debian/Ubuntu do zainstalowania w kontenerze
 - **Niestandardowe pakiety NPM**: Dodaj dodatkowe pakiety NPM do zainstalowania globalnie, z opcją instalacji jako użytkownik `root` lub `node`
 - **Niestandardowe polecenia RUN**: Dodaj niestandardowe polecenia shell do wykonania podczas budowania obrazu Docker, z opcją uruchomienia jako użytkownik `root` lub `node`

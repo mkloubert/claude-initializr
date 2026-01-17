@@ -19,6 +19,7 @@
 // DEALINGS IN THE SOFTWARE.
 
 import type { CustomNpmPackage, CustomRunCommand, SoftwareConfig } from '@/types';
+import { softwareInstallOrder } from '@/config/containerPackages';
 
 /**
  * Generate Docker ARG definitions for software versions.
@@ -40,26 +41,28 @@ export function generateDockerArgs(software: SoftwareConfig): string {
 }
 
 /**
+ * APT packages for each software, keyed by software ID.
+ */
+const aptPackagesByKey: Record<string, string[]> = {
+  python: ['python${PYTHON_VERSION}', 'python${PYTHON_VERSION}-venv', 'python3-pip'],
+  uv: ['curl'],
+  ffmpeg: ['ffmpeg'],
+  imagemagick: ['imagemagick'],
+};
+
+/**
  * Generate additional APT packages based on selected software and custom packages.
+ * Packages are added in installation order.
  */
 export function generateAptPackages(software: SoftwareConfig, customPackages: string[] = []): string {
   const packages: string[] = [];
 
-  if (software.ffmpeg.enabled) {
-    packages.push('ffmpeg');
-  }
-
-  if (software.imagemagick.enabled) {
-    packages.push('imagemagick');
-  }
-
-  if (software.python.enabled) {
-    // Use ARG variable for Python version (e.g., python3.11, python3.12)
-    packages.push(
-      'python${PYTHON_VERSION}',
-      'python${PYTHON_VERSION}-venv',
-      'python3-pip'
-    );
+  // Add packages in installation order
+  for (const key of softwareInstallOrder) {
+    const pkg = software[key as keyof SoftwareConfig];
+    if (pkg?.enabled && aptPackagesByKey[key]) {
+      packages.push(...aptPackagesByKey[key]);
+    }
   }
 
   // Add custom packages (already deduplicated by the config layer)
@@ -76,7 +79,27 @@ export function generateAptPackages(software: SoftwareConfig, customPackages: st
 }
 
 /**
+ * Root user installation commands for each software, keyed by software ID.
+ * Returns array of command lines or null if no root commands needed.
+ */
+type RootCommandGenerator = (software: SoftwareConfig) => string[] | null;
+
+const rootCommandsByKey: Record<string, RootCommandGenerator> = {
+  python: () => [
+    '# Create Python symlinks for easier access',
+    'RUN ln -sf /usr/bin/python${PYTHON_VERSION} /usr/local/bin/python && \\',
+    '    ln -sf /usr/bin/pip3 /usr/local/bin/pip',
+  ],
+  uv: () => [
+    '# Install uv (Python package manager) system-wide',
+    'RUN curl -LsSf https://astral.sh/uv/install.sh \\',
+    '    | env UV_INSTALL_DIR=/usr/local/bin INSTALLER_NO_MODIFY_PATH=1 sh',
+  ],
+};
+
+/**
  * Generate Dockerfile commands to run as root user.
+ * Commands are generated in installation order.
  */
 export function generateRootUserExtensions(
   software: SoftwareConfig,
@@ -85,13 +108,16 @@ export function generateRootUserExtensions(
 ): string {
   const commands: string[] = [];
 
-  // Python symlinks (run as root for /usr/local/bin access)
-  if (software.python.enabled) {
-    commands.push(
-      '# Create Python symlinks for easier access',
-      'RUN ln -sf /usr/bin/python${PYTHON_VERSION} /usr/local/bin/python && \\',
-      '    ln -sf /usr/bin/pip3 /usr/local/bin/pip'
-    );
+  // Add software commands in installation order
+  for (const key of softwareInstallOrder) {
+    const pkg = software[key as keyof SoftwareConfig];
+    const generator = rootCommandsByKey[key];
+    if (pkg?.enabled && generator) {
+      const cmds = generator(software);
+      if (cmds) {
+        commands.push(...cmds);
+      }
+    }
   }
 
   // Custom NPM packages to install as root
@@ -120,7 +146,27 @@ export function generateRootUserExtensions(
 }
 
 /**
+ * Node user installation commands for each software, keyed by software ID.
+ * Returns array of command lines or null if no node commands needed.
+ */
+type NodeCommandGenerator = (software: SoftwareConfig) => string[] | null;
+
+const nodeCommandsByKey: Record<string, NodeCommandGenerator> = {
+  typescript: () => [
+    '# Install TypeScript globally',
+    'RUN npm install -g typescript@${TYPESCRIPT_VERSION}',
+  ],
+  uv: () => [
+    '# Make uv available for the node user',
+    'RUN mkdir -p /home/node/.local/bin && \\',
+    '    cp /usr/local/bin/uv /home/node/.local/bin/uv',
+    'ENV PATH="/home/node/.local/bin:${PATH}"',
+  ],
+};
+
+/**
  * Generate Dockerfile commands to run as node user.
+ * Commands are generated in installation order.
  */
 export function generateNodeUserExtensions(
   software: SoftwareConfig,
@@ -129,12 +175,16 @@ export function generateNodeUserExtensions(
 ): string {
   const commands: string[] = [];
 
-  // TypeScript installation (as node user via npm) - uses ARG for version
-  if (software.typescript.enabled) {
-    commands.push(
-      '# Install TypeScript globally',
-      'RUN npm install -g typescript@${TYPESCRIPT_VERSION}'
-    );
+  // Add software commands in installation order
+  for (const key of softwareInstallOrder) {
+    const pkg = software[key as keyof SoftwareConfig];
+    const generator = nodeCommandsByKey[key];
+    if (pkg?.enabled && generator) {
+      const cmds = generator(software);
+      if (cmds) {
+        commands.push(...cmds);
+      }
+    }
   }
 
   // Custom NPM packages to install as node user

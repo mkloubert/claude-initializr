@@ -36,10 +36,11 @@
 
 - **베이스 이미지**: Docker 베이스 이미지 이름과 버전 구성 (기본값: `node:24`)
 - **소프트웨어 선택**: 설치할 추가 소프트웨어 선택:
-  - TypeScript (버전 선택 가능)
-  - Python 3 (버전 선택 가능)
   - ffmpeg (오디오/비디오 처리)
   - ImageMagick (이미지 처리)
+  - Python 3 (버전 선택 가능)
+  - TypeScript (버전 선택 가능)
+  - uv (빠른 Python 패키지 설치 도구, Python 권장)
 - **사용자 정의 APT 패키지**: 컨테이너에 설치할 추가 Debian/Ubuntu 패키지 추가
 - **사용자 정의 NPM 패키지**: 전역으로 설치할 추가 NPM 패키지 추가, `root` 또는 `node` 사용자로 설치 옵션
 - **사용자 정의 RUN 명령어**: `root` 또는 `node` 사용자로 실행할 사용자 정의 Dockerfile RUN 명령어 추가

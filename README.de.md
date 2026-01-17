@@ -36,10 +36,11 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 
 - **Basis-Image**: Konfigurieren Sie den Namen und die Version des Docker-Basis-Images (Standard: `node:24`)
 - **Software-Auswahl**: Wählen Sie zusätzliche Software zur Installation:
-  - TypeScript (mit Versionsauswahl)
-  - Python 3 (mit Versionsauswahl)
   - ffmpeg (Audio-/Videoverarbeitung)
   - ImageMagick (Bildverarbeitung)
+  - Python 3 (mit Versionsauswahl)
+  - TypeScript (mit Versionsauswahl)
+  - uv (schneller Python-Paketinstaller, empfiehlt Python)
 - **Benutzerdefinierte APT-Pakete**: Fügen Sie zusätzliche Debian/Ubuntu-Pakete zur Installation im Container hinzu
 - **Benutzerdefinierte NPM-Pakete**: Fügen Sie zusätzliche NPM-Pakete zur globalen Installation hinzu, mit der Option als `root` oder `node` Benutzer zu installieren
 - **Benutzerdefinierte RUN-Befehle**: Fügen Sie benutzerdefinierte Shell-Befehle hinzu, die während des Docker-Image-Builds ausgeführt werden, mit der Option als `root` oder `node` Benutzer auszuführen

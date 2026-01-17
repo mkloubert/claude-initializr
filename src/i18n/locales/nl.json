@@ -65,8 +65,11 @@
     "imagemagickDesc": "Een uitgebreide beeldverwerkingssuite die meer dan 200 formaten ondersteunt. Biedt tools voor schalen, bijsnijden, formaatconversie, watermerken en programmatische beeldmanipulatie. Ideaal voor geautomatiseerde beeldworkflows.",
     "python": "Python 3",
     "pythonDesc": "Installeert de Python 3-interpreter met pip-pakketbeheerder. Maakt het uitvoeren van Python-scripts, installeren van Python-pakketten en gebruik van Python-gebaseerde tools mogelijk. Handig voor gegevensverwerking, scripting en AI/ML-taken.",
+    "uv": "uv",
+    "uvDesc": "Installeert uv, een extreem snelle Python-pakketinstallatie en -resolver geschreven in Rust. Het kan pip, pip-tools en virtualenv vervangen voor sneller afhankelijkheidsbeheer.",
     "version": "Versie",
-    "latest": "nieuwste"
+    "latest": "nieuwste",
+    "recommendsHint": "Aanbevolen: {{packages}}"
   },
   "aptPackages": {
     "title": "Aangepaste APT-pakketten",

@@ -36,10 +36,11 @@
 
 - **Temel İmaj**: Docker temel imaj adını ve sürümünü yapılandırın (varsayılan: `node:24`)
 - **Yazılım Seçimi**: Yüklenecek ek yazılımları seçin:
-  - TypeScript (sürüm seçimi ile)
-  - Python 3 (sürüm seçimi ile)
   - ffmpeg (ses/video işleme)
   - ImageMagick (görüntü işleme)
+  - Python 3 (sürüm seçimi ile)
+  - TypeScript (sürüm seçimi ile)
+  - uv (hızlı Python paket yükleyicisi, Python önerir)
 - **Özel APT Paketleri**: Konteynere yüklenecek ek Debian/Ubuntu paketleri ekleyin
 - **Özel NPM Paketleri**: Global olarak yüklenecek ek NPM paketleri ekleyin, `root` veya `node` kullanıcısı olarak yükleme seçeneği ile
 - **Özel RUN Komutları**: Docker imajı oluşturulurken çalıştırılacak özel shell komutları ekleyin, `root` veya `node` kullanıcısı olarak çalıştırma seçeneği ile

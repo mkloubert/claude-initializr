@@ -36,10 +36,11 @@ A web application to generate Docker configuration files for running [Claude Cod
 
 - **Base Image**: Configure the Docker base image name and version (default: `node:24`)
 - **Software Selection**: Choose additional software to install:
-  - TypeScript (with version selection)
-  - Python 3 (with version selection)
   - ffmpeg (audio/video processing)
   - ImageMagick (image processing)
+  - Python 3 (with version selection)
+  - TypeScript (with version selection)
+  - uv (fast Python package installer, recommends Python)
 - **Custom APT Packages**: Add additional Debian/Ubuntu packages to install in the container
 - **Custom NPM Packages**: Add additional NPM packages to install globally, with the option to install as `root` or `node` user
 - **Custom RUN Commands**: Add custom shell commands to execute during Docker image build, with the option to run as `root` or `node` user

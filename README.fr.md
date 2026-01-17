@@ -36,10 +36,11 @@ Une application web pour générer des fichiers de configuration Docker permetta
 
 - **Image de base** : Configurez le nom et la version de l'image Docker de base (par défaut : `node:24`)
 - **Sélection de logiciels** : Choisissez des logiciels supplémentaires à installer :
-  - TypeScript (avec sélection de version)
-  - Python 3 (avec sélection de version)
   - ffmpeg (traitement audio/vidéo)
   - ImageMagick (traitement d'images)
+  - Python 3 (avec sélection de version)
+  - TypeScript (avec sélection de version)
+  - uv (installateur de paquets Python rapide, recommande Python)
 - **Paquets APT personnalisés** : Ajoutez des paquets Debian/Ubuntu supplémentaires à installer dans le conteneur
 - **Paquets NPM personnalisés** : Ajoutez des paquets NPM supplémentaires à installer globalement, avec la possibilité de les installer en tant qu'utilisateur `root` ou `node`
 - **Commandes RUN personnalisées** : Ajoutez des commandes shell personnalisées à exécuter lors de la construction de l'image Docker, avec la possibilité de les exécuter en tant qu'utilisateur `root` ou `node`

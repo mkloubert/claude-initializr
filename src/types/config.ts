@@ -30,6 +30,8 @@ export interface SoftwarePackage {
   version: string;
   /** Whether version selection is available for this software */
   hasVersionSelection: boolean;
+  /** Optional list of software IDs that this package recommends (soft dependency) */
+  recommends?: string[];
 }
 
 /**
@@ -40,6 +42,7 @@ export interface SoftwareConfig {
   ffmpeg: SoftwarePackage;
   imagemagick: SoftwarePackage;
   python: SoftwarePackage;
+  uv: SoftwarePackage;
 }
 
 /**
@@ -149,6 +152,13 @@ export const defaultSoftwareConfig: SoftwareConfig = {
     enabled: false,
     version: '3',
     hasVersionSelection: true,
+  },
+  uv: {
+    id: 'uv',
+    enabled: false,
+    version: 'latest',
+    hasVersionSelection: false,
+    recommends: ['python'],
   },
 };
 

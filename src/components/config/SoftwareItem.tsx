@@ -23,6 +23,7 @@ import { useTranslation } from 'react-i18next';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { AlertCircle } from 'lucide-react';
 import type { SoftwarePackage } from '@/types';
 
 interface SoftwareItemProps {
@@ -32,6 +33,10 @@ interface SoftwareItemProps {
   icon?: ReactNode;
   onToggle: () => void;
   onVersionChange: (version: string) => void;
+  /** List of software IDs that are recommended but not enabled */
+  missingRecommendations?: string[];
+  /** Map of software IDs to their translated labels */
+  softwareLabels?: Record<string, string>;
 }
 
 /**
@@ -44,10 +49,13 @@ export function SoftwareItem({
   icon,
   onToggle,
   onVersionChange,
+  missingRecommendations = [],
+  softwareLabels = {},
 }: SoftwareItemProps) {
   const { t } = useTranslation();
   const checkboxId = `software-${software.id}`;
   const versionId = `version-${software.id}`;
+  const showWarning = software.enabled && missingRecommendations.length > 0;
 
   return (
     <div className="flex flex-col gap-3 rounded-lg border p-4 sm:flex-row sm:items-center sm:justify-between">
@@ -76,6 +84,18 @@ export function SoftwareItem({
           >
             {t(descriptionKey)}
           </p>
+          {showWarning && (
+            <p className="flex items-center gap-1.5 text-sm text-amber-600 dark:text-amber-500">
+              <AlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>
+                {t('software.recommendsHint', {
+                  packages: missingRecommendations
+                    .map((id) => softwareLabels[id] || id)
+                    .join(', '),
+                })}
+              </span>
+            </p>
+          )}
         </div>
       </div>
 

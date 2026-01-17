@@ -48,42 +48,49 @@ const DockerfilePreview = lazy(() =>
   import('@/components/preview/DockerfilePreview').then((m) => ({ default: m.DockerfilePreview }))
 );
 import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm } from 'react-icons/si';
+import { TbBrandPython } from 'react-icons/tb';
 import type { DockerfileUser, SoftwareConfig } from '@/types';
 
 /**
  * Software metadata for rendering.
  */
-const softwareMetadata: Array<{
+const softwareMetadata: Record<string, {
   id: keyof SoftwareConfig;
   labelKey: string;
   descriptionKey: string;
   icon: ReactNode;
-}> = [
-    {
-      id: 'typescript',
-      labelKey: 'software.typescript',
-      descriptionKey: 'software.typescriptDesc',
-      icon: <SiTypescript className="h-5 w-5" aria-hidden="true" />,
-    },
-    {
-      id: 'ffmpeg',
-      labelKey: 'software.ffmpeg',
-      descriptionKey: 'software.ffmpegDesc',
-      icon: <SiFfmpeg className="h-5 w-5" aria-hidden="true" />,
-    },
-    {
-      id: 'imagemagick',
-      labelKey: 'software.imagemagick',
-      descriptionKey: 'software.imagemagickDesc',
-      icon: <Wand2 className="h-5 w-5" aria-hidden="true" />,
-    },
-    {
-      id: 'python',
-      labelKey: 'software.python',
-      descriptionKey: 'software.pythonDesc',
-      icon: <SiPython className="h-5 w-5" aria-hidden="true" />,
-    },
-  ];
+}> = {
+  typescript: {
+    id: 'typescript',
+    labelKey: 'software.typescript',
+    descriptionKey: 'software.typescriptDesc',
+    icon: <SiTypescript className="h-5 w-5" aria-hidden="true" />,
+  },
+  ffmpeg: {
+    id: 'ffmpeg',
+    labelKey: 'software.ffmpeg',
+    descriptionKey: 'software.ffmpegDesc',
+    icon: <SiFfmpeg className="h-5 w-5" aria-hidden="true" />,
+  },
+  imagemagick: {
+    id: 'imagemagick',
+    labelKey: 'software.imagemagick',
+    descriptionKey: 'software.imagemagickDesc',
+    icon: <Wand2 className="h-5 w-5" aria-hidden="true" />,
+  },
+  python: {
+    id: 'python',
+    labelKey: 'software.python',
+    descriptionKey: 'software.pythonDesc',
+    icon: <SiPython className="h-5 w-5" aria-hidden="true" />,
+  },
+  uv: {
+    id: 'uv',
+    labelKey: 'software.uv',
+    descriptionKey: 'software.uvDesc',
+    icon: <TbBrandPython className="h-5 w-5" aria-hidden="true" />,
+  },
+};
 
 /**
  * Card component for Dockerfile configuration with tabs for software selection and preview.
@@ -113,7 +120,7 @@ export function DockerfileCard() {
 
   const sortedSoftwareMetadata = useMemo(
     () =>
-      [...softwareMetadata].sort((a, b) =>
+      Object.values(softwareMetadata).sort((a, b) =>
         t(a.labelKey).localeCompare(t(b.labelKey), undefined, {
           sensitivity: 'base',
         })
@@ -181,19 +188,30 @@ export function DockerfileCard() {
               </div>
 
               {/* Additional Software */}
-              {sortedSoftwareMetadata.map((meta) => (
-                <SoftwareItem
-                  key={meta.id}
-                  software={config.software[meta.id]}
-                  labelKey={meta.labelKey}
-                  descriptionKey={meta.descriptionKey}
-                  icon={meta.icon}
-                  onToggle={() => toggleSoftware(meta.id)}
-                  onVersionChange={(version) =>
-                    setSoftwareVersion(meta.id, version)
-                  }
-                />
-              ))}
+              {sortedSoftwareMetadata.map((meta) => {
+                const software = config.software[meta.id];
+                const missingRecommendations = software.recommends?.filter(
+                  (recId) => !config.software[recId as keyof typeof config.software]?.enabled
+                ) ?? [];
+
+                return (
+                  <SoftwareItem
+                    key={meta.id}
+                    software={software}
+                    labelKey={meta.labelKey}
+                    descriptionKey={meta.descriptionKey}
+                    icon={meta.icon}
+                    onToggle={() => toggleSoftware(meta.id)}
+                    onVersionChange={(version) =>
+                      setSoftwareVersion(meta.id, version)
+                    }
+                    missingRecommendations={missingRecommendations}
+                    softwareLabels={Object.fromEntries(
+                      Object.entries(softwareMetadata).map(([id, m]) => [id, t(m.labelKey)])
+                    )}
+                  />
+                );
+              })}
 
               {/* Custom APT Packages */}
               <div className="rounded-lg border p-3 mt-2">

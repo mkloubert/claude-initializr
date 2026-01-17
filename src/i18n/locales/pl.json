@@ -65,8 +65,11 @@
     "imagemagickDesc": "Kompleksowy pakiet do przetwarzania obrazów obsługujący ponad 200 formatów. Dostarcza narzędzia do skalowania, przycinania, konwersji formatów, znaków wodnych i programowej manipulacji obrazami. Idealny do zautomatyzowanych przepływów pracy z obrazami.",
     "python": "Python 3",
     "pythonDesc": "Instaluje interpreter Python 3 z menedżerem pakietów pip. Umożliwia uruchamianie skryptów Python, instalowanie pakietów Python i używanie narzędzi opartych na Python. Przydatny do przetwarzania danych, skryptów i zadań AI/ML.",
+    "uv": "uv",
+    "uvDesc": "Instaluje uv, niezwykle szybki instalator i resolver pakietów Python napisany w Rust. Może zastąpić pip, pip-tools i virtualenv dla szybszego zarządzania zależnościami.",
     "version": "Wersja",
-    "latest": "najnowsza"
+    "latest": "najnowsza",
+    "recommendsHint": "Zalecane: {{packages}}"
   },
   "aptPackages": {
     "title": "Niestandardowe pakiety APT",

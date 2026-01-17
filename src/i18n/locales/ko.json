@@ -65,8 +65,11 @@
     "imagemagickDesc": "200개 이상의 형식을 지원하는 종합 이미지 처리 제품군. 크기 조정, 자르기, 형식 변환, 워터마크, 프로그래밍 방식 이미지 조작 도구 제공. 자동화된 이미지 워크플로우에 이상적.",
     "python": "Python 3",
     "pythonDesc": "pip 패키지 관리자와 함께 Python 3 인터프리터 설치. Python 스크립트 실행, Python 패키지 설치, Python 기반 도구 사용이 가능. 데이터 처리, 스크립팅, AI/ML 작업에 유용.",
+    "uv": "uv",
+    "uvDesc": "Rust로 작성된 매우 빠른 Python 패키지 설치 및 해결 도구인 uv를 설치. pip, pip-tools, virtualenv를 대체하여 더 빠른 의존성 관리가 가능.",
     "version": "버전",
-    "latest": "최신"
+    "latest": "최신",
+    "recommendsHint": "권장: {{packages}}"
   },
   "aptPackages": {
     "title": "사용자 정의 APT 패키지",

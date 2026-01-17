@@ -57,6 +57,7 @@ export const optionalAptPackages: Record<string, string[]> = {
   ffmpeg: ['ffmpeg'],
   imagemagick: ['imagemagick'],
   python: ['python3', 'python3-pip', 'python3-venv'],
+  uv: ['curl'],
 };
 
 /**
@@ -65,3 +66,16 @@ export const optionalAptPackages: Record<string, string[]> = {
 export const optionalNpmPackages: Record<string, string[]> = {
   typescript: ['typescript'],
 };
+
+/**
+ * Installation order for software packages.
+ * Packages are installed and displayed in this order (dependencies before dependents).
+ * This ensures that packages like uv are installed after their dependencies (e.g., Python).
+ */
+export const softwareInstallOrder: string[] = [
+  'python',
+  'uv',
+  'typescript',
+  'ffmpeg',
+  'imagemagick',
+];

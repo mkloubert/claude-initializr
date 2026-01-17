@@ -65,8 +65,11 @@
     "imagemagickDesc": "支持200多种格式的综合图像处理套件。提供调整大小、裁剪、格式转换、水印和编程图像处理的工具。非常适合自动化图像工作流程。",
     "python": "Python 3",
     "pythonDesc": "安装带有pip包管理器的Python 3解释器。可以运行Python脚本、安装Python包和使用基于Python的工具。适用于数据处理、脚本编写和AI/ML任务。",
+    "uv": "uv",
+    "uvDesc": "安装uv，一个用Rust编写的极速Python包安装和解析工具。可替代pip、pip-tools和virtualenv，实现更快的依赖管理。",
     "version": "版本",
-    "latest": "最新"
+    "latest": "最新",
+    "recommendsHint": "推荐: {{packages}}"
   },
   "aptPackages": {
     "title": "自定义APT软件包",

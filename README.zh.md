@@ -36,10 +36,11 @@
 
 - **基础镜像**：配置 Docker 基础镜像名称和版本（默认：`node:24`）
 - **软件选择**：选择要安装的额外软件：
-  - TypeScript（可选择版本）
-  - Python 3（可选择版本）
   - ffmpeg（音视频处理）
   - ImageMagick（图像处理）
+  - Python 3（可选择版本）
+  - TypeScript（可选择版本）
+  - uv（快速 Python 包安装工具，推荐 Python）
 - **自定义 APT 包**：添加要在容器中安装的额外 Debian/Ubuntu 软件包
 - **自定义 NPM 包**：添加要全局安装的额外 NPM 包，可选择以 `root` 或 `node` 用户身份安装
 - **自定义 RUN 命令**：添加以 `root` 或 `node` 用户身份执行的自定义 Dockerfile RUN 命令

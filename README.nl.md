@@ -36,10 +36,11 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
 
 - **Basisimage**: Configureer de naam en versie van het Docker-basisimage (standaard: `node:24`)
 - **Softwareselectie**: Kies extra software om te installeren:
-  - TypeScript (met versieselectie)
-  - Python 3 (met versieselectie)
   - ffmpeg (audio-/videoverwerking)
   - ImageMagick (beeldverwerking)
+  - Python 3 (met versieselectie)
+  - TypeScript (met versieselectie)
+  - uv (snelle Python-pakketinstaller, beveelt Python aan)
 - **Aangepaste APT-pakketten**: Voeg extra Debian/Ubuntu-pakketten toe om in de container te installeren
 - **Aangepaste NPM-pakketten**: Voeg extra NPM-pakketten toe om globaal te installeren, met de optie om als `root` of `node` gebruiker te installeren
 - **Aangepaste RUN-opdrachten**: Voeg aangepaste shell-opdrachten toe om uit te voeren tijdens de Docker-image build, met de optie om als `root` of `node` gebruiker uit te voeren

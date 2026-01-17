@@ -65,8 +65,11 @@
     "imagemagickDesc": "200'den fazla formatı destekleyen kapsamlı bir görüntü işleme paketi. Yeniden boyutlandırma, kırpma, format dönüştürme, filigran ve programatik görüntü manipülasyonu için araçlar sağlar. Otomatik görüntü iş akışları için idealdir.",
     "python": "Python 3",
     "pythonDesc": "pip paket yöneticisiyle Python 3 yorumlayıcısını kurar. Python betiklerini çalıştırmayı, Python paketlerini kurmayı ve Python tabanlı araçları kullanmayı sağlar. Veri işleme, betik yazma ve AI/ML görevleri için yararlıdır.",
+    "uv": "uv",
+    "uvDesc": "Rust ile yazılmış son derece hızlı bir Python paket yükleyicisi ve çözümleyicisi olan uv'yi kurar. Daha hızlı bağımlılık yönetimi için pip, pip-tools ve virtualenv'in yerini alabilir.",
     "version": "Sürüm",
-    "latest": "en son"
+    "latest": "en son",
+    "recommendsHint": "Önerilen: {{packages}}"
   },
   "aptPackages": {
     "title": "Özel APT Paketleri",
