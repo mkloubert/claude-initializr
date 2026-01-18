@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const ja: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "Claude Codeを安全に実行するためのDocker設定ファイルを生成"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "英語",
+    "de": "ドイツ語",
+    "es": "スペイン語",
+    "fr": "フランス語",
+    "it": "イタリア語",
+    "pt": "ポルトガル語",
+    "nl": "オランダ語",
+    "ja": "日本語",
+    "ko": "韓国語",
+    "zh": "中国語",
+    "ar": "アラビア語",
+    "he": "ヘブライ語",
+    "hi": "ヒンディー語",
+    "ur": "ウルドゥー語",
+    "uk": "ウクライナ語",
+    "el": "ギリシャ語",
+    "pl": "ポーランド語",
+    "tr": "トルコ語"
+  },
   "errors": {
     "invalidEnvKey": "無効な変数名です。文字、数字、アンダースコアのみを使用してください。",
     "duplicateEnvKey": "この変数名は既に存在します。",
@@ -346,4 +388,6 @@
       "description": "以下の開発ツールがインストールされています："
     }
   }
-}
+};
+
+export default ja;

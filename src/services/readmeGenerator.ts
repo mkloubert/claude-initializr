@@ -46,7 +46,7 @@ export interface ReadmeConfig {
   t: TFunction;
   includeLanguageSwitch?: {
     targetFile: string;
-    targetLanguageName: string;
+    targetLanguageCode: string;
   };
 }
 
@@ -583,8 +583,9 @@ export function generateReadmeContent(config: ReadmeConfig): string {
 
   // Language switch link if applicable
   if (includeLanguageSwitch) {
+    const translatedLanguageName = t(`languages.${includeLanguageSwitch.targetLanguageCode}`);
     const switchText = t('readme.languageSwitch', {
-      language: includeLanguageSwitch.targetLanguageName,
+      language: translatedLanguageName,
     });
     content += `> [${switchText}](${includeLanguageSwitch.targetFile})\n\n`;
   }

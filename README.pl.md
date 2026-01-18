@@ -399,10 +399,10 @@ Wkład jest mile widziany! Zapraszamy do zgłaszania Pull Requestów.
 
 ### Dodawanie nowego języka
 
-1. Utwórz nowy plik locale w `src/i18n/locales/` (np. `fr.json`)
-2. Skopiuj strukturę z `en.json`
-3. Przetłumacz wszystkie teksty
-4. Dodaj język do `src/i18n/index.ts`
+1. Utwórz nowy plik locale w `src/i18n/locales/` (np. `fr.ts`)
+2. Zaimportuj i zaimplementuj interfejs `Translations` z `types.ts`
+3. Skopiuj strukturę z `en.ts` i przetłumacz wszystkie teksty
+4. Dodaj import języka do `src/i18n/index.ts`
 5. Dodaj opcję języka do `LanguageSwitcher.tsx`
 
 ## Dostępność

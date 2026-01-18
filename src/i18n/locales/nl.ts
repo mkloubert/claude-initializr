@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const nl: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "Genereer Docker-configuratiebestanden om Claude Code veilig uit te voeren"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "Engels",
+    "de": "Duits",
+    "es": "Spaans",
+    "fr": "Frans",
+    "it": "Italiaans",
+    "pt": "Portugees",
+    "nl": "Nederlands",
+    "ja": "Japans",
+    "ko": "Koreaans",
+    "zh": "Chinees",
+    "ar": "Arabisch",
+    "he": "Hebreeuws",
+    "hi": "Hindi",
+    "ur": "Urdu",
+    "uk": "Oekraïens",
+    "el": "Grieks",
+    "pl": "Pools",
+    "tr": "Turks"
+  },
   "errors": {
     "invalidEnvKey": "Ongeldige variabelenaam. Gebruik alleen letters, cijfers en underscores.",
     "duplicateEnvKey": "Deze variabelenaam bestaat al.",
@@ -346,4 +388,6 @@
       "description": "De volgende ontwikkeltools zijn geïnstalleerd:"
     }
   }
-}
+};
+
+export default nl;

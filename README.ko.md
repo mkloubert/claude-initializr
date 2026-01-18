@@ -399,10 +399,10 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ### 새 언어 추가
 
-1. `src/i18n/locales/`에 새 로케일 파일 생성 (예: `fr.json`)
-2. `en.json`에서 구조 복사
-3. 모든 문자열 번역
-4. `src/i18n/index.ts`에 언어 추가
+1. `src/i18n/locales/`에 새 로케일 파일 생성 (예: `fr.ts`)
+2. `types.ts`에서 `Translations` 인터페이스 가져오기 및 구현
+3. `en.ts`에서 구조 복사 및 모든 문자열 번역
+4. `src/i18n/index.ts`에 언어 import 추가
 5. `LanguageSwitcher.tsx`에 언어 옵션 추가
 
 ## 접근성

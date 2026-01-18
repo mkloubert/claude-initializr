@@ -401,10 +401,10 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ### نئی زبان شامل کرنا
 
-1. `src/i18n/locales/` میں ایک نئی لوکیل فائل بنائیں (مثلاً، `fr.json`)
-2. `en.json` سے ساخت کاپی کریں
-3. تمام سٹرنگز کا ترجمہ کریں
-4. زبان کو `src/i18n/index.ts` میں شامل کریں
+1. `src/i18n/locales/` میں ایک نئی لوکیل فائل بنائیں (مثلاً، `fr.ts`)
+2. `types.ts` سے `Translations` انٹرفیس درآمد اور نافذ کریں
+3. `en.ts` سے ساخت کاپی کریں اور تمام سٹرنگز کا ترجمہ کریں
+4. `src/i18n/index.ts` میں زبان کا امپورٹ شامل کریں
 5. زبان کا آپشن `LanguageSwitcher.tsx` میں شامل کریں
 
 ## رسائی

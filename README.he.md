@@ -401,10 +401,10 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ### הוספת שפה חדשה
 
-1. צרו קובץ locale חדש ב-`src/i18n/locales/` (למשל, `fr.json`)
-2. העתיקו את המבנה מ-`en.json`
-3. תרגמו את כל המחרוזות
-4. הוסיפו את השפה ל-`src/i18n/index.ts`
+1. צרו קובץ locale חדש ב-`src/i18n/locales/` (למשל, `fr.ts`)
+2. יבאו ויישמו את הממשק `Translations` מ-`types.ts`
+3. העתיקו את המבנה מ-`en.ts` ותרגמו את כל המחרוזות
+4. הוסיפו את יבוא השפה ל-`src/i18n/index.ts`
 5. הוסיפו את אפשרות השפה ל-`LanguageSwitcher.tsx`
 
 ## נגישות

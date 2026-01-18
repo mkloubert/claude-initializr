@@ -395,10 +395,10 @@ I contributi sono benvenuti! Sentiti libero di inviare una Pull Request.
 
 ### Aggiungere una nuova lingua
 
-1. Crea un nuovo file locale in `src/i18n/locales/` (es., `fr.json`)
-2. Copia la struttura da `en.json`
-3. Traduci tutte le stringhe
-4. Aggiungi la lingua a `src/i18n/index.ts`
+1. Crea un nuovo file locale in `src/i18n/locales/` (es., `fr.ts`)
+2. Importa e implementa l'interfaccia `Translations` da `types.ts`
+3. Copia la struttura da `en.ts` e traduci tutte le stringhe
+4. Aggiungi l'import della lingua a `src/i18n/index.ts`
 5. Aggiungi l'opzione lingua a `LanguageSwitcher.tsx`
 
 ## Accessibilità

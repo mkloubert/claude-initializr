@@ -399,10 +399,10 @@ Katkılar memnuniyetle karşılanır! Lütfen bir Pull Request göndermekten çe
 
 ### Yeni Dil Ekleme
 
-1. `src/i18n/locales/` içinde yeni bir yerel dosya oluşturun (örn., `fr.json`)
-2. Yapıyı `en.json`'dan kopyalayın
-3. Tüm dizeleri çevirin
-4. Dili `src/i18n/index.ts`'e ekleyin
+1. `src/i18n/locales/` içinde yeni bir yerel dosya oluşturun (örn., `fr.ts`)
+2. `types.ts`'den `Translations` arayüzünü içe aktarın ve uygulayın
+3. Yapıyı `en.ts`'den kopyalayın ve tüm dizeleri çevirin
+4. Dil importunu `src/i18n/index.ts`'e ekleyin
 5. Dil seçeneğini `LanguageSwitcher.tsx`'e ekleyin
 
 ## Erişilebilirlik

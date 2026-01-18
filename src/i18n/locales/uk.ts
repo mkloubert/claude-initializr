@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const uk: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "Генеруйте конфігураційні файли Docker для безпечного запуску Claude Code"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "англійська",
+    "de": "німецька",
+    "es": "іспанська",
+    "fr": "французька",
+    "it": "італійська",
+    "pt": "португальська",
+    "nl": "нідерландська",
+    "ja": "японська",
+    "ko": "корейська",
+    "zh": "китайська",
+    "ar": "арабська",
+    "he": "іврит",
+    "hi": "гінді",
+    "ur": "урду",
+    "uk": "українська",
+    "el": "грецька",
+    "pl": "польська",
+    "tr": "турецька"
+  },
   "errors": {
     "invalidEnvKey": "Недійсна назва змінної. Використовуйте лише літери, цифри та підкреслення.",
     "duplicateEnvKey": "Ця назва змінної вже існує.",
@@ -346,4 +388,6 @@
       "description": "Встановлені наступні інструменти розробки:"
     }
   }
-}
+};
+
+export default uk;

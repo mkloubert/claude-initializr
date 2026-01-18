@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const ko: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "Claude Code를 안전하게 실행하기 위한 Docker 구성 파일 생성"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "영어",
+    "de": "독일어",
+    "es": "스페인어",
+    "fr": "프랑스어",
+    "it": "이탈리아어",
+    "pt": "포르투갈어",
+    "nl": "네덜란드어",
+    "ja": "일본어",
+    "ko": "한국어",
+    "zh": "중국어",
+    "ar": "아랍어",
+    "he": "히브리어",
+    "hi": "힌디어",
+    "ur": "우르두어",
+    "uk": "우크라이나어",
+    "el": "그리스어",
+    "pl": "폴란드어",
+    "tr": "터키어"
+  },
   "errors": {
     "invalidEnvKey": "잘못된 변수 이름입니다. 문자, 숫자, 밑줄만 사용하세요.",
     "duplicateEnvKey": "이 변수 이름은 이미 존재합니다.",
@@ -346,4 +388,6 @@
       "description": "다음 개발 도구가 설치되었습니다:"
     }
   }
-}
+};
+
+export default ko;

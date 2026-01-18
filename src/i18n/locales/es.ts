@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const es: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "Genera archivos de configuración Docker para ejecutar Claude Code de forma segura"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "inglés",
+    "de": "alemán",
+    "es": "español",
+    "fr": "francés",
+    "it": "italiano",
+    "pt": "portugués",
+    "nl": "neerlandés",
+    "ja": "japonés",
+    "ko": "coreano",
+    "zh": "chino",
+    "ar": "árabe",
+    "he": "hebreo",
+    "hi": "hindi",
+    "ur": "urdu",
+    "uk": "ucraniano",
+    "el": "griego",
+    "pl": "polaco",
+    "tr": "turco"
+  },
   "errors": {
     "invalidEnvKey": "Nombre de variable inválido. Use solo letras, números y guiones bajos.",
     "duplicateEnvKey": "Este nombre de variable ya existe.",
@@ -346,4 +388,6 @@
       "description": "Las siguientes herramientas de desarrollo están instaladas:"
     }
   }
-}
+};
+
+export default es;

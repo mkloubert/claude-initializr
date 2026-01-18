@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const zh: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "生成Docker配置文件以安全运行Claude Code"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "英语",
+    "de": "德语",
+    "es": "西班牙语",
+    "fr": "法语",
+    "it": "意大利语",
+    "pt": "葡萄牙语",
+    "nl": "荷兰语",
+    "ja": "日语",
+    "ko": "韩语",
+    "zh": "中文",
+    "ar": "阿拉伯语",
+    "he": "希伯来语",
+    "hi": "印地语",
+    "ur": "乌尔都语",
+    "uk": "乌克兰语",
+    "el": "希腊语",
+    "pl": "波兰语",
+    "tr": "土耳其语"
+  },
   "errors": {
     "invalidEnvKey": "变量名无效。只能使用字母、数字和下划线。",
     "duplicateEnvKey": "此变量名已存在。",
@@ -346,4 +388,6 @@
       "description": "以下开发工具已安装："
     }
   }
-}
+};
+
+export default zh;

@@ -395,10 +395,10 @@ Alternativamente, puede deshabilitar el guardado automático usando el interrupt
 
 ### Agregar un nuevo idioma
 
-1. Cree un nuevo archivo de configuración regional en `src/i18n/locales/` (ej., `fr.json`)
-2. Copie la estructura de `en.json`
-3. Traduzca todas las cadenas
-4. Agregue el idioma a `src/i18n/index.ts`
+1. Cree un nuevo archivo de configuración regional en `src/i18n/locales/` (ej., `fr.ts`)
+2. Importe e implemente la interfaz `Translations` desde `types.ts`
+3. Copie la estructura de `en.ts` y traduzca todas las cadenas
+4. Agregue la importación del idioma a `src/i18n/index.ts`
 5. Agregue la opción de idioma a `LanguageSwitcher.tsx`
 
 ## Accesibilidad

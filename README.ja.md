@@ -399,10 +399,10 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ### 新しい言語の追加
 
-1. `src/i18n/locales/`に新しいロケールファイルを作成（例：`fr.json`）
-2. `en.json`から構造をコピー
-3. すべての文字列を翻訳
-4. `src/i18n/index.ts`に言語を追加
+1. `src/i18n/locales/`に新しいロケールファイルを作成（例：`fr.ts`）
+2. `types.ts`から`Translations`インターフェースをインポートして実装
+3. `en.ts`から構造をコピーしてすべての文字列を翻訳
+4. `src/i18n/index.ts`に言語のインポートを追加
 5. `LanguageSwitcher.tsx`に言語オプションを追加
 
 ## アクセシビリティ

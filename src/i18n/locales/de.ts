@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const de: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "Docker-Konfigurationsdateien für sicheres Ausführen von Claude Code generieren"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "Englisch",
+    "de": "Deutsch",
+    "es": "Spanisch",
+    "fr": "Französisch",
+    "it": "Italienisch",
+    "pt": "Portugiesisch",
+    "nl": "Niederländisch",
+    "ja": "Japanisch",
+    "ko": "Koreanisch",
+    "zh": "Chinesisch",
+    "ar": "Arabisch",
+    "he": "Hebräisch",
+    "hi": "Hindi",
+    "ur": "Urdu",
+    "uk": "Ukrainisch",
+    "el": "Griechisch",
+    "pl": "Polnisch",
+    "tr": "Türkisch"
+  },
   "errors": {
     "invalidEnvKey": "Ungültiger Variablenname. Verwenden Sie nur Buchstaben, Zahlen und Unterstriche.",
     "duplicateEnvKey": "Dieser Variablenname existiert bereits.",
@@ -346,4 +388,6 @@
       "description": "Folgende Entwicklungswerkzeuge sind installiert:"
     }
   }
-}
+};
+
+export default de;

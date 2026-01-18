@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const hi: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "Claude Code को सुरक्षित रूप से चलाने के लिए Docker कॉन्फ़िगरेशन फ़ाइलें बनाएं"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "अंग्रेज़ी",
+    "de": "जर्मन",
+    "es": "स्पेनिश",
+    "fr": "फ़्रेंच",
+    "it": "इतालवी",
+    "pt": "पुर्तगाली",
+    "nl": "डच",
+    "ja": "जापानी",
+    "ko": "कोरियाई",
+    "zh": "चीनी",
+    "ar": "अरबी",
+    "he": "हिब्रू",
+    "hi": "हिन्दी",
+    "ur": "उर्दू",
+    "uk": "यूक्रेनी",
+    "el": "यूनानी",
+    "pl": "पोलिश",
+    "tr": "तुर्की"
+  },
   "errors": {
     "invalidEnvKey": "अमान्य वेरिएबल नाम। केवल अक्षर, संख्याएं और अंडरस्कोर का उपयोग करें।",
     "duplicateEnvKey": "यह वेरिएबल नाम पहले से मौजूद है।",
@@ -346,4 +388,6 @@
       "description": "निम्नलिखित डेवलपमेंट टूल्स इंस्टॉल हैं:"
     }
   }
-}
+};
+
+export default hi;

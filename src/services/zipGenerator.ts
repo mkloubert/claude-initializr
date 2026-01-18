@@ -50,30 +50,6 @@ export interface ReadmeLanguageConfig {
 }
 
 /**
- * Language display names map.
- */
-const languageNames: Record<string, string> = {
-  en: 'English',
-  de: 'Deutsch',
-  es: 'Español',
-  fr: 'Français',
-  it: 'Italiano',
-  pt: 'Português',
-  nl: 'Nederlands',
-  ja: '日本語',
-  ko: '한국어',
-  zh: '中文',
-  ar: 'العربية',
-  he: 'עברית',
-  hi: 'हिन्दी',
-  ur: 'اردو',
-  uk: 'Українська',
-  el: 'Ελληνικά',
-  pl: 'Polski',
-  tr: 'Türkçe',
-};
-
-/**
  * Generate a ZIP file containing all Docker configuration files.
  */
 export async function generateZipFile(
@@ -153,7 +129,7 @@ export async function generateZipFile(
         t,
         includeLanguageSwitch: {
           targetFile: 'README.en.md',
-          targetLanguageName: 'English',
+          targetLanguageCode: 'en',
         },
       });
       zip.file('README.md', readmeContent.trim());
@@ -167,7 +143,7 @@ export async function generateZipFile(
         t: tEnglish,
         includeLanguageSwitch: {
           targetFile: 'README.md',
-          targetLanguageName: languageNames[language] || languageName,
+          targetLanguageCode: language,
         },
       });
       zip.file('README.en.md', readmeEnContent.trim());

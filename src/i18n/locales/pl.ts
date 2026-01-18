@@ -1,4 +1,26 @@
-{
+// Copyright © 2026 Marcel Joachim Kloubert <marcel@kloubert.dev>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+
+import type { Translations } from './types';
+
+const pl: Translations = {
   "app": {
     "title": "Claude Initializr",
     "description": "Generuj pliki konfiguracyjne Docker do bezpiecznego uruchamiania Claude Code"
@@ -180,6 +202,26 @@
   "footer": {
     "copyright": "© 2026 Marcel Joachim Kloubert"
   },
+  "languages": {
+    "en": "angielsku",
+    "de": "niemiecku",
+    "es": "hiszpańsku",
+    "fr": "francusku",
+    "it": "włosku",
+    "pt": "portugalsku",
+    "nl": "niderlandzku",
+    "ja": "japońsku",
+    "ko": "koreańsku",
+    "zh": "chińsku",
+    "ar": "arabsku",
+    "he": "hebrajsku",
+    "hi": "hindi",
+    "ur": "urdu",
+    "uk": "ukraińsku",
+    "el": "grecku",
+    "pl": "polsku",
+    "tr": "turecku"
+  },
   "errors": {
     "invalidEnvKey": "Nieprawidłowa nazwa zmiennej. Używaj tylko liter, cyfr i podkreśleń.",
     "duplicateEnvKey": "Ta nazwa zmiennej już istnieje.",
@@ -346,4 +388,6 @@
       "description": "Zainstalowane są następujące narzędzia deweloperskie:"
     }
   }
-}
+};
+
+export default pl;
