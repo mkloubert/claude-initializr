@@ -94,6 +94,8 @@ const fr: Translations = {
     "golangDesc": "Installe le langage de programmation Go (Golang) avec le compilateur et les outils officiels. Idéal pour créer des programmes rapides compilés statiquement, des outils CLI, des serveurs web et des logiciels système.",
     "flutter": "Flutter",
     "flutterDesc": "Installe le SDK Flutter avec Dart et les outils de développement Android. Créez des applications multiplateformes pour mobile, web et bureau à partir d'une seule base de code. Inclut le SDK Android et les outils en ligne de commande.",
+    "rust": "Rust",
+    "rustDesc": "Installe le langage de programmation Rust avec le gestionnaire de paquets Cargo via rustup. Idéal pour créer des logiciels système rapides et sécurisés en mémoire, des outils CLI, WebAssembly et des applications embarquées.",
     "version": "Version",
     "latest": "dernière",
     "recommendsHint": "Recommandé : {{packages}}"
@@ -292,9 +294,24 @@ const fr: Translations = {
       "title": "Démarrage rapide",
       "step1": "Installer Docker (voir Prérequis ci-dessous)",
       "step2": "Démarrer le conteneur :",
+      "step2CustomVersions": "Optionnel : Compiler avec des versions de logiciels personnalisées (voir Docker Build Arguments ci-dessous) :",
       "step3": "Démarrer Claude Code :",
       "step4": "Arrêter le conteneur :",
       "note": "Votre dossier workspace est monté sur /workspace à l'intérieur du conteneur. Claude Code demandera la clé API au premier démarrage."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Vous pouvez configurer les versions de logiciels et les URLs de téléchargement lors de la compilation Docker. Utilisez `--build-arg NOM=VALEUR` pour remplacer les valeurs par défaut.",
+      "versionArgs": {
+        "title": "Arguments de version",
+        "description": "Contrôlez quelles versions de logiciels sont installées :"
+      },
+      "urlArgs": {
+        "title": "Arguments d'URL",
+        "description": "Remplacez les URLs de téléchargement pour les miroirs ou proxies :"
+      },
+      "defaultValue": "Par défaut",
+      "example": "Exemple avec des versions personnalisées :"
     },
     "prerequisites": {
       "title": "Prérequis",

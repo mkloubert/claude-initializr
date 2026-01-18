@@ -94,6 +94,8 @@ const de: Translations = {
     "golangDesc": "Installiert die Programmiersprache Go (Golang) mit dem offiziellen Compiler und Werkzeugen. Ideal für schnelle, statisch kompilierte Programme, CLI-Tools, Webserver und Systemsoftware.",
     "flutter": "Flutter",
     "flutterDesc": "Installiert das Flutter SDK mit Dart und Android-Entwicklungstools. Ermöglicht das Erstellen plattformübergreifender Apps für Mobilgeräte, Web und Desktop aus einer einzigen Codebasis. Enthält Android SDK und Kommandozeilentools.",
+    "rust": "Rust",
+    "rustDesc": "Installiert die Programmiersprache Rust mit dem Cargo-Paketmanager über rustup. Ideal für schnelle, speichersichere Systemsoftware, CLI-Tools, WebAssembly und Embedded-Anwendungen.",
     "version": "Version",
     "latest": "aktuell",
     "recommendsHint": "Empfohlen: {{packages}}"
@@ -292,9 +294,24 @@ const de: Translations = {
       "title": "Schnellstart",
       "step1": "Docker installieren (siehe Voraussetzungen unten)",
       "step2": "Container starten:",
+      "step2CustomVersions": "Optional: Mit benutzerdefinierten Software-Versionen bauen (siehe Docker Build Arguments unten):",
       "step3": "Claude Code starten:",
       "step4": "Container stoppen:",
       "note": "Dein Workspace-Ordner ist unter /workspace im Container eingebunden. Claude Code fragt beim ersten Start nach dem API-Schlüssel."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Du kannst Software-Versionen und Download-URLs während des Docker-Builds konfigurieren. Verwende `--build-arg NAME=WERT`, um Standardwerte zu überschreiben.",
+      "versionArgs": {
+        "title": "Versions-Argumente",
+        "description": "Bestimme, welche Software-Versionen installiert werden:"
+      },
+      "urlArgs": {
+        "title": "URL-Argumente",
+        "description": "Überschreibe Download-URLs für Mirrors oder Proxies:"
+      },
+      "defaultValue": "Standard",
+      "example": "Beispiel mit benutzerdefinierten Versionen:"
     },
     "prerequisites": {
       "title": "Voraussetzungen",

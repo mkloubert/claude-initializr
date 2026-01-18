@@ -94,6 +94,8 @@ const he: Translations = {
     "golangDesc": "מתקין את שפת התכנות Go (Golang) עם הקומפיילר והכלים הרשמיים. אידיאלי ליצירת תוכניות מהירות מקומפלות סטטית, כלי CLI, שרתי אינטרנט ותוכנות מערכת.",
     "flutter": "Flutter",
     "flutterDesc": "מתקין את Flutter SDK עם Dart וכלי פיתוח Android. בנה אפליקציות חוצות פלטפורמות לנייד, אינטרנט ושולחן עבודה מקוד מקור יחיד. כולל Android SDK וכלי שורת פקודה.",
+    "rust": "Rust",
+    "rustDesc": "מתקין את שפת התכנות Rust עם מנהל החבילות Cargo דרך rustup. אידיאלי ליצירת תוכנות מערכת מהירות ובטוחות בזיכרון, כלי CLI, WebAssembly ואפליקציות מובנות.",
     "version": "גרסה",
     "latest": "אחרונה",
     "recommendsHint": "מומלץ: {{packages}}"
@@ -292,9 +294,24 @@ const he: Translations = {
       "title": "התחלה מהירה",
       "step1": "התקן Docker (ראה דרישות מוקדמות למטה)",
       "step2": "הפעל את הקונטיינר:",
+      "step2CustomVersions": "אופציונלי: בנה עם גרסאות תוכנה מותאמות אישית (ראה Docker Build Arguments למטה):",
       "step3": "הפעל את Claude Code:",
       "step4": "עצור את הקונטיינר:",
       "note": "תיקיית ה-workspace שלך מותקנת ב-/workspace בתוך הקונטיינר. Claude Code יבקש את מפתח ה-API בהפעלה הראשונה."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "אתה יכול להגדיר גרסאות תוכנה וכתובות URL להורדה במהלך בניית Docker. השתמש ב-`--build-arg שם=ערך` כדי לעקוף ערכי ברירת מחדל.",
+      "versionArgs": {
+        "title": "ארגומנטי גרסה",
+        "description": "שלוט באילו גרסאות תוכנה מותקנות:"
+      },
+      "urlArgs": {
+        "title": "ארגומנטי URL",
+        "description": "עקוף כתובות URL להורדה עבור מראות או פרוקסי:"
+      },
+      "defaultValue": "ברירת מחדל",
+      "example": "דוגמה עם גרסאות מותאמות אישית:"
     },
     "prerequisites": {
       "title": "דרישות מוקדמות",

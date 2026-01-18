@@ -41,6 +41,7 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
   - Go
   - ImageMagick (Bildverarbeitung)
   - Python 3
+  - Rust (enthält Cargo-Paketmanager)
   - TypeScript
   - uv (schneller Python-Paketinstaller, empfiehlt Python)
 - **Versionskonfiguration**: Software-Versionen werden über Docker-Build-Argumente konfiguriert (z.B. `--build-arg GO_VERSION=1.22.0`)
@@ -289,10 +290,13 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | Build-Argument | Standard | Beschreibung |
    |----------------|----------|--------------|
-   | `GO_VERSION` | `latest` | Go-Version (`latest` oder spezifisch wie `1.22.0`) |
+   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm-Paketversion |
    | `FLUTTER_VERSION` | `latest` | Flutter-Version (`latest` oder spezifisch wie `3.24.0`) |
+   | `GIT_DELTA_VERSION` | `0.18.2` | Git-Delta-Version für Diff-Highlighting |
+   | `GO_VERSION` | `latest` | Go-Version (`latest` oder spezifisch wie `1.22.0`) |
    | `PYTHON_VERSION` | `3` | Python-Version (z.B. `3`, `3.12`) |
    | `TYPESCRIPT_VERSION` | `latest` | TypeScript-Version (`latest` oder spezifisch wie `5.6.0`) |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | zsh-in-docker-Version für Shell-Setup |
 
    **Optional: Benutzerdefinierte Download-URLs**
 
@@ -309,6 +313,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    |----------------|----------|--------------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL für Go-Versions-JSON-API (verwendet bei `GO_VERSION=latest`) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Basis-URL für Go-Archiv-Downloads |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | URL für rustup-Installationsskript |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL für uv-Installationsskript |
 
 5. Mit dem Container verbinden:

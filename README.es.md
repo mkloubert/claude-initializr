@@ -41,6 +41,7 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
   - Go
   - ImageMagick (procesamiento de imágenes)
   - Python 3
+  - Rust (incluye el gestor de paquetes Cargo)
   - TypeScript
   - uv (instalador rápido de paquetes Python, recomienda Python)
 - **Configuración de versiones**: Las versiones del software se configuran mediante argumentos de compilación de Docker (ej: `--build-arg GO_VERSION=1.22.0`)
@@ -275,6 +276,28 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose up --build
    ```
 
+   **Opcional: Versiones de software personalizadas**
+
+   Las versiones de software se pueden configurar mediante argumentos de construcción. Use `latest` para obtención dinámica de versiones o especifique una versión explícita:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_VERSION=1.22.0 \
+     --build-arg FLUTTER_VERSION=3.24.0 \
+     --build-arg PYTHON_VERSION=3.12 \
+     --build-arg TYPESCRIPT_VERSION=5.6.0
+   ```
+
+   | Argumento de build | Predeterminado | Descripción |
+   |--------------------|----------------|-------------|
+   | `CLAUDE_CODE_VERSION` | `latest` | Versión del paquete npm de Claude Code |
+   | `FLUTTER_VERSION` | `latest` | Versión de Flutter (`latest` o específica como `3.24.0`) |
+   | `GIT_DELTA_VERSION` | `0.18.2` | Versión de Git delta para resaltado de diferencias |
+   | `GO_VERSION` | `latest` | Versión de Go (`latest` o específica como `1.22.0`) |
+   | `PYTHON_VERSION` | `3` | Versión de Python (ej. `3`, `3.12`) |
+   | `TYPESCRIPT_VERSION` | `latest` | Versión de TypeScript (`latest` o específica como `5.6.0`) |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | Versión de zsh-in-docker para configuración de shell |
+
    **Opcional: URLs de descarga personalizadas**
 
    Si necesita usar un mirror o proxy para las descargas de paquetes, puede sobrescribir las URLs predeterminadas durante la construcción. Todas las URLs soportan parámetros de consulta:
@@ -283,6 +306,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://mi-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://mi-mirror.example.com/golang \
+     --build-arg RUSTUP_INSTALL_URL=https://mi-mirror.example.com/rustup/rustup-init.sh \
      --build-arg UV_INSTALL_SCRIPT_URL=https://mi-mirror.example.com/uv/install.sh
    ```
 
@@ -290,6 +314,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    |--------------------|----------------|-------------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL de la API JSON de versiones de Go (solo para "latest") |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | URL base para descargas de archivos Go |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | URL del script de instalación de rustup |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL del script de instalación de uv |
 
 5. Conectarse al contenedor:

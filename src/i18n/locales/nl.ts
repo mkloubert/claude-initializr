@@ -94,6 +94,8 @@ const nl: Translations = {
     "golangDesc": "Installeert de programmeertaal Go (Golang) met de officiële compiler en tools. Ideaal voor het bouwen van snelle, statisch gecompileerde programma's, CLI-tools, webservers en systeemsoftware.",
     "flutter": "Flutter",
     "flutterDesc": "Installeert de Flutter SDK met Dart en Android-ontwikkeltools. Bouw cross-platform apps voor mobiel, web en desktop vanuit één codebase. Bevat Android SDK en opdrachtregelhulpmiddelen.",
+    "rust": "Rust",
+    "rustDesc": "Installeert de programmeertaal Rust met de Cargo-pakketbeheerder via rustup. Ideaal voor het bouwen van snelle, geheugenveilige systeemsoftware, CLI-tools, WebAssembly en embedded applicaties.",
     "version": "Versie",
     "latest": "nieuwste",
     "recommendsHint": "Aanbevolen: {{packages}}"
@@ -292,9 +294,24 @@ const nl: Translations = {
       "title": "Snelstart",
       "step1": "Installeer Docker (zie Vereisten hieronder)",
       "step2": "Start de container:",
+      "step2CustomVersions": "Optioneel: Bouw met aangepaste softwareversies (zie Docker Build Arguments hieronder):",
       "step3": "Start Claude Code:",
       "step4": "Stop de container:",
       "note": "Je workspace-map is gemount op /workspace in de container. Claude Code vraagt bij eerste start om de API-sleutel."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Je kunt softwareversies en download-URLs configureren tijdens de Docker-build. Gebruik `--build-arg NAAM=WAARDE` om standaardwaarden te overschrijven.",
+      "versionArgs": {
+        "title": "Versie-argumenten",
+        "description": "Bepaal welke softwareversies worden geïnstalleerd:"
+      },
+      "urlArgs": {
+        "title": "URL-argumenten",
+        "description": "Overschrijf download-URLs voor mirrors of proxies:"
+      },
+      "defaultValue": "Standaard",
+      "example": "Voorbeeld met aangepaste versies:"
     },
     "prerequisites": {
       "title": "Vereisten",

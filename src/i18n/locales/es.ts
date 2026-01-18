@@ -94,6 +94,8 @@ const es: Translations = {
     "golangDesc": "Instala el lenguaje de programación Go (Golang) con el compilador y herramientas oficiales. Ideal para crear programas rápidos compilados estáticamente, herramientas CLI, servidores web y software de sistema.",
     "flutter": "Flutter",
     "flutterDesc": "Instala el SDK de Flutter con Dart y herramientas de desarrollo Android. Cree aplicaciones multiplataforma para móviles, web y escritorio desde una única base de código. Incluye el SDK de Android y herramientas de línea de comandos.",
+    "rust": "Rust",
+    "rustDesc": "Instala el lenguaje de programación Rust con el gestor de paquetes Cargo mediante rustup. Ideal para crear software de sistema rápido y seguro en memoria, herramientas CLI, WebAssembly y aplicaciones embebidas.",
     "version": "Versión",
     "latest": "última",
     "recommendsHint": "Recomendado: {{packages}}"
@@ -292,9 +294,24 @@ const es: Translations = {
       "title": "Inicio rápido",
       "step1": "Instalar Docker (ver Requisitos previos abajo)",
       "step2": "Iniciar el contenedor:",
+      "step2CustomVersions": "Opcional: Compilar con versiones personalizadas de software (ver Docker Build Arguments abajo):",
       "step3": "Iniciar Claude Code:",
       "step4": "Detener el contenedor:",
       "note": "Tu carpeta workspace está montada en /workspace dentro del contenedor. Claude Code pedirá la clave API en el primer inicio."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Puedes configurar las versiones de software y las URLs de descarga durante la compilación de Docker. Usa `--build-arg NOMBRE=VALOR` para sobrescribir los valores predeterminados.",
+      "versionArgs": {
+        "title": "Argumentos de versión",
+        "description": "Controla qué versiones de software se instalan:"
+      },
+      "urlArgs": {
+        "title": "Argumentos de URL",
+        "description": "Sobrescribe las URLs de descarga para mirrors o proxies:"
+      },
+      "defaultValue": "Predeterminado",
+      "example": "Ejemplo con versiones personalizadas:"
     },
     "prerequisites": {
       "title": "Requisitos previos",

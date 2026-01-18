@@ -94,6 +94,8 @@ const ja: Translations = {
     "golangDesc": "公式コンパイラとツール付きのGo（Golang）プログラミング言語をインストール。高速で静的にコンパイルされたプログラム、CLIツール、Webサーバー、システムソフトウェアの構築に最適。",
     "flutter": "Flutter",
     "flutterDesc": "DartとAndroid開発ツールを含むFlutter SDKをインストール。単一のコードベースからモバイル、ウェブ、デスクトップ向けのクロスプラットフォームアプリを構築できます。Android SDKとコマンドラインツールが含まれています。",
+    "rust": "Rust",
+    "rustDesc": "rustupを通じてCargoパッケージマネージャー付きのRustプログラミング言語をインストール。高速でメモリ安全なシステムソフトウェア、CLIツール、WebAssembly、組み込みアプリケーションの構築に最適。",
     "version": "バージョン",
     "latest": "最新",
     "recommendsHint": "推奨: {{packages}}"
@@ -292,9 +294,24 @@ const ja: Translations = {
       "title": "クイックスタート",
       "step1": "Dockerをインストール（下の前提条件を参照）",
       "step2": "コンテナを起動：",
+      "step2CustomVersions": "オプション：カスタムソフトウェアバージョンでビルド（下のDocker Build Argumentsを参照）：",
       "step3": "Claude Codeを起動：",
       "step4": "コンテナを停止：",
       "note": "workspaceフォルダはコンテナ内の/workspaceにマウントされます。Claude Codeは初回起動時にAPIキーを要求します。"
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Dockerビルド中にソフトウェアバージョンとダウンロードURLを設定できます。デフォルト値を上書きするには `--build-arg 名前=値` を使用します。",
+      "versionArgs": {
+        "title": "バージョン引数",
+        "description": "インストールするソフトウェアバージョンを制御："
+      },
+      "urlArgs": {
+        "title": "URL引数",
+        "description": "ミラーまたはプロキシ用のダウンロードURLを上書き："
+      },
+      "defaultValue": "デフォルト",
+      "example": "カスタムバージョンの例："
     },
     "prerequisites": {
       "title": "前提条件",

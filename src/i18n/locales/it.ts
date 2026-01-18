@@ -94,6 +94,8 @@ const it: Translations = {
     "golangDesc": "Installa il linguaggio di programmazione Go (Golang) con il compilatore e gli strumenti ufficiali. Ideale per creare programmi veloci compilati staticamente, strumenti CLI, server web e software di sistema.",
     "flutter": "Flutter",
     "flutterDesc": "Installa l'SDK Flutter con Dart e gli strumenti di sviluppo Android. Crea app multipiattaforma per dispositivi mobili, web e desktop da un'unica base di codice. Include l'SDK Android e gli strumenti da riga di comando.",
+    "rust": "Rust",
+    "rustDesc": "Installa il linguaggio di programmazione Rust con il gestore di pacchetti Cargo tramite rustup. Ideale per creare software di sistema veloce e sicuro per la memoria, strumenti CLI, WebAssembly e applicazioni embedded.",
     "version": "Versione",
     "latest": "ultima",
     "recommendsHint": "Raccomandato: {{packages}}"
@@ -292,9 +294,24 @@ const it: Translations = {
       "title": "Avvio rapido",
       "step1": "Installa Docker (vedi Prerequisiti sotto)",
       "step2": "Avvia il container:",
+      "step2CustomVersions": "Opzionale: Compila con versioni software personalizzate (vedi Docker Build Arguments sotto):",
       "step3": "Avvia Claude Code:",
       "step4": "Ferma il container:",
       "note": "La tua cartella workspace è montata su /workspace all'interno del container. Claude Code chiederà la chiave API al primo avvio."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Puoi configurare le versioni del software e gli URL di download durante la compilazione Docker. Usa `--build-arg NOME=VALORE` per sovrascrivere i valori predefiniti.",
+      "versionArgs": {
+        "title": "Argomenti di versione",
+        "description": "Controlla quali versioni del software vengono installate:"
+      },
+      "urlArgs": {
+        "title": "Argomenti URL",
+        "description": "Sovrascrivi gli URL di download per mirror o proxy:"
+      },
+      "defaultValue": "Predefinito",
+      "example": "Esempio con versioni personalizzate:"
     },
     "prerequisites": {
       "title": "Prerequisiti",

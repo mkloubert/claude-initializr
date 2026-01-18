@@ -41,6 +41,7 @@
   - Go
   - ImageMagick (이미지 처리)
   - Python 3
+  - Rust (Cargo 패키지 관리자 포함)
   - TypeScript
   - uv (빠른 Python 패키지 설치 도구, Python 권장)
 - **버전 구성**: 소프트웨어 버전은 Docker 빌드 인수로 구성 (예: `--build-arg GO_VERSION=1.22.0`)
@@ -275,6 +276,28 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose up --build
    ```
 
+   **선택 사항: 사용자 정의 소프트웨어 버전**
+
+   소프트웨어 버전은 빌드 인수를 통해 구성할 수 있습니다. 동적 버전 가져오기에는 `latest`를 사용하거나 명시적 버전을 지정하세요:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_VERSION=1.22.0 \
+     --build-arg FLUTTER_VERSION=3.24.0 \
+     --build-arg PYTHON_VERSION=3.12 \
+     --build-arg TYPESCRIPT_VERSION=5.6.0
+   ```
+
+   | 빌드 인수 | 기본값 | 설명 |
+   |-----------|--------|------|
+   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm 패키지 버전 |
+   | `FLUTTER_VERSION` | `latest` | Flutter 버전 (`latest` 또는 `3.24.0` 같은 특정 버전) |
+   | `GIT_DELTA_VERSION` | `0.18.2` | diff 하이라이팅용 Git delta 버전 |
+   | `GO_VERSION` | `latest` | Go 버전 (`latest` 또는 `1.22.0` 같은 특정 버전) |
+   | `PYTHON_VERSION` | `3` | Python 버전 (예: `3`, `3.12`) |
+   | `TYPESCRIPT_VERSION` | `latest` | TypeScript 버전 (`latest` 또는 `5.6.0` 같은 특정 버전) |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | 셸 설정용 zsh-in-docker 버전 |
+
    **선택 사항: 사용자 정의 다운로드 URL**
 
    패키지 다운로드에 미러 또는 프록시를 사용해야 하는 경우, 빌드 시 기본 URL을 재정의할 수 있습니다. 모든 URL은 쿼리 매개변수를 지원합니다:
@@ -283,6 +306,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg RUSTUP_INSTALL_URL=https://my-mirror.example.com/rustup/rustup-init.sh \
      --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
      --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
@@ -292,6 +316,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    |-----------|--------|------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go 버전 JSON API URL ("latest" 선택 시만) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go 아카이브 다운로드 기본 URL |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | rustup 설치 스크립트 URL |
    | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | Flutter 릴리스 JSON API URL ("latest" 선택 시만) |
    | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Flutter 아카이브 다운로드 기본 URL |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv 설치 스크립트 URL |

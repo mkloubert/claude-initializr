@@ -94,6 +94,8 @@ const zh: Translations = {
     "golangDesc": "安装带有官方编译器和工具的Go（Golang）编程语言。非常适合构建快速、静态编译的程序、CLI工具、Web服务器和系统软件。",
     "flutter": "Flutter",
     "flutterDesc": "安装包含Dart和Android开发工具的Flutter SDK。从单一代码库构建跨平台的移动、网页和桌面应用程序。包含Android SDK和命令行工具。",
+    "rust": "Rust",
+    "rustDesc": "通过rustup安装带有Cargo包管理器的Rust编程语言。非常适合构建快速、内存安全的系统软件、CLI工具、WebAssembly和嵌入式应用程序。",
     "version": "版本",
     "latest": "最新",
     "recommendsHint": "推荐: {{packages}}"
@@ -292,9 +294,24 @@ const zh: Translations = {
       "title": "快速开始",
       "step1": "安装 Docker（请参阅下面的先决条件）",
       "step2": "启动容器：",
+      "step2CustomVersions": "可选：使用自定义软件版本构建（请参阅下面的 Docker Build Arguments）：",
       "step3": "启动 Claude Code：",
       "step4": "停止容器：",
       "note": "您的 workspace 文件夹挂载在容器内的 /workspace。Claude Code 将在首次启动时提示输入 API 密钥。"
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "您可以在 Docker 构建期间配置软件版本和下载 URL。使用 `--build-arg 名称=值` 来覆盖默认值。",
+      "versionArgs": {
+        "title": "版本参数",
+        "description": "控制安装哪些软件版本："
+      },
+      "urlArgs": {
+        "title": "URL 参数",
+        "description": "覆盖镜像或代理的下载 URL："
+      },
+      "defaultValue": "默认值",
+      "example": "自定义版本示例："
     },
     "prerequisites": {
       "title": "先决条件",

@@ -41,6 +41,7 @@
   - Go
   - ImageMagick (görüntü işleme)
   - Python 3
+  - Rust (Cargo paket yöneticisi dahil)
   - TypeScript
   - uv (hızlı Python paket yükleyicisi, Python önerir)
 - **Sürüm Yapılandırması**: Yazılım sürümleri Docker build argümanları ile yapılandırılır (örn. `--build-arg GO_VERSION=1.22.0`)
@@ -275,6 +276,31 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose up --build
    ```
 
+   **İsteğe bağlı: Özel yazılım sürümleri**
+
+   Docker derlemesi sırasında build argümanları kullanarak yazılım sürümlerini özelleştirebilirsiniz:
+
+   ```bash
+   docker compose build \
+     --build-arg CLAUDE_CODE_VERSION=1.0.3 \
+     --build-arg FLUTTER_VERSION=3.29.3 \
+     --build-arg GIT_DELTA_VERSION=0.18.2 \
+     --build-arg GO_VERSION=1.24.3 \
+     --build-arg PYTHON_VERSION=3.13.2 \
+     --build-arg TYPESCRIPT_VERSION=5.8.3 \
+     --build-arg ZSH_IN_DOCKER_VERSION=1.2.0
+   ```
+
+   | Derleme Argümanı | Varsayılan | Açıklama |
+   |------------------|------------|----------|
+   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm paketi sürümü |
+   | `FLUTTER_VERSION` | `latest` | Flutter SDK sürümü |
+   | `GIT_DELTA_VERSION` | `0.18.2` | git-delta sürümü |
+   | `GO_VERSION` | `latest` | Go sürümü |
+   | `PYTHON_VERSION` | `latest` | Python 3 sürümü |
+   | `TYPESCRIPT_VERSION` | `latest` | TypeScript sürümü |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | zsh-in-docker sürümü |
+
    **İsteğe bağlı: Özel indirme URL'leri**
 
    Paket indirmeleri için bir ayna veya proxy kullanmanız gerekiyorsa, derleme sırasında varsayılan URL'leri geçersiz kılabilirsiniz. Tüm URL'ler sorgu parametrelerini destekler:
@@ -283,6 +309,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg RUSTUP_INSTALL_URL=https://my-mirror.example.com/rustup/rustup-init.sh \
      --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
      --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
@@ -292,6 +319,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    |------------------|------------|----------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go sürüm JSON API URL'si (yalnızca "latest" için) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go arşiv indirmeleri için temel URL |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | rustup kurulum betiği URL'si |
    | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | Flutter sürüm JSON API URL'si (yalnızca "latest" için) |
    | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Flutter arşiv indirmeleri için temel URL |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv kurulum betiği URL'si |

@@ -41,6 +41,7 @@ A web application to generate Docker configuration files for running [Claude Cod
   - Go
   - ImageMagick (image processing)
   - Python 3
+  - Rust (includes Cargo package manager)
   - TypeScript
   - uv (fast Python package installer, recommends Python)
 - **Version Configuration**: Software versions are configured via Docker build arguments (e.g., `--build-arg GO_VERSION=1.22.0`)
@@ -289,10 +290,13 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | Build Argument | Default | Description |
    |----------------|---------|-------------|
-   | `GO_VERSION` | `latest` | Go version (`latest` or specific like `1.22.0`) |
+   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm package version |
    | `FLUTTER_VERSION` | `latest` | Flutter version (`latest` or specific like `3.24.0`) |
+   | `GIT_DELTA_VERSION` | `0.18.2` | Git delta version for diff highlighting |
+   | `GO_VERSION` | `latest` | Go version (`latest` or specific like `1.22.0`) |
    | `PYTHON_VERSION` | `3` | Python version (e.g., `3`, `3.12`) |
    | `TYPESCRIPT_VERSION` | `latest` | TypeScript version (`latest` or specific like `5.6.0`) |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | zsh-in-docker version for shell setup |
 
    **Optional: Custom Download URLs**
 
@@ -302,6 +306,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg RUSTUP_INSTALL_URL=https://my-mirror.example.com/rustup/rustup-init.sh \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh \
      --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
      --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases
@@ -314,6 +319,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    | `ANDROID_CMDLINE_TOOLS_URL` | `https://dl.google.com/android/repository` | Base URL for Android command-line tools |
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL for Go version JSON API (used when `GO_VERSION=latest`) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Base URL for Go archive downloads |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | URL for rustup installer script |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL for uv install script |
 
 5. Connect to the container:

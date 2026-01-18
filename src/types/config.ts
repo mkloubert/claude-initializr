@@ -42,6 +42,7 @@ export interface SoftwareConfig {
   uv: SoftwarePackage;
   golang: SoftwarePackage;
   flutter: SoftwarePackage;
+  rust: SoftwarePackage;
 }
 
 /**
@@ -216,6 +217,10 @@ export const defaultSoftwareConfig: SoftwareConfig = {
   },
   flutter: {
     id: 'flutter',
+    enabled: false,
+  },
+  rust: {
+    id: 'rust',
     enabled: false,
   },
 };

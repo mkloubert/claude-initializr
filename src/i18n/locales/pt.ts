@@ -94,6 +94,8 @@ const pt: Translations = {
     "golangDesc": "Instala a linguagem de programação Go (Golang) com o compilador e ferramentas oficiais. Ideal para criar programas rápidos compilados estaticamente, ferramentas CLI, servidores web e software de sistema.",
     "flutter": "Flutter",
     "flutterDesc": "Instala o SDK Flutter com Dart e ferramentas de desenvolvimento Android. Crie aplicativos multiplataforma para dispositivos móveis, web e desktop a partir de uma única base de código. Inclui SDK Android e ferramentas de linha de comando.",
+    "rust": "Rust",
+    "rustDesc": "Instala a linguagem de programação Rust com o gerenciador de pacotes Cargo via rustup. Ideal para criar software de sistema rápido e seguro em memória, ferramentas CLI, WebAssembly e aplicações embarcadas.",
     "version": "Versão",
     "latest": "última",
     "recommendsHint": "Recomendado: {{packages}}"
@@ -292,9 +294,24 @@ const pt: Translations = {
       "title": "Início rápido",
       "step1": "Instalar Docker (veja Pré-requisitos abaixo)",
       "step2": "Iniciar o contêiner:",
+      "step2CustomVersions": "Opcional: Compilar com versões personalizadas de software (veja Docker Build Arguments abaixo):",
       "step3": "Iniciar Claude Code:",
       "step4": "Parar o contêiner:",
       "note": "Sua pasta workspace está montada em /workspace dentro do contêiner. Claude Code solicitará a chave API no primeiro início."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Você pode configurar versões de software e URLs de download durante a compilação do Docker. Use `--build-arg NOME=VALOR` para substituir os valores padrão.",
+      "versionArgs": {
+        "title": "Argumentos de versão",
+        "description": "Controle quais versões de software são instaladas:"
+      },
+      "urlArgs": {
+        "title": "Argumentos de URL",
+        "description": "Substitua URLs de download para mirrors ou proxies:"
+      },
+      "defaultValue": "Padrão",
+      "example": "Exemplo com versões personalizadas:"
     },
     "prerequisites": {
       "title": "Pré-requisitos",

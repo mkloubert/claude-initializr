@@ -94,6 +94,8 @@ const ko: Translations = {
     "golangDesc": "공식 컴파일러와 도구가 포함된 Go(Golang) 프로그래밍 언어를 설치. 빠르고 정적으로 컴파일된 프로그램, CLI 도구, 웹 서버, 시스템 소프트웨어 구축에 이상적.",
     "flutter": "Flutter",
     "flutterDesc": "Dart 및 Android 개발 도구가 포함된 Flutter SDK를 설치합니다. 단일 코드베이스에서 모바일, 웹 및 데스크톱용 크로스 플랫폼 앱을 빌드할 수 있습니다. Android SDK 및 명령줄 도구가 포함되어 있습니다.",
+    "rust": "Rust",
+    "rustDesc": "rustup을 통해 Cargo 패키지 관리자와 함께 Rust 프로그래밍 언어를 설치합니다. 빠르고 메모리 안전한 시스템 소프트웨어, CLI 도구, WebAssembly 및 임베디드 애플리케이션 구축에 이상적입니다.",
     "version": "버전",
     "latest": "최신",
     "recommendsHint": "권장: {{packages}}"
@@ -292,9 +294,24 @@ const ko: Translations = {
       "title": "빠른 시작",
       "step1": "Docker 설치 (아래 사전 요구 사항 참조)",
       "step2": "컨테이너 시작:",
+      "step2CustomVersions": "선택 사항: 사용자 정의 소프트웨어 버전으로 빌드 (아래 Docker Build Arguments 참조):",
       "step3": "Claude Code 시작:",
       "step4": "컨테이너 중지:",
       "note": "workspace 폴더는 컨테이너 내의 /workspace에 마운트됩니다. Claude Code는 첫 시작 시 API 키를 요청합니다."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Docker 빌드 중에 소프트웨어 버전과 다운로드 URL을 구성할 수 있습니다. 기본값을 재정의하려면 `--build-arg 이름=값`을 사용하세요.",
+      "versionArgs": {
+        "title": "버전 인수",
+        "description": "설치할 소프트웨어 버전 제어:"
+      },
+      "urlArgs": {
+        "title": "URL 인수",
+        "description": "미러 또는 프록시용 다운로드 URL 재정의:"
+      },
+      "defaultValue": "기본값",
+      "example": "사용자 정의 버전 예시:"
     },
     "prerequisites": {
       "title": "사전 요구 사항",

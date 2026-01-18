@@ -43,6 +43,7 @@
   - Go
   - ImageMagick (עיבוד תמונות)
   - Python 3
+  - Rust (כולל מנהל החבילות Cargo)
   - TypeScript
   - uv (מתקין חבילות Python מהיר, ממליץ על Python)
 - **הגדרת גרסאות**: גרסאות התוכנות מוגדרות באמצעות ארגומנטי build של Docker (לדוגמה: `--build-arg GO_VERSION=1.22.0`)
@@ -277,6 +278,28 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose up --build
    ```
 
+   **אופציונלי: גרסאות תוכנה מותאמות אישית**
+
+   ניתן להגדיר גרסאות תוכנה באמצעות ארגומנטים של בנייה. השתמשו ב-`latest` לקבלת גרסה דינמית או ציינו גרסה מפורשת:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_VERSION=1.22.0 \
+     --build-arg FLUTTER_VERSION=3.24.0 \
+     --build-arg PYTHON_VERSION=3.12 \
+     --build-arg TYPESCRIPT_VERSION=5.6.0
+   ```
+
+   | ארגומנט בנייה | ברירת מחדל | תיאור |
+   |---------------|------------|-------|
+   | `CLAUDE_CODE_VERSION` | `latest` | גרסת חבילת npm של Claude Code |
+   | `FLUTTER_VERSION` | `latest` | גרסת Flutter (`latest` או ספציפית כמו `3.24.0`) |
+   | `GIT_DELTA_VERSION` | `0.18.2` | גרסת Git delta להדגשת הבדלים |
+   | `GO_VERSION` | `latest` | גרסת Go (`latest` או ספציפית כמו `1.22.0`) |
+   | `PYTHON_VERSION` | `3` | גרסת Python (לדוגמה: `3`, `3.12`) |
+   | `TYPESCRIPT_VERSION` | `latest` | גרסת TypeScript (`latest` או ספציפית כמו `5.6.0`) |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | גרסת zsh-in-docker להגדרת מעטפת |
+
    **אופציונלי: כתובות URL מותאמות אישית להורדה**
 
    אם אתם צריכים להשתמש במראה או פרוקסי להורדת חבילות, תוכלו לדרוס את כתובות ה-URL המוגדרות כברירת מחדל בזמן הבנייה. כל כתובות ה-URL תומכות בפרמטרי שאילתה:
@@ -285,6 +308,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg RUSTUP_INSTALL_URL=https://my-mirror.example.com/rustup/rustup-init.sh \
      --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
      --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
@@ -294,6 +318,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    |---------------|-------------|-------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | כתובת URL ל-API JSON של גרסאות Go (רק עבור "latest") |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | כתובת URL בסיסית להורדת ארכיוני Go |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | כתובת URL לסקריפט התקנת rustup |
    | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | כתובת URL ל-API JSON של גרסאות Flutter (רק עבור "latest") |
    | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | כתובת URL בסיסית להורדת ארכיוני Flutter |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | כתובת URL לסקריפט התקנת uv |

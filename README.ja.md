@@ -41,6 +41,7 @@
   - Go
   - ImageMagick（画像処理）
   - Python 3
+  - Rust（Cargoパッケージマネージャー含む）
   - TypeScript
   - uv（高速Pythonパッケージインストーラー、Pythonを推奨）
 - **バージョン設定**：ソフトウェアのバージョンはDockerビルド引数で設定（例：`--build-arg GO_VERSION=1.22.0`）
@@ -275,6 +276,28 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose up --build
    ```
 
+   **オプション：カスタムソフトウェアバージョン**
+
+   ソフトウェアバージョンはビルド引数で設定できます。動的なバージョン取得には `latest` を使用するか、明示的なバージョンを指定してください：
+
+   ```bash
+   docker compose build \
+     --build-arg GO_VERSION=1.22.0 \
+     --build-arg FLUTTER_VERSION=3.24.0 \
+     --build-arg PYTHON_VERSION=3.12 \
+     --build-arg TYPESCRIPT_VERSION=5.6.0
+   ```
+
+   | ビルド引数 | デフォルト | 説明 |
+   |------------|------------|------|
+   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npmパッケージバージョン |
+   | `FLUTTER_VERSION` | `latest` | Flutterバージョン（`latest` または `3.24.0` など特定） |
+   | `GIT_DELTA_VERSION` | `0.18.2` | 差分ハイライト用Git deltaバージョン |
+   | `GO_VERSION` | `latest` | Goバージョン（`latest` または `1.22.0` など特定） |
+   | `PYTHON_VERSION` | `3` | Pythonバージョン（例：`3`, `3.12`） |
+   | `TYPESCRIPT_VERSION` | `latest` | TypeScriptバージョン（`latest` または `5.6.0` など特定） |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | シェル設定用zsh-in-dockerバージョン |
+
    **オプション：カスタムダウンロードURL**
 
    パッケージダウンロードにミラーやプロキシを使用する必要がある場合、ビルド時にデフォルトのURLを上書きできます。すべてのURLはクエリパラメータをサポートしています：
@@ -283,6 +306,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg RUSTUP_INSTALL_URL=https://my-mirror.example.com/rustup/rustup-init.sh \
      --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
      --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
@@ -292,6 +316,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    |------------|------------|------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | GoバージョンJSON API URL（"latest"選択時のみ） |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Goアーカイブダウンロードのベースの URL |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | rustupインストールスクリプトURL |
    | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | FlutterリリースJSON API URL（"latest"選択時のみ） |
    | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Flutterアーカイブダウンロードのベースの URL |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uvインストールスクリプトURL |

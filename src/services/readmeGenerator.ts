@@ -437,9 +437,136 @@ function generateClaudeMdSection(t: TFunction): string {
 }
 
 /**
+ * Build argument definition with default value.
+ */
+interface BuildArg {
+  name: string;
+  defaultValue: string;
+  isVersionArg: boolean;
+}
+
+/**
+ * Get all available Docker build arguments based on software selection.
+ * Arguments are sorted alphabetically (case-insensitive).
+ */
+function getBuildArgs(software: SoftwareConfig): BuildArg[] {
+  const args: BuildArg[] = [];
+
+  // Fixed ARGs (always available)
+  args.push(
+    { name: 'CLAUDE_CODE_VERSION', defaultValue: 'latest', isVersionArg: true },
+    { name: 'GIT_DELTA_VERSION', defaultValue: '0.18.2', isVersionArg: true },
+    { name: 'ZSH_IN_DOCKER_VERSION', defaultValue: '1.2.0', isVersionArg: true }
+  );
+
+  // Dynamic ARGs based on software selection
+  if (software.flutter?.enabled) {
+    args.push(
+      { name: 'ANDROID_CMDLINE_TOOLS_URL', defaultValue: 'https://dl.google.com/android/repository', isVersionArg: false },
+      { name: 'FLUTTER_BASE_URL', defaultValue: 'https://storage.googleapis.com/flutter_infra_release/releases', isVersionArg: false },
+      { name: 'FLUTTER_JSON_URL', defaultValue: 'https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json', isVersionArg: false },
+      { name: 'FLUTTER_VERSION', defaultValue: 'latest', isVersionArg: true }
+    );
+  }
+
+  if (software.golang?.enabled) {
+    args.push(
+      { name: 'GO_DOWNLOAD_URL', defaultValue: 'https://go.dev/dl', isVersionArg: false },
+      { name: 'GO_JSON_URL', defaultValue: 'https://go.dev/dl/?mode=json', isVersionArg: false },
+      { name: 'GO_VERSION', defaultValue: 'latest', isVersionArg: true }
+    );
+  }
+
+  if (software.python?.enabled) {
+    args.push(
+      { name: 'PYTHON_VERSION', defaultValue: '3', isVersionArg: true }
+    );
+  }
+
+  if (software.rust?.enabled) {
+    args.push(
+      { name: 'RUSTUP_INSTALL_URL', defaultValue: 'https://sh.rustup.rs', isVersionArg: false }
+    );
+  }
+
+  if (software.typescript?.enabled) {
+    args.push(
+      { name: 'TYPESCRIPT_VERSION', defaultValue: 'latest', isVersionArg: true }
+    );
+  }
+
+  if (software.uv?.enabled) {
+    args.push(
+      { name: 'UV_INSTALL_SCRIPT_URL', defaultValue: 'https://astral.sh/uv/install.sh', isVersionArg: false }
+    );
+  }
+
+  // Sort alphabetically (case-insensitive)
+  return args.sort((a, b) =>
+    a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+  );
+}
+
+/**
+ * Generate the Docker build arguments section.
+ */
+function generateBuildArgsSection(software: SoftwareConfig, t: TFunction): string {
+  const allArgs = getBuildArgs(software);
+  const versionArgs = allArgs.filter((arg) => arg.isVersionArg);
+  const urlArgs = allArgs.filter((arg) => !arg.isVersionArg);
+
+  let content = `## ${t('readme.buildArgs.title')}\n\n`;
+  content += `${t('readme.buildArgs.description')}\n\n`;
+
+  // Version Arguments
+  if (versionArgs.length > 0) {
+    content += `### ${t('readme.buildArgs.versionArgs.title')}\n\n`;
+    content += `${t('readme.buildArgs.versionArgs.description')}\n\n`;
+    content += `| Argument | ${t('readme.buildArgs.defaultValue')} |\n`;
+    content += '|----------|----------|\n';
+    for (const arg of versionArgs) {
+      content += `| \`${arg.name}\` | \`${arg.defaultValue}\` |\n`;
+    }
+    content += '\n';
+  }
+
+  // URL Arguments
+  if (urlArgs.length > 0) {
+    content += `### ${t('readme.buildArgs.urlArgs.title')}\n\n`;
+    content += `${t('readme.buildArgs.urlArgs.description')}\n\n`;
+    content += `| Argument | ${t('readme.buildArgs.defaultValue')} |\n`;
+    content += '|----------|----------|\n';
+    for (const arg of urlArgs) {
+      content += `| \`${arg.name}\` | \`${arg.defaultValue}\` |\n`;
+    }
+    content += '\n';
+  }
+
+  // Example command with version args
+  if (versionArgs.length > 0) {
+    content += `### ${t('readme.buildArgs.example')}\n\n`;
+    content += '```bash\n';
+    content += 'docker compose build \\\n';
+    const exampleArgs = versionArgs.slice(0, 3).map((arg) => {
+      // Generate example values
+      if (arg.name === 'CLAUDE_CODE_VERSION') return `  --build-arg ${arg.name}=1.0.0`;
+      if (arg.name === 'GO_VERSION') return `  --build-arg ${arg.name}=1.22.0`;
+      if (arg.name === 'FLUTTER_VERSION') return `  --build-arg ${arg.name}=3.24.0`;
+      if (arg.name === 'PYTHON_VERSION') return `  --build-arg ${arg.name}=3.12`;
+      if (arg.name === 'TYPESCRIPT_VERSION') return `  --build-arg ${arg.name}=5.6.0`;
+      return `  --build-arg ${arg.name}=${arg.defaultValue}`;
+    });
+    content += exampleArgs.join(' \\\n') + '\n';
+    content += '```\n\n';
+  }
+
+  return content;
+}
+
+/**
  * Generate the quick start section.
  */
-function generateQuickStartSection(t: TFunction): string {
+function generateQuickStartSection(software: SoftwareConfig, t: TFunction): string {
   let content = `## ${t('readme.quickStart.title')}\n\n`;
 
   content += `1. ${t('readme.quickStart.step1')}\n\n`;
@@ -448,6 +575,25 @@ function generateQuickStartSection(t: TFunction): string {
   content += '   ```bash\n';
   content += '   docker compose up -d --build\n';
   content += '   ```\n\n';
+
+  // Optional: Custom versions example
+  const versionArgs = getBuildArgs(software).filter((arg) => arg.isVersionArg);
+  if (versionArgs.length > 0) {
+    content += `   ${t('readme.quickStart.step2CustomVersions')}\n\n`;
+    content += '   ```bash\n';
+    content += '   docker compose build \\\n';
+    const exampleArgs = versionArgs.slice(0, 2).map((arg) => {
+      if (arg.name === 'CLAUDE_CODE_VERSION') return `     --build-arg ${arg.name}=1.0.0`;
+      if (arg.name === 'GO_VERSION') return `     --build-arg ${arg.name}=1.22.0`;
+      if (arg.name === 'FLUTTER_VERSION') return `     --build-arg ${arg.name}=3.24.0`;
+      if (arg.name === 'PYTHON_VERSION') return `     --build-arg ${arg.name}=3.12`;
+      if (arg.name === 'TYPESCRIPT_VERSION') return `     --build-arg ${arg.name}=5.6.0`;
+      return `     --build-arg ${arg.name}=${arg.defaultValue}`;
+    });
+    content += exampleArgs.join(' \\\n') + ' && \\\n';
+    content += '   docker compose up -d\n';
+    content += '   ```\n\n';
+  }
 
   content += `3. ${t('readme.quickStart.step3')}\n\n`;
   content += '   ```bash\n';
@@ -645,7 +791,10 @@ export function generateReadmeContent(config: ReadmeConfig): string {
   content += generateClaudeMdSection(t);
 
   // Quick start
-  content += generateQuickStartSection(t);
+  content += generateQuickStartSection(appConfig.software, t);
+
+  // Build Arguments
+  content += generateBuildArgsSection(appConfig.software, t);
 
   // Prerequisites
   content += generatePrerequisitesSection(t);

@@ -48,7 +48,7 @@ import { Package, Eye, Wand2, Loader2, Plus, X, Terminal, Puzzle, ExternalLink }
 const DockerfilePreview = lazy(() =>
   import('@/components/preview/DockerfilePreview').then((m) => ({ default: m.DockerfilePreview }))
 );
-import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm, SiGo, SiFlutter } from 'react-icons/si';
+import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm, SiGo, SiFlutter, SiRust } from 'react-icons/si';
 import { TbBrandPython } from 'react-icons/tb';
 import type { DockerfileUser, SoftwareConfig } from '@/types';
 
@@ -102,6 +102,12 @@ const softwareMetadata: Record<string, {
     labelKey: 'software.flutter',
     descriptionKey: 'software.flutterDesc',
     icon: <SiFlutter className="h-5 w-5" aria-hidden="true" />,
+  },
+  rust: {
+    id: 'rust',
+    labelKey: 'software.rust',
+    descriptionKey: 'software.rustDesc',
+    icon: <SiRust className="h-5 w-5" aria-hidden="true" />,
   },
 };
 

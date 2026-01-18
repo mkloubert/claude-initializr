@@ -43,6 +43,7 @@
   - Go
   - ImageMagick (امیج پروسیسنگ)
   - Python 3
+  - Rust (Cargo پیکیج مینیجر شامل)
   - TypeScript
   - uv (تیز Python پیکیج انسٹالر، Python کی سفارش کرتا ہے)
 - **ورژن کنفیگریشن**: سافٹ ویئر ورژن Docker بلڈ آرگیومینٹس کے ذریعے کنفیگر کیے جاتے ہیں (مثال: `--build-arg GO_VERSION=1.22.0`)
@@ -277,6 +278,28 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose up --build
    ```
 
+   **اختیاری: اپنی مرضی کے سافٹ ویئر ورژن**
+
+   سافٹ ویئر ورژن بلڈ آرگومنٹس کے ذریعے کنفیگر کیے جا سکتے ہیں۔ ڈائنامک ورژن حاصل کرنے کے لیے `latest` استعمال کریں یا واضح ورژن مخصوص کریں:
+
+   ```bash
+   docker compose build \
+     --build-arg GO_VERSION=1.22.0 \
+     --build-arg FLUTTER_VERSION=3.24.0 \
+     --build-arg PYTHON_VERSION=3.12 \
+     --build-arg TYPESCRIPT_VERSION=5.6.0
+   ```
+
+   | بلڈ آرگومنٹ | ڈیفالٹ | تفصیل |
+   |-------------|--------|-------|
+   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm پیکیج ورژن |
+   | `FLUTTER_VERSION` | `latest` | Flutter ورژن (`latest` یا مخصوص جیسے `3.24.0`) |
+   | `GIT_DELTA_VERSION` | `0.18.2` | diff ہائی لائٹنگ کے لیے Git delta ورژن |
+   | `GO_VERSION` | `latest` | Go ورژن (`latest` یا مخصوص جیسے `1.22.0`) |
+   | `PYTHON_VERSION` | `3` | Python ورژن (مثال: `3`, `3.12`) |
+   | `TYPESCRIPT_VERSION` | `latest` | TypeScript ورژن (`latest` یا مخصوص جیسے `5.6.0`) |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | شیل سیٹ اپ کے لیے zsh-in-docker ورژن |
+
    **اختیاری: اپنی مرضی کے ڈاؤن لوڈ URLs**
 
    اگر آپ کو پیکیج ڈاؤن لوڈ کے لیے مرر یا پراکسی استعمال کرنا ہو، تو آپ بلڈ کے دوران ڈیفالٹ URLs کو اوور رائیڈ کر سکتے ہیں۔ تمام URLs کوئری پیرامیٹرز کو سپورٹ کرتے ہیں:
@@ -285,6 +308,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg RUSTUP_INSTALL_URL=https://my-mirror.example.com/rustup/rustup-init.sh \
      --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
      --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
@@ -294,6 +318,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    |-------------|--------|-------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | Go ورژن JSON API URL (صرف "latest" کے لیے) |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Go آرکائیو ڈاؤن لوڈ کے لیے بیس URL |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | rustup انسٹال سکرپٹ URL |
    | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | Flutter ریلیز JSON API URL (صرف "latest" کے لیے) |
    | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Flutter آرکائیو ڈاؤن لوڈ کے لیے بیس URL |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | uv انسٹال سکرپٹ URL |

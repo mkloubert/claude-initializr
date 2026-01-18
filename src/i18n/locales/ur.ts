@@ -94,6 +94,8 @@ const ur: Translations = {
     "golangDesc": "سرکاری کمپائلر اور ٹولز کے ساتھ Go (Golang) پروگرامنگ زبان انسٹال کرتا ہے۔ تیز، سٹیٹک طور پر کمپائل کردہ پروگرامز، CLI ٹولز، ویب سرورز اور سسٹم سافٹ ویئر بنانے کے لیے مثالی۔",
     "flutter": "Flutter",
     "flutterDesc": "Flutter SDK کو Dart اور Android ڈیولپمنٹ ٹولز کے ساتھ انسٹال کرتا ہے۔ ایک کوڈ بیس سے موبائل، ویب اور ڈیسک ٹاپ کے لیے کراس پلیٹ فارم ایپس بنائیں۔ Android SDK اور کمانڈ لائن ٹولز شامل ہیں۔",
+    "rust": "Rust",
+    "rustDesc": "rustup کے ذریعے Cargo پیکیج مینیجر کے ساتھ Rust پروگرامنگ زبان انسٹال کرتا ہے۔ تیز، میموری محفوظ سسٹم سافٹ ویئر، CLI ٹولز، WebAssembly اور ایمبیڈڈ ایپلیکیشنز بنانے کے لیے مثالی۔",
     "version": "ورژن",
     "latest": "تازہ ترین",
     "recommendsHint": "تجویز کردہ: {{packages}}"
@@ -292,9 +294,24 @@ const ur: Translations = {
       "title": "فوری آغاز",
       "step1": "Docker انسٹال کریں (نیچے ضروریات دیکھیں)",
       "step2": "کنٹینر شروع کریں:",
+      "step2CustomVersions": "اختیاری: حسب ضرورت سافٹ ویئر ورژن کے ساتھ بنائیں (نیچے Docker Build Arguments دیکھیں):",
       "step3": "Claude Code شروع کریں:",
       "step4": "کنٹینر بند کریں:",
       "note": "آپ کا workspace فولڈر کنٹینر کے اندر /workspace پر ماؤنٹ ہے۔ Claude Code پہلی شروعات پر API کلید مانگے گا۔"
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "آپ Docker بلڈ کے دوران سافٹ ویئر ورژن اور ڈاؤن لوڈ URLs ترتیب دے سکتے ہیں۔ ڈیفالٹ اقدار کو اوور رائڈ کرنے کے لیے `--build-arg نام=قدر` استعمال کریں۔",
+      "versionArgs": {
+        "title": "ورژن آرگومنٹس",
+        "description": "کنٹرول کریں کہ کون سے سافٹ ویئر ورژن انسٹال ہوتے ہیں:"
+      },
+      "urlArgs": {
+        "title": "URL آرگومنٹس",
+        "description": "مررز یا پراکسی کے لیے ڈاؤن لوڈ URLs اوور رائڈ کریں:"
+      },
+      "defaultValue": "ڈیفالٹ",
+      "example": "حسب ضرورت ورژن کی مثال:"
     },
     "prerequisites": {
       "title": "ضروریات",

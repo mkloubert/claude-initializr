@@ -94,6 +94,8 @@ const en: Translations = {
     "golangDesc": "Installs the Go programming language (Golang) with the official compiler and tools. Ideal for building fast, statically compiled programs, CLI tools, web servers, and system software.",
     "flutter": "Flutter",
     "flutterDesc": "Installs the Flutter SDK with Dart and Android development tools. Build cross-platform apps for mobile, web, and desktop from a single codebase. Includes Android SDK and command-line tools.",
+    "rust": "Rust",
+    "rustDesc": "Installs the Rust programming language with Cargo package manager via rustup. Ideal for building fast, memory-safe system software, CLI tools, WebAssembly, and embedded applications.",
     "version": "Version",
     "latest": "latest",
     "recommendsHint": "Recommended: {{packages}}"
@@ -292,9 +294,24 @@ const en: Translations = {
       "title": "Quick Start",
       "step1": "Install Docker (see Prerequisites below)",
       "step2": "Start the container:",
+      "step2CustomVersions": "Optional: Build with custom software versions (see Build Arguments below):",
       "step3": "Start Claude Code:",
       "step4": "Stop the container:",
       "note": "Your workspace folder is mounted at /workspace inside the container. Claude Code will prompt for the API key on first start."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "You can configure software versions and download URLs during the Docker build. Use `--build-arg NAME=VALUE` to override defaults.",
+      "versionArgs": {
+        "title": "Version Arguments",
+        "description": "Control which versions of software are installed:"
+      },
+      "urlArgs": {
+        "title": "URL Arguments",
+        "description": "Override download URLs for mirrors or proxies:"
+      },
+      "defaultValue": "Default",
+      "example": "Example with custom versions:"
     },
     "prerequisites": {
       "title": "Prerequisites",

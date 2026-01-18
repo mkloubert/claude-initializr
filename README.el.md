@@ -41,6 +41,7 @@
   - Go
   - ImageMagick (επεξεργασία εικόνας)
   - Python 3
+  - Rust (περιλαμβάνει τον διαχειριστή πακέτων Cargo)
   - TypeScript
   - uv (γρήγορος εγκαταστάτης πακέτων Python, συνιστά Python)
 - **Ρύθμιση Εκδόσεων**: Οι εκδόσεις λογισμικού ρυθμίζονται μέσω παραμέτρων build του Docker (π.χ. `--build-arg GO_VERSION=1.22.0`)
@@ -275,6 +276,31 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose up --build
    ```
 
+   **Προαιρετικό: Προσαρμοσμένες εκδόσεις λογισμικού**
+
+   Μπορείτε να προσαρμόσετε τις εκδόσεις λογισμικού κατά τη δημιουργία του Docker χρησιμοποιώντας παραμέτρους build:
+
+   ```bash
+   docker compose build \
+     --build-arg CLAUDE_CODE_VERSION=1.0.3 \
+     --build-arg FLUTTER_VERSION=3.29.3 \
+     --build-arg GIT_DELTA_VERSION=0.18.2 \
+     --build-arg GO_VERSION=1.24.3 \
+     --build-arg PYTHON_VERSION=3.13.2 \
+     --build-arg TYPESCRIPT_VERSION=5.8.3 \
+     --build-arg ZSH_IN_DOCKER_VERSION=1.2.0
+   ```
+
+   | Παράμετρος build | Προεπιλογή | Περιγραφή |
+   |------------------|------------|-----------|
+   | `CLAUDE_CODE_VERSION` | `latest` | Έκδοση πακέτου Claude Code npm |
+   | `FLUTTER_VERSION` | `latest` | Έκδοση Flutter SDK |
+   | `GIT_DELTA_VERSION` | `0.18.2` | Έκδοση git-delta |
+   | `GO_VERSION` | `latest` | Έκδοση Go |
+   | `PYTHON_VERSION` | `latest` | Έκδοση Python 3 |
+   | `TYPESCRIPT_VERSION` | `latest` | Έκδοση TypeScript |
+   | `ZSH_IN_DOCKER_VERSION` | `1.2.0` | Έκδοση zsh-in-docker |
+
    **Προαιρετικό: Προσαρμοσμένες διευθύνσεις URL λήψης**
 
    Αν χρειάζεστε mirror ή proxy για τις λήψεις πακέτων, μπορείτε να αντικαταστήσετε τις προεπιλεγμένες διευθύνσεις URL κατά τη δημιουργία. Όλες οι διευθύνσεις URL υποστηρίζουν παραμέτρους ερωτήματος:
@@ -283,6 +309,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    docker compose build \
      --build-arg GO_JSON_URL=https://my-mirror.example.com/golang/?mode=json \
      --build-arg GO_DOWNLOAD_URL=https://my-mirror.example.com/golang \
+     --build-arg RUSTUP_INSTALL_URL=https://my-mirror.example.com/rustup/rustup-init.sh \
      --build-arg FLUTTER_JSON_URL=https://my-mirror.example.com/flutter/releases_linux.json \
      --build-arg FLUTTER_BASE_URL=https://my-mirror.example.com/flutter/releases \
      --build-arg UV_INSTALL_SCRIPT_URL=https://my-mirror.example.com/uv/install.sh
@@ -292,6 +319,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
    |------------------|------------|-----------|
    | `GO_JSON_URL` | `https://go.dev/dl/?mode=json` | URL για το JSON API εκδόσεων Go (μόνο για "latest") |
    | `GO_DOWNLOAD_URL` | `https://go.dev/dl` | Βασική URL για λήψεις αρχείων Go |
+   | `RUSTUP_INSTALL_URL` | `https://sh.rustup.rs` | URL για το σενάριο εγκατάστασης rustup |
    | `FLUTTER_JSON_URL` | `https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json` | URL για το JSON API εκδόσεων Flutter (μόνο για "latest") |
    | `FLUTTER_BASE_URL` | `https://storage.googleapis.com/flutter_infra_release/releases` | Βασική URL για λήψεις αρχείων Flutter |
    | `UV_INSTALL_SCRIPT_URL` | `https://astral.sh/uv/install.sh` | URL για το σενάριο εγκατάστασης uv |

@@ -96,6 +96,8 @@ export interface Translations {
     golangDesc: string;
     flutter: string;
     flutterDesc: string;
+    rust: string;
+    rustDesc: string;
     version: string;
     latest: string;
     recommendsHint: string;
@@ -294,9 +296,24 @@ export interface Translations {
       title: string;
       step1: string;
       step2: string;
+      step2CustomVersions: string;
       step3: string;
       step4: string;
       note: string;
+    };
+    buildArgs: {
+      title: string;
+      description: string;
+      versionArgs: {
+        title: string;
+        description: string;
+      };
+      urlArgs: {
+        title: string;
+        description: string;
+      };
+      defaultValue: string;
+      example: string;
     };
     prerequisites: {
       title: string;

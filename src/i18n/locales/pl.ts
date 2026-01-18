@@ -94,6 +94,8 @@ const pl: Translations = {
     "golangDesc": "Instaluje język programowania Go (Golang) z oficjalnym kompilatorem i narzędziami. Idealny do tworzenia szybkich, statycznie kompilowanych programów, narzędzi CLI, serwerów web i oprogramowania systemowego.",
     "flutter": "Flutter",
     "flutterDesc": "Instaluje Flutter SDK z Dart i narzędziami deweloperskimi Android. Twórz aplikacje wieloplatformowe na urządzenia mobilne, web i desktop z jednej bazy kodu. Zawiera Android SDK i narzędzia wiersza poleceń.",
+    "rust": "Rust",
+    "rustDesc": "Instaluje język programowania Rust z menedżerem pakietów Cargo przez rustup. Idealny do tworzenia szybkiego, bezpiecznego pamięciowo oprogramowania systemowego, narzędzi CLI, WebAssembly i aplikacji wbudowanych.",
     "version": "Wersja",
     "latest": "najnowsza",
     "recommendsHint": "Zalecane: {{packages}}"
@@ -292,9 +294,24 @@ const pl: Translations = {
       "title": "Szybki start",
       "step1": "Zainstaluj Docker (zobacz Wymagania wstępne poniżej)",
       "step2": "Uruchom kontener:",
+      "step2CustomVersions": "Opcjonalnie: Zbuduj z niestandardowymi wersjami oprogramowania (zobacz Docker Build Arguments poniżej):",
       "step3": "Uruchom Claude Code:",
       "step4": "Zatrzymaj kontener:",
       "note": "Twój folder workspace jest zamontowany w /workspace wewnątrz kontenera. Claude Code poprosi o klucz API przy pierwszym uruchomieniu."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Możesz skonfigurować wersje oprogramowania i adresy URL pobierania podczas budowania Docker. Użyj `--build-arg NAZWA=WARTOŚĆ`, aby nadpisać wartości domyślne.",
+      "versionArgs": {
+        "title": "Argumenty wersji",
+        "description": "Kontroluj, które wersje oprogramowania są instalowane:"
+      },
+      "urlArgs": {
+        "title": "Argumenty URL",
+        "description": "Nadpisz adresy URL pobierania dla mirrorów lub proxy:"
+      },
+      "defaultValue": "Domyślnie",
+      "example": "Przykład z niestandardowymi wersjami:"
     },
     "prerequisites": {
       "title": "Wymagania wstępne",

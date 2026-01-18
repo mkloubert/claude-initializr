@@ -94,6 +94,8 @@ const tr: Translations = {
     "golangDesc": "Resmi derleyici ve araçlarla Go (Golang) programlama dilini kurar. Hızlı, statik olarak derlenmiş programlar, CLI araçları, web sunucuları ve sistem yazılımı oluşturmak için idealdir.",
     "flutter": "Flutter",
     "flutterDesc": "Dart ve Android geliştirme araçlarıyla Flutter SDK'yı kurar. Tek bir kod tabanından mobil, web ve masaüstü için çapraz platform uygulamalar oluşturun. Android SDK ve komut satırı araçlarını içerir.",
+    "rust": "Rust",
+    "rustDesc": "rustup aracılığıyla Cargo paket yöneticisiyle Rust programlama dilini kurar. Hızlı, bellek güvenli sistem yazılımı, CLI araçları, WebAssembly ve gömülü uygulamalar oluşturmak için idealdir.",
     "version": "Sürüm",
     "latest": "en son",
     "recommendsHint": "Önerilen: {{packages}}"
@@ -292,9 +294,24 @@ const tr: Translations = {
       "title": "Hızlı Başlangıç",
       "step1": "Docker'ı kurun (aşağıdaki Ön Koşullar'a bakın)",
       "step2": "Konteyneri başlatın:",
+      "step2CustomVersions": "İsteğe bağlı: Özel yazılım sürümleriyle derleyin (aşağıdaki Docker Build Arguments'e bakın):",
       "step3": "Claude Code'u başlatın:",
       "step4": "Konteyneri durdurun:",
       "note": "Workspace klasörünüz konteynerin içinde /workspace konumuna bağlanmıştır. Claude Code ilk başlatmada API anahtarını isteyecektir."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "Docker derlemesi sırasında yazılım sürümlerini ve indirme URL'lerini yapılandırabilirsiniz. Varsayılan değerleri geçersiz kılmak için `--build-arg AD=DEĞER` kullanın.",
+      "versionArgs": {
+        "title": "Sürüm argümanları",
+        "description": "Hangi yazılım sürümlerinin kurulacağını kontrol edin:"
+      },
+      "urlArgs": {
+        "title": "URL argümanları",
+        "description": "Aynalar veya proxy'ler için indirme URL'lerini geçersiz kılın:"
+      },
+      "defaultValue": "Varsayılan",
+      "example": "Özel sürümlerle örnek:"
     },
     "prerequisites": {
       "title": "Ön Koşullar",

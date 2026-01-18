@@ -18,39 +18,40 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import dockerfileTemplate from '../assets/templates/Dockerfile?raw';
-import dockerComposeTemplate from '../assets/templates/docker-compose.yaml?raw';
-import initFirewallTemplate from '../assets/templates/init-firewall.sh?raw';
-import claudeSettingsTemplate from '../assets/templates/workspace/.claude/settings.json?raw';
-
+import {
+  DOCKERFILE_TEMPLATE,
+  DOCKER_COMPOSE_TEMPLATE,
+  INIT_FIREWALL_TEMPLATE,
+  CLAUDE_SETTINGS_TEMPLATE,
+} from '../config/templates';
 import type { PlaceholderReplacements } from '../types';
 
 /**
  * Get the raw Dockerfile template content.
  */
 export function getDockerfileTemplate(): string {
-  return dockerfileTemplate;
+  return DOCKERFILE_TEMPLATE;
 }
 
 /**
  * Get the raw docker-compose.yaml template content.
  */
 export function getDockerComposeTemplate(): string {
-  return dockerComposeTemplate;
+  return DOCKER_COMPOSE_TEMPLATE;
 }
 
 /**
  * Get the raw init-firewall.sh template content.
  */
 export function getInitFirewallTemplate(): string {
-  return initFirewallTemplate;
+  return INIT_FIREWALL_TEMPLATE;
 }
 
 /**
  * Get the raw .claude/settings.json template content.
  */
 export function getClaudeSettingsTemplate(): string {
-  return claudeSettingsTemplate;
+  return CLAUDE_SETTINGS_TEMPLATE;
 }
 
 /**

@@ -65,6 +65,11 @@ export function generateDockerArgs(software: SoftwareConfig): string {
     args.push('ARG ANDROID_CMDLINE_TOOLS_URL=https://dl.google.com/android/repository');
   }
 
+  if (software.rust.enabled) {
+    // Rustup installer URL (can be overridden for mirrors/proxies)
+    args.push('ARG RUSTUP_INSTALL_URL=https://sh.rustup.rs');
+  }
+
   return args.join('\n');
 }
 
@@ -77,6 +82,7 @@ const aptPackagesByKey: Record<string, string[]> = {
   ffmpeg: ['ffmpeg'],
   imagemagick: ['imagemagick'],
   flutter: ['wget', 'xz-utils', 'zip', 'libglu1-mesa', 'openjdk-17-jdk'],
+  rust: ['curl', 'build-essential', 'pkg-config', 'libssl-dev'],
 };
 
 /**
@@ -159,6 +165,20 @@ const rootCommandsByKey: Record<string, RootCommandGenerator> = {
       '    fi && \\',
       '    /usr/local/go/bin/go version',
       'ENV PATH="/usr/local/go/bin:${PATH}"',
+    ];
+  },
+  rust: () => {
+    // Install Rust via rustup for all users
+    // The installation is done system-wide in /usr/local
+    return [
+      '# Install Rust and Cargo via rustup (system-wide)',
+      'ENV RUSTUP_HOME=/usr/local/rustup',
+      'ENV CARGO_HOME=/usr/local/cargo',
+      'ENV PATH="/usr/local/cargo/bin:${PATH}"',
+      'RUN curl --proto \'=https\' --tlsv1.2 -sSf "${RUSTUP_INSTALL_URL}" | \\',
+      '    sh -s -- -y --no-modify-path --default-toolchain stable && \\',
+      '    chmod -R a+rw /usr/local/rustup /usr/local/cargo && \\',
+      '    rustc --version && cargo --version',
     ];
   },
   flutter: () => {

@@ -94,6 +94,8 @@ const ar: Translations = {
     "golangDesc": "يثبّت لغة البرمجة Go (Golang) مع المترجم والأدوات الرسمية. مثالي لإنشاء برامج سريعة مترجمة بشكل ثابت وأدوات CLI وخوادم الويب وبرامج النظام.",
     "flutter": "Flutter",
     "flutterDesc": "يثبّت Flutter SDK مع Dart وأدوات تطوير Android. أنشئ تطبيقات متعددة المنصات للهاتف المحمول والويب وسطح المكتب من قاعدة كود واحدة. يتضمن Android SDK وأدوات سطر الأوامر.",
+    "rust": "Rust",
+    "rustDesc": "يثبّت لغة البرمجة Rust مع مدير الحزم Cargo عبر rustup. مثالي لإنشاء برامج نظام سريعة وآمنة للذاكرة وأدوات CLI وWebAssembly والتطبيقات المدمجة.",
     "version": "الإصدار",
     "latest": "الأحدث",
     "recommendsHint": "موصى به: {{packages}}"
@@ -292,9 +294,24 @@ const ar: Translations = {
       "title": "البدء السريع",
       "step1": "قم بتثبيت Docker (انظر المتطلبات أدناه)",
       "step2": "ابدأ الحاوية:",
+      "step2CustomVersions": "اختياري: البناء بإصدارات برامج مخصصة (انظر Docker Build Arguments أدناه):",
       "step3": "ابدأ Claude Code:",
       "step4": "إيقاف الحاوية:",
       "note": "مجلد workspace الخاص بك مثبت في /workspace داخل الحاوية. سيطلب Claude Code مفتاح API عند التشغيل الأول."
+    },
+    "buildArgs": {
+      "title": "Docker Build Arguments",
+      "description": "يمكنك تكوين إصدارات البرامج وعناوين URL للتنزيل أثناء بناء Docker. استخدم `--build-arg الاسم=القيمة` لتجاوز القيم الافتراضية.",
+      "versionArgs": {
+        "title": "وسائط الإصدار",
+        "description": "تحكم في إصدارات البرامج المثبتة:"
+      },
+      "urlArgs": {
+        "title": "وسائط URL",
+        "description": "تجاوز عناوين URL للتنزيل للمرايا أو البروكسي:"
+      },
+      "defaultValue": "افتراضي",
+      "example": "مثال بإصدارات مخصصة:"
     },
     "prerequisites": {
       "title": "المتطلبات",
