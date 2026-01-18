@@ -80,6 +80,18 @@ Une application web pour générer des fichiers de configuration Docker permetta
 
 - **Prévisualisation en direct** : Visualisez les aperçus en temps réel des fichiers de configuration générés
 - **Téléchargement ZIP** : Téléchargez tous les fichiers sous forme d'archive ZIP prête à l'emploi
+- **Génération automatique du README** : Chaque ZIP comprend un README.md détaillé avec :
+  - Vue d'ensemble des fichiers et descriptions
+  - Informations sur l'image de base avec liens Docker Hub
+  - Logiciels et paquets installés avec liens (Debian Tracker, npmjs.com)
+  - Informations sur les plugins avec liens GitHub
+  - Clés des variables d'environnement (valeurs masquées pour la sécurité)
+  - Liste des fichiers protégés
+  - Résumé des paramètres de permission
+  - Guide de démarrage rapide avec commandes Docker
+  - Prérequis pour Windows, macOS et Linux
+  - Section de dépannage
+  - Lorsque la langue de l'interface n'est pas l'anglais, inclut également README.en.md (anglais simple)
 - **Sauvegarde automatique** : Les paramètres sont automatiquement enregistrés dans le localStorage de votre navigateur (activé par défaut)
 - **Support multilingue** : Disponible en 18 langues :
   - 🌍 Arabe
@@ -399,6 +411,23 @@ Cette application est conçue pour être entièrement accessible :
 - Compatible avec les lecteurs d'écran
 - Schémas de couleurs à contraste élevé
 - Indicateurs de focus sur les éléments interactifs
+
+## Versions
+
+Les versions sont automatisées via GitHub Actions. Pour créer une nouvelle version :
+
+1. Créez et poussez un tag de version :
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. Le workflow effectue automatiquement :
+   - La compilation du projet
+   - La création d'une archive ZIP à partir du dossier `dist/`
+   - La publication d'une Release GitHub avec des notes de version auto-générées
+
+Les tags contenant `-` (ex. `v1.0.0-beta`) sont marqués comme pré-versions.
 
 ## Soutien
 

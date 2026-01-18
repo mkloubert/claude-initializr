@@ -80,6 +80,18 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
 
 - **Podgląd na żywo**: Zobacz podglądy generowanych plików konfiguracyjnych w czasie rzeczywistym
 - **Pobieranie ZIP**: Pobierz wszystkie pliki jako gotowe do użycia archiwum ZIP
+- **Automatyczne generowanie README**: Każdy plik ZIP zawiera szczegółowy README.md z:
+  - Przeglądem plików i opisami
+  - Informacjami o obrazie bazowym z linkami do Docker Hub
+  - Zainstalowanym oprogramowaniem i pakietami z linkami (Debian Tracker, npmjs.com)
+  - Informacjami o wtyczkach z linkami do GitHub
+  - Kluczami zmiennych środowiskowych (wartości ukryte dla bezpieczeństwa)
+  - Listą chronionych plików
+  - Podsumowaniem ustawień uprawnień
+  - Przewodnikiem szybkiego startu z poleceniami Docker
+  - Wymaganiami wstępnymi dla Windows, macOS i Linux
+  - Sekcją rozwiązywania problemów
+  - Gdy język interfejsu nie jest angielski, zawiera również README.en.md (prosty angielski)
 - **Automatyczne zapisywanie**: Ustawienia są automatycznie zapisywane w localStorage przeglądarki (domyślnie włączone)
 - **Wsparcie wielojęzyczne**: Dostępne w 18 językach:
   - 🌍 Arabski
@@ -403,6 +415,23 @@ Ta aplikacja jest zaprojektowana tak, aby była w pełni dostępna:
 - Kompatybilność z czytnikami ekranu
 - Schematy kolorów o wysokim kontraście
 - Wskaźniki fokusa na interaktywnych elementach
+
+## Wydania
+
+Wydania są zautomatyzowane przez GitHub Actions. Aby utworzyć nowe wydanie:
+
+1. Utwórz i wypchnij tag wersji:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. Workflow automatycznie:
+   - Buduje projekt
+   - Tworzy archiwum ZIP z folderu `dist/`
+   - Publikuje GitHub Release z automatycznie wygenerowanymi notatkami wydania
+
+Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
 ## Wsparcie
 

@@ -184,5 +184,166 @@
     "invalidEnvKey": "שם משתנה לא חוקי. השתמש רק באותיות, מספרים וקווים תחתונים.",
     "duplicateEnvKey": "שם משתנה זה כבר קיים.",
     "invalidPath": "הנתיב חייב להיות יחסי (ללא / בהתחלה) ואינו יכול להכיל .."
+  },
+  "readme": {
+    "title": "תצורת Docker ל-Claude Code",
+    "generatedBy": "נוצר על ידי [Claude Initializr]({{url}})",
+    "languageSwitch": "קרא זאת ב{{language}}",
+    "intro": {
+      "title": "אודות תצורה זו",
+      "description": "תיקייה זו מכילה קבצי תצורת Docker להפעלת Claude Code בצורה מאובטחת בקונטיינר מבודד. התצורה מספקת בידוד רשת, הגנה על קבצים וסביבה ארגזית לפיתוח בסיוע AI."
+    },
+    "files": {
+      "title": "סקירת קבצים",
+      "dockerfile": "Dockerfile - מגדיר את תמונת הקונטיינר עם כל כלי הפיתוח",
+      "dockerCompose": "docker-compose.yaml - קובץ תזמור להפעלת הקונטיינר",
+      "env": ".env - משתני סביבה (הוסף את מפתחות ה-API שלך כאן)",
+      "initFirewall": "init-firewall.sh - סקריפט חומת אש לאבטחה",
+      "workspace": "workspace/ - תיקיית העבודה שלך המותקנת בקונטיינר",
+      "claudeMd": "workspace/CLAUDE.md - הנחיות פרויקט ל-Claude",
+      "settingsJson": "workspace/.claude/settings.json - הגדרות הרשאות Claude Code"
+    },
+    "baseImage": {
+      "title": "תמונת בסיס",
+      "description": "תצורה זו משתמשת בתמונת הבסיס הבאה של Docker:",
+      "dockerHub": "צפה ב-Docker Hub"
+    },
+    "platform": {
+      "title": "פלטפורמה",
+      "description": "הקונטיינר מוגדר לפעול על פלטפורמה זו:"
+    },
+    "aptPackages": {
+      "title": "חבילות מערכת (APT)",
+      "description": "חבילות המערכת הבאות מותקנות:"
+    },
+    "npmPackages": {
+      "title": "חבילות NPM נוספות",
+      "description": "חבילות ה-NPM הנוספות הבאות מותקנות גלובלית:",
+      "installedAs": "הותקן כ-{{user}}"
+    },
+    "plugins": {
+      "title": "תוספי Claude Code",
+      "description": "תוספי Claude Code הבאים מותקנים ומופעלים:",
+      "viewOnGitHub": "צפה ב-GitHub"
+    },
+    "envVariables": {
+      "title": "משתני סביבה",
+      "description": "משתני הסביבה הבאים מוגדרים (ערכים לא מוצגים מטעמי אבטחה):",
+      "note": "הוסף את הערכים האמיתיים שלך לקובץ .env לפני הפעלת הקונטיינר."
+    },
+    "protectedFiles": {
+      "title": "קבצים מוגנים",
+      "description": "הקבצים הבאים מוגנים ומותקנים כקבצים ריקים לקריאה בלבד למניעת גישה:"
+    },
+    "settingsJson": {
+      "title": "הגדרות הרשאות",
+      "description": "Claude Code מוגדר עם כללי ההרשאות הבאים:",
+      "allow": "פעולות מותרות (אוטומטי)",
+      "ask": "פעולות הדורשות אישור",
+      "deny": "פעולות נדחות"
+    },
+    "claudeMd": {
+      "title": "הנחיות פרויקט",
+      "description": "הנחיות ספציפיות לפרויקט עבור Claude מוגדרות ב:"
+    },
+    "quickStart": {
+      "title": "התחלה מהירה",
+      "step1": "התקן Docker (ראה דרישות מוקדמות למטה)",
+      "step2": "הפעל את הקונטיינר:",
+      "step3": "הפעל את Claude Code:",
+      "step4": "עצור את הקונטיינר:",
+      "note": "תיקיית ה-workspace שלך מותקנת ב-/workspace בתוך הקונטיינר. Claude Code יבקש את מפתח ה-API בהפעלה הראשונה."
+    },
+    "prerequisites": {
+      "title": "דרישות מוקדמות",
+      "description": "אתה צריך Docker מותקן על המערכת שלך. בחר את מערכת ההפעלה שלך:",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "הורד Docker Desktop מ-docker.com/products/docker-desktop",
+          "הפעל את המתקין ועקוב אחר אשף ההתקנה",
+          "הפעל WSL 2 backend כאשר תתבקש (מומלץ)",
+          "הפעל מחדש את המחשב אם נדרש",
+          "פתח את Docker Desktop והמתן שיופעל"
+        ],
+        "link": "מדריך התקנה רשמי ל-Windows"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "הורד Docker Desktop מ-docker.com/products/docker-desktop",
+          "פתח את קובץ ה-.dmg וגרור את Docker ל-Applications",
+          "פתח את Docker מתיקיית Applications",
+          "הענק הרשאות נדרשות כאשר תתבקש",
+          "המתן ש-Docker יסיים להפעיל (סמל הלוויתן בשורת התפריטים)"
+        ],
+        "link": "מדריך התקנה רשמי ל-macOS"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "עדכן את אינדקס החבילות: sudo apt update",
+          "התקן Docker: sudo apt install docker.io docker-compose-v2",
+          "הוסף את המשתמש שלך לקבוצת docker: sudo usermod -aG docker $USER",
+          "התנתק והתחבר מחדש כדי שהשינויים ייכנסו לתוקף",
+          "אמת את ההתקנה: docker --version"
+        ],
+        "link": "מדריך התקנה רשמי ל-Linux",
+        "altNote": "או התקן Docker Desktop לחוויית GUI."
+      }
+    },
+    "troubleshooting": {
+      "title": "פתרון בעיות",
+      "issues": {
+        "containerNotStarting": {
+          "title": "הקונטיינר לא מופעל",
+          "solutions": [
+            "בדוק אם Docker פועל: docker info",
+            "אמת שקובץ .env קיים ומכיל ANTHROPIC_API_KEY",
+            "בדוק התנגשויות פורטים: docker ps",
+            "צפה ביומני הקונטיינר: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "שגיאות הרשאה נדחתה",
+          "solutions": [
+            "ב-Linux, ודא שהמשתמש שלך בקבוצת docker",
+            "נסה להפעיל עם sudo (לא מומלץ לשימוש רגיל)",
+            "בדוק הרשאות קבצים בתיקיית workspace"
+          ]
+        },
+        "networkIssues": {
+          "title": "בעיות רשת או חיבור API",
+          "solutions": [
+            "סקריפט חומת האש מאפשר רק דומיינים ספציפיים",
+            "ודא ש-api.anthropic.com נגיש מהרשת שלך",
+            "בדוק יומני חומת אש בתוך הקונטיינר: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "קבצים לא נגישים בקונטיינר",
+          "solutions": [
+            "קבצים מוגנים ריקים בכוונה - זה צפוי",
+            "בדוק הרכבות volume ב-docker-compose.yaml",
+            "ודא שתיקיית workspace קיימת על המארח"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "קישורים",
+      "initializer": "צור תצורה חדשה",
+      "documentation": "תיעוד Claude Code",
+      "support": "דווח על בעיות"
+    },
+    "author": {
+      "title": "מחבר",
+      "createdBy": "נוצר על ידי",
+      "support": "תמוך בפרויקט זה"
+    },
+    "software": {
+      "title": "תוכנה מותקנת",
+      "description": "כלי הפיתוח הבאים מותקנים:"
+    }
   }
 }

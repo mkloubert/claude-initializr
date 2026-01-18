@@ -20,6 +20,7 @@
 
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
+import type { TFunction } from 'i18next';
 import type { AppConfig } from '@/types';
 import {
   processDockerfile,
@@ -30,11 +31,55 @@ import { generateDockerfileReplacements } from './dockerfileGenerator';
 import { generateEnvFileContent } from './envGenerator';
 import { generateDockerComposeReplacements } from './volumeGenerator';
 import { generateSettingsJson } from './settingsGenerator';
+import { generateReadmeContent } from './readmeGenerator';
+
+/**
+ * Language configuration for README generation.
+ */
+export interface ReadmeLanguageConfig {
+  /** Current language code (e.g., 'en', 'de') */
+  language: string;
+  /** Current language display name (e.g., 'English', 'Deutsch') */
+  languageName: string;
+  /** Translation function for current language */
+  t: TFunction;
+  /** Translation function for English (used when generating README.en.md) */
+  tEnglish: TFunction;
+  /** URL to the Claude Initializr app */
+  initializerUrl: string;
+}
+
+/**
+ * Language display names map.
+ */
+const languageNames: Record<string, string> = {
+  en: 'English',
+  de: 'Deutsch',
+  es: 'Español',
+  fr: 'Français',
+  it: 'Italiano',
+  pt: 'Português',
+  nl: 'Nederlands',
+  ja: '日本語',
+  ko: '한국어',
+  zh: '中文',
+  ar: 'العربية',
+  he: 'עברית',
+  hi: 'हिन्दी',
+  ur: 'اردو',
+  uk: 'Українська',
+  el: 'Ελληνικά',
+  pl: 'Polski',
+  tr: 'Türkçe',
+};
 
 /**
  * Generate a ZIP file containing all Docker configuration files.
  */
-export async function generateZipFile(config: AppConfig): Promise<Blob> {
+export async function generateZipFile(
+  config: AppConfig,
+  readmeConfig?: ReadmeLanguageConfig
+): Promise<Blob> {
   const zip = new JSZip();
 
   // Generate Dockerfile with software selections and custom packages
@@ -83,6 +128,52 @@ export async function generateZipFile(config: AppConfig): Promise<Blob> {
     }
   }
 
+  // Generate README files if language config is provided
+  if (readmeConfig) {
+    const { language, languageName, t, tEnglish, initializerUrl } = readmeConfig;
+    const isEnglish = language === 'en';
+
+    if (isEnglish) {
+      // Only generate README.md in English
+      const readmeContent = generateReadmeContent({
+        appConfig: config,
+        initializerUrl,
+        language: 'en',
+        languageName: 'English',
+        t,
+      });
+      zip.file('README.md', readmeContent.trim());
+    } else {
+      // Generate README.md in current language with link to English version
+      const readmeContent = generateReadmeContent({
+        appConfig: config,
+        initializerUrl,
+        language,
+        languageName,
+        t,
+        includeLanguageSwitch: {
+          targetFile: 'README.en.md',
+          targetLanguageName: 'English',
+        },
+      });
+      zip.file('README.md', readmeContent.trim());
+
+      // Generate README.en.md (Simple English) with link to localized version
+      const readmeEnContent = generateReadmeContent({
+        appConfig: config,
+        initializerUrl,
+        language: 'en',
+        languageName: 'English',
+        t: tEnglish,
+        includeLanguageSwitch: {
+          targetFile: 'README.md',
+          targetLanguageName: languageNames[language] || languageName,
+        },
+      });
+      zip.file('README.en.md', readmeEnContent.trim());
+    }
+  }
+
   // Generate the ZIP blob
   return zip.generateAsync({ type: 'blob' });
 }
@@ -92,8 +183,9 @@ export async function generateZipFile(config: AppConfig): Promise<Blob> {
  */
 export async function downloadZipFile(
   config: AppConfig,
-  filename: string = 'claude-docker-config.zip'
+  filename: string = 'claude-docker-config.zip',
+  readmeConfig?: ReadmeLanguageConfig
 ): Promise<void> {
-  const blob = await generateZipFile(config);
+  const blob = await generateZipFile(config, readmeConfig);
   saveAs(blob, filename);
 }

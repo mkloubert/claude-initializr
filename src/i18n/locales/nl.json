@@ -184,5 +184,166 @@
     "invalidEnvKey": "Ongeldige variabelenaam. Gebruik alleen letters, cijfers en underscores.",
     "duplicateEnvKey": "Deze variabelenaam bestaat al.",
     "invalidPath": "Pad moet relatief zijn (geen leidende /) en mag geen .. bevatten"
+  },
+  "readme": {
+    "title": "Claude Code Docker-configuratie",
+    "generatedBy": "Gegenereerd met [Claude Initializr]({{url}})",
+    "languageSwitch": "Lees dit in het {{language}}",
+    "intro": {
+      "title": "Over deze configuratie",
+      "description": "Deze map bevat Docker-configuratiebestanden om Claude Code veilig in een geïsoleerde container uit te voeren. De configuratie biedt netwerkisolatie, bestandsbescherming en een sandboxomgeving voor AI-ondersteunde ontwikkeling."
+    },
+    "files": {
+      "title": "Bestandsoverzicht",
+      "dockerfile": "Dockerfile - Definieert de containerimage met alle ontwikkeltools",
+      "dockerCompose": "docker-compose.yaml - Orkestratiebestand voor het starten van de container",
+      "env": ".env - Omgevingsvariabelen (voeg hier je API-sleutels toe)",
+      "initFirewall": "init-firewall.sh - Netwerkfirewallscript voor beveiliging",
+      "workspace": "workspace/ - Je werkdirectory gemount in de container",
+      "claudeMd": "workspace/CLAUDE.md - Projectinstructies voor Claude",
+      "settingsJson": "workspace/.claude/settings.json - Claude Code machtigingsinstellingen"
+    },
+    "baseImage": {
+      "title": "Basisimage",
+      "description": "Deze configuratie gebruikt het volgende Docker-basisimage:",
+      "dockerHub": "Bekijk op Docker Hub"
+    },
+    "platform": {
+      "title": "Platform",
+      "description": "De container is geconfigureerd om op dit platform te draaien:"
+    },
+    "aptPackages": {
+      "title": "Systeempakketten (APT)",
+      "description": "De volgende systeempakketten zijn geïnstalleerd:"
+    },
+    "npmPackages": {
+      "title": "Extra NPM-pakketten",
+      "description": "De volgende extra NPM-pakketten zijn globaal geïnstalleerd:",
+      "installedAs": "geïnstalleerd als {{user}}"
+    },
+    "plugins": {
+      "title": "Claude Code Plugins",
+      "description": "De volgende Claude Code plugins zijn geïnstalleerd en geactiveerd:",
+      "viewOnGitHub": "Bekijk op GitHub"
+    },
+    "envVariables": {
+      "title": "Omgevingsvariabelen",
+      "description": "De volgende omgevingsvariabelen zijn geconfigureerd (waarden niet getoond voor beveiliging):",
+      "note": "Voeg je werkelijke waarden toe aan het .env-bestand voordat je de container start."
+    },
+    "protectedFiles": {
+      "title": "Beschermde bestanden",
+      "description": "De volgende bestanden zijn beschermd en gemount als lege alleen-lezen bestanden:"
+    },
+    "settingsJson": {
+      "title": "Machtigingsinstellingen",
+      "description": "Claude Code is geconfigureerd met de volgende machtigingsregels:",
+      "allow": "Toegestane operaties (automatisch)",
+      "ask": "Operaties die bevestiging vereisen",
+      "deny": "Geweigerde operaties"
+    },
+    "claudeMd": {
+      "title": "Projectinstructies",
+      "description": "Projectspecifieke instructies voor Claude zijn gedefinieerd in:"
+    },
+    "quickStart": {
+      "title": "Snelstart",
+      "step1": "Installeer Docker (zie Vereisten hieronder)",
+      "step2": "Start de container:",
+      "step3": "Start Claude Code:",
+      "step4": "Stop de container:",
+      "note": "Je workspace-map is gemount op /workspace in de container. Claude Code vraagt bij eerste start om de API-sleutel."
+    },
+    "prerequisites": {
+      "title": "Vereisten",
+      "description": "Je hebt Docker nodig op je systeem. Kies je besturingssysteem:",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "Download Docker Desktop van docker.com/products/docker-desktop",
+          "Voer het installatiebestand uit en volg de installatiewizard",
+          "Schakel WSL 2 backend in wanneer gevraagd (aanbevolen)",
+          "Herstart je computer indien nodig",
+          "Open Docker Desktop en wacht tot het is gestart"
+        ],
+        "link": "Officiële Windows-installatiegids"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "Download Docker Desktop van docker.com/products/docker-desktop",
+          "Open het .dmg-bestand en sleep Docker naar Programma's",
+          "Open Docker vanuit de map Programma's",
+          "Verleen de vereiste machtigingen wanneer gevraagd",
+          "Wacht tot Docker is gestart (walvisicoon in de menubalk)"
+        ],
+        "link": "Officiële macOS-installatiegids"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "Update je pakketindex: sudo apt update",
+          "Installeer Docker: sudo apt install docker.io docker-compose-v2",
+          "Voeg je gebruiker toe aan de docker-groep: sudo usermod -aG docker $USER",
+          "Log uit en weer in om de groepswijzigingen door te voeren",
+          "Verifieer de installatie: docker --version"
+        ],
+        "link": "Officiële Linux-installatiegids",
+        "altNote": "Of installeer Docker Desktop voor een grafische ervaring."
+      }
+    },
+    "troubleshooting": {
+      "title": "Probleemoplossing",
+      "issues": {
+        "containerNotStarting": {
+          "title": "Container start niet",
+          "solutions": [
+            "Controleer of Docker draait: docker info",
+            "Verifieer dat het .env-bestand bestaat en ANTHROPIC_API_KEY bevat",
+            "Controleer op poortconflicten: docker ps",
+            "Bekijk container-logs: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "Toestemming geweigerd fouten",
+          "solutions": [
+            "Op Linux, zorg dat je gebruiker in de docker-groep zit",
+            "Probeer uit te voeren met sudo (niet aanbevolen voor regelmatig gebruik)",
+            "Controleer bestandsmachtigingen in de workspace-map"
+          ]
+        },
+        "networkIssues": {
+          "title": "Netwerk- of API-verbindingsproblemen",
+          "solutions": [
+            "Het firewallscript staat alleen specifieke domeinen toe",
+            "Zorg dat api.anthropic.com bereikbaar is vanaf je netwerk",
+            "Controleer firewall-logs in de container: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "Bestanden niet toegankelijk in container",
+          "solutions": [
+            "Beschermde bestanden zijn opzettelijk leeg - dit is verwacht",
+            "Controleer volume-mounts in docker-compose.yaml",
+            "Zorg dat de workspace-map op de host bestaat"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "Links",
+      "initializer": "Nieuwe configuratie genereren",
+      "documentation": "Claude Code Documentatie",
+      "support": "Problemen melden"
+    },
+    "author": {
+      "title": "Auteur",
+      "createdBy": "Gemaakt door",
+      "support": "Dit project ondersteunen"
+    },
+    "software": {
+      "title": "Geïnstalleerde software",
+      "description": "De volgende ontwikkeltools zijn geïnstalleerd:"
+    }
   }
 }

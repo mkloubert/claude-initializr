@@ -184,5 +184,166 @@
     "invalidEnvKey": "잘못된 변수 이름입니다. 문자, 숫자, 밑줄만 사용하세요.",
     "duplicateEnvKey": "이 변수 이름은 이미 존재합니다.",
     "invalidPath": "경로는 상대 경로여야 하며(앞에 / 없음) ..를 포함할 수 없습니다"
+  },
+  "readme": {
+    "title": "Claude Code Docker 구성",
+    "generatedBy": "[Claude Initializr]({{url}})로 생성됨",
+    "languageSwitch": "{{language}}로 읽기",
+    "intro": {
+      "title": "이 구성에 대하여",
+      "description": "이 폴더에는 격리된 컨테이너에서 Claude Code를 안전하게 실행하기 위한 Docker 구성 파일이 포함되어 있습니다. 이 구성은 네트워크 격리, 파일 보호 및 AI 지원 개발을 위한 샌드박스 환경을 제공합니다."
+    },
+    "files": {
+      "title": "파일 개요",
+      "dockerfile": "Dockerfile - 모든 개발 도구를 포함한 컨테이너 이미지 정의",
+      "dockerCompose": "docker-compose.yaml - 컨테이너 시작을 위한 오케스트레이션 파일",
+      "env": ".env - 환경 변수 (여기에 API 키 추가)",
+      "initFirewall": "init-firewall.sh - 보안을 위한 네트워크 방화벽 스크립트",
+      "workspace": "workspace/ - 컨테이너에 마운트되는 작업 디렉토리",
+      "claudeMd": "workspace/CLAUDE.md - Claude를 위한 프로젝트 지침",
+      "settingsJson": "workspace/.claude/settings.json - Claude Code 권한 설정"
+    },
+    "baseImage": {
+      "title": "베이스 이미지",
+      "description": "이 구성은 다음 Docker 베이스 이미지를 사용합니다:",
+      "dockerHub": "Docker Hub에서 보기"
+    },
+    "platform": {
+      "title": "플랫폼",
+      "description": "컨테이너는 이 플랫폼에서 실행되도록 구성되었습니다:"
+    },
+    "aptPackages": {
+      "title": "시스템 패키지 (APT)",
+      "description": "다음 시스템 패키지가 설치되었습니다:"
+    },
+    "npmPackages": {
+      "title": "추가 NPM 패키지",
+      "description": "다음 추가 NPM 패키지가 전역으로 설치되었습니다:",
+      "installedAs": "{{user}}로 설치됨"
+    },
+    "plugins": {
+      "title": "Claude Code 플러그인",
+      "description": "다음 Claude Code 플러그인이 설치 및 활성화되었습니다:",
+      "viewOnGitHub": "GitHub에서 보기"
+    },
+    "envVariables": {
+      "title": "환경 변수",
+      "description": "다음 환경 변수가 구성되었습니다 (보안상 값은 표시되지 않음):",
+      "note": "컨테이너를 시작하기 전에 .env 파일에 실제 값을 추가하세요."
+    },
+    "protectedFiles": {
+      "title": "보호된 파일",
+      "description": "다음 파일은 보호되어 빈 읽기 전용 파일로 마운트됩니다:"
+    },
+    "settingsJson": {
+      "title": "권한 설정",
+      "description": "Claude Code는 다음 권한 규칙으로 구성되었습니다:",
+      "allow": "허용된 작업 (자동)",
+      "ask": "확인이 필요한 작업",
+      "deny": "거부된 작업"
+    },
+    "claudeMd": {
+      "title": "프로젝트 지침",
+      "description": "Claude를 위한 프로젝트별 지침은 다음에 정의되어 있습니다:"
+    },
+    "quickStart": {
+      "title": "빠른 시작",
+      "step1": "Docker 설치 (아래 사전 요구 사항 참조)",
+      "step2": "컨테이너 시작:",
+      "step3": "Claude Code 시작:",
+      "step4": "컨테이너 중지:",
+      "note": "workspace 폴더는 컨테이너 내의 /workspace에 마운트됩니다. Claude Code는 첫 시작 시 API 키를 요청합니다."
+    },
+    "prerequisites": {
+      "title": "사전 요구 사항",
+      "description": "시스템에 Docker가 설치되어 있어야 합니다. 운영 체제를 선택하세요:",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "docker.com/products/docker-desktop에서 Docker Desktop 다운로드",
+          "설치 프로그램을 실행하고 설정 마법사를 따름",
+          "요청 시 WSL 2 백엔드 활성화 (권장)",
+          "필요한 경우 컴퓨터 재시작",
+          "Docker Desktop을 열고 시작될 때까지 대기"
+        ],
+        "link": "공식 Windows 설치 가이드"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "docker.com/products/docker-desktop에서 Docker Desktop 다운로드",
+          ".dmg 파일을 열고 Docker를 응용 프로그램에 드래그",
+          "응용 프로그램 폴더에서 Docker 열기",
+          "요청 시 필요한 권한 부여",
+          "Docker 시작 완료 대기 (메뉴 바의 고래 아이콘)"
+        ],
+        "link": "공식 macOS 설치 가이드"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "패키지 인덱스 업데이트: sudo apt update",
+          "Docker 설치: sudo apt install docker.io docker-compose-v2",
+          "사용자를 docker 그룹에 추가: sudo usermod -aG docker $USER",
+          "그룹 변경 사항을 적용하려면 로그아웃 후 다시 로그인",
+          "설치 확인: docker --version"
+        ],
+        "link": "공식 Linux 설치 가이드",
+        "altNote": "또는 GUI 환경을 위해 Docker Desktop 설치."
+      }
+    },
+    "troubleshooting": {
+      "title": "문제 해결",
+      "issues": {
+        "containerNotStarting": {
+          "title": "컨테이너가 시작되지 않음",
+          "solutions": [
+            "Docker가 실행 중인지 확인: docker info",
+            ".env 파일이 존재하고 ANTHROPIC_API_KEY가 포함되어 있는지 확인",
+            "포트 충돌 확인: docker ps",
+            "컨테이너 로그 보기: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "권한 거부 오류",
+          "solutions": [
+            "Linux에서 사용자가 docker 그룹에 속해 있는지 확인",
+            "sudo로 실행 시도 (일반 사용에는 권장되지 않음)",
+            "workspace 폴더의 파일 권한 확인"
+          ]
+        },
+        "networkIssues": {
+          "title": "네트워크 또는 API 연결 문제",
+          "solutions": [
+            "방화벽 스크립트는 특정 도메인만 허용",
+            "api.anthropic.com이 네트워크에서 접근 가능한지 확인",
+            "컨테이너 내 방화벽 로그 확인: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "컨테이너에서 파일에 접근할 수 없음",
+          "solutions": [
+            "보호된 파일은 의도적으로 비어 있음 - 이것은 예상된 동작",
+            "docker-compose.yaml의 볼륨 마운트 확인",
+            "호스트에 workspace 폴더가 존재하는지 확인"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "링크",
+      "initializer": "새 구성 생성",
+      "documentation": "Claude Code 문서",
+      "support": "문제 보고"
+    },
+    "author": {
+      "title": "작성자",
+      "createdBy": "제작자",
+      "support": "이 프로젝트 지원"
+    },
+    "software": {
+      "title": "설치된 소프트웨어",
+      "description": "다음 개발 도구가 설치되었습니다:"
+    }
   }
 }

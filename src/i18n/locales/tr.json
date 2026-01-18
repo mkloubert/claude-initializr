@@ -184,5 +184,166 @@
     "invalidEnvKey": "Geçersiz değişken adı. Yalnızca harf, rakam ve alt çizgi kullanın.",
     "duplicateEnvKey": "Bu değişken adı zaten mevcut.",
     "invalidPath": "Yol göreceli olmalı (başında / olmamalı) ve .. içeremez"
+  },
+  "readme": {
+    "title": "Claude Code Docker Yapılandırması",
+    "generatedBy": "[Claude Initializr]({{url}}) tarafından oluşturuldu",
+    "languageSwitch": "Bunu {{language}} dilinde okuyun",
+    "intro": {
+      "title": "Bu Yapılandırma Hakkında",
+      "description": "Bu klasör, Claude Code'u izole bir konteynerde güvenli bir şekilde çalıştırmak için Docker yapılandırma dosyalarını içerir. Yapılandırma, AI destekli geliştirme için ağ izolasyonu, dosya koruması ve sandbox ortamı sağlar."
+    },
+    "files": {
+      "title": "Dosyalara Genel Bakış",
+      "dockerfile": "Dockerfile - Tüm geliştirme araçlarıyla konteyner imajını tanımlar",
+      "dockerCompose": "docker-compose.yaml - Konteyneri başlatmak için orkestrasyon dosyası",
+      "env": ".env - Ortam değişkenleri (API anahtarlarınızı buraya ekleyin)",
+      "initFirewall": "init-firewall.sh - Güvenlik için ağ güvenlik duvarı betiği",
+      "workspace": "workspace/ - Konteynere bağlanan çalışma dizininiz",
+      "claudeMd": "workspace/CLAUDE.md - Claude için proje talimatları",
+      "settingsJson": "workspace/.claude/settings.json - Claude Code izin ayarları"
+    },
+    "baseImage": {
+      "title": "Temel İmaj",
+      "description": "Bu yapılandırma aşağıdaki Docker temel imajını kullanır:",
+      "dockerHub": "Docker Hub'da Görüntüle"
+    },
+    "platform": {
+      "title": "Platform",
+      "description": "Konteyner bu platformda çalışacak şekilde yapılandırılmıştır:"
+    },
+    "aptPackages": {
+      "title": "Sistem Paketleri (APT)",
+      "description": "Aşağıdaki sistem paketleri kurulmuştur:"
+    },
+    "npmPackages": {
+      "title": "Ek NPM Paketleri",
+      "description": "Aşağıdaki ek NPM paketleri global olarak kurulmuştur:",
+      "installedAs": "{{user}} olarak kuruldu"
+    },
+    "plugins": {
+      "title": "Claude Code Eklentileri",
+      "description": "Aşağıdaki Claude Code eklentileri kurulmuş ve etkinleştirilmiştir:",
+      "viewOnGitHub": "GitHub'da Görüntüle"
+    },
+    "envVariables": {
+      "title": "Ortam Değişkenleri",
+      "description": "Aşağıdaki ortam değişkenleri yapılandırılmıştır (güvenlik nedeniyle değerler gösterilmemiştir):",
+      "note": "Konteyneri başlatmadan önce gerçek değerlerinizi .env dosyasına ekleyin."
+    },
+    "protectedFiles": {
+      "title": "Korumalı Dosyalar",
+      "description": "Aşağıdaki dosyalar korunmaktadır ve erişimi önlemek için boş salt okunur dosyalar olarak bağlanmıştır:"
+    },
+    "settingsJson": {
+      "title": "İzin Ayarları",
+      "description": "Claude Code aşağıdaki izin kurallarıyla yapılandırılmıştır:",
+      "allow": "İzin verilen işlemler (otomatik)",
+      "ask": "Onay gerektiren işlemler",
+      "deny": "Reddedilen işlemler"
+    },
+    "claudeMd": {
+      "title": "Proje Talimatları",
+      "description": "Claude için projeye özel talimatlar şurada tanımlanmıştır:"
+    },
+    "quickStart": {
+      "title": "Hızlı Başlangıç",
+      "step1": "Docker'ı kurun (aşağıdaki Ön Koşullar'a bakın)",
+      "step2": "Konteyneri başlatın:",
+      "step3": "Claude Code'u başlatın:",
+      "step4": "Konteyneri durdurun:",
+      "note": "Workspace klasörünüz konteynerin içinde /workspace konumuna bağlanmıştır. Claude Code ilk başlatmada API anahtarını isteyecektir."
+    },
+    "prerequisites": {
+      "title": "Ön Koşullar",
+      "description": "Sisteminizde Docker kurulu olması gerekir. İşletim sisteminizi seçin:",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "Docker Desktop'ı docker.com/products/docker-desktop adresinden indirin",
+          "Yükleyiciyi çalıştırın ve kurulum sihirbazını takip edin",
+          "İstendiğinde WSL 2 backend'i etkinleştirin (önerilir)",
+          "Gerekirse bilgisayarınızı yeniden başlatın",
+          "Docker Desktop'ı açın ve başlamasını bekleyin"
+        ],
+        "link": "Resmi Windows Kurulum Kılavuzu"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "Docker Desktop'ı docker.com/products/docker-desktop adresinden indirin",
+          ".dmg dosyasını açın ve Docker'ı Uygulamalar'a sürükleyin",
+          "Docker'ı Uygulamalar klasöründen açın",
+          "İstendiğinde gerekli izinleri verin",
+          "Docker'ın başlamasını bekleyin (menü çubuğunda balina simgesi)"
+        ],
+        "link": "Resmi macOS Kurulum Kılavuzu"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "Paket dizinini güncelleyin: sudo apt update",
+          "Docker'ı kurun: sudo apt install docker.io docker-compose-v2",
+          "Kullanıcınızı docker grubuna ekleyin: sudo usermod -aG docker $USER",
+          "Grup değişikliklerinin geçerli olması için çıkış yapın ve tekrar giriş yapın",
+          "Kurulumu doğrulayın: docker --version"
+        ],
+        "link": "Resmi Linux Kurulum Kılavuzu",
+        "altNote": "Veya GUI deneyimi için Docker Desktop kurun."
+      }
+    },
+    "troubleshooting": {
+      "title": "Sorun Giderme",
+      "issues": {
+        "containerNotStarting": {
+          "title": "Konteyner başlamıyor",
+          "solutions": [
+            "Docker'ın çalışıp çalışmadığını kontrol edin: docker info",
+            ".env dosyasının var olduğunu ve ANTHROPIC_API_KEY içerdiğini doğrulayın",
+            "Port çakışmalarını kontrol edin: docker ps",
+            "Konteyner günlüklerini görüntüleyin: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "İzin reddedildi hataları",
+          "solutions": [
+            "Linux'ta kullanıcınızın docker grubunda olduğundan emin olun",
+            "sudo ile çalıştırmayı deneyin (düzenli kullanım için önerilmez)",
+            "Workspace klasöründeki dosya izinlerini kontrol edin"
+          ]
+        },
+        "networkIssues": {
+          "title": "Ağ veya API bağlantı sorunları",
+          "solutions": [
+            "Güvenlik duvarı betiği yalnızca belirli alan adlarına izin verir",
+            "api.anthropic.com'un ağınızdan erişilebilir olduğundan emin olun",
+            "Konteyner içindeki güvenlik duvarı günlüklerini kontrol edin: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "Konteynerde dosyalara erişilemiyor",
+          "solutions": [
+            "Korumalı dosyalar kasıtlı olarak boştur - bu beklenen davranıştır",
+            "docker-compose.yaml'daki volume bağlamalarını kontrol edin",
+            "Workspace klasörünün ana bilgisayarda var olduğundan emin olun"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "Bağlantılar",
+      "initializer": "Yeni yapılandırma oluştur",
+      "documentation": "Claude Code Dokümantasyonu",
+      "support": "Sorunları Bildirin"
+    },
+    "author": {
+      "title": "Yazar",
+      "createdBy": "Oluşturan",
+      "support": "Bu projeyi destekleyin"
+    },
+    "software": {
+      "title": "Kurulu Yazılımlar",
+      "description": "Aşağıdaki geliştirme araçları kurulmuştur:"
+    }
   }
 }

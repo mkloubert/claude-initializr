@@ -80,6 +80,18 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
 
 - **Anteprima live**: Visualizza anteprime in tempo reale dei file di configurazione generati
 - **Download ZIP**: Scarica tutti i file come archivio ZIP pronto all'uso
+- **Generazione automatica README**: Ogni ZIP include un README.md dettagliato con:
+  - Panoramica dei file e descrizioni
+  - Informazioni sull'immagine base con link a Docker Hub
+  - Software e pacchetti installati con link (Debian Tracker, npmjs.com)
+  - Informazioni sui plugin con link a GitHub
+  - Chiavi delle variabili d'ambiente (valori nascosti per sicurezza)
+  - Elenco dei file protetti
+  - Riepilogo delle impostazioni dei permessi
+  - Guida rapida con comandi Docker
+  - Prerequisiti per Windows, macOS e Linux
+  - Sezione risoluzione problemi
+  - Quando la lingua dell'interfaccia non è inglese, include anche README.en.md (inglese semplice)
 - **Salvataggio automatico**: Le impostazioni vengono salvate automaticamente nel localStorage del browser (abilitato per impostazione predefinita)
 - **Supporto multilingue**: Disponibile in 18 lingue:
   - 🌍 Arabo
@@ -399,6 +411,23 @@ Questa applicazione è progettata per essere completamente accessibile:
 - Compatibile con screen reader
 - Schemi di colori ad alto contrasto
 - Indicatori di focus sugli elementi interattivi
+
+## Rilasci
+
+I rilasci sono automatizzati tramite GitHub Actions. Per creare un nuovo rilascio:
+
+1. Crea e invia un tag di versione:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. Il workflow automaticamente:
+   - Compila il progetto
+   - Crea un archivio ZIP dalla cartella `dist/`
+   - Pubblica una Release GitHub con note di rilascio auto-generate
+
+I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
 ## Supporto
 

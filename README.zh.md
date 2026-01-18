@@ -80,6 +80,18 @@
 
 - **实时预览**：实时查看生成的配置文件预览
 - **ZIP 下载**：将所有文件下载为可直接使用的 ZIP 压缩包
+- **自动生成 README**：每个 ZIP 包含详细的 README.md：
+  - 文件概述和说明
+  - 带 Docker Hub 链接的基础镜像信息
+  - 已安装软件和包的链接（Debian Tracker、npmjs.com）
+  - 带 GitHub 链接的插件信息
+  - 环境变量键（出于安全考虑隐藏值）
+  - 受保护文件列表
+  - 权限设置摘要
+  - 包含 Docker 命令的快速入门指南
+  - Windows、macOS 和 Linux 先决条件
+  - 故障排除部分
+  - 当界面语言不是英语时，还包括 README.en.md（简单英语）
 - **自动保存**：设置自动保存到浏览器的 localStorage（默认启用）
 - **多语言支持**：支持 18 种语言：
   - 🌍 阿拉伯语
@@ -403,6 +415,23 @@ localStorage.removeItem("claude-initializr-autosave");
 - 兼容屏幕阅读器
 - 高对比度配色方案
 - 交互元素上的焦点指示器
+
+## 发布
+
+发布通过 GitHub Actions 自动化。要创建新发布：
+
+1. 创建并推送版本标签：
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. 工作流程自动：
+   - 构建项目
+   - 从 `dist/` 文件夹创建 ZIP 存档
+   - 发布带有自动生成发布说明的 GitHub Release
+
+包含 `-` 的标签（如 `v1.0.0-beta`）将被标记为预发布。
 
 ## 支持
 

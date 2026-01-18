@@ -184,5 +184,166 @@
     "invalidEnvKey": "Nieprawidłowa nazwa zmiennej. Używaj tylko liter, cyfr i podkreśleń.",
     "duplicateEnvKey": "Ta nazwa zmiennej już istnieje.",
     "invalidPath": "Ścieżka musi być względna (bez początkowego /) i nie może zawierać .."
+  },
+  "readme": {
+    "title": "Konfiguracja Docker dla Claude Code",
+    "generatedBy": "Wygenerowano przez [Claude Initializr]({{url}})",
+    "languageSwitch": "Przeczytaj to po {{language}}",
+    "intro": {
+      "title": "O tej konfiguracji",
+      "description": "Ten folder zawiera pliki konfiguracyjne Docker do bezpiecznego uruchamiania Claude Code w izolowanym kontenerze. Konfiguracja zapewnia izolację sieciową, ochronę plików i środowisko sandbox do programowania wspomaganego przez AI."
+    },
+    "files": {
+      "title": "Przegląd plików",
+      "dockerfile": "Dockerfile - Definiuje obraz kontenera ze wszystkimi narzędziami deweloperskimi",
+      "dockerCompose": "docker-compose.yaml - Plik orkiestracji do uruchamiania kontenera",
+      "env": ".env - Zmienne środowiskowe (dodaj swoje klucze API tutaj)",
+      "initFirewall": "init-firewall.sh - Skrypt zapory sieciowej dla bezpieczeństwa",
+      "workspace": "workspace/ - Twój katalog roboczy zamontowany w kontenerze",
+      "claudeMd": "workspace/CLAUDE.md - Instrukcje projektu dla Claude",
+      "settingsJson": "workspace/.claude/settings.json - Ustawienia uprawnień Claude Code"
+    },
+    "baseImage": {
+      "title": "Obraz bazowy",
+      "description": "Ta konfiguracja używa następującego bazowego obrazu Docker:",
+      "dockerHub": "Zobacz na Docker Hub"
+    },
+    "platform": {
+      "title": "Platforma",
+      "description": "Kontener jest skonfigurowany do uruchamiania na tej platformie:"
+    },
+    "aptPackages": {
+      "title": "Pakiety systemowe (APT)",
+      "description": "Zainstalowane są następujące pakiety systemowe:"
+    },
+    "npmPackages": {
+      "title": "Dodatkowe pakiety NPM",
+      "description": "Następujące dodatkowe pakiety NPM są zainstalowane globalnie:",
+      "installedAs": "zainstalowane jako {{user}}"
+    },
+    "plugins": {
+      "title": "Wtyczki Claude Code",
+      "description": "Następujące wtyczki Claude Code są zainstalowane i włączone:",
+      "viewOnGitHub": "Zobacz na GitHub"
+    },
+    "envVariables": {
+      "title": "Zmienne środowiskowe",
+      "description": "Skonfigurowane są następujące zmienne środowiskowe (wartości nie są pokazane ze względów bezpieczeństwa):",
+      "note": "Dodaj swoje rzeczywiste wartości do pliku .env przed uruchomieniem kontenera."
+    },
+    "protectedFiles": {
+      "title": "Chronione pliki",
+      "description": "Następujące pliki są chronione i zamontowane jako puste pliki tylko do odczytu, aby zapobiec dostępowi:"
+    },
+    "settingsJson": {
+      "title": "Ustawienia uprawnień",
+      "description": "Claude Code jest skonfigurowany z następującymi regułami uprawnień:",
+      "allow": "Dozwolone operacje (automatycznie)",
+      "ask": "Operacje wymagające potwierdzenia",
+      "deny": "Zabronione operacje"
+    },
+    "claudeMd": {
+      "title": "Instrukcje projektu",
+      "description": "Instrukcje specyficzne dla projektu dla Claude są zdefiniowane w:"
+    },
+    "quickStart": {
+      "title": "Szybki start",
+      "step1": "Zainstaluj Docker (zobacz Wymagania wstępne poniżej)",
+      "step2": "Uruchom kontener:",
+      "step3": "Uruchom Claude Code:",
+      "step4": "Zatrzymaj kontener:",
+      "note": "Twój folder workspace jest zamontowany w /workspace wewnątrz kontenera. Claude Code poprosi o klucz API przy pierwszym uruchomieniu."
+    },
+    "prerequisites": {
+      "title": "Wymagania wstępne",
+      "description": "Potrzebujesz zainstalowanego Dockera w swoim systemie. Wybierz swój system operacyjny:",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "Pobierz Docker Desktop z docker.com/products/docker-desktop",
+          "Uruchom instalator i postępuj zgodnie z kreatorem konfiguracji",
+          "Włącz WSL 2 backend gdy zostaniesz poproszony (zalecane)",
+          "Uruchom ponownie komputer jeśli wymagane",
+          "Otwórz Docker Desktop i poczekaj na uruchomienie"
+        ],
+        "link": "Oficjalny przewodnik instalacji dla Windows"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "Pobierz Docker Desktop z docker.com/products/docker-desktop",
+          "Otwórz plik .dmg i przeciągnij Docker do Aplikacji",
+          "Otwórz Docker z folderu Aplikacje",
+          "Udziel wymaganych uprawnień gdy zostaniesz poproszony",
+          "Poczekaj aż Docker zakończy uruchamianie (ikona wieloryba na pasku menu)"
+        ],
+        "link": "Oficjalny przewodnik instalacji dla macOS"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "Zaktualizuj indeks pakietów: sudo apt update",
+          "Zainstaluj Docker: sudo apt install docker.io docker-compose-v2",
+          "Dodaj swojego użytkownika do grupy docker: sudo usermod -aG docker $USER",
+          "Wyloguj się i zaloguj ponownie, aby zmiany grupy zaczęły obowiązywać",
+          "Zweryfikuj instalację: docker --version"
+        ],
+        "link": "Oficjalny przewodnik instalacji dla Linux",
+        "altNote": "Lub zainstaluj Docker Desktop dla doświadczenia GUI."
+      }
+    },
+    "troubleshooting": {
+      "title": "Rozwiązywanie problemów",
+      "issues": {
+        "containerNotStarting": {
+          "title": "Kontener nie uruchamia się",
+          "solutions": [
+            "Sprawdź czy Docker działa: docker info",
+            "Zweryfikuj czy plik .env istnieje i zawiera ANTHROPIC_API_KEY",
+            "Sprawdź konflikty portów: docker ps",
+            "Zobacz logi kontenera: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "Błędy odmowy uprawnień",
+          "solutions": [
+            "Na Linuxie upewnij się, że twój użytkownik jest w grupie docker",
+            "Spróbuj uruchomić z sudo (nie zalecane do regularnego użytku)",
+            "Sprawdź uprawnienia plików w folderze workspace"
+          ]
+        },
+        "networkIssues": {
+          "title": "Problemy z siecią lub połączeniem API",
+          "solutions": [
+            "Skrypt zapory zezwala tylko na określone domeny",
+            "Upewnij się, że api.anthropic.com jest dostępne z twojej sieci",
+            "Sprawdź logi zapory wewnątrz kontenera: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "Pliki niedostępne w kontenerze",
+          "solutions": [
+            "Chronione pliki są celowo puste - to jest oczekiwane",
+            "Sprawdź montowania wolumenów w docker-compose.yaml",
+            "Upewnij się, że folder workspace istnieje na hoście"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "Linki",
+      "initializer": "Wygeneruj nową konfigurację",
+      "documentation": "Dokumentacja Claude Code",
+      "support": "Zgłoś problemy"
+    },
+    "author": {
+      "title": "Autor",
+      "createdBy": "Utworzone przez",
+      "support": "Wesprzyj ten projekt"
+    },
+    "software": {
+      "title": "Zainstalowane oprogramowanie",
+      "description": "Zainstalowane są następujące narzędzia deweloperskie:"
+    }
   }
 }

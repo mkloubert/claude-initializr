@@ -80,6 +80,18 @@ A web application to generate Docker configuration files for running [Claude Cod
 
 - **Live Preview**: See real-time previews of generated configuration files
 - **ZIP Download**: Download all files as a ready-to-use ZIP archive
+- **Automatic README Generation**: Each ZIP includes a detailed README.md with:
+  - File overview and descriptions
+  - Base image information with Docker Hub links
+  - Installed software and packages with links (Debian Tracker, npmjs.com)
+  - Plugin information with GitHub links
+  - Environment variable keys (values hidden for security)
+  - Protected files list
+  - Permission settings summary
+  - Quick start guide with Docker commands
+  - Prerequisites for Windows, macOS, and Linux
+  - Troubleshooting section
+  - When UI language is not English, also includes README.en.md (Simple English)
 - **Autosave**: Settings are automatically saved to your browser's localStorage (enabled by default)
 - **Multi-language Support**: Available in 18 languages:
   - 🌍 Arabic
@@ -423,6 +435,23 @@ This application is designed to be fully accessible:
 - Screen reader compatible
 - High contrast color schemes
 - Focus indicators on interactive elements
+
+## Releases
+
+Releases are automated via GitHub Actions. To create a new release:
+
+1. Create and push a version tag:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. The workflow automatically:
+   - Builds the project
+   - Creates a ZIP archive from the `dist/` folder
+   - Publishes a GitHub Release with auto-generated release notes
+
+Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
 ## Support
 

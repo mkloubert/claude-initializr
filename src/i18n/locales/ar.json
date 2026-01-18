@@ -184,5 +184,166 @@
     "invalidEnvKey": "اسم متغير غير صالح. استخدم الأحرف والأرقام والشرطات السفلية فقط.",
     "duplicateEnvKey": "اسم المتغير هذا موجود بالفعل.",
     "invalidPath": "يجب أن يكون المسار نسبياً (بدون / في البداية) ولا يمكن أن يحتوي على .."
+  },
+  "readme": {
+    "title": "تكوين Docker لـ Claude Code",
+    "generatedBy": "تم إنشاؤه بواسطة [Claude Initializr]({{url}})",
+    "languageSwitch": "اقرأ هذا بـ{{language}}",
+    "intro": {
+      "title": "حول هذا التكوين",
+      "description": "يحتوي هذا المجلد على ملفات تكوين Docker لتشغيل Claude Code بأمان في حاوية معزولة. يوفر التكوين عزل الشبكة وحماية الملفات وبيئة معزولة للتطوير بمساعدة الذكاء الاصطناعي."
+    },
+    "files": {
+      "title": "نظرة عامة على الملفات",
+      "dockerfile": "Dockerfile - يحدد صورة الحاوية مع جميع أدوات التطوير",
+      "dockerCompose": "docker-compose.yaml - ملف التنسيق لبدء الحاوية",
+      "env": ".env - متغيرات البيئة (أضف مفاتيح API الخاصة بك هنا)",
+      "initFirewall": "init-firewall.sh - سكريبت جدار حماية الشبكة للأمان",
+      "workspace": "workspace/ - دليل العمل الخاص بك المثبت في الحاوية",
+      "claudeMd": "workspace/CLAUDE.md - تعليمات المشروع لـ Claude",
+      "settingsJson": "workspace/.claude/settings.json - إعدادات أذونات Claude Code"
+    },
+    "baseImage": {
+      "title": "الصورة الأساسية",
+      "description": "يستخدم هذا التكوين صورة Docker الأساسية التالية:",
+      "dockerHub": "عرض على Docker Hub"
+    },
+    "platform": {
+      "title": "المنصة",
+      "description": "تم تكوين الحاوية للعمل على هذه المنصة:"
+    },
+    "aptPackages": {
+      "title": "حزم النظام (APT)",
+      "description": "تم تثبيت حزم النظام التالية:"
+    },
+    "npmPackages": {
+      "title": "حزم NPM الإضافية",
+      "description": "تم تثبيت حزم NPM الإضافية التالية عالمياً:",
+      "installedAs": "مثبت كـ {{user}}"
+    },
+    "plugins": {
+      "title": "إضافات Claude Code",
+      "description": "تم تثبيت وتفعيل إضافات Claude Code التالية:",
+      "viewOnGitHub": "عرض على GitHub"
+    },
+    "envVariables": {
+      "title": "متغيرات البيئة",
+      "description": "تم تكوين متغيرات البيئة التالية (القيم غير معروضة لأسباب أمنية):",
+      "note": "أضف قيمك الفعلية إلى ملف .env قبل بدء الحاوية."
+    },
+    "protectedFiles": {
+      "title": "الملفات المحمية",
+      "description": "الملفات التالية محمية ومثبتة كملفات فارغة للقراءة فقط لمنع الوصول:"
+    },
+    "settingsJson": {
+      "title": "إعدادات الأذونات",
+      "description": "تم تكوين Claude Code بقواعد الأذونات التالية:",
+      "allow": "العمليات المسموح بها (تلقائي)",
+      "ask": "العمليات التي تتطلب تأكيداً",
+      "deny": "العمليات المرفوضة"
+    },
+    "claudeMd": {
+      "title": "تعليمات المشروع",
+      "description": "تم تحديد التعليمات الخاصة بالمشروع لـ Claude في:"
+    },
+    "quickStart": {
+      "title": "البدء السريع",
+      "step1": "قم بتثبيت Docker (انظر المتطلبات أدناه)",
+      "step2": "ابدأ الحاوية:",
+      "step3": "ابدأ Claude Code:",
+      "step4": "إيقاف الحاوية:",
+      "note": "مجلد workspace الخاص بك مثبت في /workspace داخل الحاوية. سيطلب Claude Code مفتاح API عند التشغيل الأول."
+    },
+    "prerequisites": {
+      "title": "المتطلبات",
+      "description": "تحتاج إلى تثبيت Docker على نظامك. اختر نظام التشغيل الخاص بك:",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "قم بتنزيل Docker Desktop من docker.com/products/docker-desktop",
+          "قم بتشغيل المثبت واتبع معالج الإعداد",
+          "قم بتمكين WSL 2 backend عند المطالبة (موصى به)",
+          "أعد تشغيل الكمبيوتر إذا لزم الأمر",
+          "افتح Docker Desktop وانتظر حتى يبدأ"
+        ],
+        "link": "دليل التثبيت الرسمي لـ Windows"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "قم بتنزيل Docker Desktop من docker.com/products/docker-desktop",
+          "افتح ملف .dmg واسحب Docker إلى Applications",
+          "افتح Docker من مجلد Applications",
+          "امنح الأذونات المطلوبة عند المطالبة",
+          "انتظر حتى ينتهي Docker من البدء (أيقونة الحوت في شريط القوائم)"
+        ],
+        "link": "دليل التثبيت الرسمي لـ macOS"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "قم بتحديث فهرس الحزم: sudo apt update",
+          "قم بتثبيت Docker: sudo apt install docker.io docker-compose-v2",
+          "أضف مستخدمك إلى مجموعة docker: sudo usermod -aG docker $USER",
+          "قم بتسجيل الخروج وتسجيل الدخول مرة أخرى لتفعيل تغييرات المجموعة",
+          "تحقق من التثبيت: docker --version"
+        ],
+        "link": "دليل التثبيت الرسمي لـ Linux",
+        "altNote": "أو قم بتثبيت Docker Desktop للحصول على تجربة واجهة رسومية."
+      }
+    },
+    "troubleshooting": {
+      "title": "استكشاف الأخطاء وإصلاحها",
+      "issues": {
+        "containerNotStarting": {
+          "title": "الحاوية لا تبدأ",
+          "solutions": [
+            "تحقق من أن Docker يعمل: docker info",
+            "تحقق من وجود ملف .env ويحتوي على ANTHROPIC_API_KEY",
+            "تحقق من تعارضات المنافذ: docker ps",
+            "عرض سجلات الحاوية: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "أخطاء رفض الإذن",
+          "solutions": [
+            "على Linux، تأكد من أن مستخدمك في مجموعة docker",
+            "جرب التشغيل باستخدام sudo (غير موصى به للاستخدام المنتظم)",
+            "تحقق من أذونات الملفات في مجلد workspace"
+          ]
+        },
+        "networkIssues": {
+          "title": "مشاكل الشبكة أو اتصال API",
+          "solutions": [
+            "يسمح سكريبت جدار الحماية فقط بنطاقات محددة",
+            "تأكد من إمكانية الوصول إلى api.anthropic.com من شبكتك",
+            "تحقق من سجلات جدار الحماية داخل الحاوية: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "لا يمكن الوصول إلى الملفات في الحاوية",
+          "solutions": [
+            "الملفات المحمية فارغة عمداً - هذا متوقع",
+            "تحقق من تثبيتات وحدات التخزين في docker-compose.yaml",
+            "تأكد من وجود مجلد workspace على المضيف"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "الروابط",
+      "initializer": "إنشاء تكوين جديد",
+      "documentation": "توثيق Claude Code",
+      "support": "الإبلاغ عن مشاكل"
+    },
+    "author": {
+      "title": "المؤلف",
+      "createdBy": "تم الإنشاء بواسطة",
+      "support": "ادعم هذا المشروع"
+    },
+    "software": {
+      "title": "البرامج المثبتة",
+      "description": "تم تثبيت أدوات التطوير التالية:"
+    }
   }
 }

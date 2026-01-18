@@ -80,6 +80,18 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
 
 - **Live preview**: Bekijk real-time voorbeelden van gegenereerde configuratiebestanden
 - **ZIP-download**: Download alle bestanden als een gebruiksklaar ZIP-archief
+- **Automatische README-generatie**: Elke ZIP bevat een gedetailleerde README.md met:
+  - Bestandsoverzicht en beschrijvingen
+  - Basisimage-informatie met Docker Hub-links
+  - Geïnstalleerde software en pakketten met links (Debian Tracker, npmjs.com)
+  - Plugin-informatie met GitHub-links
+  - Omgevingsvariabele-sleutels (waarden verborgen voor beveiliging)
+  - Lijst van beschermde bestanden
+  - Samenvatting van machtigingsinstellingen
+  - Snelstartgids met Docker-commando's
+  - Vereisten voor Windows, macOS en Linux
+  - Probleemoplossingssectie
+  - Wanneer de UI-taal niet Engels is, bevat ook README.en.md (eenvoudig Engels)
 - **Automatisch opslaan**: Instellingen worden automatisch opgeslagen in de localStorage van uw browser (standaard ingeschakeld)
 - **Meertalige ondersteuning**: Beschikbaar in 18 talen:
   - 🌍 Arabisch
@@ -403,6 +415,23 @@ Deze applicatie is ontworpen om volledig toegankelijk te zijn:
 - Compatibel met schermlezers
 - Kleuren met hoog contrast
 - Focusindicatoren op interactieve elementen
+
+## Releases
+
+Releases worden geautomatiseerd via GitHub Actions. Om een nieuwe release te maken:
+
+1. Maak en push een versie-tag:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. De workflow doet automatisch:
+   - Bouwt het project
+   - Maakt een ZIP-archief van de `dist/`-map
+   - Publiceert een GitHub Release met automatisch gegenereerde release notes
+
+Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
 ## Ondersteuning
 

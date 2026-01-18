@@ -80,6 +80,18 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 
 - **Live-Vorschau**: Sehen Sie Echtzeit-Vorschauen der generierten Konfigurationsdateien
 - **ZIP-Download**: Laden Sie alle Dateien als einsatzbereites ZIP-Archiv herunter
+- **Automatische README-Generierung**: Jedes ZIP enthält eine detaillierte README.md mit:
+  - Dateiübersicht und Beschreibungen
+  - Basis-Image-Informationen mit Docker Hub Links
+  - Installierte Software und Pakete mit Links (Debian Tracker, npmjs.com)
+  - Plugin-Informationen mit GitHub Links
+  - Umgebungsvariablen-Schlüssel (Werte aus Sicherheitsgründen ausgeblendet)
+  - Liste geschützter Dateien
+  - Zusammenfassung der Berechtigungseinstellungen
+  - Schnellstartanleitung mit Docker-Befehlen
+  - Voraussetzungen für Windows, macOS und Linux
+  - Fehlerbehebungsabschnitt
+  - Bei nicht-englischer UI-Sprache wird auch README.en.md (Einfaches Englisch) eingeschlossen
 - **Automatisches Speichern**: Einstellungen werden automatisch im localStorage Ihres Browsers gespeichert (standardmäßig aktiviert)
 - **Mehrsprachige Unterstützung**: Verfügbar in 18 Sprachen:
   - 🌍 Arabisch
@@ -418,6 +430,23 @@ Diese Anwendung ist vollständig barrierefrei gestaltet:
 - Screenreader-kompatibel
 - Kontrastreiche Farbschemata
 - Fokusindikatoren auf interaktiven Elementen
+
+## Releases
+
+Releases werden automatisch über GitHub Actions erstellt. Um ein neues Release zu erstellen:
+
+1. Erstellen und pushen Sie einen Versions-Tag:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. Der Workflow führt automatisch folgendes aus:
+   - Baut das Projekt
+   - Erstellt ein ZIP-Archiv aus dem `dist/`-Ordner
+   - Veröffentlicht ein GitHub Release mit automatisch generierten Release Notes
+
+Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
 ## Unterstützung
 

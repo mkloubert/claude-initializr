@@ -184,5 +184,166 @@
     "invalidEnvKey": "無効な変数名です。文字、数字、アンダースコアのみを使用してください。",
     "duplicateEnvKey": "この変数名は既に存在します。",
     "invalidPath": "パスは相対パス（先頭に/なし）で、..を含めることはできません"
+  },
+  "readme": {
+    "title": "Claude Code Docker設定",
+    "generatedBy": "[Claude Initializr]({{url}})で生成",
+    "languageSwitch": "{{language}}で読む",
+    "intro": {
+      "title": "この設定について",
+      "description": "このフォルダには、Claude Codeを分離されたコンテナで安全に実行するためのDocker設定ファイルが含まれています。この設定は、ネットワーク分離、ファイル保護、AI支援開発のためのサンドボックス環境を提供します。"
+    },
+    "files": {
+      "title": "ファイル概要",
+      "dockerfile": "Dockerfile - すべての開発ツールを含むコンテナイメージを定義",
+      "dockerCompose": "docker-compose.yaml - コンテナを起動するためのオーケストレーションファイル",
+      "env": ".env - 環境変数（ここにAPIキーを追加）",
+      "initFirewall": "init-firewall.sh - セキュリティのためのネットワークファイアウォールスクリプト",
+      "workspace": "workspace/ - コンテナにマウントされる作業ディレクトリ",
+      "claudeMd": "workspace/CLAUDE.md - Claudeのプロジェクト指示",
+      "settingsJson": "workspace/.claude/settings.json - Claude Codeのパーミッション設定"
+    },
+    "baseImage": {
+      "title": "ベースイメージ",
+      "description": "この設定は以下のDockerベースイメージを使用します：",
+      "dockerHub": "Docker Hubで表示"
+    },
+    "platform": {
+      "title": "プラットフォーム",
+      "description": "コンテナは以下のプラットフォームで実行するよう設定されています："
+    },
+    "aptPackages": {
+      "title": "システムパッケージ（APT）",
+      "description": "以下のシステムパッケージがインストールされています："
+    },
+    "npmPackages": {
+      "title": "追加NPMパッケージ",
+      "description": "以下の追加NPMパッケージがグローバルにインストールされています：",
+      "installedAs": "{{user}}としてインストール"
+    },
+    "plugins": {
+      "title": "Claude Code プラグイン",
+      "description": "以下のClaude Codeプラグインがインストールされ、有効化されています：",
+      "viewOnGitHub": "GitHubで表示"
+    },
+    "envVariables": {
+      "title": "環境変数",
+      "description": "以下の環境変数が設定されています（セキュリティのため値は表示されません）：",
+      "note": "コンテナを起動する前に、.envファイルに実際の値を追加してください。"
+    },
+    "protectedFiles": {
+      "title": "保護ファイル",
+      "description": "以下のファイルは保護され、空の読み取り専用ファイルとしてマウントされます："
+    },
+    "settingsJson": {
+      "title": "パーミッション設定",
+      "description": "Claude Codeは以下のパーミッションルールで設定されています：",
+      "allow": "許可された操作（自動）",
+      "ask": "確認が必要な操作",
+      "deny": "拒否された操作"
+    },
+    "claudeMd": {
+      "title": "プロジェクト指示",
+      "description": "Claudeのプロジェクト固有の指示は以下で定義されています："
+    },
+    "quickStart": {
+      "title": "クイックスタート",
+      "step1": "Dockerをインストール（下の前提条件を参照）",
+      "step2": "コンテナを起動：",
+      "step3": "Claude Codeを起動：",
+      "step4": "コンテナを停止：",
+      "note": "workspaceフォルダはコンテナ内の/workspaceにマウントされます。Claude Codeは初回起動時にAPIキーを要求します。"
+    },
+    "prerequisites": {
+      "title": "前提条件",
+      "description": "システムにDockerがインストールされている必要があります。オペレーティングシステムを選択してください：",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "docker.com/products/docker-desktopからDocker Desktopをダウンロード",
+          "インストーラーを実行し、セットアップウィザードに従う",
+          "求められたらWSL 2バックエンドを有効にする（推奨）",
+          "必要に応じてコンピューターを再起動",
+          "Docker Desktopを開き、起動を待つ"
+        ],
+        "link": "公式Windowsインストールガイド"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "docker.com/products/docker-desktopからDocker Desktopをダウンロード",
+          ".dmgファイルを開き、Dockerをアプリケーションにドラッグ",
+          "アプリケーションフォルダからDockerを開く",
+          "求められたら必要な権限を付与",
+          "Dockerの起動を待つ（メニューバーのクジラアイコン）"
+        ],
+        "link": "公式macOSインストールガイド"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "パッケージインデックスを更新: sudo apt update",
+          "Dockerをインストール: sudo apt install docker.io docker-compose-v2",
+          "ユーザーをdockerグループに追加: sudo usermod -aG docker $USER",
+          "グループの変更を有効にするためログアウトして再ログイン",
+          "インストールを確認: docker --version"
+        ],
+        "link": "公式Linuxインストールガイド",
+        "altNote": "またはGUI体験のためにDocker Desktopをインストール。"
+      }
+    },
+    "troubleshooting": {
+      "title": "トラブルシューティング",
+      "issues": {
+        "containerNotStarting": {
+          "title": "コンテナが起動しない",
+          "solutions": [
+            "Dockerが実行中か確認: docker info",
+            ".envファイルが存在しANTHROPIC_API_KEYが含まれているか確認",
+            "ポートの競合を確認: docker ps",
+            "コンテナログを表示: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "パーミッション拒否エラー",
+          "solutions": [
+            "Linuxでは、ユーザーがdockerグループに属していることを確認",
+            "sudoで実行を試す（通常の使用には非推奨）",
+            "workspaceフォルダのファイル権限を確認"
+          ]
+        },
+        "networkIssues": {
+          "title": "ネットワークまたはAPI接続の問題",
+          "solutions": [
+            "ファイアウォールスクリプトは特定のドメインのみを許可",
+            "api.anthropic.comがネットワークからアクセス可能か確認",
+            "コンテナ内のファイアウォールログを確認: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "コンテナ内でファイルにアクセスできない",
+          "solutions": [
+            "保護ファイルは意図的に空です - これは想定通り",
+            "docker-compose.yamlのボリュームマウントを確認",
+            "ホストにworkspaceフォルダが存在することを確認"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "リンク",
+      "initializer": "新しい設定を生成",
+      "documentation": "Claude Code ドキュメント",
+      "support": "問題を報告"
+    },
+    "author": {
+      "title": "作者",
+      "createdBy": "作成者",
+      "support": "このプロジェクトを支援"
+    },
+    "software": {
+      "title": "インストール済みソフトウェア",
+      "description": "以下の開発ツールがインストールされています："
+    }
   }
 }

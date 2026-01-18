@@ -33,7 +33,7 @@ export function Footer() {
   const parts = copyrightText.split(AUTHOR_NAME);
 
   return (
-    <footer className="border-t bg-muted/50">
+    <footer className="sticky bottom-0 z-50 border-t bg-muted/95 backdrop-blur supports-[backdrop-filter]:bg-muted/60">
       <div className="container mx-auto flex h-12 items-center justify-center px-4">
         <p className="text-sm text-muted-foreground">
           {parts[0]}

@@ -82,6 +82,18 @@
 
 - **תצוגה מקדימה חיה**: צפייה בזמן אמת בקבצי תצורה שנוצרו
 - **הורדת ZIP**: הורדת כל הקבצים כארכיון ZIP מוכן לשימוש
+- **יצירת README אוטומטית**: כל ZIP כולל README.md מפורט עם:
+  - סקירת קבצים ותיאורים
+  - מידע על תמונת בסיס עם קישורים ל-Docker Hub
+  - תוכנה וחבילות מותקנות עם קישורים (Debian Tracker, npmjs.com)
+  - מידע על תוספים עם קישורים ל-GitHub
+  - מפתחות משתני סביבה (ערכים מוסתרים לאבטחה)
+  - רשימת קבצים מוגנים
+  - סיכום הגדרות הרשאות
+  - מדריך התחלה מהירה עם פקודות Docker
+  - דרישות קדם עבור Windows, macOS ו-Linux
+  - מדור פתרון בעיות
+  - כאשר שפת הממשק אינה אנגלית, כולל גם README.en.md (אנגלית פשוטה)
 - **שמירה אוטומטית**: ההגדרות נשמרות אוטומטית ב-localStorage של הדפדפן (מופעל כברירת מחדל)
 - **תמיכה רב-לשונית**: זמין ב-18 שפות:
   - 🌍 ערבית
@@ -405,6 +417,23 @@ localStorage.removeItem("claude-initializr-autosave");
 - תואם קורא מסך
 - סכמות צבעים בניגודיות גבוהה
 - מחווני מיקוד על אלמנטים אינטראקטיביים
+
+## גרסאות
+
+גרסאות מאוטמטות באמצעות GitHub Actions. ליצירת גרסה חדשה:
+
+1. צרו ודחפו תגית גרסה:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. ה-workflow באופן אוטומטי:
+   - בונה את הפרויקט
+   - יוצר ארכיון ZIP מתיקיית `dist/`
+   - מפרסם GitHub Release עם הערות שחרור שנוצרו אוטומטית
+
+תגיות המכילות `-` (לדוגמה `v1.0.0-beta`) מסומנות כגרסאות מקדימות.
 
 ## תמיכה
 

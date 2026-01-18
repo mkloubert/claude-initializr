@@ -184,5 +184,166 @@
     "invalidEnvKey": "变量名无效。只能使用字母、数字和下划线。",
     "duplicateEnvKey": "此变量名已存在。",
     "invalidPath": "路径必须是相对路径（不能以/开头）且不能包含.."
+  },
+  "readme": {
+    "title": "Claude Code Docker 配置",
+    "generatedBy": "由 [Claude Initializr]({{url}}) 生成",
+    "languageSwitch": "阅读{{language}}版本",
+    "intro": {
+      "title": "关于此配置",
+      "description": "此文件夹包含用于在隔离容器中安全运行 Claude Code 的 Docker 配置文件。该配置提供网络隔离、文件保护和 AI 辅助开发的沙盒环境。"
+    },
+    "files": {
+      "title": "文件概述",
+      "dockerfile": "Dockerfile - 定义包含所有开发工具的容器镜像",
+      "dockerCompose": "docker-compose.yaml - 用于启动容器的编排文件",
+      "env": ".env - 环境变量（在此添加您的 API 密钥）",
+      "initFirewall": "init-firewall.sh - 用于安全的网络防火墙脚本",
+      "workspace": "workspace/ - 挂载到容器中的工作目录",
+      "claudeMd": "workspace/CLAUDE.md - Claude 的项目说明",
+      "settingsJson": "workspace/.claude/settings.json - Claude Code 权限设置"
+    },
+    "baseImage": {
+      "title": "基础镜像",
+      "description": "此配置使用以下 Docker 基础镜像：",
+      "dockerHub": "在 Docker Hub 上查看"
+    },
+    "platform": {
+      "title": "平台",
+      "description": "容器配置为在此平台上运行："
+    },
+    "aptPackages": {
+      "title": "系统软件包 (APT)",
+      "description": "以下系统软件包已安装："
+    },
+    "npmPackages": {
+      "title": "额外 NPM 软件包",
+      "description": "以下额外 NPM 软件包已全局安装：",
+      "installedAs": "以 {{user}} 身份安装"
+    },
+    "plugins": {
+      "title": "Claude Code 插件",
+      "description": "以下 Claude Code 插件已安装并启用：",
+      "viewOnGitHub": "在 GitHub 上查看"
+    },
+    "envVariables": {
+      "title": "环境变量",
+      "description": "以下环境变量已配置（出于安全原因未显示值）：",
+      "note": "在启动容器之前，请将实际值添加到 .env 文件中。"
+    },
+    "protectedFiles": {
+      "title": "受保护文件",
+      "description": "以下文件受保护，并作为空的只读文件挂载："
+    },
+    "settingsJson": {
+      "title": "权限设置",
+      "description": "Claude Code 配置了以下权限规则：",
+      "allow": "允许的操作（自动）",
+      "ask": "需要确认的操作",
+      "deny": "拒绝的操作"
+    },
+    "claudeMd": {
+      "title": "项目说明",
+      "description": "Claude 的项目特定说明定义在："
+    },
+    "quickStart": {
+      "title": "快速开始",
+      "step1": "安装 Docker（请参阅下面的先决条件）",
+      "step2": "启动容器：",
+      "step3": "启动 Claude Code：",
+      "step4": "停止容器：",
+      "note": "您的 workspace 文件夹挂载在容器内的 /workspace。Claude Code 将在首次启动时提示输入 API 密钥。"
+    },
+    "prerequisites": {
+      "title": "先决条件",
+      "description": "您需要在系统上安装 Docker。选择您的操作系统：",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "从 docker.com/products/docker-desktop 下载 Docker Desktop",
+          "运行安装程序并按照设置向导操作",
+          "在提示时启用 WSL 2 后端（推荐）",
+          "如果需要，重新启动计算机",
+          "打开 Docker Desktop 并等待它启动"
+        ],
+        "link": "官方 Windows 安装指南"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "从 docker.com/products/docker-desktop 下载 Docker Desktop",
+          "打开 .dmg 文件并将 Docker 拖到「应用程序」",
+          "从「应用程序」文件夹打开 Docker",
+          "在提示时授予所需权限",
+          "等待 Docker 完成启动（菜单栏中的鲸鱼图标）"
+        ],
+        "link": "官方 macOS 安装指南"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "更新软件包索引：sudo apt update",
+          "安装 Docker：sudo apt install docker.io docker-compose-v2",
+          "将用户添加到 docker 组：sudo usermod -aG docker $USER",
+          "注销并重新登录以使组更改生效",
+          "验证安装：docker --version"
+        ],
+        "link": "官方 Linux 安装指南",
+        "altNote": "或安装 Docker Desktop 以获得图形界面体验。"
+      }
+    },
+    "troubleshooting": {
+      "title": "故障排除",
+      "issues": {
+        "containerNotStarting": {
+          "title": "容器无法启动",
+          "solutions": [
+            "检查 Docker 是否正在运行：docker info",
+            "验证 .env 文件是否存在并包含 ANTHROPIC_API_KEY",
+            "检查端口冲突：docker ps",
+            "查看容器日志：docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "权限被拒绝错误",
+          "solutions": [
+            "在 Linux 上，确保用户在 docker 组中",
+            "尝试使用 sudo 运行（不建议常规使用）",
+            "检查 workspace 文件夹中的文件权限"
+          ]
+        },
+        "networkIssues": {
+          "title": "网络或 API 连接问题",
+          "solutions": [
+            "防火墙脚本仅允许特定域",
+            "确保 api.anthropic.com 可从您的网络访问",
+            "检查容器内的防火墙日志：sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "容器中无法访问文件",
+          "solutions": [
+            "受保护文件故意为空 - 这是预期行为",
+            "检查 docker-compose.yaml 中的卷挂载",
+            "确保 workspace 文件夹在主机上存在"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "链接",
+      "initializer": "生成新配置",
+      "documentation": "Claude Code 文档",
+      "support": "报告问题"
+    },
+    "author": {
+      "title": "作者",
+      "createdBy": "创建者",
+      "support": "支持此项目"
+    },
+    "software": {
+      "title": "已安装软件",
+      "description": "以下开发工具已安装："
+    }
   }
 }

@@ -80,6 +80,18 @@ Uma aplicação web para gerar arquivos de configuração Docker para executar o
 
 - **Visualização ao vivo**: Veja visualizações em tempo real dos arquivos de configuração gerados
 - **Download ZIP**: Baixe todos os arquivos como um arquivo ZIP pronto para uso
+- **Geração automática de README**: Cada ZIP inclui um README.md detalhado com:
+  - Visão geral dos arquivos e descrições
+  - Informações da imagem base com links para Docker Hub
+  - Software e pacotes instalados com links (Debian Tracker, npmjs.com)
+  - Informações de plugins com links para GitHub
+  - Chaves de variáveis de ambiente (valores ocultos por segurança)
+  - Lista de arquivos protegidos
+  - Resumo das configurações de permissão
+  - Guia de início rápido com comandos Docker
+  - Pré-requisitos para Windows, macOS e Linux
+  - Seção de solução de problemas
+  - Quando o idioma da interface não é inglês, também inclui README.en.md (inglês simples)
 - **Salvamento automático**: As configurações são salvas automaticamente no localStorage do seu navegador (habilitado por padrão)
 - **Suporte multilíngue**: Disponível em 18 idiomas:
   - 🌍 Árabe
@@ -403,6 +415,23 @@ Esta aplicação é projetada para ser totalmente acessível:
 - Compatível com leitores de tela
 - Esquemas de cores de alto contraste
 - Indicadores de foco em elementos interativos
+
+## Lançamentos
+
+Os lançamentos são automatizados via GitHub Actions. Para criar um novo lançamento:
+
+1. Crie e envie uma tag de versão:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. O workflow automaticamente:
+   - Compila o projeto
+   - Cria um arquivo ZIP da pasta `dist/`
+   - Publica um Release no GitHub com notas de lançamento auto-geradas
+
+Tags contendo `-` (ex. `v1.0.0-beta`) são marcadas como pré-lançamentos.
 
 ## Apoio
 

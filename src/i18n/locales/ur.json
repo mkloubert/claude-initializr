@@ -184,5 +184,166 @@
     "invalidEnvKey": "غلط متغیر نام۔ صرف حروف، نمبر اور انڈر سکور استعمال کریں۔",
     "duplicateEnvKey": "یہ متغیر نام پہلے سے موجود ہے۔",
     "invalidPath": "پاتھ متعلقہ ہونا چاہیے (شروع میں / نہیں) اور اس میں .. نہیں ہو سکتا"
+  },
+  "readme": {
+    "title": "Claude Code Docker کنفیگریشن",
+    "generatedBy": "[Claude Initializr]({{url}}) کی طرف سے بنایا گیا",
+    "languageSwitch": "یہ {{language}} میں پڑھیں",
+    "intro": {
+      "title": "اس کنفیگریشن کے بارے میں",
+      "description": "اس فولڈر میں ایک الگ تھلگ کنٹینر میں Claude Code کو محفوظ طریقے سے چلانے کے لیے Docker کنفیگریشن فائلیں ہیں۔ کنفیگریشن نیٹ ورک آئیسولیشن، فائل پروٹیکشن، اور AI کی مدد سے ڈیولپمنٹ کے لیے سینڈ باکسڈ ماحول فراہم کرتی ہے۔"
+    },
+    "files": {
+      "title": "فائلوں کا جائزہ",
+      "dockerfile": "Dockerfile - تمام ڈیولپمنٹ ٹولز کے ساتھ کنٹینر امیج کی وضاحت کرتا ہے",
+      "dockerCompose": "docker-compose.yaml - کنٹینر شروع کرنے کے لیے آرکیسٹریشن فائل",
+      "env": ".env - ماحولیاتی متغیرات (اپنی API کیز یہاں شامل کریں)",
+      "initFirewall": "init-firewall.sh - سیکیورٹی کے لیے نیٹ ورک فائر وال اسکرپٹ",
+      "workspace": "workspace/ - کنٹینر میں ماؤنٹ کی گئی آپ کی ورکنگ ڈائریکٹری",
+      "claudeMd": "workspace/CLAUDE.md - Claude کے لیے پروجیکٹ ہدایات",
+      "settingsJson": "workspace/.claude/settings.json - Claude Code اجازت کی ترتیبات"
+    },
+    "baseImage": {
+      "title": "بیس امیج",
+      "description": "یہ کنفیگریشن درج ذیل Docker بیس امیج استعمال کرتی ہے:",
+      "dockerHub": "Docker Hub پر دیکھیں"
+    },
+    "platform": {
+      "title": "پلیٹ فارم",
+      "description": "کنٹینر اس پلیٹ فارم پر چلنے کے لیے کنفیگر ہے:"
+    },
+    "aptPackages": {
+      "title": "سسٹم پیکیجز (APT)",
+      "description": "درج ذیل سسٹم پیکیجز انسٹال ہیں:"
+    },
+    "npmPackages": {
+      "title": "اضافی NPM پیکیجز",
+      "description": "درج ذیل اضافی NPM پیکیجز گلوبل طور پر انسٹال ہیں:",
+      "installedAs": "{{user}} کے طور پر انسٹال"
+    },
+    "plugins": {
+      "title": "Claude Code پلگ انز",
+      "description": "درج ذیل Claude Code پلگ انز انسٹال اور فعال ہیں:",
+      "viewOnGitHub": "GitHub پر دیکھیں"
+    },
+    "envVariables": {
+      "title": "ماحولیاتی متغیرات",
+      "description": "درج ذیل ماحولیاتی متغیرات کنفیگر ہیں (سیکیورٹی کے لیے قدریں نہیں دکھائی گئیں):",
+      "note": "کنٹینر شروع کرنے سے پہلے .env فائل میں اپنی اصل قدریں شامل کریں۔"
+    },
+    "protectedFiles": {
+      "title": "محفوظ فائلیں",
+      "description": "درج ذیل فائلیں محفوظ ہیں اور رسائی روکنے کے لیے خالی صرف پڑھنے والی فائلوں کے طور پر ماؤنٹ ہیں:"
+    },
+    "settingsJson": {
+      "title": "اجازت کی ترتیبات",
+      "description": "Claude Code درج ذیل اجازت کے قواعد کے ساتھ کنفیگر ہے:",
+      "allow": "اجازت شدہ آپریشنز (خودکار)",
+      "ask": "تصدیق کی ضرورت والے آپریشنز",
+      "deny": "انکار شدہ آپریشنز"
+    },
+    "claudeMd": {
+      "title": "پروجیکٹ ہدایات",
+      "description": "Claude کے لیے پروجیکٹ کے مخصوص ہدایات یہاں متعین ہیں:"
+    },
+    "quickStart": {
+      "title": "فوری آغاز",
+      "step1": "Docker انسٹال کریں (نیچے ضروریات دیکھیں)",
+      "step2": "کنٹینر شروع کریں:",
+      "step3": "Claude Code شروع کریں:",
+      "step4": "کنٹینر بند کریں:",
+      "note": "آپ کا workspace فولڈر کنٹینر کے اندر /workspace پر ماؤنٹ ہے۔ Claude Code پہلی شروعات پر API کلید مانگے گا۔"
+    },
+    "prerequisites": {
+      "title": "ضروریات",
+      "description": "آپ کو اپنے سسٹم پر Docker انسٹال کرنا ہوگا۔ اپنا آپریٹنگ سسٹم منتخب کریں:",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "docker.com/products/docker-desktop سے Docker Desktop ڈاؤن لوڈ کریں",
+          "انسٹالر چلائیں اور سیٹ اپ وزرڈ کی پیروی کریں",
+          "پوچھے جانے پر WSL 2 backend فعال کریں (تجویز کردہ)",
+          "اگر ضرورت ہو تو کمپیوٹر دوبارہ شروع کریں",
+          "Docker Desktop کھولیں اور اس کے شروع ہونے کا انتظار کریں"
+        ],
+        "link": "سرکاری Windows انسٹالیشن گائیڈ"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "docker.com/products/docker-desktop سے Docker Desktop ڈاؤن لوڈ کریں",
+          ".dmg فائل کھولیں اور Docker کو Applications میں گھسیٹیں",
+          "Applications فولڈر سے Docker کھولیں",
+          "پوچھے جانے پر مطلوبہ اجازتیں دیں",
+          "Docker کے شروع ہونے کا انتظار کریں (مینو بار میں وہیل آئیکن)"
+        ],
+        "link": "سرکاری macOS انسٹالیشن گائیڈ"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "پیکیج انڈیکس اپڈیٹ کریں: sudo apt update",
+          "Docker انسٹال کریں: sudo apt install docker.io docker-compose-v2",
+          "اپنے صارف کو docker گروپ میں شامل کریں: sudo usermod -aG docker $USER",
+          "گروپ تبدیلیاں لاگو ہونے کے لیے لاگ آؤٹ اور لاگ ان کریں",
+          "انسٹالیشن کی تصدیق کریں: docker --version"
+        ],
+        "link": "سرکاری Linux انسٹالیشن گائیڈ",
+        "altNote": "یا GUI تجربے کے لیے Docker Desktop انسٹال کریں۔"
+      }
+    },
+    "troubleshooting": {
+      "title": "مسئلہ حل کرنا",
+      "issues": {
+        "containerNotStarting": {
+          "title": "کنٹینر شروع نہیں ہوتا",
+          "solutions": [
+            "چیک کریں کہ Docker چل رہا ہے: docker info",
+            "تصدیق کریں کہ .env فائل موجود ہے اور ANTHROPIC_API_KEY ہے",
+            "پورٹ تنازعات چیک کریں: docker ps",
+            "کنٹینر لاگز دیکھیں: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "اجازت مسترد کی غلطیاں",
+          "solutions": [
+            "Linux پر، یقینی بنائیں کہ آپ کا صارف docker گروپ میں ہے",
+            "sudo کے ساتھ چلانے کی کوشش کریں (باقاعدہ استعمال کے لیے تجویز نہیں)",
+            "workspace فولڈر میں فائل کی اجازتیں چیک کریں"
+          ]
+        },
+        "networkIssues": {
+          "title": "نیٹ ورک یا API کنکشن کے مسائل",
+          "solutions": [
+            "فائر وال اسکرپٹ صرف مخصوص ڈومینز کی اجازت دیتی ہے",
+            "یقینی بنائیں کہ api.anthropic.com آپ کے نیٹ ورک سے قابل رسائی ہے",
+            "کنٹینر کے اندر فائر وال لاگز چیک کریں: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "کنٹینر میں فائلیں قابل رسائی نہیں",
+          "solutions": [
+            "محفوظ فائلیں جان بوجھ کر خالی ہیں - یہ متوقع ہے",
+            "docker-compose.yaml میں والیوم ماؤنٹس چیک کریں",
+            "یقینی بنائیں کہ workspace فولڈر ہوسٹ پر موجود ہے"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "لنکس",
+      "initializer": "نئی کنفیگریشن بنائیں",
+      "documentation": "Claude Code دستاویزات",
+      "support": "مسائل کی رپورٹ کریں"
+    },
+    "author": {
+      "title": "مصنف",
+      "createdBy": "بنایا گیا",
+      "support": "اس پروجیکٹ کی سپورٹ کریں"
+    },
+    "software": {
+      "title": "انسٹال شدہ سافٹ ویئر",
+      "description": "درج ذیل ڈیولپمنٹ ٹولز انسٹال ہیں:"
+    }
   }
 }

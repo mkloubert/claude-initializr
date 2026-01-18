@@ -80,6 +80,18 @@
 
 - **Canlı Önizleme**: Oluşturulan yapılandırma dosyalarının gerçek zamanlı önizlemelerini görün
 - **ZIP İndirme**: Tüm dosyaları kullanıma hazır ZIP arşivi olarak indirin
+- **Otomatik README Oluşturma**: Her ZIP aşağıdakileri içeren ayrıntılı bir README.md içerir:
+  - Dosya genel bakışı ve açıklamaları
+  - Docker Hub bağlantılı temel görüntü bilgileri
+  - Yüklü yazılım ve paketler bağlantılarıyla (Debian Tracker, npmjs.com)
+  - GitHub bağlantılı eklenti bilgileri
+  - Ortam değişkeni anahtarları (güvenlik için değerler gizli)
+  - Korunan dosya listesi
+  - İzin ayarları özeti
+  - Docker komutları ile hızlı başlangıç kılavuzu
+  - Windows, macOS ve Linux için ön koşullar
+  - Sorun giderme bölümü
+  - Arayüz dili İngilizce olmadığında, README.en.md (basit İngilizce) de dahildir
 - **Otomatik Kaydetme**: Ayarlar tarayıcınızın localStorage'ına otomatik olarak kaydedilir (varsayılan olarak etkin)
 - **Çoklu Dil Desteği**: 18 dilde mevcut:
   - 🌍 Arapça
@@ -403,6 +415,23 @@ Bu uygulama tamamen erişilebilir olacak şekilde tasarlanmıştır:
 - Ekran okuyucu uyumlu
 - Yüksek kontrastlı renk şemaları
 - Etkileşimli öğelerde odak göstergeleri
+
+## Sürümler
+
+Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir sürüm oluşturmak için:
+
+1. Bir versiyon etiketi oluşturun ve gönderin:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+
+2. İş akışı otomatik olarak:
+   - Projeyi derler
+   - `dist/` klasöründen ZIP arşivi oluşturur
+   - Otomatik oluşturulan sürüm notlarıyla GitHub Release yayınlar
+
+`-` içeren etiketler (örn. `v1.0.0-beta`) ön sürüm olarak işaretlenir.
 
 ## Destek
 

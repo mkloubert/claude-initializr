@@ -184,5 +184,166 @@
     "invalidEnvKey": "Nome de variável inválido. Use apenas letras, números e underscores.",
     "duplicateEnvKey": "Este nome de variável já existe.",
     "invalidPath": "O caminho deve ser relativo (sem / inicial) e não pode conter .."
+  },
+  "readme": {
+    "title": "Configuração Docker Claude Code",
+    "generatedBy": "Gerado com [Claude Initializr]({{url}})",
+    "languageSwitch": "Ler isto em {{language}}",
+    "intro": {
+      "title": "Sobre esta configuração",
+      "description": "Esta pasta contém arquivos de configuração Docker para executar Claude Code de forma segura em um contêiner isolado. A configuração fornece isolamento de rede, proteção de arquivos e um ambiente sandbox para desenvolvimento assistido por IA."
+    },
+    "files": {
+      "title": "Visão geral dos arquivos",
+      "dockerfile": "Dockerfile - Define a imagem do contêiner com todas as ferramentas de desenvolvimento",
+      "dockerCompose": "docker-compose.yaml - Arquivo de orquestração para iniciar o contêiner",
+      "env": ".env - Variáveis de ambiente (adicione suas chaves API aqui)",
+      "initFirewall": "init-firewall.sh - Script de firewall de rede para segurança",
+      "workspace": "workspace/ - Seu diretório de trabalho montado no contêiner",
+      "claudeMd": "workspace/CLAUDE.md - Instruções do projeto para Claude",
+      "settingsJson": "workspace/.claude/settings.json - Configurações de permissões do Claude Code"
+    },
+    "baseImage": {
+      "title": "Imagem base",
+      "description": "Esta configuração usa a seguinte imagem Docker base:",
+      "dockerHub": "Ver no Docker Hub"
+    },
+    "platform": {
+      "title": "Plataforma",
+      "description": "O contêiner está configurado para executar nesta plataforma:"
+    },
+    "aptPackages": {
+      "title": "Pacotes do sistema (APT)",
+      "description": "Os seguintes pacotes do sistema estão instalados:"
+    },
+    "npmPackages": {
+      "title": "Pacotes NPM adicionais",
+      "description": "Os seguintes pacotes NPM adicionais estão instalados globalmente:",
+      "installedAs": "instalado como {{user}}"
+    },
+    "plugins": {
+      "title": "Plugins Claude Code",
+      "description": "Os seguintes plugins Claude Code estão instalados e ativados:",
+      "viewOnGitHub": "Ver no GitHub"
+    },
+    "envVariables": {
+      "title": "Variáveis de ambiente",
+      "description": "As seguintes variáveis de ambiente estão configuradas (valores não mostrados por segurança):",
+      "note": "Adicione seus valores reais ao arquivo .env antes de iniciar o contêiner."
+    },
+    "protectedFiles": {
+      "title": "Arquivos protegidos",
+      "description": "Os seguintes arquivos estão protegidos e montados como arquivos vazios somente leitura:"
+    },
+    "settingsJson": {
+      "title": "Configurações de permissões",
+      "description": "Claude Code está configurado com as seguintes regras de permissão:",
+      "allow": "Operações permitidas (automático)",
+      "ask": "Operações que requerem confirmação",
+      "deny": "Operações negadas"
+    },
+    "claudeMd": {
+      "title": "Instruções do projeto",
+      "description": "As instruções específicas do projeto para Claude estão definidas em:"
+    },
+    "quickStart": {
+      "title": "Início rápido",
+      "step1": "Instalar Docker (veja Pré-requisitos abaixo)",
+      "step2": "Iniciar o contêiner:",
+      "step3": "Iniciar Claude Code:",
+      "step4": "Parar o contêiner:",
+      "note": "Sua pasta workspace está montada em /workspace dentro do contêiner. Claude Code solicitará a chave API no primeiro início."
+    },
+    "prerequisites": {
+      "title": "Pré-requisitos",
+      "description": "Você precisa ter Docker instalado no seu sistema. Escolha seu sistema operacional:",
+      "windows": {
+        "title": "Windows",
+        "steps": [
+          "Baixe Docker Desktop de docker.com/products/docker-desktop",
+          "Execute o instalador e siga o assistente de configuração",
+          "Ative o backend WSL 2 quando solicitado (recomendado)",
+          "Reinicie seu computador se necessário",
+          "Abra Docker Desktop e aguarde iniciar"
+        ],
+        "link": "Guia oficial de instalação para Windows"
+      },
+      "macos": {
+        "title": "macOS",
+        "steps": [
+          "Baixe Docker Desktop de docker.com/products/docker-desktop",
+          "Abra o arquivo .dmg e arraste Docker para Aplicativos",
+          "Abra Docker da pasta Aplicativos",
+          "Conceda as permissões necessárias quando solicitado",
+          "Aguarde Docker terminar de iniciar (ícone de baleia na barra de menu)"
+        ],
+        "link": "Guia oficial de instalação para macOS"
+      },
+      "linux": {
+        "title": "Linux",
+        "steps": [
+          "Atualize o índice de pacotes: sudo apt update",
+          "Instale Docker: sudo apt install docker.io docker-compose-v2",
+          "Adicione seu usuário ao grupo docker: sudo usermod -aG docker $USER",
+          "Faça logout e login novamente para que as mudanças do grupo tenham efeito",
+          "Verifique a instalação: docker --version"
+        ],
+        "link": "Guia oficial de instalação para Linux",
+        "altNote": "Ou instale Docker Desktop para uma experiência com interface gráfica."
+      }
+    },
+    "troubleshooting": {
+      "title": "Solução de problemas",
+      "issues": {
+        "containerNotStarting": {
+          "title": "O contêiner não inicia",
+          "solutions": [
+            "Verifique se Docker está executando: docker info",
+            "Verifique se o arquivo .env existe e contém ANTHROPIC_API_KEY",
+            "Verifique conflitos de portas: docker ps",
+            "Veja os logs do contêiner: docker compose logs"
+          ]
+        },
+        "permissionDenied": {
+          "title": "Erros de permissão negada",
+          "solutions": [
+            "No Linux, certifique-se de que seu usuário está no grupo docker",
+            "Tente executar com sudo (não recomendado para uso regular)",
+            "Verifique as permissões de arquivos na pasta workspace"
+          ]
+        },
+        "networkIssues": {
+          "title": "Problemas de rede ou conexão API",
+          "solutions": [
+            "O script de firewall permite apenas domínios específicos",
+            "Certifique-se de que api.anthropic.com está acessível da sua rede",
+            "Verifique os logs do firewall dentro do contêiner: sudo iptables -L -v"
+          ]
+        },
+        "fileNotAccessible": {
+          "title": "Arquivos não acessíveis no contêiner",
+          "solutions": [
+            "Arquivos protegidos são intencionalmente vazios - isso é esperado",
+            "Verifique as montagens de volume em docker-compose.yaml",
+            "Certifique-se de que a pasta workspace existe no host"
+          ]
+        }
+      }
+    },
+    "links": {
+      "title": "Links",
+      "initializer": "Gerar nova configuração",
+      "documentation": "Documentação Claude Code",
+      "support": "Reportar problemas"
+    },
+    "author": {
+      "title": "Autor",
+      "createdBy": "Criado por",
+      "support": "Apoiar este projeto"
+    },
+    "software": {
+      "title": "Software instalado",
+      "description": "As seguintes ferramentas de desenvolvimento estão instaladas:"
+    }
   }
 }

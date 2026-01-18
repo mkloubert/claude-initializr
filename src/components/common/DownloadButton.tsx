@@ -18,25 +18,64 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { useConfig } from '@/contexts';
-import { downloadZipFile } from '@/services';
+import { downloadZipFile, type ReadmeLanguageConfig } from '@/services';
 import { Download, Loader2 } from 'lucide-react';
+
+/**
+ * Language display names map.
+ */
+const languageNames: Record<string, string> = {
+  en: 'English',
+  de: 'Deutsch',
+  es: 'Español',
+  fr: 'Français',
+  it: 'Italiano',
+  pt: 'Português',
+  nl: 'Nederlands',
+  ja: '日本語',
+  ko: '한국어',
+  zh: '中文',
+  ar: 'العربية',
+  he: 'עברית',
+  hi: 'हिन्दी',
+  ur: 'اردو',
+  uk: 'Українська',
+  el: 'Ελληνικά',
+  pl: 'Polski',
+  tr: 'Türkçe',
+};
 
 /**
  * Button component to trigger ZIP file generation and download.
  */
 export function DownloadButton() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { config } = useConfig();
   const [isGenerating, setIsGenerating] = useState(false);
+
+  // Get the English translation function
+  const tEnglish = useMemo(() => {
+    return i18n.getFixedT('en');
+  }, [i18n]);
 
   const handleDownload = async () => {
     setIsGenerating(true);
     try {
-      await downloadZipFile(config, t('download.filename'));
+      // Build the README language configuration
+      const currentLanguage = i18n.language;
+      const readmeConfig: ReadmeLanguageConfig = {
+        language: currentLanguage,
+        languageName: languageNames[currentLanguage] || currentLanguage,
+        t,
+        tEnglish,
+        initializerUrl: window.location.origin + window.location.pathname,
+      };
+
+      await downloadZipFile(config, t('download.filename'), readmeConfig);
     } finally {
       setIsGenerating(false);
     }
