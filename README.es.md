@@ -47,6 +47,10 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
 - **Paquetes APT personalizados**: Agregue paquetes adicionales de Debian/Ubuntu para instalar en el contenedor
 - **Paquetes NPM personalizados**: Agregue paquetes NPM adicionales para instalar globalmente, con la opción de instalar como usuario `root` o `node`
 - **Comandos RUN personalizados**: Agregue comandos shell personalizados para ejecutar durante la construcción de la imagen Docker, con la opción de ejecutar como usuario `root` o `node`
+- **Plugins de Claude Code**: Instale plugins de Claude Code desde marketplaces usando el formato `plugin-name@marketplace-name`
+  - **Sugerencias de plugins**: Carga automáticamente sugerencias de plugins desde el [marketplace oficial de Anthropic](https://github.com/anthropics/claude-plugins-official) en segundo plano
+  - Un clic para añadir plugins sugeridos
+  - Enlaces externos para ver plugins en GitHub
 
 ### Configuración de docker-compose.yaml
 

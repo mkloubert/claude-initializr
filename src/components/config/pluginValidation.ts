@@ -18,12 +18,46 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-export { SoftwareItem } from './SoftwareItem';
-export { EnvRow } from './EnvRow';
-export { ProtectedFileRow } from './ProtectedFileRow';
-export { PermissionRuleRow } from './PermissionRuleRow';
-export { PluginRow } from './PluginRow';
-export { DockerfileCard } from './DockerfileCard';
-export { DockerComposeCard } from './DockerComposeCard';
-export { ClaudeMdCard } from './ClaudeMdCard';
-export { SettingsJsonCard } from './SettingsJsonCard';
+/**
+ * Validates a plugin identifier in the format "plugin-name@marketplace-name".
+ * Both parts must be non-empty.
+ *
+ * @param name - The plugin identifier to validate
+ * @returns true if the format is valid, false otherwise
+ */
+export function validatePluginName(name: string): boolean {
+  // Empty string is valid (for new entries being edited)
+  if (name.trim() === '') {
+    return true;
+  }
+
+  // Must contain exactly one @ symbol
+  const parts = name.split('@');
+  if (parts.length !== 2) {
+    return false;
+  }
+
+  const [pluginName, marketplaceName] = parts;
+
+  // Both parts must be non-empty after trimming
+  if (pluginName.trim() === '' || marketplaceName.trim() === '') {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * Checks if a plugin name is complete and ready for installation.
+ * Unlike validatePluginName, this returns false for empty strings.
+ *
+ * @param name - The plugin identifier to check
+ * @returns true if the plugin name is complete and valid
+ */
+export function isPluginNameComplete(name: string): boolean {
+  if (name.trim() === '') {
+    return false;
+  }
+
+  return validatePluginName(name);
+}

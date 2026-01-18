@@ -41,7 +41,8 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { SoftwareItem } from './SoftwareItem';
-import { Package, Eye, Wand2, Loader2, Plus, X, Terminal } from 'lucide-react';
+import { PluginRow } from './PluginRow';
+import { Package, Eye, Wand2, Loader2, Plus, X, Terminal, Puzzle, ExternalLink } from 'lucide-react';
 
 // Lazy load the preview component to reduce initial bundle size
 const DockerfilePreview = lazy(() =>
@@ -122,6 +123,12 @@ export function DockerfileCard() {
     addCustomRunCommand,
     removeCustomRunCommand,
     updateCustomRunCommandUser,
+    addPlugin,
+    updatePlugin,
+    removePlugin,
+    addPluginFromSuggestion,
+    marketplacePlugins,
+    marketplaceLoading,
   } = useConfig();
   const [aptInput, setAptInput] = useState('');
   const [npmInput, setNpmInput] = useState('');
@@ -138,6 +145,12 @@ export function DockerfileCard() {
       ),
     [t]
   );
+
+  // Filter out plugins that are already added
+  const availableSuggestions = useMemo(() => {
+    const addedPluginNames = new Set(config.plugins.map((p) => p.name));
+    return marketplacePlugins.filter((mp) => !addedPluginNames.has(mp.fullName));
+  }, [marketplacePlugins, config.plugins]);
 
   return (
     <Card>
@@ -482,6 +495,97 @@ export function DockerfileCard() {
                           </button>
                         </div>
                       ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Claude Code Plugins */}
+              <div className="rounded-lg border p-3">
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <Puzzle className="h-5 w-5 text-purple-600" aria-hidden="true" />
+                    <div className="flex flex-col">
+                      <span className="font-medium">{t('plugins.title')}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {t('plugins.description')}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t('plugins.formatHint')}
+                  </p>
+                  {config.plugins.length > 0 && (
+                    <div className="flex flex-col gap-2">
+                      {config.plugins.map((plugin) => (
+                        <PluginRow
+                          key={plugin.id}
+                          plugin={plugin}
+                          onUpdate={(name) => updatePlugin(plugin.id, name)}
+                          onRemove={() => removePlugin(plugin.id)}
+                        />
+                      ))}
+                    </div>
+                  )}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={addPlugin}
+                    className="w-fit"
+                  >
+                    <Plus className="h-4 w-4 mr-2" aria-hidden="true" />
+                    {t('plugins.add')}
+                  </Button>
+
+                  {/* Plugin Suggestions from Marketplace */}
+                  {marketplaceLoading ? (
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                      <span>{t('plugins.loadingSuggestions')}</span>
+                    </div>
+                  ) : availableSuggestions.length > 0 && (
+                    <div className="space-y-2">
+                      <span className="text-sm font-medium text-muted-foreground">
+                        {t('plugins.suggestions')}
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        {availableSuggestions.map((suggestion) => (
+                          <Badge
+                            key={suggestion.fullName}
+                            variant="outline"
+                            className="flex items-center gap-1 pr-1 cursor-pointer hover:bg-accent"
+                          >
+                            <button
+                              type="button"
+                              onClick={() => addPluginFromSuggestion(suggestion.fullName)}
+                              className="flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-ring rounded-sm"
+                              aria-label={t('plugins.addFromMarketplace', {
+                                plugin: suggestion.name,
+                                marketplace: suggestion.marketplace,
+                              })}
+                              title={t('plugins.addFromMarketplace', {
+                                plugin: suggestion.name,
+                                marketplace: suggestion.marketplace,
+                              })}
+                            >
+                              <Plus className="h-3 w-3" aria-hidden="true" />
+                              <span>{suggestion.fullName}</span>
+                            </button>
+                            <a
+                              href={suggestion.htmlUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="ml-1 rounded-full p-0.5 hover:bg-muted-foreground/20 focus:outline-none focus:ring-2 focus:ring-ring"
+                              aria-label={t('plugins.viewOnGitHub', { plugin: suggestion.name })}
+                              title={t('plugins.viewOnGitHub', { plugin: suggestion.name })}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                            </a>
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>

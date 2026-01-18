@@ -18,8 +18,9 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import type { CustomNpmPackage, CustomRunCommand, SoftwareConfig } from '@/types';
+import type { CustomNpmPackage, CustomRunCommand, PluginEntry, SoftwareConfig } from '@/types';
 import { softwareInstallOrder } from '@/config/containerPackages';
+import { isPluginNameComplete } from '@/components/config/pluginValidation';
 
 /**
  * Generate Docker ARG definitions for software versions.
@@ -319,13 +320,39 @@ const nodeCommandsByKey: Record<string, NodeCommandGenerator> = {
 };
 
 /**
+ * Generate plugin installation commands for Claude Code.
+ * Installs plugins from marketplaces using `claude plugin install`.
+ *
+ * @param plugins - List of plugin entries to install
+ * @returns Array of RUN commands for plugin installation
+ */
+export function generatePluginInstalls(plugins: PluginEntry[]): string[] {
+  // Filter to only complete, valid plugin names
+  const validPlugins = plugins.filter((p) => isPluginNameComplete(p.name));
+
+  if (validPlugins.length === 0) {
+    return [];
+  }
+
+  const commands: string[] = [];
+  commands.push('# Install Claude Code plugins');
+
+  for (const plugin of validPlugins) {
+    commands.push(`RUN claude plugin install ${plugin.name}`);
+  }
+
+  return commands;
+}
+
+/**
  * Generate Dockerfile commands to run as node user.
  * Commands are generated in installation order.
  */
 export function generateNodeUserExtensions(
   software: SoftwareConfig,
   customNpmPackages: CustomNpmPackage[] = [],
-  customRunCommands: CustomRunCommand[] = []
+  customRunCommands: CustomRunCommand[] = [],
+  plugins: PluginEntry[] = []
 ): string {
   const commands: string[] = [];
 
@@ -363,6 +390,12 @@ export function generateNodeUserExtensions(
     }
   }
 
+  // Install Claude Code plugins (after Claude Code is installed)
+  const pluginCommands = generatePluginInstalls(plugins);
+  if (pluginCommands.length > 0) {
+    commands.push(...pluginCommands);
+  }
+
   return commands.join('\n');
 }
 
@@ -375,7 +408,8 @@ export function generateDockerfileReplacements(
   software: SoftwareConfig,
   customAptPackages: string[] = [],
   customNpmPackages: CustomNpmPackage[] = [],
-  customRunCommands: CustomRunCommand[] = []
+  customRunCommands: CustomRunCommand[] = [],
+  plugins: PluginEntry[] = []
 ): {
   BASE_IMAGE: string;
   NODE_VERSION: string;
@@ -390,6 +424,6 @@ export function generateDockerfileReplacements(
     DOCKER_ARGS: generateDockerArgs(software),
     MORE_APT_PACKAGES: generateAptPackages(software, customAptPackages),
     RUN_AS_ROOT_USER_EXTENSIONS: generateRootUserExtensions(software, customNpmPackages, customRunCommands),
-    RUN_AS_NODE_USER_EXTENSIONS: generateNodeUserExtensions(software, customNpmPackages, customRunCommands),
+    RUN_AS_NODE_USER_EXTENSIONS: generateNodeUserExtensions(software, customNpmPackages, customRunCommands, plugins),
   };
 }

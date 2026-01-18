@@ -105,6 +105,19 @@
     "userRoot": "root",
     "toggleUser": "کمانڈ کے لیے رن صارف تبدیل کریں"
   },
+  "plugins": {
+    "title": "Claude Code پلگ انز",
+    "description": "مارکیٹ پلیسز سے Claude Code پلگ انز انسٹال کریں۔",
+    "placeholder": "پلگ ان-نام@مارکیٹ پلیس-نام",
+    "add": "پلگ ان شامل کریں",
+    "remove": "پلگ ان ہٹائیں",
+    "formatHint": "فارمیٹ: پلگ ان-نام@مارکیٹ پلیس-نام",
+    "invalidFormat": "غلط فارمیٹ۔ plugin@marketplace استعمال کریں",
+    "suggestions": "تجویز کردہ پلگ انز",
+    "loadingSuggestions": "تجاویز لوڈ ہو رہی ہیں...",
+    "addFromMarketplace": "{{marketplace}} سے {{plugin}} شامل کریں",
+    "viewOnGitHub": "GitHub پر {{plugin}} دیکھیں"
+  },
   "env": {
     "description": "کوئی ماحولیاتی متغیرات متعین نہیں۔",
     "key": "کلید",

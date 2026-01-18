@@ -47,6 +47,10 @@ A web application to generate Docker configuration files for running [Claude Cod
 - **Custom APT Packages**: Add additional Debian/Ubuntu packages to install in the container
 - **Custom NPM Packages**: Add additional NPM packages to install globally, with the option to install as `root` or `node` user
 - **Custom RUN Commands**: Add custom shell commands to execute during Docker image build, with the option to run as `root` or `node` user
+- **Claude Code Plugins**: Install Claude Code plugins from marketplaces using the format `plugin-name@marketplace-name`
+  - **Plugin Suggestions**: Automatically loads plugin suggestions from the [official Anthropic marketplace](https://github.com/anthropics/claude-plugins-official) in the background
+  - One-click to add suggested plugins
+  - External links to view plugins on GitHub
 
 ### docker-compose.yaml Configuration
 

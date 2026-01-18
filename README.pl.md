@@ -47,6 +47,10 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
 - **Niestandardowe pakiety APT**: Dodaj dodatkowe pakiety Debian/Ubuntu do zainstalowania w kontenerze
 - **Niestandardowe pakiety NPM**: Dodaj dodatkowe pakiety NPM do zainstalowania globalnie, z opcją instalacji jako użytkownik `root` lub `node`
 - **Niestandardowe polecenia RUN**: Dodaj niestandardowe polecenia shell do wykonania podczas budowania obrazu Docker, z opcją uruchomienia jako użytkownik `root` lub `node`
+- **Wtyczki Claude Code**: Instaluj wtyczki Claude Code z marketplace'ów w formacie `plugin-name@marketplace-name`
+  - **Sugestie wtyczek**: Automatycznie ładuje sugestie wtyczek z [oficjalnego marketplace Anthropic](https://github.com/anthropics/claude-plugins-official) w tle
+  - Jedno kliknięcie, aby dodać sugerowane wtyczki
+  - Zewnętrzne linki do przeglądania wtyczek na GitHub
 
 ### Konfiguracja docker-compose.yaml
 

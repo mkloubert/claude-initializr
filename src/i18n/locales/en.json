@@ -105,6 +105,19 @@
     "userRoot": "root",
     "toggleUser": "Toggle run user for command"
   },
+  "plugins": {
+    "title": "Claude Code Plugins",
+    "description": "Install Claude Code plugins from marketplaces.",
+    "placeholder": "plugin-name@marketplace-name",
+    "add": "Add Plugin",
+    "remove": "Remove plugin",
+    "formatHint": "Format: plugin-name@marketplace-name",
+    "invalidFormat": "Invalid format. Use plugin@marketplace",
+    "suggestions": "Suggested Plugins",
+    "loadingSuggestions": "Loading suggestions...",
+    "addFromMarketplace": "Add {{plugin}} from {{marketplace}}",
+    "viewOnGitHub": "View {{plugin}} on GitHub"
+  },
   "env": {
     "description": "No environment variables defined.",
     "key": "Key",

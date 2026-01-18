@@ -30,8 +30,8 @@ export function SettingsJsonPreview() {
   const { config } = useConfig();
 
   const settingsContent = useMemo(() => {
-    return generateSettingsJson(config.claudePermissions);
-  }, [config.claudePermissions]);
+    return generateSettingsJson(config.claudePermissions, config.plugins, config.protectedFiles);
+  }, [config.claudePermissions, config.plugins, config.protectedFiles]);
 
   return <CodePreview code={settingsContent} language="json" />;
 }

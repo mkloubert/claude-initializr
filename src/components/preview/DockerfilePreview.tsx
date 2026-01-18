@@ -36,10 +36,11 @@ export function DockerfilePreview() {
       config.software,
       config.customAptPackages,
       config.customNpmPackages,
-      config.customRunCommands
+      config.customRunCommands,
+      config.plugins
     );
     return processDockerfile(replacements);
-  }, [config.baseImage, config.nodeVersion, config.software, config.customAptPackages, config.customNpmPackages, config.customRunCommands]);
+  }, [config.baseImage, config.nodeVersion, config.software, config.customAptPackages, config.customNpmPackages, config.customRunCommands, config.plugins]);
 
   return <CodePreview code={dockerfileContent} language="dockerfile" />;
 }

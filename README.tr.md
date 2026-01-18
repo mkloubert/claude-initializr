@@ -47,6 +47,10 @@
 - **Özel APT Paketleri**: Konteynere yüklenecek ek Debian/Ubuntu paketleri ekleyin
 - **Özel NPM Paketleri**: Global olarak yüklenecek ek NPM paketleri ekleyin, `root` veya `node` kullanıcısı olarak yükleme seçeneği ile
 - **Özel RUN Komutları**: Docker imajı oluşturulurken çalıştırılacak özel shell komutları ekleyin, `root` veya `node` kullanıcısı olarak çalıştırma seçeneği ile
+- **Claude Code Eklentileri**: `plugin-name@marketplace-name` formatını kullanarak marketplace'lerden Claude Code eklentileri yükleyin
+  - **Eklenti Önerileri**: [Resmi Anthropic marketplace](https://github.com/anthropics/claude-plugins-official)'inden arka planda otomatik olarak eklenti önerileri yükler
+  - Önerilen eklentileri tek tıkla ekleyin
+  - GitHub'da eklentileri görüntülemek için harici bağlantılar
 
 ### docker-compose.yaml Yapılandırması
 

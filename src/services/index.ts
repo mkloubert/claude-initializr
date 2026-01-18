@@ -24,3 +24,4 @@ export * from './envGenerator';
 export * from './volumeGenerator';
 export * from './settingsGenerator';
 export * from './zipGenerator';
+export * from './marketplaceService';

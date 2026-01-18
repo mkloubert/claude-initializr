@@ -44,7 +44,8 @@ export async function generateZipFile(config: AppConfig): Promise<Blob> {
     config.software,
     config.customAptPackages,
     config.customNpmPackages,
-    config.customRunCommands
+    config.customRunCommands,
+    config.plugins
   );
   const dockerfileContent = processDockerfile(dockerfileReplacements);
   zip.file('Dockerfile', dockerfileContent);
@@ -74,10 +75,10 @@ export async function generateZipFile(config: AppConfig): Promise<Blob> {
     // Include CLAUDE.md
     workspace.file('CLAUDE.md', config.claudeMdContent);
 
-    // Include .claude/settings.json with configured permissions
+    // Include .claude/settings.json with configured permissions and plugins
     const claudeFolder = workspace.folder('.claude');
     if (claudeFolder) {
-      const settingsContent = generateSettingsJson(config.claudePermissions);
+      const settingsContent = generateSettingsJson(config.claudePermissions, config.plugins, config.protectedFiles);
       claudeFolder.file('settings.json', settingsContent);
     }
   }

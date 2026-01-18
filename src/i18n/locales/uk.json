@@ -105,6 +105,19 @@
     "userRoot": "root",
     "toggleUser": "Змінити користувача виконання для команди"
   },
+  "plugins": {
+    "title": "Плагіни Claude Code",
+    "description": "Встановити плагіни Claude Code з маркетплейсів.",
+    "placeholder": "назва-плагіна@назва-маркетплейсу",
+    "add": "Додати плагін",
+    "remove": "Видалити плагін",
+    "formatHint": "Формат: назва-плагіна@назва-маркетплейсу",
+    "invalidFormat": "Невірний формат. Використовуйте plugin@marketplace",
+    "suggestions": "Рекомендовані плагіни",
+    "loadingSuggestions": "Завантаження пропозицій...",
+    "addFromMarketplace": "Додати {{plugin}} з {{marketplace}}",
+    "viewOnGitHub": "Переглянути {{plugin}} на GitHub"
+  },
   "env": {
     "description": "Змінні середовища не визначено.",
     "key": "Ключ",

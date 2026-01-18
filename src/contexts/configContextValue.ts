@@ -26,6 +26,7 @@ import type {
   PermissionDirectiveType,
   SoftwareConfig,
 } from '../types';
+import type { MarketplacePlugin } from '../services/marketplaceService';
 
 /**
  * Context value interface for configuration state and actions.
@@ -114,6 +115,22 @@ export interface ConfigContextValue {
   ) => void;
   /** Remove a permission rule */
   removePermissionRule: (category: PermissionCategory, id: string) => void;
+
+  // Plugin actions
+  /** Add a new plugin entry */
+  addPlugin: () => void;
+  /** Update a plugin's name */
+  updatePlugin: (id: string, name: string) => void;
+  /** Remove a plugin */
+  removePlugin: (id: string) => void;
+  /** Add a plugin from marketplace suggestion */
+  addPluginFromSuggestion: (fullName: string) => void;
+
+  // Marketplace plugin suggestions
+  /** List of available plugin suggestions from marketplaces */
+  marketplacePlugins: MarketplacePlugin[];
+  /** Whether marketplace plugins are currently being loaded */
+  marketplaceLoading: boolean;
 
   // Utility actions
   /** Reset configuration to defaults */

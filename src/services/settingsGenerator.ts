@@ -18,7 +18,8 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import type { ClaudePermissions, PermissionRule } from '@/types';
+import type { ClaudePermissions, PermissionRule, PluginEntry, ProtectedFile } from '@/types';
+import { isPluginNameComplete } from '@/components/config/pluginValidation';
 
 /**
  * Formats a single permission rule as a directive string.
@@ -38,13 +39,56 @@ function formatPermissionRules(rules: PermissionRule[]): string[] {
 }
 
 /**
- * Generates the settings.json content from the Claude permissions configuration.
- * Protected files are automatically added as deny rules in the UI when configured.
+ * Generates the enabledPlugins object from plugin entries.
+ * Each plugin is set to true to enable it.
  */
-export function generateSettingsJson(permissions: ClaudePermissions): string {
+function generateEnabledPlugins(plugins: PluginEntry[]): Record<string, boolean> {
+  const enabledPlugins: Record<string, boolean> = {};
+
+  for (const plugin of plugins) {
+    if (isPluginNameComplete(plugin.name)) {
+      enabledPlugins[plugin.name] = true;
+    }
+  }
+
+  return enabledPlugins;
+}
+
+/**
+ * Generates deny rules from protected files.
+ * Each protected file gets both Read() and Edit() deny rules.
+ */
+function generateProtectedFileDenyRules(protectedFiles: ProtectedFile[]): string[] {
+  const rules: string[] = [];
+
+  for (const file of protectedFiles) {
+    const path = file.path.trim();
+    if (path.length > 0) {
+      rules.push(`Read(${path})`);
+      rules.push(`Edit(${path})`);
+    }
+  }
+
+  return rules;
+}
+
+/**
+ * Generates the settings.json content from the Claude permissions configuration.
+ * Protected files are automatically added as Read() and Edit() deny rules.
+ * Plugins are added to enabledPlugins if configured.
+ */
+export function generateSettingsJson(
+  permissions: ClaudePermissions,
+  plugins: PluginEntry[] = [],
+  protectedFiles: ProtectedFile[] = []
+): string {
   const allowRules = formatPermissionRules(permissions.allow);
   const askRules = formatPermissionRules(permissions.ask);
-  const denyRules = formatPermissionRules(permissions.deny);
+  // Combine manual deny rules with auto-generated protected file deny rules
+  const manualDenyRules = formatPermissionRules(permissions.deny);
+  const protectedFileDenyRules = generateProtectedFileDenyRules(protectedFiles);
+  const denyRules = [...manualDenyRules, ...protectedFileDenyRules];
+  const enabledPlugins = generateEnabledPlugins(plugins);
 
   // Build the settings object
   const settings: {
@@ -53,6 +97,7 @@ export function generateSettingsJson(permissions: ClaudePermissions): string {
       ask?: string[];
       deny?: string[];
     };
+    enabledPlugins?: Record<string, boolean>;
   } = {};
 
   // Only include permissions object if there are any rules
@@ -68,6 +113,11 @@ export function generateSettingsJson(permissions: ClaudePermissions): string {
     if (denyRules.length > 0) {
       settings.permissions.deny = denyRules;
     }
+  }
+
+  // Only include enabledPlugins if there are any plugins
+  if (Object.keys(enabledPlugins).length > 0) {
+    settings.enabledPlugins = enabledPlugins;
   }
 
   return JSON.stringify(settings, null, 2);
