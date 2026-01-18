@@ -21,8 +21,9 @@
 import { useTranslation } from 'react-i18next';
 import { SiGithub, SiPaypal } from 'react-icons/si';
 import { AutosaveSwitcher, LanguageSwitcher, ResetButton, ThemeSwitcher } from '@/components/common';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { GITHUB_URL, PAYPAL_URL } from '@/config';
+import { APP_VERSION, GITHUB_URL, PAYPAL_URL } from '@/config';
 import logoImage from '@/assets/logo.png';
 
 /**
@@ -44,6 +45,9 @@ export function Header() {
           <h1 className="text-lg font-semibold tracking-tight">
             {t('app.title')}
           </h1>
+          <Badge variant="secondary" className="hidden sm:inline-flex">
+            {APP_VERSION}
+          </Badge>
         </div>
         <nav aria-label={t('nav.header')} className="flex items-center gap-1">
           {GITHUB_URL && (

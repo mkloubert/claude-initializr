@@ -31,3 +31,10 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+/**
+ * Application version injected at build time.
+ * In production (GitHub Actions), this comes from the git tag.
+ * In development, this defaults to 'v0.0.0-dev'.
+ */
+declare const __APP_VERSION__: string;

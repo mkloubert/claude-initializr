@@ -48,3 +48,10 @@ export const AUTHOR_URL =
  */
 export const AUTHOR_NAME =
   import.meta.env.VITE_AUTHOR_NAME || 'Marcel Joachim Kloubert';
+
+/**
+ * Application version.
+ * In production (GitHub Actions build), this comes from the git tag.
+ * In development, this defaults to 'v0.0.0-dev'.
+ */
+export const APP_VERSION = __APP_VERSION__;
