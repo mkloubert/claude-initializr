@@ -297,7 +297,40 @@ const ko: Translations = {
       "step2CustomVersions": "선택 사항: 사용자 정의 소프트웨어 버전으로 빌드 (아래 Docker Build Arguments 참조):",
       "step3": "Claude Code 시작:",
       "step4": "컨테이너 중지:",
-      "note": "workspace 폴더는 컨테이너 내의 /workspace에 마운트됩니다. Claude Code는 첫 시작 시 API 키를 요청합니다."
+      "note": "workspace 폴더는 컨테이너 내의 /workspace에 마운트됩니다. 로그인 옵션은 아래 인증 섹션을 참조하세요."
+    },
+    "authentication": {
+      "title": "인증",
+      "description": "Claude Code는 두 가지 인증 방법을 지원합니다. 필요에 가장 적합한 방법을 선택하세요:",
+      "apiKey": {
+        "title": "옵션 1: API 키",
+        "description": "`.env` 파일에서 API 키(`ANTHROPIC_API_KEY`)를 설정합니다. Claude Code가 자동으로 사용합니다.",
+        "pros": [
+          "헤드리스/자동화 환경에서 작동 (CI/CD, 컨테이너, SSH)",
+          "브라우저 불필요",
+          "사용 제한 없음 (사용량에 따른 지불)",
+          "모든 환경에서 안정적"
+        ],
+        "cons": [
+          "API 호출당 비용 발생 (표준 API 요금)",
+          "API 키 관리 및 보안 필요",
+          "지출 한도 없이 예상치 못한 요금 발생 가능"
+        ]
+      },
+      "browserLogin": {
+        "title": "옵션 2: 브라우저 로그인 (Claude Pro/Max/Team)",
+        "description": "Claude Code 내에서 `/login`을 실행하여 브라우저를 통해 구독으로 인증합니다.",
+        "pros": [
+          "구독에 포함됨 (예측 가능한 월별 비용)",
+          "추가 API 비용 없음",
+          "Claude.ai와 통합 청구"
+        ],
+        "cons": [
+          "최초 로그인에 브라우저 필요",
+          "매주 재설정되는 사용 제한 있음",
+          "컨테이너/SSH 세션에서 인증이 유지되지 않을 수 있음"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

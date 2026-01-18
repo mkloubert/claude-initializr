@@ -297,7 +297,40 @@ const zh: Translations = {
       "step2CustomVersions": "可选：使用自定义软件版本构建（请参阅下面的 Docker Build Arguments）：",
       "step3": "启动 Claude Code：",
       "step4": "停止容器：",
-      "note": "您的 workspace 文件夹挂载在容器内的 /workspace。Claude Code 将在首次启动时提示输入 API 密钥。"
+      "note": "您的 workspace 文件夹挂载在容器内的 /workspace。有关登录选项，请参阅下面的身份验证部分。"
+    },
+    "authentication": {
+      "title": "身份验证",
+      "description": "Claude Code 支持两种身份验证方法。选择最适合您需求的方式：",
+      "apiKey": {
+        "title": "选项 1：API 密钥",
+        "description": "在 `.env` 文件中设置您的 API 密钥（`ANTHROPIC_API_KEY`）。Claude Code 将自动使用它。",
+        "pros": [
+          "在无头/自动化环境中工作（CI/CD、容器、SSH）",
+          "无需浏览器",
+          "无使用限制（按使用付费）",
+          "在所有环境中可靠"
+        ],
+        "cons": [
+          "每次 API 调用都需要付费（标准 API 费率）",
+          "需要管理和保护 API 密钥",
+          "没有支出限制可能导致意外费用"
+        ]
+      },
+      "browserLogin": {
+        "title": "选项 2：浏览器登录（Claude Pro/Max/Team）",
+        "description": "在 Claude Code 中运行 `/login`，通过浏览器使用您的订阅进行身份验证。",
+        "pros": [
+          "包含在您的订阅中（可预测的月费）",
+          "无额外 API 费用",
+          "与 Claude.ai 统一计费"
+        ],
+        "cons": [
+          "首次登录需要浏览器",
+          "有每周重置的使用限制",
+          "身份验证可能无法在容器/SSH 会话中持久化"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

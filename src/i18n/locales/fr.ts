@@ -297,7 +297,40 @@ const fr: Translations = {
       "step2CustomVersions": "Optionnel : Compiler avec des versions de logiciels personnalisées (voir Docker Build Arguments ci-dessous) :",
       "step3": "Démarrer Claude Code :",
       "step4": "Arrêter le conteneur :",
-      "note": "Votre dossier workspace est monté sur /workspace à l'intérieur du conteneur. Claude Code demandera la clé API au premier démarrage."
+      "note": "Votre dossier workspace est monté sur /workspace à l'intérieur du conteneur. Consultez la section Authentification ci-dessous pour les options de connexion."
+    },
+    "authentication": {
+      "title": "Authentification",
+      "description": "Claude Code prend en charge deux méthodes d'authentification. Choisissez celle qui correspond le mieux à vos besoins :",
+      "apiKey": {
+        "title": "Option 1 : Clé API",
+        "description": "Définissez votre clé API dans le fichier `.env` (`ANTHROPIC_API_KEY`). Claude Code l'utilisera automatiquement.",
+        "pros": [
+          "Fonctionne dans les environnements headless/automatisés (CI/CD, conteneurs, SSH)",
+          "Pas de navigateur requis",
+          "Pas de limites d'utilisation (paiement à l'usage)",
+          "Fiable dans tous les environnements"
+        ],
+        "cons": [
+          "Coûte de l'argent par appel API (tarifs API standard)",
+          "Nécessite de gérer et sécuriser la clé API",
+          "Peut entraîner des frais inattendus sans limites de dépenses"
+        ]
+      },
+      "browserLogin": {
+        "title": "Option 2 : Connexion via navigateur (Claude Pro/Max/Team)",
+        "description": "Exécutez `/login` dans Claude Code pour vous authentifier via le navigateur avec votre abonnement.",
+        "pros": [
+          "Inclus dans votre abonnement (coût mensuel prévisible)",
+          "Pas de frais API supplémentaires",
+          "Facturation unifiée avec Claude.ai"
+        ],
+        "cons": [
+          "Nécessite un navigateur pour la première connexion",
+          "A des limites d'utilisation réinitialisées chaque semaine",
+          "L'authentification peut ne pas persister dans les conteneurs/sessions SSH"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

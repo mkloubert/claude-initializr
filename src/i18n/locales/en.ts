@@ -297,7 +297,40 @@ const en: Translations = {
       "step2CustomVersions": "Optional: Build with custom software versions (see Build Arguments below):",
       "step3": "Start Claude Code:",
       "step4": "Stop the container:",
-      "note": "Your workspace folder is mounted at /workspace inside the container. Claude Code will prompt for the API key on first start."
+      "note": "Your workspace folder is mounted at /workspace inside the container. See the Authentication section below for login options."
+    },
+    "authentication": {
+      "title": "Authentication",
+      "description": "Claude Code supports two authentication methods. Choose the one that best fits your needs:",
+      "apiKey": {
+        "title": "Option 1: API Key",
+        "description": "Set your API key in the `.env` file (`ANTHROPIC_API_KEY`). Claude Code will use it automatically.",
+        "pros": [
+          "Works in headless/automated environments (CI/CD, containers, SSH)",
+          "No browser required",
+          "No usage limits (pay per use)",
+          "Reliable in all environments"
+        ],
+        "cons": [
+          "Costs money per API call (standard API rates)",
+          "Need to manage and secure the API key",
+          "Can lead to unexpected charges without spending limits"
+        ]
+      },
+      "browserLogin": {
+        "title": "Option 2: Browser Login (Claude Pro/Max/Team)",
+        "description": "Run `/login` inside Claude Code to authenticate via browser with your subscription.",
+        "pros": [
+          "Included in your subscription (predictable monthly cost)",
+          "No additional API costs",
+          "Unified billing with Claude.ai"
+        ],
+        "cons": [
+          "Requires browser for initial login",
+          "Has usage limits that reset weekly",
+          "Authentication may not persist in containers/SSH sessions"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

@@ -297,7 +297,40 @@ const es: Translations = {
       "step2CustomVersions": "Opcional: Compilar con versiones personalizadas de software (ver Docker Build Arguments abajo):",
       "step3": "Iniciar Claude Code:",
       "step4": "Detener el contenedor:",
-      "note": "Tu carpeta workspace está montada en /workspace dentro del contenedor. Claude Code pedirá la clave API en el primer inicio."
+      "note": "Tu carpeta workspace está montada en /workspace dentro del contenedor. Consulta la sección Autenticación abajo para las opciones de inicio de sesión."
+    },
+    "authentication": {
+      "title": "Autenticación",
+      "description": "Claude Code admite dos métodos de autenticación. Elige el que mejor se adapte a tus necesidades:",
+      "apiKey": {
+        "title": "Opción 1: Clave API",
+        "description": "Configura tu clave API en el archivo `.env` (`ANTHROPIC_API_KEY`). Claude Code la usará automáticamente.",
+        "pros": [
+          "Funciona en entornos headless/automatizados (CI/CD, contenedores, SSH)",
+          "No requiere navegador",
+          "Sin límites de uso (pago por uso)",
+          "Confiable en todos los entornos"
+        ],
+        "cons": [
+          "Cuesta dinero por llamada API (tarifas API estándar)",
+          "Necesitas gestionar y asegurar la clave API",
+          "Puede generar cargos inesperados sin límites de gasto"
+        ]
+      },
+      "browserLogin": {
+        "title": "Opción 2: Inicio de sesión con navegador (Claude Pro/Max/Team)",
+        "description": "Ejecuta `/login` dentro de Claude Code para autenticarte a través del navegador con tu suscripción.",
+        "pros": [
+          "Incluido en tu suscripción (costo mensual predecible)",
+          "Sin costos API adicionales",
+          "Facturación unificada con Claude.ai"
+        ],
+        "cons": [
+          "Requiere navegador para el inicio de sesión inicial",
+          "Tiene límites de uso que se reinician semanalmente",
+          "La autenticación puede no persistir en contenedores/sesiones SSH"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

@@ -564,6 +564,48 @@ function generateBuildArgsSection(software: SoftwareConfig, t: TFunction): strin
 }
 
 /**
+ * Generate the authentication section.
+ */
+function generateAuthenticationSection(t: TFunction): string {
+  let content = `## ${t('readme.authentication.title')}\n\n`;
+  content += `${t('readme.authentication.description')}\n\n`;
+
+  // API Key option
+  content += `### ${t('readme.authentication.apiKey.title')}\n\n`;
+  content += `${t('readme.authentication.apiKey.description')}\n\n`;
+
+  const apiKeyPros = t('readme.authentication.apiKey.pros', { returnObjects: true }) as string[];
+  for (const pro of apiKeyPros) {
+    content += `- + ${pro}\n`;
+  }
+  content += '\n';
+
+  const apiKeyCons = t('readme.authentication.apiKey.cons', { returnObjects: true }) as string[];
+  for (const con of apiKeyCons) {
+    content += `- - ${con}\n`;
+  }
+  content += '\n';
+
+  // Browser Login option
+  content += `### ${t('readme.authentication.browserLogin.title')}\n\n`;
+  content += `${t('readme.authentication.browserLogin.description')}\n\n`;
+
+  const browserLoginPros = t('readme.authentication.browserLogin.pros', { returnObjects: true }) as string[];
+  for (const pro of browserLoginPros) {
+    content += `- + ${pro}\n`;
+  }
+  content += '\n';
+
+  const browserLoginCons = t('readme.authentication.browserLogin.cons', { returnObjects: true }) as string[];
+  for (const con of browserLoginCons) {
+    content += `- - ${con}\n`;
+  }
+  content += '\n';
+
+  return content;
+}
+
+/**
  * Generate the quick start section.
  */
 function generateQuickStartSection(software: SoftwareConfig, t: TFunction): string {
@@ -792,6 +834,9 @@ export function generateReadmeContent(config: ReadmeConfig): string {
 
   // Quick start
   content += generateQuickStartSection(appConfig.software, t);
+
+  // Authentication
+  content += generateAuthenticationSection(t);
 
   // Build Arguments
   content += generateBuildArgsSection(appConfig.software, t);

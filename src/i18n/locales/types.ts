@@ -301,6 +301,22 @@ export interface Translations {
       step4: string;
       note: string;
     };
+    authentication: {
+      title: string;
+      description: string;
+      apiKey: {
+        title: string;
+        description: string;
+        pros: string[];
+        cons: string[];
+      };
+      browserLogin: {
+        title: string;
+        description: string;
+        pros: string[];
+        cons: string[];
+      };
+    };
     buildArgs: {
       title: string;
       description: string;

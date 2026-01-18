@@ -297,7 +297,40 @@ const pl: Translations = {
       "step2CustomVersions": "Opcjonalnie: Zbuduj z niestandardowymi wersjami oprogramowania (zobacz Docker Build Arguments poniżej):",
       "step3": "Uruchom Claude Code:",
       "step4": "Zatrzymaj kontener:",
-      "note": "Twój folder workspace jest zamontowany w /workspace wewnątrz kontenera. Claude Code poprosi o klucz API przy pierwszym uruchomieniu."
+      "note": "Twój folder workspace jest zamontowany w /workspace wewnątrz kontenera. Zobacz sekcję Uwierzytelnianie poniżej, aby poznać opcje logowania."
+    },
+    "authentication": {
+      "title": "Uwierzytelnianie",
+      "description": "Claude Code obsługuje dwie metody uwierzytelniania. Wybierz tę, która najlepiej odpowiada Twoim potrzebom:",
+      "apiKey": {
+        "title": "Opcja 1: Klucz API",
+        "description": "Ustaw swój klucz API w pliku `.env` (`ANTHROPIC_API_KEY`). Claude Code użyje go automatycznie.",
+        "pros": [
+          "Działa w środowiskach headless/zautomatyzowanych (CI/CD, kontenery, SSH)",
+          "Nie wymaga przeglądarki",
+          "Bez limitów użycia (płatność za użycie)",
+          "Niezawodny we wszystkich środowiskach"
+        ],
+        "cons": [
+          "Kosztuje za każde wywołanie API (standardowe stawki API)",
+          "Wymaga zarządzania i zabezpieczenia klucza API",
+          "Może prowadzić do nieoczekiwanych opłat bez limitów wydatków"
+        ]
+      },
+      "browserLogin": {
+        "title": "Opcja 2: Logowanie przez przeglądarkę (Claude Pro/Max/Team)",
+        "description": "Uruchom `/login` w Claude Code, aby uwierzytelnić się przez przeglądarkę za pomocą subskrypcji.",
+        "pros": [
+          "Wliczone w subskrypcję (przewidywalny koszt miesięczny)",
+          "Bez dodatkowych kosztów API",
+          "Zunifikowane rozliczenia z Claude.ai"
+        ],
+        "cons": [
+          "Wymaga przeglądarki do pierwszego logowania",
+          "Ma limity użycia resetowane co tydzień",
+          "Uwierzytelnienie może nie być zachowane w kontenerach/sesjach SSH"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

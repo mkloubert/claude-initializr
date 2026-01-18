@@ -297,7 +297,40 @@ const pt: Translations = {
       "step2CustomVersions": "Opcional: Compilar com versões personalizadas de software (veja Docker Build Arguments abaixo):",
       "step3": "Iniciar Claude Code:",
       "step4": "Parar o contêiner:",
-      "note": "Sua pasta workspace está montada em /workspace dentro do contêiner. Claude Code solicitará a chave API no primeiro início."
+      "note": "Sua pasta workspace está montada em /workspace dentro do contêiner. Consulte a seção Autenticação abaixo para opções de login."
+    },
+    "authentication": {
+      "title": "Autenticação",
+      "description": "Claude Code suporta dois métodos de autenticação. Escolha o que melhor atende às suas necessidades:",
+      "apiKey": {
+        "title": "Opção 1: Chave API",
+        "description": "Configure sua chave API no arquivo `.env` (`ANTHROPIC_API_KEY`). Claude Code a usará automaticamente.",
+        "pros": [
+          "Funciona em ambientes headless/automatizados (CI/CD, contêineres, SSH)",
+          "Não requer navegador",
+          "Sem limites de uso (pagamento por uso)",
+          "Confiável em todos os ambientes"
+        ],
+        "cons": [
+          "Custa dinheiro por chamada API (taxas API padrão)",
+          "Precisa gerenciar e proteger a chave API",
+          "Pode gerar cobranças inesperadas sem limites de gastos"
+        ]
+      },
+      "browserLogin": {
+        "title": "Opção 2: Login pelo navegador (Claude Pro/Max/Team)",
+        "description": "Execute `/login` dentro do Claude Code para autenticar via navegador com sua assinatura.",
+        "pros": [
+          "Incluído na sua assinatura (custo mensal previsível)",
+          "Sem custos API adicionais",
+          "Faturamento unificado com Claude.ai"
+        ],
+        "cons": [
+          "Requer navegador para o login inicial",
+          "Tem limites de uso que são redefinidos semanalmente",
+          "A autenticação pode não persistir em contêineres/sessões SSH"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

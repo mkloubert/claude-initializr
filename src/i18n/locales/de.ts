@@ -297,7 +297,40 @@ const de: Translations = {
       "step2CustomVersions": "Optional: Mit benutzerdefinierten Software-Versionen bauen (siehe Docker Build Arguments unten):",
       "step3": "Claude Code starten:",
       "step4": "Container stoppen:",
-      "note": "Dein Workspace-Ordner ist unter /workspace im Container eingebunden. Claude Code fragt beim ersten Start nach dem API-Schlüssel."
+      "note": "Dein Workspace-Ordner ist unter /workspace im Container eingebunden. Siehe den Abschnitt Authentifizierung unten für Anmeldeoptionen."
+    },
+    "authentication": {
+      "title": "Authentifizierung",
+      "description": "Claude Code unterstützt zwei Authentifizierungsmethoden. Wähle die, die am besten zu deinen Anforderungen passt:",
+      "apiKey": {
+        "title": "Option 1: API-Schlüssel",
+        "description": "Setze deinen API-Schlüssel in der `.env`-Datei (`ANTHROPIC_API_KEY`). Claude Code verwendet ihn automatisch.",
+        "pros": [
+          "Funktioniert in headless/automatisierten Umgebungen (CI/CD, Container, SSH)",
+          "Kein Browser erforderlich",
+          "Keine Nutzungslimits (Pay-per-Use)",
+          "Zuverlässig in allen Umgebungen"
+        ],
+        "cons": [
+          "Kostet Geld pro API-Aufruf (Standard-API-Tarife)",
+          "API-Schlüssel muss verwaltet und gesichert werden",
+          "Kann ohne Ausgabenlimits zu unerwarteten Kosten führen"
+        ]
+      },
+      "browserLogin": {
+        "title": "Option 2: Browser-Login (Claude Pro/Max/Team)",
+        "description": "Führe `/login` in Claude Code aus, um dich über den Browser mit deinem Abonnement zu authentifizieren.",
+        "pros": [
+          "Im Abonnement enthalten (vorhersehbare monatliche Kosten)",
+          "Keine zusätzlichen API-Kosten",
+          "Einheitliche Abrechnung mit Claude.ai"
+        ],
+        "cons": [
+          "Erfordert Browser für die erste Anmeldung",
+          "Hat Nutzungslimits, die wöchentlich zurückgesetzt werden",
+          "Authentifizierung bleibt möglicherweise nicht in Containern/SSH-Sitzungen bestehen"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

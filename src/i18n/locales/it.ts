@@ -297,7 +297,40 @@ const it: Translations = {
       "step2CustomVersions": "Opzionale: Compila con versioni software personalizzate (vedi Docker Build Arguments sotto):",
       "step3": "Avvia Claude Code:",
       "step4": "Ferma il container:",
-      "note": "La tua cartella workspace è montata su /workspace all'interno del container. Claude Code chiederà la chiave API al primo avvio."
+      "note": "La tua cartella workspace è montata su /workspace all'interno del container. Consulta la sezione Autenticazione sotto per le opzioni di accesso."
+    },
+    "authentication": {
+      "title": "Autenticazione",
+      "description": "Claude Code supporta due metodi di autenticazione. Scegli quello più adatto alle tue esigenze:",
+      "apiKey": {
+        "title": "Opzione 1: Chiave API",
+        "description": "Imposta la tua chiave API nel file `.env` (`ANTHROPIC_API_KEY`). Claude Code la userà automaticamente.",
+        "pros": [
+          "Funziona in ambienti headless/automatizzati (CI/CD, container, SSH)",
+          "Nessun browser richiesto",
+          "Nessun limite di utilizzo (pagamento per uso)",
+          "Affidabile in tutti gli ambienti"
+        ],
+        "cons": [
+          "Costa denaro per ogni chiamata API (tariffe API standard)",
+          "Necessità di gestire e proteggere la chiave API",
+          "Può portare a costi imprevisti senza limiti di spesa"
+        ]
+      },
+      "browserLogin": {
+        "title": "Opzione 2: Accesso tramite browser (Claude Pro/Max/Team)",
+        "description": "Esegui `/login` all'interno di Claude Code per autenticarti tramite browser con il tuo abbonamento.",
+        "pros": [
+          "Incluso nel tuo abbonamento (costo mensile prevedibile)",
+          "Nessun costo API aggiuntivo",
+          "Fatturazione unificata con Claude.ai"
+        ],
+        "cons": [
+          "Richiede browser per l'accesso iniziale",
+          "Ha limiti di utilizzo che si azzerano settimanalmente",
+          "L'autenticazione potrebbe non persistere in container/sessioni SSH"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

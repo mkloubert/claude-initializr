@@ -297,7 +297,40 @@ const ja: Translations = {
       "step2CustomVersions": "オプション：カスタムソフトウェアバージョンでビルド（下のDocker Build Argumentsを参照）：",
       "step3": "Claude Codeを起動：",
       "step4": "コンテナを停止：",
-      "note": "workspaceフォルダはコンテナ内の/workspaceにマウントされます。Claude Codeは初回起動時にAPIキーを要求します。"
+      "note": "workspaceフォルダはコンテナ内の/workspaceにマウントされます。ログインオプションについては下の認証セクションを参照してください。"
+    },
+    "authentication": {
+      "title": "認証",
+      "description": "Claude Codeは2つの認証方法をサポートしています。ニーズに最適なものを選択してください：",
+      "apiKey": {
+        "title": "オプション1：APIキー",
+        "description": "`.env`ファイルでAPIキー（`ANTHROPIC_API_KEY`）を設定します。Claude Codeが自動的に使用します。",
+        "pros": [
+          "ヘッドレス/自動化環境で動作（CI/CD、コンテナ、SSH）",
+          "ブラウザ不要",
+          "使用制限なし（従量課金）",
+          "すべての環境で信頼性が高い"
+        ],
+        "cons": [
+          "APIコールごとに費用発生（標準API料金）",
+          "APIキーの管理とセキュリティ対策が必要",
+          "支出制限なしでは予期しない請求の可能性"
+        ]
+      },
+      "browserLogin": {
+        "title": "オプション2：ブラウザログイン（Claude Pro/Max/Team）",
+        "description": "Claude Code内で`/login`を実行し、ブラウザ経由でサブスクリプションで認証します。",
+        "pros": [
+          "サブスクリプションに含まれる（予測可能な月額費用）",
+          "追加のAPI費用なし",
+          "Claude.aiと統一された請求"
+        ],
+        "cons": [
+          "初回ログインにブラウザが必要",
+          "週ごとにリセットされる使用制限あり",
+          "コンテナ/SSHセッションで認証が維持されない場合あり"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",

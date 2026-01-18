@@ -297,7 +297,40 @@ const tr: Translations = {
       "step2CustomVersions": "İsteğe bağlı: Özel yazılım sürümleriyle derleyin (aşağıdaki Docker Build Arguments'e bakın):",
       "step3": "Claude Code'u başlatın:",
       "step4": "Konteyneri durdurun:",
-      "note": "Workspace klasörünüz konteynerin içinde /workspace konumuna bağlanmıştır. Claude Code ilk başlatmada API anahtarını isteyecektir."
+      "note": "Workspace klasörünüz konteynerin içinde /workspace konumuna bağlanmıştır. Giriş seçenekleri için aşağıdaki Kimlik Doğrulama bölümüne bakın."
+    },
+    "authentication": {
+      "title": "Kimlik Doğrulama",
+      "description": "Claude Code iki kimlik doğrulama yöntemini destekler. İhtiyaçlarınıza en uygun olanı seçin:",
+      "apiKey": {
+        "title": "Seçenek 1: API Anahtarı",
+        "description": "API anahtarınızı `.env` dosyasında ayarlayın (`ANTHROPIC_API_KEY`). Claude Code otomatik olarak kullanacaktır.",
+        "pros": [
+          "Headless/otomatik ortamlarda çalışır (CI/CD, konteynerler, SSH)",
+          "Tarayıcı gerektirmez",
+          "Kullanım limiti yok (kullanıma göre ödeme)",
+          "Tüm ortamlarda güvenilir"
+        ],
+        "cons": [
+          "Her API çağrısı için ücret alınır (standart API tarifeleri)",
+          "API anahtarını yönetmeniz ve güvenceye almanız gerekir",
+          "Harcama limiti olmadan beklenmedik ücretlere yol açabilir"
+        ]
+      },
+      "browserLogin": {
+        "title": "Seçenek 2: Tarayıcı ile Giriş (Claude Pro/Max/Team)",
+        "description": "Aboneliğinizle tarayıcı üzerinden kimlik doğrulaması yapmak için Claude Code içinde `/login` çalıştırın.",
+        "pros": [
+          "Aboneliğinize dahil (öngörülebilir aylık maliyet)",
+          "Ek API maliyeti yok",
+          "Claude.ai ile birleşik faturalandırma"
+        ],
+        "cons": [
+          "İlk giriş için tarayıcı gerektirir",
+          "Haftalık sıfırlanan kullanım limitleri var",
+          "Kimlik doğrulama konteynerlerde/SSH oturumlarında kalıcı olmayabilir"
+        ]
+      }
     },
     "buildArgs": {
       "title": "Docker Build Arguments",
