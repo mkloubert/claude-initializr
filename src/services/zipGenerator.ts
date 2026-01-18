@@ -121,6 +121,7 @@ export async function generateZipFile(
       zip.file('README.md', readmeContent.trim());
     } else {
       // Generate README.md in current language with link to English version
+      // The switch text is in ENGLISH so English speakers can recognize it
       const readmeContent = generateReadmeContent({
         appConfig: config,
         initializerUrl,
@@ -130,11 +131,13 @@ export async function generateZipFile(
         includeLanguageSwitch: {
           targetFile: 'README.en.md',
           targetLanguageCode: 'en',
+          tTarget: tEnglish, // Switch text in English
         },
       });
       zip.file('README.md', readmeContent.trim());
 
       // Generate README.en.md (Simple English) with link to localized version
+      // The switch text is in the LOCAL LANGUAGE so local speakers can recognize it
       const readmeEnContent = generateReadmeContent({
         appConfig: config,
         initializerUrl,
@@ -144,6 +147,7 @@ export async function generateZipFile(
         includeLanguageSwitch: {
           targetFile: 'README.md',
           targetLanguageCode: language,
+          tTarget: t, // Switch text in local language (e.g., German)
         },
       });
       zip.file('README.en.md', readmeEnContent.trim());
