@@ -342,6 +342,7 @@ const nodeCommandsByKey: Record<string, NodeCommandGenerator> = {
 /**
  * Generate plugin installation commands for Claude Code.
  * Installs plugins from marketplaces using `claude plugin install`.
+ * First initializes the marketplace cache, then installs plugins.
  *
  * @param plugins - List of plugin entries to install
  * @returns Array of RUN commands for plugin installation
@@ -356,10 +357,19 @@ export function generatePluginInstalls(plugins: PluginEntry[]): string[] {
 
   const commands: string[] = [];
   commands.push('# Install Claude Code plugins');
+  commands.push('# First ensure config directory exists and refresh marketplace cache');
 
-  for (const plugin of validPlugins) {
-    commands.push(`RUN claude plugin install ${plugin.name}`);
-  }
+  // Build a single RUN command that:
+  // 1. Creates the config directory
+  // 2. Fetches the marketplace catalog
+  // 3. Installs all plugins
+  const installCommands = validPlugins.map((plugin) => `claude plugin install ${plugin.name}`);
+
+  commands.push(
+    'RUN mkdir -p ~/.claude && \\',
+    '    claude marketplace list && \\',
+    '    ' + installCommands.join(' && \\\n    ')
+  );
 
   return commands;
 }
