@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import {
   defaultAppConfig,
   defaultClaudePermissions,
@@ -33,15 +33,10 @@ import {
   type PermissionCategory,
   type PermissionDirectiveType,
   type PermissionRule,
-  type PluginEntry,
   type ProtectedFile,
   type SoftwareConfig,
 } from '../types';
 import { ConfigContext, type ConfigContextValue } from './configContextValue';
-import {
-  fetchAllMarketplacePlugins,
-  type MarketplacePlugin,
-} from '../services/marketplaceService';
 
 const STORAGE_KEY = 'claude-initializr-config';
 const AUTOSAVE_KEY = 'claude-initializr-autosave';
@@ -105,8 +100,6 @@ interface StoredConfig {
     ask?: StoredPermissionRule[];
     deny?: StoredPermissionRule[];
   };
-  /** Plugin names in format "plugin@marketplace" */
-  pluginNames?: string[];
 }
 
 /**
@@ -277,16 +270,6 @@ function loadConfigFromStorage(): AppConfig {
       }
       : defaultClaudePermissions;
 
-    // Restore plugins
-    const plugins: PluginEntry[] = Array.isArray(data.pluginNames)
-      ? data.pluginNames
-        .filter((name): name is string => typeof name === 'string' && name.includes('@'))
-        .map((name) => ({
-          id: generateId(),
-          name,
-        }))
-      : [];
-
     return ensureEnvVariables({
       baseImage: typeof data.baseImage === 'string' && data.baseImage.length > 0
         ? data.baseImage
@@ -307,7 +290,6 @@ function loadConfigFromStorage(): AppConfig {
         ? data.claudeMdContent
         : defaultAppConfig.claudeMdContent,
       claudePermissions,
-      plugins,
     });
   } catch {
     // If anything fails, return default config with telemetry vars initialized
@@ -405,12 +387,6 @@ function saveConfigToStorage(config: AppConfig): void {
             : [],
         }
         : undefined,
-      pluginNames: Array.isArray(config.plugins)
-        ? config.plugins
-          .filter((plugin) => plugin && typeof plugin === 'object' && typeof plugin.name === 'string')
-          .map((plugin) => plugin.name)
-          .filter((name) => name.includes('@'))
-        : [],
     };
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
@@ -443,9 +419,6 @@ interface ConfigProviderProps {
 export function ConfigProvider({ children }: ConfigProviderProps) {
   const [config, setConfig] = useState<AppConfig>(loadConfigFromStorage);
   const [autosaveEnabled, setAutosaveEnabledState] = useState<boolean>(loadAutosavePreference);
-  const [marketplacePlugins, setMarketplacePlugins] = useState<MarketplacePlugin[]>([]);
-  const [marketplaceLoading, setMarketplaceLoading] = useState<boolean>(true);
-  const marketplaceFetchedRef = useRef(false);
 
   // Persist config changes to localStorage (only when autosave is enabled)
   useEffect(() => {
@@ -453,29 +426,6 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       saveConfigToStorage(config);
     }
   }, [config, autosaveEnabled]);
-
-  // Fetch marketplace plugins on initial load (silently in background)
-  useEffect(() => {
-    // Only fetch once
-    if (marketplaceFetchedRef.current) {
-      return;
-    }
-    marketplaceFetchedRef.current = true;
-
-    const loadMarketplacePlugins = async () => {
-      try {
-        const plugins = await fetchAllMarketplacePlugins();
-        setMarketplacePlugins(plugins);
-      } catch {
-        // Silent failure - don't show error to user
-        // The fetchAllMarketplacePlugins function already logs to console.warn
-      } finally {
-        setMarketplaceLoading(false);
-      }
-    };
-
-    loadMarketplacePlugins();
-  }, []);
 
   // Handler for toggling autosave
   const setAutosaveEnabled = useCallback((enabled: boolean) => {
@@ -817,55 +767,6 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     }));
   }, []);
 
-  // Plugin actions
-  const addPlugin = useCallback(() => {
-    const newPlugin: PluginEntry = {
-      id: crypto.randomUUID(),
-      name: '',
-    };
-    setConfig((prev) => ({
-      ...prev,
-      plugins: [...prev.plugins, newPlugin],
-    }));
-  }, []);
-
-  const updatePlugin = useCallback((id: string, name: string) => {
-    setConfig((prev) => ({
-      ...prev,
-      plugins: prev.plugins.map((plugin) =>
-        plugin.id === id ? { ...plugin, name } : plugin
-      ),
-    }));
-  }, []);
-
-  const removePlugin = useCallback((id: string) => {
-    setConfig((prev) => ({
-      ...prev,
-      plugins: prev.plugins.filter((plugin) => plugin.id !== id),
-    }));
-  }, []);
-
-  const addPluginFromSuggestion = useCallback((fullName: string) => {
-    setConfig((prev) => {
-      // Check if plugin already exists
-      if (prev.plugins.some((p) => p.name === fullName)) {
-        return prev;
-      }
-
-      const newPlugin: PluginEntry = {
-        id: crypto.randomUUID(),
-        name: fullName,
-      };
-
-      return {
-        ...prev,
-        plugins: [...prev.plugins, newPlugin].sort((a, b) =>
-          a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
-        ),
-      };
-    });
-  }, []);
-
   // Utility actions
   const resetConfig = useCallback(() => {
     setConfig(defaultAppConfig);
@@ -901,12 +802,6 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       updatePermissionDirective,
       updatePermissionPattern,
       removePermissionRule,
-      addPlugin,
-      updatePlugin,
-      removePlugin,
-      addPluginFromSuggestion,
-      marketplacePlugins,
-      marketplaceLoading,
       resetConfig,
     }),
     [
@@ -938,12 +833,6 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       updatePermissionDirective,
       updatePermissionPattern,
       removePermissionRule,
-      addPlugin,
-      updatePlugin,
-      removePlugin,
-      addPluginFromSuggestion,
-      marketplacePlugins,
-      marketplaceLoading,
       resetConfig,
     ]
   );

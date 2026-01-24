@@ -129,19 +129,6 @@ const ko: Translations = {
     "userRoot": "root",
     "toggleUser": "명령의 실행 사용자 전환"
   },
-  "plugins": {
-    "title": "Claude Code 플러그인",
-    "description": "마켓플레이스에서 Claude Code 플러그인을 설치합니다.",
-    "placeholder": "플러그인이름@마켓플레이스이름",
-    "add": "플러그인 추가",
-    "remove": "플러그인 제거",
-    "formatHint": "형식: 플러그인이름@마켓플레이스이름",
-    "invalidFormat": "잘못된 형식입니다. plugin@marketplace 사용",
-    "suggestions": "추천 플러그인",
-    "loadingSuggestions": "제안 로딩 중...",
-    "addFromMarketplace": "{{marketplace}}에서 {{plugin}} 추가",
-    "viewOnGitHub": "GitHub에서 {{plugin}} 보기"
-  },
   "env": {
     "description": "정의된 환경 변수가 없습니다.",
     "key": "키",
@@ -264,11 +251,6 @@ const ko: Translations = {
       "title": "추가 NPM 패키지",
       "description": "다음 추가 NPM 패키지가 전역으로 설치되었습니다:",
       "installedAs": "{{user}}로 설치됨"
-    },
-    "plugins": {
-      "title": "Claude Code 플러그인",
-      "description": "다음 Claude Code 플러그인이 설치 및 활성화되었습니다:",
-      "viewOnGitHub": "GitHub에서 보기"
     },
     "envVariables": {
       "title": "환경 변수",

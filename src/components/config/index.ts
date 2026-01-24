@@ -22,7 +22,6 @@ export { SoftwareItem } from './SoftwareItem';
 export { EnvRow } from './EnvRow';
 export { ProtectedFileRow } from './ProtectedFileRow';
 export { PermissionRuleRow } from './PermissionRuleRow';
-export { PluginRow } from './PluginRow';
 export { DockerfileCard } from './DockerfileCard';
 export { DockerComposeCard } from './DockerComposeCard';
 export { ClaudeMdCard } from './ClaudeMdCard';

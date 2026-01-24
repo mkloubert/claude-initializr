@@ -48,10 +48,6 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 - **Benutzerdefinierte APT-Pakete**: Fügen Sie zusätzliche Debian/Ubuntu-Pakete zur Installation im Container hinzu
 - **Benutzerdefinierte NPM-Pakete**: Fügen Sie zusätzliche NPM-Pakete zur globalen Installation hinzu, mit der Option als `root` oder `node` Benutzer zu installieren
 - **Benutzerdefinierte RUN-Befehle**: Fügen Sie benutzerdefinierte Shell-Befehle hinzu, die während des Docker-Image-Builds ausgeführt werden, mit der Option als `root` oder `node` Benutzer auszuführen
-- **Claude Code Plugins**: Installieren Sie Claude Code Plugins aus Marketplaces im Format `plugin-name@marketplace-name`
-  - **Plugin-Vorschläge**: Lädt automatisch Plugin-Vorschläge vom [offiziellen Anthropic Marketplace](https://github.com/anthropics/claude-plugins-official) im Hintergrund
-  - Ein Klick zum Hinzufügen vorgeschlagener Plugins
-  - Externe Links zur Ansicht der Plugins auf GitHub
 
 ### docker-compose.yaml Konfiguration
 
@@ -85,7 +81,6 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
   - Dateiübersicht und Beschreibungen
   - Basis-Image-Informationen mit Docker Hub Links
   - Installierte Software und Pakete mit Links (Debian Tracker, npmjs.com)
-  - Plugin-Informationen mit GitHub Links
   - Umgebungsvariablen-Schlüssel (Werte aus Sicherheitsgründen ausgeblendet)
   - Liste geschützter Dateien
   - Zusammenfassung der Berechtigungseinstellungen

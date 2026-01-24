@@ -48,10 +48,6 @@ Une application web pour générer des fichiers de configuration Docker permetta
 - **Paquets APT personnalisés** : Ajoutez des paquets Debian/Ubuntu supplémentaires à installer dans le conteneur
 - **Paquets NPM personnalisés** : Ajoutez des paquets NPM supplémentaires à installer globalement, avec la possibilité de les installer en tant qu'utilisateur `root` ou `node`
 - **Commandes RUN personnalisées** : Ajoutez des commandes shell personnalisées à exécuter lors de la construction de l'image Docker, avec la possibilité de les exécuter en tant qu'utilisateur `root` ou `node`
-- **Plugins Claude Code** : Installez des plugins Claude Code depuis les marketplaces au format `plugin-name@marketplace-name`
-  - **Suggestions de plugins** : Charge automatiquement les suggestions de plugins depuis le [marketplace officiel Anthropic](https://github.com/anthropics/claude-plugins-official) en arrière-plan
-  - Un clic pour ajouter les plugins suggérés
-  - Liens externes pour voir les plugins sur GitHub
 
 ### Configuration docker-compose.yaml
 
@@ -85,7 +81,6 @@ Une application web pour générer des fichiers de configuration Docker permetta
   - Vue d'ensemble des fichiers et descriptions
   - Informations sur l'image de base avec liens Docker Hub
   - Logiciels et paquets installés avec liens (Debian Tracker, npmjs.com)
-  - Informations sur les plugins avec liens GitHub
   - Clés des variables d'environnement (valeurs masquées pour la sécurité)
   - Liste des fichiers protégés
   - Résumé des paramètres de permission

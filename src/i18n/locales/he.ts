@@ -129,19 +129,6 @@ const he: Translations = {
     "userRoot": "root",
     "toggleUser": "החלף משתמש הרצה עבור פקודה"
   },
-  "plugins": {
-    "title": "תוספי Claude Code",
-    "description": "התקן תוספי Claude Code מחנויות.",
-    "placeholder": "שם-תוסף@שם-חנות",
-    "add": "הוסף תוסף",
-    "remove": "הסר תוסף",
-    "formatHint": "פורמט: שם-תוסף@שם-חנות",
-    "invalidFormat": "פורמט לא חוקי. השתמש ב-plugin@marketplace",
-    "suggestions": "תוספים מומלצים",
-    "loadingSuggestions": "טוען הצעות...",
-    "addFromMarketplace": "הוסף {{plugin}} מ-{{marketplace}}",
-    "viewOnGitHub": "צפה ב-{{plugin}} ב-GitHub"
-  },
   "env": {
     "description": "לא הוגדרו משתני סביבה.",
     "key": "מפתח",
@@ -264,11 +251,6 @@ const he: Translations = {
       "title": "חבילות NPM נוספות",
       "description": "חבילות ה-NPM הנוספות הבאות מותקנות גלובלית:",
       "installedAs": "הותקן כ-{{user}}"
-    },
-    "plugins": {
-      "title": "תוספי Claude Code",
-      "description": "תוספי Claude Code הבאים מותקנים ומופעלים:",
-      "viewOnGitHub": "צפה ב-GitHub"
     },
     "envVariables": {
       "title": "משתני סביבה",

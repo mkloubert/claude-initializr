@@ -137,17 +137,6 @@ export interface ClaudePermissions {
 }
 
 /**
- * A Claude Code plugin to install from a marketplace.
- * Reference: https://code.claude.com/docs/en/plugin-marketplaces
- */
-export interface PluginEntry {
-  /** Unique identifier for the plugin entry (used as React key) */
-  id: string;
-  /** Plugin identifier in format "plugin-name@marketplace-name" */
-  name: string;
-}
-
-/**
  * Default empty permissions configuration.
  */
 export const defaultClaudePermissions: ClaudePermissions = {
@@ -182,8 +171,6 @@ export interface AppConfig {
   claudeMdContent: string;
   /** Claude Code settings.json permissions */
   claudePermissions: ClaudePermissions;
-  /** Claude Code plugins to install from marketplaces */
-  plugins: PluginEntry[];
 }
 
 /**
@@ -240,7 +227,6 @@ export const defaultAppConfig: AppConfig = {
   protectedFiles: [],
   claudeMdContent: '# Project Instructions\n\n',
   claudePermissions: defaultClaudePermissions,
-  plugins: [],
 };
 
 /**

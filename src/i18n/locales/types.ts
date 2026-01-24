@@ -131,19 +131,6 @@ export interface Translations {
     userRoot: string;
     toggleUser: string;
   };
-  plugins: {
-    title: string;
-    description: string;
-    placeholder: string;
-    add: string;
-    remove: string;
-    formatHint: string;
-    invalidFormat: string;
-    suggestions: string;
-    loadingSuggestions: string;
-    addFromMarketplace: string;
-    viewOnGitHub: string;
-  };
   env: {
     description: string;
     key: string;
@@ -266,11 +253,6 @@ export interface Translations {
       title: string;
       description: string;
       installedAs: string;
-    };
-    plugins: {
-      title: string;
-      description: string;
-      viewOnGitHub: string;
     };
     envVariables: {
       title: string;

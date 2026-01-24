@@ -48,10 +48,6 @@
 - **カスタムAPTパッケージ**：コンテナにインストールする追加のDebian/Ubuntuパッケージを追加
 - **カスタムNPMパッケージ**：グローバルにインストールする追加のNPMパッケージを追加、`root`または`node`ユーザーとしてインストールするオプション付き
 - **カスタムRUNコマンド**：`root`または`node`ユーザーとして実行するカスタムDockerfile RUNコマンドを追加
-- **Claude Codeプラグイン**：`plugin-name@marketplace-name`形式でマーケットプレイスからClaude Codeプラグインをインストール
-  - **プラグイン提案**：[公式Anthropicマーケットプレイス](https://github.com/anthropics/claude-plugins-official)からバックグラウンドで自動的にプラグイン提案を読み込み
-  - ワンクリックで提案されたプラグインを追加
-  - GitHubでプラグインを表示する外部リンク
 
 ### docker-compose.yaml設定
 
@@ -85,7 +81,6 @@
   - ファイル概要と説明
   - Docker Hubリンク付きのベースイメージ情報
   - インストール済みソフトウェアとパッケージのリンク（Debian Tracker、npmjs.com）
-  - GitHubリンク付きのプラグイン情報
   - 環境変数キー（セキュリティのため値は非表示）
   - 保護されたファイルリスト
   - 権限設定の概要

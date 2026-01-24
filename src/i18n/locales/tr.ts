@@ -129,19 +129,6 @@ const tr: Translations = {
     "userRoot": "root",
     "toggleUser": "Komut için çalıştırma kullanıcısını değiştir"
   },
-  "plugins": {
-    "title": "Claude Code Eklentileri",
-    "description": "Marketplace'lerden Claude Code eklentileri yükleyin.",
-    "placeholder": "eklenti-adı@marketplace-adı",
-    "add": "Eklenti ekle",
-    "remove": "Eklentiyi kaldır",
-    "formatHint": "Format: eklenti-adı@marketplace-adı",
-    "invalidFormat": "Geçersiz format. plugin@marketplace kullanın",
-    "suggestions": "Önerilen eklentiler",
-    "loadingSuggestions": "Öneriler yükleniyor...",
-    "addFromMarketplace": "{{marketplace}}'den {{plugin}} ekle",
-    "viewOnGitHub": "{{plugin}}'i GitHub'da görüntüle"
-  },
   "env": {
     "description": "Tanımlanmış ortam değişkeni yok.",
     "key": "Anahtar",
@@ -264,11 +251,6 @@ const tr: Translations = {
       "title": "Ek NPM Paketleri",
       "description": "Aşağıdaki ek NPM paketleri global olarak kurulmuştur:",
       "installedAs": "{{user}} olarak kuruldu"
-    },
-    "plugins": {
-      "title": "Claude Code Eklentileri",
-      "description": "Aşağıdaki Claude Code eklentileri kurulmuş ve etkinleştirilmiştir:",
-      "viewOnGitHub": "GitHub'da Görüntüle"
     },
     "envVariables": {
       "title": "Ortam Değişkenleri",

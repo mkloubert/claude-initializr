@@ -24,7 +24,6 @@ import type {
   ClaudePermissions,
   CustomNpmPackage,
   EnvVariable,
-  PluginEntry,
   ProtectedFile,
   SoftwareConfig,
 } from '@/types';
@@ -82,24 +81,6 @@ function getDebianTrackerUrl(packageName: string): string {
  */
 function getNpmUrl(packageName: string): string {
   return `https://www.npmjs.com/package/${packageName}`;
-}
-
-/**
- * Generate GitHub URL for a plugin.
- */
-function getPluginGitHubUrl(pluginName: string): string {
-  // Plugin format: plugin-name@marketplace-name
-  // For official marketplace, the URL is anthropics/claude-plugins-official
-  const parts = pluginName.split('@');
-  if (parts.length !== 2) {
-    return '#';
-  }
-  const [name, marketplace] = parts;
-  if (marketplace === 'official') {
-    return `https://github.com/anthropics/claude-plugins-official/tree/main/${name}`;
-  }
-  // For other marketplaces, assume GitHub org format
-  return `https://github.com/${marketplace}/${name}`;
 }
 
 /**
@@ -288,31 +269,6 @@ function generateNpmPackagesSection(
   }
   content += '\n';
 
-  return content;
-}
-
-/**
- * Generate the plugins section.
- */
-function generatePluginsSection(plugins: PluginEntry[], t: TFunction): string {
-  if (plugins.length === 0) {
-    return '';
-  }
-
-  // Sort plugins alphabetically by name
-  const sortedPlugins = [...plugins].sort((a, b) =>
-    a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-  );
-
-  let content = `## ${t('readme.plugins.title')}\n\n`;
-  content += `${t('readme.plugins.description')}\n\n`;
-
-  for (const plugin of sortedPlugins) {
-    const url = getPluginGitHubUrl(plugin.name);
-    content += `- [\`${plugin.name}\`](${url})\n`;
-  }
-
-  content += '\n';
   return content;
 }
 
@@ -816,9 +772,6 @@ export function generateReadmeContent(config: ReadmeConfig): string {
     appConfig.customNpmPackages,
     t
   );
-
-  // Plugins
-  content += generatePluginsSection(appConfig.plugins, t);
 
   // Environment variables
   content += generateEnvVariablesSection(appConfig.envVariables, t);

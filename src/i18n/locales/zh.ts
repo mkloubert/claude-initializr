@@ -129,19 +129,6 @@ const zh: Translations = {
     "userRoot": "root",
     "toggleUser": "切换命令的运行用户"
   },
-  "plugins": {
-    "title": "Claude Code 插件",
-    "description": "从市场安装 Claude Code 插件。",
-    "placeholder": "插件名称@市场名称",
-    "add": "添加插件",
-    "remove": "删除插件",
-    "formatHint": "格式: 插件名称@市场名称",
-    "invalidFormat": "格式无效。请使用 plugin@marketplace",
-    "suggestions": "推荐插件",
-    "loadingSuggestions": "正在加载建议...",
-    "addFromMarketplace": "从 {{marketplace}} 添加 {{plugin}}",
-    "viewOnGitHub": "在 GitHub 上查看 {{plugin}}"
-  },
   "env": {
     "description": "未定义环境变量。",
     "key": "键",
@@ -264,11 +251,6 @@ const zh: Translations = {
       "title": "额外 NPM 软件包",
       "description": "以下额外 NPM 软件包已全局安装：",
       "installedAs": "以 {{user}} 身份安装"
-    },
-    "plugins": {
-      "title": "Claude Code 插件",
-      "description": "以下 Claude Code 插件已安装并启用：",
-      "viewOnGitHub": "在 GitHub 上查看"
     },
     "envVariables": {
       "title": "环境变量",

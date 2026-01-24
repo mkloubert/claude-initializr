@@ -129,19 +129,6 @@ const fr: Translations = {
     "userRoot": "root",
     "toggleUser": "Changer l'utilisateur d'exécution pour la commande"
   },
-  "plugins": {
-    "title": "Plugins Claude Code",
-    "description": "Installez des plugins Claude Code depuis des marketplaces.",
-    "placeholder": "nom-plugin@nom-marketplace",
-    "add": "Ajouter un Plugin",
-    "remove": "Supprimer le plugin",
-    "formatHint": "Format : nom-plugin@nom-marketplace",
-    "invalidFormat": "Format invalide. Utilisez plugin@marketplace",
-    "suggestions": "Plugins suggérés",
-    "loadingSuggestions": "Chargement des suggestions...",
-    "addFromMarketplace": "Ajouter {{plugin}} depuis {{marketplace}}",
-    "viewOnGitHub": "Voir {{plugin}} sur GitHub"
-  },
   "env": {
     "description": "Aucune variable d'environnement définie.",
     "key": "Clé",
@@ -264,11 +251,6 @@ const fr: Translations = {
       "title": "Paquets NPM supplémentaires",
       "description": "Les paquets NPM supplémentaires suivants sont installés globalement :",
       "installedAs": "installé en tant que {{user}}"
-    },
-    "plugins": {
-      "title": "Plugins Claude Code",
-      "description": "Les plugins Claude Code suivants sont installés et activés :",
-      "viewOnGitHub": "Voir sur GitHub"
     },
     "envVariables": {
       "title": "Variables d'environnement",

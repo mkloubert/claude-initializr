@@ -129,19 +129,6 @@ const uk: Translations = {
     "userRoot": "root",
     "toggleUser": "Змінити користувача виконання для команди"
   },
-  "plugins": {
-    "title": "Плагіни Claude Code",
-    "description": "Встановити плагіни Claude Code з маркетплейсів.",
-    "placeholder": "назва-плагіна@назва-маркетплейсу",
-    "add": "Додати плагін",
-    "remove": "Видалити плагін",
-    "formatHint": "Формат: назва-плагіна@назва-маркетплейсу",
-    "invalidFormat": "Невірний формат. Використовуйте plugin@marketplace",
-    "suggestions": "Рекомендовані плагіни",
-    "loadingSuggestions": "Завантаження пропозицій...",
-    "addFromMarketplace": "Додати {{plugin}} з {{marketplace}}",
-    "viewOnGitHub": "Переглянути {{plugin}} на GitHub"
-  },
   "env": {
     "description": "Змінні середовища не визначено.",
     "key": "Ключ",
@@ -264,11 +251,6 @@ const uk: Translations = {
       "title": "Додаткові NPM-пакети",
       "description": "Наступні додаткові NPM-пакети встановлені глобально:",
       "installedAs": "встановлено як {{user}}"
-    },
-    "plugins": {
-      "title": "Плагіни Claude Code",
-      "description": "Наступні плагіни Claude Code встановлені та увімкнені:",
-      "viewOnGitHub": "Переглянути на GitHub"
     },
     "envVariables": {
       "title": "Змінні середовища",

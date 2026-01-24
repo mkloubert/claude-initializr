@@ -129,19 +129,6 @@ const nl: Translations = {
     "userRoot": "root",
     "toggleUser": "Uitvoergebruiker voor opdracht wisselen"
   },
-  "plugins": {
-    "title": "Claude Code Plugins",
-    "description": "Installeer Claude Code plugins vanuit marketplaces.",
-    "placeholder": "plugin-naam@marketplace-naam",
-    "add": "Plugin toevoegen",
-    "remove": "Plugin verwijderen",
-    "formatHint": "Formaat: plugin-naam@marketplace-naam",
-    "invalidFormat": "Ongeldig formaat. Gebruik plugin@marketplace",
-    "suggestions": "Voorgestelde plugins",
-    "loadingSuggestions": "Suggesties laden...",
-    "addFromMarketplace": "{{plugin}} toevoegen van {{marketplace}}",
-    "viewOnGitHub": "{{plugin}} bekijken op GitHub"
-  },
   "env": {
     "description": "Geen omgevingsvariabelen gedefinieerd.",
     "key": "Sleutel",
@@ -264,11 +251,6 @@ const nl: Translations = {
       "title": "Extra NPM-pakketten",
       "description": "De volgende extra NPM-pakketten zijn globaal geïnstalleerd:",
       "installedAs": "geïnstalleerd als {{user}}"
-    },
-    "plugins": {
-      "title": "Claude Code Plugins",
-      "description": "De volgende Claude Code plugins zijn geïnstalleerd en geactiveerd:",
-      "viewOnGitHub": "Bekijk op GitHub"
     },
     "envVariables": {
       "title": "Omgevingsvariabelen",

@@ -129,19 +129,6 @@ const ar: Translations = {
     "userRoot": "root",
     "toggleUser": "تبديل مستخدم التشغيل للأمر"
   },
-  "plugins": {
-    "title": "إضافات Claude Code",
-    "description": "تثبيت إضافات Claude Code من الأسواق.",
-    "placeholder": "اسم-الإضافة@اسم-السوق",
-    "add": "إضافة إضافة",
-    "remove": "إزالة الإضافة",
-    "formatHint": "الصيغة: اسم-الإضافة@اسم-السوق",
-    "invalidFormat": "صيغة غير صالحة. استخدم plugin@marketplace",
-    "suggestions": "الإضافات المقترحة",
-    "loadingSuggestions": "جاري تحميل الاقتراحات...",
-    "addFromMarketplace": "إضافة {{plugin}} من {{marketplace}}",
-    "viewOnGitHub": "عرض {{plugin}} على GitHub"
-  },
   "env": {
     "description": "لم يتم تعريف متغيرات البيئة.",
     "key": "المفتاح",
@@ -264,11 +251,6 @@ const ar: Translations = {
       "title": "حزم NPM الإضافية",
       "description": "تم تثبيت حزم NPM الإضافية التالية عالمياً:",
       "installedAs": "مثبت كـ {{user}}"
-    },
-    "plugins": {
-      "title": "إضافات Claude Code",
-      "description": "تم تثبيت وتفعيل إضافات Claude Code التالية:",
-      "viewOnGitHub": "عرض على GitHub"
     },
     "envVariables": {
       "title": "متغيرات البيئة",

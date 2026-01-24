@@ -48,10 +48,6 @@
 - **自定义 APT 包**：添加要在容器中安装的额外 Debian/Ubuntu 软件包
 - **自定义 NPM 包**：添加要全局安装的额外 NPM 包，可选择以 `root` 或 `node` 用户身份安装
 - **自定义 RUN 命令**：添加以 `root` 或 `node` 用户身份执行的自定义 Dockerfile RUN 命令
-- **Claude Code 插件**：使用 `plugin-name@marketplace-name` 格式从市场安装 Claude Code 插件
-  - **插件建议**：自动从[官方 Anthropic 市场](https://github.com/anthropics/claude-plugins-official)在后台加载插件建议
-  - 一键添加建议的插件
-  - 查看 GitHub 上插件的外部链接
 
 ### docker-compose.yaml 配置
 
@@ -85,7 +81,6 @@
   - 文件概述和说明
   - 带 Docker Hub 链接的基础镜像信息
   - 已安装软件和包的链接（Debian Tracker、npmjs.com）
-  - 带 GitHub 链接的插件信息
   - 环境变量键（出于安全考虑隐藏值）
   - 受保护文件列表
   - 权限设置摘要

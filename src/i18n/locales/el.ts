@@ -129,19 +129,6 @@ const el: Translations = {
     "userRoot": "root",
     "toggleUser": "Εναλλαγή χρήστη εκτέλεσης για την εντολή"
   },
-  "plugins": {
-    "title": "Πρόσθετα Claude Code",
-    "description": "Εγκαταστήστε πρόσθετα Claude Code από αγορές.",
-    "placeholder": "όνομα-πρόσθετου@όνομα-αγοράς",
-    "add": "Προσθήκη πρόσθετου",
-    "remove": "Αφαίρεση πρόσθετου",
-    "formatHint": "Μορφή: όνομα-πρόσθετου@όνομα-αγοράς",
-    "invalidFormat": "Μη έγκυρη μορφή. Χρησιμοποιήστε plugin@marketplace",
-    "suggestions": "Προτεινόμενα πρόσθετα",
-    "loadingSuggestions": "Φόρτωση προτάσεων...",
-    "addFromMarketplace": "Προσθήκη {{plugin}} από {{marketplace}}",
-    "viewOnGitHub": "Προβολή {{plugin}} στο GitHub"
-  },
   "env": {
     "description": "Δεν έχουν οριστεί μεταβλητές περιβάλλοντος.",
     "key": "Κλειδί",
@@ -264,11 +251,6 @@ const el: Translations = {
       "title": "Επιπλέον πακέτα NPM",
       "description": "Τα ακόλουθα επιπλέον πακέτα NPM είναι εγκατεστημένα καθολικά:",
       "installedAs": "εγκατεστημένο ως {{user}}"
-    },
-    "plugins": {
-      "title": "Πρόσθετα Claude Code",
-      "description": "Τα ακόλουθα πρόσθετα Claude Code είναι εγκατεστημένα και ενεργοποιημένα:",
-      "viewOnGitHub": "Προβολή στο GitHub"
     },
     "envVariables": {
       "title": "Μεταβλητές περιβάλλοντος",

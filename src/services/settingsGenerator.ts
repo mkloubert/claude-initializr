@@ -18,8 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import type { ClaudePermissions, PermissionRule, PluginEntry, ProtectedFile } from '@/types';
-import { isPluginNameComplete } from '@/components/config/pluginValidation';
+import type { ClaudePermissions, PermissionRule, ProtectedFile } from '@/types';
 
 /**
  * Formats a single permission rule as a directive string.
@@ -36,22 +35,6 @@ function formatPermissionRules(rules: PermissionRule[]): string[] {
   return rules
     .filter((rule) => rule.pattern.trim().length > 0)
     .map(formatPermissionRule);
-}
-
-/**
- * Generates the enabledPlugins object from plugin entries.
- * Each plugin is set to true to enable it.
- */
-function generateEnabledPlugins(plugins: PluginEntry[]): Record<string, boolean> {
-  const enabledPlugins: Record<string, boolean> = {};
-
-  for (const plugin of plugins) {
-    if (isPluginNameComplete(plugin.name)) {
-      enabledPlugins[plugin.name] = true;
-    }
-  }
-
-  return enabledPlugins;
 }
 
 /**
@@ -75,11 +58,9 @@ function generateProtectedFileDenyRules(protectedFiles: ProtectedFile[]): string
 /**
  * Generates the settings.json content from the Claude permissions configuration.
  * Protected files are automatically added as Read() and Edit() deny rules.
- * Plugins are added to enabledPlugins if configured.
  */
 export function generateSettingsJson(
   permissions: ClaudePermissions,
-  plugins: PluginEntry[] = [],
   protectedFiles: ProtectedFile[] = []
 ): string {
   const allowRules = formatPermissionRules(permissions.allow);
@@ -88,7 +69,6 @@ export function generateSettingsJson(
   const manualDenyRules = formatPermissionRules(permissions.deny);
   const protectedFileDenyRules = generateProtectedFileDenyRules(protectedFiles);
   const denyRules = [...manualDenyRules, ...protectedFileDenyRules];
-  const enabledPlugins = generateEnabledPlugins(plugins);
 
   // Build the settings object
   const settings: {
@@ -97,7 +77,6 @@ export function generateSettingsJson(
       ask?: string[];
       deny?: string[];
     };
-    enabledPlugins?: Record<string, boolean>;
   } = {};
 
   // Only include permissions object if there are any rules
@@ -113,11 +92,6 @@ export function generateSettingsJson(
     if (denyRules.length > 0) {
       settings.permissions.deny = denyRules;
     }
-  }
-
-  // Only include enabledPlugins if there are any plugins
-  if (Object.keys(enabledPlugins).length > 0) {
-    settings.enabledPlugins = enabledPlugins;
   }
 
   return JSON.stringify(settings, null, 2);

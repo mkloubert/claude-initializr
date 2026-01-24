@@ -129,19 +129,6 @@ const ja: Translations = {
     "userRoot": "root",
     "toggleUser": "コマンドの実行ユーザーを切り替え"
   },
-  "plugins": {
-    "title": "Claude Code プラグイン",
-    "description": "マーケットプレイスからClaude Codeプラグインをインストール。",
-    "placeholder": "プラグイン名@マーケットプレイス名",
-    "add": "プラグインを追加",
-    "remove": "プラグインを削除",
-    "formatHint": "形式: プラグイン名@マーケットプレイス名",
-    "invalidFormat": "無効な形式です。plugin@marketplaceを使用してください",
-    "suggestions": "おすすめプラグイン",
-    "loadingSuggestions": "候補を読み込み中...",
-    "addFromMarketplace": "{{marketplace}}から{{plugin}}を追加",
-    "viewOnGitHub": "GitHubで{{plugin}}を表示"
-  },
   "env": {
     "description": "環境変数が定義されていません。",
     "key": "キー",
@@ -264,11 +251,6 @@ const ja: Translations = {
       "title": "追加NPMパッケージ",
       "description": "以下の追加NPMパッケージがグローバルにインストールされています：",
       "installedAs": "{{user}}としてインストール"
-    },
-    "plugins": {
-      "title": "Claude Code プラグイン",
-      "description": "以下のClaude Codeプラグインがインストールされ、有効化されています：",
-      "viewOnGitHub": "GitHubで表示"
     },
     "envVariables": {
       "title": "環境変数",

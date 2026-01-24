@@ -129,19 +129,6 @@ const hi: Translations = {
     "userRoot": "root",
     "toggleUser": "कमांड के लिए रन उपयोगकर्ता बदलें"
   },
-  "plugins": {
-    "title": "Claude Code प्लगइन",
-    "description": "मार्केटप्लेस से Claude Code प्लगइन इंस्टॉल करें।",
-    "placeholder": "प्लगइन-नाम@मार्केटप्लेस-नाम",
-    "add": "प्लगइन जोड़ें",
-    "remove": "प्लगइन हटाएं",
-    "formatHint": "फॉर्मेट: प्लगइन-नाम@मार्केटप्लेस-नाम",
-    "invalidFormat": "अमान्य फॉर्मेट। plugin@marketplace उपयोग करें",
-    "suggestions": "सुझाए गए प्लगइन",
-    "loadingSuggestions": "सुझाव लोड हो रहे हैं...",
-    "addFromMarketplace": "{{marketplace}} से {{plugin}} जोड़ें",
-    "viewOnGitHub": "GitHub पर {{plugin}} देखें"
-  },
   "env": {
     "description": "कोई एनवायरनमेंट वेरिएबल परिभाषित नहीं।",
     "key": "कुंजी",
@@ -264,11 +251,6 @@ const hi: Translations = {
       "title": "अतिरिक्त NPM पैकेज",
       "description": "निम्नलिखित अतिरिक्त NPM पैकेज ग्लोबली इंस्टॉल हैं:",
       "installedAs": "{{user}} के रूप में इंस्टॉल"
-    },
-    "plugins": {
-      "title": "Claude Code प्लगइन",
-      "description": "निम्नलिखित Claude Code प्लगइन इंस्टॉल और सक्षम हैं:",
-      "viewOnGitHub": "GitHub पर देखें"
     },
     "envVariables": {
       "title": "एनवायरनमेंट वेरिएबल्स",

@@ -48,10 +48,6 @@
 - **사용자 정의 APT 패키지**: 컨테이너에 설치할 추가 Debian/Ubuntu 패키지 추가
 - **사용자 정의 NPM 패키지**: 전역으로 설치할 추가 NPM 패키지 추가, `root` 또는 `node` 사용자로 설치 옵션
 - **사용자 정의 RUN 명령어**: `root` 또는 `node` 사용자로 실행할 사용자 정의 Dockerfile RUN 명령어 추가
-- **Claude Code 플러그인**: `plugin-name@marketplace-name` 형식으로 마켓플레이스에서 Claude Code 플러그인 설치
-  - **플러그인 제안**: [공식 Anthropic 마켓플레이스](https://github.com/anthropics/claude-plugins-official)에서 백그라운드로 플러그인 제안을 자동으로 로드
-  - 제안된 플러그인을 원클릭으로 추가
-  - GitHub에서 플러그인을 보기 위한 외부 링크
 
 ### docker-compose.yaml 구성
 
@@ -85,7 +81,6 @@
   - 파일 개요 및 설명
   - Docker Hub 링크가 포함된 베이스 이미지 정보
   - 설치된 소프트웨어 및 패키지 링크 (Debian Tracker, npmjs.com)
-  - GitHub 링크가 포함된 플러그인 정보
   - 환경 변수 키 (보안을 위해 값 숨김)
   - 보호된 파일 목록
   - 권한 설정 요약

@@ -65,8 +65,7 @@ export async function generateZipFile(
     config.software,
     config.customAptPackages,
     config.customNpmPackages,
-    config.customRunCommands,
-    config.plugins
+    config.customRunCommands
   );
   const dockerfileContent = processDockerfile(dockerfileReplacements);
   zip.file('Dockerfile', dockerfileContent);
@@ -96,10 +95,10 @@ export async function generateZipFile(
     // Include CLAUDE.md
     workspace.file('CLAUDE.md', config.claudeMdContent);
 
-    // Include .claude/settings.json with configured permissions and plugins
+    // Include .claude/settings.json with configured permissions
     const claudeFolder = workspace.folder('.claude');
     if (claudeFolder) {
-      const settingsContent = generateSettingsJson(config.claudePermissions, config.plugins, config.protectedFiles);
+      const settingsContent = generateSettingsJson(config.claudePermissions, config.protectedFiles);
       claudeFolder.file('settings.json', settingsContent);
     }
   }

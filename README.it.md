@@ -48,10 +48,6 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
 - **Pacchetti APT personalizzati**: Aggiungi pacchetti Debian/Ubuntu aggiuntivi da installare nel container
 - **Pacchetti NPM personalizzati**: Aggiungi pacchetti NPM aggiuntivi da installare globalmente, con l'opzione di installarli come utente `root` o `node`
 - **Comandi RUN personalizzati**: Aggiungi comandi shell personalizzati da eseguire durante la build dell'immagine Docker, con l'opzione di eseguirli come utente `root` o `node`
-- **Plugin Claude Code**: Installa plugin Claude Code dai marketplace usando il formato `plugin-name@marketplace-name`
-  - **Suggerimenti plugin**: Carica automaticamente suggerimenti di plugin dal [marketplace ufficiale Anthropic](https://github.com/anthropics/claude-plugins-official) in background
-  - Un clic per aggiungere plugin suggeriti
-  - Link esterni per visualizzare i plugin su GitHub
 
 ### Configurazione docker-compose.yaml
 
@@ -85,7 +81,6 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
   - Panoramica dei file e descrizioni
   - Informazioni sull'immagine base con link a Docker Hub
   - Software e pacchetti installati con link (Debian Tracker, npmjs.com)
-  - Informazioni sui plugin con link a GitHub
   - Chiavi delle variabili d'ambiente (valori nascosti per sicurezza)
   - Elenco dei file protetti
   - Riepilogo delle impostazioni dei permessi
