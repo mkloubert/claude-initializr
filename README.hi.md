@@ -290,7 +290,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | बिल्ड आर्गुमेंट | डिफ़ॉल्ट | विवरण |
    |-----------------|----------|--------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm पैकेज संस्करण |
+   | `CLAUDE_CODE_VERSION` | `stable` | Claude Code संस्करण (`latest` या विशिष्ट जैसे `1.0.58`) |
    | `FLUTTER_VERSION` | `latest` | Flutter संस्करण (`latest` या विशिष्ट जैसे `3.24.0`) |
    | `GIT_DELTA_VERSION` | `0.18.2` | diff हाइलाइटिंग के लिए Git delta संस्करण |
    | `GO_VERSION` | `latest` | Go संस्करण (`latest` या विशिष्ट जैसे `1.22.0`) |

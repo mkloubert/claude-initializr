@@ -45,10 +45,9 @@ export const baseAptPackages: string[] = [
 
 /**
  * Base NPM packages that are always installed globally in the container.
+ * Note: Claude Code is now installed via native installer, not npm.
  */
-export const baseNpmPackages: string[] = [
-  '@anthropic-ai/claude-code',
-];
+export const baseNpmPackages: string[] = [];
 
 /**
  * Optional APT packages mapped to software config keys.

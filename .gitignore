@@ -28,3 +28,4 @@ dist-ssr
 /MILESTONE.md
 /TASKS.md
 /.claude/*.local.json
+/public/google*.html

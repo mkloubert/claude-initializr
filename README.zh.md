@@ -290,7 +290,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | 构建参数 | 默认值 | 描述 |
    |----------|--------|------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm 包版本 |
+   | `CLAUDE_CODE_VERSION` | `stable` | Claude Code 版本（`latest` 或特定版本如 `1.0.58`） |
    | `FLUTTER_VERSION` | `latest` | Flutter 版本（`latest` 或特定版本如 `3.24.0`） |
    | `GIT_DELTA_VERSION` | `0.18.2` | 用于 diff 高亮的 Git delta 版本 |
    | `GO_VERSION` | `latest` | Go 版本（`latest` 或特定版本如 `1.22.0`） |

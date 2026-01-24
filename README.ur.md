@@ -292,7 +292,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | بلڈ آرگومنٹ | ڈیفالٹ | تفصیل |
    |-------------|--------|-------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm پیکیج ورژن |
+   | `CLAUDE_CODE_VERSION` | `stable` | Claude Code ورژن (`latest` یا مخصوص جیسے `1.0.58`) |
    | `FLUTTER_VERSION` | `latest` | Flutter ورژن (`latest` یا مخصوص جیسے `3.24.0`) |
    | `GIT_DELTA_VERSION` | `0.18.2` | diff ہائی لائٹنگ کے لیے Git delta ورژن |
    | `GO_VERSION` | `latest` | Go ورژن (`latest` یا مخصوص جیسے `1.22.0`) |

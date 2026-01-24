@@ -293,7 +293,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | Derleme Argümanı | Varsayılan | Açıklama |
    |------------------|------------|----------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm paketi sürümü |
+   | `CLAUDE_CODE_VERSION` | `stable` | Claude Code sürümü (`latest` veya `1.0.58` gibi belirli) |
    | `FLUTTER_VERSION` | `latest` | Flutter SDK sürümü |
    | `GIT_DELTA_VERSION` | `0.18.2` | git-delta sürümü |
    | `GO_VERSION` | `latest` | Go sürümü |

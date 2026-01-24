@@ -290,7 +290,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | ビルド引数 | デフォルト | 説明 |
    |------------|------------|------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npmパッケージバージョン |
+   | `CLAUDE_CODE_VERSION` | `stable` | Claude Code バージョン（`latest` または `1.0.58` など特定） |
    | `FLUTTER_VERSION` | `latest` | Flutterバージョン（`latest` または `3.24.0` など特定） |
    | `GIT_DELTA_VERSION` | `0.18.2` | 差分ハイライト用Git deltaバージョン |
    | `GO_VERSION` | `latest` | Goバージョン（`latest` または `1.22.0` など特定） |

@@ -34,7 +34,7 @@ export const DOCKERFILE_TEMPLATE = `FROM ### {{TEMPLATE: BASE_IMAGE}} ###:### {{
 ARG TZ
 ENV TZ="$TZ"
 
-ARG CLAUDE_CODE_VERSION=latest
+ARG CLAUDE_CODE_VERSION=stable
 
 ### {{TEMPLATE: DOCKER_ARGS}} ###
 
@@ -97,7 +97,7 @@ USER node
 
 # Install global packages
 ENV NPM_CONFIG_PREFIX=/usr/local/share/npm-global
-ENV PATH=$PATH:/usr/local/share/npm-global/bin
+ENV PATH=$PATH:/usr/local/share/npm-global/bin:/home/node/.local/bin
 
 # Set the default shell to zsh rather than sh
 ENV SHELL=/bin/zsh
@@ -116,8 +116,14 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
   -a "export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \\
   -x
 
-# Install Claude
-RUN npm install -g @anthropic-ai/claude-code@\${CLAUDE_CODE_VERSION}
+# Install Claude Code using native installer
+# Supports CLAUDE_CODE_VERSION=stable (default), latest, or specific version like "1.0.58"
+RUN mkdir -p /home/node/.local/bin /home/node/.local/share && \\
+    if [ "\${CLAUDE_CODE_VERSION}" = "latest" ]; then \\
+        wget -qO- https://claude.ai/install.sh | bash; \\
+    else \\
+        wget -qO- https://claude.ai/install.sh | bash -s \${CLAUDE_CODE_VERSION}; \\
+    fi
 
 ### {{TEMPLATE: RUN_AS_NODE_USER_EXTENSIONS}} ###
 

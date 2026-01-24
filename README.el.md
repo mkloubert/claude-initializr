@@ -293,7 +293,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | Παράμετρος build | Προεπιλογή | Περιγραφή |
    |------------------|------------|-----------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Έκδοση πακέτου Claude Code npm |
+   | `CLAUDE_CODE_VERSION` | `stable` | Έκδοση Claude Code (`latest` ή συγκεκριμένη όπως `1.0.58`) |
    | `FLUTTER_VERSION` | `latest` | Έκδοση Flutter SDK |
    | `GIT_DELTA_VERSION` | `0.18.2` | Έκδοση git-delta |
    | `GO_VERSION` | `latest` | Έκδοση Go |

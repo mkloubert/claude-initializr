@@ -1,0 +1,8 @@
+# Robots.txt for Claude Initializr
+# https://claude.kloubert.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://claude.kloubert.dev/sitemap.xml

@@ -293,7 +293,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | Аргумент збірки | За замовчуванням | Опис |
    |-----------------|------------------|------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Версія пакета Claude Code npm |
+   | `CLAUDE_CODE_VERSION` | `stable` | Версія Claude Code (`latest` або конкретна як `1.0.58`) |
    | `FLUTTER_VERSION` | `latest` | Версія Flutter SDK |
    | `GIT_DELTA_VERSION` | `0.18.2` | Версія git-delta |
    | `GO_VERSION` | `latest` | Версія Go |

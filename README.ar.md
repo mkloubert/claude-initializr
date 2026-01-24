@@ -292,7 +292,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | وسيط البناء | الافتراضي | الوصف |
    |-------------|-----------|-------|
-   | `CLAUDE_CODE_VERSION` | `latest` | إصدار حزمة npm لـ Claude Code |
+   | `CLAUDE_CODE_VERSION` | `stable` | إصدار Claude Code (`latest` أو محدد مثل `1.0.58`) |
    | `FLUTTER_VERSION` | `latest` | إصدار Flutter (`latest` أو محدد مثل `3.24.0`) |
    | `GIT_DELTA_VERSION` | `0.18.2` | إصدار Git delta لتمييز الفروقات |
    | `GO_VERSION` | `latest` | إصدار Go (`latest` أو محدد مثل `1.22.0`) |

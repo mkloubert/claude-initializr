@@ -290,7 +290,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | Argomento di build | Predefinito | Descrizione |
    |--------------------|-------------|-------------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Versione del pacchetto npm di Claude Code |
+   | `CLAUDE_CODE_VERSION` | `stable` | Versione di Claude Code (`latest` o specifica come `1.0.58`) |
    | `FLUTTER_VERSION` | `latest` | Versione di Flutter (`latest` o specifica come `3.24.0`) |
    | `GIT_DELTA_VERSION` | `0.18.2` | Versione di Git delta per evidenziazione diff |
    | `GO_VERSION` | `latest` | Versione di Go (`latest` o specifica come `1.22.0`) |

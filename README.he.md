@@ -292,7 +292,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | ארגומנט בנייה | ברירת מחדל | תיאור |
    |---------------|------------|-------|
-   | `CLAUDE_CODE_VERSION` | `latest` | גרסת חבילת npm של Claude Code |
+   | `CLAUDE_CODE_VERSION` | `stable` | גרסת Claude Code (`latest` או ספציפית כמו `1.0.58`) |
    | `FLUTTER_VERSION` | `latest` | גרסת Flutter (`latest` או ספציפית כמו `3.24.0`) |
    | `GIT_DELTA_VERSION` | `0.18.2` | גרסת Git delta להדגשת הבדלים |
    | `GO_VERSION` | `latest` | גרסת Go (`latest` או ספציפית כמו `1.22.0`) |

@@ -290,7 +290,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    | 빌드 인수 | 기본값 | 설명 |
    |-----------|--------|------|
-   | `CLAUDE_CODE_VERSION` | `latest` | Claude Code npm 패키지 버전 |
+   | `CLAUDE_CODE_VERSION` | `stable` | Claude Code 버전 (`latest` 또는 `1.0.58` 같은 특정 버전) |
    | `FLUTTER_VERSION` | `latest` | Flutter 버전 (`latest` 또는 `3.24.0` 같은 특정 버전) |
    | `GIT_DELTA_VERSION` | `0.18.2` | diff 하이라이팅용 Git delta 버전 |
    | `GO_VERSION` | `latest` | Go 버전 (`latest` 또는 `1.22.0` 같은 특정 버전) |
