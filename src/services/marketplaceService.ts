@@ -107,7 +107,7 @@ async function fetchPluginsFromMarketplace(
     .filter((item) => item.type === 'dir')
     .map((item) => ({
       name: item.name,
-      fullName: `${item.name}@${marketplace.displayName}`,
+      fullName: `${item.name}@${marketplace.repo}`,
       htmlUrl: item.html_url,
       marketplace: marketplace.displayName,
     }))

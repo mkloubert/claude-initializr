@@ -69,9 +69,10 @@ export function replacePlaceholders(
 
   for (const [placeholder, value] of Object.entries(replacements)) {
     if (value !== undefined) {
-      // When value is empty, also remove the trailing newline
+      // When value is empty, also remove leading whitespace and trailing newline
+      const prefix = value === '' ? '[ \\t]*' : '';
       const suffix = value === '' ? '\\n?' : '';
-      const pattern = new RegExp(`### \\{\\{TEMPLATE: ${placeholder}\\}\\} ###${suffix}`, 'g');
+      const pattern = new RegExp(`${prefix}### \\{\\{TEMPLATE: ${placeholder}\\}\\} ###${suffix}`, 'g');
       result = result.replace(pattern, value);
     }
   }
