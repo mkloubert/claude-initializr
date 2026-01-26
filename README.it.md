@@ -485,7 +485,7 @@ I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
 ## Registro delle modifiche
 
-### v3.1.0
+### v3.1.2
 
 - Aggiunte scorciatoie da tastiera per azioni comuni (download, attivazione anteprima, cambio tema, navigazione schede, selettore lingua, ripristino)
 - Aggiunto dialogo di aiuto scorciatoie da tastiera con visualizzazione raggruppata

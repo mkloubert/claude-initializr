@@ -489,7 +489,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 更新日志
 
-### v3.1.0
+### v3.1.2
 
 - 添加了常用操作的键盘快捷键（下载、预览切换、主题切换、卡片导航、语言切换器、重置）
 - 添加了分组显示的键盘快捷键帮助对话框

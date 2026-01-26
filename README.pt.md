@@ -489,7 +489,7 @@ Tags contendo `-` (ex. `v1.0.0-beta`) são marcadas como pré-lançamentos.
 
 ## Registro de alterações
 
-### v3.1.0
+### v3.1.2
 
 - Adicionados atalhos de teclado para ações comuns (download, alternância de visualização, troca de tema, navegação de cartões, seletor de idioma, redefinição)
 - Adicionado diálogo de ajuda de atalhos de teclado com exibição agrupada

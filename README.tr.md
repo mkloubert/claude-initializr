@@ -492,7 +492,7 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
 
 ## Değişiklik Günlüğü
 
-### v3.1.0
+### v3.1.2
 
 - Yaygın eylemler için klavye kısayolları eklendi (indirme, önizleme değiştirme, tema değiştirme, kart navigasyonu, dil seçici, sıfırlama)
 - Gruplandırılmış görüntüleme ile klavye kısayolları yardım iletişim kutusu eklendi

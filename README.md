@@ -502,7 +502,7 @@ Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
 ## Changelog
 
-### v3.1.0
+### v3.1.2
 
 - Added keyboard shortcuts for common actions (download, preview toggle, theme switching, card navigation, language switcher, reset)
 - Added keyboard shortcuts help dialog with grouped shortcut display

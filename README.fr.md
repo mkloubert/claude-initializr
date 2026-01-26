@@ -485,7 +485,7 @@ Les tags contenant `-` (ex. `v1.0.0-beta`) sont marqués comme pré-versions.
 
 ## Journal des modifications
 
-### v3.1.0
+### v3.1.2
 
 - Ajout de raccourcis clavier pour les actions courantes (téléchargement, basculement de la prévisualisation, changement de thème, navigation entre les cartes, sélecteur de langue, réinitialisation)
 - Ajout du dialogue d'aide des raccourcis clavier avec affichage groupé

@@ -485,7 +485,7 @@ Las etiquetas que contienen `-` (ej. `v1.0.0-beta`) se marcan como pre-lanzamien
 
 ## Registro de cambios
 
-### v3.1.0
+### v3.1.2
 
 - Añadidos atajos de teclado para acciones comunes (descarga, alternar vista previa, cambio de tema, navegación de tarjetas, selector de idioma, restablecer)
 - Añadido diálogo de ayuda de atajos de teclado con visualización agrupada

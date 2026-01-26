@@ -489,7 +489,7 @@ Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
 ## Wijzigingslogboek
 
-### v3.1.0
+### v3.1.2
 
 - Sneltoetsen toegevoegd voor veelvoorkomende acties (downloaden, voorbeeld wisselen, thema wisselen, kaartnavigatie, taalkiezer, resetten)
 - Sneltoetsen-hulpdialoog met gegroepeerde weergave toegevoegd

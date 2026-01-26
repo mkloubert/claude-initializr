@@ -484,7 +484,7 @@ Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
 ## Änderungsprotokoll
 
-### v3.1.0
+### v3.1.2
 
 - Tastaturkürzel für häufige Aktionen hinzugefügt (Download, Vorschau-Umschaltung, Design-Wechsel, Kartennavigation, Sprachumschalter, Zurücksetzen)
 - Tastaturkürzel-Hilfedialog mit gruppierter Anzeige hinzugefügt

@@ -492,7 +492,7 @@ Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
 ## Dziennik zmian
 
-### v3.1.0
+### v3.1.2
 
 - Dodano skróty klawiaturowe dla typowych akcji (pobieranie, przełączanie podglądu, zmiana motywu, nawigacja kartami, przełącznik języka, resetowanie)
 - Dodano okno dialogowe pomocy skrótów klawiaturowych z pogrupowanym wyświetlaniem
