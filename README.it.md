@@ -483,6 +483,57 @@ I rilasci sono automatizzati tramite GitHub Actions. Per creare un nuovo rilasci
 
 I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
+## Registro delle modifiche
+
+### v3.1.0
+
+- Aggiunte scorciatoie da tastiera per azioni comuni (download, attivazione anteprima, cambio tema, navigazione schede, selettore lingua, ripristino)
+- Aggiunto dialogo di aiuto scorciatoie da tastiera con visualizzazione raggruppata
+- Aggiunti suggerimenti scorciatoie nei tooltip dei pulsanti con tasti modificatori adattati al sistema operativo
+- Aggiunta regione ARIA live per annunci screen reader durante le azioni delle scorciatoie
+- Aggiunta importazione/esportazione configurazione tramite file JSON con anteprima differenze e validazione
+
+### v3.0.0
+
+- Rimossa la funzionalità dei plugin dall'interfaccia utente
+
+### v2.0.2
+
+- Passaggio all'installatore nativo di Claude Code invece di npm
+- Corretta l'installazione dei plugin ufficiali nel Dockerfile
+
+### v1.3.0
+
+- Aggiunta documentazione sull'autenticazione
+
+### v1.2.0
+
+- Aggiunta documentazione degli argomenti di build Docker a tutti i README
+- Aggiunta documentazione URL di download personalizzati per mirror e proxy
+
+### v1.1.1
+
+- Aggiunta visualizzazione della versione nell'intestazione
+- Convertito il sistema i18n da JSON a TypeScript con interfaccia tipizzata
+- Corretto il cambio lingua tra i file README nei download ZIP
+
+### v1.0.0
+
+- Rilascio iniziale
+- Generatore di configurazione Docker con Dockerfile e docker-compose.yaml
+- Selezione software (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Pacchetti APT personalizzati, pacchetti NPM e comandi RUN
+- Editor Markdown CLAUDE.md con anteprima
+- Editor permessi settings.json (regole Allow, Ask, Deny)
+- Configurazione variabili d'ambiente e file protetti
+- Generazione script firewall di rete
+- Download ZIP con README generato automaticamente
+- Supporto multilingue (18 lingue)
+- Tema scuro/chiaro con rilevamento automatico
+- Salvataggio automatico nel localStorage
+- Supporto PWA
+- Workflow di rilascio GitHub Actions
+
 ## Supporto
 
 Se trovi utile questo progetto, considera di supportarlo:

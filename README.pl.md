@@ -490,6 +490,57 @@ Wydania są zautomatyzowane przez GitHub Actions. Aby utworzyć nowe wydanie:
 
 Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
+## Dziennik zmian
+
+### v3.1.0
+
+- Dodano skróty klawiaturowe dla typowych akcji (pobieranie, przełączanie podglądu, zmiana motywu, nawigacja kartami, przełącznik języka, resetowanie)
+- Dodano okno dialogowe pomocy skrótów klawiaturowych z pogrupowanym wyświetlaniem
+- Dodano wskazówki skrótów w podpowiedziach przycisków z klawiszami modyfikującymi dostosowanymi do systemu operacyjnego
+- Dodano region ARIA live dla ogłoszeń czytnika ekranu przy akcjach skrótów
+- Dodano import/eksport konfiguracji przez pliki JSON z podglądem różnic i walidacją
+
+### v3.0.0
+
+- Usunięto funkcję wtyczek z interfejsu użytkownika
+
+### v2.0.2
+
+- Przejście na natywny instalator Claude Code zamiast npm
+- Naprawiono instalację oficjalnych wtyczek w Dockerfile
+
+### v1.3.0
+
+- Dodano dokumentację uwierzytelniania
+
+### v1.2.0
+
+- Dodano dokumentację argumentów budowania Docker do wszystkich plików README
+- Dodano dokumentację niestandardowych adresów URL pobierania dla serwerów lustrzanych i proxy
+
+### v1.1.1
+
+- Dodano wyświetlanie wersji w nagłówku
+- Przekonwertowano system i18n z JSON na TypeScript z typowanym interfejsem
+- Naprawiono przełączanie języka między plikami README w pobieraniach ZIP
+
+### v1.0.0
+
+- Pierwsze wydanie
+- Generator konfiguracji Docker z Dockerfile i docker-compose.yaml
+- Wybór oprogramowania (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Niestandardowe pakiety APT, pakiety NPM i polecenia RUN
+- Edytor Markdown CLAUDE.md z podglądem
+- Edytor uprawnień settings.json (reguły Allow, Ask, Deny)
+- Konfiguracja zmiennych środowiskowych i chronionych plików
+- Generowanie skryptu zapory sieciowej
+- Pobieranie ZIP z automatycznie wygenerowanym README
+- Wsparcie wielojęzyczne (18 języków)
+- Ciemny/jasny motyw z automatycznym wykrywaniem
+- Automatyczne zapisywanie w localStorage
+- Wsparcie PWA
+- Przepływ pracy wydań GitHub Actions
+
 ## Wsparcie
 
 Jeśli uważasz ten projekt za przydatny, rozważ jego wsparcie:

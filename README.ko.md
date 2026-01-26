@@ -487,6 +487,57 @@ localStorage.removeItem("claude-initializr-autosave");
 
 `-`가 포함된 태그(예: `v1.0.0-beta`)는 프리릴리스로 표시됩니다.
 
+## 변경 이력
+
+### v3.1.0
+
+- 일반적인 작업을 위한 키보드 단축키 추가 (다운로드, 미리보기 전환, 테마 전환, 카드 탐색, 언어 선택기, 재설정)
+- 그룹화된 표시가 있는 키보드 단축키 도움말 대화 상자 추가
+- OS에 맞는 수정자 키가 포함된 버튼 툴팁에 단축키 힌트 추가
+- 단축키 동작에 대한 스크린 리더 알림용 ARIA 라이브 영역 추가
+- 차이 미리보기 및 유효성 검사가 포함된 JSON 파일을 통한 설정 가져오기/내보내기 추가
+
+### v3.0.0
+
+- UI에서 플러그인 기능 제거
+
+### v2.0.2
+
+- npm 대신 네이티브 Claude Code 설치 프로그램으로 전환
+- Dockerfile에서 공식 플러그인 설치 수정
+
+### v1.3.0
+
+- 인증 문서 추가
+
+### v1.2.0
+
+- 모든 README에 Docker 빌드 인수 문서 추가
+- 미러 및 프록시용 사용자 정의 다운로드 URL 문서 추가
+
+### v1.1.1
+
+- 헤더에 버전 표시 추가
+- i18n 시스템을 JSON에서 타입 인터페이스가 있는 TypeScript로 변환
+- ZIP 다운로드에서 README 파일 간 언어 전환 수정
+
+### v1.0.0
+
+- 초기 릴리스
+- Dockerfile 및 docker-compose.yaml을 사용한 Docker 구성 생성기
+- 소프트웨어 선택 (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- 사용자 정의 APT 패키지, NPM 패키지 및 RUN 명령어
+- 미리보기가 있는 CLAUDE.md Markdown 편집기
+- settings.json 권한 편집기 (Allow, Ask, Deny 규칙)
+- 환경 변수 및 보호된 파일 구성
+- 네트워크 방화벽 스크립트 생성
+- 자동 생성된 README가 포함된 ZIP 다운로드
+- 다국어 지원 (18개 언어)
+- 자동 감지 기능이 있는 다크/라이트 테마
+- localStorage에 자동 저장
+- PWA 지원
+- GitHub Actions 릴리스 워크플로우
+
 ## 지원
 
 이 프로젝트가 유용하다면 지원을 고려해 주세요:

@@ -487,6 +487,57 @@ localStorage.removeItem("claude-initializr-autosave");
 
 包含 `-` 的标签（如 `v1.0.0-beta`）将被标记为预发布。
 
+## 更新日志
+
+### v3.1.0
+
+- 添加了常用操作的键盘快捷键（下载、预览切换、主题切换、卡片导航、语言切换器、重置）
+- 添加了分组显示的键盘快捷键帮助对话框
+- 在按钮工具提示中添加了带有适配操作系统修饰键的快捷键提示
+- 添加了用于快捷键操作屏幕阅读器通知的 ARIA 实时区域
+- 添加了通过 JSON 文件导入/导出配置功能，带有差异预览和验证
+
+### v3.0.0
+
+- 从用户界面中移除了插件功能
+
+### v2.0.2
+
+- 切换为使用原生 Claude Code 安装程序代替 npm
+- 修复了 Dockerfile 中官方插件的安装问题
+
+### v1.3.0
+
+- 添加了身份验证文档
+
+### v1.2.0
+
+- 在所有 README 中添加了 Docker 构建参数文档
+- 添加了用于镜像和代理的自定义下载 URL 文档
+
+### v1.1.1
+
+- 在标题栏中添加了版本显示
+- 将 i18n 系统从 JSON 转换为带类型接口的 TypeScript
+- 修复了 ZIP 下载中 README 文件之间的语言切换问题
+
+### v1.0.0
+
+- 首次发布
+- 使用 Dockerfile 和 docker-compose.yaml 的 Docker 配置生成器
+- 软件选择（Go、Python、Rust、Flutter、TypeScript、ffmpeg、ImageMagick、uv）
+- 自定义 APT 包、NPM 包和 RUN 命令
+- 带预览的 CLAUDE.md Markdown 编辑器
+- settings.json 权限编辑器（Allow、Ask、Deny 规则）
+- 环境变量和受保护文件配置
+- 网络防火墙脚本生成
+- 带自动生成 README 的 ZIP 下载
+- 多语言支持（18 种语言）
+- 带自动检测的深色/浅色主题
+- 自动保存到 localStorage
+- PWA 支持
+- GitHub Actions 发布工作流
+
 ## 支持
 
 如果您觉得这个项目有用，请考虑支持它：

@@ -487,6 +487,57 @@ Os lançamentos são automatizados via GitHub Actions. Para criar um novo lança
 
 Tags contendo `-` (ex. `v1.0.0-beta`) são marcadas como pré-lançamentos.
 
+## Registro de alterações
+
+### v3.1.0
+
+- Adicionados atalhos de teclado para ações comuns (download, alternância de visualização, troca de tema, navegação de cartões, seletor de idioma, redefinição)
+- Adicionado diálogo de ajuda de atalhos de teclado com exibição agrupada
+- Adicionadas dicas de atalhos nos tooltips dos botões com teclas modificadoras adaptadas ao SO
+- Adicionada região ARIA live para anúncios de leitor de tela em ações de atalhos
+- Adicionada importação/exportação de configuração via arquivos JSON com pré-visualização de diferenças e validação
+
+### v3.0.0
+
+- Removida a funcionalidade de plugins da interface do usuário
+
+### v2.0.2
+
+- Alterado para o instalador nativo do Claude Code em vez do npm
+- Corrigida a instalação de plugins oficiais no Dockerfile
+
+### v1.3.0
+
+- Adicionada documentação de autenticação
+
+### v1.2.0
+
+- Adicionada documentação de argumentos de build Docker a todos os READMEs
+- Adicionada documentação de URLs de download personalizadas para mirrors e proxies
+
+### v1.1.1
+
+- Adicionada exibição de versão no cabeçalho
+- Convertido o sistema i18n de JSON para TypeScript com interface tipada
+- Corrigida a troca de idioma entre arquivos README nos downloads ZIP
+
+### v1.0.0
+
+- Lançamento inicial
+- Gerador de configuração Docker com Dockerfile e docker-compose.yaml
+- Seleção de software (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Pacotes APT personalizados, pacotes NPM e comandos RUN
+- Editor Markdown CLAUDE.md com visualização
+- Editor de permissões settings.json (regras Allow, Ask, Deny)
+- Configuração de variáveis de ambiente e arquivos protegidos
+- Geração de script de firewall de rede
+- Download ZIP com README gerado automaticamente
+- Suporte multilíngue (18 idiomas)
+- Tema escuro/claro com detecção automática
+- Salvamento automático no localStorage
+- Suporte PWA
+- Fluxo de trabalho de lançamento GitHub Actions
+
 ## Apoio
 
 Se você achar este projeto útil, considere apoiá-lo:

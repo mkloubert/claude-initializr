@@ -487,6 +487,57 @@ Releases worden geautomatiseerd via GitHub Actions. Om een nieuwe release te mak
 
 Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
+## Wijzigingslogboek
+
+### v3.1.0
+
+- Sneltoetsen toegevoegd voor veelvoorkomende acties (downloaden, voorbeeld wisselen, thema wisselen, kaartnavigatie, taalkiezer, resetten)
+- Sneltoetsen-hulpdialoog met gegroepeerde weergave toegevoegd
+- Sneltoetshints toegevoegd aan knop-tooltips met OS-aangepaste modificatietoetsen
+- ARIA-live-regio toegevoegd voor schermlezermeldingen bij sneltoetsacties
+- Configuratie-import/-export via JSON-bestanden met diff-voorbeeld en validatie toegevoegd
+
+### v3.0.0
+
+- Pluginfunctionaliteit uit de gebruikersinterface verwijderd
+
+### v2.0.2
+
+- Overgeschakeld naar het native Claude Code-installatieprogramma in plaats van npm
+- Installatie van officiële plugins in Dockerfile hersteld
+
+### v1.3.0
+
+- Authenticatiedocumentatie toegevoegd
+
+### v1.2.0
+
+- Docker build-argumenten documentatie aan alle READMEs toegevoegd
+- Documentatie voor aangepaste download-URLs voor mirrors en proxies toegevoegd
+
+### v1.1.1
+
+- Versieweergave in de header toegevoegd
+- i18n-systeem van JSON naar TypeScript met getypeerde interface geconverteerd
+- Taalwisseling tussen README-bestanden in ZIP-downloads hersteld
+
+### v1.0.0
+
+- Eerste release
+- Docker-configuratiegenerator met Dockerfile en docker-compose.yaml
+- Softwareselectie (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Aangepaste APT-pakketten, NPM-pakketten en RUN-commando's
+- CLAUDE.md Markdown-editor met voorbeeld
+- settings.json-machtigingseditor (Allow, Ask, Deny-regels)
+- Configuratie van omgevingsvariabelen en beschermde bestanden
+- Generatie van netwerkfirewallscript
+- ZIP-download met automatisch gegenereerde README
+- Meertalige ondersteuning (18 talen)
+- Donker/licht thema met automatische detectie
+- Automatisch opslaan in localStorage
+- PWA-ondersteuning
+- GitHub Actions release-workflow
+
 ## Ondersteuning
 
 Als u dit project nuttig vindt, overweeg dan om het te ondersteunen:

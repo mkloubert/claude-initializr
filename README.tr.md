@@ -490,6 +490,57 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
 
 `-` içeren etiketler (örn. `v1.0.0-beta`) ön sürüm olarak işaretlenir.
 
+## Değişiklik Günlüğü
+
+### v3.1.0
+
+- Yaygın eylemler için klavye kısayolları eklendi (indirme, önizleme değiştirme, tema değiştirme, kart navigasyonu, dil seçici, sıfırlama)
+- Gruplandırılmış görüntüleme ile klavye kısayolları yardım iletişim kutusu eklendi
+- İşletim sistemine uygun değiştirici tuşlarla düğme araç ipuçlarına kısayol ipuçları eklendi
+- Kısayol eylemleri için ekran okuyucu duyuruları ARIA canlı bölgesi eklendi
+- Fark önizlemesi ve doğrulama ile JSON dosyaları üzerinden yapılandırma içe/dışa aktarma eklendi
+
+### v3.0.0
+
+- Eklenti özelliği kullanıcı arayüzünden kaldırıldı
+
+### v2.0.2
+
+- npm yerine yerel Claude Code yükleyicisine geçildi
+- Dockerfile'da resmi eklenti kurulumu düzeltildi
+
+### v1.3.0
+
+- Kimlik doğrulama belgeleri eklendi
+
+### v1.2.0
+
+- Tüm README'lere Docker derleme argümanları belgeleri eklendi
+- Aynalar ve proxy'ler için özel indirme URL'si belgeleri eklendi
+
+### v1.1.1
+
+- Başlığa sürüm gösterimi eklendi
+- i18n sistemi JSON'dan tipli arayüzlü TypeScript'e dönüştürüldü
+- ZIP indirmelerinde README dosyaları arasında dil geçişi düzeltildi
+
+### v1.0.0
+
+- İlk sürüm
+- Dockerfile ve docker-compose.yaml ile Docker yapılandırma oluşturucu
+- Yazılım seçimi (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Özel APT paketleri, NPM paketleri ve RUN komutları
+- Önizlemeli CLAUDE.md Markdown düzenleyici
+- settings.json izin düzenleyicisi (Allow, Ask, Deny kuralları)
+- Ortam değişkenleri ve korunan dosyalar yapılandırması
+- Ağ güvenlik duvarı betiği oluşturma
+- Otomatik oluşturulan README ile ZIP indirme
+- Çoklu dil desteği (18 dil)
+- Otomatik algılama ile koyu/açık tema
+- localStorage'a otomatik kaydetme
+- PWA desteği
+- GitHub Actions sürüm iş akışı
+
 ## Destek
 
 Bu projeyi faydalı buluyorsanız, desteklemeyi düşünün:

@@ -483,6 +483,57 @@ Los lanzamientos se automatizan a través de GitHub Actions. Para crear un nuevo
 
 Las etiquetas que contienen `-` (ej. `v1.0.0-beta`) se marcan como pre-lanzamientos.
 
+## Registro de cambios
+
+### v3.1.0
+
+- Añadidos atajos de teclado para acciones comunes (descarga, alternar vista previa, cambio de tema, navegación de tarjetas, selector de idioma, restablecer)
+- Añadido diálogo de ayuda de atajos de teclado con visualización agrupada
+- Añadidas indicaciones de atajos en los tooltips de botones con teclas modificadoras adaptadas al SO
+- Añadida región ARIA live para anuncios de lector de pantalla en acciones de atajos
+- Añadida importación/exportación de configuración mediante archivos JSON con vista previa de diferencias y validación
+
+### v3.0.0
+
+- Eliminada la función de plugins de la interfaz de usuario
+
+### v2.0.2
+
+- Cambiado al instalador nativo de Claude Code en lugar de npm
+- Corregida la instalación de plugins oficiales en Dockerfile
+
+### v1.3.0
+
+- Añadida documentación de autenticación
+
+### v1.2.0
+
+- Añadida documentación de argumentos de construcción Docker a todos los READMEs
+- Añadida documentación de URLs de descarga personalizadas para mirrors y proxies
+
+### v1.1.1
+
+- Añadida visualización de versión en el encabezado
+- Convertido el sistema i18n de JSON a TypeScript con interfaz tipada
+- Corregido el cambio de idioma entre archivos README en descargas ZIP
+
+### v1.0.0
+
+- Lanzamiento inicial
+- Generador de configuración Docker con Dockerfile y docker-compose.yaml
+- Selección de software (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Paquetes APT personalizados, paquetes NPM y comandos RUN
+- Editor Markdown CLAUDE.md con vista previa
+- Editor de permisos settings.json (reglas Allow, Ask, Deny)
+- Configuración de variables de entorno y archivos protegidos
+- Generación de script de firewall de red
+- Descarga ZIP con README generado automáticamente
+- Soporte multilingüe (18 idiomas)
+- Tema oscuro/claro con detección automática
+- Guardado automático en localStorage
+- Soporte PWA
+- Flujo de trabajo de lanzamiento con GitHub Actions
+
 ## Apoyo
 
 Si encuentra útil este proyecto, considere apoyarlo:

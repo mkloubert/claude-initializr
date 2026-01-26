@@ -483,6 +483,57 @@ Les versions sont automatisées via GitHub Actions. Pour créer une nouvelle ver
 
 Les tags contenant `-` (ex. `v1.0.0-beta`) sont marqués comme pré-versions.
 
+## Journal des modifications
+
+### v3.1.0
+
+- Ajout de raccourcis clavier pour les actions courantes (téléchargement, basculement de la prévisualisation, changement de thème, navigation entre les cartes, sélecteur de langue, réinitialisation)
+- Ajout du dialogue d'aide des raccourcis clavier avec affichage groupé
+- Ajout d'indications de raccourcis dans les info-bulles des boutons avec touches de modification adaptées au système
+- Ajout d'une région ARIA live pour les annonces de lecteur d'écran lors des actions de raccourcis
+- Ajout de l'import/export de configuration via fichiers JSON avec aperçu des différences et validation
+
+### v3.0.0
+
+- Suppression de la fonctionnalité des plugins de l'interface utilisateur
+
+### v2.0.2
+
+- Passage à l'installateur natif de Claude Code au lieu de npm
+- Correction de l'installation des plugins officiels dans le Dockerfile
+
+### v1.3.0
+
+- Ajout de la documentation d'authentification
+
+### v1.2.0
+
+- Ajout de la documentation des arguments de build Docker à tous les READMEs
+- Ajout de la documentation des URLs de téléchargement personnalisées pour les miroirs et proxies
+
+### v1.1.1
+
+- Ajout de l'affichage de la version dans l'en-tête
+- Conversion du système i18n de JSON vers TypeScript avec interface typée
+- Correction du changement de langue entre les fichiers README dans les téléchargements ZIP
+
+### v1.0.0
+
+- Version initiale
+- Générateur de configuration Docker avec Dockerfile et docker-compose.yaml
+- Sélection de logiciels (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Paquets APT personnalisés, paquets NPM et commandes RUN
+- Éditeur Markdown CLAUDE.md avec prévisualisation
+- Éditeur de permissions settings.json (règles Allow, Ask, Deny)
+- Configuration des variables d'environnement et fichiers protégés
+- Génération de script de pare-feu réseau
+- Téléchargement ZIP avec README généré automatiquement
+- Support multilingue (18 langues)
+- Thème sombre/clair avec détection automatique
+- Sauvegarde automatique dans le localStorage
+- Support PWA
+- Workflow de publication GitHub Actions
+
 ## Soutien
 
 Si vous trouvez ce projet utile, pensez à le soutenir :

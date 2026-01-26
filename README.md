@@ -500,6 +500,57 @@ Releases are automated via GitHub Actions. To create a new release:
 
 Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
+## Changelog
+
+### v3.1.0
+
+- Added keyboard shortcuts for common actions (download, preview toggle, theme switching, card navigation, language switcher, reset)
+- Added keyboard shortcuts help dialog with grouped shortcut display
+- Added shortcut hints to button tooltips with OS-aware modifier keys
+- Added ARIA live region for screen reader announcements of shortcut actions
+- Added configuration import/export via JSON files with diff preview and validation
+
+### v3.0.0
+
+- Removed plugins feature from the UI
+
+### v2.0.2
+
+- Switched to native Claude Code installer instead of npm
+- Fixed official plugin installation in Dockerfile
+
+### v1.3.0
+
+- Added authentication documentation
+
+### v1.2.0
+
+- Added Docker build arguments documentation to all READMEs
+- Added custom download URL documentation for mirrors and proxies
+
+### v1.1.1
+
+- Added version display in the header
+- Converted i18n system from JSON to TypeScript with typed interface
+- Fixed language switching between README files in ZIP downloads
+
+### v1.0.0
+
+- Initial release
+- Docker configuration generator with Dockerfile and docker-compose.yaml
+- Software selection (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Custom APT packages, NPM packages, and RUN commands
+- CLAUDE.md Markdown editor with preview
+- settings.json permission editor (Allow, Ask, Deny rules)
+- Environment variables and protected files configuration
+- Network firewall script generation
+- ZIP download with auto-generated README
+- Multi-language support (18 languages)
+- Dark/light theme with auto-detection
+- Autosave to localStorage
+- PWA support
+- GitHub Actions release workflow
+
 ## Support
 
 If you find this project useful, consider supporting it:

@@ -482,6 +482,57 @@ Releases werden automatisch über GitHub Actions erstellt. Um ein neues Release 
 
 Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
+## Änderungsprotokoll
+
+### v3.1.0
+
+- Tastaturkürzel für häufige Aktionen hinzugefügt (Download, Vorschau-Umschaltung, Design-Wechsel, Kartennavigation, Sprachumschalter, Zurücksetzen)
+- Tastaturkürzel-Hilfedialog mit gruppierter Anzeige hinzugefügt
+- Kürzel-Hinweise in Button-Tooltips mit OS-angepassten Modifikator-Tasten hinzugefügt
+- ARIA-Live-Region für Screenreader-Ankündigungen bei Shortcut-Aktionen hinzugefügt
+- Konfiguration Import/Export über JSON-Dateien mit Diff-Vorschau und Validierung hinzugefügt
+
+### v3.0.0
+
+- Plugins-Funktion aus der Benutzeroberfläche entfernt
+
+### v2.0.2
+
+- Auf nativen Claude Code Installer statt npm umgestellt
+- Installation offizieller Plugins im Dockerfile behoben
+
+### v1.3.0
+
+- Authentifizierungsdokumentation hinzugefügt
+
+### v1.2.0
+
+- Docker Build-Argumente Dokumentation zu allen READMEs hinzugefügt
+- Dokumentation für benutzerdefinierte Download-URLs für Mirrors und Proxies hinzugefügt
+
+### v1.1.1
+
+- Versionsanzeige in der Kopfzeile hinzugefügt
+- i18n-System von JSON auf TypeScript mit typisierter Schnittstelle umgestellt
+- Sprachwechsel zwischen README-Dateien in ZIP-Downloads behoben
+
+### v1.0.0
+
+- Erstveröffentlichung
+- Docker-Konfigurationsgenerator mit Dockerfile und docker-compose.yaml
+- Softwareauswahl (Go, Python, Rust, Flutter, TypeScript, ffmpeg, ImageMagick, uv)
+- Benutzerdefinierte APT-Pakete, NPM-Pakete und RUN-Befehle
+- CLAUDE.md Markdown-Editor mit Vorschau
+- settings.json Berechtigungseditor (Allow, Ask, Deny Regeln)
+- Umgebungsvariablen und geschützte Dateien Konfiguration
+- Netzwerk-Firewall-Skript-Generierung
+- ZIP-Download mit automatisch generierter README
+- Mehrsprachige Unterstützung (18 Sprachen)
+- Dunkles/Helles Design mit automatischer Erkennung
+- Automatisches Speichern im localStorage
+- PWA-Unterstützung
+- GitHub Actions Release-Workflow
+
 ## Unterstützung
 
 Wenn du dieses Projekt nützlich findest, erwäge es zu unterstützen:
