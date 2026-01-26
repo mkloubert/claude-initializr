@@ -211,6 +211,36 @@ const pl: Translations = {
     "pl": "polsku",
     "tr": "turecku"
   },
+  "importExport": {
+    "exportButton": "Eksportuj konfigurację",
+    "importButton": "Importuj konfigurację",
+    "exportSuccess": "Konfiguracja wyeksportowana pomyślnie.",
+    "importSuccess": "Konfiguracja zaimportowana pomyślnie.",
+    "importErrorInvalidFile": "Nieprawidłowy format pliku. Wybierz prawidłowy plik JSON.",
+    "importErrorValidation": "Plik zawiera nieprawidłowe dane konfiguracji.",
+    "importErrorRead": "Nie można odczytać pliku. Spróbuj ponownie.",
+    "importConfirmTitle": "Importuj konfigurację",
+    "importConfirmDescription": "To zastąpi bieżącą konfigurację. Tej operacji nie można cofnąć.",
+    "importConfirmApply": "Zastosuj",
+    "importConfirmCancel": "Anuluj",
+    "diffTitle": "Podgląd zmian",
+    "diffBaseImage": "Obraz bazowy",
+    "diffNodeVersion": "Wersja Node",
+    "diffDockerPlatform": "Platforma Docker",
+    "diffSoftware": "Oprogramowanie",
+    "diffAptPackages": "Pakiety APT",
+    "diffNpmPackages": "Pakiety NPM",
+    "diffRunCommands": "Polecenia RUN",
+    "diffEnvVariables": "Zmienne środowiskowe",
+    "diffProtectedFiles": "Chronione pliki",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Uprawnienia",
+    "diffNoChanges": "Nie wykryto zmian.",
+    "diffCurrent": "Bieżący",
+    "diffImported": "Importowany",
+    "diffChanged": "Zmieniony",
+    "diffUnchanged": "Bez zmian"
+  },
   "errors": {
     "invalidEnvKey": "Nieprawidłowa nazwa zmiennej. Używaj tylko liter, cyfr i podkreśleń.",
     "duplicateEnvKey": "Ta nazwa zmiennej już istnieje.",
@@ -418,6 +448,33 @@ const pl: Translations = {
     "software": {
       "title": "Zainstalowane oprogramowanie",
       "description": "Zainstalowane są następujące narzędzia deweloperskie:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Skróty klawiszowe",
+    "description": "Używaj skrótów klawiszowych, aby szybko nawigować i wykonywać akcje.",
+    "openHelp": "Skróty klawiszowe",
+    "categories": {
+      "navigation": "Nawigacja",
+      "actions": "Akcje"
+    },
+    "shortcuts": {
+      "downloadZip": "Pobierz ZIP",
+      "forceSave": "Wymuś zapis",
+      "resetDefaults": "Przywróć domyślne",
+      "togglePreview": "Przełącz podgląd",
+      "scrollToCard": "Przewiń do karty {{number}}",
+      "toggleDarkMode": "Przełącz tryb ciemny",
+      "openLanguageSwitcher": "Otwórz przełącznik języka",
+      "closeDialog": "Zamknij okno dialogowe",
+      "openShortcutsHelp": "Otwórz skróty klawiszowe"
+    },
+    "announced": {
+      "downloadStarted": "Pobieranie rozpoczęte",
+      "configReset": "Konfiguracja przywrócona do domyślnych",
+      "darkModeToggled": "Tryb ciemny przełączony",
+      "previewToggled": "Podgląd przełączony",
+      "scrolledToCard": "Przewinięto do karty {{number}}"
     }
   }
 };

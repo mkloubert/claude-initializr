@@ -88,6 +88,7 @@ Une application web pour générer des fichiers de configuration Docker permetta
   - Prérequis pour Windows, macOS et Linux
   - Section de dépannage
   - Lorsque la langue de l'interface n'est pas l'anglais, inclut également README.en.md (anglais simple)
+- **Import/Export de configuration** : Exportez votre configuration sous forme de fichier JSON et importez-la sur un autre navigateur ou appareil
 - **Sauvegarde automatique** : Les paramètres sont automatiquement enregistrés dans le localStorage de votre navigateur (activé par défaut)
 - **Support multilingue** : Disponible en 18 langues :
   - 🌍 Arabe
@@ -112,6 +113,24 @@ Une application web pour générer des fichiers de configuration Docker permetta
 - **Support PWA** : Installable comme Progressive Web App
 - **Entièrement accessible** : Conforme WCAG avec navigation au clavier et support des lecteurs d'écran
 - **Design responsive** : Optimisé pour ordinateur et tablette
+- **Raccourcis clavier** : Navigation complète au clavier avec des raccourcis personnalisables (appuyez sur `Ctrl+/` ou `⌘+/` pour tous les afficher)
+
+### Raccourcis clavier
+
+Tous les raccourcis utilisent `Ctrl` sous Windows/Linux et `⌘` (Cmd) sous macOS.
+
+| Raccourci | Action |
+| --------- | ------ |
+| `Ctrl/⌘ + S` | Télécharger le ZIP |
+| `Ctrl/⌘ + E` | Basculer la prévisualisation |
+| `Ctrl/⌘ + Shift + D` | Basculer le mode sombre/clair |
+| `Ctrl/⌘ + Shift + X` | Réinitialiser les paramètres par défaut |
+| `Ctrl/⌘ + Shift + L` | Ouvrir le sélecteur de langue |
+| `Ctrl/⌘ + 1-4` | Défiler jusqu'à la carte (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Ouvrir l'aide des raccourcis clavier |
+| `Escape` | Fermer le dialogue |
+
+Une icône de clavier dans l'en-tête ouvre également le dialogue d'aide des raccourcis.
 
 ### Mécanisme de sauvegarde automatique
 
@@ -127,6 +146,21 @@ La fonction de sauvegarde automatique peut être activée/désactivée via l'ic�
 - **Activation de la sauvegarde automatique** : Enregistre immédiatement les paramètres actuels dans le localStorage
 - **Désactivation de la sauvegarde automatique** : Efface tous les paramètres enregistrés du localStorage
 - Votre préférence de sauvegarde automatique est mémorisée entre les sessions
+
+### Import/Export de configuration
+
+Vous pouvez partager ou sauvegarder votre configuration via des fichiers JSON :
+
+- **Exporter** : Cliquez sur l'icône de téléversement dans l'en-tête pour télécharger votre configuration actuelle au format `claude-initializr-config.json`
+- **Importer** : Cliquez sur l'icône de téléchargement pour sélectionner un fichier JSON précédemment exporté
+
+**Comment ça fonctionne :**
+
+- **L'export** enregistre tous les paramètres (image de base, sélection de logiciels, paquets, commandes, permissions, contenu CLAUDE.md) dans un seul fichier JSON
+- **L'import** valide le fichier, affiche un aperçu des différences et demande confirmation avant d'appliquer
+- Pour des raisons de sécurité, les **valeurs des variables d'environnement ne sont jamais incluses** dans les fichiers exportés — seuls les noms de variables sont exportés
+- Les configurations importées reçoivent de nouveaux identifiants internes pour éviter les conflits
+- Le format d'export inclut un champ de version (`"version": "1.0"`) pour la compatibilité ascendante
 
 ### Confidentialité et stockage des données
 

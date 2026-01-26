@@ -32,23 +32,29 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { useConfig } from '@/contexts';
+import { getModifierKey } from '@/hooks/useKeyboardShortcuts';
 import { RotateCcw } from 'lucide-react';
+
+interface ResetButtonProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
 
 /**
  * Button to reset all settings to defaults with confirmation dialog.
  */
-export function ResetButton() {
+export function ResetButton({ open, onOpenChange }: ResetButtonProps = {}) {
   const { t } = useTranslation();
   const { resetConfig } = useConfig();
 
   return (
-    <AlertDialog>
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogTrigger asChild>
         <Button
           variant="ghost"
           size="icon"
           aria-label={t('reset.button')}
-          title={t('reset.button')}
+          title={`${t('reset.button')} (${getModifierKey()}+Shift+X)`}
         >
           <RotateCcw className="h-5 w-5" aria-hidden="true" />
         </Button>

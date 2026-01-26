@@ -25,3 +25,4 @@ export * from './volumeGenerator';
 export * from './settingsGenerator';
 export * from './zipGenerator';
 export * from './readmeGenerator';
+export * from './configValidator';

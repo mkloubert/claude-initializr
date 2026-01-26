@@ -27,47 +27,52 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { getModifierKey } from '@/hooks/useKeyboardShortcuts';
 import { Globe } from 'lucide-react';
 
 interface LanguageConfig {
   code: string;
+  sortValue: string;
   nativeName: string;
   flag: string;
 }
 
 const languages: LanguageConfig[] = [
-  { code: 'ar', nativeName: 'العربية', flag: '🌍' },
-  { code: 'de', nativeName: 'Deutsch', flag: '🇩🇪' },
-  { code: 'el', nativeName: 'Ελληνικά', flag: '🇬🇷' },
-  { code: 'en', nativeName: 'English', flag: '🇬🇧' },
-  { code: 'es', nativeName: 'Español', flag: '🇪🇸' },
-  { code: 'fr', nativeName: 'Français', flag: '🇫🇷' },
-  { code: 'he', nativeName: 'עברית', flag: '🇮🇱' },
-  { code: 'hi', nativeName: 'हिन्दी', flag: '🇮🇳' },
-  { code: 'it', nativeName: 'Italiano', flag: '🇮🇹' },
-  { code: 'ja', nativeName: '日本語', flag: '🇯🇵' },
-  { code: 'ko', nativeName: '한국어', flag: '🇰🇷' },
-  { code: 'nl', nativeName: 'Nederlands', flag: '🇳🇱' },
-  { code: 'pl', nativeName: 'Polski', flag: '🇵🇱' },
-  { code: 'pt', nativeName: 'Português', flag: '🇵🇹' },
-  { code: 'tr', nativeName: 'Türkçe', flag: '🇹🇷' },
-  { code: 'uk', nativeName: 'Українська', flag: '🇺🇦' },
-  { code: 'ur', nativeName: 'اردو', flag: '🇵🇰' },
-  { code: 'zh', nativeName: '中文', flag: '🇨🇳' },
+  { code: 'ar', sortValue: 'arabic', nativeName: 'العربية', flag: '🌍' },
+  { code: 'zh', sortValue: 'chinese', nativeName: '中文', flag: '🇨🇳' },
+  { code: 'nl', sortValue: 'dutch', nativeName: 'Nederlands', flag: '🇳🇱' },
+  { code: 'en', sortValue: 'english', nativeName: 'English', flag: '🇬🇧' },
+  { code: 'fr', sortValue: 'french', nativeName: 'Français', flag: '🇫🇷' },
+  { code: 'de', sortValue: 'german', nativeName: 'Deutsch', flag: '🇩🇪' },
+  { code: 'el', sortValue: 'greek', nativeName: 'Ελληνικά', flag: '🇬🇷' },
+  { code: 'he', sortValue: 'hebrew', nativeName: 'עברית', flag: '🇮🇱' },
+  { code: 'hi', sortValue: 'hindi', nativeName: 'हिन्दी', flag: '🇮🇳' },
+  { code: 'it', sortValue: 'italian', nativeName: 'Italiano', flag: '🇮🇹' },
+  { code: 'ja', sortValue: 'japanese', nativeName: '日本語', flag: '🇯🇵' },
+  { code: 'ko', sortValue: 'korean', nativeName: '한국어', flag: '🇰🇷' },
+  { code: 'pl', sortValue: 'polish', nativeName: 'Polski', flag: '🇵🇱' },
+  { code: 'pt', sortValue: 'portuguese', nativeName: 'Português', flag: '🇵🇹' },
+  { code: 'es', sortValue: 'spanish', nativeName: 'Español', flag: '🇪🇸' },
+  { code: 'tr', sortValue: 'turkish', nativeName: 'Türkçe', flag: '🇹🇷' },
+  { code: 'uk', sortValue: 'ukrainian', nativeName: 'Українська', flag: '🇺🇦' },
+  { code: 'ur', sortValue: 'urdu', nativeName: 'اردو', flag: '🇵🇰' },
 ];
 
 /**
  * Language switcher dropdown component.
  * Allows users to switch between supported languages.
- * Languages are sorted alphabetically by their native names.
+ * Languages are sorted alphabetically by their English names.
  */
-export function LanguageSwitcher() {
+interface LanguageSwitcherProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+export function LanguageSwitcher({ open, onOpenChange }: LanguageSwitcherProps = {}) {
   const { t, i18n } = useTranslation();
 
   const sortedLanguages = useMemo(() => {
-    return [...languages].sort((a, b) =>
-      a.nativeName.localeCompare(b.nativeName, undefined, { sensitivity: 'base' })
-    );
+    return [...languages].sort((a, b) => a.sortValue.localeCompare(b.sortValue));
   }, []);
 
   const currentLanguage = useMemo(() => {
@@ -79,12 +84,13 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={onOpenChange}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
           size="sm"
           aria-label={t('language.switch')}
+          title={`${t('language.switch')} (${getModifierKey()}+Shift+L)`}
         >
           <Globe className="h-4 w-4" aria-hidden="true" />
           <span className="ml-2 hidden sm:inline">

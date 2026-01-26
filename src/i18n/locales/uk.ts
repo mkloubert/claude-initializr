@@ -211,6 +211,36 @@ const uk: Translations = {
     "pl": "польська",
     "tr": "турецька"
   },
+  "importExport": {
+    "exportButton": "Експортувати конфігурацію",
+    "importButton": "Імпортувати конфігурацію",
+    "exportSuccess": "Конфігурацію успішно експортовано.",
+    "importSuccess": "Конфігурацію успішно імпортовано.",
+    "importErrorInvalidFile": "Недійсний формат файлу. Будь ласка, виберіть дійсний файл JSON.",
+    "importErrorValidation": "Файл містить недійсні дані конфігурації.",
+    "importErrorRead": "Не вдалося прочитати файл. Будь ласка, спробуйте ще раз.",
+    "importConfirmTitle": "Імпортувати конфігурацію",
+    "importConfirmDescription": "Це замінить вашу поточну конфігурацію. Цю дію неможливо скасувати.",
+    "importConfirmApply": "Застосувати",
+    "importConfirmCancel": "Скасувати",
+    "diffTitle": "Попередній перегляд змін",
+    "diffBaseImage": "Базовий образ",
+    "diffNodeVersion": "Версія Node",
+    "diffDockerPlatform": "Платформа Docker",
+    "diffSoftware": "Програмне забезпечення",
+    "diffAptPackages": "Пакети APT",
+    "diffNpmPackages": "Пакети NPM",
+    "diffRunCommands": "Команди RUN",
+    "diffEnvVariables": "Змінні середовища",
+    "diffProtectedFiles": "Захищені файли",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Дозволи",
+    "diffNoChanges": "Змін не виявлено.",
+    "diffCurrent": "Поточний",
+    "diffImported": "Імпортований",
+    "diffChanged": "Змінено",
+    "diffUnchanged": "Без змін"
+  },
   "errors": {
     "invalidEnvKey": "Недійсна назва змінної. Використовуйте лише літери, цифри та підкреслення.",
     "duplicateEnvKey": "Ця назва змінної вже існує.",
@@ -418,6 +448,33 @@ const uk: Translations = {
     "software": {
       "title": "Встановлене програмне забезпечення",
       "description": "Встановлені наступні інструменти розробки:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Гарячі клавіші",
+    "description": "Використовуйте гарячі клавіші для швидкої навігації та виконання дій.",
+    "openHelp": "Гарячі клавіші",
+    "categories": {
+      "navigation": "Навігація",
+      "actions": "Дії"
+    },
+    "shortcuts": {
+      "downloadZip": "Завантажити ZIP",
+      "forceSave": "Примусове збереження",
+      "resetDefaults": "Скинути до стандартних",
+      "togglePreview": "Перемкнути попередній перегляд",
+      "scrollToCard": "Прокрутити до картки {{number}}",
+      "toggleDarkMode": "Перемкнути темний режим",
+      "openLanguageSwitcher": "Відкрити перемикач мови",
+      "closeDialog": "Закрити діалог",
+      "openShortcutsHelp": "Відкрити гарячі клавіші"
+    },
+    "announced": {
+      "downloadStarted": "Завантаження розпочато",
+      "configReset": "Конфігурацію скинуто до стандартних значень",
+      "darkModeToggled": "Темний режим перемкнуто",
+      "previewToggled": "Попередній перегляд перемкнуто",
+      "scrolledToCard": "Прокручено до картки {{number}}"
     }
   }
 };

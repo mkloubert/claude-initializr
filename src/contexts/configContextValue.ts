@@ -115,6 +115,12 @@ export interface ConfigContextValue {
   /** Remove a permission rule */
   removePermissionRule: (category: PermissionCategory, id: string) => void;
 
+  // Import/Export actions
+  /** Export current configuration as a JSON file download */
+  exportConfig: () => void;
+  /** Import a validated configuration, replacing the current one */
+  importConfig: (data: AppConfig) => void;
+
   // Utility actions
   /** Reset configuration to defaults */
   resetConfig: () => void;

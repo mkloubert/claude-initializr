@@ -211,6 +211,36 @@ const fr: Translations = {
     "pl": "polonais",
     "tr": "turc"
   },
+  "importExport": {
+    "exportButton": "Exporter la configuration",
+    "importButton": "Importer la configuration",
+    "exportSuccess": "Configuration exportée avec succès.",
+    "importSuccess": "Configuration importée avec succès.",
+    "importErrorInvalidFile": "Format de fichier invalide. Veuillez sélectionner un fichier JSON valide.",
+    "importErrorValidation": "Le fichier contient des données de configuration invalides.",
+    "importErrorRead": "Impossible de lire le fichier. Veuillez réessayer.",
+    "importConfirmTitle": "Importer la configuration",
+    "importConfirmDescription": "Cela remplacera votre configuration actuelle. Cette action est irréversible.",
+    "importConfirmApply": "Appliquer",
+    "importConfirmCancel": "Annuler",
+    "diffTitle": "Aperçu des modifications",
+    "diffBaseImage": "Image de base",
+    "diffNodeVersion": "Version de Node",
+    "diffDockerPlatform": "Plateforme Docker",
+    "diffSoftware": "Logiciels",
+    "diffAptPackages": "Paquets APT",
+    "diffNpmPackages": "Paquets NPM",
+    "diffRunCommands": "Commandes RUN",
+    "diffEnvVariables": "Variables d'environnement",
+    "diffProtectedFiles": "Fichiers protégés",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Permissions",
+    "diffNoChanges": "Aucune modification détectée.",
+    "diffCurrent": "Actuel",
+    "diffImported": "Importé",
+    "diffChanged": "Modifié",
+    "diffUnchanged": "Inchangé"
+  },
   "errors": {
     "invalidEnvKey": "Nom de variable invalide. Utilisez uniquement des lettres, chiffres et underscores.",
     "duplicateEnvKey": "Ce nom de variable existe déjà.",
@@ -418,6 +448,33 @@ const fr: Translations = {
     "software": {
       "title": "Logiciels installés",
       "description": "Les outils de développement suivants sont installés :"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Raccourcis clavier",
+    "description": "Utilisez les raccourcis clavier pour naviguer et effectuer des actions rapidement.",
+    "openHelp": "Raccourcis clavier",
+    "categories": {
+      "navigation": "Navigation",
+      "actions": "Actions"
+    },
+    "shortcuts": {
+      "downloadZip": "Télécharger ZIP",
+      "forceSave": "Forcer la sauvegarde",
+      "resetDefaults": "Réinitialiser les paramètres par défaut",
+      "togglePreview": "Basculer l'aperçu",
+      "scrollToCard": "Aller à la carte {{number}}",
+      "toggleDarkMode": "Basculer le mode sombre",
+      "openLanguageSwitcher": "Ouvrir le sélecteur de langue",
+      "closeDialog": "Fermer le dialogue",
+      "openShortcutsHelp": "Ouvrir les raccourcis clavier"
+    },
+    "announced": {
+      "downloadStarted": "Téléchargement démarré",
+      "configReset": "Configuration réinitialisée aux paramètres par défaut",
+      "darkModeToggled": "Mode sombre basculé",
+      "previewToggled": "Aperçu basculé",
+      "scrolledToCard": "Défilement vers la carte {{number}}"
     }
   }
 };

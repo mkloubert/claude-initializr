@@ -88,6 +88,7 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
   - Wymaganiami wstępnymi dla Windows, macOS i Linux
   - Sekcją rozwiązywania problemów
   - Gdy język interfejsu nie jest angielski, zawiera również README.en.md (prosty angielski)
+- **Import/Eksport konfiguracji**: Eksportuj swoją konfigurację jako plik JSON i importuj ją w innej przeglądarce lub urządzeniu
 - **Automatyczne zapisywanie**: Ustawienia są automatycznie zapisywane w localStorage przeglądarki (domyślnie włączone)
 - **Wsparcie wielojęzyczne**: Dostępne w 18 językach:
   - 🌍 Arabski
@@ -112,6 +113,24 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
 - **Wsparcie PWA**: Możliwość instalacji jako Progressive Web App
 - **Pełna dostępność**: Zgodność z WCAG z nawigacją klawiaturową i wsparciem czytników ekranu
 - **Responsywny design**: Zoptymalizowany dla komputerów stacjonarnych i tabletów
+- **Skróty klawiaturowe**: Pełna nawigacja klawiaturowa z konfigurowalnymi skrótami (naciśnij `Ctrl+/` lub `⌘+/` aby wyświetlić wszystkie)
+
+### Skróty klawiaturowe
+
+Wszystkie skróty używają `Ctrl` na Windows/Linux i `⌘` (Cmd) na macOS.
+
+| Skrót | Akcja |
+| ----- | ----- |
+| `Ctrl/⌘ + S` | Pobierz ZIP |
+| `Ctrl/⌘ + E` | Przełącz podgląd |
+| `Ctrl/⌘ + Shift + D` | Przełącz tryb ciemny/jasny |
+| `Ctrl/⌘ + Shift + X` | Przywróć ustawienia domyślne |
+| `Ctrl/⌘ + Shift + L` | Otwórz przełącznik języka |
+| `Ctrl/⌘ + 1-4` | Przewiń do karty (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Otwórz pomoc skrótów klawiaturowych |
+| `Escape` | Zamknij okno dialogowe |
+
+Ikona klawiatury w nagłówku również otwiera okno dialogowe pomocy skrótów.
 
 ### Mechanizm automatycznego zapisywania
 
@@ -127,6 +146,21 @@ Funkcję automatycznego zapisywania można przełączać za pomocą ikony zapisy
 - **Włączenie automatycznego zapisywania**: Natychmiast zapisuje bieżące ustawienia w localStorage
 - **Wyłączenie automatycznego zapisywania**: Usuwa wszystkie zapisane ustawienia z localStorage
 - Preferencja automatycznego zapisywania jest zapamiętywana między sesjami
+
+### Import/Eksport konfiguracji
+
+Możesz udostępniać lub tworzyć kopie zapasowe swojej konfiguracji za pomocą plików JSON:
+
+- **Eksport**: Kliknij ikonę przesyłania w nagłówku, aby pobrać bieżącą konfigurację jako `claude-initializr-config.json`
+- **Import**: Kliknij ikonę pobierania, aby wybrać wcześniej wyeksportowany plik JSON
+
+**Jak to działa:**
+
+- **Eksport** zapisuje wszystkie ustawienia (obraz bazowy, wybór oprogramowania, pakiety, polecenia, uprawnienia, zawartość CLAUDE.md) w jednym pliku JSON
+- **Import** sprawdza plik, wyświetla podgląd zmian i prosi o potwierdzenie przed zastosowaniem
+- Ze względów bezpieczeństwa **wartości zmiennych środowiskowych nigdy nie są dołączane** do eksportowanych plików — eksportowane są tylko nazwy zmiennych
+- Importowane konfiguracje otrzymują nowe wewnętrzne identyfikatory, aby uniknąć konfliktów
+- Format eksportu zawiera pole wersji (`"version": "1.0"`) dla kompatybilności w przód
 
 ### Prywatność i przechowywanie danych
 

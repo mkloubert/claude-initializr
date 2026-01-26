@@ -211,6 +211,36 @@ const hi: Translations = {
     "pl": "पोलिश",
     "tr": "तुर्की"
   },
+  "importExport": {
+    "exportButton": "कॉन्फ़िगरेशन निर्यात करें",
+    "importButton": "कॉन्फ़िगरेशन आयात करें",
+    "exportSuccess": "कॉन्फ़िगरेशन सफलतापूर्वक निर्यात किया गया।",
+    "importSuccess": "कॉन्फ़िगरेशन सफलतापूर्वक आयात किया गया।",
+    "importErrorInvalidFile": "अमान्य फ़ाइल प्रारूप। कृपया एक मान्य JSON फ़ाइल चुनें।",
+    "importErrorValidation": "फ़ाइल में अमान्य कॉन्फ़िगरेशन डेटा है।",
+    "importErrorRead": "फ़ाइल पढ़ी नहीं जा सकी। कृपया पुनः प्रयास करें।",
+    "importConfirmTitle": "कॉन्फ़िगरेशन आयात करें",
+    "importConfirmDescription": "यह आपके वर्तमान कॉन्फ़िगरेशन को बदल देगा। यह क्रिया पूर्ववत नहीं की जा सकती।",
+    "importConfirmApply": "लागू करें",
+    "importConfirmCancel": "रद्द करें",
+    "diffTitle": "परिवर्तन पूर्वावलोकन",
+    "diffBaseImage": "बेस इमेज",
+    "diffNodeVersion": "Node संस्करण",
+    "diffDockerPlatform": "Docker प्लेटफ़ॉर्म",
+    "diffSoftware": "सॉफ़्टवेयर",
+    "diffAptPackages": "APT पैकेज",
+    "diffNpmPackages": "NPM पैकेज",
+    "diffRunCommands": "RUN कमांड",
+    "diffEnvVariables": "पर्यावरण चर",
+    "diffProtectedFiles": "संरक्षित फ़ाइलें",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "अनुमतियाँ",
+    "diffNoChanges": "कोई परिवर्तन नहीं मिला।",
+    "diffCurrent": "वर्तमान",
+    "diffImported": "आयातित",
+    "diffChanged": "बदला गया",
+    "diffUnchanged": "अपरिवर्तित"
+  },
   "errors": {
     "invalidEnvKey": "अमान्य वेरिएबल नाम। केवल अक्षर, संख्याएं और अंडरस्कोर का उपयोग करें।",
     "duplicateEnvKey": "यह वेरिएबल नाम पहले से मौजूद है।",
@@ -418,6 +448,33 @@ const hi: Translations = {
     "software": {
       "title": "इंस्टॉल किया गया सॉफ्टवेयर",
       "description": "निम्नलिखित डेवलपमेंट टूल्स इंस्टॉल हैं:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "कीबोर्ड शॉर्टकट",
+    "description": "तेज़ी से नेविगेट करने और क्रियाएं करने के लिए कीबोर्ड शॉर्टकट का उपयोग करें।",
+    "openHelp": "कीबोर्ड शॉर्टकट",
+    "categories": {
+      "navigation": "नेविगेशन",
+      "actions": "क्रियाएं"
+    },
+    "shortcuts": {
+      "downloadZip": "ZIP डाउनलोड करें",
+      "forceSave": "फ़ोर्स सेव",
+      "resetDefaults": "डिफ़ॉल्ट पर रीसेट करें",
+      "togglePreview": "पूर्वावलोकन टॉगल करें",
+      "scrollToCard": "कार्ड {{number}} पर स्क्रॉल करें",
+      "toggleDarkMode": "डार्क मोड टॉगल करें",
+      "openLanguageSwitcher": "भाषा चयनकर्ता खोलें",
+      "closeDialog": "डायलॉग बंद करें",
+      "openShortcutsHelp": "कीबोर्ड शॉर्टकट खोलें"
+    },
+    "announced": {
+      "downloadStarted": "डाउनलोड शुरू हुआ",
+      "configReset": "कॉन्फ़िगरेशन डिफ़ॉल्ट पर रीसेट किया गया",
+      "darkModeToggled": "डार्क मोड टॉगल किया गया",
+      "previewToggled": "पूर्वावलोकन टॉगल किया गया",
+      "scrolledToCard": "कार्ड {{number}} पर स्क्रॉल किया गया"
     }
   }
 };

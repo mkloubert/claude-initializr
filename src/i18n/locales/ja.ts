@@ -211,6 +211,36 @@ const ja: Translations = {
     "pl": "ポーランド語",
     "tr": "トルコ語"
   },
+  "importExport": {
+    "exportButton": "設定をエクスポート",
+    "importButton": "設定をインポート",
+    "exportSuccess": "設定が正常にエクスポートされました。",
+    "importSuccess": "設定が正常にインポートされました。",
+    "importErrorInvalidFile": "無効なファイル形式です。有効なJSONファイルを選択してください。",
+    "importErrorValidation": "ファイルに無効な設定データが含まれています。",
+    "importErrorRead": "ファイルを読み取れませんでした。もう一度お試しください。",
+    "importConfirmTitle": "設定をインポート",
+    "importConfirmDescription": "現在の設定が置き換えられます。この操作は元に戻せません。",
+    "importConfirmApply": "適用",
+    "importConfirmCancel": "キャンセル",
+    "diffTitle": "変更プレビュー",
+    "diffBaseImage": "ベースイメージ",
+    "diffNodeVersion": "Nodeバージョン",
+    "diffDockerPlatform": "Dockerプラットフォーム",
+    "diffSoftware": "ソフトウェア",
+    "diffAptPackages": "APTパッケージ",
+    "diffNpmPackages": "NPMパッケージ",
+    "diffRunCommands": "RUNコマンド",
+    "diffEnvVariables": "環境変数",
+    "diffProtectedFiles": "保護ファイル",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "権限",
+    "diffNoChanges": "変更は検出されませんでした。",
+    "diffCurrent": "現在",
+    "diffImported": "インポート",
+    "diffChanged": "変更あり",
+    "diffUnchanged": "変更なし"
+  },
   "errors": {
     "invalidEnvKey": "無効な変数名です。文字、数字、アンダースコアのみを使用してください。",
     "duplicateEnvKey": "この変数名は既に存在します。",
@@ -418,6 +448,33 @@ const ja: Translations = {
     "software": {
       "title": "インストール済みソフトウェア",
       "description": "以下の開発ツールがインストールされています："
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "キーボードショートカット",
+    "description": "キーボードショートカットを使用して、素早くナビゲートしアクションを実行できます。",
+    "openHelp": "キーボードショートカット",
+    "categories": {
+      "navigation": "ナビゲーション",
+      "actions": "アクション"
+    },
+    "shortcuts": {
+      "downloadZip": "ZIPをダウンロード",
+      "forceSave": "強制保存",
+      "resetDefaults": "デフォルトにリセット",
+      "togglePreview": "プレビューを切り替え",
+      "scrollToCard": "カード{{number}}にスクロール",
+      "toggleDarkMode": "ダークモードを切り替え",
+      "openLanguageSwitcher": "言語切り替えを開く",
+      "closeDialog": "ダイアログを閉じる",
+      "openShortcutsHelp": "キーボードショートカットを開く"
+    },
+    "announced": {
+      "downloadStarted": "ダウンロードを開始しました",
+      "configReset": "設定をデフォルトにリセットしました",
+      "darkModeToggled": "ダークモードを切り替えました",
+      "previewToggled": "プレビューを切り替えました",
+      "scrolledToCard": "カード{{number}}にスクロールしました"
     }
   }
 };

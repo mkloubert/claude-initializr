@@ -211,6 +211,36 @@ const en: Translations = {
     "pl": "Polish",
     "tr": "Turkish"
   },
+  "importExport": {
+    "exportButton": "Export Config",
+    "importButton": "Import Config",
+    "exportSuccess": "Configuration exported successfully.",
+    "importSuccess": "Configuration imported successfully.",
+    "importErrorInvalidFile": "Invalid file format. Please select a valid JSON file.",
+    "importErrorValidation": "The file contains invalid configuration data.",
+    "importErrorRead": "Could not read the file. Please try again.",
+    "importConfirmTitle": "Import Configuration",
+    "importConfirmDescription": "This will replace your current configuration. This action cannot be undone.",
+    "importConfirmApply": "Apply",
+    "importConfirmCancel": "Cancel",
+    "diffTitle": "Changes Preview",
+    "diffBaseImage": "Base Image",
+    "diffNodeVersion": "Node Version",
+    "diffDockerPlatform": "Docker Platform",
+    "diffSoftware": "Software",
+    "diffAptPackages": "APT Packages",
+    "diffNpmPackages": "NPM Packages",
+    "diffRunCommands": "RUN Commands",
+    "diffEnvVariables": "Environment Variables",
+    "diffProtectedFiles": "Protected Files",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Permissions",
+    "diffNoChanges": "No changes detected.",
+    "diffCurrent": "Current",
+    "diffImported": "Imported",
+    "diffChanged": "Changed",
+    "diffUnchanged": "Unchanged"
+  },
   "errors": {
     "invalidEnvKey": "Invalid variable name. Use only letters, numbers, and underscores.",
     "duplicateEnvKey": "This variable name already exists.",
@@ -418,6 +448,33 @@ const en: Translations = {
     "software": {
       "title": "Installed Software",
       "description": "The following development tools are installed:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Keyboard Shortcuts",
+    "description": "Use keyboard shortcuts to quickly navigate and perform actions.",
+    "openHelp": "Keyboard shortcuts",
+    "categories": {
+      "navigation": "Navigation",
+      "actions": "Actions"
+    },
+    "shortcuts": {
+      "downloadZip": "Download ZIP",
+      "forceSave": "Force save",
+      "resetDefaults": "Reset to defaults",
+      "togglePreview": "Toggle preview",
+      "scrollToCard": "Scroll to card {{number}}",
+      "toggleDarkMode": "Toggle dark mode",
+      "openLanguageSwitcher": "Open language switcher",
+      "closeDialog": "Close dialog",
+      "openShortcutsHelp": "Open keyboard shortcuts"
+    },
+    "announced": {
+      "downloadStarted": "Download started",
+      "configReset": "Configuration reset to defaults",
+      "darkModeToggled": "Dark mode toggled",
+      "previewToggled": "Preview toggled",
+      "scrolledToCard": "Scrolled to card {{number}}"
     }
   }
 };

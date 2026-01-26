@@ -20,6 +20,8 @@
 
 export { AutosaveSwitcher } from './AutosaveSwitcher';
 export { DownloadButton } from './DownloadButton';
+export { ImportExportButtons } from './ImportExportButtons';
+export { KeyboardShortcutsDialog } from './KeyboardShortcutsDialog';
 export { LanguageSwitcher } from './LanguageSwitcher';
 export { ResetButton } from './ResetButton';
 export { ThemeSwitcher } from './ThemeSwitcher';

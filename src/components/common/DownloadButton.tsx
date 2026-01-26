@@ -23,6 +23,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { useConfig } from '@/contexts';
 import { downloadZipFile, type ReadmeLanguageConfig } from '@/services';
+import { getModifierKey } from '@/hooks/useKeyboardShortcuts';
 import { Download, Loader2 } from 'lucide-react';
 
 /**
@@ -87,6 +88,7 @@ export function DownloadButton() {
       disabled={isGenerating}
       size="lg"
       className="gap-2"
+      title={`${t('download.button')} (${getModifierKey()}+S)`}
       aria-busy={isGenerating}
       aria-live="polite"
     >

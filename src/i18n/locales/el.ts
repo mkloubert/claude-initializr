@@ -211,6 +211,36 @@ const el: Translations = {
     "pl": "Πολωνικά",
     "tr": "Τουρκικά"
   },
+  "importExport": {
+    "exportButton": "Εξαγωγή ρυθμίσεων",
+    "importButton": "Εισαγωγή ρυθμίσεων",
+    "exportSuccess": "Οι ρυθμίσεις εξήχθησαν επιτυχώς.",
+    "importSuccess": "Οι ρυθμίσεις εισήχθησαν επιτυχώς.",
+    "importErrorInvalidFile": "Μη έγκυρη μορφή αρχείου. Επιλέξτε ένα έγκυρο αρχείο JSON.",
+    "importErrorValidation": "Το αρχείο περιέχει μη έγκυρα δεδομένα ρυθμίσεων.",
+    "importErrorRead": "Δεν ήταν δυνατή η ανάγνωση του αρχείου. Δοκιμάστε ξανά.",
+    "importConfirmTitle": "Εισαγωγή ρυθμίσεων",
+    "importConfirmDescription": "Αυτό θα αντικαταστήσει τις τρέχουσες ρυθμίσεις σας. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
+    "importConfirmApply": "Εφαρμογή",
+    "importConfirmCancel": "Ακύρωση",
+    "diffTitle": "Προεπισκόπηση αλλαγών",
+    "diffBaseImage": "Βασική εικόνα",
+    "diffNodeVersion": "Έκδοση Node",
+    "diffDockerPlatform": "Πλατφόρμα Docker",
+    "diffSoftware": "Λογισμικό",
+    "diffAptPackages": "Πακέτα APT",
+    "diffNpmPackages": "Πακέτα NPM",
+    "diffRunCommands": "Εντολές RUN",
+    "diffEnvVariables": "Μεταβλητές περιβάλλοντος",
+    "diffProtectedFiles": "Προστατευμένα αρχεία",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Δικαιώματα",
+    "diffNoChanges": "Δεν εντοπίστηκαν αλλαγές.",
+    "diffCurrent": "Τρέχον",
+    "diffImported": "Εισαγόμενο",
+    "diffChanged": "Αλλαγμένο",
+    "diffUnchanged": "Αμετάβλητο"
+  },
   "errors": {
     "invalidEnvKey": "Μη έγκυρο όνομα μεταβλητής. Χρησιμοποιήστε μόνο γράμματα, αριθμούς και κάτω παύλες.",
     "duplicateEnvKey": "Αυτό το όνομα μεταβλητής υπάρχει ήδη.",
@@ -418,6 +448,33 @@ const el: Translations = {
     "software": {
       "title": "Εγκατεστημένο λογισμικό",
       "description": "Τα ακόλουθα εργαλεία ανάπτυξης είναι εγκατεστημένα:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Συντομεύσεις πληκτρολογίου",
+    "description": "Χρησιμοποιήστε συντομεύσεις πληκτρολογίου για γρήγορη πλοήγηση και εκτέλεση ενεργειών.",
+    "openHelp": "Συντομεύσεις πληκτρολογίου",
+    "categories": {
+      "navigation": "Πλοήγηση",
+      "actions": "Ενέργειες"
+    },
+    "shortcuts": {
+      "downloadZip": "Λήψη ZIP",
+      "forceSave": "Αναγκαστική αποθήκευση",
+      "resetDefaults": "Επαναφορά προεπιλογών",
+      "togglePreview": "Εναλλαγή προεπισκόπησης",
+      "scrollToCard": "Κύλιση στην κάρτα {{number}}",
+      "toggleDarkMode": "Εναλλαγή σκοτεινής λειτουργίας",
+      "openLanguageSwitcher": "Άνοιγμα επιλογής γλώσσας",
+      "closeDialog": "Κλείσιμο διαλόγου",
+      "openShortcutsHelp": "Άνοιγμα συντομεύσεων πληκτρολογίου"
+    },
+    "announced": {
+      "downloadStarted": "Η λήψη ξεκίνησε",
+      "configReset": "Η διαμόρφωση επαναφέρθηκε στις προεπιλογές",
+      "darkModeToggled": "Η σκοτεινή λειτουργία εναλλάχθηκε",
+      "previewToggled": "Η προεπισκόπηση εναλλάχθηκε",
+      "scrolledToCard": "Κύλιση στην κάρτα {{number}}"
     }
   }
 };

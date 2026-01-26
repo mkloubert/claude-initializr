@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useMemo, lazy, Suspense } from 'react';
+import { useMemo, useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/contexts';
 import { PERMISSIONS_DOCS_URL } from '@/config/env';
@@ -95,6 +95,17 @@ export function SettingsJsonCard() {
     [config.claudePermissions.deny]
   );
 
+  const [activeTab, setActiveTab] = useState('permissions');
+
+  const handleTogglePreview = useCallback(() => {
+    setActiveTab((prev) => (prev === 'preview' ? 'permissions' : 'preview'));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('toggle-preview', handleTogglePreview);
+    return () => window.removeEventListener('toggle-preview', handleTogglePreview);
+  }, [handleTogglePreview]);
+
   const renderPermissionSection = (
     category: PermissionCategory,
     rules: typeof sortedAllowRules,
@@ -143,13 +154,13 @@ export function SettingsJsonCard() {
   );
 
   return (
-    <Card>
+    <Card id="card-settings-json">
       <CardHeader>
         <CardTitle>{t('settings.title')}</CardTitle>
         <CardDescription>{t('settings.description')}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="permissions">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="permissions" className="gap-2">
               <Shield className="h-4 w-4" aria-hidden="true" />

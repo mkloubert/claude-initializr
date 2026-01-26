@@ -88,6 +88,7 @@ Uma aplicação web para gerar arquivos de configuração Docker para executar o
   - Pré-requisitos para Windows, macOS e Linux
   - Seção de solução de problemas
   - Quando o idioma da interface não é inglês, também inclui README.en.md (inglês simples)
+- **Importar/Exportar configuração**: Exporte sua configuração como arquivo JSON e importe-a em outro navegador ou dispositivo
 - **Salvamento automático**: As configurações são salvas automaticamente no localStorage do seu navegador (habilitado por padrão)
 - **Suporte multilíngue**: Disponível em 18 idiomas:
   - 🌍 Árabe
@@ -112,6 +113,24 @@ Uma aplicação web para gerar arquivos de configuração Docker para executar o
 - **Suporte PWA**: Instalável como Progressive Web App
 - **Totalmente acessível**: Compatível com WCAG com navegação por teclado e suporte a leitores de tela
 - **Design responsivo**: Otimizado para desktop e tablet
+- **Atalhos de teclado**: Navegação completa por teclado com atalhos personalizáveis (pressione `Ctrl+/` ou `⌘+/` para ver todos)
+
+### Atalhos de teclado
+
+Todos os atalhos usam `Ctrl` no Windows/Linux e `⌘` (Cmd) no macOS.
+
+| Atalho | Ação |
+| ------ | ---- |
+| `Ctrl/⌘ + S` | Baixar ZIP |
+| `Ctrl/⌘ + E` | Alternar visualização |
+| `Ctrl/⌘ + Shift + D` | Alternar modo escuro/claro |
+| `Ctrl/⌘ + Shift + X` | Restaurar padrões |
+| `Ctrl/⌘ + Shift + L` | Abrir seletor de idioma |
+| `Ctrl/⌘ + 1-4` | Rolar até o cartão (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Abrir ajuda de atalhos de teclado |
+| `Escape` | Fechar diálogo |
+
+Um ícone de teclado no cabeçalho também abre o diálogo de ajuda dos atalhos.
 
 ### Mecanismo de salvamento automático
 
@@ -127,6 +146,21 @@ A função de salvamento automático pode ser ativada/desativada usando o ícone
 - **Habilitar salvamento automático**: Salva imediatamente as configurações atuais no localStorage
 - **Desabilitar salvamento automático**: Limpa todas as configurações salvas do localStorage
 - Sua preferência de salvamento automático é lembrada entre sessões
+
+### Importar/Exportar configuração
+
+Você pode compartilhar ou fazer backup da sua configuração através de arquivos JSON:
+
+- **Exportar**: Clique no ícone de upload no cabeçalho para baixar sua configuração atual como `claude-initializr-config.json`
+- **Importar**: Clique no ícone de download para selecionar um arquivo JSON previamente exportado
+
+**Como funciona:**
+
+- **A exportação** salva todas as configurações (imagem base, seleção de software, pacotes, comandos, permissões, conteúdo do CLAUDE.md) em um único arquivo JSON
+- **A importação** valida o arquivo, mostra uma prévia das diferenças e solicita confirmação antes de aplicar
+- Por segurança, os **valores das variáveis de ambiente nunca são incluídos** nos arquivos exportados — apenas os nomes das variáveis são exportados
+- As configurações importadas recebem novos identificadores internos para evitar conflitos
+- O formato de exportação inclui um campo de versão (`"version": "1.0"`) para compatibilidade futura
 
 ### Privacidade e armazenamento de dados
 

@@ -211,6 +211,36 @@ const ur: Translations = {
     "pl": "پولش",
     "tr": "ترکی"
   },
+  "importExport": {
+    "exportButton": "ترتیب برآمد کریں",
+    "importButton": "ترتیب درآمد کریں",
+    "exportSuccess": "ترتیب کامیابی سے برآمد ہو گئی۔",
+    "importSuccess": "ترتیب کامیابی سے درآمد ہو گئی۔",
+    "importErrorInvalidFile": "غلط فائل فارمیٹ۔ براہ کرم ایک درست JSON فائل منتخب کریں۔",
+    "importErrorValidation": "فائل میں غلط ترتیب ڈیٹا موجود ہے۔",
+    "importErrorRead": "فائل پڑھی نہیں جا سکی۔ براہ کرم دوبارہ کوشش کریں۔",
+    "importConfirmTitle": "ترتیب درآمد کریں",
+    "importConfirmDescription": "یہ آپ کی موجودہ ترتیب کو تبدیل کر دے گا۔ یہ عمل واپس نہیں ہو سکتا۔",
+    "importConfirmApply": "لاگو کریں",
+    "importConfirmCancel": "منسوخ کریں",
+    "diffTitle": "تبدیلیوں کا جائزہ",
+    "diffBaseImage": "بنیادی امیج",
+    "diffNodeVersion": "Node ورژن",
+    "diffDockerPlatform": "Docker پلیٹ فارم",
+    "diffSoftware": "سافٹ ویئر",
+    "diffAptPackages": "APT پیکیجز",
+    "diffNpmPackages": "NPM پیکیجز",
+    "diffRunCommands": "RUN کمانڈز",
+    "diffEnvVariables": "ماحولیاتی متغیرات",
+    "diffProtectedFiles": "محفوظ فائلیں",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "اجازتیں",
+    "diffNoChanges": "کوئی تبدیلی نہیں ملی۔",
+    "diffCurrent": "موجودہ",
+    "diffImported": "درآمد شدہ",
+    "diffChanged": "تبدیل شدہ",
+    "diffUnchanged": "غیر تبدیل شدہ"
+  },
   "errors": {
     "invalidEnvKey": "غلط متغیر نام۔ صرف حروف، نمبر اور انڈر سکور استعمال کریں۔",
     "duplicateEnvKey": "یہ متغیر نام پہلے سے موجود ہے۔",
@@ -418,6 +448,33 @@ const ur: Translations = {
     "software": {
       "title": "انسٹال شدہ سافٹ ویئر",
       "description": "درج ذیل ڈیولپمنٹ ٹولز انسٹال ہیں:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "کی بورڈ شارٹ کٹس",
+    "description": "تیزی سے نیویگیٹ کرنے اور عمل انجام دینے کے لیے کی بورڈ شارٹ کٹس استعمال کریں۔",
+    "openHelp": "کی بورڈ شارٹ کٹس",
+    "categories": {
+      "navigation": "نیویگیشن",
+      "actions": "اعمال"
+    },
+    "shortcuts": {
+      "downloadZip": "ZIP ڈاؤن لوڈ کریں",
+      "forceSave": "زبردستی محفوظ کریں",
+      "resetDefaults": "ڈیفالٹ پر ری سیٹ کریں",
+      "togglePreview": "پیش نظارہ ٹوگل کریں",
+      "scrollToCard": "کارڈ {{number}} پر سکرول کریں",
+      "toggleDarkMode": "ڈارک موڈ ٹوگل کریں",
+      "openLanguageSwitcher": "زبان منتخب کنندہ کھولیں",
+      "closeDialog": "ڈائیلاگ بند کریں",
+      "openShortcutsHelp": "کی بورڈ شارٹ کٹس کھولیں"
+    },
+    "announced": {
+      "downloadStarted": "ڈاؤن لوڈ شروع ہو گیا",
+      "configReset": "کنفیگریشن ڈیفالٹ پر ری سیٹ ہو گئی",
+      "darkModeToggled": "ڈارک موڈ ٹوگل ہو گیا",
+      "previewToggled": "پیش نظارہ ٹوگل ہو گیا",
+      "scrolledToCard": "کارڈ {{number}} پر سکرول ہو گیا"
     }
   }
 };

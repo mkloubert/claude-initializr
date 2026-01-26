@@ -34,8 +34,8 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 
 ### Dockerfile-Konfiguration
 
-- **Basis-Image**: Konfigurieren Sie den Namen und die Version des Docker-Basis-Images (Standard: `node:24`)
-- **Software-Auswahl**: Wählen Sie zusätzliche Software zur Installation:
+- **Basis-Image**: Konfiguriere den Namen und die Version des Docker-Basis-Images (Standard: `node:24`)
+- **Software-Auswahl**: Wähle zusätzliche Software zur Installation:
   - ffmpeg (Audio-/Videoverarbeitung)
   - Flutter (enthält Dart und Android SDK)
   - Go
@@ -45,20 +45,20 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
   - TypeScript
   - uv (schneller Python-Paketinstaller, empfiehlt Python)
 - **Versionskonfiguration**: Software-Versionen werden über Docker-Build-Argumente konfiguriert (z.B. `--build-arg GO_VERSION=1.22.0`)
-- **Benutzerdefinierte APT-Pakete**: Fügen Sie zusätzliche Debian/Ubuntu-Pakete zur Installation im Container hinzu
-- **Benutzerdefinierte NPM-Pakete**: Fügen Sie zusätzliche NPM-Pakete zur globalen Installation hinzu, mit der Option als `root` oder `node` Benutzer zu installieren
-- **Benutzerdefinierte RUN-Befehle**: Fügen Sie benutzerdefinierte Shell-Befehle hinzu, die während des Docker-Image-Builds ausgeführt werden, mit der Option als `root` oder `node` Benutzer auszuführen
+- **Benutzerdefinierte APT-Pakete**: Füge zusätzliche Debian/Ubuntu-Pakete zur Installation im Container hinzu
+- **Benutzerdefinierte NPM-Pakete**: Füge zusätzliche NPM-Pakete zur globalen Installation hinzu, mit der Option als `root` oder `node` Benutzer zu installieren
+- **Benutzerdefinierte RUN-Befehle**: Füge benutzerdefinierte Shell-Befehle hinzu, die während des Docker-Image-Builds ausgeführt werden, mit der Option als `root` oder `node` Benutzer auszuführen
 
 ### docker-compose.yaml Konfiguration
 
-- **Umgebungsvariablen**: Konfigurieren Sie Umgebungsvariablen für Ihre `.env`-Datei
-- **Geschützte Dateien**: Geben Sie Dateien an, die durch das Einbinden leerer schreibgeschützter Dateien geschützt werden sollen (verhindert Zugriff auf sensible Dateien wie `.env.local`)
+- **Umgebungsvariablen**: Konfiguriere Umgebungsvariablen für deine `.env`-Datei
+- **Geschützte Dateien**: Gib Dateien an, die durch das Einbinden leerer schreibgeschützter Dateien geschützt werden sollen (verhindert Zugriff auf sensible Dateien wie `.env.local`)
 
 ### CLAUDE.md Editor
 
 - Markdown-Editor mit Syntax-Hervorhebung
 - Integrierte Vorschaufunktion
-- Schreiben Sie projektspezifische Anweisungen für Claude
+- Schreibe projektspezifische Anweisungen für Claude
 
 ### settings.json Konfiguration
 
@@ -75,8 +75,8 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 
 ### Allgemeine Funktionen
 
-- **Live-Vorschau**: Sehen Sie Echtzeit-Vorschauen der generierten Konfigurationsdateien
-- **ZIP-Download**: Laden Sie alle Dateien als einsatzbereites ZIP-Archiv herunter
+- **Live-Vorschau**: Echtzeit-Vorschauen der generierten Konfigurationsdateien
+- **ZIP-Download**: Lade alle Dateien als einsatzbereites ZIP-Archiv herunter
 - **Automatische README-Generierung**: Jedes ZIP enthält eine detaillierte README.md mit:
   - Dateiübersicht und Beschreibungen
   - Basis-Image-Informationen mit Docker Hub Links
@@ -88,7 +88,8 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
   - Voraussetzungen für Windows, macOS und Linux
   - Fehlerbehebungsabschnitt
   - Bei nicht-englischer UI-Sprache wird auch README.en.md (Einfaches Englisch) eingeschlossen
-- **Automatisches Speichern**: Einstellungen werden automatisch im localStorage Ihres Browsers gespeichert (standardmäßig aktiviert)
+- **Konfiguration Import/Export**: Exportiere deine Konfiguration als JSON-Datei und importiere sie in einem anderen Browser oder Gerät
+- **Automatisches Speichern**: Einstellungen werden automatisch im localStorage deines Browsers gespeichert (standardmäßig aktiviert)
 - **Mehrsprachige Unterstützung**: Verfügbar in 18 Sprachen:
   - 🌍 Arabisch
   - 🇨🇳 Chinesisch
@@ -112,6 +113,24 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 - **PWA-Unterstützung**: Installierbar als Progressive Web App
 - **Vollständig barrierefrei**: WCAG-konform mit Tastaturnavigation und Screenreader-Unterstützung
 - **Responsives Design**: Optimiert für Desktop und Tablet
+- **Tastaturkürzel**: Vollständige Tastaturnavigation mit anpassbaren Kürzeln (drücke `Ctrl+/` oder `⌘+/` zur Anzeige aller Kürzel)
+
+### Tastaturkürzel
+
+Alle Kürzel verwenden `Ctrl` unter Windows/Linux und `⌘` (Cmd) unter macOS.
+
+| Kürzel | Aktion |
+| ------ | ------ |
+| `Ctrl/⌘ + S` | ZIP herunterladen |
+| `Ctrl/⌘ + E` | Vorschau umschalten |
+| `Ctrl/⌘ + Shift + D` | Dunkles/Helles Design umschalten |
+| `Ctrl/⌘ + Shift + X` | Auf Standardwerte zurücksetzen |
+| `Ctrl/⌘ + Shift + L` | Sprachumschalter öffnen |
+| `Ctrl/⌘ + 1-4` | Zur Karte scrollen (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Tastaturkürzel-Hilfe öffnen |
+| `Escape` | Dialog schließen |
+
+Ein Tastatursymbol in der Kopfzeile öffnet ebenfalls den Tastaturkürzel-Hilfedialog.
 
 ### Automatisches Speichern
 
@@ -126,16 +145,31 @@ Die Autosave-Funktion kann über das Speicher-Symbol in der Kopfzeile umgeschalt
 
 - **Aktivieren des Autosave**: Speichert sofort aktuelle Einstellungen im localStorage
 - **Deaktivieren des Autosave**: Löscht alle gespeicherten Einstellungen aus dem localStorage
-- Ihre Autosave-Präferenz wird über Sitzungen hinweg gespeichert
+- Deine Autosave-Präferenz wird über Sitzungen hinweg gespeichert
+
+### Konfiguration Import/Export
+
+Du kannst deine Konfiguration über JSON-Dateien teilen oder sichern:
+
+- **Exportieren**: Klicke auf das Upload-Symbol in der Kopfzeile, um deine aktuelle Konfiguration als `claude-initializr-config.json` herunterzuladen
+- **Importieren**: Klicke auf das Download-Symbol, um eine zuvor exportierte JSON-Datei auszuwählen
+
+**Funktionsweise:**
+
+- **Export** speichert alle Einstellungen (Basis-Image, Software-Auswahl, Pakete, Befehle, Berechtigungen, CLAUDE.md-Inhalt) in einer einzelnen JSON-Datei
+- **Import** validiert die Datei, zeigt eine Diff-Vorschau der Änderungen und fragt vor dem Anwenden um Bestätigung
+- Aus Sicherheitsgründen werden **Umgebungsvariablen-Werte nie** in exportierten Dateien enthalten — nur die Variablennamen werden exportiert
+- Importierte Konfigurationen erhalten neue interne IDs, um Konflikte zu vermeiden
+- Das Exportformat enthält ein Versionsfeld (`"version": "1.0"`) für Vorwärtskompatibilität
 
 ### Datenschutz & Datenspeicherung
 
-Diese Anwendung respektiert Ihre Privatsphäre:
+Diese Anwendung respektiert deine Privatsphäre:
 
-- **Nur lokale Speicherung**: Alle Einstellungen werden lokal in Ihrem Browser gespeichert (localStorage)
+- **Nur lokale Speicherung**: Alle Einstellungen werden lokal in deinem Browser gespeichert (localStorage)
 - **Keine Serverkommunikation**: Es werden niemals Daten an einen Server gesendet
 - **Sicher durch Design**: Umgebungsvariablen-**Werte werden niemals gespeichert** - nur Variablennamen werden gespeichert
-- **Volle Kontrolle**: Sie können das automatische Speichern jederzeit über den Schalter in der Kopfzeile deaktivieren, was auch alle gespeicherten Daten löscht
+- **Volle Kontrolle**: Du kannst das automatische Speichern jederzeit über den Schalter in der Kopfzeile deaktivieren, was auch alle gespeicherten Daten löscht
 - **Sitzungsbasiertes Design**: Die Design-Präferenz wird beim Neuladen der Seite auf den Systemstandard zurückgesetzt
 
 ## Sicherheitsfunktionen
@@ -205,7 +239,7 @@ npm run preview
 
 ### Umgebungsvariablen
 
-Passen Sie die Anwendung mit Umgebungsvariablen an. Erstellen Sie eine `.env`-Datei:
+Passe die Anwendung mit Umgebungsvariablen an. Erstelle eine `.env`-Datei:
 
 ```bash
 # GitHub-Repository-URL (optional, leer lassen zum Ausblenden)
@@ -226,43 +260,43 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
 ## Verwendung
 
-1. **Basis-Image konfigurieren**: Legen Sie den Namen und die Version des Docker-Basis-Images fest (z.B. `node:24` oder `node:22-slim`)
+1. **Basis-Image konfigurieren**: Lege den Namen und die Version des Docker-Basis-Images fest (z.B. `node:24` oder `node:22-slim`)
 
-2. **Software auswählen**: Wählen Sie, welche zusätzliche Software in Ihrem Container installiert werden soll
+2. **Software auswählen**: Wähle, welche zusätzliche Software in deinem Container installiert werden soll
 
 3. **Benutzerdefinierte Pakete & Befehle hinzufügen**:
-   - Fügen Sie benutzerdefinierte APT-Pakete hinzu (z.B. `curl`, `graphviz`, `sqlite3`)
-   - Fügen Sie benutzerdefinierte NPM-Pakete zur globalen Installation hinzu (z.B. `eslint`, `prettier`)
-   - Wählen Sie, ob NPM-Pakete als `node` (Standard) oder `root` Benutzer installiert werden sollen
-   - Fügen Sie benutzerdefinierte RUN-Befehle zur Ausführung während des Builds hinzu (z.B. `pip install numpy`)
-   - Wählen Sie, ob RUN-Befehle als `node` (Standard) oder `root` Benutzer ausgeführt werden sollen
+   - Füge benutzerdefinierte APT-Pakete hinzu (z.B. `curl`, `graphviz`, `sqlite3`)
+   - Füge benutzerdefinierte NPM-Pakete zur globalen Installation hinzu (z.B. `eslint`, `prettier`)
+   - Wähle, ob NPM-Pakete als `node` (Standard) oder `root` Benutzer installiert werden sollen
+   - Füge benutzerdefinierte RUN-Befehle zur Ausführung während des Builds hinzu (z.B. `pip install numpy`)
+   - Wähle, ob RUN-Befehle als `node` (Standard) oder `root` Benutzer ausgeführt werden sollen
 
-4. **Umgebungsvariablen festlegen**: Fügen Sie alle Umgebungsvariablen hinzu, die Ihr Projekt benötigt (z.B. `ANTHROPIC_API_KEY`)
+4. **Umgebungsvariablen festlegen**: Füge alle Umgebungsvariablen hinzu, die dein Projekt benötigt (z.B. `ANTHROPIC_API_KEY`)
 
-5. **Sensible Dateien schützen**: Fügen Sie Pfade zu Dateien hinzu, die geschützt werden sollen (z.B. `.env.local`)
+5. **Sensible Dateien schützen**: Füge Pfade zu Dateien hinzu, die geschützt werden sollen (z.B. `.env.local`)
 
-6. **CLAUDE.md bearbeiten**: Schreiben Sie Anweisungen für Claude im Markdown-Editor
+6. **CLAUDE.md bearbeiten**: Schreibe Anweisungen für Claude im Markdown-Editor
 
-7. **Berechtigungen konfigurieren**: Richten Sie Berechtigungsregeln in der settings.json Karte ein
-   - Fügen Sie `Allow` Regeln für automatisch genehmigte Operationen hinzu
-   - Fügen Sie `Ask` Regeln für Operationen mit Bestätigung hinzu
-   - Fügen Sie `Deny` Regeln für verbotene Operationen hinzu
+7. **Berechtigungen konfigurieren**: Richte Berechtigungsregeln in der settings.json Karte ein
+   - Füge `Allow` Regeln für automatisch genehmigte Operationen hinzu
+   - Füge `Ask` Regeln für Operationen mit Bestätigung hinzu
+   - Füge `Deny` Regeln für verbotene Operationen hinzu
    - Geschützte Dateien werden automatisch als `Read()` Deny-Regeln hinzugefügt
 
-8. **Vorschau**: Überprüfen Sie die generierten Konfigurationsdateien in den Vorschau-Tabs
+8. **Vorschau**: Überprüfe die generierten Konfigurationsdateien in den Vorschau-Tabs
 
-9. **Herunterladen**: Klicken Sie auf "ZIP herunterladen", um alle Dateien zu erhalten
+9. **Herunterladen**: Klicke auf "ZIP herunterladen", um alle Dateien zu erhalten
 
 ## Verwendung der generierten Dateien
 
-1. Entpacken Sie die ZIP-Datei in Ihr Projektverzeichnis
+1. Entpacke die ZIP-Datei in dein Projektverzeichnis
 
-2. Kopieren Sie Ihre Projektdateien in den `workspace`-Ordner (oder binden Sie Ihr bestehendes Projekt ein)
+2. Kopiere deine Projektdateien in den `workspace`-Ordner (oder binde dein bestehendes Projekt ein)
 
-3. Setzen Sie Ihren API-Schlüssel in der `.env`-Datei:
+3. Setze deinen API-Schlüssel in der `.env`-Datei:
 
    ```bash
-   ANTHROPIC_API_KEY=ihr-api-schlüssel-hier
+   ANTHROPIC_API_KEY=dein-api-schlüssel-hier
    ```
 
 4. Container erstellen und starten:
@@ -273,7 +307,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    **Optional: Benutzerdefinierte Software-Versionen**
 
-   Software-Versionen können über Build-Argumente konfiguriert werden. Verwenden Sie `latest` für dynamische Versionserkennung oder geben Sie eine explizite Version an:
+   Software-Versionen können über Build-Argumente konfiguriert werden. Verwende `latest` für dynamische Versionserkennung oder gib eine explizite Version an:
 
    ```bash
    docker compose build \
@@ -295,7 +329,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
    **Optional: Benutzerdefinierte Download-URLs**
 
-   Wenn Sie einen Mirror oder Proxy für Paket-Downloads verwenden möchten, können Sie die Standard-URLs beim Build überschreiben. Alle URLs unterstützen Query-Parameter:
+   Wenn du einen Mirror oder Proxy für Paket-Downloads verwenden möchtest, kannst du die Standard-URLs beim Build überschreiben. Alle URLs unterstützen Query-Parameter:
 
    ```bash
    docker compose build \
@@ -335,7 +369,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 │   ├── .claude/
 │   │   └── settings.json    # Claude-Einstellungen
 │   ├── .empty               # Leere Datei für geschützte Mounts
-│   └── CLAUDE.md            # Ihre Claude-Anweisungen
+│   └── CLAUDE.md            # Deine Claude-Anweisungen
 ├── .env                     # Umgebungsvariablen
 ├── Dockerfile               # Container-Definition
 ├── docker-compose.yaml      # Docker Compose-Konfiguration
@@ -346,7 +380,7 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
 ### Firewall-Probleme
 
-Wenn Sie nach dem Aktivieren der Firewall Netzwerkprobleme haben:
+Wenn du nach dem Aktivieren der Firewall Netzwerkprobleme hast:
 
 ```bash
 # Firewall-Status prüfen
@@ -371,7 +405,7 @@ docker compose build --no-cache
 
 ### Zugriff verweigert
 
-Stellen Sie sicher, dass das Workspace-Verzeichnis die richtigen Berechtigungen hat:
+Stelle sicher, dass das Workspace-Verzeichnis die richtigen Berechtigungen hat:
 
 ```bash
 chmod -R 755 workspace
@@ -379,7 +413,7 @@ chmod -R 755 workspace
 
 ### Anwendungseinstellungen zurücksetzen
 
-Um alle gespeicherten Einstellungen zu löschen und neu zu beginnen, öffnen Sie die Entwicklerkonsole Ihres Browsers und führen Sie aus:
+Um alle gespeicherten Einstellungen zu löschen und neu zu beginnen, öffne die Entwicklerkonsole deines Browsers und führe aus:
 
 ```javascript
 localStorage.removeItem("claude-initializr-config");
@@ -387,9 +421,9 @@ localStorage.removeItem("claude-initializr-welcome-dismissed");
 localStorage.removeItem("claude-initializr-autosave");
 ```
 
-Laden Sie dann die Seite neu.
+Lade dann die Seite neu.
 
-Alternativ können Sie das automatische Speichern über den Schalter in der Kopfzeile deaktivieren, um zu verhindern, dass Einstellungen gespeichert werden.
+Alternativ kannst du das automatische Speichern über den Schalter in der Kopfzeile deaktivieren, um zu verhindern, dass Einstellungen gespeichert werden.
 
 ## Tech-Stack
 
@@ -404,21 +438,21 @@ Alternativ können Sie das automatische Speichern über den Schalter in der Kopf
 
 ## Mitwirken
 
-Beiträge sind willkommen! Bitte reichen Sie gerne einen Pull Request ein.
+Beiträge sind willkommen! Bitte reiche gerne einen Pull Request ein.
 
-1. Forken Sie das Repository
-2. Erstellen Sie Ihren Feature-Branch (`git checkout -b feature/tolles-feature`)
-3. Committen Sie Ihre Änderungen (`git commit -m 'Tolles Feature hinzufügen'`)
-4. Pushen Sie zum Branch (`git push origin feature/tolles-feature`)
-5. Öffnen Sie einen Pull Request
+1. Forke das Repository
+2. Erstelle deinen Feature-Branch (`git checkout -b feature/tolles-feature`)
+3. Committe deine Änderungen (`git commit -m 'Tolles Feature hinzufügen'`)
+4. Pushe zum Branch (`git push origin feature/tolles-feature`)
+5. Öffne einen Pull Request
 
 ### Eine neue Sprache hinzufügen
 
-1. Erstellen Sie eine neue Locale-Datei in `src/i18n/locales/` (z.B. `fr.ts`)
-2. Importieren und implementieren Sie das `Translations`-Interface aus `types.ts`
-3. Kopieren Sie die Struktur von `en.ts` und übersetzen Sie alle Strings
-4. Fügen Sie den Sprach-Import zu `src/i18n/index.ts` hinzu
-5. Fügen Sie die Sprachoption zu `LanguageSwitcher.tsx` hinzu
+1. Erstelle eine neue Locale-Datei in `src/i18n/locales/` (z.B. `fr.ts`)
+2. Importiere und implementiere das `Translations`-Interface aus `types.ts`
+3. Kopiere die Struktur von `en.ts` und übersetze alle Strings
+4. Füge den Sprach-Import zu `src/i18n/index.ts` hinzu
+5. Füge die Sprachoption zu `LanguageSwitcher.tsx` hinzu
 
 ## Barrierefreiheit
 
@@ -435,7 +469,7 @@ Diese Anwendung ist vollständig barrierefrei gestaltet:
 
 Releases werden automatisch über GitHub Actions erstellt. Um ein neues Release zu erstellen:
 
-1. Erstellen und pushen Sie einen Versions-Tag:
+1. Erstelle und pushe einen Versions-Tag:
    ```bash
    git tag v1.0.0
    git push origin v1.0.0
@@ -450,9 +484,9 @@ Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
 ## Unterstützung
 
-Wenn Sie dieses Projekt nützlich finden, erwägen Sie es zu unterstützen:
+Wenn du dieses Projekt nützlich findest, erwäge es zu unterstützen:
 
-- ⭐ Geben Sie dem Repository einen Stern auf [GitHub](https://github.com/mkloubert/claude-initializr)
+- ⭐ Gib dem Repository einen Stern auf [GitHub](https://github.com/mkloubert/claude-initializr)
 - 💝 [Über PayPal spenden](https://paypal.me/mjkloubert)
 
 ## Lizenz

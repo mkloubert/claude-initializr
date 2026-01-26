@@ -230,6 +230,20 @@ export const defaultAppConfig: AppConfig = {
 };
 
 /**
+ * Versioned export wrapper for sharing and backing up configurations.
+ */
+export interface ConfigExportData {
+  /** Schema version for forward compatibility (e.g., "1.0") */
+  version: string;
+  /** Application version that created this export */
+  appVersion: string;
+  /** ISO 8601 timestamp of when the export was created */
+  exportedAt: string;
+  /** The complete application configuration */
+  config: AppConfig;
+}
+
+/**
  * Default telemetry-disabling environment variables for Claude Code.
  * These are automatically added when envVariables is undefined (initial load).
  */

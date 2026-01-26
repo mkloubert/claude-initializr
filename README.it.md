@@ -88,6 +88,7 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
   - Prerequisiti per Windows, macOS e Linux
   - Sezione risoluzione problemi
   - Quando la lingua dell'interfaccia non è inglese, include anche README.en.md (inglese semplice)
+- **Import/Export configurazione**: Esporta la tua configurazione come file JSON e importala su un altro browser o dispositivo
 - **Salvataggio automatico**: Le impostazioni vengono salvate automaticamente nel localStorage del browser (abilitato per impostazione predefinita)
 - **Supporto multilingue**: Disponibile in 18 lingue:
   - 🌍 Arabo
@@ -112,6 +113,24 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
 - **Supporto PWA**: Installabile come Progressive Web App
 - **Completamente accessibile**: Conforme WCAG con navigazione da tastiera e supporto per screen reader
 - **Design responsive**: Ottimizzato per desktop e tablet
+- **Scorciatoie da tastiera**: Navigazione completa da tastiera con scorciatoie personalizzabili (premi `Ctrl+/` o `⌘+/` per visualizzarle tutte)
+
+### Scorciatoie da tastiera
+
+Tutte le scorciatoie usano `Ctrl` su Windows/Linux e `⌘` (Cmd) su macOS.
+
+| Scorciatoia | Azione |
+| ----------- | ------ |
+| `Ctrl/⌘ + S` | Scarica ZIP |
+| `Ctrl/⌘ + E` | Attiva/disattiva anteprima |
+| `Ctrl/⌘ + Shift + D` | Attiva/disattiva tema scuro/chiaro |
+| `Ctrl/⌘ + Shift + X` | Ripristina impostazioni predefinite |
+| `Ctrl/⌘ + Shift + L` | Apri selettore lingua |
+| `Ctrl/⌘ + 1-4` | Scorri alla scheda (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Apri guida scorciatoie da tastiera |
+| `Escape` | Chiudi finestra di dialogo |
+
+Un'icona tastiera nell'intestazione apre anche la finestra di dialogo delle scorciatoie.
 
 ### Meccanismo di salvataggio automatico
 
@@ -127,6 +146,21 @@ La funzione di salvataggio automatico può essere attivata/disattivata usando l'
 - **Abilitare il salvataggio automatico**: Salva immediatamente le impostazioni correnti nel localStorage
 - **Disabilitare il salvataggio automatico**: Cancella tutte le impostazioni salvate dal localStorage
 - La tua preferenza di salvataggio automatico viene ricordata tra le sessioni
+
+### Import/Export configurazione
+
+Puoi condividere o fare il backup della tua configurazione tramite file JSON:
+
+- **Esportare**: Clicca sull'icona di caricamento nell'intestazione per scaricare la tua configurazione attuale come `claude-initializr-config.json`
+- **Importare**: Clicca sull'icona di download per selezionare un file JSON precedentemente esportato
+
+**Come funziona:**
+
+- **L'esportazione** salva tutte le impostazioni (immagine base, selezione software, pacchetti, comandi, permessi, contenuto CLAUDE.md) in un unico file JSON
+- **L'importazione** valida il file, mostra un'anteprima delle differenze e chiede conferma prima di applicare
+- Per sicurezza, i **valori delle variabili d'ambiente non vengono mai inclusi** nei file esportati — vengono esportati solo i nomi delle variabili
+- Le configurazioni importate ricevono nuovi identificatori interni per evitare conflitti
+- Il formato di esportazione include un campo versione (`"version": "1.0"`) per la compatibilità futura
 
 ### Privacy e archiviazione dati
 

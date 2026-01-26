@@ -165,7 +165,7 @@ export function ClaudeMdCard() {
   ], []);
 
   return (
-    <Card>
+    <Card id="card-claude-md">
       <CardHeader>
         <CardTitle>{t('claudeMd.title')}</CardTitle>
         <CardDescription>{t('claudeMd.description')}</CardDescription>

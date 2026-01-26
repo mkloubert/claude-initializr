@@ -211,6 +211,36 @@ const it: Translations = {
     "pl": "polacco",
     "tr": "turco"
   },
+  "importExport": {
+    "exportButton": "Esporta configurazione",
+    "importButton": "Importa configurazione",
+    "exportSuccess": "Configurazione esportata con successo.",
+    "importSuccess": "Configurazione importata con successo.",
+    "importErrorInvalidFile": "Formato file non valido. Seleziona un file JSON valido.",
+    "importErrorValidation": "Il file contiene dati di configurazione non validi.",
+    "importErrorRead": "Impossibile leggere il file. Riprova.",
+    "importConfirmTitle": "Importa configurazione",
+    "importConfirmDescription": "Questo sostituirà la configurazione attuale. Questa azione non può essere annullata.",
+    "importConfirmApply": "Applica",
+    "importConfirmCancel": "Annulla",
+    "diffTitle": "Anteprima modifiche",
+    "diffBaseImage": "Immagine base",
+    "diffNodeVersion": "Versione Node",
+    "diffDockerPlatform": "Piattaforma Docker",
+    "diffSoftware": "Software",
+    "diffAptPackages": "Pacchetti APT",
+    "diffNpmPackages": "Pacchetti NPM",
+    "diffRunCommands": "Comandi RUN",
+    "diffEnvVariables": "Variabili d'ambiente",
+    "diffProtectedFiles": "File protetti",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Permessi",
+    "diffNoChanges": "Nessuna modifica rilevata.",
+    "diffCurrent": "Attuale",
+    "diffImported": "Importato",
+    "diffChanged": "Modificato",
+    "diffUnchanged": "Invariato"
+  },
   "errors": {
     "invalidEnvKey": "Nome variabile non valido. Usa solo lettere, numeri e underscore.",
     "duplicateEnvKey": "Questo nome di variabile esiste già.",
@@ -418,6 +448,33 @@ const it: Translations = {
     "software": {
       "title": "Software installato",
       "description": "I seguenti strumenti di sviluppo sono installati:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Scorciatoie da tastiera",
+    "description": "Usa le scorciatoie da tastiera per navigare ed eseguire azioni rapidamente.",
+    "openHelp": "Scorciatoie da tastiera",
+    "categories": {
+      "navigation": "Navigazione",
+      "actions": "Azioni"
+    },
+    "shortcuts": {
+      "downloadZip": "Scarica ZIP",
+      "forceSave": "Forza salvataggio",
+      "resetDefaults": "Ripristina valori predefiniti",
+      "togglePreview": "Attiva/disattiva anteprima",
+      "scrollToCard": "Vai alla scheda {{number}}",
+      "toggleDarkMode": "Attiva/disattiva modalità scura",
+      "openLanguageSwitcher": "Apri selettore lingua",
+      "closeDialog": "Chiudi dialogo",
+      "openShortcutsHelp": "Apri scorciatoie da tastiera"
+    },
+    "announced": {
+      "downloadStarted": "Download avviato",
+      "configReset": "Configurazione ripristinata ai valori predefiniti",
+      "darkModeToggled": "Modalità scura attivata/disattivata",
+      "previewToggled": "Anteprima attivata/disattivata",
+      "scrolledToCard": "Scorrimento alla scheda {{number}}"
     }
   }
 };

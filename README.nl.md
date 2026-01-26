@@ -88,6 +88,7 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
   - Vereisten voor Windows, macOS en Linux
   - Probleemoplossingssectie
   - Wanneer de UI-taal niet Engels is, bevat ook README.en.md (eenvoudig Engels)
+- **Configuratie import/export**: Exporteer uw configuratie als JSON-bestand en importeer deze in een andere browser of op een ander apparaat
 - **Automatisch opslaan**: Instellingen worden automatisch opgeslagen in de localStorage van uw browser (standaard ingeschakeld)
 - **Meertalige ondersteuning**: Beschikbaar in 18 talen:
   - 🌍 Arabisch
@@ -112,6 +113,24 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
 - **PWA-ondersteuning**: Installeerbaar als Progressive Web App
 - **Volledig toegankelijk**: WCAG-conform met toetsenbordnavigatie en schermlezersondersteuning
 - **Responsief ontwerp**: Geoptimaliseerd voor desktop en tablet
+- **Sneltoetsen**: Volledige toetsenbordnavigatie met aanpasbare sneltoetsen (druk op `Ctrl+/` of `⌘+/` om alles te bekijken)
+
+### Sneltoetsen
+
+Alle sneltoetsen gebruiken `Ctrl` op Windows/Linux en `⌘` (Cmd) op macOS.
+
+| Sneltoets | Actie |
+| --------- | ----- |
+| `Ctrl/⌘ + S` | ZIP downloaden |
+| `Ctrl/⌘ + E` | Voorbeeld in-/uitschakelen |
+| `Ctrl/⌘ + Shift + D` | Donker/licht thema wisselen |
+| `Ctrl/⌘ + Shift + X` | Standaardinstellingen herstellen |
+| `Ctrl/⌘ + Shift + L` | Taalkiezer openen |
+| `Ctrl/⌘ + 1-4` | Naar kaart scrollen (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Sneltoetsen hulp openen |
+| `Escape` | Dialoog sluiten |
+
+Een toetsenbordpictogram in de header opent ook het sneltoetsen-hulpdialoog.
 
 ### Automatisch opslaan mechanisme
 
@@ -127,6 +146,21 @@ De autosave-functie kan worden in-/uitgeschakeld met het opslaan-pictogram in de
 - **Autosave inschakelen**: Slaat huidige instellingen direct op in localStorage
 - **Autosave uitschakelen**: Wist alle opgeslagen instellingen uit localStorage
 - Uw autosave-voorkeur wordt onthouden tussen sessies
+
+### Configuratie import/export
+
+U kunt uw configuratie delen of back-uppen via JSON-bestanden:
+
+- **Exporteren**: Klik op het upload-icoon in de koptekst om uw huidige configuratie te downloaden als `claude-initializr-config.json`
+- **Importeren**: Klik op het download-icoon om een eerder geëxporteerd JSON-bestand te selecteren
+
+**Hoe het werkt:**
+
+- **Export** slaat alle instellingen op (basisimage, softwareselectie, pakketten, commando's, machtigingen, CLAUDE.md-inhoud) in een enkel JSON-bestand
+- **Import** valideert het bestand, toont een voorvertoning van de wijzigingen en vraagt om bevestiging voordat het wordt toegepast
+- Om veiligheidsredenen worden **waarden van omgevingsvariabelen nooit opgenomen** in geëxporteerde bestanden — alleen de variabelenamen worden geëxporteerd
+- Geïmporteerde configuraties krijgen nieuwe interne ID's om conflicten te voorkomen
+- Het exportformaat bevat een versieveld (`"version": "1.0"`) voor voorwaartse compatibiliteit
 
 ### Privacy & Gegevensopslag
 

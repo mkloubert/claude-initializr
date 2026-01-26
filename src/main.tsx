@@ -22,6 +22,7 @@ import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { ConfigProvider, ThemeProvider } from './contexts/index.ts';
+import { Toaster } from './components/ui/sonner.tsx';
 
 import './i18n/index.ts';
 import './index.css';
@@ -32,6 +33,7 @@ createRoot(document.getElementById('root')!).render(
       <ThemeProvider>
         <ConfigProvider>
           <App />
+          <Toaster />
         </ConfigProvider>
       </ThemeProvider>
     </Suspense>

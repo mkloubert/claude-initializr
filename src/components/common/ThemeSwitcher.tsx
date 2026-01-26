@@ -21,6 +21,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/contexts';
+import { getModifierKey } from '@/hooks/useKeyboardShortcuts';
 import { Sun, Moon } from 'lucide-react';
 
 export function ThemeSwitcher() {
@@ -37,6 +38,7 @@ export function ThemeSwitcher() {
       size="icon"
       onClick={toggleTheme}
       aria-label={t('theme.switch')}
+      title={`${t('theme.switch')} (${getModifierKey()}+Shift+D)`}
     >
       {resolvedTheme === 'dark' ? (
         <Moon className="h-5 w-5" aria-hidden="true" />

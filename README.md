@@ -88,6 +88,7 @@ A web application to generate Docker configuration files for running [Claude Cod
   - Prerequisites for Windows, macOS, and Linux
   - Troubleshooting section
   - When UI language is not English, also includes README.en.md (Simple English)
+- **Configuration Import/Export**: Export your configuration as a JSON file and import it on another browser or device
 - **Autosave**: Settings are automatically saved to your browser's localStorage (enabled by default)
 - **Multi-language Support**: Available in 18 languages:
   - 🌍 Arabic
@@ -112,6 +113,24 @@ A web application to generate Docker configuration files for running [Claude Cod
 - **PWA Support**: Installable as a Progressive Web App
 - **Fully Accessible**: WCAG compliant with keyboard navigation and screen reader support
 - **Responsive Design**: Optimized for desktop and tablet
+- **Keyboard Shortcuts**: Full keyboard navigation with customizable shortcuts (press `Ctrl+/` or `⌘+/` to view all)
+
+### Keyboard Shortcuts
+
+All shortcuts use `Ctrl` on Windows/Linux and `⌘` (Cmd) on macOS.
+
+| Shortcut | Action |
+| -------- | ------ |
+| `Ctrl/⌘ + S` | Download ZIP |
+| `Ctrl/⌘ + E` | Toggle preview |
+| `Ctrl/⌘ + Shift + D` | Toggle dark/light mode |
+| `Ctrl/⌘ + Shift + X` | Reset to defaults |
+| `Ctrl/⌘ + Shift + L` | Open language switcher |
+| `Ctrl/⌘ + 1-4` | Scroll to card (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Open keyboard shortcuts help |
+| `Escape` | Close dialog |
+
+A keyboard icon in the header also opens the shortcuts help dialog.
 
 ### Autosave Mechanism
 
@@ -127,6 +146,32 @@ The autosave feature can be toggled using the save icon in the header:
 - **Enabling autosave**: Immediately saves current settings to localStorage
 - **Disabling autosave**: Clears all saved settings from localStorage
 - Your autosave preference is remembered across sessions
+
+### Configuration Import/Export
+
+You can share or back up your configuration using JSON files:
+
+- **Export**: Click the upload icon in the header to download your current configuration as `claude-initializr-config.json`
+- **Import**: Click the download icon to select a previously exported JSON file
+
+**How it works:**
+
+- **Export** saves all settings (base image, software selection, packages, commands, permissions, CLAUDE.md content) into a single JSON file
+- **Import** validates the file, shows a diff preview of what will change, and asks for confirmation before applying
+- For security, **environment variable values are never included** in exported files — only the variable names are exported
+- Imported configurations get new internal IDs to prevent conflicts
+- The export format includes a version field (`"version": "1.0"`) for forward compatibility
+
+**Export file structure:**
+
+```json
+{
+  "version": "1.0",
+  "appVersion": "1.3.0",
+  "exportedAt": "2026-01-15T10:30:00.000Z",
+  "config": { ... }
+}
+```
 
 ### Privacy & Data Storage
 
@@ -406,6 +451,7 @@ Alternatively, you can disable autosave using the save icon toggle in the header
 - [react-router](https://reactrouter.com/) for routing
 - [i18next](https://www.i18next.com/) for internationalization
 - [JSZip](https://stuk.github.io/jszip/) for ZIP generation
+- [react-hotkeys-hook](https://github.com/JohannesKlaworkin/react-hotkeys-hook) for keyboard shortcuts
 - [react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) for code previews
 
 ## Contributing

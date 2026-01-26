@@ -26,6 +26,7 @@ import {
   defaultTelemetryEnvVariables,
   type AppConfig,
   type ClaudePermissions,
+  type ConfigExportData,
   type CustomNpmPackage,
   type CustomRunCommand,
   type DockerfileUser,
@@ -36,6 +37,7 @@ import {
   type ProtectedFile,
   type SoftwareConfig,
 } from '../types';
+import { APP_VERSION } from '../config/env';
 import { ConfigContext, type ConfigContextValue } from './configContextValue';
 
 const STORAGE_KEY = 'claude-initializr-config';
@@ -767,6 +769,83 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     }));
   }, []);
 
+  // Import/Export actions
+  const exportConfig = useCallback(() => {
+    const exportData: ConfigExportData = {
+      version: '1.0',
+      appVersion: APP_VERSION,
+      exportedAt: new Date().toISOString(),
+      config: {
+        ...config,
+        envVariables: config.envVariables
+          ?.filter((env) => env.key.trim() && /^[A-Za-z_][A-Za-z0-9_]*$/.test(env.key.trim()))
+          .map((env) => ({
+            ...env,
+            key: env.key.trim(),
+            value: '',
+          })),
+      },
+    };
+
+    const json = JSON.stringify(exportData, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'claude-initializr-config.json';
+    link.click();
+
+    URL.revokeObjectURL(url);
+  }, [config]);
+
+  const importConfig = useCallback((data: AppConfig) => {
+    const regenerateId = (): string => {
+      try {
+        return crypto.randomUUID();
+      } catch {
+        return `${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
+      }
+    };
+
+    const imported: AppConfig = {
+      ...data,
+      customNpmPackages: data.customNpmPackages.map((pkg) => ({
+        ...pkg,
+        id: regenerateId(),
+      })),
+      customRunCommands: data.customRunCommands.map((cmd) => ({
+        ...cmd,
+        id: regenerateId(),
+      })),
+      envVariables: data.envVariables?.map((env) => ({
+        ...env,
+        id: regenerateId(),
+        value: '',
+      })),
+      protectedFiles: data.protectedFiles.map((file) => ({
+        ...file,
+        id: regenerateId(),
+      })),
+      claudePermissions: {
+        allow: data.claudePermissions.allow.map((rule) => ({
+          ...rule,
+          id: regenerateId(),
+        })),
+        ask: data.claudePermissions.ask.map((rule) => ({
+          ...rule,
+          id: regenerateId(),
+        })),
+        deny: data.claudePermissions.deny.map((rule) => ({
+          ...rule,
+          id: regenerateId(),
+        })),
+      },
+    };
+
+    setConfig(imported);
+  }, []);
+
   // Utility actions
   const resetConfig = useCallback(() => {
     setConfig(defaultAppConfig);
@@ -802,6 +881,8 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       updatePermissionDirective,
       updatePermissionPattern,
       removePermissionRule,
+      exportConfig,
+      importConfig,
       resetConfig,
     }),
     [
@@ -833,6 +914,8 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       updatePermissionDirective,
       updatePermissionPattern,
       removePermissionRule,
+      exportConfig,
+      importConfig,
       resetConfig,
     ]
   );

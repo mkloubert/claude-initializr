@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useMemo, useState, lazy, Suspense, type ReactNode, type KeyboardEvent } from 'react';
+import { useMemo, useState, useEffect, useCallback, lazy, Suspense, type ReactNode, type KeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/contexts';
 import {
@@ -129,11 +129,21 @@ export function DockerfileCard() {
     removeCustomRunCommand,
     updateCustomRunCommandUser,
   } = useConfig();
+  const [activeTab, setActiveTab] = useState('software');
   const [aptInput, setAptInput] = useState('');
   const [npmInput, setNpmInput] = useState('');
   const [npmInstallAs, setNpmInstallAs] = useState<DockerfileUser>('node');
   const [runCommandInput, setRunCommandInput] = useState('');
   const [runCommandAs, setRunCommandAs] = useState<DockerfileUser>('node');
+
+  const handleTogglePreview = useCallback(() => {
+    setActiveTab((prev) => (prev === 'preview' ? 'software' : 'preview'));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('toggle-preview', handleTogglePreview);
+    return () => window.removeEventListener('toggle-preview', handleTogglePreview);
+  }, [handleTogglePreview]);
 
   const sortedSoftwareMetadata = useMemo(
     () =>
@@ -146,13 +156,13 @@ export function DockerfileCard() {
   );
 
   return (
-    <Card>
+    <Card id="card-dockerfile">
       <CardHeader>
         <CardTitle>{t('preview.dockerfile')}</CardTitle>
         <CardDescription>{t('preview.dockerfileDesc')}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="software">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="software" className="gap-2">
               <Package className="h-4 w-4" aria-hidden="true" />

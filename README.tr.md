@@ -88,6 +88,7 @@
   - Windows, macOS ve Linux için ön koşullar
   - Sorun giderme bölümü
   - Arayüz dili İngilizce olmadığında, README.en.md (basit İngilizce) de dahildir
+- **Yapılandırma İçe/Dışa Aktarma**: Yapılandırmanızı JSON dosyası olarak dışa aktarın ve başka bir tarayıcı veya cihazda içe aktarın
 - **Otomatik Kaydetme**: Ayarlar tarayıcınızın localStorage'ına otomatik olarak kaydedilir (varsayılan olarak etkin)
 - **Çoklu Dil Desteği**: 18 dilde mevcut:
   - 🌍 Arapça
@@ -112,6 +113,24 @@
 - **PWA Desteği**: Progressive Web App olarak yüklenebilir
 - **Tam Erişilebilirlik**: Klavye navigasyonu ve ekran okuyucu desteği ile WCAG uyumlu
 - **Duyarlı Tasarım**: Masaüstü ve tablet için optimize edilmiş
+- **Klavye Kısayolları**: Özelleştirilebilir kısayollarla tam klavye navigasyonu (tümünü görüntülemek için `Ctrl+/` veya `⌘+/` basın)
+
+### Klavye Kısayolları
+
+Tüm kısayollar Windows/Linux'ta `Ctrl` ve macOS'ta `⌘` (Cmd) kullanır.
+
+| Kısayol | Eylem |
+| ------- | ----- |
+| `Ctrl/⌘ + S` | ZIP İndir |
+| `Ctrl/⌘ + E` | Önizlemeyi değiştir |
+| `Ctrl/⌘ + Shift + D` | Koyu/açık modu değiştir |
+| `Ctrl/⌘ + Shift + X` | Varsayılanlara sıfırla |
+| `Ctrl/⌘ + Shift + L` | Dil seçiciyi aç |
+| `Ctrl/⌘ + 1-4` | Karta kaydır (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Klavye kısayolları yardımını aç |
+| `Escape` | İletişim kutusunu kapat |
+
+Başlıktaki bir klavye simgesi de kısayol yardım iletişim kutusunu açar.
 
 ### Otomatik Kaydetme Mekanizması
 
@@ -127,6 +146,21 @@ Otomatik kaydetme özelliği başlıktaki kaydetme simgesi kullanılarak açıl�
 - **Otomatik kaydetmeyi etkinleştirme**: Mevcut ayarları hemen localStorage'a kaydeder
 - **Otomatik kaydetmeyi devre dışı bırakma**: Tüm kaydedilmiş ayarları localStorage'dan siler
 - Otomatik kaydetme tercihiniz oturumlar arasında hatırlanır
+
+### Yapılandırma İçe/Dışa Aktarma
+
+Yapılandırmanızı JSON dosyaları aracılığıyla paylaşabilir veya yedekleyebilirsiniz:
+
+- **Dışa Aktarma**: Başlıktaki yükleme simgesine tıklayarak mevcut yapılandırmanızı `claude-initializr-config.json` olarak indirin
+- **İçe Aktarma**: Daha önce dışa aktarılmış bir JSON dosyasını seçmek için indirme simgesine tıklayın
+
+**Nasıl çalışır:**
+
+- **Dışa aktarma** tüm ayarları (temel imaj, yazılım seçimi, paketler, komutlar, izinler, CLAUDE.md içeriği) tek bir JSON dosyasına kaydeder
+- **İçe aktarma** dosyayı doğrular, değişikliklerin önizlemesini gösterir ve uygulamadan önce onay ister
+- Güvenlik nedeniyle, dışa aktarılan dosyalarda **ortam değişken değerleri asla yer almaz** — yalnızca değişken adları dışa aktarılır
+- İçe aktarılan yapılandırmalar çakışmaları önlemek için yeni dahili kimlikler alır
+- Dışa aktarma formatı ileriye dönük uyumluluk için bir sürüm alanı (`"version": "1.0"`) içerir
 
 ### Gizlilik ve Veri Depolama
 

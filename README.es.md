@@ -88,6 +88,7 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
   - Requisitos previos para Windows, macOS y Linux
   - Sección de solución de problemas
   - Cuando el idioma de la interfaz no es inglés, también incluye README.en.md (inglés simple)
+- **Importar/Exportar configuración**: Exporte su configuración como archivo JSON e impórtela en otro navegador o dispositivo
 - **Guardado automático**: La configuración se guarda automáticamente en el localStorage de su navegador (habilitado por defecto)
 - **Soporte multilingüe**: Disponible en 18 idiomas:
   - 🌍 Árabe
@@ -112,6 +113,24 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
 - **Soporte PWA**: Instalable como Progressive Web App
 - **Totalmente accesible**: Compatible con WCAG con navegación por teclado y soporte para lectores de pantalla
 - **Diseño responsive**: Optimizado para escritorio y tablet
+- **Atajos de teclado**: Navegación completa por teclado con atajos personalizables (presione `Ctrl+/` o `⌘+/` para ver todos)
+
+### Atajos de teclado
+
+Todos los atajos usan `Ctrl` en Windows/Linux y `⌘` (Cmd) en macOS.
+
+| Atajo | Acción |
+| ----- | ------ |
+| `Ctrl/⌘ + S` | Descargar ZIP |
+| `Ctrl/⌘ + E` | Alternar vista previa |
+| `Ctrl/⌘ + Shift + D` | Alternar modo oscuro/claro |
+| `Ctrl/⌘ + Shift + X` | Restablecer valores predeterminados |
+| `Ctrl/⌘ + Shift + L` | Abrir selector de idioma |
+| `Ctrl/⌘ + 1-4` | Desplazarse a la tarjeta (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + /` | Abrir ayuda de atajos de teclado |
+| `Escape` | Cerrar diálogo |
+
+Un icono de teclado en el encabezado también abre el diálogo de ayuda de atajos.
 
 ### Mecanismo de guardado automático
 
@@ -127,6 +146,21 @@ La función de guardado automático se puede activar/desactivar usando el icono 
 - **Habilitar guardado automático**: Guarda inmediatamente la configuración actual en localStorage
 - **Deshabilitar guardado automático**: Elimina toda la configuración guardada de localStorage
 - Su preferencia de guardado automático se recuerda entre sesiones
+
+### Importar/Exportar configuración
+
+Puede compartir o respaldar su configuración mediante archivos JSON:
+
+- **Exportar**: Haga clic en el icono de carga en el encabezado para descargar su configuración actual como `claude-initializr-config.json`
+- **Importar**: Haga clic en el icono de descarga para seleccionar un archivo JSON exportado anteriormente
+
+**Cómo funciona:**
+
+- **La exportación** guarda todos los ajustes (imagen base, selección de software, paquetes, comandos, permisos, contenido de CLAUDE.md) en un único archivo JSON
+- **La importación** valida el archivo, muestra una vista previa de las diferencias y solicita confirmación antes de aplicar
+- Por seguridad, los **valores de las variables de entorno nunca se incluyen** en los archivos exportados — solo se exportan los nombres de las variables
+- Las configuraciones importadas reciben nuevos identificadores internos para evitar conflictos
+- El formato de exportación incluye un campo de versión (`"version": "1.0"`) para compatibilidad futura
 
 ### Privacidad y almacenamiento de datos
 

@@ -18,25 +18,64 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import type { ReactNode } from 'react';
+import { useState, useCallback, type ReactNode } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { KeyboardShortcutsDialog } from '@/components/common';
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 
 interface MainLayoutProps {
   children: ReactNode;
 }
 
 /**
- * Main layout wrapper with header, content area, and footer.
+ * Main layout wrapper with header, content area, footer, and keyboard shortcuts.
  */
 export function MainLayout({ children }: MainLayoutProps) {
+  const [shortcutsHelpOpen, setShortcutsHelpOpen] = useState(false);
+  const [resetDialogOpen, setResetDialogOpen] = useState(false);
+  const [languageSwitcherOpen, setLanguageSwitcherOpen] = useState(false);
+  const [announcement, setAnnouncement] = useState('');
+
+  const handleAnnounce = useCallback((message: string) => {
+    setAnnouncement('');
+    requestAnimationFrame(() => setAnnouncement(message));
+  }, []);
+
+  useKeyboardShortcuts({
+    onOpenResetDialog: () => setResetDialogOpen(true),
+    onOpenLanguageSwitcher: () => setLanguageSwitcherOpen(true),
+    onOpenShortcutsHelp: () => setShortcutsHelpOpen(true),
+    onAnnounce: handleAnnounce,
+  });
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Header />
+      <Header
+        resetDialogOpen={resetDialogOpen}
+        onResetDialogOpenChange={setResetDialogOpen}
+        languageSwitcherOpen={languageSwitcherOpen}
+        onLanguageSwitcherOpenChange={setLanguageSwitcherOpen}
+        onOpenShortcutsHelp={() => setShortcutsHelpOpen(true)}
+      />
       <main className="flex-1 pb-14">
         {children}
       </main>
       <Footer />
+
+      <KeyboardShortcutsDialog
+        open={shortcutsHelpOpen}
+        onOpenChange={setShortcutsHelpOpen}
+      />
+
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {announcement}
+      </div>
     </div>
   );
 }

@@ -18,7 +18,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useMemo, lazy, Suspense } from 'react';
+import { useMemo, useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/contexts';
 import {
@@ -84,6 +84,17 @@ export function DockerComposeCard() {
     [envVariables]
   );
 
+  const [activeTab, setActiveTab] = useState('settings');
+
+  const handleTogglePreview = useCallback(() => {
+    setActiveTab((prev) => (prev === 'preview' ? 'settings' : 'preview'));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('toggle-preview', handleTogglePreview);
+    return () => window.removeEventListener('toggle-preview', handleTogglePreview);
+  }, [handleTogglePreview]);
+
   const sortedProtectedFiles = useMemo(
     () =>
       [...config.protectedFiles].sort((a, b) =>
@@ -93,13 +104,13 @@ export function DockerComposeCard() {
   );
 
   return (
-    <Card>
+    <Card id="card-docker-compose">
       <CardHeader>
         <CardTitle>{t('preview.dockerCompose')}</CardTitle>
         <CardDescription>{t('preview.dockerComposeDesc')}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="settings">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="settings" className="gap-2">
               <Container className="h-4 w-4" aria-hidden="true" />

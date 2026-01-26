@@ -211,6 +211,36 @@ const he: Translations = {
     "pl": "פולנית",
     "tr": "טורקית"
   },
+  "importExport": {
+    "exportButton": "ייצוא הגדרות",
+    "importButton": "ייבוא הגדרות",
+    "exportSuccess": "ההגדרות יוצאו בהצלחה.",
+    "importSuccess": "ההגדרות יובאו בהצלחה.",
+    "importErrorInvalidFile": "פורמט קובץ לא חוקי. אנא בחר קובץ JSON חוקי.",
+    "importErrorValidation": "הקובץ מכיל נתוני הגדרות לא חוקיים.",
+    "importErrorRead": "לא ניתן לקרוא את הקובץ. אנא נסה שוב.",
+    "importConfirmTitle": "ייבוא הגדרות",
+    "importConfirmDescription": "פעולה זו תחליף את ההגדרות הנוכחיות שלך. לא ניתן לבטל פעולה זו.",
+    "importConfirmApply": "החל",
+    "importConfirmCancel": "ביטול",
+    "diffTitle": "תצוגה מקדימה של שינויים",
+    "diffBaseImage": "תמונת בסיס",
+    "diffNodeVersion": "גרסת Node",
+    "diffDockerPlatform": "פלטפורמת Docker",
+    "diffSoftware": "תוכנה",
+    "diffAptPackages": "חבילות APT",
+    "diffNpmPackages": "חבילות NPM",
+    "diffRunCommands": "פקודות RUN",
+    "diffEnvVariables": "משתני סביבה",
+    "diffProtectedFiles": "קבצים מוגנים",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "הרשאות",
+    "diffNoChanges": "לא זוהו שינויים.",
+    "diffCurrent": "נוכחי",
+    "diffImported": "מיובא",
+    "diffChanged": "שונה",
+    "diffUnchanged": "ללא שינוי"
+  },
   "errors": {
     "invalidEnvKey": "שם משתנה לא חוקי. השתמש רק באותיות, מספרים וקווים תחתונים.",
     "duplicateEnvKey": "שם משתנה זה כבר קיים.",
@@ -418,6 +448,33 @@ const he: Translations = {
     "software": {
       "title": "תוכנה מותקנת",
       "description": "כלי הפיתוח הבאים מותקנים:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "קיצורי מקלדת",
+    "description": "השתמש בקיצורי מקלדת כדי לנווט ולבצע פעולות במהירות.",
+    "openHelp": "קיצורי מקלדת",
+    "categories": {
+      "navigation": "ניווט",
+      "actions": "פעולות"
+    },
+    "shortcuts": {
+      "downloadZip": "הורד ZIP",
+      "forceSave": "שמירה מאולצת",
+      "resetDefaults": "איפוס לברירת מחדל",
+      "togglePreview": "החלפת תצוגה מקדימה",
+      "scrollToCard": "גלילה לכרטיס {{number}}",
+      "toggleDarkMode": "החלפת מצב כהה",
+      "openLanguageSwitcher": "פתיחת בורר שפה",
+      "closeDialog": "סגירת דיאלוג",
+      "openShortcutsHelp": "פתיחת קיצורי מקלדת"
+    },
+    "announced": {
+      "downloadStarted": "ההורדה החלה",
+      "configReset": "התצורה אופסה לברירת מחדל",
+      "darkModeToggled": "מצב כהה הוחלף",
+      "previewToggled": "תצוגה מקדימה הוחלפה",
+      "scrolledToCard": "גלילה לכרטיס {{number}}"
     }
   }
 };

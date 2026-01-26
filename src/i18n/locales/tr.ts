@@ -211,6 +211,36 @@ const tr: Translations = {
     "pl": "Lehçe",
     "tr": "Türkçe"
   },
+  "importExport": {
+    "exportButton": "Yapılandırmayı dışa aktar",
+    "importButton": "Yapılandırmayı içe aktar",
+    "exportSuccess": "Yapılandırma başarıyla dışa aktarıldı.",
+    "importSuccess": "Yapılandırma başarıyla içe aktarıldı.",
+    "importErrorInvalidFile": "Geçersiz dosya biçimi. Lütfen geçerli bir JSON dosyası seçin.",
+    "importErrorValidation": "Dosya geçersiz yapılandırma verileri içeriyor.",
+    "importErrorRead": "Dosya okunamadı. Lütfen tekrar deneyin.",
+    "importConfirmTitle": "Yapılandırmayı içe aktar",
+    "importConfirmDescription": "Bu, mevcut yapılandırmanızı değiştirecektir. Bu işlem geri alınamaz.",
+    "importConfirmApply": "Uygula",
+    "importConfirmCancel": "İptal",
+    "diffTitle": "Değişiklik önizlemesi",
+    "diffBaseImage": "Temel imaj",
+    "diffNodeVersion": "Node sürümü",
+    "diffDockerPlatform": "Docker platformu",
+    "diffSoftware": "Yazılım",
+    "diffAptPackages": "APT paketleri",
+    "diffNpmPackages": "NPM paketleri",
+    "diffRunCommands": "RUN komutları",
+    "diffEnvVariables": "Ortam değişkenleri",
+    "diffProtectedFiles": "Korunan dosyalar",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "İzinler",
+    "diffNoChanges": "Değişiklik algılanmadı.",
+    "diffCurrent": "Mevcut",
+    "diffImported": "İçe aktarılan",
+    "diffChanged": "Değiştirildi",
+    "diffUnchanged": "Değişmedi"
+  },
   "errors": {
     "invalidEnvKey": "Geçersiz değişken adı. Yalnızca harf, rakam ve alt çizgi kullanın.",
     "duplicateEnvKey": "Bu değişken adı zaten mevcut.",
@@ -418,6 +448,33 @@ const tr: Translations = {
     "software": {
       "title": "Kurulu Yazılımlar",
       "description": "Aşağıdaki geliştirme araçları kurulmuştur:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Klavye kısayolları",
+    "description": "Hızlıca gezinmek ve işlem yapmak için klavye kısayollarını kullanın.",
+    "openHelp": "Klavye kısayolları",
+    "categories": {
+      "navigation": "Gezinti",
+      "actions": "İşlemler"
+    },
+    "shortcuts": {
+      "downloadZip": "ZIP indir",
+      "forceSave": "Zorla kaydet",
+      "resetDefaults": "Varsayılanlara sıfırla",
+      "togglePreview": "Önizlemeyi değiştir",
+      "scrollToCard": "Kart {{number}}'e kaydır",
+      "toggleDarkMode": "Karanlık modu değiştir",
+      "openLanguageSwitcher": "Dil seçiciyi aç",
+      "closeDialog": "Diyaloğu kapat",
+      "openShortcutsHelp": "Klavye kısayollarını aç"
+    },
+    "announced": {
+      "downloadStarted": "İndirme başlatıldı",
+      "configReset": "Yapılandırma varsayılanlara sıfırlandı",
+      "darkModeToggled": "Karanlık mod değiştirildi",
+      "previewToggled": "Önizleme değiştirildi",
+      "scrolledToCard": "Kart {{number}}'e kaydırıldı"
     }
   }
 };

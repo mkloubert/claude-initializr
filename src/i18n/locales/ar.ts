@@ -211,6 +211,36 @@ const ar: Translations = {
     "pl": "البولندية",
     "tr": "التركية"
   },
+  "importExport": {
+    "exportButton": "تصدير الإعدادات",
+    "importButton": "استيراد الإعدادات",
+    "exportSuccess": "تم تصدير الإعدادات بنجاح.",
+    "importSuccess": "تم استيراد الإعدادات بنجاح.",
+    "importErrorInvalidFile": "تنسيق ملف غير صالح. يرجى اختيار ملف JSON صالح.",
+    "importErrorValidation": "يحتوي الملف على بيانات إعدادات غير صالحة.",
+    "importErrorRead": "تعذر قراءة الملف. يرجى المحاولة مرة أخرى.",
+    "importConfirmTitle": "استيراد الإعدادات",
+    "importConfirmDescription": "سيؤدي هذا إلى استبدال إعداداتك الحالية. لا يمكن التراجع عن هذا الإجراء.",
+    "importConfirmApply": "تطبيق",
+    "importConfirmCancel": "إلغاء",
+    "diffTitle": "معاينة التغييرات",
+    "diffBaseImage": "الصورة الأساسية",
+    "diffNodeVersion": "إصدار Node",
+    "diffDockerPlatform": "منصة Docker",
+    "diffSoftware": "البرمجيات",
+    "diffAptPackages": "حزم APT",
+    "diffNpmPackages": "حزم NPM",
+    "diffRunCommands": "أوامر RUN",
+    "diffEnvVariables": "متغيرات البيئة",
+    "diffProtectedFiles": "الملفات المحمية",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "الأذونات",
+    "diffNoChanges": "لم يتم اكتشاف أي تغييرات.",
+    "diffCurrent": "الحالي",
+    "diffImported": "المستورد",
+    "diffChanged": "تم التغيير",
+    "diffUnchanged": "بدون تغيير"
+  },
   "errors": {
     "invalidEnvKey": "اسم متغير غير صالح. استخدم الأحرف والأرقام والشرطات السفلية فقط.",
     "duplicateEnvKey": "اسم المتغير هذا موجود بالفعل.",
@@ -418,6 +448,33 @@ const ar: Translations = {
     "software": {
       "title": "البرامج المثبتة",
       "description": "تم تثبيت أدوات التطوير التالية:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "اختصارات لوحة المفاتيح",
+    "description": "استخدم اختصارات لوحة المفاتيح للتنقل وتنفيذ الإجراءات بسرعة.",
+    "openHelp": "اختصارات لوحة المفاتيح",
+    "categories": {
+      "navigation": "التنقل",
+      "actions": "الإجراءات"
+    },
+    "shortcuts": {
+      "downloadZip": "تحميل ZIP",
+      "forceSave": "حفظ إجباري",
+      "resetDefaults": "إعادة التعيين إلى الافتراضي",
+      "togglePreview": "تبديل المعاينة",
+      "scrollToCard": "التمرير إلى البطاقة {{number}}",
+      "toggleDarkMode": "تبديل الوضع الداكن",
+      "openLanguageSwitcher": "فتح محوّل اللغة",
+      "closeDialog": "إغلاق الحوار",
+      "openShortcutsHelp": "فتح اختصارات لوحة المفاتيح"
+    },
+    "announced": {
+      "downloadStarted": "بدأ التحميل",
+      "configReset": "تمت إعادة تعيين التكوين إلى الافتراضي",
+      "darkModeToggled": "تم تبديل الوضع الداكن",
+      "previewToggled": "تم تبديل المعاينة",
+      "scrolledToCard": "تم التمرير إلى البطاقة {{number}}"
     }
   }
 };

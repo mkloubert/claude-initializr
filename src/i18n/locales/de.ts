@@ -211,8 +211,38 @@ const de: Translations = {
     "pl": "Polnisch",
     "tr": "Türkisch"
   },
+  "importExport": {
+    "exportButton": "Konfiguration exportieren",
+    "importButton": "Konfiguration importieren",
+    "exportSuccess": "Konfiguration erfolgreich exportiert.",
+    "importSuccess": "Konfiguration erfolgreich importiert.",
+    "importErrorInvalidFile": "Ungültiges Dateiformat. Bitte wähle eine gültige JSON-Datei.",
+    "importErrorValidation": "Die Datei enthält ungültige Konfigurationsdaten.",
+    "importErrorRead": "Die Datei konnte nicht gelesen werden. Bitte versuche es erneut.",
+    "importConfirmTitle": "Konfiguration importieren",
+    "importConfirmDescription": "Dies ersetzt deine aktuelle Konfiguration. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "importConfirmApply": "Anwenden",
+    "importConfirmCancel": "Abbrechen",
+    "diffTitle": "Änderungsvorschau",
+    "diffBaseImage": "Basis-Image",
+    "diffNodeVersion": "Node-Version",
+    "diffDockerPlatform": "Docker-Plattform",
+    "diffSoftware": "Software",
+    "diffAptPackages": "APT-Pakete",
+    "diffNpmPackages": "NPM-Pakete",
+    "diffRunCommands": "RUN-Befehle",
+    "diffEnvVariables": "Umgebungsvariablen",
+    "diffProtectedFiles": "Geschützte Dateien",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Berechtigungen",
+    "diffNoChanges": "Keine Änderungen erkannt.",
+    "diffCurrent": "Aktuell",
+    "diffImported": "Importiert",
+    "diffChanged": "Geändert",
+    "diffUnchanged": "Unverändert"
+  },
   "errors": {
-    "invalidEnvKey": "Ungültiger Variablenname. Verwenden Sie nur Buchstaben, Zahlen und Unterstriche.",
+    "invalidEnvKey": "Ungültiger Variablenname. Verwende nur Buchstaben, Zahlen und Unterstriche.",
     "duplicateEnvKey": "Dieser Variablenname existiert bereits.",
     "invalidPath": "Pfad muss relativ sein (kein führendes /) und darf kein .. enthalten"
   },
@@ -418,6 +448,33 @@ const de: Translations = {
     "software": {
       "title": "Installierte Software",
       "description": "Folgende Entwicklungswerkzeuge sind installiert:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Tastenkürzel",
+    "description": "Verwende Tastenkürzel, um schnell zu navigieren und Aktionen auszuführen.",
+    "openHelp": "Tastenkürzel",
+    "categories": {
+      "navigation": "Navigation",
+      "actions": "Aktionen"
+    },
+    "shortcuts": {
+      "downloadZip": "ZIP herunterladen",
+      "forceSave": "Speichern erzwingen",
+      "resetDefaults": "Auf Standardwerte zurücksetzen",
+      "togglePreview": "Vorschau umschalten",
+      "scrollToCard": "Zu Karte {{number}} scrollen",
+      "toggleDarkMode": "Dunkelmodus umschalten",
+      "openLanguageSwitcher": "Sprachauswahl öffnen",
+      "closeDialog": "Dialog schließen",
+      "openShortcutsHelp": "Tastenkürzel öffnen"
+    },
+    "announced": {
+      "downloadStarted": "Download gestartet",
+      "configReset": "Konfiguration auf Standardwerte zurückgesetzt",
+      "darkModeToggled": "Dunkelmodus umgeschaltet",
+      "previewToggled": "Vorschau umgeschaltet",
+      "scrolledToCard": "Zu Karte {{number}} gescrollt"
     }
   }
 };

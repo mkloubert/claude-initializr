@@ -213,6 +213,36 @@ export interface Translations {
     pl: string;
     tr: string;
   };
+  importExport: {
+    exportButton: string;
+    importButton: string;
+    exportSuccess: string;
+    importSuccess: string;
+    importErrorInvalidFile: string;
+    importErrorValidation: string;
+    importErrorRead: string;
+    importConfirmTitle: string;
+    importConfirmDescription: string;
+    importConfirmApply: string;
+    importConfirmCancel: string;
+    diffTitle: string;
+    diffBaseImage: string;
+    diffNodeVersion: string;
+    diffDockerPlatform: string;
+    diffSoftware: string;
+    diffAptPackages: string;
+    diffNpmPackages: string;
+    diffRunCommands: string;
+    diffEnvVariables: string;
+    diffProtectedFiles: string;
+    diffClaudeMd: string;
+    diffPermissions: string;
+    diffNoChanges: string;
+    diffCurrent: string;
+    diffImported: string;
+    diffChanged: string;
+    diffUnchanged: string;
+  };
   errors: {
     invalidEnvKey: string;
     duplicateEnvKey: string;
@@ -368,6 +398,33 @@ export interface Translations {
     software: {
       title: string;
       description: string;
+    };
+  };
+  keyboardShortcuts: {
+    title: string;
+    description: string;
+    openHelp: string;
+    categories: {
+      navigation: string;
+      actions: string;
+    };
+    shortcuts: {
+      downloadZip: string;
+      forceSave: string;
+      resetDefaults: string;
+      togglePreview: string;
+      scrollToCard: string;
+      toggleDarkMode: string;
+      openLanguageSwitcher: string;
+      closeDialog: string;
+      openShortcutsHelp: string;
+    };
+    announced: {
+      downloadStarted: string;
+      configReset: string;
+      darkModeToggled: string;
+      previewToggled: string;
+      scrolledToCard: string;
     };
   };
 }

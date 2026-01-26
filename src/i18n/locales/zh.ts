@@ -211,6 +211,36 @@ const zh: Translations = {
     "pl": "波兰语",
     "tr": "土耳其语"
   },
+  "importExport": {
+    "exportButton": "导出配置",
+    "importButton": "导入配置",
+    "exportSuccess": "配置导出成功。",
+    "importSuccess": "配置导入成功。",
+    "importErrorInvalidFile": "文件格式无效。请选择有效的JSON文件。",
+    "importErrorValidation": "文件包含无效的配置数据。",
+    "importErrorRead": "无法读取文件。请重试。",
+    "importConfirmTitle": "导入配置",
+    "importConfirmDescription": "这将替换您当前的配置。此操作无法撤消。",
+    "importConfirmApply": "应用",
+    "importConfirmCancel": "取消",
+    "diffTitle": "变更预览",
+    "diffBaseImage": "基础镜像",
+    "diffNodeVersion": "Node版本",
+    "diffDockerPlatform": "Docker平台",
+    "diffSoftware": "软件",
+    "diffAptPackages": "APT包",
+    "diffNpmPackages": "NPM包",
+    "diffRunCommands": "RUN命令",
+    "diffEnvVariables": "环境变量",
+    "diffProtectedFiles": "受保护文件",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "权限",
+    "diffNoChanges": "未检测到更改。",
+    "diffCurrent": "当前",
+    "diffImported": "导入的",
+    "diffChanged": "已更改",
+    "diffUnchanged": "未更改"
+  },
   "errors": {
     "invalidEnvKey": "变量名无效。只能使用字母、数字和下划线。",
     "duplicateEnvKey": "此变量名已存在。",
@@ -418,6 +448,33 @@ const zh: Translations = {
     "software": {
       "title": "已安装软件",
       "description": "以下开发工具已安装："
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "键盘快捷键",
+    "description": "使用键盘快捷键快速导航和执行操作。",
+    "openHelp": "键盘快捷键",
+    "categories": {
+      "navigation": "导航",
+      "actions": "操作"
+    },
+    "shortcuts": {
+      "downloadZip": "下载 ZIP",
+      "forceSave": "强制保存",
+      "resetDefaults": "重置为默认值",
+      "togglePreview": "切换预览",
+      "scrollToCard": "滚动到卡片 {{number}}",
+      "toggleDarkMode": "切换深色模式",
+      "openLanguageSwitcher": "打开语言切换器",
+      "closeDialog": "关闭对话框",
+      "openShortcutsHelp": "打开键盘快捷键"
+    },
+    "announced": {
+      "downloadStarted": "下载已开始",
+      "configReset": "配置已重置为默认值",
+      "darkModeToggled": "深色模式已切换",
+      "previewToggled": "预览已切换",
+      "scrolledToCard": "已滚动到卡片 {{number}}"
     }
   }
 };

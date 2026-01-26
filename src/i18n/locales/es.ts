@@ -211,6 +211,36 @@ const es: Translations = {
     "pl": "polaco",
     "tr": "turco"
   },
+  "importExport": {
+    "exportButton": "Exportar configuración",
+    "importButton": "Importar configuración",
+    "exportSuccess": "Configuración exportada correctamente.",
+    "importSuccess": "Configuración importada correctamente.",
+    "importErrorInvalidFile": "Formato de archivo no válido. Seleccione un archivo JSON válido.",
+    "importErrorValidation": "El archivo contiene datos de configuración no válidos.",
+    "importErrorRead": "No se pudo leer el archivo. Inténtelo de nuevo.",
+    "importConfirmTitle": "Importar configuración",
+    "importConfirmDescription": "Esto reemplazará su configuración actual. Esta acción no se puede deshacer.",
+    "importConfirmApply": "Aplicar",
+    "importConfirmCancel": "Cancelar",
+    "diffTitle": "Vista previa de cambios",
+    "diffBaseImage": "Imagen base",
+    "diffNodeVersion": "Versión de Node",
+    "diffDockerPlatform": "Plataforma Docker",
+    "diffSoftware": "Software",
+    "diffAptPackages": "Paquetes APT",
+    "diffNpmPackages": "Paquetes NPM",
+    "diffRunCommands": "Comandos RUN",
+    "diffEnvVariables": "Variables de entorno",
+    "diffProtectedFiles": "Archivos protegidos",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Permisos",
+    "diffNoChanges": "No se detectaron cambios.",
+    "diffCurrent": "Actual",
+    "diffImported": "Importado",
+    "diffChanged": "Modificado",
+    "diffUnchanged": "Sin cambios"
+  },
   "errors": {
     "invalidEnvKey": "Nombre de variable inválido. Use solo letras, números y guiones bajos.",
     "duplicateEnvKey": "Este nombre de variable ya existe.",
@@ -418,6 +448,33 @@ const es: Translations = {
     "software": {
       "title": "Software instalado",
       "description": "Las siguientes herramientas de desarrollo están instaladas:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Atajos de teclado",
+    "description": "Usa atajos de teclado para navegar y realizar acciones rápidamente.",
+    "openHelp": "Atajos de teclado",
+    "categories": {
+      "navigation": "Navegación",
+      "actions": "Acciones"
+    },
+    "shortcuts": {
+      "downloadZip": "Descargar ZIP",
+      "forceSave": "Forzar guardado",
+      "resetDefaults": "Restablecer valores predeterminados",
+      "togglePreview": "Alternar vista previa",
+      "scrollToCard": "Ir a tarjeta {{number}}",
+      "toggleDarkMode": "Alternar modo oscuro",
+      "openLanguageSwitcher": "Abrir selector de idioma",
+      "closeDialog": "Cerrar diálogo",
+      "openShortcutsHelp": "Abrir atajos de teclado"
+    },
+    "announced": {
+      "downloadStarted": "Descarga iniciada",
+      "configReset": "Configuración restablecida a valores predeterminados",
+      "darkModeToggled": "Modo oscuro alternado",
+      "previewToggled": "Vista previa alternada",
+      "scrolledToCard": "Desplazado a tarjeta {{number}}"
     }
   }
 };

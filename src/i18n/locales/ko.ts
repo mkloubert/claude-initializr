@@ -211,6 +211,36 @@ const ko: Translations = {
     "pl": "폴란드어",
     "tr": "터키어"
   },
+  "importExport": {
+    "exportButton": "설정 내보내기",
+    "importButton": "설정 가져오기",
+    "exportSuccess": "설정이 성공적으로 내보내졌습니다.",
+    "importSuccess": "설정이 성공적으로 가져와졌습니다.",
+    "importErrorInvalidFile": "잘못된 파일 형식입니다. 유효한 JSON 파일을 선택하세요.",
+    "importErrorValidation": "파일에 잘못된 설정 데이터가 포함되어 있습니다.",
+    "importErrorRead": "파일을 읽을 수 없습니다. 다시 시도하세요.",
+    "importConfirmTitle": "설정 가져오기",
+    "importConfirmDescription": "현재 설정이 대체됩니다. 이 작업은 되돌릴 수 없습니다.",
+    "importConfirmApply": "적용",
+    "importConfirmCancel": "취소",
+    "diffTitle": "변경 미리보기",
+    "diffBaseImage": "베이스 이미지",
+    "diffNodeVersion": "Node 버전",
+    "diffDockerPlatform": "Docker 플랫폼",
+    "diffSoftware": "소프트웨어",
+    "diffAptPackages": "APT 패키지",
+    "diffNpmPackages": "NPM 패키지",
+    "diffRunCommands": "RUN 명령어",
+    "diffEnvVariables": "환경 변수",
+    "diffProtectedFiles": "보호된 파일",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "권한",
+    "diffNoChanges": "변경 사항이 없습니다.",
+    "diffCurrent": "현재",
+    "diffImported": "가져온",
+    "diffChanged": "변경됨",
+    "diffUnchanged": "변경 없음"
+  },
   "errors": {
     "invalidEnvKey": "잘못된 변수 이름입니다. 문자, 숫자, 밑줄만 사용하세요.",
     "duplicateEnvKey": "이 변수 이름은 이미 존재합니다.",
@@ -418,6 +448,33 @@ const ko: Translations = {
     "software": {
       "title": "설치된 소프트웨어",
       "description": "다음 개발 도구가 설치되었습니다:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "키보드 단축키",
+    "description": "키보드 단축키를 사용하여 빠르게 탐색하고 작업을 수행하세요.",
+    "openHelp": "키보드 단축키",
+    "categories": {
+      "navigation": "탐색",
+      "actions": "작업"
+    },
+    "shortcuts": {
+      "downloadZip": "ZIP 다운로드",
+      "forceSave": "강제 저장",
+      "resetDefaults": "기본값으로 초기화",
+      "togglePreview": "미리보기 전환",
+      "scrollToCard": "카드 {{number}}로 스크롤",
+      "toggleDarkMode": "다크 모드 전환",
+      "openLanguageSwitcher": "언어 선택기 열기",
+      "closeDialog": "대화 상자 닫기",
+      "openShortcutsHelp": "키보드 단축키 열기"
+    },
+    "announced": {
+      "downloadStarted": "다운로드가 시작되었습니다",
+      "configReset": "설정이 기본값으로 초기화되었습니다",
+      "darkModeToggled": "다크 모드가 전환되었습니다",
+      "previewToggled": "미리보기가 전환되었습니다",
+      "scrolledToCard": "카드 {{number}}로 스크롤되었습니다"
     }
   }
 };

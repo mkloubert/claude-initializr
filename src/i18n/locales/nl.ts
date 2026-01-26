@@ -211,6 +211,36 @@ const nl: Translations = {
     "pl": "Pools",
     "tr": "Turks"
   },
+  "importExport": {
+    "exportButton": "Configuratie exporteren",
+    "importButton": "Configuratie importeren",
+    "exportSuccess": "Configuratie succesvol geëxporteerd.",
+    "importSuccess": "Configuratie succesvol geïmporteerd.",
+    "importErrorInvalidFile": "Ongeldig bestandsformaat. Selecteer een geldig JSON-bestand.",
+    "importErrorValidation": "Het bestand bevat ongeldige configuratiegegevens.",
+    "importErrorRead": "Kan het bestand niet lezen. Probeer het opnieuw.",
+    "importConfirmTitle": "Configuratie importeren",
+    "importConfirmDescription": "Dit vervangt uw huidige configuratie. Deze actie kan niet ongedaan worden gemaakt.",
+    "importConfirmApply": "Toepassen",
+    "importConfirmCancel": "Annuleren",
+    "diffTitle": "Wijzigingsvoorbeeld",
+    "diffBaseImage": "Basisimage",
+    "diffNodeVersion": "Node-versie",
+    "diffDockerPlatform": "Docker-platform",
+    "diffSoftware": "Software",
+    "diffAptPackages": "APT-pakketten",
+    "diffNpmPackages": "NPM-pakketten",
+    "diffRunCommands": "RUN-opdrachten",
+    "diffEnvVariables": "Omgevingsvariabelen",
+    "diffProtectedFiles": "Beschermde bestanden",
+    "diffClaudeMd": "CLAUDE.md",
+    "diffPermissions": "Machtigingen",
+    "diffNoChanges": "Geen wijzigingen gedetecteerd.",
+    "diffCurrent": "Huidig",
+    "diffImported": "Geïmporteerd",
+    "diffChanged": "Gewijzigd",
+    "diffUnchanged": "Ongewijzigd"
+  },
   "errors": {
     "invalidEnvKey": "Ongeldige variabelenaam. Gebruik alleen letters, cijfers en underscores.",
     "duplicateEnvKey": "Deze variabelenaam bestaat al.",
@@ -418,6 +448,33 @@ const nl: Translations = {
     "software": {
       "title": "Geïnstalleerde software",
       "description": "De volgende ontwikkeltools zijn geïnstalleerd:"
+    }
+  },
+  "keyboardShortcuts": {
+    "title": "Sneltoetsen",
+    "description": "Gebruik sneltoetsen om snel te navigeren en acties uit te voeren.",
+    "openHelp": "Sneltoetsen",
+    "categories": {
+      "navigation": "Navigatie",
+      "actions": "Acties"
+    },
+    "shortcuts": {
+      "downloadZip": "ZIP downloaden",
+      "forceSave": "Opslaan forceren",
+      "resetDefaults": "Standaardwaarden herstellen",
+      "togglePreview": "Voorbeeld wisselen",
+      "scrollToCard": "Naar kaart {{number}} scrollen",
+      "toggleDarkMode": "Donkere modus wisselen",
+      "openLanguageSwitcher": "Taalkiezer openen",
+      "closeDialog": "Dialoogvenster sluiten",
+      "openShortcutsHelp": "Sneltoetsen openen"
+    },
+    "announced": {
+      "downloadStarted": "Download gestart",
+      "configReset": "Configuratie hersteld naar standaardwaarden",
+      "darkModeToggled": "Donkere modus gewisseld",
+      "previewToggled": "Voorbeeld gewisseld",
+      "scrolledToCard": "Gescrold naar kaart {{number}}"
     }
   }
 };

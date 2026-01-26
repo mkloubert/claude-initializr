@@ -20,16 +20,32 @@
 
 import { useTranslation } from 'react-i18next';
 import { SiGithub, SiPaypal } from 'react-icons/si';
-import { AutosaveSwitcher, LanguageSwitcher, ResetButton, ThemeSwitcher } from '@/components/common';
+import { AutosaveSwitcher, ImportExportButtons, LanguageSwitcher, ResetButton, ThemeSwitcher } from '@/components/common';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { APP_VERSION, GITHUB_URL, PAYPAL_URL } from '@/config';
+import { getModifierKey } from '@/hooks/useKeyboardShortcuts';
+import { Keyboard } from 'lucide-react';
 import logoImage from '@/assets/logo.png';
+
+interface HeaderProps {
+  resetDialogOpen?: boolean;
+  onResetDialogOpenChange?: (open: boolean) => void;
+  languageSwitcherOpen?: boolean;
+  onLanguageSwitcherOpenChange?: (open: boolean) => void;
+  onOpenShortcutsHelp?: () => void;
+}
 
 /**
  * Application header with logo, title, and navigation links.
  */
-export function Header() {
+export function Header({
+  resetDialogOpen,
+  onResetDialogOpenChange,
+  languageSwitcherOpen,
+  onLanguageSwitcherOpenChange,
+  onOpenShortcutsHelp,
+}: HeaderProps) {
   const { t } = useTranslation();
 
   return (
@@ -74,10 +90,26 @@ export function Header() {
               </a>
             </Button>
           )}
-          <ResetButton />
+          <ImportExportButtons />
+          <ResetButton
+            open={resetDialogOpen}
+            onOpenChange={onResetDialogOpenChange}
+          />
           <AutosaveSwitcher />
           <ThemeSwitcher />
-          <LanguageSwitcher />
+          <LanguageSwitcher
+            open={languageSwitcherOpen}
+            onOpenChange={onLanguageSwitcherOpenChange}
+          />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onOpenShortcutsHelp}
+            aria-label={t('keyboardShortcuts.openHelp')}
+            title={`${t('keyboardShortcuts.openHelp')} (${getModifierKey()}+/)`}
+          >
+            <Keyboard className="h-5 w-5" aria-hidden="true" />
+          </Button>
         </nav>
       </div>
     </header>
