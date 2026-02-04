@@ -73,6 +73,17 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
 - **Integrazione automatica**: I file protetti vengono aggiunti automaticamente come regole di negazione `Read()`
 - **Supporto pattern Glob**: Usa pattern come `src/**` per la corrispondenza ricorsiva
 
+### Configurazione DevContainer (VS Code / GitHub Codespaces)
+
+- **Integrazione VS Code**: Genera `devcontainer.json` per VS Code Dev Containers
+- **GitHub Codespaces**: Configurazione compatibile per lo sviluppo con GitHub Codespaces
+- **Estensioni**: Configura le estensioni VS Code da installare automaticamente
+- **Impostazioni**: Definisci le impostazioni VS Code per l'ambiente del container
+- **Features**: Aggiungi Dev Container Features (es: GitHub CLI, linguaggi aggiuntivi)
+- **Port forwarding**: Configura le porte da inoltrare dal container
+- **Comandi del ciclo di vita**: Configura comandi per eventi post-create, post-start e post-attach
+- **Estensioni consigliate**: Raccomandazioni automatiche di estensioni basate sul software selezionato
+
 ### Funzionalità generali
 
 - **Anteprima live**: Visualizza anteprime in tempo reale dei file di configurazione generati
@@ -126,7 +137,7 @@ Tutte le scorciatoie usano `Ctrl` su Windows/Linux e `⌘` (Cmd) su macOS.
 | `Ctrl/⌘ + Shift + D` | Attiva/disattiva tema scuro/chiaro |
 | `Ctrl/⌘ + Shift + X` | Ripristina impostazioni predefinite |
 | `Ctrl/⌘ + Shift + L` | Apri selettore lingua |
-| `Ctrl/⌘ + 1-4` | Scorri alla scheda (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Scorri alla scheda (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Apri guida scorciatoie da tastiera |
 | `Escape` | Chiudi finestra di dialogo |
 
@@ -366,6 +377,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Struttura dei file generati
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Impostazioni Claude

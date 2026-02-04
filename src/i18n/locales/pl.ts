@@ -33,7 +33,8 @@ const pl: Translations = {
       "title": "Co możesz skonfigurować:",
       "dockerfile": "Wybierz, które narzędzia deweloperskie zainstalować (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Ustaw zmienne środowiskowe (jak klucz API) i chroń wrażliwe pliki przed dostępem",
-      "claudeMd": "Napisz instrukcje specyficzne dla projektu, które Claude czyta na początku każdej sesji"
+      "claudeMd": "Napisz instrukcje specyficzne dla projektu, które Claude czyta na początku każdej sesji",
+      "devContainer": "Generuj konfigurację VS Code Dev Container do płynnego rozwoju"
     },
     "security": {
       "title": "Uwzględnione funkcje bezpieczeństwa:",
@@ -235,6 +236,7 @@ const pl: Translations = {
     "diffProtectedFiles": "Chronione pliki",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "Uprawnienia",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "Nie wykryto zmian.",
     "diffCurrent": "Bieżący",
     "diffImported": "Importowany",
@@ -262,7 +264,8 @@ const pl: Translations = {
       "initFirewall": "init-firewall.sh - Skrypt zapory sieciowej dla bezpieczeństwa",
       "workspace": "workspace/ - Twój katalog roboczy zamontowany w kontenerze",
       "claudeMd": "workspace/CLAUDE.md - Instrukcje projektu dla Claude",
-      "settingsJson": "workspace/.claude/settings.json - Ustawienia uprawnień Claude Code"
+      "settingsJson": "workspace/.claude/settings.json - Ustawienia uprawnień Claude Code",
+      "devcontainer": ".devcontainer/devcontainer.json - Konfiguracja VS Code Dev Container"
     },
     "baseImage": {
       "title": "Obraz bazowy",
@@ -448,6 +451,16 @@ const pl: Translations = {
     "software": {
       "title": "Zainstalowane oprogramowanie",
       "description": "Zainstalowane są następujące narzędzia deweloperskie:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "Ta konfiguracja zawiera konfigurację VS Code Dev Container dla płynnego rozwoju.",
+      "extensions": "Następujące rozszerzenia VS Code są instalowane automatycznie:",
+      "features": "Zawarte są następujące funkcje Dev Container:",
+      "ports": "Następujące porty są przekierowane:",
+      "commands": "Skonfigurowane polecenia cyklu życia:",
+      "vscodeOpen": "Otwórz w VS Code",
+      "codespacesOpen": "Otwórz w GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const pl: Translations = {
       "darkModeToggled": "Tryb ciemny przełączony",
       "previewToggled": "Podgląd przełączony",
       "scrolledToCard": "Przewinięto do karty {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "Skonfiguruj obsługę VS Code Dev Containers i GitHub Codespaces. To generuje plik devcontainer.json definiujący twoje środowisko programistyczne.",
+    "enable": "Włącz DevContainer",
+    "enableDesc": "Wygeneruj plik devcontainer.json dla VS Code Dev Containers i GitHub Codespaces.",
+    "name": "Nazwa kontenera",
+    "nameDesc": "Nazwa wyświetlana dla kontenera programistycznego.",
+    "namePlaceholder": "Przykład: Moje środowisko deweloperskie",
+    "tabs": {
+      "settings": "Ustawienia",
+      "extensions": "Rozszerzenia",
+      "features": "Funkcje",
+      "ports": "Porty",
+      "preview": "Podgląd"
+    },
+    "extensions": {
+      "title": "Rozszerzenia VS Code",
+      "description": "Rozszerzenia instalowane automatycznie podczas tworzenia kontenera.",
+      "placeholder": "Przykład: ms-python.python",
+      "add": "Dodaj rozszerzenie",
+      "remove": "Usuń {{extension}}",
+      "recommended": "Zalecane rozszerzenia",
+      "recommendedDesc": "Na podstawie wybranego oprogramowania zalecane są te rozszerzenia.",
+      "addRecommended": "Dodaj zalecane",
+      "noRecommendations": "Brak zaleceń na podstawie obecnego wyboru oprogramowania."
+    },
+    "features": {
+      "title": "Funkcje Dev Container",
+      "description": "Funkcje to samodzielne jednostki kodu instalacyjnego i konfiguracji.",
+      "placeholder": "Przykład: ghcr.io/devcontainers/features/python:1",
+      "add": "Dodaj funkcję",
+      "remove": "Usuń {{feature}}",
+      "recommended": "Zalecane funkcje",
+      "recommendedDesc": "Na podstawie wybranego oprogramowania zalecane są te funkcje.",
+      "addRecommended": "Dodaj zalecane",
+      "noRecommendations": "Brak zaleceń na podstawie obecnego wyboru oprogramowania."
+    },
+    "ports": {
+      "title": "Przekierowane porty",
+      "description": "Porty automatycznie przekierowywane z kontenera na hosta.",
+      "placeholder": "Przykład: 3000",
+      "add": "Dodaj port",
+      "remove": "Usuń port {{port}}",
+      "invalid": "Proszę wprowadzić prawidłowy numer portu (1-65535)."
+    },
+    "scripts": {
+      "title": "Skrypty cyklu życia",
+      "description": "Skrypty Bash wykonywane na różnych etapach cyklu życia kontenera. Każdy skrypt jest zapisywany jako osobny plik .sh.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Skrypt Post Create",
+      "postCreateDesc": "Wykonywany raz po utworzeniu kontenera. Użyj do jednorazowej konfiguracji, jak instalacja zależności.",
+      "postStartTitle": "Skrypt Post Start",
+      "postStartDesc": "Wykonywany przy każdym uruchomieniu kontenera. Użyj do zadań, które muszą być wykonywane przy każdym starcie.",
+      "postAttachTitle": "Skrypt Post Attach",
+      "postAttachDesc": "Wykonywany za każdym razem, gdy VS Code łączy się z kontenerem.",
+      "editorPlaceholder": "# Wprowadź tutaj swoje polecenia bash..."
+    },
+    "settings": {
+      "title": "Ustawienia VS Code",
+      "description": "Niestandardowe ustawienia VS Code dla kontenera programistycznego.",
+      "key": "Klucz ustawienia",
+      "value": "Wartość",
+      "keyPlaceholder": "Przykład: editor.formatOnSave",
+      "valuePlaceholder": "Przykład: true",
+      "add": "Dodaj ustawienie",
+      "remove": "Usuń ustawienie"
     }
   }
 };

@@ -42,6 +42,7 @@ import {
   X,
   Info,
   Loader2,
+  Box,
 } from 'lucide-react';
 
 // Lazy load the markdown editor card to reduce initial bundle size (~1.7MB)
@@ -52,6 +53,11 @@ const ClaudeMdCard = lazy(() =>
 // Lazy load the settings card
 const SettingsJsonCard = lazy(() =>
   import('@/components/config/SettingsJsonCard').then((m) => ({ default: m.SettingsJsonCard }))
+);
+
+// Lazy load the DevContainer card
+const DevContainerCard = lazy(() =>
+  import('@/components/config/DevContainerCard').then((m) => ({ default: m.DevContainerCard }))
 );
 
 const WELCOME_DISMISSED_KEY = 'claude-initializr-welcome-dismissed';
@@ -116,6 +122,10 @@ export default function Home() {
                     <li className="flex gap-2">
                       <FileCode className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
                       <span>{t('welcome.features.claudeMd')}</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <Box className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
+                      <span>{t('welcome.features.devContainer')}</span>
                     </li>
                   </ul>
                 </div>
@@ -191,6 +201,17 @@ export default function Home() {
             }
           >
             <SettingsJsonCard />
+          </Suspense>
+          <Suspense
+            fallback={
+              <Card>
+                <CardContent className="flex items-center justify-center py-12">
+                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                </CardContent>
+              </Card>
+            }
+          >
+            <DevContainerCard />
           </Suspense>
         </div>
       </div>

@@ -33,7 +33,8 @@ const zh: Translations = {
       "title": "您可以配置的内容：",
       "dockerfile": "选择要安装的开发工具（TypeScript、Python、Go、ffmpeg、ImageMagick）",
       "compose": "设置环境变量（如您的API密钥）并保护敏感文件免受访问",
-      "claudeMd": "编写Claude在每次会话开始时读取的项目特定说明"
+      "claudeMd": "编写Claude在每次会话开始时读取的项目特定说明",
+      "devContainer": "生成VS Code Dev Container配置以实现无缝开发"
     },
     "security": {
       "title": "包含的安全功能：",
@@ -235,6 +236,7 @@ const zh: Translations = {
     "diffProtectedFiles": "受保护文件",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "权限",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "未检测到更改。",
     "diffCurrent": "当前",
     "diffImported": "导入的",
@@ -262,7 +264,8 @@ const zh: Translations = {
       "initFirewall": "init-firewall.sh - 用于安全的网络防火墙脚本",
       "workspace": "workspace/ - 挂载到容器中的工作目录",
       "claudeMd": "workspace/CLAUDE.md - Claude 的项目说明",
-      "settingsJson": "workspace/.claude/settings.json - Claude Code 权限设置"
+      "settingsJson": "workspace/.claude/settings.json - Claude Code 权限设置",
+      "devcontainer": ".devcontainer/devcontainer.json - VS Code Dev Container 配置"
     },
     "baseImage": {
       "title": "基础镜像",
@@ -448,6 +451,16 @@ const zh: Translations = {
     "software": {
       "title": "已安装软件",
       "description": "以下开发工具已安装："
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "此配置包含 VS Code Dev Container 设置，以实现无缝开发。",
+      "extensions": "以下 VS Code 扩展将自动安装：",
+      "features": "包含以下 Dev Container 功能：",
+      "ports": "以下端口被转发：",
+      "commands": "配置的生命周期命令：",
+      "vscodeOpen": "在 VS Code 中打开",
+      "codespacesOpen": "在 GitHub Codespaces 中打开"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const zh: Translations = {
       "darkModeToggled": "深色模式已切换",
       "previewToggled": "预览已切换",
       "scrolledToCard": "已滚动到卡片 {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "配置 VS Code Dev Containers 和 GitHub Codespaces 支持。这将生成一个定义开发环境的 devcontainer.json 文件。",
+    "enable": "启用 DevContainer",
+    "enableDesc": "为 VS Code Dev Containers 和 GitHub Codespaces 生成 devcontainer.json 文件。",
+    "name": "容器名称",
+    "nameDesc": "开发容器的显示名称。",
+    "namePlaceholder": "示例：我的开发环境",
+    "tabs": {
+      "settings": "设置",
+      "extensions": "扩展",
+      "features": "功能",
+      "ports": "端口",
+      "preview": "预览"
+    },
+    "extensions": {
+      "title": "VS Code 扩展",
+      "description": "创建容器时自动安装的扩展。",
+      "placeholder": "示例：ms-python.python",
+      "add": "添加扩展",
+      "remove": "删除 {{extension}}",
+      "recommended": "推荐扩展",
+      "recommendedDesc": "根据您选择的软件，推荐这些扩展。",
+      "addRecommended": "添加推荐",
+      "noRecommendations": "根据当前软件选择没有推荐。"
+    },
+    "features": {
+      "title": "Dev Container 功能",
+      "description": "功能是独立的安装代码和配置单元。",
+      "placeholder": "示例：ghcr.io/devcontainers/features/python:1",
+      "add": "添加功能",
+      "remove": "删除 {{feature}}",
+      "recommended": "推荐功能",
+      "recommendedDesc": "根据您选择的软件，推荐这些功能。",
+      "addRecommended": "添加推荐",
+      "noRecommendations": "根据当前软件选择没有推荐。"
+    },
+    "ports": {
+      "title": "转发端口",
+      "description": "自动从容器转发到主机的端口。",
+      "placeholder": "示例：3000",
+      "add": "添加端口",
+      "remove": "删除端口 {{port}}",
+      "invalid": "请输入有效的端口号（1-65535）。"
+    },
+    "scripts": {
+      "title": "生命周期脚本",
+      "description": "在容器生命周期的不同阶段运行的 Bash 脚本。每个脚本保存为单独的 .sh 文件。",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "创建后脚本",
+      "postCreateDesc": "在创建容器后运行一次。用于一次性设置，如安装依赖项。",
+      "postStartTitle": "启动后脚本",
+      "postStartDesc": "每次容器启动时运行。用于需要在每次启动时运行的任务。",
+      "postAttachTitle": "连接后脚本",
+      "postAttachDesc": "每次 VS Code 连接到容器时运行。",
+      "editorPlaceholder": "# 在此输入您的 bash 命令..."
+    },
+    "settings": {
+      "title": "VS Code 设置",
+      "description": "开发容器的自定义 VS Code 设置。",
+      "key": "设置键",
+      "value": "值",
+      "keyPlaceholder": "示例：editor.formatOnSave",
+      "valuePlaceholder": "示例：true",
+      "add": "添加设置",
+      "remove": "删除设置"
     }
   }
 };

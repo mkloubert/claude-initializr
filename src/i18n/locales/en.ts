@@ -33,7 +33,8 @@ const en: Translations = {
       "title": "What you can configure:",
       "dockerfile": "Choose which development tools to install (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Set environment variables (like your API key) and protect sensitive files from being accessed",
-      "claudeMd": "Write project-specific instructions that Claude reads at the start of each session"
+      "claudeMd": "Write project-specific instructions that Claude reads at the start of each session",
+      "devContainer": "Generate VS Code Dev Container configuration for seamless development"
     },
     "security": {
       "title": "Security features included:",
@@ -235,6 +236,7 @@ const en: Translations = {
     "diffProtectedFiles": "Protected Files",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "Permissions",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "No changes detected.",
     "diffCurrent": "Current",
     "diffImported": "Imported",
@@ -262,7 +264,8 @@ const en: Translations = {
       "initFirewall": "init-firewall.sh - Network firewall script for security",
       "workspace": "workspace/ - Your working directory mounted into the container",
       "claudeMd": "workspace/CLAUDE.md - Project instructions for Claude",
-      "settingsJson": "workspace/.claude/settings.json - Claude Code permission settings"
+      "settingsJson": "workspace/.claude/settings.json - Claude Code permission settings",
+      "devcontainer": ".devcontainer/devcontainer.json - VS Code Dev Container configuration"
     },
     "baseImage": {
       "title": "Base Image",
@@ -448,6 +451,16 @@ const en: Translations = {
     "software": {
       "title": "Installed Software",
       "description": "The following development tools are installed:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "This configuration includes a VS Code Dev Container setup for seamless development.",
+      "extensions": "The following VS Code extensions are installed automatically:",
+      "features": "The following Dev Container features are included:",
+      "ports": "The following ports are forwarded:",
+      "commands": "Lifecycle commands configured:",
+      "vscodeOpen": "Open in VS Code",
+      "codespacesOpen": "Open in GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const en: Translations = {
       "darkModeToggled": "Dark mode toggled",
       "previewToggled": "Preview toggled",
       "scrolledToCard": "Scrolled to card {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "Configure VS Code Dev Containers and GitHub Codespaces support. This generates a devcontainer.json file that defines your development environment.",
+    "enable": "Enable DevContainer",
+    "enableDesc": "Generate a devcontainer.json file for VS Code Dev Containers and GitHub Codespaces.",
+    "name": "Container Name",
+    "nameDesc": "A display name for the development container.",
+    "namePlaceholder": "Example: My Dev Environment",
+    "tabs": {
+      "settings": "Settings",
+      "extensions": "Extensions",
+      "features": "Features",
+      "ports": "Ports",
+      "preview": "Preview"
+    },
+    "extensions": {
+      "title": "VS Code Extensions",
+      "description": "Extensions to install automatically when the container is created.",
+      "placeholder": "Example: ms-python.python",
+      "add": "Add extension",
+      "remove": "Remove {{extension}}",
+      "recommended": "Recommended Extensions",
+      "recommendedDesc": "Based on your selected software, these extensions are recommended.",
+      "addRecommended": "Add recommended",
+      "noRecommendations": "No recommendations based on current software selection."
+    },
+    "features": {
+      "title": "Dev Container Features",
+      "description": "Features are self-contained units of installation code and configuration.",
+      "placeholder": "Example: ghcr.io/devcontainers/features/python:1",
+      "add": "Add feature",
+      "remove": "Remove {{feature}}",
+      "recommended": "Recommended Features",
+      "recommendedDesc": "Based on your selected software, these features are recommended.",
+      "addRecommended": "Add recommended",
+      "noRecommendations": "No recommendations based on current software selection."
+    },
+    "ports": {
+      "title": "Forwarded Ports",
+      "description": "Ports to automatically forward from the container to the host.",
+      "placeholder": "Example: 3000",
+      "add": "Add port",
+      "remove": "Remove port {{port}}",
+      "invalid": "Please enter a valid port number (1-65535)."
+    },
+    "scripts": {
+      "title": "Lifecycle Scripts",
+      "description": "Bash scripts that run at different stages of the container lifecycle. Each script is saved as a separate .sh file.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Post Create Script",
+      "postCreateDesc": "Runs once after the container is created. Use for one-time setup like installing dependencies.",
+      "postStartTitle": "Post Start Script",
+      "postStartDesc": "Runs each time the container starts. Use for tasks that need to run on every start.",
+      "postAttachTitle": "Post Attach Script",
+      "postAttachDesc": "Runs each time VS Code attaches to the container.",
+      "editorPlaceholder": "# Enter your bash commands here..."
+    },
+    "settings": {
+      "title": "VS Code Settings",
+      "description": "Custom VS Code settings for the development container.",
+      "key": "Setting Key",
+      "value": "Value",
+      "keyPlaceholder": "Example: editor.formatOnSave",
+      "valuePlaceholder": "Example: true",
+      "add": "Add setting",
+      "remove": "Remove setting"
     }
   }
 };

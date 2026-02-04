@@ -33,7 +33,8 @@ const hi: Translations = {
       "title": "आप क्या कॉन्फ़िगर कर सकते हैं:",
       "dockerfile": "इंस्टॉल करने के लिए डेवलपमेंट टूल चुनें (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "एनवायरनमेंट वेरिएबल सेट करें (जैसे आपकी API कुंजी) और संवेदनशील फ़ाइलों को एक्सेस से बचाएं",
-      "claudeMd": "प्रोजेक्ट-विशिष्ट निर्देश लिखें जो Claude प्रत्येक सत्र की शुरुआत में पढ़ता है"
+      "claudeMd": "प्रोजेक्ट-विशिष्ट निर्देश लिखें जो Claude प्रत्येक सत्र की शुरुआत में पढ़ता है",
+      "devContainer": "निर्बाध विकास के लिए VS Code Dev Container कॉन्फ़िगरेशन जेनरेट करें"
     },
     "security": {
       "title": "शामिल सुरक्षा सुविधाएं:",
@@ -235,6 +236,7 @@ const hi: Translations = {
     "diffProtectedFiles": "संरक्षित फ़ाइलें",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "अनुमतियाँ",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "कोई परिवर्तन नहीं मिला।",
     "diffCurrent": "वर्तमान",
     "diffImported": "आयातित",
@@ -262,7 +264,8 @@ const hi: Translations = {
       "initFirewall": "init-firewall.sh - सुरक्षा के लिए नेटवर्क फ़ायरवॉल स्क्रिप्ट",
       "workspace": "workspace/ - कंटेनर में माउंट की गई आपकी वर्किंग डायरेक्टरी",
       "claudeMd": "workspace/CLAUDE.md - Claude के लिए प्रोजेक्ट निर्देश",
-      "settingsJson": "workspace/.claude/settings.json - Claude Code अनुमति सेटिंग्स"
+      "settingsJson": "workspace/.claude/settings.json - Claude Code अनुमति सेटिंग्स",
+      "devcontainer": ".devcontainer/devcontainer.json - VS Code Dev Container कॉन्फ़िगरेशन"
     },
     "baseImage": {
       "title": "बेस इमेज",
@@ -448,6 +451,16 @@ const hi: Translations = {
     "software": {
       "title": "इंस्टॉल किया गया सॉफ्टवेयर",
       "description": "निम्नलिखित डेवलपमेंट टूल्स इंस्टॉल हैं:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "इस कॉन्फ़िगरेशन में सहज विकास के लिए VS Code Dev Container सेटअप शामिल है।",
+      "extensions": "निम्नलिखित VS Code एक्सटेंशन स्वचालित रूप से इंस्टॉल होते हैं:",
+      "features": "निम्नलिखित Dev Container फीचर्स शामिल हैं:",
+      "ports": "निम्नलिखित पोर्ट्स फॉरवर्ड किए जाते हैं:",
+      "commands": "कॉन्फ़िगर किए गए लाइफसाइकल कमांड्स:",
+      "vscodeOpen": "VS Code में खोलें",
+      "codespacesOpen": "GitHub Codespaces में खोलें"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const hi: Translations = {
       "darkModeToggled": "डार्क मोड टॉगल किया गया",
       "previewToggled": "पूर्वावलोकन टॉगल किया गया",
       "scrolledToCard": "कार्ड {{number}} पर स्क्रॉल किया गया"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "VS Code Dev Containers और GitHub Codespaces समर्थन कॉन्फ़िगर करें। यह एक devcontainer.json फ़ाइल जनरेट करता है जो आपके डेवलपमेंट एनवायरनमेंट को परिभाषित करती है।",
+    "enable": "DevContainer सक्षम करें",
+    "enableDesc": "VS Code Dev Containers और GitHub Codespaces के लिए devcontainer.json फ़ाइल जनरेट करें।",
+    "name": "कंटेनर नाम",
+    "nameDesc": "डेवलपमेंट कंटेनर के लिए एक प्रदर्शन नाम।",
+    "namePlaceholder": "उदाहरण: मेरा डेव एनवायरनमेंट",
+    "tabs": {
+      "settings": "सेटिंग्स",
+      "extensions": "एक्सटेंशन",
+      "features": "फीचर्स",
+      "ports": "पोर्ट्स",
+      "preview": "पूर्वावलोकन"
+    },
+    "extensions": {
+      "title": "VS Code एक्सटेंशन",
+      "description": "कंटेनर बनाते समय स्वचालित रूप से इंस्टॉल होने वाले एक्सटेंशन।",
+      "placeholder": "उदाहरण: ms-python.python",
+      "add": "एक्सटेंशन जोड़ें",
+      "remove": "{{extension}} हटाएं",
+      "recommended": "अनुशंसित एक्सटेंशन",
+      "recommendedDesc": "आपके चयनित सॉफ़्टवेयर के आधार पर, ये एक्सटेंशन अनुशंसित हैं।",
+      "addRecommended": "अनुशंसित जोड़ें",
+      "noRecommendations": "वर्तमान सॉफ़्टवेयर चयन के आधार पर कोई अनुशंसा नहीं।"
+    },
+    "features": {
+      "title": "Dev Container फीचर्स",
+      "description": "फीचर्स इंस्टॉलेशन कोड और कॉन्फ़िगरेशन की स्व-निहित इकाइयां हैं।",
+      "placeholder": "उदाहरण: ghcr.io/devcontainers/features/python:1",
+      "add": "फीचर जोड़ें",
+      "remove": "{{feature}} हटाएं",
+      "recommended": "अनुशंसित फीचर्स",
+      "recommendedDesc": "आपके चयनित सॉफ़्टवेयर के आधार पर, ये फीचर्स अनुशंसित हैं।",
+      "addRecommended": "अनुशंसित जोड़ें",
+      "noRecommendations": "वर्तमान सॉफ़्टवेयर चयन के आधार पर कोई अनुशंसा नहीं।"
+    },
+    "ports": {
+      "title": "फॉरवर्डेड पोर्ट्स",
+      "description": "कंटेनर से होस्ट पर स्वचालित रूप से फॉरवर्ड होने वाले पोर्ट्स।",
+      "placeholder": "उदाहरण: 3000",
+      "add": "पोर्ट जोड़ें",
+      "remove": "पोर्ट {{port}} हटाएं",
+      "invalid": "कृपया एक मान्य पोर्ट नंबर दर्ज करें (1-65535)।"
+    },
+    "scripts": {
+      "title": "लाइफसाइकल स्क्रिप्ट्स",
+      "description": "कंटेनर लाइफसाइकल के विभिन्न चरणों में चलने वाली Bash स्क्रिप्ट्स। प्रत्येक स्क्रिप्ट एक अलग .sh फाइल के रूप में सेव होती है।",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Post Create स्क्रिप्ट",
+      "postCreateDesc": "कंटेनर बनने के बाद एक बार चलती है। डिपेंडेंसी इंस्टॉल करने जैसी एक बार की सेटअप के लिए उपयोग करें।",
+      "postStartTitle": "Post Start स्क्रिप्ट",
+      "postStartDesc": "हर बार कंटेनर शुरू होने पर चलती है। हर स्टार्ट पर चलने वाले कार्यों के लिए उपयोग करें।",
+      "postAttachTitle": "Post Attach स्क्रिप्ट",
+      "postAttachDesc": "हर बार VS Code कंटेनर से कनेक्ट होने पर चलती है।",
+      "editorPlaceholder": "# यहाँ अपने bash कमांड्स दर्ज करें..."
+    },
+    "settings": {
+      "title": "VS Code सेटिंग्स",
+      "description": "डेवलपमेंट कंटेनर के लिए कस्टम VS Code सेटिंग्स।",
+      "key": "सेटिंग कुंजी",
+      "value": "मान",
+      "keyPlaceholder": "उदाहरण: editor.formatOnSave",
+      "valuePlaceholder": "उदाहरण: true",
+      "add": "सेटिंग जोड़ें",
+      "remove": "सेटिंग हटाएं"
     }
   }
 };

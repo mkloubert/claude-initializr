@@ -73,6 +73,17 @@
 - **Otomatik Entegrasyon**: Korunan dosyalar otomatik olarak `Read()` reddetme kuralları olarak eklenir
 - **Glob Desen Desteği**: Özyinelemeli eşleştirme için `src/**` gibi desenler kullanın
 
+### DevContainer Yapılandırması (VS Code / GitHub Codespaces)
+
+- **VS Code Entegrasyonu**: VS Code Dev Containers için `devcontainer.json` oluşturun
+- **GitHub Codespaces**: GitHub Codespaces geliştirme için uyumlu yapılandırma
+- **Uzantılar**: Otomatik kurulum için VS Code uzantılarını yapılandırın
+- **Ayarlar**: Konteyner ortamı için VS Code ayarlarını tanımlayın
+- **Features**: Dev Container Features ekleyin (örn: GitHub CLI, ek diller)
+- **Port Yönlendirme**: Konteynerden yönlendirilecek portları yapılandırın
+- **Yaşam Döngüsü Komutları**: post-create, post-start ve post-attach olayları için komutlar ayarlayın
+- **Önerilen Uzantılar**: Seçilen yazılıma dayalı otomatik uzantı önerileri
+
 ### Genel Özellikler
 
 - **Canlı Önizleme**: Oluşturulan yapılandırma dosyalarının gerçek zamanlı önizlemelerini görün
@@ -126,7 +137,7 @@ Tüm kısayollar Windows/Linux'ta `Ctrl` ve macOS'ta `⌘` (Cmd) kullanır.
 | `Ctrl/⌘ + Shift + D` | Koyu/açık modu değiştir |
 | `Ctrl/⌘ + Shift + X` | Varsayılanlara sıfırla |
 | `Ctrl/⌘ + Shift + L` | Dil seçiciyi aç |
-| `Ctrl/⌘ + 1-4` | Karta kaydır (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Karta kaydır (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Klavye kısayolları yardımını aç |
 | `Escape` | İletişim kutusunu kapat |
 
@@ -373,6 +384,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Oluşturulan Dosya Yapısı
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Claude ayarları

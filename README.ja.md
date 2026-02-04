@@ -73,6 +73,17 @@
 - **自動統合**：保護されたファイルは自動的に`Read()`拒否ルールとして追加
 - **Globパターンサポート**：再帰的マッチングには`src/**`のようなパターンを使用
 
+### DevContainer設定（VS Code / GitHub Codespaces）
+
+- **VS Code統合**：VS Code Dev Container用の`devcontainer.json`を生成
+- **GitHub Codespaces**：GitHub Codespaces開発に対応した設定
+- **拡張機能**：自動インストールするVS Code拡張機能を設定
+- **設定**：コンテナ環境用のVS Code設定を定義
+- **Features**：Dev Container Features（GitHub CLI、追加言語など）を追加
+- **ポートフォワーディング**：コンテナから転送するポートを設定
+- **ライフサイクルコマンド**：post-create、post-start、post-attachイベント用のコマンドを設定
+- **推奨拡張機能**：選択したソフトウェアに基づく自動拡張機能推奨
+
 ### 一般機能
 
 - **ライブプレビュー**：生成された設定ファイルのリアルタイムプレビューを表示
@@ -126,7 +137,7 @@
 | `Ctrl/⌘ + Shift + D` | ダーク/ライトモードの切り替え |
 | `Ctrl/⌘ + Shift + X` | デフォルトにリセット |
 | `Ctrl/⌘ + Shift + L` | 言語切り替えを開く |
-| `Ctrl/⌘ + 1-4` | カードにスクロール（1=Dockerfile、2=Docker Compose、3=CLAUDE.md、4=settings.json） |
+| `Ctrl/⌘ + 1-5` | カードにスクロール（1=Dockerfile、2=Docker Compose、3=CLAUDE.md、4=settings.json、5=DevContainer） |
 | `Ctrl/⌘ + /` | キーボードショートカットヘルプを開く |
 | `Escape` | ダイアログを閉じる |
 
@@ -370,6 +381,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## 生成されるファイル構造
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Claude設定

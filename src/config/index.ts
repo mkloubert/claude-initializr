@@ -20,3 +20,4 @@
 
 export * from './env';
 export * from './containerPackages';
+export * from './devcontainer-extensions';

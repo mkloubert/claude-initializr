@@ -37,6 +37,7 @@ const CARD_IDS = [
   'card-docker-compose',
   'card-claude-md',
   'card-settings-json',
+  'card-devcontainer',
 ] as const;
 
 const languageNames: Record<string, string> = {
@@ -79,6 +80,7 @@ export const SHORTCUT_DEFINITIONS: ShortcutDefinition[] = [
   { keys: ['mod', '2'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
   { keys: ['mod', '3'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
   { keys: ['mod', '4'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
+  { keys: ['mod', '5'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
   { keys: ['mod', '/'], labelKey: 'keyboardShortcuts.shortcuts.openShortcutsHelp', category: 'actions' },
   { keys: ['Escape'], labelKey: 'keyboardShortcuts.shortcuts.closeDialog', category: 'navigation' },
 ];
@@ -152,11 +154,12 @@ export function useKeyboardShortcuts({
   // Ctrl/Cmd + Shift + L — Open language switcher
   useHotkeys('mod+shift+l', () => { onOpenLanguageSwitcher(); }, hotkeyOptions);
 
-  // Ctrl/Cmd + 1-4 — Scroll to card
+  // Ctrl/Cmd + 1-5 — Scroll to card
   useHotkeys('mod+1', () => scrollToCard(0), hotkeyOptions);
   useHotkeys('mod+2', () => scrollToCard(1), hotkeyOptions);
   useHotkeys('mod+3', () => scrollToCard(2), hotkeyOptions);
   useHotkeys('mod+4', () => scrollToCard(3), hotkeyOptions);
+  useHotkeys('mod+5', () => scrollToCard(4), hotkeyOptions);
 
   // Ctrl/Cmd + / — Open shortcuts help
   useHotkeys('mod+/', () => { onOpenShortcutsHelp(); }, hotkeyOptions);

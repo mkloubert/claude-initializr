@@ -73,6 +73,17 @@ A web application to generate Docker configuration files for running [Claude Cod
 - **Automatic Integration**: Protected files are automatically added as `Read()` deny rules
 - **Glob Pattern Support**: Use patterns like `src/**` for recursive matching
 
+### DevContainer Configuration (VS Code / GitHub Codespaces)
+
+- **VS Code Integration**: Generate `devcontainer.json` for VS Code Dev Containers
+- **GitHub Codespaces**: Compatible configuration for GitHub Codespaces development
+- **Extensions**: Configure VS Code extensions to be installed automatically
+- **Settings**: Define VS Code settings for the container environment
+- **Features**: Add Dev Container Features (e.g., GitHub CLI, additional languages)
+- **Port Forwarding**: Configure ports to be forwarded from the container
+- **Lifecycle Commands**: Set up commands for post-create, post-start, and post-attach events
+- **Recommended Extensions**: Automatic extension recommendations based on selected software
+
 ### General Features
 
 - **Live Preview**: See real-time previews of generated configuration files
@@ -126,7 +137,7 @@ All shortcuts use `Ctrl` on Windows/Linux and `⌘` (Cmd) on macOS.
 | `Ctrl/⌘ + Shift + D` | Toggle dark/light mode |
 | `Ctrl/⌘ + Shift + X` | Reset to defaults |
 | `Ctrl/⌘ + Shift + L` | Open language switcher |
-| `Ctrl/⌘ + 1-4` | Scroll to card (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Scroll to card (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Open keyboard shortcuts help |
 | `Escape` | Close dialog |
 
@@ -382,6 +393,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Generated File Structure
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Claude settings
@@ -501,6 +515,18 @@ Releases are automated via GitHub Actions. To create a new release:
 Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
 ## Changelog
+
+### v3.2.0
+
+- Added DevContainer support for VS Code and GitHub Codespaces
+  - Generate `devcontainer.json` configuration
+  - Configure VS Code extensions and settings
+  - Add Dev Container Features
+  - Set up port forwarding
+  - Configure lifecycle commands (post-create, post-start, post-attach)
+  - Automatic extension recommendations based on selected software
+- Added keyboard shortcut `Ctrl/⌘ + 5` to scroll to DevContainer card
+- Updated welcome section with DevContainer feature
 
 ### v3.1.2
 

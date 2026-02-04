@@ -73,6 +73,17 @@ Une application web pour générer des fichiers de configuration Docker permetta
 - **Intégration automatique**: Les fichiers protégés sont automatiquement ajoutés comme règles de refus `Read()`
 - **Support des patterns Glob**: Utilisez des patterns comme `src/**` pour la correspondance récursive
 
+### Configuration DevContainer (VS Code / GitHub Codespaces)
+
+- **Intégration VS Code**: Générez `devcontainer.json` pour VS Code Dev Containers
+- **GitHub Codespaces**: Configuration compatible pour le développement GitHub Codespaces
+- **Extensions**: Configurez les extensions VS Code à installer automatiquement
+- **Paramètres**: Définissez les paramètres VS Code pour l'environnement du conteneur
+- **Features**: Ajoutez des Dev Container Features (ex: GitHub CLI, langages supplémentaires)
+- **Redirection de ports**: Configurez les ports à rediriger depuis le conteneur
+- **Commandes de cycle de vie**: Configurez les commandes pour les événements post-create, post-start et post-attach
+- **Extensions recommandées**: Recommandations automatiques d'extensions basées sur le logiciel sélectionné
+
 ### Fonctionnalités générales
 
 - **Prévisualisation en direct** : Visualisez les aperçus en temps réel des fichiers de configuration générés
@@ -126,7 +137,7 @@ Tous les raccourcis utilisent `Ctrl` sous Windows/Linux et `⌘` (Cmd) sous macO
 | `Ctrl/⌘ + Shift + D` | Basculer le mode sombre/clair |
 | `Ctrl/⌘ + Shift + X` | Réinitialiser les paramètres par défaut |
 | `Ctrl/⌘ + Shift + L` | Ouvrir le sélecteur de langue |
-| `Ctrl/⌘ + 1-4` | Défiler jusqu'à la carte (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Défiler jusqu'à la carte (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Ouvrir l'aide des raccourcis clavier |
 | `Escape` | Fermer le dialogue |
 
@@ -366,6 +377,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Structure des fichiers générés
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Paramètres Claude

@@ -75,6 +75,17 @@
 - **التكامل التلقائي**: تُضاف الملفات المحمية تلقائياً كقواعد رفض `Read()`
 - **دعم أنماط Glob**: استخدم أنماط مثل `src/**` للمطابقة التكرارية
 
+### تكوين DevContainer (VS Code / GitHub Codespaces)
+
+- **تكامل VS Code**: إنشاء `devcontainer.json` لـ VS Code Dev Containers
+- **GitHub Codespaces**: تكوين متوافق للتطوير على GitHub Codespaces
+- **الإضافات**: تكوين إضافات VS Code للتثبيت التلقائي
+- **الإعدادات**: تحديد إعدادات VS Code لبيئة الحاوية
+- **الميزات**: إضافة Dev Container Features (مثل: GitHub CLI، لغات إضافية)
+- **إعادة توجيه المنافذ**: تكوين المنافذ لإعادة توجيهها من الحاوية
+- **أوامر دورة الحياة**: إعداد أوامر لأحداث post-create و post-start و post-attach
+- **الإضافات الموصى بها**: توصيات تلقائية للإضافات بناءً على البرامج المحددة
+
 ### الميزات العامة
 
 - **معاينة مباشرة**: شاهد معاينات في الوقت الفعلي لملفات التكوين المُنشأة
@@ -128,7 +139,7 @@
 | `Ctrl/⌘ + Shift + D` | تبديل الوضع الداكن/الفاتح |
 | `Ctrl/⌘ + Shift + X` | إعادة التعيين إلى الافتراضي |
 | `Ctrl/⌘ + Shift + L` | فتح مُبدّل اللغة |
-| `Ctrl/⌘ + 1-4` | التمرير إلى البطاقة (1=Dockerfile، 2=Docker Compose، 3=CLAUDE.md، 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | التمرير إلى البطاقة (1=Dockerfile، 2=Docker Compose، 3=CLAUDE.md، 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | فتح مساعدة اختصارات لوحة المفاتيح |
 | `Escape` | إغلاق مربع الحوار |
 
@@ -372,6 +383,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## هيكل الملفات المُنشأة
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # إعدادات Claude

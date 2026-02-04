@@ -75,6 +75,17 @@
 - **خودکار انضمام**: محفوظ فائلیں خود بخود `Read()` انکار قواعد کے طور پر شامل ہوتی ہیں
 - **Glob پیٹرن سپورٹ**: تکراری میچنگ کے لیے `src/**` جیسے پیٹرن استعمال کریں
 
+### DevContainer کنفیگریشن (VS Code / GitHub Codespaces)
+
+- **VS Code انضمام**: VS Code Dev Container کے لیے `devcontainer.json` بنائیں
+- **GitHub Codespaces**: GitHub Codespaces ڈیولپمنٹ کے لیے مطابقت پذیر کنفیگریشن
+- **ایکسٹینشنز**: خود بخود انسٹال کرنے کے لیے VS Code ایکسٹینشنز کنفیگر کریں
+- **سیٹنگز**: کنٹینر ماحول کے لیے VS Code سیٹنگز متعین کریں
+- **Features**: Dev Container Features شامل کریں (مثلاً: GitHub CLI، اضافی زبانیں)
+- **پورٹ فارورڈنگ**: کنٹینر سے فارورڈ کرنے کے لیے پورٹس کنفیگر کریں
+- **لائف سائیکل کمانڈز**: post-create، post-start اور post-attach ایونٹس کے لیے کمانڈز سیٹ کریں
+- **تجویز کردہ ایکسٹینشنز**: منتخب سافٹ ویئر کی بنیاد پر خودکار ایکسٹینشن تجاویز
+
 ### عمومی خصوصیات
 
 - **لائیو پریویو**: بنائی گئی کنفیگریشن فائلوں کا ریئل ٹائم پریویو دیکھیں
@@ -128,7 +139,7 @@
 | `Ctrl/⌘ + Shift + D` | ڈارک/لائٹ موڈ ٹوگل کریں |
 | `Ctrl/⌘ + Shift + X` | ڈیفالٹ پر ری سیٹ کریں |
 | `Ctrl/⌘ + Shift + L` | زبان تبدیل کرنے والا کھولیں |
-| `Ctrl/⌘ + 1-4` | کارڈ پر سکرول کریں (1=Dockerfile، 2=Docker Compose، 3=CLAUDE.md، 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | کارڈ پر سکرول کریں (1=Dockerfile، 2=Docker Compose، 3=CLAUDE.md، 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | کی بورڈ شارٹ کٹس مدد کھولیں |
 | `Escape` | ڈائیلاگ بند کریں |
 
@@ -372,6 +383,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## بنائی گئی فائل کی ساخت
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Claude سیٹنگز

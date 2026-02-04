@@ -23,6 +23,7 @@ import type {
   AppConfig,
   ClaudePermissions,
   CustomNpmPackage,
+  DevContainerConfig,
   EnvVariable,
   ProtectedFile,
   SoftwareConfig,
@@ -33,6 +34,7 @@ import {
   optionalNpmPackages,
 } from '@/config/containerPackages';
 import { GITHUB_URL, PAYPAL_URL, AUTHOR_NAME, AUTHOR_URL } from '@/config/env';
+import { getAllExtensionIds, getAllFeatureRefs } from './devcontainerGenerator';
 
 /**
  * Configuration for README generation.
@@ -704,7 +706,7 @@ function generateAuthorSection(t: TFunction): string {
 /**
  * Generate the files overview section.
  */
-function generateFilesSection(t: TFunction): string {
+function generateFilesSection(devContainerEnabled: boolean, t: TFunction): string {
   let content = `## ${t('readme.files.title')}\n\n`;
 
   content += `- **${t('readme.files.dockerfile')}**\n`;
@@ -715,7 +717,77 @@ function generateFilesSection(t: TFunction): string {
   content += `  - **${t('readme.files.claudeMd')}**\n`;
   content += `  - **${t('readme.files.settingsJson')}**\n`;
 
+  // Add DevContainer file if enabled
+  if (devContainerEnabled) {
+    content += `- **${t('readme.files.devcontainer')}**\n`;
+  }
+
   content += '\n';
+  return content;
+}
+
+/**
+ * Generate the DevContainer section.
+ */
+function generateDevContainerSection(
+  devContainer: DevContainerConfig,
+  software: SoftwareConfig,
+  t: TFunction
+): string {
+  if (!devContainer.enabled) {
+    return '';
+  }
+
+  let content = `## ${t('readme.devContainer.title')}\n\n`;
+  content += `${t('readme.devContainer.description')}\n\n`;
+
+  // Extensions
+  const extensions = getAllExtensionIds(devContainer, software, false);
+  if (extensions.length > 0) {
+    content += `### ${t('readme.devContainer.extensions')}\n\n`;
+    for (const ext of extensions) {
+      const marketplaceUrl = `https://marketplace.visualstudio.com/items?itemName=${ext}`;
+      content += `- [\`${ext}\`](${marketplaceUrl})\n`;
+    }
+    content += '\n';
+  }
+
+  // Features
+  const features = getAllFeatureRefs(devContainer, software, false);
+  if (features.length > 0) {
+    content += `### ${t('readme.devContainer.features')}\n\n`;
+    for (const feat of features) {
+      content += `- \`${feat}\`\n`;
+    }
+    content += '\n';
+  }
+
+  // Forwarded ports
+  if (devContainer.forwardedPorts.length > 0) {
+    content += `### ${t('readme.devContainer.ports')}\n\n`;
+    for (const port of devContainer.forwardedPorts) {
+      content += `- \`${port.port}\`\n`;
+    }
+    content += '\n';
+  }
+
+  // Lifecycle scripts - always present since we always generate .sh files
+  content += `### ${t('readme.devContainer.commands')}\n\n`;
+  content += '- **postCreateCommand**: `.devcontainer/post-create.sh`\n';
+  content += '- **postStartCommand**: `.devcontainer/post-start.sh`\n';
+  content += '- **postAttachCommand**: `.devcontainer/post-attach.sh`\n';
+  content += '\n';
+
+  // Quick links
+  content += `### ${t('readme.devContainer.vscodeOpen')}\n\n`;
+  content += 'To open in VS Code with Dev Containers:\n\n';
+  content += '1. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)\n';
+  content += '2. Open this folder in VS Code\n';
+  content += '3. Click "Reopen in Container" when prompted\n\n';
+
+  content += `### ${t('readme.devContainer.codespacesOpen')}\n\n`;
+  content += 'This configuration is compatible with GitHub Codespaces.\n\n';
+
   return content;
 }
 
@@ -748,7 +820,7 @@ export function generateReadmeContent(config: ReadmeConfig): string {
   content += `${t('readme.intro.description')}\n\n`;
 
   // Files overview
-  content += generateFilesSection(t);
+  content += generateFilesSection(appConfig.devContainer.enabled, t);
 
   // Base image
   content += generateBaseImageSection(appConfig.baseImage, appConfig.nodeVersion, t);
@@ -784,6 +856,9 @@ export function generateReadmeContent(config: ReadmeConfig): string {
 
   // CLAUDE.md
   content += generateClaudeMdSection(t);
+
+  // DevContainer (if enabled)
+  content += generateDevContainerSection(appConfig.devContainer, appConfig.software, t);
 
   // Quick start
   content += generateQuickStartSection(appConfig.software, t);

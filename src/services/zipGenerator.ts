@@ -32,6 +32,10 @@ import { generateEnvFileContent } from './envGenerator';
 import { generateDockerComposeReplacements } from './volumeGenerator';
 import { generateSettingsJson } from './settingsGenerator';
 import { generateReadmeContent } from './readmeGenerator';
+import {
+  generateDevContainerJson,
+  generateLifecycleScripts,
+} from './devcontainerGenerator';
 
 /**
  * Language configuration for README generation.
@@ -100,6 +104,33 @@ export async function generateZipFile(
     if (claudeFolder) {
       const settingsContent = generateSettingsJson(config.claudePermissions, config.protectedFiles);
       claudeFolder.file('settings.json', settingsContent);
+    }
+  }
+
+  // Generate DevContainer files if enabled
+  if (config.devContainer.enabled) {
+    const devcontainerFolder = zip.folder('.devcontainer');
+    if (devcontainerFolder) {
+      // Generate devcontainer.json
+      const devcontainerContent = generateDevContainerJson(
+        config.devContainer,
+        config.software,
+        {
+          // Include recommendations for the actual generated file
+          includeRecommendedExtensions: false,
+          includeRecommendedFeatures: false,
+        }
+      );
+      devcontainerFolder.file('devcontainer.json', devcontainerContent);
+
+      // Get the language from readme config for bilingual placeholders
+      const language = readmeConfig?.language || 'en';
+
+      // Always generate all lifecycle scripts (.sh files)
+      const lifecycleScripts = generateLifecycleScripts(config.devContainer, language);
+      for (const script of lifecycleScripts) {
+        devcontainerFolder.file(script.filename, script.content);
+      }
     }
   }
 

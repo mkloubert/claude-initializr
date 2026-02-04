@@ -73,6 +73,17 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
 - **Automatische integratie**: Beschermde bestanden worden automatisch toegevoegd als `Read()` weigeringsregels
 - **Glob-patroon ondersteuning**: Gebruik patronen zoals `src/**` voor recursieve matching
 
+### DevContainer-configuratie (VS Code / GitHub Codespaces)
+
+- **VS Code-integratie**: Genereer `devcontainer.json` voor VS Code Dev Containers
+- **GitHub Codespaces**: Compatibele configuratie voor GitHub Codespaces-ontwikkeling
+- **Extensies**: Configureer VS Code-extensies om automatisch te installeren
+- **Instellingen**: Definieer VS Code-instellingen voor de containeromgeving
+- **Features**: Voeg Dev Container Features toe (bijv. GitHub CLI, extra talen)
+- **Port forwarding**: Configureer poorten om door te sturen vanuit de container
+- **Lifecycle-commando's**: Stel commando's in voor post-create, post-start en post-attach events
+- **Aanbevolen extensies**: Automatische extensie-aanbevelingen gebaseerd op geselecteerde software
+
 ### Algemene functies
 
 - **Live preview**: Bekijk real-time voorbeelden van gegenereerde configuratiebestanden
@@ -126,7 +137,7 @@ Alle sneltoetsen gebruiken `Ctrl` op Windows/Linux en `⌘` (Cmd) op macOS.
 | `Ctrl/⌘ + Shift + D` | Donker/licht thema wisselen |
 | `Ctrl/⌘ + Shift + X` | Standaardinstellingen herstellen |
 | `Ctrl/⌘ + Shift + L` | Taalkiezer openen |
-| `Ctrl/⌘ + 1-4` | Naar kaart scrollen (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Naar kaart scrollen (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Sneltoetsen hulp openen |
 | `Escape` | Dialoog sluiten |
 
@@ -370,6 +381,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Gegenereerde bestandsstructuur
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Claude-instellingen

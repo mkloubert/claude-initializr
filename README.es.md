@@ -73,6 +73,17 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
 - **Integración automática**: Los archivos protegidos se agregan automáticamente como reglas de denegación `Read()`
 - **Soporte de patrones Glob**: Usa patrones como `src/**` para coincidencia recursiva
 
+### Configuración de DevContainer (VS Code / GitHub Codespaces)
+
+- **Integración con VS Code**: Genera `devcontainer.json` para VS Code Dev Containers
+- **GitHub Codespaces**: Configuración compatible para desarrollo en GitHub Codespaces
+- **Extensiones**: Configura extensiones de VS Code para instalar automáticamente
+- **Ajustes**: Define ajustes de VS Code para el entorno del contenedor
+- **Features**: Agrega Dev Container Features (ej: GitHub CLI, lenguajes adicionales)
+- **Reenvío de puertos**: Configura puertos para reenviar desde el contenedor
+- **Comandos de ciclo de vida**: Configura comandos para eventos post-create, post-start y post-attach
+- **Extensiones recomendadas**: Recomendaciones automáticas de extensiones basadas en el software seleccionado
+
 ### Características generales
 
 - **Vista previa en vivo**: Vea vistas previas en tiempo real de los archivos de configuración generados
@@ -126,7 +137,7 @@ Todos los atajos usan `Ctrl` en Windows/Linux y `⌘` (Cmd) en macOS.
 | `Ctrl/⌘ + Shift + D` | Alternar modo oscuro/claro |
 | `Ctrl/⌘ + Shift + X` | Restablecer valores predeterminados |
 | `Ctrl/⌘ + Shift + L` | Abrir selector de idioma |
-| `Ctrl/⌘ + 1-4` | Desplazarse a la tarjeta (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Desplazarse a la tarjeta (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Abrir ayuda de atajos de teclado |
 | `Escape` | Cerrar diálogo |
 
@@ -366,6 +377,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Estructura de archivos generados
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Configuración de Claude

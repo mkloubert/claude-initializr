@@ -22,6 +22,7 @@ import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react
 import {
   defaultAppConfig,
   defaultClaudePermissions,
+  defaultDevContainerConfig,
   defaultSoftwareConfig,
   defaultTelemetryEnvVariables,
   type AppConfig,
@@ -29,13 +30,18 @@ import {
   type ConfigExportData,
   type CustomNpmPackage,
   type CustomRunCommand,
+  type DevContainerConfig,
+  type DevContainerFeature,
   type DockerfileUser,
   type EnvVariable,
+  type ForwardedPort,
   type PermissionCategory,
   type PermissionDirectiveType,
   type PermissionRule,
   type ProtectedFile,
   type SoftwareConfig,
+  type VscodeExtension,
+  type VscodeSetting,
 } from '../types';
 import { APP_VERSION } from '../config/env';
 import { ConfigContext, type ConfigContextValue } from './configContextValue';
@@ -101,6 +107,17 @@ interface StoredConfig {
     allow?: StoredPermissionRule[];
     ask?: StoredPermissionRule[];
     deny?: StoredPermissionRule[];
+  };
+  devContainer?: {
+    enabled?: boolean;
+    name?: string;
+    extensions?: string[];
+    settings?: Array<{ key: string; value: string }>;
+    features?: string[];
+    forwardedPorts?: number[];
+    postCreateScript?: string;
+    postStartScript?: string;
+    postAttachScript?: string;
   };
 }
 
@@ -272,6 +289,66 @@ function loadConfigFromStorage(): AppConfig {
       }
       : defaultClaudePermissions;
 
+    // Restore DevContainer config
+    const storedDevContainer = data.devContainer as StoredConfig['devContainer'];
+    const devContainer: DevContainerConfig = storedDevContainer && typeof storedDevContainer === 'object'
+      ? {
+        enabled: typeof storedDevContainer.enabled === 'boolean'
+          ? storedDevContainer.enabled
+          : defaultDevContainerConfig.enabled,
+        name: typeof storedDevContainer.name === 'string' && storedDevContainer.name.length > 0
+          ? storedDevContainer.name
+          : defaultDevContainerConfig.name,
+        extensions: Array.isArray(storedDevContainer.extensions)
+          ? storedDevContainer.extensions
+            .filter((ext): ext is string => typeof ext === 'string' && ext.length > 0)
+            .map((extensionId) => ({
+              id: generateId(),
+              extensionId,
+            }))
+          : [],
+        settings: Array.isArray(storedDevContainer.settings)
+          ? storedDevContainer.settings
+            .filter((s): s is { key: string; value: string } =>
+              typeof s === 'object' &&
+              s !== null &&
+              typeof (s as Record<string, unknown>).key === 'string' &&
+              typeof (s as Record<string, unknown>).value === 'string'
+            )
+            .map((s) => ({
+              id: generateId(),
+              key: s.key,
+              value: s.value,
+            }))
+          : [],
+        features: Array.isArray(storedDevContainer.features)
+          ? storedDevContainer.features
+            .filter((f): f is string => typeof f === 'string' && f.length > 0)
+            .map((feature) => ({
+              id: generateId(),
+              feature,
+            }))
+          : [],
+        forwardedPorts: Array.isArray(storedDevContainer.forwardedPorts)
+          ? storedDevContainer.forwardedPorts
+            .filter((p): p is number => typeof p === 'number' && p > 0 && p <= 65535)
+            .map((port) => ({
+              id: generateId(),
+              port,
+            }))
+          : [],
+        postCreateScript: typeof storedDevContainer.postCreateScript === 'string'
+          ? storedDevContainer.postCreateScript
+          : defaultDevContainerConfig.postCreateScript,
+        postStartScript: typeof storedDevContainer.postStartScript === 'string'
+          ? storedDevContainer.postStartScript
+          : defaultDevContainerConfig.postStartScript,
+        postAttachScript: typeof storedDevContainer.postAttachScript === 'string'
+          ? storedDevContainer.postAttachScript
+          : defaultDevContainerConfig.postAttachScript,
+      }
+      : defaultDevContainerConfig;
+
     return ensureEnvVariables({
       baseImage: typeof data.baseImage === 'string' && data.baseImage.length > 0
         ? data.baseImage
@@ -292,6 +369,7 @@ function loadConfigFromStorage(): AppConfig {
         ? data.claudeMdContent
         : defaultAppConfig.claudeMdContent,
       claudePermissions,
+      devContainer,
     });
   } catch {
     // If anything fails, return default config with telemetry vars initialized
@@ -387,6 +465,35 @@ function saveConfigToStorage(config: AppConfig): void {
               pattern: rule.pattern,
             }))
             : [],
+        }
+        : undefined,
+      devContainer: config.devContainer && typeof config.devContainer === 'object'
+        ? {
+          enabled: config.devContainer.enabled ?? defaultDevContainerConfig.enabled,
+          name: config.devContainer.name ?? defaultDevContainerConfig.name,
+          extensions: Array.isArray(config.devContainer.extensions)
+            ? config.devContainer.extensions
+              .filter((ext) => ext && typeof ext === 'object' && typeof ext.extensionId === 'string')
+              .map((ext) => ext.extensionId)
+            : [],
+          settings: Array.isArray(config.devContainer.settings)
+            ? config.devContainer.settings
+              .filter((s) => s && typeof s === 'object' && typeof s.key === 'string')
+              .map((s) => ({ key: s.key, value: s.value }))
+            : [],
+          features: Array.isArray(config.devContainer.features)
+            ? config.devContainer.features
+              .filter((f) => f && typeof f === 'object' && typeof f.feature === 'string')
+              .map((f) => f.feature)
+            : [],
+          forwardedPorts: Array.isArray(config.devContainer.forwardedPorts)
+            ? config.devContainer.forwardedPorts
+              .filter((p) => p && typeof p === 'object' && typeof p.port === 'number')
+              .map((p) => p.port)
+            : [],
+          postCreateScript: config.devContainer.postCreateScript ?? '',
+          postStartScript: config.devContainer.postStartScript ?? '',
+          postAttachScript: config.devContainer.postAttachScript ?? '',
         }
         : undefined,
     };
@@ -769,6 +876,201 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
     }));
   }, []);
 
+  // DevContainer actions
+  const setDevContainerEnabled = useCallback((enabled: boolean) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        enabled,
+      },
+    }));
+  }, []);
+
+  const setDevContainerName = useCallback((name: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        name,
+      },
+    }));
+  }, []);
+
+  const addDevContainerExtension = useCallback((extensionId: string) => {
+    const trimmedId = extensionId.trim();
+    if (!trimmedId) return;
+
+    setConfig((prev) => {
+      // Check for duplicates
+      const exists = prev.devContainer.extensions.some(
+        (ext) => ext.extensionId.toLowerCase() === trimmedId.toLowerCase()
+      );
+      if (exists) return prev;
+
+      const newExtension: VscodeExtension = {
+        id: crypto.randomUUID(),
+        extensionId: trimmedId,
+      };
+
+      return {
+        ...prev,
+        devContainer: {
+          ...prev.devContainer,
+          extensions: [...prev.devContainer.extensions, newExtension],
+        },
+      };
+    });
+  }, []);
+
+  const removeDevContainerExtension = useCallback((id: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        extensions: prev.devContainer.extensions.filter((ext) => ext.id !== id),
+      },
+    }));
+  }, []);
+
+  const addDevContainerSetting = useCallback((key: string, value: string) => {
+    const trimmedKey = key.trim();
+    if (!trimmedKey) return;
+
+    setConfig((prev) => {
+      // Check for duplicates
+      const exists = prev.devContainer.settings.some(
+        (s) => s.key.toLowerCase() === trimmedKey.toLowerCase()
+      );
+      if (exists) return prev;
+
+      const newSetting: VscodeSetting = {
+        id: crypto.randomUUID(),
+        key: trimmedKey,
+        value,
+      };
+
+      return {
+        ...prev,
+        devContainer: {
+          ...prev.devContainer,
+          settings: [...prev.devContainer.settings, newSetting],
+        },
+      };
+    });
+  }, []);
+
+  const removeDevContainerSetting = useCallback((id: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        settings: prev.devContainer.settings.filter((s) => s.id !== id),
+      },
+    }));
+  }, []);
+
+  const addDevContainerFeature = useCallback((feature: string) => {
+    const trimmedFeature = feature.trim();
+    if (!trimmedFeature) return;
+
+    setConfig((prev) => {
+      // Check for duplicates
+      const exists = prev.devContainer.features.some(
+        (f) => f.feature.toLowerCase() === trimmedFeature.toLowerCase()
+      );
+      if (exists) return prev;
+
+      const newFeature: DevContainerFeature = {
+        id: crypto.randomUUID(),
+        feature: trimmedFeature,
+      };
+
+      return {
+        ...prev,
+        devContainer: {
+          ...prev.devContainer,
+          features: [...prev.devContainer.features, newFeature],
+        },
+      };
+    });
+  }, []);
+
+  const removeDevContainerFeature = useCallback((id: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        features: prev.devContainer.features.filter((f) => f.id !== id),
+      },
+    }));
+  }, []);
+
+  const addDevContainerPort = useCallback((port: number) => {
+    if (port < 1 || port > 65535) return;
+
+    setConfig((prev) => {
+      // Check for duplicates
+      const exists = prev.devContainer.forwardedPorts.some((p) => p.port === port);
+      if (exists) return prev;
+
+      const newPort: ForwardedPort = {
+        id: crypto.randomUUID(),
+        port,
+      };
+
+      return {
+        ...prev,
+        devContainer: {
+          ...prev.devContainer,
+          forwardedPorts: [...prev.devContainer.forwardedPorts, newPort].sort(
+            (a, b) => a.port - b.port
+          ),
+        },
+      };
+    });
+  }, []);
+
+  const removeDevContainerPort = useCallback((id: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        forwardedPorts: prev.devContainer.forwardedPorts.filter((p) => p.id !== id),
+      },
+    }));
+  }, []);
+
+  const setDevContainerPostCreateScript = useCallback((script: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        postCreateScript: script,
+      },
+    }));
+  }, []);
+
+  const setDevContainerPostStartScript = useCallback((script: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        postStartScript: script,
+      },
+    }));
+  }, []);
+
+  const setDevContainerPostAttachScript = useCallback((script: string) => {
+    setConfig((prev) => ({
+      ...prev,
+      devContainer: {
+        ...prev.devContainer,
+        postAttachScript: script,
+      },
+    }));
+  }, []);
+
   // Import/Export actions
   const exportConfig = useCallback(() => {
     const exportData: ConfigExportData = {
@@ -841,6 +1143,25 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
           id: regenerateId(),
         })),
       },
+      devContainer: {
+        ...data.devContainer,
+        extensions: data.devContainer.extensions.map((ext) => ({
+          ...ext,
+          id: regenerateId(),
+        })),
+        settings: data.devContainer.settings.map((s) => ({
+          ...s,
+          id: regenerateId(),
+        })),
+        features: data.devContainer.features.map((f) => ({
+          ...f,
+          id: regenerateId(),
+        })),
+        forwardedPorts: data.devContainer.forwardedPorts.map((p) => ({
+          ...p,
+          id: regenerateId(),
+        })),
+      },
     };
 
     setConfig(imported);
@@ -883,6 +1204,19 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       removePermissionRule,
       exportConfig,
       importConfig,
+      setDevContainerEnabled,
+      setDevContainerName,
+      addDevContainerExtension,
+      removeDevContainerExtension,
+      addDevContainerSetting,
+      removeDevContainerSetting,
+      addDevContainerFeature,
+      removeDevContainerFeature,
+      addDevContainerPort,
+      removeDevContainerPort,
+      setDevContainerPostCreateScript,
+      setDevContainerPostStartScript,
+      setDevContainerPostAttachScript,
       resetConfig,
     }),
     [
@@ -916,6 +1250,19 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
       removePermissionRule,
       exportConfig,
       importConfig,
+      setDevContainerEnabled,
+      setDevContainerName,
+      addDevContainerExtension,
+      removeDevContainerExtension,
+      addDevContainerSetting,
+      removeDevContainerSetting,
+      addDevContainerFeature,
+      removeDevContainerFeature,
+      addDevContainerPort,
+      removeDevContainerPort,
+      setDevContainerPostCreateScript,
+      setDevContainerPostStartScript,
+      setDevContainerPostAttachScript,
       resetConfig,
     ]
   );

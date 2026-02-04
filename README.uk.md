@@ -73,6 +73,17 @@
 - **Автоматична інтеграція**: Захищені файли автоматично додаються як правила заборони `Read()`
 - **Підтримка Glob-шаблонів**: Використовуйте шаблони на кшталт `src/**` для рекурсивного співставлення
 
+### Конфігурація DevContainer (VS Code / GitHub Codespaces)
+
+- **Інтеграція з VS Code**: Генеруйте `devcontainer.json` для VS Code Dev Containers
+- **GitHub Codespaces**: Сумісна конфігурація для розробки в GitHub Codespaces
+- **Розширення**: Налаштуйте розширення VS Code для автоматичного встановлення
+- **Налаштування**: Визначте налаштування VS Code для середовища контейнера
+- **Features**: Додайте Dev Container Features (напр: GitHub CLI, додаткові мови)
+- **Переадресація портів**: Налаштуйте порти для переадресації з контейнера
+- **Команди життєвого циклу**: Налаштуйте команди для подій post-create, post-start та post-attach
+- **Рекомендовані розширення**: Автоматичні рекомендації розширень на основі вибраного програмного забезпечення
+
 ### Загальні функції
 
 - **Попередній перегляд в реальному часі**: Перегляд згенерованих конфігураційних файлів в реальному часі
@@ -126,7 +137,7 @@
 | `Ctrl/⌘ + Shift + D` | Перемкнути темну/світлу тему |
 | `Ctrl/⌘ + Shift + X` | Скинути до стандартних налаштувань |
 | `Ctrl/⌘ + Shift + L` | Відкрити перемикач мови |
-| `Ctrl/⌘ + 1-4` | Прокрутити до картки (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Прокрутити до картки (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Відкрити довідку гарячих клавіш |
 | `Escape` | Закрити діалогове вікно |
 
@@ -373,6 +384,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Структура згенерованих файлів
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Налаштування Claude

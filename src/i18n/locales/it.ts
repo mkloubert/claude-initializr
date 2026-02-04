@@ -33,7 +33,8 @@ const it: Translations = {
       "title": "Cosa puoi configurare:",
       "dockerfile": "Scegli quali strumenti di sviluppo installare (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Imposta variabili d'ambiente (come la tua chiave API) e proteggi file sensibili dall'accesso",
-      "claudeMd": "Scrivi istruzioni specifiche del progetto che Claude legge all'inizio di ogni sessione"
+      "claudeMd": "Scrivi istruzioni specifiche del progetto che Claude legge all'inizio di ogni sessione",
+      "devContainer": "Genera configurazione VS Code Dev Container per sviluppo senza interruzioni"
     },
     "security": {
       "title": "Funzionalità di sicurezza incluse:",
@@ -235,6 +236,7 @@ const it: Translations = {
     "diffProtectedFiles": "File protetti",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "Permessi",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "Nessuna modifica rilevata.",
     "diffCurrent": "Attuale",
     "diffImported": "Importato",
@@ -262,7 +264,8 @@ const it: Translations = {
       "initFirewall": "init-firewall.sh - Script firewall di rete per la sicurezza",
       "workspace": "workspace/ - La tua directory di lavoro montata nel container",
       "claudeMd": "workspace/CLAUDE.md - Istruzioni del progetto per Claude",
-      "settingsJson": "workspace/.claude/settings.json - Impostazioni dei permessi di Claude Code"
+      "settingsJson": "workspace/.claude/settings.json - Impostazioni dei permessi di Claude Code",
+      "devcontainer": ".devcontainer/devcontainer.json - Configurazione VS Code Dev Container"
     },
     "baseImage": {
       "title": "Immagine base",
@@ -448,6 +451,16 @@ const it: Translations = {
     "software": {
       "title": "Software installato",
       "description": "I seguenti strumenti di sviluppo sono installati:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "Questa configurazione include una configurazione VS Code Dev Container per uno sviluppo fluido.",
+      "extensions": "Le seguenti estensioni VS Code vengono installate automaticamente:",
+      "features": "Sono incluse le seguenti funzionalità Dev Container:",
+      "ports": "Le seguenti porte vengono inoltrate:",
+      "commands": "Comandi del ciclo di vita configurati:",
+      "vscodeOpen": "Apri in VS Code",
+      "codespacesOpen": "Apri in GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const it: Translations = {
       "darkModeToggled": "Modalità scura attivata/disattivata",
       "previewToggled": "Anteprima attivata/disattivata",
       "scrolledToCard": "Scorrimento alla scheda {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "Configura il supporto per VS Code Dev Containers e GitHub Codespaces. Questo genera un file devcontainer.json che definisce il tuo ambiente di sviluppo.",
+    "enable": "Abilita DevContainer",
+    "enableDesc": "Genera un file devcontainer.json per VS Code Dev Containers e GitHub Codespaces.",
+    "name": "Nome del container",
+    "nameDesc": "Un nome visualizzato per il container di sviluppo.",
+    "namePlaceholder": "Esempio: Il mio ambiente di sviluppo",
+    "tabs": {
+      "settings": "Impostazioni",
+      "extensions": "Estensioni",
+      "features": "Funzionalità",
+      "ports": "Porte",
+      "preview": "Anteprima"
+    },
+    "extensions": {
+      "title": "Estensioni VS Code",
+      "description": "Estensioni da installare automaticamente quando viene creato il container.",
+      "placeholder": "Esempio: ms-python.python",
+      "add": "Aggiungi estensione",
+      "remove": "Rimuovi {{extension}}",
+      "recommended": "Estensioni consigliate",
+      "recommendedDesc": "In base al software selezionato, queste estensioni sono consigliate.",
+      "addRecommended": "Aggiungi consigliate",
+      "noRecommendations": "Nessun consiglio basato sulla selezione software attuale."
+    },
+    "features": {
+      "title": "Funzionalità Dev Container",
+      "description": "Le funzionalità sono unità autonome di codice di installazione e configurazione.",
+      "placeholder": "Esempio: ghcr.io/devcontainers/features/python:1",
+      "add": "Aggiungi funzionalità",
+      "remove": "Rimuovi {{feature}}",
+      "recommended": "Funzionalità consigliate",
+      "recommendedDesc": "In base al software selezionato, queste funzionalità sono consigliate.",
+      "addRecommended": "Aggiungi consigliate",
+      "noRecommendations": "Nessun consiglio basato sulla selezione software attuale."
+    },
+    "ports": {
+      "title": "Porte inoltrate",
+      "description": "Porte da inoltrare automaticamente dal container all'host.",
+      "placeholder": "Esempio: 3000",
+      "add": "Aggiungi porta",
+      "remove": "Rimuovi porta {{port}}",
+      "invalid": "Inserisci un numero di porta valido (1-65535)."
+    },
+    "scripts": {
+      "title": "Script del ciclo di vita",
+      "description": "Script Bash eseguiti in diverse fasi del ciclo di vita del container. Ogni script viene salvato come file .sh separato.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Script Post Create",
+      "postCreateDesc": "Viene eseguito una volta dopo la creazione del container. Usare per la configurazione iniziale come l'installazione delle dipendenze.",
+      "postStartTitle": "Script Post Start",
+      "postStartDesc": "Viene eseguito ogni volta che il container si avvia. Usare per attività che devono essere eseguite ad ogni avvio.",
+      "postAttachTitle": "Script Post Attach",
+      "postAttachDesc": "Viene eseguito ogni volta che VS Code si connette al container.",
+      "editorPlaceholder": "# Inserisci i tuoi comandi bash qui..."
+    },
+    "settings": {
+      "title": "Impostazioni VS Code",
+      "description": "Impostazioni VS Code personalizzate per il container di sviluppo.",
+      "key": "Chiave impostazione",
+      "value": "Valore",
+      "keyPlaceholder": "Esempio: editor.formatOnSave",
+      "valuePlaceholder": "Esempio: true",
+      "add": "Aggiungi impostazione",
+      "remove": "Rimuovi impostazione"
     }
   }
 };

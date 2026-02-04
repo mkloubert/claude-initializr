@@ -33,7 +33,8 @@ const ko: Translations = {
       "title": "구성할 수 있는 항목:",
       "dockerfile": "설치할 개발 도구 선택 (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "환경 변수(API 키 등) 설정 및 민감한 파일 접근 보호",
-      "claudeMd": "Claude가 각 세션 시작 시 읽는 프로젝트별 지침 작성"
+      "claudeMd": "Claude가 각 세션 시작 시 읽는 프로젝트별 지침 작성",
+      "devContainer": "원활한 개발을 위한 VS Code Dev Container 구성 생성"
     },
     "security": {
       "title": "포함된 보안 기능:",
@@ -235,6 +236,7 @@ const ko: Translations = {
     "diffProtectedFiles": "보호된 파일",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "권한",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "변경 사항이 없습니다.",
     "diffCurrent": "현재",
     "diffImported": "가져온",
@@ -262,7 +264,8 @@ const ko: Translations = {
       "initFirewall": "init-firewall.sh - 보안을 위한 네트워크 방화벽 스크립트",
       "workspace": "workspace/ - 컨테이너에 마운트되는 작업 디렉토리",
       "claudeMd": "workspace/CLAUDE.md - Claude를 위한 프로젝트 지침",
-      "settingsJson": "workspace/.claude/settings.json - Claude Code 권한 설정"
+      "settingsJson": "workspace/.claude/settings.json - Claude Code 권한 설정",
+      "devcontainer": ".devcontainer/devcontainer.json - VS Code Dev Container 구성"
     },
     "baseImage": {
       "title": "베이스 이미지",
@@ -448,6 +451,16 @@ const ko: Translations = {
     "software": {
       "title": "설치된 소프트웨어",
       "description": "다음 개발 도구가 설치되었습니다:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "이 구성에는 원활한 개발을 위한 VS Code Dev Container 설정이 포함되어 있습니다.",
+      "extensions": "다음 VS Code 확장이 자동으로 설치됩니다:",
+      "features": "다음 Dev Container 기능이 포함되어 있습니다:",
+      "ports": "다음 포트가 전달됩니다:",
+      "commands": "구성된 라이프사이클 명령:",
+      "vscodeOpen": "VS Code에서 열기",
+      "codespacesOpen": "GitHub Codespaces에서 열기"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const ko: Translations = {
       "darkModeToggled": "다크 모드가 전환되었습니다",
       "previewToggled": "미리보기가 전환되었습니다",
       "scrolledToCard": "카드 {{number}}로 스크롤되었습니다"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "VS Code Dev Containers 및 GitHub Codespaces 지원을 구성합니다. 이것은 개발 환경을 정의하는 devcontainer.json 파일을 생성합니다.",
+    "enable": "DevContainer 활성화",
+    "enableDesc": "VS Code Dev Containers 및 GitHub Codespaces용 devcontainer.json 파일을 생성합니다.",
+    "name": "컨테이너 이름",
+    "nameDesc": "개발 컨테이너의 표시 이름입니다.",
+    "namePlaceholder": "예: 내 개발 환경",
+    "tabs": {
+      "settings": "설정",
+      "extensions": "확장",
+      "features": "기능",
+      "ports": "포트",
+      "preview": "미리보기"
+    },
+    "extensions": {
+      "title": "VS Code 확장",
+      "description": "컨테이너 생성 시 자동으로 설치되는 확장입니다.",
+      "placeholder": "예: ms-python.python",
+      "add": "확장 추가",
+      "remove": "{{extension}} 제거",
+      "recommended": "권장 확장",
+      "recommendedDesc": "선택한 소프트웨어에 따라 이 확장들이 권장됩니다.",
+      "addRecommended": "권장 추가",
+      "noRecommendations": "현재 소프트웨어 선택에 따른 권장 사항이 없습니다."
+    },
+    "features": {
+      "title": "Dev Container 기능",
+      "description": "기능은 설치 코드와 구성의 독립적인 단위입니다.",
+      "placeholder": "예: ghcr.io/devcontainers/features/python:1",
+      "add": "기능 추가",
+      "remove": "{{feature}} 제거",
+      "recommended": "권장 기능",
+      "recommendedDesc": "선택한 소프트웨어에 따라 이 기능들이 권장됩니다.",
+      "addRecommended": "권장 추가",
+      "noRecommendations": "현재 소프트웨어 선택에 따른 권장 사항이 없습니다."
+    },
+    "ports": {
+      "title": "전달 포트",
+      "description": "컨테이너에서 호스트로 자동 전달되는 포트입니다.",
+      "placeholder": "예: 3000",
+      "add": "포트 추가",
+      "remove": "포트 {{port}} 제거",
+      "invalid": "유효한 포트 번호를 입력하세요 (1-65535)."
+    },
+    "scripts": {
+      "title": "라이프사이클 스크립트",
+      "description": "컨테이너 라이프사이클의 여러 단계에서 실행되는 Bash 스크립트입니다. 각 스크립트는 별도의 .sh 파일로 저장됩니다.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Post Create 스크립트",
+      "postCreateDesc": "컨테이너 생성 후 한 번 실행됩니다. 의존성 설치와 같은 일회성 설정에 사용합니다.",
+      "postStartTitle": "Post Start 스크립트",
+      "postStartDesc": "컨테이너가 시작될 때마다 실행됩니다. 매 시작 시 실행해야 하는 작업에 사용합니다.",
+      "postAttachTitle": "Post Attach 스크립트",
+      "postAttachDesc": "VS Code가 컨테이너에 연결될 때마다 실행됩니다.",
+      "editorPlaceholder": "# 여기에 bash 명령어를 입력하세요..."
+    },
+    "settings": {
+      "title": "VS Code 설정",
+      "description": "개발 컨테이너를 위한 사용자 지정 VS Code 설정입니다.",
+      "key": "설정 키",
+      "value": "값",
+      "keyPlaceholder": "예: editor.formatOnSave",
+      "valuePlaceholder": "예: true",
+      "add": "설정 추가",
+      "remove": "설정 제거"
     }
   }
 };

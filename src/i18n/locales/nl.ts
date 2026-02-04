@@ -33,7 +33,8 @@ const nl: Translations = {
       "title": "Wat je kunt configureren:",
       "dockerfile": "Kies welke ontwikkeltools te installeren (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Stel omgevingsvariabelen in (zoals je API-sleutel) en bescherm gevoelige bestanden tegen toegang",
-      "claudeMd": "Schrijf projectspecifieke instructies die Claude aan het begin van elke sessie leest"
+      "claudeMd": "Schrijf projectspecifieke instructies die Claude aan het begin van elke sessie leest",
+      "devContainer": "Genereer VS Code Dev Container-configuratie voor naadloze ontwikkeling"
     },
     "security": {
       "title": "Inbegrepen beveiligingsfuncties:",
@@ -235,6 +236,7 @@ const nl: Translations = {
     "diffProtectedFiles": "Beschermde bestanden",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "Machtigingen",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "Geen wijzigingen gedetecteerd.",
     "diffCurrent": "Huidig",
     "diffImported": "Geïmporteerd",
@@ -262,7 +264,8 @@ const nl: Translations = {
       "initFirewall": "init-firewall.sh - Netwerkfirewallscript voor beveiliging",
       "workspace": "workspace/ - Je werkdirectory gemount in de container",
       "claudeMd": "workspace/CLAUDE.md - Projectinstructies voor Claude",
-      "settingsJson": "workspace/.claude/settings.json - Claude Code machtigingsinstellingen"
+      "settingsJson": "workspace/.claude/settings.json - Claude Code machtigingsinstellingen",
+      "devcontainer": ".devcontainer/devcontainer.json - VS Code Dev Container configuratie"
     },
     "baseImage": {
       "title": "Basisimage",
@@ -448,6 +451,16 @@ const nl: Translations = {
     "software": {
       "title": "Geïnstalleerde software",
       "description": "De volgende ontwikkeltools zijn geïnstalleerd:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "Deze configuratie bevat een VS Code Dev Container setup voor naadloze ontwikkeling.",
+      "extensions": "De volgende VS Code extensies worden automatisch geïnstalleerd:",
+      "features": "De volgende Dev Container functies zijn inbegrepen:",
+      "ports": "De volgende poorten worden doorgestuurd:",
+      "commands": "Geconfigureerde lifecycle commando's:",
+      "vscodeOpen": "Openen in VS Code",
+      "codespacesOpen": "Openen in GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const nl: Translations = {
       "darkModeToggled": "Donkere modus gewisseld",
       "previewToggled": "Voorbeeld gewisseld",
       "scrolledToCard": "Gescrold naar kaart {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "Configureer ondersteuning voor VS Code Dev Containers en GitHub Codespaces. Dit genereert een devcontainer.json bestand dat je ontwikkelomgeving definieert.",
+    "enable": "DevContainer inschakelen",
+    "enableDesc": "Genereer een devcontainer.json bestand voor VS Code Dev Containers en GitHub Codespaces.",
+    "name": "Containernaam",
+    "nameDesc": "Een weergavenaam voor de ontwikkelcontainer.",
+    "namePlaceholder": "Voorbeeld: Mijn ontwikkelomgeving",
+    "tabs": {
+      "settings": "Instellingen",
+      "extensions": "Extensies",
+      "features": "Features",
+      "ports": "Poorten",
+      "preview": "Voorbeeld"
+    },
+    "extensions": {
+      "title": "VS Code extensies",
+      "description": "Extensies die automatisch worden geïnstalleerd wanneer de container wordt aangemaakt.",
+      "placeholder": "Voorbeeld: ms-python.python",
+      "add": "Extensie toevoegen",
+      "remove": "{{extension}} verwijderen",
+      "recommended": "Aanbevolen extensies",
+      "recommendedDesc": "Op basis van je geselecteerde software worden deze extensies aanbevolen.",
+      "addRecommended": "Aanbevolen toevoegen",
+      "noRecommendations": "Geen aanbevelingen op basis van de huidige softwareselectie."
+    },
+    "features": {
+      "title": "Dev Container features",
+      "description": "Features zijn zelfstandige eenheden van installatiecode en configuratie.",
+      "placeholder": "Voorbeeld: ghcr.io/devcontainers/features/python:1",
+      "add": "Feature toevoegen",
+      "remove": "{{feature}} verwijderen",
+      "recommended": "Aanbevolen features",
+      "recommendedDesc": "Op basis van je geselecteerde software worden deze features aanbevolen.",
+      "addRecommended": "Aanbevolen toevoegen",
+      "noRecommendations": "Geen aanbevelingen op basis van de huidige softwareselectie."
+    },
+    "ports": {
+      "title": "Doorgestuurde poorten",
+      "description": "Poorten die automatisch worden doorgestuurd van de container naar de host.",
+      "placeholder": "Voorbeeld: 3000",
+      "add": "Poort toevoegen",
+      "remove": "Poort {{port}} verwijderen",
+      "invalid": "Voer een geldig poortnummer in (1-65535)."
+    },
+    "scripts": {
+      "title": "Lifecycle scripts",
+      "description": "Bash-scripts die worden uitgevoerd in verschillende fasen van de container lifecycle. Elk script wordt opgeslagen als een apart .sh-bestand.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Post Create script",
+      "postCreateDesc": "Wordt eenmaal uitgevoerd na het aanmaken van de container. Gebruik voor eenmalige setup zoals het installeren van dependencies.",
+      "postStartTitle": "Post Start script",
+      "postStartDesc": "Wordt uitgevoerd telkens wanneer de container start. Gebruik voor taken die bij elke start moeten worden uitgevoerd.",
+      "postAttachTitle": "Post Attach script",
+      "postAttachDesc": "Wordt uitgevoerd telkens wanneer VS Code verbinding maakt met de container.",
+      "editorPlaceholder": "# Voer hier je bash-commando's in..."
+    },
+    "settings": {
+      "title": "VS Code instellingen",
+      "description": "Aangepaste VS Code instellingen voor de ontwikkelcontainer.",
+      "key": "Instellingssleutel",
+      "value": "Waarde",
+      "keyPlaceholder": "Voorbeeld: editor.formatOnSave",
+      "valuePlaceholder": "Voorbeeld: true",
+      "add": "Instelling toevoegen",
+      "remove": "Instelling verwijderen"
     }
   }
 };

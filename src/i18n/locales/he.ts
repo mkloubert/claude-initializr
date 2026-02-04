@@ -33,7 +33,8 @@ const he: Translations = {
       "title": "מה אפשר להגדיר:",
       "dockerfile": "בחר אילו כלי פיתוח להתקין (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "הגדר משתני סביבה (כמו מפתח ה-API שלך) והגן על קבצים רגישים מפני גישה",
-      "claudeMd": "כתוב הנחיות ספציפיות לפרויקט ש-Claude קורא בתחילת כל הפעלה"
+      "claudeMd": "כתוב הנחיות ספציפיות לפרויקט ש-Claude קורא בתחילת כל הפעלה",
+      "devContainer": "צור תצורת VS Code Dev Container לפיתוח חלק"
     },
     "security": {
       "title": "תכונות אבטחה כלולות:",
@@ -235,6 +236,7 @@ const he: Translations = {
     "diffProtectedFiles": "קבצים מוגנים",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "הרשאות",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "לא זוהו שינויים.",
     "diffCurrent": "נוכחי",
     "diffImported": "מיובא",
@@ -262,7 +264,8 @@ const he: Translations = {
       "initFirewall": "init-firewall.sh - סקריפט חומת אש לאבטחה",
       "workspace": "workspace/ - תיקיית העבודה שלך המותקנת בקונטיינר",
       "claudeMd": "workspace/CLAUDE.md - הנחיות פרויקט ל-Claude",
-      "settingsJson": "workspace/.claude/settings.json - הגדרות הרשאות Claude Code"
+      "settingsJson": "workspace/.claude/settings.json - הגדרות הרשאות Claude Code",
+      "devcontainer": ".devcontainer/devcontainer.json - תצורת VS Code Dev Container"
     },
     "baseImage": {
       "title": "תמונת בסיס",
@@ -448,6 +451,16 @@ const he: Translations = {
     "software": {
       "title": "תוכנה מותקנת",
       "description": "כלי הפיתוח הבאים מותקנים:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "תצורה זו כוללת הגדרת VS Code Dev Container לפיתוח חלק.",
+      "extensions": "ההרחבות הבאות של VS Code מותקנות אוטומטית:",
+      "features": "התכונות הבאות של Dev Container כלולות:",
+      "ports": "הפורטים הבאים מועברים:",
+      "commands": "פקודות מחזור חיים מוגדרות:",
+      "vscodeOpen": "פתח ב-VS Code",
+      "codespacesOpen": "פתח ב-GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const he: Translations = {
       "darkModeToggled": "מצב כהה הוחלף",
       "previewToggled": "תצוגה מקדימה הוחלפה",
       "scrolledToCard": "גלילה לכרטיס {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "הגדר תמיכה ב-VS Code Dev Containers ו-GitHub Codespaces. פעולה זו מייצרת קובץ devcontainer.json המגדיר את סביבת הפיתוח שלך.",
+    "enable": "הפעל DevContainer",
+    "enableDesc": "צור קובץ devcontainer.json עבור VS Code Dev Containers ו-GitHub Codespaces.",
+    "name": "שם מיכל",
+    "nameDesc": "שם תצוגה עבור מיכל הפיתוח.",
+    "namePlaceholder": "דוגמה: סביבת הפיתוח שלי",
+    "tabs": {
+      "settings": "הגדרות",
+      "extensions": "הרחבות",
+      "features": "תכונות",
+      "ports": "פורטים",
+      "preview": "תצוגה מקדימה"
+    },
+    "extensions": {
+      "title": "הרחבות VS Code",
+      "description": "הרחבות שיותקנו אוטומטית בעת יצירת המיכל.",
+      "placeholder": "דוגמה: ms-python.python",
+      "add": "הוסף הרחבה",
+      "remove": "הסר {{extension}}",
+      "recommended": "הרחבות מומלצות",
+      "recommendedDesc": "בהתבסס על התוכנות שנבחרו, הרחבות אלו מומלצות.",
+      "addRecommended": "הוסף מומלצות",
+      "noRecommendations": "אין המלצות בהתבסס על בחירת התוכנה הנוכחית."
+    },
+    "features": {
+      "title": "תכונות Dev Container",
+      "description": "תכונות הן יחידות עצמאיות של קוד התקנה והגדרות.",
+      "placeholder": "דוגמה: ghcr.io/devcontainers/features/python:1",
+      "add": "הוסף תכונה",
+      "remove": "הסר {{feature}}",
+      "recommended": "תכונות מומלצות",
+      "recommendedDesc": "בהתבסס על התוכנות שנבחרו, תכונות אלו מומלצות.",
+      "addRecommended": "הוסף מומלצות",
+      "noRecommendations": "אין המלצות בהתבסס על בחירת התוכנה הנוכחית."
+    },
+    "ports": {
+      "title": "פורטים מועברים",
+      "description": "פורטים שיועברו אוטומטית מהמיכל למארח.",
+      "placeholder": "דוגמה: 3000",
+      "add": "הוסף פורט",
+      "remove": "הסר פורט {{port}}",
+      "invalid": "אנא הזן מספר פורט חוקי (1-65535)."
+    },
+    "scripts": {
+      "title": "סקריפטים של מחזור חיים",
+      "description": "סקריפטים של Bash שרצים בשלבים שונים של מחזור חיי המיכל. כל סקריפט נשמר כקובץ .sh נפרד.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "סקריפט Post Create",
+      "postCreateDesc": "רצה פעם אחת לאחר יצירת המיכל. השתמש להגדרה חד-פעמית כמו התקנת תלויות.",
+      "postStartTitle": "סקריפט Post Start",
+      "postStartDesc": "רצה בכל פעם שהמיכל מופעל. השתמש למשימות שצריכות לרוץ בכל הפעלה.",
+      "postAttachTitle": "סקריפט Post Attach",
+      "postAttachDesc": "רצה בכל פעם ש-VS Code מתחבר למיכל.",
+      "editorPlaceholder": "# הזן את פקודות ה-bash שלך כאן..."
+    },
+    "settings": {
+      "title": "הגדרות VS Code",
+      "description": "הגדרות VS Code מותאמות אישית עבור מיכל הפיתוח.",
+      "key": "מפתח הגדרה",
+      "value": "ערך",
+      "keyPlaceholder": "דוגמה: editor.formatOnSave",
+      "valuePlaceholder": "דוגמה: true",
+      "add": "הוסף הגדרה",
+      "remove": "הסר הגדרה"
     }
   }
 };

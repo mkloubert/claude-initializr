@@ -33,7 +33,8 @@ const uk: Translations = {
       "title": "Що ви можете налаштувати:",
       "dockerfile": "Виберіть, які інструменти розробки встановити (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Встановіть змінні середовища (наприклад, ваш API-ключ) та захистіть конфіденційні файли від доступу",
-      "claudeMd": "Напишіть специфічні для проекту інструкції, які Claude читає на початку кожної сесії"
+      "claudeMd": "Напишіть специфічні для проекту інструкції, які Claude читає на початку кожної сесії",
+      "devContainer": "Генеруйте конфігурацію VS Code Dev Container для безперебійної розробки"
     },
     "security": {
       "title": "Включені функції безпеки:",
@@ -235,6 +236,7 @@ const uk: Translations = {
     "diffProtectedFiles": "Захищені файли",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "Дозволи",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "Змін не виявлено.",
     "diffCurrent": "Поточний",
     "diffImported": "Імпортований",
@@ -262,7 +264,8 @@ const uk: Translations = {
       "initFirewall": "init-firewall.sh - Скрипт мережевого фаєрвола для безпеки",
       "workspace": "workspace/ - Ваша робоча директорія, змонтована в контейнері",
       "claudeMd": "workspace/CLAUDE.md - Інструкції проекту для Claude",
-      "settingsJson": "workspace/.claude/settings.json - Налаштування дозволів Claude Code"
+      "settingsJson": "workspace/.claude/settings.json - Налаштування дозволів Claude Code",
+      "devcontainer": ".devcontainer/devcontainer.json - Конфігурація VS Code Dev Container"
     },
     "baseImage": {
       "title": "Базовий образ",
@@ -448,6 +451,16 @@ const uk: Translations = {
     "software": {
       "title": "Встановлене програмне забезпечення",
       "description": "Встановлені наступні інструменти розробки:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "Ця конфігурація включає налаштування VS Code Dev Container для безперебійної розробки.",
+      "extensions": "Наступні розширення VS Code встановлюються автоматично:",
+      "features": "Включені наступні функції Dev Container:",
+      "ports": "Наступні порти перенаправляються:",
+      "commands": "Налаштовані команди життєвого циклу:",
+      "vscodeOpen": "Відкрити у VS Code",
+      "codespacesOpen": "Відкрити в GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const uk: Translations = {
       "darkModeToggled": "Темний режим перемкнуто",
       "previewToggled": "Попередній перегляд перемкнуто",
       "scrolledToCard": "Прокручено до картки {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "Налаштуйте підтримку VS Code Dev Containers та GitHub Codespaces. Це генерує файл devcontainer.json, який визначає ваше середовище розробки.",
+    "enable": "Увімкнути DevContainer",
+    "enableDesc": "Згенерувати файл devcontainer.json для VS Code Dev Containers та GitHub Codespaces.",
+    "name": "Назва контейнера",
+    "nameDesc": "Відображувана назва для контейнера розробки.",
+    "namePlaceholder": "Приклад: Моє середовище розробки",
+    "tabs": {
+      "settings": "Налаштування",
+      "extensions": "Розширення",
+      "features": "Функції",
+      "ports": "Порти",
+      "preview": "Попередній перегляд"
+    },
+    "extensions": {
+      "title": "Розширення VS Code",
+      "description": "Розширення, які автоматично встановлюються при створенні контейнера.",
+      "placeholder": "Приклад: ms-python.python",
+      "add": "Додати розширення",
+      "remove": "Видалити {{extension}}",
+      "recommended": "Рекомендовані розширення",
+      "recommendedDesc": "На основі вибраного програмного забезпечення рекомендуються ці розширення.",
+      "addRecommended": "Додати рекомендовані",
+      "noRecommendations": "Немає рекомендацій на основі поточного вибору програмного забезпечення."
+    },
+    "features": {
+      "title": "Функції Dev Container",
+      "description": "Функції — це самодостатні одиниці коду встановлення та конфігурації.",
+      "placeholder": "Приклад: ghcr.io/devcontainers/features/python:1",
+      "add": "Додати функцію",
+      "remove": "Видалити {{feature}}",
+      "recommended": "Рекомендовані функції",
+      "recommendedDesc": "На основі вибраного програмного забезпечення рекомендуються ці функції.",
+      "addRecommended": "Додати рекомендовані",
+      "noRecommendations": "Немає рекомендацій на основі поточного вибору програмного забезпечення."
+    },
+    "ports": {
+      "title": "Переадресовані порти",
+      "description": "Порти, які автоматично переадресовуються з контейнера на хост.",
+      "placeholder": "Приклад: 3000",
+      "add": "Додати порт",
+      "remove": "Видалити порт {{port}}",
+      "invalid": "Будь ласка, введіть дійсний номер порту (1-65535)."
+    },
+    "scripts": {
+      "title": "Скрипти життєвого циклу",
+      "description": "Bash-скрипти, що виконуються на різних етапах життєвого циклу контейнера. Кожен скрипт зберігається як окремий .sh файл.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Скрипт Post Create",
+      "postCreateDesc": "Виконується один раз після створення контейнера. Використовуйте для одноразового налаштування, наприклад встановлення залежностей.",
+      "postStartTitle": "Скрипт Post Start",
+      "postStartDesc": "Виконується кожного разу при запуску контейнера. Використовуйте для завдань, які потрібно виконувати при кожному запуску.",
+      "postAttachTitle": "Скрипт Post Attach",
+      "postAttachDesc": "Виконується кожного разу, коли VS Code підключається до контейнера.",
+      "editorPlaceholder": "# Введіть ваші bash команди тут..."
+    },
+    "settings": {
+      "title": "Налаштування VS Code",
+      "description": "Користувацькі налаштування VS Code для контейнера розробки.",
+      "key": "Ключ налаштування",
+      "value": "Значення",
+      "keyPlaceholder": "Приклад: editor.formatOnSave",
+      "valuePlaceholder": "Приклад: true",
+      "add": "Додати налаштування",
+      "remove": "Видалити налаштування"
     }
   }
 };

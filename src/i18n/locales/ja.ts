@@ -33,7 +33,8 @@ const ja: Translations = {
       "title": "設定できる内容：",
       "dockerfile": "インストールする開発ツールを選択（TypeScript、Python、Go、ffmpeg、ImageMagick）",
       "compose": "環境変数（APIキーなど）を設定し、機密ファイルをアクセスから保護",
-      "claudeMd": "Claudeが各セッション開始時に読むプロジェクト固有の指示を記述"
+      "claudeMd": "Claudeが各セッション開始時に読むプロジェクト固有の指示を記述",
+      "devContainer": "シームレスな開発のためのVS Code Dev Container設定を生成"
     },
     "security": {
       "title": "含まれるセキュリティ機能：",
@@ -235,6 +236,7 @@ const ja: Translations = {
     "diffProtectedFiles": "保護ファイル",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "権限",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "変更は検出されませんでした。",
     "diffCurrent": "現在",
     "diffImported": "インポート",
@@ -262,7 +264,8 @@ const ja: Translations = {
       "initFirewall": "init-firewall.sh - セキュリティのためのネットワークファイアウォールスクリプト",
       "workspace": "workspace/ - コンテナにマウントされる作業ディレクトリ",
       "claudeMd": "workspace/CLAUDE.md - Claudeのプロジェクト指示",
-      "settingsJson": "workspace/.claude/settings.json - Claude Codeのパーミッション設定"
+      "settingsJson": "workspace/.claude/settings.json - Claude Codeのパーミッション設定",
+      "devcontainer": ".devcontainer/devcontainer.json - VS Code Dev Container設定"
     },
     "baseImage": {
       "title": "ベースイメージ",
@@ -448,6 +451,16 @@ const ja: Translations = {
     "software": {
       "title": "インストール済みソフトウェア",
       "description": "以下の開発ツールがインストールされています："
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "この構成には、シームレスな開発のためのVS Code Dev Containerセットアップが含まれています。",
+      "extensions": "以下のVS Code拡張機能が自動的にインストールされます：",
+      "features": "以下のDev Container機能が含まれています：",
+      "ports": "以下のポートが転送されます：",
+      "commands": "設定されたライフサイクルコマンド：",
+      "vscodeOpen": "VS Codeで開く",
+      "codespacesOpen": "GitHub Codespacesで開く"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const ja: Translations = {
       "darkModeToggled": "ダークモードを切り替えました",
       "previewToggled": "プレビューを切り替えました",
       "scrolledToCard": "カード{{number}}にスクロールしました"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "VS Code Dev ContainersとGitHub Codespacesのサポートを設定します。これにより、開発環境を定義するdevcontainer.jsonファイルが生成されます。",
+    "enable": "DevContainerを有効にする",
+    "enableDesc": "VS Code Dev ContainersとGitHub Codespaces用のdevcontainer.jsonファイルを生成します。",
+    "name": "コンテナ名",
+    "nameDesc": "開発コンテナの表示名。",
+    "namePlaceholder": "例：マイ開発環境",
+    "tabs": {
+      "settings": "設定",
+      "extensions": "拡張機能",
+      "features": "機能",
+      "ports": "ポート",
+      "preview": "プレビュー"
+    },
+    "extensions": {
+      "title": "VS Code拡張機能",
+      "description": "コンテナ作成時に自動的にインストールされる拡張機能。",
+      "placeholder": "例：ms-python.python",
+      "add": "拡張機能を追加",
+      "remove": "{{extension}}を削除",
+      "recommended": "推奨拡張機能",
+      "recommendedDesc": "選択したソフトウェアに基づいて、これらの拡張機能が推奨されます。",
+      "addRecommended": "推奨を追加",
+      "noRecommendations": "現在のソフトウェア選択に基づく推奨はありません。"
+    },
+    "features": {
+      "title": "Dev Container機能",
+      "description": "機能は、インストールコードと設定の自己完結型ユニットです。",
+      "placeholder": "例：ghcr.io/devcontainers/features/python:1",
+      "add": "機能を追加",
+      "remove": "{{feature}}を削除",
+      "recommended": "推奨機能",
+      "recommendedDesc": "選択したソフトウェアに基づいて、これらの機能が推奨されます。",
+      "addRecommended": "推奨を追加",
+      "noRecommendations": "現在のソフトウェア選択に基づく推奨はありません。"
+    },
+    "ports": {
+      "title": "転送ポート",
+      "description": "コンテナからホストに自動的に転送されるポート。",
+      "placeholder": "例：3000",
+      "add": "ポートを追加",
+      "remove": "ポート{{port}}を削除",
+      "invalid": "有効なポート番号を入力してください（1-65535）。"
+    },
+    "scripts": {
+      "title": "ライフサイクルスクリプト",
+      "description": "コンテナのライフサイクルの異なる段階で実行されるBashスクリプト。各スクリプトは個別の.shファイルとして保存されます。",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Post Createスクリプト",
+      "postCreateDesc": "コンテナ作成後に一度だけ実行されます。依存関係のインストールなどの一度きりのセットアップに使用します。",
+      "postStartTitle": "Post Startスクリプト",
+      "postStartDesc": "コンテナ起動時に毎回実行されます。起動のたびに実行する必要があるタスクに使用します。",
+      "postAttachTitle": "Post Attachスクリプト",
+      "postAttachDesc": "VS Codeがコンテナに接続するたびに実行されます。",
+      "editorPlaceholder": "# ここにbashコマンドを入力してください..."
+    },
+    "settings": {
+      "title": "VS Code設定",
+      "description": "開発コンテナのカスタムVS Code設定。",
+      "key": "設定キー",
+      "value": "値",
+      "keyPlaceholder": "例：editor.formatOnSave",
+      "valuePlaceholder": "例：true",
+      "add": "設定を追加",
+      "remove": "設定を削除"
     }
   }
 };

@@ -121,6 +121,34 @@ export interface ConfigContextValue {
   /** Import a validated configuration, replacing the current one */
   importConfig: (data: AppConfig) => void;
 
+  // DevContainer actions
+  /** Toggle DevContainer generation on/off */
+  setDevContainerEnabled: (enabled: boolean) => void;
+  /** Update the DevContainer display name */
+  setDevContainerName: (name: string) => void;
+  /** Add a VS Code extension to the DevContainer */
+  addDevContainerExtension: (extensionId: string) => void;
+  /** Remove a VS Code extension from the DevContainer */
+  removeDevContainerExtension: (id: string) => void;
+  /** Add a VS Code setting to the DevContainer */
+  addDevContainerSetting: (key: string, value: string) => void;
+  /** Remove a VS Code setting from the DevContainer */
+  removeDevContainerSetting: (id: string) => void;
+  /** Add a Dev Container Feature */
+  addDevContainerFeature: (feature: string) => void;
+  /** Remove a Dev Container Feature */
+  removeDevContainerFeature: (id: string) => void;
+  /** Add a forwarded port */
+  addDevContainerPort: (port: number) => void;
+  /** Remove a forwarded port */
+  removeDevContainerPort: (id: string) => void;
+  /** Update the post-create script content */
+  setDevContainerPostCreateScript: (script: string) => void;
+  /** Update the post-start script content */
+  setDevContainerPostStartScript: (script: string) => void;
+  /** Update the post-attach script content */
+  setDevContainerPostAttachScript: (script: string) => void;
+
   // Utility actions
   /** Reset configuration to defaults */
   resetConfig: () => void;

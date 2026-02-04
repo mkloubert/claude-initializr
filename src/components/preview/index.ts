@@ -22,3 +22,4 @@ export { CodePreview } from './CodePreview';
 export { DockerfilePreview } from './DockerfilePreview';
 export { DockerComposePreview } from './DockerComposePreview';
 export { SettingsJsonPreview } from './SettingsJsonPreview';
+export { DevContainerPreview } from './DevContainerPreview';

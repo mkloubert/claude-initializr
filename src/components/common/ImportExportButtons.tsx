@@ -78,6 +78,25 @@ function configToComparableJson(config: AppConfig): string {
         .map(({ directive, pattern }) => ({ directive, pattern }))
         .sort((a, b) => `${a.directive}:${a.pattern}`.localeCompare(`${b.directive}:${b.pattern}`)),
     },
+    devContainer: {
+      enabled: config.devContainer.enabled,
+      name: config.devContainer.name,
+      extensions: config.devContainer.extensions
+        .map(({ extensionId }) => ({ extensionId }))
+        .sort((a, b) => a.extensionId.localeCompare(b.extensionId)),
+      settings: config.devContainer.settings
+        .map(({ key, value }) => ({ key, value }))
+        .sort((a, b) => a.key.localeCompare(b.key)),
+      features: config.devContainer.features
+        .map(({ feature }) => ({ feature }))
+        .sort((a, b) => a.feature.localeCompare(b.feature)),
+      forwardedPorts: config.devContainer.forwardedPorts
+        .map(({ port }) => ({ port }))
+        .sort((a, b) => a.port - b.port),
+      postCreateScript: config.devContainer.postCreateScript,
+      postStartScript: config.devContainer.postStartScript,
+      postAttachScript: config.devContainer.postAttachScript,
+    },
   };
 
   return JSON.stringify(comparable, null, 2);
@@ -296,13 +315,12 @@ export function ImportExportButtons() {
                             {line.newLineNo ?? ''}
                           </td>
                           <td
-                            className={`select-none w-4 text-center align-top ${
-                              line.type === 'removed'
+                            className={`select-none w-4 text-center align-top ${line.type === 'removed'
                                 ? 'text-red-700 dark:text-red-400'
                                 : line.type === 'added'
                                   ? 'text-green-700 dark:text-green-400'
                                   : 'text-muted-foreground/30'
-                            }`}
+                              }`}
                             aria-hidden="true"
                           >
                             {line.type === 'removed'

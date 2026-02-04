@@ -33,7 +33,8 @@ const fr: Translations = {
       "title": "Ce que vous pouvez configurer :",
       "dockerfile": "Choisissez les outils de développement à installer (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Définissez des variables d'environnement (comme votre clé API) et protégez les fichiers sensibles",
-      "claudeMd": "Écrivez des instructions spécifiques au projet que Claude lit au début de chaque session"
+      "claudeMd": "Écrivez des instructions spécifiques au projet que Claude lit au début de chaque session",
+      "devContainer": "Générez la configuration VS Code Dev Container pour un développement fluide"
     },
     "security": {
       "title": "Fonctionnalités de sécurité incluses :",
@@ -235,6 +236,7 @@ const fr: Translations = {
     "diffProtectedFiles": "Fichiers protégés",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "Permissions",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "Aucune modification détectée.",
     "diffCurrent": "Actuel",
     "diffImported": "Importé",
@@ -262,7 +264,8 @@ const fr: Translations = {
       "initFirewall": "init-firewall.sh - Script de pare-feu réseau pour la sécurité",
       "workspace": "workspace/ - Votre répertoire de travail monté dans le conteneur",
       "claudeMd": "workspace/CLAUDE.md - Instructions du projet pour Claude",
-      "settingsJson": "workspace/.claude/settings.json - Paramètres de permissions Claude Code"
+      "settingsJson": "workspace/.claude/settings.json - Paramètres de permissions Claude Code",
+      "devcontainer": ".devcontainer/devcontainer.json - Configuration VS Code Dev Container"
     },
     "baseImage": {
       "title": "Image de base",
@@ -448,6 +451,16 @@ const fr: Translations = {
     "software": {
       "title": "Logiciels installés",
       "description": "Les outils de développement suivants sont installés :"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "Cette configuration inclut une configuration VS Code Dev Container pour un développement fluide.",
+      "extensions": "Les extensions VS Code suivantes sont installées automatiquement :",
+      "features": "Les fonctionnalités Dev Container suivantes sont incluses :",
+      "ports": "Les ports suivants sont transférés :",
+      "commands": "Commandes de cycle de vie configurées :",
+      "vscodeOpen": "Ouvrir dans VS Code",
+      "codespacesOpen": "Ouvrir dans GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const fr: Translations = {
       "darkModeToggled": "Mode sombre basculé",
       "previewToggled": "Aperçu basculé",
       "scrolledToCard": "Défilement vers la carte {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "Configurez le support pour VS Code Dev Containers et GitHub Codespaces. Cela génère un fichier devcontainer.json qui définit votre environnement de développement.",
+    "enable": "Activer DevContainer",
+    "enableDesc": "Générer un fichier devcontainer.json pour VS Code Dev Containers et GitHub Codespaces.",
+    "name": "Nom du conteneur",
+    "nameDesc": "Un nom d'affichage pour le conteneur de développement.",
+    "namePlaceholder": "Exemple : Mon environnement de développement",
+    "tabs": {
+      "settings": "Paramètres",
+      "extensions": "Extensions",
+      "features": "Fonctionnalités",
+      "ports": "Ports",
+      "preview": "Aperçu"
+    },
+    "extensions": {
+      "title": "Extensions VS Code",
+      "description": "Extensions à installer automatiquement lors de la création du conteneur.",
+      "placeholder": "Exemple : ms-python.python",
+      "add": "Ajouter une extension",
+      "remove": "Supprimer {{extension}}",
+      "recommended": "Extensions recommandées",
+      "recommendedDesc": "En fonction des logiciels sélectionnés, ces extensions sont recommandées.",
+      "addRecommended": "Ajouter les recommandées",
+      "noRecommendations": "Aucune recommandation basée sur la sélection de logiciels actuelle."
+    },
+    "features": {
+      "title": "Fonctionnalités Dev Container",
+      "description": "Les fonctionnalités sont des unités autonomes de code d'installation et de configuration.",
+      "placeholder": "Exemple : ghcr.io/devcontainers/features/python:1",
+      "add": "Ajouter une fonctionnalité",
+      "remove": "Supprimer {{feature}}",
+      "recommended": "Fonctionnalités recommandées",
+      "recommendedDesc": "En fonction des logiciels sélectionnés, ces fonctionnalités sont recommandées.",
+      "addRecommended": "Ajouter les recommandées",
+      "noRecommendations": "Aucune recommandation basée sur la sélection de logiciels actuelle."
+    },
+    "ports": {
+      "title": "Ports transférés",
+      "description": "Ports à transférer automatiquement du conteneur vers l'hôte.",
+      "placeholder": "Exemple : 3000",
+      "add": "Ajouter un port",
+      "remove": "Supprimer le port {{port}}",
+      "invalid": "Veuillez entrer un numéro de port valide (1-65535)."
+    },
+    "scripts": {
+      "title": "Scripts de cycle de vie",
+      "description": "Scripts Bash exécutés à différentes étapes du cycle de vie du conteneur. Chaque script est enregistré dans un fichier .sh séparé.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Script Post Create",
+      "postCreateDesc": "S'exécute une fois après la création du conteneur. Utilisez pour la configuration unique comme l'installation des dépendances.",
+      "postStartTitle": "Script Post Start",
+      "postStartDesc": "S'exécute à chaque démarrage du conteneur. Utilisez pour les tâches devant s'exécuter à chaque démarrage.",
+      "postAttachTitle": "Script Post Attach",
+      "postAttachDesc": "S'exécute à chaque fois que VS Code se connecte au conteneur.",
+      "editorPlaceholder": "# Entrez vos commandes bash ici..."
+    },
+    "settings": {
+      "title": "Paramètres VS Code",
+      "description": "Paramètres VS Code personnalisés pour le conteneur de développement.",
+      "key": "Clé du paramètre",
+      "value": "Valeur",
+      "keyPlaceholder": "Exemple : editor.formatOnSave",
+      "valuePlaceholder": "Exemple : true",
+      "add": "Ajouter un paramètre",
+      "remove": "Supprimer le paramètre"
     }
   }
 };

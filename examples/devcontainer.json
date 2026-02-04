@@ -1,0 +1,30 @@
+{
+  "name": "Claude Code Dev Environment",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "golang.go",
+        "rust-lang.rust-analyzer"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "files.trimTrailingWhitespace": true
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/python:1": {},
+    "ghcr.io/devcontainers/features/go:1": {}
+  },
+  "forwardPorts": [3000, 5173, 8080],
+  "postCreateCommand": ".devcontainer/post-create.sh",
+  "postStartCommand": ".devcontainer/post-start.sh",
+  "postAttachCommand": ".devcontainer/post-attach.sh"
+}

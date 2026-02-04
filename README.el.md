@@ -73,6 +73,17 @@
 - **Αυτόματη ενσωμάτωση**: Τα προστατευμένα αρχεία προστίθενται αυτόματα ως κανόνες απόρριψης `Read()`
 - **Υποστήριξη μοτίβων Glob**: Χρησιμοποιήστε μοτίβα όπως `src/**` για αναδρομική αντιστοίχιση
 
+### Διαμόρφωση DevContainer (VS Code / GitHub Codespaces)
+
+- **Ενσωμάτωση VS Code**: Δημιουργήστε `devcontainer.json` για VS Code Dev Containers
+- **GitHub Codespaces**: Συμβατή διαμόρφωση για ανάπτυξη στο GitHub Codespaces
+- **Επεκτάσεις**: Διαμορφώστε επεκτάσεις VS Code για αυτόματη εγκατάσταση
+- **Ρυθμίσεις**: Ορίστε ρυθμίσεις VS Code για το περιβάλλον του κοντέινερ
+- **Features**: Προσθέστε Dev Container Features (π.χ. GitHub CLI, πρόσθετες γλώσσες)
+- **Προώθηση θυρών**: Διαμορφώστε θύρες για προώθηση από το κοντέινερ
+- **Εντολές κύκλου ζωής**: Ρυθμίστε εντολές για συμβάντα post-create, post-start και post-attach
+- **Προτεινόμενες επεκτάσεις**: Αυτόματες προτάσεις επεκτάσεων με βάση το επιλεγμένο λογισμικό
+
 ### Γενικά Χαρακτηριστικά
 
 - **Ζωντανή Προεπισκόπηση**: Δείτε προεπισκοπήσεις σε πραγματικό χρόνο των δημιουργημένων αρχείων ρύθμισης
@@ -126,7 +137,7 @@
 | `Ctrl/⌘ + Shift + D` | Εναλλαγή σκοτεινού/φωτεινού θέματος |
 | `Ctrl/⌘ + Shift + X` | Επαναφορά στις προεπιλογές |
 | `Ctrl/⌘ + Shift + L` | Άνοιγμα επιλογέα γλώσσας |
-| `Ctrl/⌘ + 1-4` | Κύλιση στην κάρτα (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Κύλιση στην κάρτα (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Άνοιγμα βοήθειας συντομεύσεων πληκτρολογίου |
 | `Escape` | Κλείσιμο διαλόγου |
 
@@ -373,6 +384,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Δομή Δημιουργημένων Αρχείων
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Ρυθμίσεις Claude

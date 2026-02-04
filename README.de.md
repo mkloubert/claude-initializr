@@ -73,6 +73,17 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 - **Automatische Integration**: Geschützte Dateien werden automatisch als `Read()` Deny-Regeln hinzugefügt
 - **Glob-Pattern-Unterstützung**: Verwende Muster wie `src/**` für rekursive Übereinstimmung
 
+### DevContainer-Konfiguration (VS Code / GitHub Codespaces)
+
+- **VS Code Integration**: Generiere `devcontainer.json` für VS Code Dev Container
+- **GitHub Codespaces**: Kompatible Konfiguration für GitHub Codespaces-Entwicklung
+- **Erweiterungen**: Konfiguriere VS Code-Erweiterungen, die automatisch installiert werden
+- **Einstellungen**: Definiere VS Code-Einstellungen für die Container-Umgebung
+- **Features**: Füge Dev Container Features hinzu (z.B. GitHub CLI, zusätzliche Sprachen)
+- **Port-Weiterleitung**: Konfiguriere Ports, die vom Container weitergeleitet werden
+- **Lifecycle-Befehle**: Richte Befehle für Post-Create, Post-Start und Post-Attach Events ein
+- **Empfohlene Erweiterungen**: Automatische Erweiterungsempfehlungen basierend auf ausgewählter Software
+
 ### Allgemeine Funktionen
 
 - **Live-Vorschau**: Echtzeit-Vorschauen der generierten Konfigurationsdateien
@@ -126,7 +137,7 @@ Alle Kürzel verwenden `Ctrl` unter Windows/Linux und `⌘` (Cmd) unter macOS.
 | `Ctrl/⌘ + Shift + D` | Dunkles/Helles Design umschalten |
 | `Ctrl/⌘ + Shift + X` | Auf Standardwerte zurücksetzen |
 | `Ctrl/⌘ + Shift + L` | Sprachumschalter öffnen |
-| `Ctrl/⌘ + 1-4` | Zur Karte scrollen (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Zur Karte scrollen (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Tastaturkürzel-Hilfe öffnen |
 | `Escape` | Dialog schließen |
 
@@ -365,6 +376,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Generierte Dateistruktur
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container-Konfiguration
+│   └── post-create.sh       # Post-Create-Skript (bei komplexen Befehlen)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Claude-Einstellungen
@@ -483,6 +497,18 @@ Releases werden automatisch über GitHub Actions erstellt. Um ein neues Release 
 Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
 ## Änderungsprotokoll
+
+### v3.2.0
+
+- DevContainer-Unterstützung für VS Code und GitHub Codespaces hinzugefügt
+  - `devcontainer.json`-Konfiguration generieren
+  - VS Code-Erweiterungen und -Einstellungen konfigurieren
+  - Dev Container Features hinzufügen
+  - Port-Weiterleitung einrichten
+  - Lifecycle-Befehle konfigurieren (Post-Create, Post-Start, Post-Attach)
+  - Automatische Erweiterungsempfehlungen basierend auf ausgewählter Software
+- Tastaturkürzel `Ctrl/⌘ + 5` zum Scrollen zur DevContainer-Karte hinzugefügt
+- Willkommensbereich mit DevContainer-Feature aktualisiert
 
 ### v3.1.2
 

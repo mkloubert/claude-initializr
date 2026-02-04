@@ -33,7 +33,8 @@ const el: Translations = {
       "title": "Τι μπορείτε να διαμορφώσετε:",
       "dockerfile": "Επιλέξτε ποια εργαλεία ανάπτυξης να εγκαταστήσετε (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Ορίστε μεταβλητές περιβάλλοντος (όπως το κλειδί API σας) και προστατέψτε ευαίσθητα αρχεία από πρόσβαση",
-      "claudeMd": "Γράψτε οδηγίες συγκεκριμένες για το έργο που ο Claude διαβάζει στην αρχή κάθε συνεδρίας"
+      "claudeMd": "Γράψτε οδηγίες συγκεκριμένες για το έργο που ο Claude διαβάζει στην αρχή κάθε συνεδρίας",
+      "devContainer": "Δημιουργήστε διαμόρφωση VS Code Dev Container για απρόσκοπτη ανάπτυξη"
     },
     "security": {
       "title": "Συμπεριλαμβανόμενες λειτουργίες ασφάλειας:",
@@ -235,6 +236,7 @@ const el: Translations = {
     "diffProtectedFiles": "Προστατευμένα αρχεία",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "Δικαιώματα",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "Δεν εντοπίστηκαν αλλαγές.",
     "diffCurrent": "Τρέχον",
     "diffImported": "Εισαγόμενο",
@@ -262,7 +264,8 @@ const el: Translations = {
       "initFirewall": "init-firewall.sh - Σενάριο τείχους προστασίας δικτύου για ασφάλεια",
       "workspace": "workspace/ - Ο κατάλογος εργασίας σας προσαρτημένος στο container",
       "claudeMd": "workspace/CLAUDE.md - Οδηγίες έργου για τον Claude",
-      "settingsJson": "workspace/.claude/settings.json - Ρυθμίσεις δικαιωμάτων Claude Code"
+      "settingsJson": "workspace/.claude/settings.json - Ρυθμίσεις δικαιωμάτων Claude Code",
+      "devcontainer": ".devcontainer/devcontainer.json - Διαμόρφωση VS Code Dev Container"
     },
     "baseImage": {
       "title": "Βασική εικόνα",
@@ -448,6 +451,16 @@ const el: Translations = {
     "software": {
       "title": "Εγκατεστημένο λογισμικό",
       "description": "Τα ακόλουθα εργαλεία ανάπτυξης είναι εγκατεστημένα:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "Αυτή η διαμόρφωση περιλαμβάνει ρύθμιση VS Code Dev Container για απρόσκοπτη ανάπτυξη.",
+      "extensions": "Οι ακόλουθες επεκτάσεις VS Code εγκαθίστανται αυτόματα:",
+      "features": "Περιλαμβάνονται τα ακόλουθα χαρακτηριστικά Dev Container:",
+      "ports": "Οι ακόλουθες θύρες προωθούνται:",
+      "commands": "Διαμορφωμένες εντολές κύκλου ζωής:",
+      "vscodeOpen": "Άνοιγμα στο VS Code",
+      "codespacesOpen": "Άνοιγμα στο GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const el: Translations = {
       "darkModeToggled": "Η σκοτεινή λειτουργία εναλλάχθηκε",
       "previewToggled": "Η προεπισκόπηση εναλλάχθηκε",
       "scrolledToCard": "Κύλιση στην κάρτα {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "Διαμορφώστε την υποστήριξη για VS Code Dev Containers και GitHub Codespaces. Αυτό δημιουργεί ένα αρχείο devcontainer.json που ορίζει το περιβάλλον ανάπτυξής σας.",
+    "enable": "Ενεργοποίηση DevContainer",
+    "enableDesc": "Δημιουργία αρχείου devcontainer.json για VS Code Dev Containers και GitHub Codespaces.",
+    "name": "Όνομα κοντέινερ",
+    "nameDesc": "Ένα εμφανιζόμενο όνομα για το κοντέινερ ανάπτυξης.",
+    "namePlaceholder": "Παράδειγμα: Το περιβάλλον ανάπτυξής μου",
+    "tabs": {
+      "settings": "Ρυθμίσεις",
+      "extensions": "Επεκτάσεις",
+      "features": "Χαρακτηριστικά",
+      "ports": "Θύρες",
+      "preview": "Προεπισκόπηση"
+    },
+    "extensions": {
+      "title": "Επεκτάσεις VS Code",
+      "description": "Επεκτάσεις που εγκαθίστανται αυτόματα όταν δημιουργείται το κοντέινερ.",
+      "placeholder": "Παράδειγμα: ms-python.python",
+      "add": "Προσθήκη επέκτασης",
+      "remove": "Αφαίρεση {{extension}}",
+      "recommended": "Προτεινόμενες επεκτάσεις",
+      "recommendedDesc": "Με βάση το επιλεγμένο λογισμικό, προτείνονται αυτές οι επεκτάσεις.",
+      "addRecommended": "Προσθήκη προτεινόμενων",
+      "noRecommendations": "Δεν υπάρχουν προτάσεις με βάση την τρέχουσα επιλογή λογισμικού."
+    },
+    "features": {
+      "title": "Χαρακτηριστικά Dev Container",
+      "description": "Τα χαρακτηριστικά είναι αυτόνομες μονάδες κώδικα εγκατάστασης και διαμόρφωσης.",
+      "placeholder": "Παράδειγμα: ghcr.io/devcontainers/features/python:1",
+      "add": "Προσθήκη χαρακτηριστικού",
+      "remove": "Αφαίρεση {{feature}}",
+      "recommended": "Προτεινόμενα χαρακτηριστικά",
+      "recommendedDesc": "Με βάση το επιλεγμένο λογισμικό, προτείνονται αυτά τα χαρακτηριστικά.",
+      "addRecommended": "Προσθήκη προτεινόμενων",
+      "noRecommendations": "Δεν υπάρχουν προτάσεις με βάση την τρέχουσα επιλογή λογισμικού."
+    },
+    "ports": {
+      "title": "Προωθημένες θύρες",
+      "description": "Θύρες που προωθούνται αυτόματα από το κοντέινερ στον κεντρικό υπολογιστή.",
+      "placeholder": "Παράδειγμα: 3000",
+      "add": "Προσθήκη θύρας",
+      "remove": "Αφαίρεση θύρας {{port}}",
+      "invalid": "Παρακαλώ εισάγετε έναν έγκυρο αριθμό θύρας (1-65535)."
+    },
+    "scripts": {
+      "title": "Scripts κύκλου ζωής",
+      "description": "Bash scripts που εκτελούνται σε διαφορετικά στάδια του κύκλου ζωής του κοντέινερ. Κάθε script αποθηκεύεται ως ξεχωριστό αρχείο .sh.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Script Post Create",
+      "postCreateDesc": "Εκτελείται μία φορά μετά τη δημιουργία του κοντέινερ. Χρησιμοποιήστε για μία φορά ρύθμιση όπως εγκατάσταση εξαρτήσεων.",
+      "postStartTitle": "Script Post Start",
+      "postStartDesc": "Εκτελείται κάθε φορά που ξεκινά το κοντέινερ. Χρησιμοποιήστε για εργασίες που πρέπει να εκτελούνται σε κάθε εκκίνηση.",
+      "postAttachTitle": "Script Post Attach",
+      "postAttachDesc": "Εκτελείται κάθε φορά που το VS Code συνδέεται στο κοντέινερ.",
+      "editorPlaceholder": "# Εισάγετε τις εντολές bash εδώ..."
+    },
+    "settings": {
+      "title": "Ρυθμίσεις VS Code",
+      "description": "Προσαρμοσμένες ρυθμίσεις VS Code για το κοντέινερ ανάπτυξης.",
+      "key": "Κλειδί ρύθμισης",
+      "value": "Τιμή",
+      "keyPlaceholder": "Παράδειγμα: editor.formatOnSave",
+      "valuePlaceholder": "Παράδειγμα: true",
+      "add": "Προσθήκη ρύθμισης",
+      "remove": "Αφαίρεση ρύθμισης"
     }
   }
 };

@@ -73,6 +73,17 @@
 - **自动集成**：受保护的文件自动添加为 `Read()` 拒绝规则
 - **Glob 模式支持**：使用 `src/**` 等模式进行递归匹配
 
+### DevContainer 配置（VS Code / GitHub Codespaces）
+
+- **VS Code 集成**：为 VS Code Dev Container 生成 `devcontainer.json`
+- **GitHub Codespaces**：兼容 GitHub Codespaces 开发的配置
+- **扩展**：配置自动安装的 VS Code 扩展
+- **设置**：定义容器环境的 VS Code 设置
+- **Features**：添加 Dev Container Features（如 GitHub CLI、其他语言）
+- **端口转发**：配置从容器转发的端口
+- **生命周期命令**：设置 post-create、post-start 和 post-attach 事件的命令
+- **推荐扩展**：基于所选软件的自动扩展推荐
+
 ### 通用功能
 
 - **实时预览**：实时查看生成的配置文件预览
@@ -126,7 +137,7 @@
 | `Ctrl/⌘ + Shift + D` | 切换深色/浅色模式 |
 | `Ctrl/⌘ + Shift + X` | 恢复默认设置 |
 | `Ctrl/⌘ + Shift + L` | 打开语言切换器 |
-| `Ctrl/⌘ + 1-4` | 滚动到卡片（1=Dockerfile、2=Docker Compose、3=CLAUDE.md、4=settings.json） |
+| `Ctrl/⌘ + 1-5` | 滚动到卡片（1=Dockerfile、2=Docker Compose、3=CLAUDE.md、4=settings.json、5=DevContainer） |
 | `Ctrl/⌘ + /` | 打开键盘快捷键帮助 |
 | `Escape` | 关闭对话框 |
 
@@ -370,6 +381,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## 生成的文件结构
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Claude 设置

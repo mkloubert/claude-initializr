@@ -73,6 +73,17 @@ Uma aplicação web para gerar arquivos de configuração Docker para executar o
 - **Integração automática**: Arquivos protegidos são adicionados automaticamente como regras de negação `Read()`
 - **Suporte a padrões Glob**: Use padrões como `src/**` para correspondência recursiva
 
+### Configuração de DevContainer (VS Code / GitHub Codespaces)
+
+- **Integração com VS Code**: Gere `devcontainer.json` para VS Code Dev Containers
+- **GitHub Codespaces**: Configuração compatível para desenvolvimento no GitHub Codespaces
+- **Extensões**: Configure extensões do VS Code para instalar automaticamente
+- **Configurações**: Defina configurações do VS Code para o ambiente do contêiner
+- **Features**: Adicione Dev Container Features (ex: GitHub CLI, linguagens adicionais)
+- **Encaminhamento de portas**: Configure portas para encaminhar do contêiner
+- **Comandos de ciclo de vida**: Configure comandos para eventos post-create, post-start e post-attach
+- **Extensões recomendadas**: Recomendações automáticas de extensões baseadas no software selecionado
+
 ### Funcionalidades gerais
 
 - **Visualização ao vivo**: Veja visualizações em tempo real dos arquivos de configuração gerados
@@ -126,7 +137,7 @@ Todos os atalhos usam `Ctrl` no Windows/Linux e `⌘` (Cmd) no macOS.
 | `Ctrl/⌘ + Shift + D` | Alternar modo escuro/claro |
 | `Ctrl/⌘ + Shift + X` | Restaurar padrões |
 | `Ctrl/⌘ + Shift + L` | Abrir seletor de idioma |
-| `Ctrl/⌘ + 1-4` | Rolar até o cartão (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Rolar até o cartão (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Abrir ajuda de atalhos de teclado |
 | `Escape` | Fechar diálogo |
 
@@ -370,6 +381,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Estrutura de arquivos gerados
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Configurações do Claude

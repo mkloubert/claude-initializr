@@ -85,6 +85,40 @@ const claudePermissionsSchema = z.object({
   deny: z.array(permissionRuleSchema),
 });
 
+// DevContainer schemas
+const vscodeExtensionSchema = z.object({
+  id: z.string(),
+  extensionId: z.string(),
+});
+
+const vscodeSettingSchema = z.object({
+  id: z.string(),
+  key: z.string(),
+  value: z.string(),
+});
+
+const devContainerFeatureSchema = z.object({
+  id: z.string(),
+  feature: z.string(),
+});
+
+const forwardedPortSchema = z.object({
+  id: z.string(),
+  port: z.number().int().min(1).max(65535),
+});
+
+const devContainerConfigSchema = z.object({
+  enabled: z.boolean(),
+  name: z.string(),
+  extensions: z.array(vscodeExtensionSchema),
+  settings: z.array(vscodeSettingSchema),
+  features: z.array(devContainerFeatureSchema),
+  forwardedPorts: z.array(forwardedPortSchema),
+  postCreateScript: z.string(),
+  postStartScript: z.string(),
+  postAttachScript: z.string(),
+});
+
 const appConfigSchema = z.object({
   baseImage: z.string(),
   nodeVersion: z.string(),
@@ -97,6 +131,7 @@ const appConfigSchema = z.object({
   protectedFiles: z.array(protectedFileSchema),
   claudeMdContent: z.string(),
   claudePermissions: claudePermissionsSchema,
+  devContainer: devContainerConfigSchema.optional(),
 });
 
 const configExportDataSchema = z.object({
@@ -111,6 +146,7 @@ const configExportDataSchema = z.object({
 // ---------------------------------------------------------------------------
 
 const MAX_COMMAND_LENGTH = 4096;
+const MAX_SCRIPT_LENGTH = 32768; // 32KB for lifecycle scripts
 
 /**
  * Sanitizes a file path by rejecting path traversal and absolute paths.
@@ -162,6 +198,28 @@ export function sanitizeCommand(command: string): string {
   }
 
   return trimmed;
+}
+
+/**
+ * Sanitizes a bash script by removing null bytes and limiting length.
+ * Preserves whitespace and newlines as they are significant in scripts.
+ */
+export function sanitizeScript(script: string): string {
+  if (!script) {
+    return '';
+  }
+
+  // Reject null bytes
+  if (script.includes('\0')) {
+    return script.replace(/\0/g, '');
+  }
+
+  // Limit length
+  if (script.length > MAX_SCRIPT_LENGTH) {
+    return script.slice(0, MAX_SCRIPT_LENGTH);
+  }
+
+  return script;
 }
 
 /**
@@ -228,6 +286,34 @@ export function sanitizeConfig(config: AppConfig): AppConfig {
         }))
         .filter((rule) => rule.pattern.length > 0),
     },
+
+    // Sanitize DevContainer config if present
+    devContainer: config.devContainer
+      ? {
+        ...config.devContainer,
+        name: config.devContainer.name.trim(),
+        // Filter extensions with valid format (publisher.extension-name)
+        extensions: config.devContainer.extensions.filter((ext) =>
+          /^[a-z0-9-]+\.[a-z0-9-]+$/i.test(ext.extensionId.trim())
+        ),
+        // Filter settings with valid keys
+        settings: config.devContainer.settings.filter(
+          (setting) => setting.key.trim().length > 0
+        ),
+        // Filter features with valid format (ghcr.io/... or similar)
+        features: config.devContainer.features.filter(
+          (feat) => feat.feature.trim().length > 0
+        ),
+        // Filter ports with valid range
+        forwardedPorts: config.devContainer.forwardedPorts.filter(
+          (p) => p.port >= 1 && p.port <= 65535
+        ),
+        // Sanitize lifecycle scripts
+        postCreateScript: sanitizeScript(config.devContainer.postCreateScript),
+        postStartScript: sanitizeScript(config.devContainer.postStartScript),
+        postAttachScript: sanitizeScript(config.devContainer.postAttachScript),
+      }
+      : config.devContainer,
   };
 }
 

@@ -75,6 +75,17 @@
 - **אינטגרציה אוטומטית**: קבצים מוגנים מתווספים אוטומטית ככללי דחייה של `Read()`
 - **תמיכה בתבניות Glob**: השתמשו בתבניות כמו `src/**` להתאמה רקורסיבית
 
+### תצורת DevContainer (VS Code / GitHub Codespaces)
+
+- **אינטגרציית VS Code**: יצירת `devcontainer.json` עבור VS Code Dev Containers
+- **GitHub Codespaces**: תצורה תואמת לפיתוח ב-GitHub Codespaces
+- **הרחבות**: הגדרת הרחבות VS Code להתקנה אוטומטית
+- **הגדרות**: הגדרת הגדרות VS Code עבור סביבת הקונטיינר
+- **Features**: הוספת Dev Container Features (לדוגמה: GitHub CLI, שפות נוספות)
+- **העברת פורטים**: הגדרת פורטים להעברה מהקונטיינר
+- **פקודות מחזור חיים**: הגדרת פקודות לאירועי post-create, post-start ו-post-attach
+- **הרחבות מומלצות**: המלצות הרחבות אוטומטיות בהתבסס על התוכנה שנבחרה
+
 ### תכונות כלליות
 
 - **תצוגה מקדימה חיה**: צפייה בזמן אמת בקבצי תצורה שנוצרו
@@ -128,7 +139,7 @@
 | `Ctrl/⌘ + Shift + D` | החלפת מצב כהה/בהיר |
 | `Ctrl/⌘ + Shift + X` | איפוס לברירות מחדל |
 | `Ctrl/⌘ + Shift + L` | פתיחת בורר שפה |
-| `Ctrl/⌘ + 1-4` | גלילה לכרטיס (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | גלילה לכרטיס (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | פתיחת עזרת קיצורי מקלדת |
 | `Escape` | סגירת חלון דו-שיח |
 
@@ -372,6 +383,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## מבנה הקבצים שנוצרו
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # הגדרות Claude

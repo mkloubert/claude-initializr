@@ -73,6 +73,17 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
 - **Automatyczna integracja**: Chronione pliki są automatycznie dodawane jako reguły odmowy `Read()`
 - **Obsługa wzorców Glob**: Użyj wzorców jak `src/**` do rekursywnego dopasowania
 
+### Konfiguracja DevContainer (VS Code / GitHub Codespaces)
+
+- **Integracja z VS Code**: Generuj `devcontainer.json` dla VS Code Dev Containers
+- **GitHub Codespaces**: Kompatybilna konfiguracja dla programowania w GitHub Codespaces
+- **Rozszerzenia**: Konfiguruj rozszerzenia VS Code do automatycznej instalacji
+- **Ustawienia**: Definiuj ustawienia VS Code dla środowiska kontenera
+- **Features**: Dodaj Dev Container Features (np. GitHub CLI, dodatkowe języki)
+- **Przekierowanie portów**: Konfiguruj porty do przekierowania z kontenera
+- **Polecenia cyklu życia**: Ustaw polecenia dla zdarzeń post-create, post-start i post-attach
+- **Zalecane rozszerzenia**: Automatyczne zalecenia rozszerzeń na podstawie wybranego oprogramowania
+
 ### Funkcje ogólne
 
 - **Podgląd na żywo**: Zobacz podglądy generowanych plików konfiguracyjnych w czasie rzeczywistym
@@ -126,7 +137,7 @@ Wszystkie skróty używają `Ctrl` na Windows/Linux i `⌘` (Cmd) na macOS.
 | `Ctrl/⌘ + Shift + D` | Przełącz tryb ciemny/jasny |
 | `Ctrl/⌘ + Shift + X` | Przywróć ustawienia domyślne |
 | `Ctrl/⌘ + Shift + L` | Otwórz przełącznik języka |
-| `Ctrl/⌘ + 1-4` | Przewiń do karty (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | Przewiń do karty (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Otwórz pomoc skrótów klawiaturowych |
 | `Escape` | Zamknij okno dialogowe |
 
@@ -373,6 +384,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## Struktura wygenerowanych plików
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Ustawienia Claude

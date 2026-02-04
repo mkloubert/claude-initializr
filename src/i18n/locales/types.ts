@@ -36,6 +36,7 @@ export interface Translations {
       dockerfile: string;
       compose: string;
       claudeMd: string;
+      devContainer: string;
     };
     security: {
       title: string;
@@ -237,6 +238,7 @@ export interface Translations {
     diffProtectedFiles: string;
     diffClaudeMd: string;
     diffPermissions: string;
+    diffDevContainer: string;
     diffNoChanges: string;
     diffCurrent: string;
     diffImported: string;
@@ -265,6 +267,7 @@ export interface Translations {
       workspace: string;
       claudeMd: string;
       settingsJson: string;
+      devcontainer: string;
     };
     baseImage: {
       title: string;
@@ -399,6 +402,16 @@ export interface Translations {
       title: string;
       description: string;
     };
+    devContainer: {
+      title: string;
+      description: string;
+      extensions: string;
+      features: string;
+      ports: string;
+      commands: string;
+      vscodeOpen: string;
+      codespacesOpen: string;
+    };
   };
   keyboardShortcuts: {
     title: string;
@@ -425,6 +438,78 @@ export interface Translations {
       darkModeToggled: string;
       previewToggled: string;
       scrolledToCard: string;
+    };
+  };
+  devContainer: {
+    title: string;
+    description: string;
+    enable: string;
+    enableDesc: string;
+    name: string;
+    nameDesc: string;
+    namePlaceholder: string;
+    tabs: {
+      settings: string;
+      extensions: string;
+      features: string;
+      ports: string;
+      preview: string;
+    };
+    extensions: {
+      title: string;
+      description: string;
+      placeholder: string;
+      add: string;
+      remove: string;
+      recommended: string;
+      recommendedDesc: string;
+      addRecommended: string;
+      noRecommendations: string;
+    };
+    features: {
+      title: string;
+      description: string;
+      placeholder: string;
+      add: string;
+      remove: string;
+      recommended: string;
+      recommendedDesc: string;
+      addRecommended: string;
+      noRecommendations: string;
+    };
+    ports: {
+      title: string;
+      description: string;
+      placeholder: string;
+      add: string;
+      remove: string;
+      invalid: string;
+    };
+    scripts: {
+      title: string;
+      description: string;
+      tabs: {
+        postCreate: string;
+        postStart: string;
+        postAttach: string;
+      };
+      postCreateTitle: string;
+      postCreateDesc: string;
+      postStartTitle: string;
+      postStartDesc: string;
+      postAttachTitle: string;
+      postAttachDesc: string;
+      editorPlaceholder: string;
+    };
+    settings: {
+      title: string;
+      description: string;
+      key: string;
+      value: string;
+      keyPlaceholder: string;
+      valuePlaceholder: string;
+      add: string;
+      remove: string;
     };
   };
 }

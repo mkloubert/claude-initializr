@@ -18,6 +18,8 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
+import { defaultDevContainerConfig, type DevContainerConfig } from './devcontainer';
+
 /**
  * Configuration for a single software package that can be installed.
  * Version configuration is handled via Docker build arguments.
@@ -171,6 +173,8 @@ export interface AppConfig {
   claudeMdContent: string;
   /** Claude Code settings.json permissions */
   claudePermissions: ClaudePermissions;
+  /** DevContainer configuration for VS Code / GitHub Codespaces */
+  devContainer: DevContainerConfig;
 }
 
 /**
@@ -227,6 +231,7 @@ export const defaultAppConfig: AppConfig = {
   protectedFiles: [],
   claudeMdContent: '# Project Instructions\n\n',
   claudePermissions: defaultClaudePermissions,
+  devContainer: defaultDevContainerConfig,
 };
 
 /**

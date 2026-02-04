@@ -33,7 +33,8 @@ const tr: Translations = {
       "title": "Yapılandırabilecekleriniz:",
       "dockerfile": "Hangi geliştirme araçlarının kurulacağını seçin (TypeScript, Python, Go, ffmpeg, ImageMagick)",
       "compose": "Ortam değişkenlerini (API anahtarınız gibi) ayarlayın ve hassas dosyaları erişimden koruyun",
-      "claudeMd": "Claude'un her oturumun başında okuduğu projeye özel talimatlar yazın"
+      "claudeMd": "Claude'un her oturumun başında okuduğu projeye özel talimatlar yazın",
+      "devContainer": "Sorunsuz geliştirme için VS Code Dev Container yapılandırması oluşturun"
     },
     "security": {
       "title": "Dahil edilen güvenlik özellikleri:",
@@ -235,6 +236,7 @@ const tr: Translations = {
     "diffProtectedFiles": "Korunan dosyalar",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "İzinler",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "Değişiklik algılanmadı.",
     "diffCurrent": "Mevcut",
     "diffImported": "İçe aktarılan",
@@ -262,7 +264,8 @@ const tr: Translations = {
       "initFirewall": "init-firewall.sh - Güvenlik için ağ güvenlik duvarı betiği",
       "workspace": "workspace/ - Konteynere bağlanan çalışma dizininiz",
       "claudeMd": "workspace/CLAUDE.md - Claude için proje talimatları",
-      "settingsJson": "workspace/.claude/settings.json - Claude Code izin ayarları"
+      "settingsJson": "workspace/.claude/settings.json - Claude Code izin ayarları",
+      "devcontainer": ".devcontainer/devcontainer.json - VS Code Dev Container yapılandırması"
     },
     "baseImage": {
       "title": "Temel İmaj",
@@ -448,6 +451,16 @@ const tr: Translations = {
     "software": {
       "title": "Kurulu Yazılımlar",
       "description": "Aşağıdaki geliştirme araçları kurulmuştur:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "Bu yapılandırma, sorunsuz geliştirme için VS Code Dev Container kurulumu içerir.",
+      "extensions": "Aşağıdaki VS Code eklentileri otomatik olarak kurulur:",
+      "features": "Aşağıdaki Dev Container özellikleri dahildir:",
+      "ports": "Aşağıdaki portlar yönlendirilir:",
+      "commands": "Yapılandırılmış yaşam döngüsü komutları:",
+      "vscodeOpen": "VS Code'da aç",
+      "codespacesOpen": "GitHub Codespaces'te aç"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const tr: Translations = {
       "darkModeToggled": "Karanlık mod değiştirildi",
       "previewToggled": "Önizleme değiştirildi",
       "scrolledToCard": "Kart {{number}}'e kaydırıldı"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "VS Code Dev Containers ve GitHub Codespaces desteğini yapılandırın. Bu, geliştirme ortamınızı tanımlayan bir devcontainer.json dosyası oluşturur.",
+    "enable": "DevContainer'ı Etkinleştir",
+    "enableDesc": "VS Code Dev Containers ve GitHub Codespaces için devcontainer.json dosyası oluşturun.",
+    "name": "Konteyner Adı",
+    "nameDesc": "Geliştirme konteyneri için görünen ad.",
+    "namePlaceholder": "Örnek: Geliştirme Ortamım",
+    "tabs": {
+      "settings": "Ayarlar",
+      "extensions": "Uzantılar",
+      "features": "Özellikler",
+      "ports": "Portlar",
+      "preview": "Önizleme"
+    },
+    "extensions": {
+      "title": "VS Code Uzantıları",
+      "description": "Konteyner oluşturulduğunda otomatik olarak yüklenen uzantılar.",
+      "placeholder": "Örnek: ms-python.python",
+      "add": "Uzantı ekle",
+      "remove": "{{extension}} kaldır",
+      "recommended": "Önerilen Uzantılar",
+      "recommendedDesc": "Seçili yazılıma göre bu uzantılar önerilmektedir.",
+      "addRecommended": "Önerilenleri ekle",
+      "noRecommendations": "Mevcut yazılım seçimine göre öneri bulunmuyor."
+    },
+    "features": {
+      "title": "Dev Container Özellikleri",
+      "description": "Özellikler, kurulum kodu ve yapılandırmanın bağımsız birimleridir.",
+      "placeholder": "Örnek: ghcr.io/devcontainers/features/python:1",
+      "add": "Özellik ekle",
+      "remove": "{{feature}} kaldır",
+      "recommended": "Önerilen Özellikler",
+      "recommendedDesc": "Seçili yazılıma göre bu özellikler önerilmektedir.",
+      "addRecommended": "Önerilenleri ekle",
+      "noRecommendations": "Mevcut yazılım seçimine göre öneri bulunmuyor."
+    },
+    "ports": {
+      "title": "Yönlendirilen Portlar",
+      "description": "Konteynerden ana bilgisayara otomatik olarak yönlendirilen portlar.",
+      "placeholder": "Örnek: 3000",
+      "add": "Port ekle",
+      "remove": "Port {{port}} kaldır",
+      "invalid": "Lütfen geçerli bir port numarası girin (1-65535)."
+    },
+    "scripts": {
+      "title": "Yaşam Döngüsü Betikleri",
+      "description": "Konteyner yaşam döngüsünün farklı aşamalarında çalışan Bash betikleri. Her betik ayrı bir .sh dosyası olarak kaydedilir.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "Post Create Betiği",
+      "postCreateDesc": "Konteyner oluşturulduktan sonra bir kez çalışır. Bağımlılık kurulumu gibi tek seferlik kurulum için kullanın.",
+      "postStartTitle": "Post Start Betiği",
+      "postStartDesc": "Konteyner her başladığında çalışır. Her başlangıçta çalışması gereken görevler için kullanın.",
+      "postAttachTitle": "Post Attach Betiği",
+      "postAttachDesc": "VS Code konteynere her bağlandığında çalışır.",
+      "editorPlaceholder": "# Bash komutlarınızı buraya girin..."
+    },
+    "settings": {
+      "title": "VS Code Ayarları",
+      "description": "Geliştirme konteyneri için özel VS Code ayarları.",
+      "key": "Ayar Anahtarı",
+      "value": "Değer",
+      "keyPlaceholder": "Örnek: editor.formatOnSave",
+      "valuePlaceholder": "Örnek: true",
+      "add": "Ayar ekle",
+      "remove": "Ayarı kaldır"
     }
   }
 };

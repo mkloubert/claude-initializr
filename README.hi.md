@@ -73,6 +73,17 @@
 - **स्वचालित एकीकरण**: संरक्षित फ़ाइलें स्वचालित रूप से `Read()` अस्वीकृति नियमों के रूप में जोड़ी जाती हैं
 - **Glob पैटर्न समर्थन**: रिकर्सिव मैचिंग के लिए `src/**` जैसे पैटर्न का उपयोग करें
 
+### DevContainer कॉन्फ़िगरेशन (VS Code / GitHub Codespaces)
+
+- **VS Code एकीकरण**: VS Code Dev Container के लिए `devcontainer.json` जेनरेट करें
+- **GitHub Codespaces**: GitHub Codespaces डेवलपमेंट के लिए संगत कॉन्फ़िगरेशन
+- **एक्सटेंशन**: स्वचालित रूप से इंस्टॉल करने के लिए VS Code एक्सटेंशन कॉन्फ़िगर करें
+- **सेटिंग्स**: कंटेनर वातावरण के लिए VS Code सेटिंग्स परिभाषित करें
+- **Features**: Dev Container Features जोड़ें (जैसे: GitHub CLI, अतिरिक्त भाषाएं)
+- **पोर्ट फ़ॉरवर्डिंग**: कंटेनर से फ़ॉरवर्ड करने के लिए पोर्ट कॉन्फ़िगर करें
+- **लाइफ़साइकल कमांड**: post-create, post-start और post-attach इवेंट के लिए कमांड सेट करें
+- **अनुशंसित एक्सटेंशन**: चयनित सॉफ़्टवेयर के आधार पर स्वचालित एक्सटेंशन अनुशंसाएं
+
 ### सामान्य विशेषताएं
 
 - **लाइव प्रीव्यू**: जेनरेट की गई कॉन्फ़िगरेशन फ़ाइलों का रीयल-टाइम प्रीव्यू देखें
@@ -126,7 +137,7 @@
 | `Ctrl/⌘ + Shift + D` | डार्क/लाइट मोड टॉगल करें |
 | `Ctrl/⌘ + Shift + X` | डिफ़ॉल्ट पर रीसेट करें |
 | `Ctrl/⌘ + Shift + L` | भाषा स्विचर खोलें |
-| `Ctrl/⌘ + 1-4` | कार्ड पर स्क्रॉल करें (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json) |
+| `Ctrl/⌘ + 1-5` | कार्ड पर स्क्रॉल करें (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | कीबोर्ड शॉर्टकट सहायता खोलें |
 | `Escape` | डायलॉग बंद करें |
 
@@ -370,6 +381,9 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 ## जेनरेट की गई फ़ाइल संरचना
 
 ```
+├── .devcontainer/           # VS Code Dev Container (optional)
+│   ├── devcontainer.json    # Dev Container configuration
+│   └── post-create.sh       # Post-create script (if complex commands)
 ├── workspace/
 │   ├── .claude/
 │   │   └── settings.json    # Claude सेटिंग्स

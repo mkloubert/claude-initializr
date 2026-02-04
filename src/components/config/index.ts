@@ -26,3 +26,4 @@ export { DockerfileCard } from './DockerfileCard';
 export { DockerComposeCard } from './DockerComposeCard';
 export { ClaudeMdCard } from './ClaudeMdCard';
 export { SettingsJsonCard } from './SettingsJsonCard';
+export { DevContainerCard } from './DevContainerCard';

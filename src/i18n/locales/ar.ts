@@ -33,7 +33,8 @@ const ar: Translations = {
       "title": "ما يمكنك تكوينه:",
       "dockerfile": "اختر أدوات التطوير المراد تثبيتها (TypeScript، Python، Go، ffmpeg، ImageMagick)",
       "compose": "عيّن متغيرات البيئة (مثل مفتاح API الخاص بك) واحمِ الملفات الحساسة من الوصول",
-      "claudeMd": "اكتب تعليمات خاصة بالمشروع يقرأها Claude في بداية كل جلسة"
+      "claudeMd": "اكتب تعليمات خاصة بالمشروع يقرأها Claude في بداية كل جلسة",
+      "devContainer": "قم بإنشاء تكوين VS Code Dev Container للتطوير السلس"
     },
     "security": {
       "title": "ميزات الأمان المضمنة:",
@@ -235,6 +236,7 @@ const ar: Translations = {
     "diffProtectedFiles": "الملفات المحمية",
     "diffClaudeMd": "CLAUDE.md",
     "diffPermissions": "الأذونات",
+    "diffDevContainer": "DevContainer",
     "diffNoChanges": "لم يتم اكتشاف أي تغييرات.",
     "diffCurrent": "الحالي",
     "diffImported": "المستورد",
@@ -262,7 +264,8 @@ const ar: Translations = {
       "initFirewall": "init-firewall.sh - سكريبت جدار حماية الشبكة للأمان",
       "workspace": "workspace/ - دليل العمل الخاص بك المثبت في الحاوية",
       "claudeMd": "workspace/CLAUDE.md - تعليمات المشروع لـ Claude",
-      "settingsJson": "workspace/.claude/settings.json - إعدادات أذونات Claude Code"
+      "settingsJson": "workspace/.claude/settings.json - إعدادات أذونات Claude Code",
+      "devcontainer": ".devcontainer/devcontainer.json - تكوين VS Code Dev Container"
     },
     "baseImage": {
       "title": "الصورة الأساسية",
@@ -448,6 +451,16 @@ const ar: Translations = {
     "software": {
       "title": "البرامج المثبتة",
       "description": "تم تثبيت أدوات التطوير التالية:"
+    },
+    "devContainer": {
+      "title": "VS Code Dev Container",
+      "description": "يتضمن هذا التكوين إعداد VS Code Dev Container للتطوير السلس.",
+      "extensions": "يتم تثبيت إضافات VS Code التالية تلقائيًا:",
+      "features": "تم تضمين ميزات Dev Container التالية:",
+      "ports": "يتم إعادة توجيه المنافذ التالية:",
+      "commands": "أوامر دورة الحياة المكونة:",
+      "vscodeOpen": "فتح في VS Code",
+      "codespacesOpen": "فتح في GitHub Codespaces"
     }
   },
   "keyboardShortcuts": {
@@ -475,6 +488,78 @@ const ar: Translations = {
       "darkModeToggled": "تم تبديل الوضع الداكن",
       "previewToggled": "تم تبديل المعاينة",
       "scrolledToCard": "تم التمرير إلى البطاقة {{number}}"
+    }
+  },
+  "devContainer": {
+    "title": "DevContainer",
+    "description": "قم بتكوين دعم VS Code Dev Containers و GitHub Codespaces. يؤدي هذا إلى إنشاء ملف devcontainer.json الذي يحدد بيئة التطوير الخاصة بك.",
+    "enable": "تمكين DevContainer",
+    "enableDesc": "إنشاء ملف devcontainer.json لـ VS Code Dev Containers و GitHub Codespaces.",
+    "name": "اسم الحاوية",
+    "nameDesc": "اسم عرض لحاوية التطوير.",
+    "namePlaceholder": "مثال: بيئة التطوير الخاصة بي",
+    "tabs": {
+      "settings": "الإعدادات",
+      "extensions": "الإضافات",
+      "features": "الميزات",
+      "ports": "المنافذ",
+      "preview": "معاينة"
+    },
+    "extensions": {
+      "title": "إضافات VS Code",
+      "description": "الإضافات التي يتم تثبيتها تلقائيًا عند إنشاء الحاوية.",
+      "placeholder": "مثال: ms-python.python",
+      "add": "إضافة إضافة",
+      "remove": "إزالة {{extension}}",
+      "recommended": "الإضافات الموصى بها",
+      "recommendedDesc": "بناءً على البرامج المحددة، يوصى بهذه الإضافات.",
+      "addRecommended": "إضافة الموصى بها",
+      "noRecommendations": "لا توجد توصيات بناءً على اختيار البرامج الحالي."
+    },
+    "features": {
+      "title": "ميزات Dev Container",
+      "description": "الميزات هي وحدات مستقلة من كود التثبيت والتكوين.",
+      "placeholder": "مثال: ghcr.io/devcontainers/features/python:1",
+      "add": "إضافة ميزة",
+      "remove": "إزالة {{feature}}",
+      "recommended": "الميزات الموصى بها",
+      "recommendedDesc": "بناءً على البرامج المحددة، يوصى بهذه الميزات.",
+      "addRecommended": "إضافة الموصى بها",
+      "noRecommendations": "لا توجد توصيات بناءً على اختيار البرامج الحالي."
+    },
+    "ports": {
+      "title": "المنافذ المُعاد توجيهها",
+      "description": "المنافذ التي يتم إعادة توجيهها تلقائيًا من الحاوية إلى المضيف.",
+      "placeholder": "مثال: 3000",
+      "add": "إضافة منفذ",
+      "remove": "إزالة المنفذ {{port}}",
+      "invalid": "يرجى إدخال رقم منفذ صالح (1-65535)."
+    },
+    "scripts": {
+      "title": "سكربتات دورة الحياة",
+      "description": "سكربتات Bash التي تعمل في مراحل مختلفة من دورة حياة الحاوية. يتم حفظ كل سكربت كملف .sh منفصل.",
+      "tabs": {
+        "postCreate": "post-create.sh",
+        "postStart": "post-start.sh",
+        "postAttach": "post-attach.sh"
+      },
+      "postCreateTitle": "سكربت ما بعد الإنشاء",
+      "postCreateDesc": "يتم تشغيله مرة واحدة بعد إنشاء الحاوية. استخدمه للإعداد لمرة واحدة مثل تثبيت التبعيات.",
+      "postStartTitle": "سكربت ما بعد البدء",
+      "postStartDesc": "يتم تشغيله في كل مرة تبدأ فيها الحاوية. استخدمه للمهام التي تحتاج للتشغيل عند كل بدء.",
+      "postAttachTitle": "سكربت ما بعد الاتصال",
+      "postAttachDesc": "يتم تشغيله في كل مرة يتصل فيها VS Code بالحاوية.",
+      "editorPlaceholder": "# أدخل أوامر bash هنا..."
+    },
+    "settings": {
+      "title": "إعدادات VS Code",
+      "description": "إعدادات VS Code مخصصة لحاوية التطوير.",
+      "key": "مفتاح الإعداد",
+      "value": "القيمة",
+      "keyPlaceholder": "مثال: editor.formatOnSave",
+      "valuePlaceholder": "مثال: true",
+      "add": "إضافة إعداد",
+      "remove": "إزالة الإعداد"
     }
   }
 };

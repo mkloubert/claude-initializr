@@ -18,6 +18,24 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-export * from './config';
-export * from './devcontainer';
-export * from './templates';
+import { useMemo } from 'react';
+import { useConfig } from '@/contexts';
+import { generateDevContainerJson } from '@/services';
+import { CodePreview } from './CodePreview';
+
+/**
+ * Preview component for the generated devcontainer.json.
+ */
+export function DevContainerPreview() {
+  const { config } = useConfig();
+
+  const devcontainerContent = useMemo(() => {
+    return generateDevContainerJson(config.devContainer, config.software, {
+      // Don't include recommendations in preview - only show user's explicit choices
+      includeRecommendedExtensions: false,
+      includeRecommendedFeatures: false,
+    });
+  }, [config.devContainer, config.software]);
+
+  return <CodePreview code={devcontainerContent} language="json" />;
+}
