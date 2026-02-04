@@ -513,7 +513,7 @@ Tags contendo `-` (ex. `v1.0.0-beta`) são marcadas como pré-lançamentos.
 
 ## Registro de alterações
 
-### v3.2.0
+### v3.2.1
 
 - Adicionado histórico de configuração com funcionalidade de desfazer/refazer
   - Rastreamento automático de alterações com snapshots atrasados (500ms)

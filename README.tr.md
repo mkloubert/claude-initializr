@@ -516,7 +516,7 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
 
 ## Değişiklik Günlüğü
 
-### v3.2.0
+### v3.2.1
 
 - Geri al/yinele işlevselliği ile yapılandırma geçmişi eklendi
   - Gecikmeli anlık görüntülerle otomatik değişiklik izleme (500ms)

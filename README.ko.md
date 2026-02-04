@@ -513,7 +513,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 변경 이력
 
-### v3.2.0
+### v3.2.1
 
 - 실행 취소/다시 실행 기능이 있는 설정 기록 추가
   - 지연된 스냅샷으로 자동 변경 추적 (500ms)

@@ -516,7 +516,7 @@ Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
 ## Dziennik zmian
 
-### v3.2.0
+### v3.2.1
 
 - Dodano historię konfiguracji z funkcjonalnością cofnij/ponów
   - Automatyczne śledzenie zmian z opóźnionymi migawkami (500ms)

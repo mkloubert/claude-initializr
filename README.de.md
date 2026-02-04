@@ -508,7 +508,7 @@ Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
 ## Änderungsprotokoll
 
-### v3.2.0
+### v3.2.1
 
 - Konfigurationsverlauf mit Rückgängig/Wiederherstellen-Funktionalität hinzugefügt
   - Automatische Änderungsverfolgung mit verzögerten Snapshots (500ms)

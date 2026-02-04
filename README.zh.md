@@ -513,7 +513,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 更新日志
 
-### v3.2.0
+### v3.2.1
 
 - 添加带有撤销/重做功能的配置历史
   - 延迟快照自动跟踪更改（500ms）

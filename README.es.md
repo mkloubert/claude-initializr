@@ -509,7 +509,7 @@ Las etiquetas que contienen `-` (ej. `v1.0.0-beta`) se marcan como pre-lanzamien
 
 ## Registro de cambios
 
-### v3.2.0
+### v3.2.1
 
 - Añadido historial de configuración con funcionalidad de deshacer/rehacer
   - Seguimiento automático de cambios con instantáneas retrasadas (500ms)
