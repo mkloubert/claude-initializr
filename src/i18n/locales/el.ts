@@ -480,14 +480,61 @@ const el: Translations = {
       "toggleDarkMode": "Εναλλαγή σκοτεινής λειτουργίας",
       "openLanguageSwitcher": "Άνοιγμα επιλογής γλώσσας",
       "closeDialog": "Κλείσιμο διαλόγου",
-      "openShortcutsHelp": "Άνοιγμα συντομεύσεων πληκτρολογίου"
+      "openShortcutsHelp": "Άνοιγμα συντομεύσεων πληκτρολογίου",
+      "undo": "Αναίρεση",
+      "redo": "Επανάληψη"
     },
     "announced": {
       "downloadStarted": "Η λήψη ξεκίνησε",
       "configReset": "Η διαμόρφωση επαναφέρθηκε στις προεπιλογές",
       "darkModeToggled": "Η σκοτεινή λειτουργία εναλλάχθηκε",
       "previewToggled": "Η προεπισκόπηση εναλλάχθηκε",
-      "scrolledToCard": "Κύλιση στην κάρτα {{number}}"
+      "scrolledToCard": "Κύλιση στην κάρτα {{number}}",
+      "undoPerformed": "Η αλλαγή αναιρέθηκε",
+      "redoPerformed": "Η αλλαγή επαναλήφθηκε"
+    }
+  },
+  "history": {
+    "title": "Ιστορικό",
+    "description": "Προβολή και επαναφορά προηγούμενων διαμορφώσεων.",
+    "unavailable": "Το ιστορικό δεν είναι διαθέσιμο σε αυτό το πρόγραμμα περιήγησης.",
+    "undo": "Αναίρεση",
+    "redo": "Επανάληψη",
+    "clearAll": "Εκκαθάριση όλων",
+    "clearConfirmTitle": "Εκκαθάριση ιστορικού",
+    "clearConfirmDescription": "Είστε βέβαιοι ότι θέλετε να εκκαθαρίσετε όλο το ιστορικό; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
+    "clearConfirmCancel": "Ακύρωση",
+    "clearConfirmClear": "Εκκαθάριση",
+    "currentState": "Τρέχον",
+    "restoreButton": "Επαναφορά",
+    "viewDiffButton": "Προβολή διαφορών",
+    "emptyState": "Δεν υπάρχει ιστορικό ακόμα. Οι αλλαγές θα παρακολουθούνται αυτόματα.",
+    "diffTitle": "Σύγκριση αλλαγών",
+    "diffFrom": "Από",
+    "diffTo": "Σε",
+    "diffClose": "Κλείσιμο",
+    "changes": {
+      "initial": "Αρχική κατάσταση",
+      "baseImage": "Άλλαξε η βασική εικόνα",
+      "nodeVersion": "Άλλαξε η έκδοση Node",
+      "dockerPlatform": "Άλλαξε η πλατφόρμα Docker",
+      "softwareEnabled": "Ενεργοποιήθηκε {{software}}",
+      "softwareDisabled": "Απενεργοποιήθηκε {{software}}",
+      "aptPackagesAdded": "Προστέθηκαν πακέτα APT",
+      "aptPackagesRemoved": "Αφαιρέθηκαν πακέτα APT",
+      "npmPackagesAdded": "Προστέθηκαν πακέτα NPM",
+      "npmPackagesRemoved": "Αφαιρέθηκαν πακέτα NPM",
+      "runCommandsAdded": "Προστέθηκαν εντολές RUN",
+      "runCommandsRemoved": "Αφαιρέθηκαν εντολές RUN",
+      "envVariablesAdded": "Προστέθηκαν μεταβλητές περιβάλλοντος",
+      "envVariablesRemoved": "Αφαιρέθηκαν μεταβλητές περιβάλλοντος",
+      "envVariablesChanged": "Τροποποιήθηκαν μεταβλητές περιβάλλοντος",
+      "protectedFilesAdded": "Προστέθηκαν προστατευμένα αρχεία",
+      "protectedFilesRemoved": "Αφαιρέθηκαν προστατευμένα αρχεία",
+      "claudeMdChanged": "Τροποποιήθηκε το CLAUDE.md",
+      "permissionsChanged": "Τροποποιήθηκαν τα δικαιώματα",
+      "devContainerChanged": "Τροποποιήθηκαν οι ρυθμίσεις DevContainer",
+      "multipleChanges": "Πολλαπλές αλλαγές"
     }
   },
   "devContainer": {

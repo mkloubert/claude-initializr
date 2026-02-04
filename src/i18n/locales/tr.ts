@@ -480,14 +480,61 @@ const tr: Translations = {
       "toggleDarkMode": "Karanlık modu değiştir",
       "openLanguageSwitcher": "Dil seçiciyi aç",
       "closeDialog": "Diyaloğu kapat",
-      "openShortcutsHelp": "Klavye kısayollarını aç"
+      "openShortcutsHelp": "Klavye kısayollarını aç",
+      "undo": "Geri al",
+      "redo": "Yinele"
     },
     "announced": {
       "downloadStarted": "İndirme başlatıldı",
       "configReset": "Yapılandırma varsayılanlara sıfırlandı",
       "darkModeToggled": "Karanlık mod değiştirildi",
       "previewToggled": "Önizleme değiştirildi",
-      "scrolledToCard": "Kart {{number}}'e kaydırıldı"
+      "scrolledToCard": "Kart {{number}}'e kaydırıldı",
+      "undoPerformed": "Değişiklik geri alındı",
+      "redoPerformed": "Değişiklik yinelendi"
+    }
+  },
+  "history": {
+    "title": "Geçmiş",
+    "description": "Önceki yapılandırmaları görüntüleyin ve geri yükleyin.",
+    "unavailable": "Bu tarayıcıda geçmiş kullanılamıyor.",
+    "undo": "Geri al",
+    "redo": "Yinele",
+    "clearAll": "Tümünü temizle",
+    "clearConfirmTitle": "Geçmişi temizle",
+    "clearConfirmDescription": "Tüm geçmişi temizlemek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+    "clearConfirmCancel": "İptal",
+    "clearConfirmClear": "Temizle",
+    "currentState": "Mevcut",
+    "restoreButton": "Geri yükle",
+    "viewDiffButton": "Farkları görüntüle",
+    "emptyState": "Henüz geçmiş yok. Değişiklikler otomatik olarak izlenecek.",
+    "diffTitle": "Değişiklikleri karşılaştır",
+    "diffFrom": "Başlangıç",
+    "diffTo": "Bitiş",
+    "diffClose": "Kapat",
+    "changes": {
+      "initial": "Başlangıç durumu",
+      "baseImage": "Temel imaj değiştirildi",
+      "nodeVersion": "Node sürümü değiştirildi",
+      "dockerPlatform": "Docker platformu değiştirildi",
+      "softwareEnabled": "{{software}} etkinleştirildi",
+      "softwareDisabled": "{{software}} devre dışı bırakıldı",
+      "aptPackagesAdded": "APT paketleri eklendi",
+      "aptPackagesRemoved": "APT paketleri kaldırıldı",
+      "npmPackagesAdded": "NPM paketleri eklendi",
+      "npmPackagesRemoved": "NPM paketleri kaldırıldı",
+      "runCommandsAdded": "RUN komutları eklendi",
+      "runCommandsRemoved": "RUN komutları kaldırıldı",
+      "envVariablesAdded": "Ortam değişkenleri eklendi",
+      "envVariablesRemoved": "Ortam değişkenleri kaldırıldı",
+      "envVariablesChanged": "Ortam değişkenleri değiştirildi",
+      "protectedFilesAdded": "Korunan dosyalar eklendi",
+      "protectedFilesRemoved": "Korunan dosyalar kaldırıldı",
+      "claudeMdChanged": "CLAUDE.md değiştirildi",
+      "permissionsChanged": "İzinler değiştirildi",
+      "devContainerChanged": "DevContainer ayarları değiştirildi",
+      "multipleChanges": "Birden fazla değişiklik"
     }
   },
   "devContainer": {

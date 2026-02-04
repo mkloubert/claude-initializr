@@ -480,14 +480,61 @@ const nl: Translations = {
       "toggleDarkMode": "Donkere modus wisselen",
       "openLanguageSwitcher": "Taalkiezer openen",
       "closeDialog": "Dialoogvenster sluiten",
-      "openShortcutsHelp": "Sneltoetsen openen"
+      "openShortcutsHelp": "Sneltoetsen openen",
+      "undo": "Ongedaan maken",
+      "redo": "Opnieuw"
     },
     "announced": {
       "downloadStarted": "Download gestart",
       "configReset": "Configuratie hersteld naar standaardwaarden",
       "darkModeToggled": "Donkere modus gewisseld",
       "previewToggled": "Voorbeeld gewisseld",
-      "scrolledToCard": "Gescrold naar kaart {{number}}"
+      "scrolledToCard": "Gescrold naar kaart {{number}}",
+      "undoPerformed": "Wijziging ongedaan gemaakt",
+      "redoPerformed": "Wijziging opnieuw toegepast"
+    }
+  },
+  "history": {
+    "title": "Geschiedenis",
+    "description": "Bekijk en herstel eerdere configuraties.",
+    "unavailable": "Geschiedenis is niet beschikbaar in deze browser.",
+    "undo": "Ongedaan maken",
+    "redo": "Opnieuw",
+    "clearAll": "Alles wissen",
+    "clearConfirmTitle": "Geschiedenis wissen",
+    "clearConfirmDescription": "Weet je zeker dat je alle geschiedenis wilt wissen? Deze actie kan niet ongedaan worden gemaakt.",
+    "clearConfirmCancel": "Annuleren",
+    "clearConfirmClear": "Wissen",
+    "currentState": "Huidig",
+    "restoreButton": "Herstellen",
+    "viewDiffButton": "Verschil bekijken",
+    "emptyState": "Nog geen geschiedenis. Wijzigingen worden automatisch bijgehouden.",
+    "diffTitle": "Wijzigingen vergelijken",
+    "diffFrom": "Van",
+    "diffTo": "Naar",
+    "diffClose": "Sluiten",
+    "changes": {
+      "initial": "Initiële staat",
+      "baseImage": "Basisimage gewijzigd",
+      "nodeVersion": "Node versie gewijzigd",
+      "dockerPlatform": "Docker platform gewijzigd",
+      "softwareEnabled": "{{software}} ingeschakeld",
+      "softwareDisabled": "{{software}} uitgeschakeld",
+      "aptPackagesAdded": "APT-pakketten toegevoegd",
+      "aptPackagesRemoved": "APT-pakketten verwijderd",
+      "npmPackagesAdded": "NPM-pakketten toegevoegd",
+      "npmPackagesRemoved": "NPM-pakketten verwijderd",
+      "runCommandsAdded": "RUN-opdrachten toegevoegd",
+      "runCommandsRemoved": "RUN-opdrachten verwijderd",
+      "envVariablesAdded": "Omgevingsvariabelen toegevoegd",
+      "envVariablesRemoved": "Omgevingsvariabelen verwijderd",
+      "envVariablesChanged": "Omgevingsvariabelen gewijzigd",
+      "protectedFilesAdded": "Beschermde bestanden toegevoegd",
+      "protectedFilesRemoved": "Beschermde bestanden verwijderd",
+      "claudeMdChanged": "CLAUDE.md gewijzigd",
+      "permissionsChanged": "Machtigingen gewijzigd",
+      "devContainerChanged": "DevContainer-instellingen gewijzigd",
+      "multipleChanges": "Meerdere wijzigingen"
     }
   },
   "devContainer": {

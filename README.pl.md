@@ -100,6 +100,13 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
   - Sekcją rozwiązywania problemów
   - Gdy język interfejsu nie jest angielski, zawiera również README.en.md (prosty angielski)
 - **Import/Eksport konfiguracji**: Eksportuj swoją konfigurację jako plik JSON i importuj ją w innej przeglądarce lub urządzeniu
+- **Historia konfiguracji**: Śledź zmiany z funkcjonalnością cofnij/ponów
+  - Automatyczne śledzenie zmian z opóźnionymi migawkami
+  - Cofnij/Ponów za pomocą skrótów klawiaturowych (`Ctrl+Z` / `Ctrl+Y`)
+  - Panel historii ze znacznikami czasu i opisami zmian
+  - Widok różnic do porównywania stanów
+  - Przywracanie do dowolnego poprzedniego stanu konfiguracji
+  - Przechowywane w IndexedDB dla trwałości (maks. 50 wpisów)
 - **Automatyczne zapisywanie**: Ustawienia są automatycznie zapisywane w localStorage przeglądarki (domyślnie włączone)
 - **Wsparcie wielojęzyczne**: Dostępne w 18 językach:
   - 🌍 Arabski
@@ -134,6 +141,9 @@ Wszystkie skróty używają `Ctrl` na Windows/Linux i `⌘` (Cmd) na macOS.
 | ----- | ----- |
 | `Ctrl/⌘ + S` | Pobierz ZIP |
 | `Ctrl/⌘ + E` | Przełącz podgląd |
+| `Ctrl/⌘ + Z` | Cofnij |
+| `Ctrl/⌘ + Y` | Ponów |
+| `Ctrl/⌘ + Shift + Z` | Ponów (alternatywny) |
 | `Ctrl/⌘ + Shift + D` | Przełącz tryb ciemny/jasny |
 | `Ctrl/⌘ + Shift + X` | Przywróć ustawienia domyślne |
 | `Ctrl/⌘ + Shift + L` | Otwórz przełącznik języka |
@@ -505,6 +515,25 @@ Wydania są zautomatyzowane przez GitHub Actions. Aby utworzyć nowe wydanie:
 Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
 ## Dziennik zmian
+
+### v3.2.0
+
+- Dodano historię konfiguracji z funkcjonalnością cofnij/ponów
+  - Automatyczne śledzenie zmian z opóźnionymi migawkami (500ms)
+  - Cofnij/Ponów za pomocą skrótów klawiaturowych (`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`)
+  - Panel historii ze znacznikami czasu i opisami zmian
+  - Widok różnic do porównywania konfiguracji
+  - Przywracanie do dowolnego poprzedniego stanu
+  - Przechowywanie w IndexedDB dla trwałości (maks. 50 wpisów)
+- Dodano obsługę DevContainer dla VS Code i GitHub Codespaces
+  - Generowanie konfiguracji `devcontainer.json`
+  - Konfiguracja rozszerzeń i ustawień VS Code
+  - Dodawanie funkcji Dev Container
+  - Konfiguracja przekierowania portów
+  - Konfiguracja poleceń cyklu życia (post-create, post-start, post-attach)
+  - Automatyczne rekomendacje rozszerzeń na podstawie wybranego oprogramowania
+- Dodano skrót klawiaturowy `Ctrl/⌘ + 5` do przewijania do karty DevContainer
+- Zaktualizowano sekcję powitalną o funkcję DevContainer
 
 ### v3.1.2
 

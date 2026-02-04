@@ -100,6 +100,13 @@
   - Sorun giderme bölümü
   - Arayüz dili İngilizce olmadığında, README.en.md (basit İngilizce) de dahildir
 - **Yapılandırma İçe/Dışa Aktarma**: Yapılandırmanızı JSON dosyası olarak dışa aktarın ve başka bir tarayıcı veya cihazda içe aktarın
+- **Yapılandırma Geçmişi**: Geri al/yinele işlevselliği ile değişiklikleri izleyin
+  - Gecikmeli anlık görüntülerle otomatik değişiklik izleme
+  - Klavye kısayolları ile geri al/yinele (`Ctrl+Z` / `Ctrl+Y`)
+  - Zaman damgaları ve değişiklik açıklamaları içeren geçmiş paneli
+  - Durumları karşılaştırmak için fark görünümü
+  - Herhangi bir önceki yapılandırma durumuna geri yükleme
+  - Kalıcılık için IndexedDB'de depolanır (maks. 50 kayıt)
 - **Otomatik Kaydetme**: Ayarlar tarayıcınızın localStorage'ına otomatik olarak kaydedilir (varsayılan olarak etkin)
 - **Çoklu Dil Desteği**: 18 dilde mevcut:
   - 🌍 Arapça
@@ -134,6 +141,9 @@ Tüm kısayollar Windows/Linux'ta `Ctrl` ve macOS'ta `⌘` (Cmd) kullanır.
 | ------- | ----- |
 | `Ctrl/⌘ + S` | ZIP İndir |
 | `Ctrl/⌘ + E` | Önizlemeyi değiştir |
+| `Ctrl/⌘ + Z` | Geri al |
+| `Ctrl/⌘ + Y` | Yinele |
+| `Ctrl/⌘ + Shift + Z` | Yinele (alternatif) |
 | `Ctrl/⌘ + Shift + D` | Koyu/açık modu değiştir |
 | `Ctrl/⌘ + Shift + X` | Varsayılanlara sıfırla |
 | `Ctrl/⌘ + Shift + L` | Dil seçiciyi aç |
@@ -505,6 +515,25 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
 `-` içeren etiketler (örn. `v1.0.0-beta`) ön sürüm olarak işaretlenir.
 
 ## Değişiklik Günlüğü
+
+### v3.2.0
+
+- Geri al/yinele işlevselliği ile yapılandırma geçmişi eklendi
+  - Gecikmeli anlık görüntülerle otomatik değişiklik izleme (500ms)
+  - Klavye kısayolları ile geri al/yinele (`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`)
+  - Zaman damgaları ve değişiklik açıklamaları içeren geçmiş paneli
+  - Yapılandırmaları karşılaştırmak için fark görünümü
+  - Herhangi bir önceki duruma geri yükleme
+  - Kalıcılık için IndexedDB depolama (maks. 50 kayıt)
+- VS Code ve GitHub Codespaces için DevContainer desteği eklendi
+  - `devcontainer.json` yapılandırması oluşturma
+  - VS Code uzantıları ve ayarlarını yapılandırma
+  - Dev Container özellikleri ekleme
+  - Port yönlendirme ayarlama
+  - Yaşam döngüsü komutlarını yapılandırma (post-create, post-start, post-attach)
+  - Seçili yazılıma göre otomatik uzantı önerileri
+- DevContainer kartına kaydırma için klavye kısayolu `Ctrl/⌘ + 5` eklendi
+- DevContainer özelliği ile karşılama bölümü güncellendi
 
 ### v3.1.2
 

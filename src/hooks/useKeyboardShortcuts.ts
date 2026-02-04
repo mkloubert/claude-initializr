@@ -71,6 +71,9 @@ export function getModifierKey(): string {
 }
 
 export const SHORTCUT_DEFINITIONS: ShortcutDefinition[] = [
+  { keys: ['mod', 'Z'], labelKey: 'keyboardShortcuts.shortcuts.undo', category: 'actions' },
+  { keys: ['mod', 'Y'], labelKey: 'keyboardShortcuts.shortcuts.redo', category: 'actions' },
+  { keys: ['mod', 'Shift', 'Z'], labelKey: 'keyboardShortcuts.shortcuts.redo', category: 'actions' },
   { keys: ['mod', 'S'], labelKey: 'keyboardShortcuts.shortcuts.downloadZip', category: 'actions' },
   { keys: ['mod', 'Shift', 'X'], labelKey: 'keyboardShortcuts.shortcuts.resetDefaults', category: 'actions' },
   { keys: ['mod', 'E'], labelKey: 'keyboardShortcuts.shortcuts.togglePreview', category: 'actions' },
@@ -90,6 +93,10 @@ export interface UseKeyboardShortcutsOptions {
   onOpenLanguageSwitcher: () => void;
   onOpenShortcutsHelp: () => void;
   onAnnounce: (message: string) => void;
+  onUndo?: () => void;
+  onRedo?: () => void;
+  canUndo?: boolean;
+  canRedo?: boolean;
 }
 
 export function useKeyboardShortcuts({
@@ -97,6 +104,10 @@ export function useKeyboardShortcuts({
   onOpenLanguageSwitcher,
   onOpenShortcutsHelp,
   onAnnounce,
+  onUndo,
+  onRedo,
+  canUndo = false,
+  canRedo = false,
 }: UseKeyboardShortcutsOptions) {
   const { config } = useConfig();
   const { t, i18n } = useTranslation();
@@ -135,6 +146,30 @@ export function useKeyboardShortcuts({
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
     onAnnounce(t('keyboardShortcuts.announced.darkModeToggled'));
   }, [resolvedTheme, setTheme, t, onAnnounce]);
+
+  // Ctrl/Cmd + Z — Undo
+  useHotkeys('mod+z', () => {
+    if (canUndo && onUndo) {
+      onUndo();
+      onAnnounce(t('keyboardShortcuts.announced.undoPerformed'));
+    }
+  }, hotkeyOptions);
+
+  // Ctrl/Cmd + Y — Redo
+  useHotkeys('mod+y', () => {
+    if (canRedo && onRedo) {
+      onRedo();
+      onAnnounce(t('keyboardShortcuts.announced.redoPerformed'));
+    }
+  }, hotkeyOptions);
+
+  // Ctrl/Cmd + Shift + Z — Redo (alternative)
+  useHotkeys('mod+shift+z', () => {
+    if (canRedo && onRedo) {
+      onRedo();
+      onAnnounce(t('keyboardShortcuts.announced.redoPerformed'));
+    }
+  }, hotkeyOptions);
 
   // Ctrl/Cmd + S — Download ZIP
   useHotkeys('mod+s', () => { handleDownload(); }, hotkeyOptions);

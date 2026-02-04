@@ -26,4 +26,5 @@ export * from './settingsGenerator';
 export * from './zipGenerator';
 export * from './readmeGenerator';
 export * from './configValidator';
+export * from './configHistoryService';
 export * from './devcontainerGenerator';

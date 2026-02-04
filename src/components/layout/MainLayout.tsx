@@ -22,6 +22,7 @@ import { useState, useCallback, type ReactNode } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { KeyboardShortcutsDialog } from '@/components/common';
+import { useHistory } from '@/contexts';
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 
 interface MainLayoutProps {
@@ -37,6 +38,8 @@ export function MainLayout({ children }: MainLayoutProps) {
   const [languageSwitcherOpen, setLanguageSwitcherOpen] = useState(false);
   const [announcement, setAnnouncement] = useState('');
 
+  const { undo, redo, canUndo, canRedo } = useHistory();
+
   const handleAnnounce = useCallback((message: string) => {
     setAnnouncement('');
     requestAnimationFrame(() => setAnnouncement(message));
@@ -47,6 +50,10 @@ export function MainLayout({ children }: MainLayoutProps) {
     onOpenLanguageSwitcher: () => setLanguageSwitcherOpen(true),
     onOpenShortcutsHelp: () => setShortcutsHelpOpen(true),
     onAnnounce: handleAnnounce,
+    onUndo: undo,
+    onRedo: redo,
+    canUndo,
+    canRedo,
   });
 
   return (

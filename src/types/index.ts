@@ -20,4 +20,5 @@
 
 export * from './config';
 export * from './devcontainer';
+export * from './history';
 export * from './templates';

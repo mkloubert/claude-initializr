@@ -480,14 +480,61 @@ const de: Translations = {
       "toggleDarkMode": "Dunkelmodus umschalten",
       "openLanguageSwitcher": "Sprachauswahl öffnen",
       "closeDialog": "Dialog schließen",
-      "openShortcutsHelp": "Tastenkürzel öffnen"
+      "openShortcutsHelp": "Tastenkürzel öffnen",
+      "undo": "Rückgängig",
+      "redo": "Wiederholen"
     },
     "announced": {
       "downloadStarted": "Download gestartet",
       "configReset": "Konfiguration auf Standardwerte zurückgesetzt",
       "darkModeToggled": "Dunkelmodus umgeschaltet",
       "previewToggled": "Vorschau umgeschaltet",
-      "scrolledToCard": "Zu Karte {{number}} gescrollt"
+      "scrolledToCard": "Zu Karte {{number}} gescrollt",
+      "undoPerformed": "Änderung rückgängig gemacht",
+      "redoPerformed": "Änderung wiederhergestellt"
+    }
+  },
+  "history": {
+    "title": "Verlauf",
+    "description": "Frühere Konfigurationen anzeigen und wiederherstellen.",
+    "unavailable": "Der Verlauf ist in diesem Browser nicht verfügbar.",
+    "undo": "Rückgängig",
+    "redo": "Wiederholen",
+    "clearAll": "Alles löschen",
+    "clearConfirmTitle": "Verlauf löschen",
+    "clearConfirmDescription": "Möchtest du wirklich den gesamten Verlauf löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "clearConfirmCancel": "Abbrechen",
+    "clearConfirmClear": "Löschen",
+    "currentState": "Aktuell",
+    "restoreButton": "Wiederherstellen",
+    "viewDiffButton": "Diff anzeigen",
+    "emptyState": "Noch kein Verlauf. Änderungen werden automatisch aufgezeichnet.",
+    "diffTitle": "Änderungen vergleichen",
+    "diffFrom": "Von",
+    "diffTo": "Bis",
+    "diffClose": "Schließen",
+    "changes": {
+      "initial": "Ausgangszustand",
+      "baseImage": "Basis-Image geändert",
+      "nodeVersion": "Node-Version geändert",
+      "dockerPlatform": "Docker-Plattform geändert",
+      "softwareEnabled": "{{software}} aktiviert",
+      "softwareDisabled": "{{software}} deaktiviert",
+      "aptPackagesAdded": "APT-Pakete hinzugefügt",
+      "aptPackagesRemoved": "APT-Pakete entfernt",
+      "npmPackagesAdded": "NPM-Pakete hinzugefügt",
+      "npmPackagesRemoved": "NPM-Pakete entfernt",
+      "runCommandsAdded": "RUN-Befehle hinzugefügt",
+      "runCommandsRemoved": "RUN-Befehle entfernt",
+      "envVariablesAdded": "Umgebungsvariablen hinzugefügt",
+      "envVariablesRemoved": "Umgebungsvariablen entfernt",
+      "envVariablesChanged": "Umgebungsvariablen geändert",
+      "protectedFilesAdded": "Geschützte Dateien hinzugefügt",
+      "protectedFilesRemoved": "Geschützte Dateien entfernt",
+      "claudeMdChanged": "CLAUDE.md geändert",
+      "permissionsChanged": "Berechtigungen geändert",
+      "devContainerChanged": "DevContainer-Einstellungen geändert",
+      "multipleChanges": "Mehrere Änderungen"
     }
   },
   "devContainer": {

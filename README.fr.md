@@ -100,6 +100,13 @@ Une application web pour générer des fichiers de configuration Docker permetta
   - Section de dépannage
   - Lorsque la langue de l'interface n'est pas l'anglais, inclut également README.en.md (anglais simple)
 - **Import/Export de configuration** : Exportez votre configuration sous forme de fichier JSON et importez-la sur un autre navigateur ou appareil
+- **Historique de configuration** : Suivez les modifications avec la fonctionnalité annuler/rétablir
+  - Suivi automatique des modifications avec des instantanés différés
+  - Annuler/Rétablir avec les raccourcis clavier (`Ctrl+Z` / `Ctrl+Y`)
+  - Panneau d'historique avec horodatages et descriptions des modifications
+  - Vue diff pour comparer n'importe quels états
+  - Restauration vers n'importe quel état de configuration précédent
+  - Stocké dans IndexedDB pour la persistance (max 50 entrées)
 - **Sauvegarde automatique** : Les paramètres sont automatiquement enregistrés dans le localStorage de votre navigateur (activé par défaut)
 - **Support multilingue** : Disponible en 18 langues :
   - 🌍 Arabe
@@ -134,6 +141,9 @@ Tous les raccourcis utilisent `Ctrl` sous Windows/Linux et `⌘` (Cmd) sous macO
 | --------- | ------ |
 | `Ctrl/⌘ + S` | Télécharger le ZIP |
 | `Ctrl/⌘ + E` | Basculer la prévisualisation |
+| `Ctrl/⌘ + Z` | Annuler |
+| `Ctrl/⌘ + Y` | Rétablir |
+| `Ctrl/⌘ + Shift + Z` | Rétablir (alternative) |
 | `Ctrl/⌘ + Shift + D` | Basculer le mode sombre/clair |
 | `Ctrl/⌘ + Shift + X` | Réinitialiser les paramètres par défaut |
 | `Ctrl/⌘ + Shift + L` | Ouvrir le sélecteur de langue |
@@ -498,6 +508,25 @@ Les versions sont automatisées via GitHub Actions. Pour créer une nouvelle ver
 Les tags contenant `-` (ex. `v1.0.0-beta`) sont marqués comme pré-versions.
 
 ## Journal des modifications
+
+### v3.2.0
+
+- Ajout de l'historique de configuration avec fonctionnalité annuler/rétablir
+  - Suivi automatique des modifications avec des instantanés différés (500ms)
+  - Annuler/Rétablir avec les raccourcis clavier (`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`)
+  - Panneau d'historique avec horodatages et descriptions des modifications
+  - Vue diff pour comparer les configurations
+  - Restauration vers n'importe quel état précédent
+  - Stockage IndexedDB pour la persistance (max 50 entrées)
+- Ajout du support DevContainer pour VS Code et GitHub Codespaces
+  - Génération de la configuration `devcontainer.json`
+  - Configuration des extensions et paramètres VS Code
+  - Ajout des fonctionnalités Dev Container
+  - Configuration de la redirection de ports
+  - Configuration des commandes de cycle de vie (post-create, post-start, post-attach)
+  - Recommandations automatiques d'extensions basées sur les logiciels sélectionnés
+- Ajout du raccourci clavier `Ctrl/⌘ + 5` pour défiler vers la carte DevContainer
+- Section d'accueil mise à jour avec la fonctionnalité DevContainer
 
 ### v3.1.2
 

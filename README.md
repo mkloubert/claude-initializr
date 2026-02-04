@@ -100,6 +100,13 @@ A web application to generate Docker configuration files for running [Claude Cod
   - Troubleshooting section
   - When UI language is not English, also includes README.en.md (Simple English)
 - **Configuration Import/Export**: Export your configuration as a JSON file and import it on another browser or device
+- **Configuration History**: Track changes with undo/redo functionality
+  - Automatic change tracking with debounced snapshots
+  - Undo/Redo with keyboard shortcuts (`Ctrl+Z` / `Ctrl+Y`)
+  - History panel with timestamps and change descriptions
+  - Diff view for comparing any two states
+  - Restore to any previous configuration state
+  - Stored in IndexedDB for persistence (max 50 entries)
 - **Autosave**: Settings are automatically saved to your browser's localStorage (enabled by default)
 - **Multi-language Support**: Available in 18 languages:
   - 🌍 Arabic
@@ -134,6 +141,9 @@ All shortcuts use `Ctrl` on Windows/Linux and `⌘` (Cmd) on macOS.
 | -------- | ------ |
 | `Ctrl/⌘ + S` | Download ZIP |
 | `Ctrl/⌘ + E` | Toggle preview |
+| `Ctrl/⌘ + Z` | Undo |
+| `Ctrl/⌘ + Y` | Redo |
+| `Ctrl/⌘ + Shift + Z` | Redo (alternative) |
 | `Ctrl/⌘ + Shift + D` | Toggle dark/light mode |
 | `Ctrl/⌘ + Shift + X` | Reset to defaults |
 | `Ctrl/⌘ + Shift + L` | Open language switcher |
@@ -518,6 +528,13 @@ Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
 ### v3.2.0
 
+- Added Configuration History with undo/redo functionality
+  - Automatic change tracking with debounced snapshots (500ms)
+  - Undo/Redo with keyboard shortcuts (`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`)
+  - History panel showing timestamps and change descriptions
+  - Diff view for comparing configurations
+  - Restore to any previous state
+  - IndexedDB storage for persistence (max 50 entries)
 - Added DevContainer support for VS Code and GitHub Codespaces
   - Generate `devcontainer.json` configuration
   - Configure VS Code extensions and settings

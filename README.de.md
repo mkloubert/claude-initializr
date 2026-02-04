@@ -100,6 +100,13 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
   - Fehlerbehebungsabschnitt
   - Bei nicht-englischer UI-Sprache wird auch README.en.md (Einfaches Englisch) eingeschlossen
 - **Konfiguration Import/Export**: Exportiere deine Konfiguration als JSON-Datei und importiere sie in einem anderen Browser oder Gerät
+- **Konfigurationsverlauf**: Verfolge Änderungen mit Rückgängig/Wiederherstellen-Funktionalität
+  - Automatische Änderungsverfolgung mit verzögerten Snapshots
+  - Rückgängig/Wiederherstellen mit Tastaturkürzeln (`Ctrl+Z` / `Ctrl+Y`)
+  - Verlaufspanel mit Zeitstempeln und Änderungsbeschreibungen
+  - Diff-Ansicht zum Vergleichen beliebiger Zustände
+  - Wiederherstellung zu jedem vorherigen Konfigurationszustand
+  - Gespeichert in IndexedDB für Persistenz (max. 50 Einträge)
 - **Automatisches Speichern**: Einstellungen werden automatisch im localStorage deines Browsers gespeichert (standardmäßig aktiviert)
 - **Mehrsprachige Unterstützung**: Verfügbar in 18 Sprachen:
   - 🌍 Arabisch
@@ -134,6 +141,9 @@ Alle Kürzel verwenden `Ctrl` unter Windows/Linux und `⌘` (Cmd) unter macOS.
 | ------ | ------ |
 | `Ctrl/⌘ + S` | ZIP herunterladen |
 | `Ctrl/⌘ + E` | Vorschau umschalten |
+| `Ctrl/⌘ + Z` | Rückgängig |
+| `Ctrl/⌘ + Y` | Wiederherstellen |
+| `Ctrl/⌘ + Shift + Z` | Wiederherstellen (alternativ) |
 | `Ctrl/⌘ + Shift + D` | Dunkles/Helles Design umschalten |
 | `Ctrl/⌘ + Shift + X` | Auf Standardwerte zurücksetzen |
 | `Ctrl/⌘ + Shift + L` | Sprachumschalter öffnen |
@@ -500,6 +510,13 @@ Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
 ### v3.2.0
 
+- Konfigurationsverlauf mit Rückgängig/Wiederherstellen-Funktionalität hinzugefügt
+  - Automatische Änderungsverfolgung mit verzögerten Snapshots (500ms)
+  - Rückgängig/Wiederherstellen mit Tastaturkürzeln (`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`)
+  - Verlaufspanel mit Zeitstempeln und Änderungsbeschreibungen
+  - Diff-Ansicht zum Vergleichen von Konfigurationen
+  - Wiederherstellung zu jedem vorherigen Zustand
+  - IndexedDB-Speicherung für Persistenz (max. 50 Einträge)
 - DevContainer-Unterstützung für VS Code und GitHub Codespaces hinzugefügt
   - `devcontainer.json`-Konfiguration generieren
   - VS Code-Erweiterungen und -Einstellungen konfigurieren

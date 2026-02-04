@@ -480,14 +480,61 @@ const he: Translations = {
       "toggleDarkMode": "החלפת מצב כהה",
       "openLanguageSwitcher": "פתיחת בורר שפה",
       "closeDialog": "סגירת דיאלוג",
-      "openShortcutsHelp": "פתיחת קיצורי מקלדת"
+      "openShortcutsHelp": "פתיחת קיצורי מקלדת",
+      "undo": "בטל",
+      "redo": "בצע מחדש"
     },
     "announced": {
       "downloadStarted": "ההורדה החלה",
       "configReset": "התצורה אופסה לברירת מחדל",
       "darkModeToggled": "מצב כהה הוחלף",
       "previewToggled": "תצוגה מקדימה הוחלפה",
-      "scrolledToCard": "גלילה לכרטיס {{number}}"
+      "scrolledToCard": "גלילה לכרטיס {{number}}",
+      "undoPerformed": "השינוי בוטל",
+      "redoPerformed": "השינוי בוצע מחדש"
+    }
+  },
+  "history": {
+    "title": "היסטוריה",
+    "description": "צפה ושחזר תצורות קודמות.",
+    "unavailable": "היסטוריה אינה זמינה בדפדפן זה.",
+    "undo": "בטל",
+    "redo": "בצע מחדש",
+    "clearAll": "נקה הכל",
+    "clearConfirmTitle": "נקה היסטוריה",
+    "clearConfirmDescription": "האם אתה בטוח שברצונך לנקות את כל ההיסטוריה? לא ניתן לבטל פעולה זו.",
+    "clearConfirmCancel": "ביטול",
+    "clearConfirmClear": "נקה",
+    "currentState": "נוכחי",
+    "restoreButton": "שחזר",
+    "viewDiffButton": "הצג הבדלים",
+    "emptyState": "אין עדיין היסטוריה. שינויים יעקבו אוטומטית.",
+    "diffTitle": "השוואת שינויים",
+    "diffFrom": "מ",
+    "diffTo": "ל",
+    "diffClose": "סגור",
+    "changes": {
+      "initial": "מצב התחלתי",
+      "baseImage": "תמונת הבסיס שונתה",
+      "nodeVersion": "גרסת Node שונתה",
+      "dockerPlatform": "פלטפורמת Docker שונתה",
+      "softwareEnabled": "{{software}} הופעל",
+      "softwareDisabled": "{{software}} הושבת",
+      "aptPackagesAdded": "חבילות APT נוספו",
+      "aptPackagesRemoved": "חבילות APT הוסרו",
+      "npmPackagesAdded": "חבילות NPM נוספו",
+      "npmPackagesRemoved": "חבילות NPM הוסרו",
+      "runCommandsAdded": "פקודות RUN נוספו",
+      "runCommandsRemoved": "פקודות RUN הוסרו",
+      "envVariablesAdded": "משתני סביבה נוספו",
+      "envVariablesRemoved": "משתני סביבה הוסרו",
+      "envVariablesChanged": "משתני סביבה שונו",
+      "protectedFilesAdded": "קבצים מוגנים נוספו",
+      "protectedFilesRemoved": "קבצים מוגנים הוסרו",
+      "claudeMdChanged": "CLAUDE.md שונה",
+      "permissionsChanged": "הרשאות שונו",
+      "devContainerChanged": "הגדרות DevContainer שונו",
+      "multipleChanges": "שינויים מרובים"
     }
   },
   "devContainer": {

@@ -480,14 +480,61 @@ const en: Translations = {
       "toggleDarkMode": "Toggle dark mode",
       "openLanguageSwitcher": "Open language switcher",
       "closeDialog": "Close dialog",
-      "openShortcutsHelp": "Open keyboard shortcuts"
+      "openShortcutsHelp": "Open keyboard shortcuts",
+      "undo": "Undo",
+      "redo": "Redo"
     },
     "announced": {
       "downloadStarted": "Download started",
       "configReset": "Configuration reset to defaults",
       "darkModeToggled": "Dark mode toggled",
       "previewToggled": "Preview toggled",
-      "scrolledToCard": "Scrolled to card {{number}}"
+      "scrolledToCard": "Scrolled to card {{number}}",
+      "undoPerformed": "Change undone",
+      "redoPerformed": "Change redone"
+    }
+  },
+  "history": {
+    "title": "History",
+    "description": "View and restore previous configurations.",
+    "unavailable": "History is not available in this browser.",
+    "undo": "Undo",
+    "redo": "Redo",
+    "clearAll": "Clear All",
+    "clearConfirmTitle": "Clear History",
+    "clearConfirmDescription": "Are you sure you want to clear all history? This action cannot be undone.",
+    "clearConfirmCancel": "Cancel",
+    "clearConfirmClear": "Clear",
+    "currentState": "Current",
+    "restoreButton": "Restore",
+    "viewDiffButton": "View Diff",
+    "emptyState": "No history yet. Changes will be tracked automatically.",
+    "diffTitle": "Comparing Changes",
+    "diffFrom": "From",
+    "diffTo": "To",
+    "diffClose": "Close",
+    "changes": {
+      "initial": "Initial state",
+      "baseImage": "Changed base image",
+      "nodeVersion": "Changed Node version",
+      "dockerPlatform": "Changed Docker platform",
+      "softwareEnabled": "Enabled {{software}}",
+      "softwareDisabled": "Disabled {{software}}",
+      "aptPackagesAdded": "Added APT packages",
+      "aptPackagesRemoved": "Removed APT packages",
+      "npmPackagesAdded": "Added NPM packages",
+      "npmPackagesRemoved": "Removed NPM packages",
+      "runCommandsAdded": "Added RUN commands",
+      "runCommandsRemoved": "Removed RUN commands",
+      "envVariablesAdded": "Added environment variables",
+      "envVariablesRemoved": "Removed environment variables",
+      "envVariablesChanged": "Modified environment variables",
+      "protectedFilesAdded": "Added protected files",
+      "protectedFilesRemoved": "Removed protected files",
+      "claudeMdChanged": "Modified CLAUDE.md",
+      "permissionsChanged": "Modified permissions",
+      "devContainerChanged": "Modified DevContainer settings",
+      "multipleChanges": "Multiple changes"
     }
   },
   "devContainer": {

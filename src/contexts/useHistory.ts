@@ -18,11 +18,22 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-export { ConfigProvider } from './ConfigContext';
-export { useConfig } from './useConfig';
-export { HistoryProvider } from './HistoryContext';
-export { useHistory } from './useHistory';
-export { ThemeProvider } from './ThemeContext';
-export { useTheme } from './useTheme';
-export type { HistoryContextValue } from './historyContextValue';
-export type { Theme } from './themeContextValue';
+import { useContext } from 'react';
+import { HistoryContext, type HistoryContextValue } from './historyContextValue';
+
+/**
+ * Hook to access the history context.
+ * Must be used within a HistoryProvider.
+ *
+ * @returns The history context value with state and actions
+ * @throws Error if used outside of HistoryProvider
+ */
+export function useHistory(): HistoryContextValue {
+  const context = useContext(HistoryContext);
+
+  if (!context) {
+    throw new Error('useHistory must be used within a HistoryProvider');
+  }
+
+  return context;
+}

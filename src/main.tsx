@@ -21,7 +21,7 @@
 import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
-import { ConfigProvider, ThemeProvider } from './contexts/index.ts';
+import { ConfigProvider, HistoryProvider, ThemeProvider } from './contexts/index.ts';
 import { Toaster } from './components/ui/sonner.tsx';
 
 import './i18n/index.ts';
@@ -32,8 +32,10 @@ createRoot(document.getElementById('root')!).render(
     <Suspense fallback={<div className="flex h-screen items-center justify-center">Loading...</div>}>
       <ThemeProvider>
         <ConfigProvider>
-          <App />
-          <Toaster />
+          <HistoryProvider>
+            <App />
+            <Toaster />
+          </HistoryProvider>
         </ConfigProvider>
       </ThemeProvider>
     </Suspense>

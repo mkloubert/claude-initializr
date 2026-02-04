@@ -480,14 +480,61 @@ const hi: Translations = {
       "toggleDarkMode": "डार्क मोड टॉगल करें",
       "openLanguageSwitcher": "भाषा चयनकर्ता खोलें",
       "closeDialog": "डायलॉग बंद करें",
-      "openShortcutsHelp": "कीबोर्ड शॉर्टकट खोलें"
+      "openShortcutsHelp": "कीबोर्ड शॉर्टकट खोलें",
+      "undo": "पूर्ववत करें",
+      "redo": "फिर से करें"
     },
     "announced": {
       "downloadStarted": "डाउनलोड शुरू हुआ",
       "configReset": "कॉन्फ़िगरेशन डिफ़ॉल्ट पर रीसेट किया गया",
       "darkModeToggled": "डार्क मोड टॉगल किया गया",
       "previewToggled": "पूर्वावलोकन टॉगल किया गया",
-      "scrolledToCard": "कार्ड {{number}} पर स्क्रॉल किया गया"
+      "scrolledToCard": "कार्ड {{number}} पर स्क्रॉल किया गया",
+      "undoPerformed": "परिवर्तन पूर्ववत किया गया",
+      "redoPerformed": "परिवर्तन फिर से किया गया"
+    }
+  },
+  "history": {
+    "title": "इतिहास",
+    "description": "पिछले कॉन्फ़िगरेशन देखें और पुनर्स्थापित करें।",
+    "unavailable": "इस ब्राउज़र में इतिहास उपलब्ध नहीं है।",
+    "undo": "पूर्ववत करें",
+    "redo": "फिर से करें",
+    "clearAll": "सभी साफ़ करें",
+    "clearConfirmTitle": "इतिहास साफ़ करें",
+    "clearConfirmDescription": "क्या आप वाकई सारा इतिहास साफ़ करना चाहते हैं? इस क्रिया को पूर्ववत नहीं किया जा सकता।",
+    "clearConfirmCancel": "रद्द करें",
+    "clearConfirmClear": "साफ़ करें",
+    "currentState": "वर्तमान",
+    "restoreButton": "पुनर्स्थापित करें",
+    "viewDiffButton": "अंतर देखें",
+    "emptyState": "अभी तक कोई इतिहास नहीं। परिवर्तन स्वचालित रूप से ट्रैक किए जाएंगे।",
+    "diffTitle": "परिवर्तनों की तुलना",
+    "diffFrom": "से",
+    "diffTo": "तक",
+    "diffClose": "बंद करें",
+    "changes": {
+      "initial": "प्रारंभिक स्थिति",
+      "baseImage": "बेस इमेज बदली गई",
+      "nodeVersion": "Node संस्करण बदला गया",
+      "dockerPlatform": "Docker प्लेटफ़ॉर्म बदला गया",
+      "softwareEnabled": "{{software}} सक्षम किया गया",
+      "softwareDisabled": "{{software}} अक्षम किया गया",
+      "aptPackagesAdded": "APT पैकेज जोड़े गए",
+      "aptPackagesRemoved": "APT पैकेज हटाए गए",
+      "npmPackagesAdded": "NPM पैकेज जोड़े गए",
+      "npmPackagesRemoved": "NPM पैकेज हटाए गए",
+      "runCommandsAdded": "RUN कमांड जोड़े गए",
+      "runCommandsRemoved": "RUN कमांड हटाए गए",
+      "envVariablesAdded": "एनवायरनमेंट वेरिएबल जोड़े गए",
+      "envVariablesRemoved": "एनवायरनमेंट वेरिएबल हटाए गए",
+      "envVariablesChanged": "एनवायरनमेंट वेरिएबल संशोधित किए गए",
+      "protectedFilesAdded": "संरक्षित फ़ाइलें जोड़ी गईं",
+      "protectedFilesRemoved": "संरक्षित फ़ाइलें हटाई गईं",
+      "claudeMdChanged": "CLAUDE.md संशोधित किया गया",
+      "permissionsChanged": "अनुमतियाँ संशोधित की गईं",
+      "devContainerChanged": "DevContainer सेटिंग्स संशोधित की गईं",
+      "multipleChanges": "एकाधिक परिवर्तन"
     }
   },
   "devContainer": {

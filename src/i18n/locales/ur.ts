@@ -480,14 +480,61 @@ const ur: Translations = {
       "toggleDarkMode": "ڈارک موڈ ٹوگل کریں",
       "openLanguageSwitcher": "زبان منتخب کنندہ کھولیں",
       "closeDialog": "ڈائیلاگ بند کریں",
-      "openShortcutsHelp": "کی بورڈ شارٹ کٹس کھولیں"
+      "openShortcutsHelp": "کی بورڈ شارٹ کٹس کھولیں",
+      "undo": "واپس کریں",
+      "redo": "دوبارہ کریں"
     },
     "announced": {
       "downloadStarted": "ڈاؤن لوڈ شروع ہو گیا",
       "configReset": "کنفیگریشن ڈیفالٹ پر ری سیٹ ہو گئی",
       "darkModeToggled": "ڈارک موڈ ٹوگل ہو گیا",
       "previewToggled": "پیش نظارہ ٹوگل ہو گیا",
-      "scrolledToCard": "کارڈ {{number}} پر سکرول ہو گیا"
+      "scrolledToCard": "کارڈ {{number}} پر سکرول ہو گیا",
+      "undoPerformed": "تبدیلی واپس کی گئی",
+      "redoPerformed": "تبدیلی دوبارہ کی گئی"
+    }
+  },
+  "history": {
+    "title": "ہسٹری",
+    "description": "پچھلی کنفیگریشنز دیکھیں اور بحال کریں۔",
+    "unavailable": "اس براؤزر میں ہسٹری دستیاب نہیں ہے۔",
+    "undo": "واپس کریں",
+    "redo": "دوبارہ کریں",
+    "clearAll": "سب صاف کریں",
+    "clearConfirmTitle": "ہسٹری صاف کریں",
+    "clearConfirmDescription": "کیا آپ واقعی تمام ہسٹری صاف کرنا چاہتے ہیں؟ یہ عمل واپس نہیں ہو سکتا۔",
+    "clearConfirmCancel": "منسوخ کریں",
+    "clearConfirmClear": "صاف کریں",
+    "currentState": "موجودہ",
+    "restoreButton": "بحال کریں",
+    "viewDiffButton": "فرق دیکھیں",
+    "emptyState": "ابھی تک کوئی ہسٹری نہیں۔ تبدیلیاں خودکار طور پر ٹریک ہوں گی۔",
+    "diffTitle": "تبدیلیوں کا موازنہ",
+    "diffFrom": "سے",
+    "diffTo": "تک",
+    "diffClose": "بند کریں",
+    "changes": {
+      "initial": "ابتدائی حالت",
+      "baseImage": "بیس امیج تبدیل کی گئی",
+      "nodeVersion": "Node ورژن تبدیل کیا گیا",
+      "dockerPlatform": "Docker پلیٹ فارم تبدیل کیا گیا",
+      "softwareEnabled": "{{software}} فعال کیا گیا",
+      "softwareDisabled": "{{software}} غیر فعال کیا گیا",
+      "aptPackagesAdded": "APT پیکیجز شامل کیے گئے",
+      "aptPackagesRemoved": "APT پیکیجز ہٹائے گئے",
+      "npmPackagesAdded": "NPM پیکیجز شامل کیے گئے",
+      "npmPackagesRemoved": "NPM پیکیجز ہٹائے گئے",
+      "runCommandsAdded": "RUN کمانڈز شامل کی گئیں",
+      "runCommandsRemoved": "RUN کمانڈز ہٹائی گئیں",
+      "envVariablesAdded": "ماحولیاتی متغیرات شامل کیے گئے",
+      "envVariablesRemoved": "ماحولیاتی متغیرات ہٹائے گئے",
+      "envVariablesChanged": "ماحولیاتی متغیرات میں ترمیم کی گئی",
+      "protectedFilesAdded": "محفوظ فائلیں شامل کی گئیں",
+      "protectedFilesRemoved": "محفوظ فائلیں ہٹائی گئیں",
+      "claudeMdChanged": "CLAUDE.md میں ترمیم کی گئی",
+      "permissionsChanged": "اجازتوں میں ترمیم کی گئی",
+      "devContainerChanged": "DevContainer سیٹنگز میں ترمیم کی گئی",
+      "multipleChanges": "متعدد تبدیلیاں"
     }
   },
   "devContainer": {

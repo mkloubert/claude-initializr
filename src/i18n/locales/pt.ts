@@ -480,14 +480,61 @@ const pt: Translations = {
       "toggleDarkMode": "Alternar modo escuro",
       "openLanguageSwitcher": "Abrir seletor de idioma",
       "closeDialog": "Fechar diálogo",
-      "openShortcutsHelp": "Abrir atalhos de teclado"
+      "openShortcutsHelp": "Abrir atalhos de teclado",
+      "undo": "Desfazer",
+      "redo": "Refazer"
     },
     "announced": {
       "downloadStarted": "Download iniciado",
       "configReset": "Configuração redefinida para os padrões",
       "darkModeToggled": "Modo escuro alternado",
       "previewToggled": "Pré-visualização alternada",
-      "scrolledToCard": "Rolagem para cartão {{number}}"
+      "scrolledToCard": "Rolagem para cartão {{number}}",
+      "undoPerformed": "Alteração desfeita",
+      "redoPerformed": "Alteração refeita"
+    }
+  },
+  "history": {
+    "title": "Histórico",
+    "description": "Visualizar e restaurar configurações anteriores.",
+    "unavailable": "O histórico não está disponível neste navegador.",
+    "undo": "Desfazer",
+    "redo": "Refazer",
+    "clearAll": "Limpar tudo",
+    "clearConfirmTitle": "Limpar histórico",
+    "clearConfirmDescription": "Tem certeza de que deseja limpar todo o histórico? Esta ação não pode ser desfeita.",
+    "clearConfirmCancel": "Cancelar",
+    "clearConfirmClear": "Limpar",
+    "currentState": "Atual",
+    "restoreButton": "Restaurar",
+    "viewDiffButton": "Ver diferenças",
+    "emptyState": "Ainda não há histórico. As alterações serão registradas automaticamente.",
+    "diffTitle": "Comparando alterações",
+    "diffFrom": "De",
+    "diffTo": "Para",
+    "diffClose": "Fechar",
+    "changes": {
+      "initial": "Estado inicial",
+      "baseImage": "Imagem base alterada",
+      "nodeVersion": "Versão do Node alterada",
+      "dockerPlatform": "Plataforma Docker alterada",
+      "softwareEnabled": "{{software}} habilitado",
+      "softwareDisabled": "{{software}} desabilitado",
+      "aptPackagesAdded": "Pacotes APT adicionados",
+      "aptPackagesRemoved": "Pacotes APT removidos",
+      "npmPackagesAdded": "Pacotes NPM adicionados",
+      "npmPackagesRemoved": "Pacotes NPM removidos",
+      "runCommandsAdded": "Comandos RUN adicionados",
+      "runCommandsRemoved": "Comandos RUN removidos",
+      "envVariablesAdded": "Variáveis de ambiente adicionadas",
+      "envVariablesRemoved": "Variáveis de ambiente removidas",
+      "envVariablesChanged": "Variáveis de ambiente modificadas",
+      "protectedFilesAdded": "Arquivos protegidos adicionados",
+      "protectedFilesRemoved": "Arquivos protegidos removidos",
+      "claudeMdChanged": "CLAUDE.md modificado",
+      "permissionsChanged": "Permissões modificadas",
+      "devContainerChanged": "Configuração do DevContainer modificada",
+      "multipleChanges": "Múltiplas alterações"
     }
   },
   "devContainer": {

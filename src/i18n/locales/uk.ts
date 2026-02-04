@@ -480,14 +480,61 @@ const uk: Translations = {
       "toggleDarkMode": "Перемкнути темний режим",
       "openLanguageSwitcher": "Відкрити перемикач мови",
       "closeDialog": "Закрити діалог",
-      "openShortcutsHelp": "Відкрити гарячі клавіші"
+      "openShortcutsHelp": "Відкрити гарячі клавіші",
+      "undo": "Скасувати",
+      "redo": "Повторити"
     },
     "announced": {
       "downloadStarted": "Завантаження розпочато",
       "configReset": "Конфігурацію скинуто до стандартних значень",
       "darkModeToggled": "Темний режим перемкнуто",
       "previewToggled": "Попередній перегляд перемкнуто",
-      "scrolledToCard": "Прокручено до картки {{number}}"
+      "scrolledToCard": "Прокручено до картки {{number}}",
+      "undoPerformed": "Зміну скасовано",
+      "redoPerformed": "Зміну повторено"
+    }
+  },
+  "history": {
+    "title": "Історія",
+    "description": "Перегляд і відновлення попередніх конфігурацій.",
+    "unavailable": "Історія недоступна в цьому браузері.",
+    "undo": "Скасувати",
+    "redo": "Повторити",
+    "clearAll": "Очистити все",
+    "clearConfirmTitle": "Очистити історію",
+    "clearConfirmDescription": "Ви впевнені, що хочете очистити всю історію? Цю дію неможливо скасувати.",
+    "clearConfirmCancel": "Скасувати",
+    "clearConfirmClear": "Очистити",
+    "currentState": "Поточний",
+    "restoreButton": "Відновити",
+    "viewDiffButton": "Переглянути різницю",
+    "emptyState": "Історії ще немає. Зміни будуть відстежуватися автоматично.",
+    "diffTitle": "Порівняння змін",
+    "diffFrom": "Від",
+    "diffTo": "До",
+    "diffClose": "Закрити",
+    "changes": {
+      "initial": "Початковий стан",
+      "baseImage": "Змінено базовий образ",
+      "nodeVersion": "Змінено версію Node",
+      "dockerPlatform": "Змінено платформу Docker",
+      "softwareEnabled": "Увімкнено {{software}}",
+      "softwareDisabled": "Вимкнено {{software}}",
+      "aptPackagesAdded": "Додано APT-пакети",
+      "aptPackagesRemoved": "Видалено APT-пакети",
+      "npmPackagesAdded": "Додано NPM-пакети",
+      "npmPackagesRemoved": "Видалено NPM-пакети",
+      "runCommandsAdded": "Додано RUN-команди",
+      "runCommandsRemoved": "Видалено RUN-команди",
+      "envVariablesAdded": "Додано змінні середовища",
+      "envVariablesRemoved": "Видалено змінні середовища",
+      "envVariablesChanged": "Змінено змінні середовища",
+      "protectedFilesAdded": "Додано захищені файли",
+      "protectedFilesRemoved": "Видалено захищені файли",
+      "claudeMdChanged": "Змінено CLAUDE.md",
+      "permissionsChanged": "Змінено дозволи",
+      "devContainerChanged": "Змінено налаштування DevContainer",
+      "multipleChanges": "Кілька змін"
     }
   },
   "devContainer": {

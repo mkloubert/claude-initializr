@@ -480,14 +480,61 @@ const ja: Translations = {
       "toggleDarkMode": "ダークモードを切り替え",
       "openLanguageSwitcher": "言語切り替えを開く",
       "closeDialog": "ダイアログを閉じる",
-      "openShortcutsHelp": "キーボードショートカットを開く"
+      "openShortcutsHelp": "キーボードショートカットを開く",
+      "undo": "元に戻す",
+      "redo": "やり直し"
     },
     "announced": {
       "downloadStarted": "ダウンロードを開始しました",
       "configReset": "設定をデフォルトにリセットしました",
       "darkModeToggled": "ダークモードを切り替えました",
       "previewToggled": "プレビューを切り替えました",
-      "scrolledToCard": "カード{{number}}にスクロールしました"
+      "scrolledToCard": "カード{{number}}にスクロールしました",
+      "undoPerformed": "変更を元に戻しました",
+      "redoPerformed": "変更をやり直しました"
+    }
+  },
+  "history": {
+    "title": "履歴",
+    "description": "以前の設定を表示および復元します。",
+    "unavailable": "このブラウザでは履歴機能は利用できません。",
+    "undo": "元に戻す",
+    "redo": "やり直し",
+    "clearAll": "すべてクリア",
+    "clearConfirmTitle": "履歴をクリア",
+    "clearConfirmDescription": "すべての履歴をクリアしてもよろしいですか？この操作は元に戻せません。",
+    "clearConfirmCancel": "キャンセル",
+    "clearConfirmClear": "クリア",
+    "currentState": "現在",
+    "restoreButton": "復元",
+    "viewDiffButton": "差分を表示",
+    "emptyState": "まだ履歴がありません。変更は自動的に追跡されます。",
+    "diffTitle": "変更の比較",
+    "diffFrom": "元",
+    "diffTo": "先",
+    "diffClose": "閉じる",
+    "changes": {
+      "initial": "初期状態",
+      "baseImage": "ベースイメージを変更",
+      "nodeVersion": "Nodeバージョンを変更",
+      "dockerPlatform": "Dockerプラットフォームを変更",
+      "softwareEnabled": "{{software}}を有効化",
+      "softwareDisabled": "{{software}}を無効化",
+      "aptPackagesAdded": "APTパッケージを追加",
+      "aptPackagesRemoved": "APTパッケージを削除",
+      "npmPackagesAdded": "NPMパッケージを追加",
+      "npmPackagesRemoved": "NPMパッケージを削除",
+      "runCommandsAdded": "RUNコマンドを追加",
+      "runCommandsRemoved": "RUNコマンドを削除",
+      "envVariablesAdded": "環境変数を追加",
+      "envVariablesRemoved": "環境変数を削除",
+      "envVariablesChanged": "環境変数を変更",
+      "protectedFilesAdded": "保護ファイルを追加",
+      "protectedFilesRemoved": "保護ファイルを削除",
+      "claudeMdChanged": "CLAUDE.mdを変更",
+      "permissionsChanged": "パーミッションを変更",
+      "devContainerChanged": "DevContainer設定を変更",
+      "multipleChanges": "複数の変更"
     }
   },
   "devContainer": {

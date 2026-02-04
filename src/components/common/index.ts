@@ -20,8 +20,12 @@
 
 export { AutosaveSwitcher } from './AutosaveSwitcher';
 export { DownloadButton } from './DownloadButton';
+export { HistoryButton } from './HistoryButton';
+export { HistoryDiffDialog } from './HistoryDiffDialog';
+export { HistoryPanel } from './HistoryPanel';
 export { ImportExportButtons } from './ImportExportButtons';
 export { KeyboardShortcutsDialog } from './KeyboardShortcutsDialog';
 export { LanguageSwitcher } from './LanguageSwitcher';
 export { ResetButton } from './ResetButton';
 export { ThemeSwitcher } from './ThemeSwitcher';
+export { UndoRedoButtons } from './UndoRedoButtons';

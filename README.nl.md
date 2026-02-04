@@ -100,6 +100,13 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
   - Probleemoplossingssectie
   - Wanneer de UI-taal niet Engels is, bevat ook README.en.md (eenvoudig Engels)
 - **Configuratie import/export**: Exporteer uw configuratie als JSON-bestand en importeer deze in een andere browser of op een ander apparaat
+- **Configuratiegeschiedenis**: Volg wijzigingen met ongedaan maken/opnieuw functionaliteit
+  - Automatische wijzigingsregistratie met vertraagde snapshots
+  - Ongedaan maken/Opnieuw met sneltoetsen (`Ctrl+Z` / `Ctrl+Y`)
+  - Geschiedenispaneel met tijdstempels en wijzigingsbeschrijvingen
+  - Diff-weergave voor het vergelijken van toestanden
+  - Herstellen naar elke vorige configuratietoestand
+  - Opgeslagen in IndexedDB voor persistentie (max 50 items)
 - **Automatisch opslaan**: Instellingen worden automatisch opgeslagen in de localStorage van uw browser (standaard ingeschakeld)
 - **Meertalige ondersteuning**: Beschikbaar in 18 talen:
   - 🌍 Arabisch
@@ -134,6 +141,9 @@ Alle sneltoetsen gebruiken `Ctrl` op Windows/Linux en `⌘` (Cmd) op macOS.
 | --------- | ----- |
 | `Ctrl/⌘ + S` | ZIP downloaden |
 | `Ctrl/⌘ + E` | Voorbeeld in-/uitschakelen |
+| `Ctrl/⌘ + Z` | Ongedaan maken |
+| `Ctrl/⌘ + Y` | Opnieuw |
+| `Ctrl/⌘ + Shift + Z` | Opnieuw (alternatief) |
 | `Ctrl/⌘ + Shift + D` | Donker/licht thema wisselen |
 | `Ctrl/⌘ + Shift + X` | Standaardinstellingen herstellen |
 | `Ctrl/⌘ + Shift + L` | Taalkiezer openen |
@@ -502,6 +512,25 @@ Releases worden geautomatiseerd via GitHub Actions. Om een nieuwe release te mak
 Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
 ## Wijzigingslogboek
+
+### v3.2.0
+
+- Configuratiegeschiedenis toegevoegd met ongedaan maken/opnieuw functionaliteit
+  - Automatische wijzigingsregistratie met vertraagde snapshots (500ms)
+  - Ongedaan maken/Opnieuw met sneltoetsen (`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`)
+  - Geschiedenispaneel met tijdstempels en wijzigingsbeschrijvingen
+  - Diff-weergave voor het vergelijken van configuraties
+  - Herstellen naar elke vorige toestand
+  - IndexedDB-opslag voor persistentie (max 50 items)
+- DevContainer-ondersteuning toegevoegd voor VS Code en GitHub Codespaces
+  - `devcontainer.json`-configuratie genereren
+  - VS Code-extensies en -instellingen configureren
+  - Dev Container Features toevoegen
+  - Port forwarding instellen
+  - Lifecycle-commando's configureren (post-create, post-start, post-attach)
+  - Automatische extensieaanbevelingen op basis van geselecteerde software
+- Sneltoets `Ctrl/⌘ + 5` toegevoegd om naar DevContainer-kaart te scrollen
+- Welkomstsectie bijgewerkt met DevContainer-functie
 
 ### v3.1.2
 

@@ -480,14 +480,61 @@ const ar: Translations = {
       "toggleDarkMode": "تبديل الوضع الداكن",
       "openLanguageSwitcher": "فتح محوّل اللغة",
       "closeDialog": "إغلاق الحوار",
-      "openShortcutsHelp": "فتح اختصارات لوحة المفاتيح"
+      "openShortcutsHelp": "فتح اختصارات لوحة المفاتيح",
+      "undo": "تراجع",
+      "redo": "إعادة"
     },
     "announced": {
       "downloadStarted": "بدأ التحميل",
       "configReset": "تمت إعادة تعيين التكوين إلى الافتراضي",
       "darkModeToggled": "تم تبديل الوضع الداكن",
       "previewToggled": "تم تبديل المعاينة",
-      "scrolledToCard": "تم التمرير إلى البطاقة {{number}}"
+      "scrolledToCard": "تم التمرير إلى البطاقة {{number}}",
+      "undoPerformed": "تم التراجع عن التغيير",
+      "redoPerformed": "تمت إعادة التغيير"
+    }
+  },
+  "history": {
+    "title": "السجل",
+    "description": "عرض واستعادة الإعدادات السابقة.",
+    "unavailable": "السجل غير متاح في هذا المتصفح.",
+    "undo": "تراجع",
+    "redo": "إعادة",
+    "clearAll": "مسح الكل",
+    "clearConfirmTitle": "مسح السجل",
+    "clearConfirmDescription": "هل أنت متأكد أنك تريد مسح كل السجل؟ لا يمكن التراجع عن هذا الإجراء.",
+    "clearConfirmCancel": "إلغاء",
+    "clearConfirmClear": "مسح",
+    "currentState": "الحالي",
+    "restoreButton": "استعادة",
+    "viewDiffButton": "عرض الفرق",
+    "emptyState": "لا يوجد سجل بعد. سيتم تتبع التغييرات تلقائياً.",
+    "diffTitle": "مقارنة التغييرات",
+    "diffFrom": "من",
+    "diffTo": "إلى",
+    "diffClose": "إغلاق",
+    "changes": {
+      "initial": "الحالة الأولية",
+      "baseImage": "تم تغيير الصورة الأساسية",
+      "nodeVersion": "تم تغيير إصدار Node",
+      "dockerPlatform": "تم تغيير منصة Docker",
+      "softwareEnabled": "تم تفعيل {{software}}",
+      "softwareDisabled": "تم تعطيل {{software}}",
+      "aptPackagesAdded": "تمت إضافة حزم APT",
+      "aptPackagesRemoved": "تمت إزالة حزم APT",
+      "npmPackagesAdded": "تمت إضافة حزم NPM",
+      "npmPackagesRemoved": "تمت إزالة حزم NPM",
+      "runCommandsAdded": "تمت إضافة أوامر RUN",
+      "runCommandsRemoved": "تمت إزالة أوامر RUN",
+      "envVariablesAdded": "تمت إضافة متغيرات البيئة",
+      "envVariablesRemoved": "تمت إزالة متغيرات البيئة",
+      "envVariablesChanged": "تم تعديل متغيرات البيئة",
+      "protectedFilesAdded": "تمت إضافة ملفات محمية",
+      "protectedFilesRemoved": "تمت إزالة ملفات محمية",
+      "claudeMdChanged": "تم تعديل CLAUDE.md",
+      "permissionsChanged": "تم تعديل الأذونات",
+      "devContainerChanged": "تم تعديل إعدادات DevContainer",
+      "multipleChanges": "تغييرات متعددة"
     }
   },
   "devContainer": {

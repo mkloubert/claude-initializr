@@ -100,6 +100,13 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
   - Sezione risoluzione problemi
   - Quando la lingua dell'interfaccia non è inglese, include anche README.en.md (inglese semplice)
 - **Import/Export configurazione**: Esporta la tua configurazione come file JSON e importala su un altro browser o dispositivo
+- **Cronologia configurazione**: Tieni traccia delle modifiche con la funzionalità annulla/ripristina
+  - Tracciamento automatico delle modifiche con snapshot ritardati
+  - Annulla/Ripristina con scorciatoie da tastiera (`Ctrl+Z` / `Ctrl+Y`)
+  - Pannello cronologia con timestamp e descrizioni delle modifiche
+  - Vista diff per confrontare qualsiasi stato
+  - Ripristina a qualsiasi stato di configurazione precedente
+  - Memorizzato in IndexedDB per la persistenza (max 50 voci)
 - **Salvataggio automatico**: Le impostazioni vengono salvate automaticamente nel localStorage del browser (abilitato per impostazione predefinita)
 - **Supporto multilingue**: Disponibile in 18 lingue:
   - 🌍 Arabo
@@ -134,6 +141,9 @@ Tutte le scorciatoie usano `Ctrl` su Windows/Linux e `⌘` (Cmd) su macOS.
 | ----------- | ------ |
 | `Ctrl/⌘ + S` | Scarica ZIP |
 | `Ctrl/⌘ + E` | Attiva/disattiva anteprima |
+| `Ctrl/⌘ + Z` | Annulla |
+| `Ctrl/⌘ + Y` | Ripristina |
+| `Ctrl/⌘ + Shift + Z` | Ripristina (alternativo) |
 | `Ctrl/⌘ + Shift + D` | Attiva/disattiva tema scuro/chiaro |
 | `Ctrl/⌘ + Shift + X` | Ripristina impostazioni predefinite |
 | `Ctrl/⌘ + Shift + L` | Apri selettore lingua |
@@ -498,6 +508,25 @@ I rilasci sono automatizzati tramite GitHub Actions. Per creare un nuovo rilasci
 I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
 ## Registro delle modifiche
+
+### v3.2.0
+
+- Aggiunta cronologia configurazione con funzionalità annulla/ripristina
+  - Tracciamento automatico delle modifiche con snapshot ritardati (500ms)
+  - Annulla/Ripristina con scorciatoie da tastiera (`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`)
+  - Pannello cronologia con timestamp e descrizioni delle modifiche
+  - Vista diff per confrontare configurazioni
+  - Ripristina a qualsiasi stato precedente
+  - Memorizzazione IndexedDB per la persistenza (max 50 voci)
+- Aggiunto supporto DevContainer per VS Code e GitHub Codespaces
+  - Generazione configurazione `devcontainer.json`
+  - Configurazione estensioni e impostazioni VS Code
+  - Aggiunta funzionalità Dev Container
+  - Configurazione inoltro porte
+  - Configurazione comandi ciclo di vita (post-create, post-start, post-attach)
+  - Raccomandazioni automatiche di estensioni basate sul software selezionato
+- Aggiunta scorciatoia da tastiera `Ctrl/⌘ + 5` per scorrere alla scheda DevContainer
+- Sezione di benvenuto aggiornata con la funzionalità DevContainer
 
 ### v3.1.2
 

@@ -100,6 +100,13 @@ Uma aplicação web para gerar arquivos de configuração Docker para executar o
   - Seção de solução de problemas
   - Quando o idioma da interface não é inglês, também inclui README.en.md (inglês simples)
 - **Importar/Exportar configuração**: Exporte sua configuração como arquivo JSON e importe-a em outro navegador ou dispositivo
+- **Histórico de configuração**: Rastreie alterações com funcionalidade de desfazer/refazer
+  - Rastreamento automático de alterações com snapshots atrasados
+  - Desfazer/Refazer com atalhos de teclado (`Ctrl+Z` / `Ctrl+Y`)
+  - Painel de histórico com timestamps e descrições de alterações
+  - Visualização diff para comparar qualquer estado
+  - Restaurar para qualquer estado de configuração anterior
+  - Armazenado em IndexedDB para persistência (máx. 50 entradas)
 - **Salvamento automático**: As configurações são salvas automaticamente no localStorage do seu navegador (habilitado por padrão)
 - **Suporte multilíngue**: Disponível em 18 idiomas:
   - 🌍 Árabe
@@ -134,6 +141,9 @@ Todos os atalhos usam `Ctrl` no Windows/Linux e `⌘` (Cmd) no macOS.
 | ------ | ---- |
 | `Ctrl/⌘ + S` | Baixar ZIP |
 | `Ctrl/⌘ + E` | Alternar visualização |
+| `Ctrl/⌘ + Z` | Desfazer |
+| `Ctrl/⌘ + Y` | Refazer |
+| `Ctrl/⌘ + Shift + Z` | Refazer (alternativo) |
 | `Ctrl/⌘ + Shift + D` | Alternar modo escuro/claro |
 | `Ctrl/⌘ + Shift + X` | Restaurar padrões |
 | `Ctrl/⌘ + Shift + L` | Abrir seletor de idioma |
@@ -502,6 +512,25 @@ Os lançamentos são automatizados via GitHub Actions. Para criar um novo lança
 Tags contendo `-` (ex. `v1.0.0-beta`) são marcadas como pré-lançamentos.
 
 ## Registro de alterações
+
+### v3.2.0
+
+- Adicionado histórico de configuração com funcionalidade de desfazer/refazer
+  - Rastreamento automático de alterações com snapshots atrasados (500ms)
+  - Desfazer/Refazer com atalhos de teclado (`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`)
+  - Painel de histórico com timestamps e descrições de alterações
+  - Visualização diff para comparar configurações
+  - Restaurar para qualquer estado anterior
+  - Armazenamento IndexedDB para persistência (máx. 50 entradas)
+- Adicionado suporte DevContainer para VS Code e GitHub Codespaces
+  - Geração de configuração `devcontainer.json`
+  - Configuração de extensões e configurações do VS Code
+  - Adicionar recursos de Dev Container
+  - Configuração de encaminhamento de portas
+  - Configuração de comandos de ciclo de vida (post-create, post-start, post-attach)
+  - Recomendações automáticas de extensões baseadas no software selecionado
+- Adicionado atalho de teclado `Ctrl/⌘ + 5` para rolar até o cartão DevContainer
+- Seção de boas-vindas atualizada com a funcionalidade DevContainer
 
 ### v3.1.2
 

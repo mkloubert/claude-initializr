@@ -480,14 +480,61 @@ const es: Translations = {
       "toggleDarkMode": "Alternar modo oscuro",
       "openLanguageSwitcher": "Abrir selector de idioma",
       "closeDialog": "Cerrar diálogo",
-      "openShortcutsHelp": "Abrir atajos de teclado"
+      "openShortcutsHelp": "Abrir atajos de teclado",
+      "undo": "Deshacer",
+      "redo": "Rehacer"
     },
     "announced": {
       "downloadStarted": "Descarga iniciada",
       "configReset": "Configuración restablecida a valores predeterminados",
       "darkModeToggled": "Modo oscuro alternado",
       "previewToggled": "Vista previa alternada",
-      "scrolledToCard": "Desplazado a tarjeta {{number}}"
+      "scrolledToCard": "Desplazado a tarjeta {{number}}",
+      "undoPerformed": "Cambio deshecho",
+      "redoPerformed": "Cambio rehecho"
+    }
+  },
+  "history": {
+    "title": "Historial",
+    "description": "Ver y restaurar configuraciones anteriores.",
+    "unavailable": "El historial no está disponible en este navegador.",
+    "undo": "Deshacer",
+    "redo": "Rehacer",
+    "clearAll": "Borrar todo",
+    "clearConfirmTitle": "Borrar historial",
+    "clearConfirmDescription": "¿Estás seguro de que deseas borrar todo el historial? Esta acción no se puede deshacer.",
+    "clearConfirmCancel": "Cancelar",
+    "clearConfirmClear": "Borrar",
+    "currentState": "Actual",
+    "restoreButton": "Restaurar",
+    "viewDiffButton": "Ver diferencias",
+    "emptyState": "Aún no hay historial. Los cambios se registrarán automáticamente.",
+    "diffTitle": "Comparando cambios",
+    "diffFrom": "Desde",
+    "diffTo": "Hasta",
+    "diffClose": "Cerrar",
+    "changes": {
+      "initial": "Estado inicial",
+      "baseImage": "Imagen base cambiada",
+      "nodeVersion": "Versión de Node cambiada",
+      "dockerPlatform": "Plataforma Docker cambiada",
+      "softwareEnabled": "{{software}} habilitado",
+      "softwareDisabled": "{{software}} deshabilitado",
+      "aptPackagesAdded": "Paquetes APT agregados",
+      "aptPackagesRemoved": "Paquetes APT eliminados",
+      "npmPackagesAdded": "Paquetes NPM agregados",
+      "npmPackagesRemoved": "Paquetes NPM eliminados",
+      "runCommandsAdded": "Comandos RUN agregados",
+      "runCommandsRemoved": "Comandos RUN eliminados",
+      "envVariablesAdded": "Variables de entorno agregadas",
+      "envVariablesRemoved": "Variables de entorno eliminadas",
+      "envVariablesChanged": "Variables de entorno modificadas",
+      "protectedFilesAdded": "Archivos protegidos agregados",
+      "protectedFilesRemoved": "Archivos protegidos eliminados",
+      "claudeMdChanged": "CLAUDE.md modificado",
+      "permissionsChanged": "Permisos modificados",
+      "devContainerChanged": "Configuración de DevContainer modificada",
+      "multipleChanges": "Múltiples cambios"
     }
   },
   "devContainer": {

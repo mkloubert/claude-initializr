@@ -480,14 +480,61 @@ const zh: Translations = {
       "toggleDarkMode": "切换深色模式",
       "openLanguageSwitcher": "打开语言切换器",
       "closeDialog": "关闭对话框",
-      "openShortcutsHelp": "打开键盘快捷键"
+      "openShortcutsHelp": "打开键盘快捷键",
+      "undo": "撤销",
+      "redo": "重做"
     },
     "announced": {
       "downloadStarted": "下载已开始",
       "configReset": "配置已重置为默认值",
       "darkModeToggled": "深色模式已切换",
       "previewToggled": "预览已切换",
-      "scrolledToCard": "已滚动到卡片 {{number}}"
+      "scrolledToCard": "已滚动到卡片 {{number}}",
+      "undoPerformed": "已撤销更改",
+      "redoPerformed": "已重做更改"
+    }
+  },
+  "history": {
+    "title": "历史记录",
+    "description": "查看和恢复以前的配置。",
+    "unavailable": "此浏览器不支持历史记录功能。",
+    "undo": "撤销",
+    "redo": "重做",
+    "clearAll": "全部清除",
+    "clearConfirmTitle": "清除历史记录",
+    "clearConfirmDescription": "确定要清除所有历史记录吗？此操作无法撤销。",
+    "clearConfirmCancel": "取消",
+    "clearConfirmClear": "清除",
+    "currentState": "当前",
+    "restoreButton": "恢复",
+    "viewDiffButton": "查看差异",
+    "emptyState": "暂无历史记录。更改将自动跟踪。",
+    "diffTitle": "比较更改",
+    "diffFrom": "从",
+    "diffTo": "到",
+    "diffClose": "关闭",
+    "changes": {
+      "initial": "初始状态",
+      "baseImage": "更改了基础镜像",
+      "nodeVersion": "更改了 Node 版本",
+      "dockerPlatform": "更改了 Docker 平台",
+      "softwareEnabled": "启用了 {{software}}",
+      "softwareDisabled": "禁用了 {{software}}",
+      "aptPackagesAdded": "添加了 APT 包",
+      "aptPackagesRemoved": "移除了 APT 包",
+      "npmPackagesAdded": "添加了 NPM 包",
+      "npmPackagesRemoved": "移除了 NPM 包",
+      "runCommandsAdded": "添加了 RUN 命令",
+      "runCommandsRemoved": "移除了 RUN 命令",
+      "envVariablesAdded": "添加了环境变量",
+      "envVariablesRemoved": "移除了环境变量",
+      "envVariablesChanged": "修改了环境变量",
+      "protectedFilesAdded": "添加了受保护的文件",
+      "protectedFilesRemoved": "移除了受保护的文件",
+      "claudeMdChanged": "修改了 CLAUDE.md",
+      "permissionsChanged": "修改了权限",
+      "devContainerChanged": "修改了 DevContainer 设置",
+      "multipleChanges": "多项更改"
     }
   },
   "devContainer": {

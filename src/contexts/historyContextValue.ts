@@ -18,11 +18,45 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-export { ConfigProvider } from './ConfigContext';
-export { useConfig } from './useConfig';
-export { HistoryProvider } from './HistoryContext';
-export { useHistory } from './useHistory';
-export { ThemeProvider } from './ThemeContext';
-export { useTheme } from './useTheme';
-export type { HistoryContextValue } from './historyContextValue';
-export type { Theme } from './themeContextValue';
+import { createContext } from 'react';
+import type { HistoryEntry } from '@/types/history';
+
+/**
+ * Context value interface for history state and actions.
+ */
+export interface HistoryContextValue {
+  /** Whether IndexedDB is available for history storage */
+  isAvailable: boolean;
+
+  /** Whether history is currently loading from IndexedDB */
+  isLoading: boolean;
+
+  /** Whether undo is possible */
+  canUndo: boolean;
+
+  /** Whether redo is possible */
+  canRedo: boolean;
+
+  /** Number of entries in the undo stack */
+  undoCount: number;
+
+  /** Number of entries in the redo stack */
+  redoCount: number;
+
+  /** All history entries for display in history panel (newest first) */
+  entries: HistoryEntry[];
+
+  /** Undo the last change */
+  undo: () => void;
+
+  /** Redo a previously undone change */
+  redo: () => void;
+
+  /** Jump to a specific history entry by ID */
+  goToState: (entryId: string) => void;
+
+  /** Clear all history */
+  clearHistory: () => Promise<void>;
+}
+
+export const HistoryContext = createContext<HistoryContextValue | null>(null);

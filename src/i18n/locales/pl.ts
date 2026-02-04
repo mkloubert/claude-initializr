@@ -480,14 +480,61 @@ const pl: Translations = {
       "toggleDarkMode": "Przełącz tryb ciemny",
       "openLanguageSwitcher": "Otwórz przełącznik języka",
       "closeDialog": "Zamknij okno dialogowe",
-      "openShortcutsHelp": "Otwórz skróty klawiszowe"
+      "openShortcutsHelp": "Otwórz skróty klawiszowe",
+      "undo": "Cofnij",
+      "redo": "Ponów"
     },
     "announced": {
       "downloadStarted": "Pobieranie rozpoczęte",
       "configReset": "Konfiguracja przywrócona do domyślnych",
       "darkModeToggled": "Tryb ciemny przełączony",
       "previewToggled": "Podgląd przełączony",
-      "scrolledToCard": "Przewinięto do karty {{number}}"
+      "scrolledToCard": "Przewinięto do karty {{number}}",
+      "undoPerformed": "Zmiana cofnięta",
+      "redoPerformed": "Zmiana ponowiona"
+    }
+  },
+  "history": {
+    "title": "Historia",
+    "description": "Przeglądaj i przywracaj poprzednie konfiguracje.",
+    "unavailable": "Historia nie jest dostępna w tej przeglądarce.",
+    "undo": "Cofnij",
+    "redo": "Ponów",
+    "clearAll": "Wyczyść wszystko",
+    "clearConfirmTitle": "Wyczyść historię",
+    "clearConfirmDescription": "Czy na pewno chcesz wyczyścić całą historię? Tej akcji nie można cofnąć.",
+    "clearConfirmCancel": "Anuluj",
+    "clearConfirmClear": "Wyczyść",
+    "currentState": "Bieżący",
+    "restoreButton": "Przywróć",
+    "viewDiffButton": "Zobacz różnice",
+    "emptyState": "Brak historii. Zmiany będą śledzone automatycznie.",
+    "diffTitle": "Porównanie zmian",
+    "diffFrom": "Od",
+    "diffTo": "Do",
+    "diffClose": "Zamknij",
+    "changes": {
+      "initial": "Stan początkowy",
+      "baseImage": "Zmieniono obraz bazowy",
+      "nodeVersion": "Zmieniono wersję Node",
+      "dockerPlatform": "Zmieniono platformę Docker",
+      "softwareEnabled": "Włączono {{software}}",
+      "softwareDisabled": "Wyłączono {{software}}",
+      "aptPackagesAdded": "Dodano pakiety APT",
+      "aptPackagesRemoved": "Usunięto pakiety APT",
+      "npmPackagesAdded": "Dodano pakiety NPM",
+      "npmPackagesRemoved": "Usunięto pakiety NPM",
+      "runCommandsAdded": "Dodano polecenia RUN",
+      "runCommandsRemoved": "Usunięto polecenia RUN",
+      "envVariablesAdded": "Dodano zmienne środowiskowe",
+      "envVariablesRemoved": "Usunięto zmienne środowiskowe",
+      "envVariablesChanged": "Zmodyfikowano zmienne środowiskowe",
+      "protectedFilesAdded": "Dodano chronione pliki",
+      "protectedFilesRemoved": "Usunięto chronione pliki",
+      "claudeMdChanged": "Zmodyfikowano CLAUDE.md",
+      "permissionsChanged": "Zmodyfikowano uprawnienia",
+      "devContainerChanged": "Zmodyfikowano ustawienia DevContainer",
+      "multipleChanges": "Wiele zmian"
     }
   },
   "devContainer": {

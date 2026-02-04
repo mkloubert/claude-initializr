@@ -20,7 +20,7 @@
 
 import { useTranslation } from 'react-i18next';
 import { SiGithub, SiPaypal } from 'react-icons/si';
-import { AutosaveSwitcher, ImportExportButtons, LanguageSwitcher, ResetButton, ThemeSwitcher } from '@/components/common';
+import { AutosaveSwitcher, HistoryButton, ImportExportButtons, LanguageSwitcher, ResetButton, ThemeSwitcher, UndoRedoButtons } from '@/components/common';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { APP_VERSION, GITHUB_URL, PAYPAL_URL } from '@/config';
@@ -91,6 +91,8 @@ export function Header({
             </Button>
           )}
           <ImportExportButtons />
+          <UndoRedoButtons />
+          <HistoryButton />
           <ResetButton
             open={resetDialogOpen}
             onOpenChange={onResetDialogOpenChange}

@@ -480,14 +480,61 @@ const ko: Translations = {
       "toggleDarkMode": "다크 모드 전환",
       "openLanguageSwitcher": "언어 선택기 열기",
       "closeDialog": "대화 상자 닫기",
-      "openShortcutsHelp": "키보드 단축키 열기"
+      "openShortcutsHelp": "키보드 단축키 열기",
+      "undo": "실행 취소",
+      "redo": "다시 실행"
     },
     "announced": {
       "downloadStarted": "다운로드가 시작되었습니다",
       "configReset": "설정이 기본값으로 초기화되었습니다",
       "darkModeToggled": "다크 모드가 전환되었습니다",
       "previewToggled": "미리보기가 전환되었습니다",
-      "scrolledToCard": "카드 {{number}}로 스크롤되었습니다"
+      "scrolledToCard": "카드 {{number}}로 스크롤되었습니다",
+      "undoPerformed": "변경 사항을 실행 취소했습니다",
+      "redoPerformed": "변경 사항을 다시 실행했습니다"
+    }
+  },
+  "history": {
+    "title": "기록",
+    "description": "이전 설정을 보고 복원합니다.",
+    "unavailable": "이 브라우저에서는 기록 기능을 사용할 수 없습니다.",
+    "undo": "실행 취소",
+    "redo": "다시 실행",
+    "clearAll": "모두 지우기",
+    "clearConfirmTitle": "기록 지우기",
+    "clearConfirmDescription": "모든 기록을 지우시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "clearConfirmCancel": "취소",
+    "clearConfirmClear": "지우기",
+    "currentState": "현재",
+    "restoreButton": "복원",
+    "viewDiffButton": "차이점 보기",
+    "emptyState": "아직 기록이 없습니다. 변경 사항이 자동으로 추적됩니다.",
+    "diffTitle": "변경 사항 비교",
+    "diffFrom": "이전",
+    "diffTo": "이후",
+    "diffClose": "닫기",
+    "changes": {
+      "initial": "초기 상태",
+      "baseImage": "베이스 이미지 변경됨",
+      "nodeVersion": "Node 버전 변경됨",
+      "dockerPlatform": "Docker 플랫폼 변경됨",
+      "softwareEnabled": "{{software}} 활성화됨",
+      "softwareDisabled": "{{software}} 비활성화됨",
+      "aptPackagesAdded": "APT 패키지 추가됨",
+      "aptPackagesRemoved": "APT 패키지 제거됨",
+      "npmPackagesAdded": "NPM 패키지 추가됨",
+      "npmPackagesRemoved": "NPM 패키지 제거됨",
+      "runCommandsAdded": "RUN 명령 추가됨",
+      "runCommandsRemoved": "RUN 명령 제거됨",
+      "envVariablesAdded": "환경 변수 추가됨",
+      "envVariablesRemoved": "환경 변수 제거됨",
+      "envVariablesChanged": "환경 변수 수정됨",
+      "protectedFilesAdded": "보호된 파일 추가됨",
+      "protectedFilesRemoved": "보호된 파일 제거됨",
+      "claudeMdChanged": "CLAUDE.md 수정됨",
+      "permissionsChanged": "권한 수정됨",
+      "devContainerChanged": "DevContainer 설정 수정됨",
+      "multipleChanges": "여러 변경 사항"
     }
   },
   "devContainer": {

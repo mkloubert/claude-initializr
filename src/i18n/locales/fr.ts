@@ -480,14 +480,61 @@ const fr: Translations = {
       "toggleDarkMode": "Basculer le mode sombre",
       "openLanguageSwitcher": "Ouvrir le sélecteur de langue",
       "closeDialog": "Fermer le dialogue",
-      "openShortcutsHelp": "Ouvrir les raccourcis clavier"
+      "openShortcutsHelp": "Ouvrir les raccourcis clavier",
+      "undo": "Annuler",
+      "redo": "Rétablir"
     },
     "announced": {
       "downloadStarted": "Téléchargement démarré",
       "configReset": "Configuration réinitialisée aux paramètres par défaut",
       "darkModeToggled": "Mode sombre basculé",
       "previewToggled": "Aperçu basculé",
-      "scrolledToCard": "Défilement vers la carte {{number}}"
+      "scrolledToCard": "Défilement vers la carte {{number}}",
+      "undoPerformed": "Modification annulée",
+      "redoPerformed": "Modification rétablie"
+    }
+  },
+  "history": {
+    "title": "Historique",
+    "description": "Afficher et restaurer les configurations précédentes.",
+    "unavailable": "L'historique n'est pas disponible dans ce navigateur.",
+    "undo": "Annuler",
+    "redo": "Rétablir",
+    "clearAll": "Tout effacer",
+    "clearConfirmTitle": "Effacer l'historique",
+    "clearConfirmDescription": "Êtes-vous sûr de vouloir effacer tout l'historique ? Cette action est irréversible.",
+    "clearConfirmCancel": "Annuler",
+    "clearConfirmClear": "Effacer",
+    "currentState": "Actuel",
+    "restoreButton": "Restaurer",
+    "viewDiffButton": "Voir les différences",
+    "emptyState": "Pas encore d'historique. Les modifications seront enregistrées automatiquement.",
+    "diffTitle": "Comparaison des modifications",
+    "diffFrom": "De",
+    "diffTo": "À",
+    "diffClose": "Fermer",
+    "changes": {
+      "initial": "État initial",
+      "baseImage": "Image de base modifiée",
+      "nodeVersion": "Version de Node modifiée",
+      "dockerPlatform": "Plateforme Docker modifiée",
+      "softwareEnabled": "{{software}} activé",
+      "softwareDisabled": "{{software}} désactivé",
+      "aptPackagesAdded": "Paquets APT ajoutés",
+      "aptPackagesRemoved": "Paquets APT supprimés",
+      "npmPackagesAdded": "Paquets NPM ajoutés",
+      "npmPackagesRemoved": "Paquets NPM supprimés",
+      "runCommandsAdded": "Commandes RUN ajoutées",
+      "runCommandsRemoved": "Commandes RUN supprimées",
+      "envVariablesAdded": "Variables d'environnement ajoutées",
+      "envVariablesRemoved": "Variables d'environnement supprimées",
+      "envVariablesChanged": "Variables d'environnement modifiées",
+      "protectedFilesAdded": "Fichiers protégés ajoutés",
+      "protectedFilesRemoved": "Fichiers protégés supprimés",
+      "claudeMdChanged": "CLAUDE.md modifié",
+      "permissionsChanged": "Permissions modifiées",
+      "devContainerChanged": "Configuration DevContainer modifiée",
+      "multipleChanges": "Modifications multiples"
     }
   },
   "devContainer": {

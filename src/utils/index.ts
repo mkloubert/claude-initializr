@@ -18,11 +18,4 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-export { ConfigProvider } from './ConfigContext';
-export { useConfig } from './useConfig';
-export { HistoryProvider } from './HistoryContext';
-export { useHistory } from './useHistory';
-export { ThemeProvider } from './ThemeContext';
-export { useTheme } from './useTheme';
-export type { HistoryContextValue } from './historyContextValue';
-export type { Theme } from './themeContextValue';
+export * from './configDiff';

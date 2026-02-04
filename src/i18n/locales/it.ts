@@ -480,14 +480,61 @@ const it: Translations = {
       "toggleDarkMode": "Attiva/disattiva modalità scura",
       "openLanguageSwitcher": "Apri selettore lingua",
       "closeDialog": "Chiudi dialogo",
-      "openShortcutsHelp": "Apri scorciatoie da tastiera"
+      "openShortcutsHelp": "Apri scorciatoie da tastiera",
+      "undo": "Annulla",
+      "redo": "Ripristina"
     },
     "announced": {
       "downloadStarted": "Download avviato",
       "configReset": "Configurazione ripristinata ai valori predefiniti",
       "darkModeToggled": "Modalità scura attivata/disattivata",
       "previewToggled": "Anteprima attivata/disattivata",
-      "scrolledToCard": "Scorrimento alla scheda {{number}}"
+      "scrolledToCard": "Scorrimento alla scheda {{number}}",
+      "undoPerformed": "Modifica annullata",
+      "redoPerformed": "Modifica ripristinata"
+    }
+  },
+  "history": {
+    "title": "Cronologia",
+    "description": "Visualizza e ripristina le configurazioni precedenti.",
+    "unavailable": "La cronologia non è disponibile in questo browser.",
+    "undo": "Annulla",
+    "redo": "Ripristina",
+    "clearAll": "Cancella tutto",
+    "clearConfirmTitle": "Cancella cronologia",
+    "clearConfirmDescription": "Sei sicuro di voler cancellare tutta la cronologia? Questa azione non può essere annullata.",
+    "clearConfirmCancel": "Annulla",
+    "clearConfirmClear": "Cancella",
+    "currentState": "Attuale",
+    "restoreButton": "Ripristina",
+    "viewDiffButton": "Vedi differenze",
+    "emptyState": "Nessuna cronologia ancora. Le modifiche verranno registrate automaticamente.",
+    "diffTitle": "Confronto modifiche",
+    "diffFrom": "Da",
+    "diffTo": "A",
+    "diffClose": "Chiudi",
+    "changes": {
+      "initial": "Stato iniziale",
+      "baseImage": "Immagine base modificata",
+      "nodeVersion": "Versione Node modificata",
+      "dockerPlatform": "Piattaforma Docker modificata",
+      "softwareEnabled": "{{software}} abilitato",
+      "softwareDisabled": "{{software}} disabilitato",
+      "aptPackagesAdded": "Pacchetti APT aggiunti",
+      "aptPackagesRemoved": "Pacchetti APT rimossi",
+      "npmPackagesAdded": "Pacchetti NPM aggiunti",
+      "npmPackagesRemoved": "Pacchetti NPM rimossi",
+      "runCommandsAdded": "Comandi RUN aggiunti",
+      "runCommandsRemoved": "Comandi RUN rimossi",
+      "envVariablesAdded": "Variabili d'ambiente aggiunte",
+      "envVariablesRemoved": "Variabili d'ambiente rimosse",
+      "envVariablesChanged": "Variabili d'ambiente modificate",
+      "protectedFilesAdded": "File protetti aggiunti",
+      "protectedFilesRemoved": "File protetti rimossi",
+      "claudeMdChanged": "CLAUDE.md modificato",
+      "permissionsChanged": "Permessi modificati",
+      "devContainerChanged": "Configurazione DevContainer modificata",
+      "multipleChanges": "Modifiche multiple"
     }
   },
   "devContainer": {

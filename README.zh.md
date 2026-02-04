@@ -100,6 +100,13 @@
   - 故障排除部分
   - 当界面语言不是英语时，还包括 README.en.md（简单英语）
 - **配置导入/导出**: 将配置导出为 JSON 文件，并在其他浏览器或设备上导入
+- **配置历史**: 通过撤销/重做功能跟踪更改
+  - 延迟快照自动跟踪更改
+  - 使用键盘快捷键撤销/重做（`Ctrl+Z` / `Ctrl+Y`）
+  - 带时间戳和更改描述的历史面板
+  - 用于比较任意状态的差异视图
+  - 恢复到任何以前的配置状态
+  - 存储在 IndexedDB 中以实现持久化（最多 50 个条目）
 - **自动保存**：设置自动保存到浏览器的 localStorage（默认启用）
 - **多语言支持**：支持 18 种语言：
   - 🌍 阿拉伯语
@@ -134,6 +141,9 @@
 | ------ | ---- |
 | `Ctrl/⌘ + S` | 下载 ZIP |
 | `Ctrl/⌘ + E` | 切换预览 |
+| `Ctrl/⌘ + Z` | 撤销 |
+| `Ctrl/⌘ + Y` | 重做 |
+| `Ctrl/⌘ + Shift + Z` | 重做（替代） |
 | `Ctrl/⌘ + Shift + D` | 切换深色/浅色模式 |
 | `Ctrl/⌘ + Shift + X` | 恢复默认设置 |
 | `Ctrl/⌘ + Shift + L` | 打开语言切换器 |
@@ -502,6 +512,25 @@ localStorage.removeItem("claude-initializr-autosave");
 包含 `-` 的标签（如 `v1.0.0-beta`）将被标记为预发布。
 
 ## 更新日志
+
+### v3.2.0
+
+- 添加带有撤销/重做功能的配置历史
+  - 延迟快照自动跟踪更改（500ms）
+  - 使用键盘快捷键撤销/重做（`Ctrl/⌘ + Z` / `Ctrl/⌘ + Y`）
+  - 带时间戳和更改描述的历史面板
+  - 用于比较配置的差异视图
+  - 恢复到任何以前的状态
+  - 使用 IndexedDB 存储以实现持久化（最多 50 个条目）
+- 添加 VS Code 和 GitHub Codespaces 的 DevContainer 支持
+  - 生成 `devcontainer.json` 配置
+  - 配置 VS Code 扩展和设置
+  - 添加 Dev Container 功能
+  - 设置端口转发
+  - 配置生命周期命令（post-create、post-start、post-attach）
+  - 基于所选软件的自动扩展推荐
+- 添加键盘快捷键 `Ctrl/⌘ + 5` 滚动到 DevContainer 卡片
+- 使用 DevContainer 功能更新欢迎部分
 
 ### v3.1.2
 

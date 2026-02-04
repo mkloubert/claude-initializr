@@ -21,7 +21,6 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
-import { diffLines } from 'diff';
 import { Download, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
@@ -35,123 +34,8 @@ import {
 } from '@/components/ui/dialog';
 import { useConfig } from '@/contexts';
 import { validateImportData } from '@/services';
+import { configToComparableJson, computeLineDiff, type DiffLine } from '@/utils';
 import type { AppConfig } from '@/types';
-
-/**
- * Strips internal IDs and sensitive values from a config
- * so that the diff only shows meaningful content changes.
- */
-function configToComparableJson(config: AppConfig): string {
-  const comparable = {
-    baseImage: config.baseImage,
-    nodeVersion: config.nodeVersion,
-    dockerPlatform: config.dockerPlatform,
-    software: Object.fromEntries(
-      Object.entries(config.software).map(([key, val]) => [
-        key,
-        { enabled: val.enabled },
-      ]),
-    ),
-    customAptPackages: [...config.customAptPackages].sort(),
-    customNpmPackages: config.customNpmPackages
-      .map(({ name, installAs }) => ({ name, installAs }))
-      .sort((a, b) => a.name.localeCompare(b.name)),
-    customRunCommands: config.customRunCommands.map(({ command, runAs }) => ({
-      command,
-      runAs,
-    })),
-    envVariables: (config.envVariables ?? [])
-      .map(({ key }) => ({ key }))
-      .sort((a, b) => a.key.localeCompare(b.key)),
-    protectedFiles: config.protectedFiles
-      .map(({ path }) => ({ path }))
-      .sort((a, b) => a.path.localeCompare(b.path)),
-    claudeMdContent: config.claudeMdContent,
-    claudePermissions: {
-      allow: config.claudePermissions.allow
-        .map(({ directive, pattern }) => ({ directive, pattern }))
-        .sort((a, b) => `${a.directive}:${a.pattern}`.localeCompare(`${b.directive}:${b.pattern}`)),
-      ask: config.claudePermissions.ask
-        .map(({ directive, pattern }) => ({ directive, pattern }))
-        .sort((a, b) => `${a.directive}:${a.pattern}`.localeCompare(`${b.directive}:${b.pattern}`)),
-      deny: config.claudePermissions.deny
-        .map(({ directive, pattern }) => ({ directive, pattern }))
-        .sort((a, b) => `${a.directive}:${a.pattern}`.localeCompare(`${b.directive}:${b.pattern}`)),
-    },
-    devContainer: {
-      enabled: config.devContainer.enabled,
-      name: config.devContainer.name,
-      extensions: config.devContainer.extensions
-        .map(({ extensionId }) => ({ extensionId }))
-        .sort((a, b) => a.extensionId.localeCompare(b.extensionId)),
-      settings: config.devContainer.settings
-        .map(({ key, value }) => ({ key, value }))
-        .sort((a, b) => a.key.localeCompare(b.key)),
-      features: config.devContainer.features
-        .map(({ feature }) => ({ feature }))
-        .sort((a, b) => a.feature.localeCompare(b.feature)),
-      forwardedPorts: config.devContainer.forwardedPorts
-        .map(({ port }) => ({ port }))
-        .sort((a, b) => a.port - b.port),
-      postCreateScript: config.devContainer.postCreateScript,
-      postStartScript: config.devContainer.postStartScript,
-      postAttachScript: config.devContainer.postAttachScript,
-    },
-  };
-
-  return JSON.stringify(comparable, null, 2);
-}
-
-/**
- * Represents a single line in the diff output.
- */
-interface DiffLine {
-  oldLineNo: number | null;
-  newLineNo: number | null;
-  type: 'added' | 'removed' | 'unchanged';
-  content: string;
-}
-
-/**
- * Computes a line-by-line diff between two text strings.
- */
-function computeLineDiff(oldText: string, newText: string): DiffLine[] {
-  const changes = diffLines(oldText, newText);
-  const lines: DiffLine[] = [];
-  let oldLine = 1;
-  let newLine = 1;
-
-  for (const change of changes) {
-    const changeLines = change.value.replace(/\n$/, '').split('\n');
-
-    for (const line of changeLines) {
-      if (change.added) {
-        lines.push({
-          oldLineNo: null,
-          newLineNo: newLine++,
-          type: 'added',
-          content: line,
-        });
-      } else if (change.removed) {
-        lines.push({
-          oldLineNo: oldLine++,
-          newLineNo: null,
-          type: 'removed',
-          content: line,
-        });
-      } else {
-        lines.push({
-          oldLineNo: oldLine++,
-          newLineNo: newLine++,
-          type: 'unchanged',
-          content: line,
-        });
-      }
-    }
-  }
-
-  return lines;
-}
 
 /**
  * Import and export buttons for configuration files.
@@ -316,10 +200,10 @@ export function ImportExportButtons() {
                           </td>
                           <td
                             className={`select-none w-4 text-center align-top ${line.type === 'removed'
-                                ? 'text-red-700 dark:text-red-400'
-                                : line.type === 'added'
-                                  ? 'text-green-700 dark:text-green-400'
-                                  : 'text-muted-foreground/30'
+                              ? 'text-red-700 dark:text-red-400'
+                              : line.type === 'added'
+                                ? 'text-green-700 dark:text-green-400'
+                                : 'text-muted-foreground/30'
                               }`}
                             aria-hidden="true"
                           >

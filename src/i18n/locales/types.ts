@@ -431,6 +431,8 @@ export interface Translations {
       openLanguageSwitcher: string;
       closeDialog: string;
       openShortcutsHelp: string;
+      undo: string;
+      redo: string;
     };
     announced: {
       downloadStarted: string;
@@ -438,6 +440,51 @@ export interface Translations {
       darkModeToggled: string;
       previewToggled: string;
       scrolledToCard: string;
+      undoPerformed: string;
+      redoPerformed: string;
+    };
+  };
+  history: {
+    title: string;
+    description: string;
+    unavailable: string;
+    undo: string;
+    redo: string;
+    clearAll: string;
+    clearConfirmTitle: string;
+    clearConfirmDescription: string;
+    clearConfirmCancel: string;
+    clearConfirmClear: string;
+    currentState: string;
+    restoreButton: string;
+    viewDiffButton: string;
+    emptyState: string;
+    diffTitle: string;
+    diffFrom: string;
+    diffTo: string;
+    diffClose: string;
+    changes: {
+      initial: string;
+      baseImage: string;
+      nodeVersion: string;
+      dockerPlatform: string;
+      softwareEnabled: string;
+      softwareDisabled: string;
+      aptPackagesAdded: string;
+      aptPackagesRemoved: string;
+      npmPackagesAdded: string;
+      npmPackagesRemoved: string;
+      runCommandsAdded: string;
+      runCommandsRemoved: string;
+      envVariablesAdded: string;
+      envVariablesRemoved: string;
+      envVariablesChanged: string;
+      protectedFilesAdded: string;
+      protectedFilesRemoved: string;
+      claudeMdChanged: string;
+      permissionsChanged: string;
+      devContainerChanged: string;
+      multipleChanges: string;
     };
   };
   devContainer: {
