@@ -29,6 +29,9 @@ const fr: Translations = {
     "close": "Fermer le message de bienvenue",
     "description": "Claude Code est le puissant assistant de codage IA d'Anthropic qui peut lire, écrire et exécuter du code directement sur votre machine. Bien qu'incroyablement utile, exécuter une IA avec un accès au système de fichiers et au terminal nécessite une attention particulière à la sécurité.",
     "purpose": "Cet outil génère une configuration Docker complète qui vous permet d'exécuter Claude Code dans un environnement de conteneur isolé. Votre code reste protégé tandis que Claude peut toujours vous aider à développer, déboguer et refactoriser.",
+    "dialogTitle": "Bienvenue sur Claude Initializr",
+    "getStarted": "Commencer",
+    "dontShowAgain": "Ne plus afficher",
     "features": {
       "title": "Ce que vous pouvez configurer :",
       "dockerfile": "Choisissez les outils de développement à installer (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const fr: Translations = {
     "noAskRules": "Aucune règle de demande définie.",
     "noDenyRules": "Aucune règle de refus définie.",
     "help": "Définissez des règles de permission pour les opérations Read(), Edit() et WebFetch(). Les motifs supportent la syntaxe glob comme src/** pour la correspondance récursive.",
-    "learnMore": "En savoir plus"
+    "learnMore": "En savoir plus",
+    "summary": "Aperçu",
+    "denyCount": "{{count}} refusés",
+    "askCount": "{{count}} demander",
+    "allowCount": "{{count}} autorisés"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Le Dockerfile définit quels logiciels sont installés dans le conteneur. En plus de Node.js et Claude Code, des outils supplémentaires comme TypeScript, Python, Go, ffmpeg ou ImageMagick peuvent être inclus. Les logiciels sélectionnés seront disponibles lorsque Claude exécutera des commandes.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "Le fichier docker-compose.yaml contrôle le démarrage du conteneur. Les variables d'environnement (comme les clés API) peuvent être définies ici. Les fichiers protégés sont montés comme fichiers vides en lecture seule pour empêcher Claude d'accéder aux données sensibles comme les fichiers .env."
+    "dockerComposeDesc": "Le fichier docker-compose.yaml contrôle le démarrage du conteneur. Les variables d'environnement (comme les clés API) peuvent être définies ici. Les fichiers protégés sont montés comme fichiers vides en lecture seule pour empêcher Claude d'accéder aux données sensibles comme les fichiers .env.",
+    "title": "Aperçu",
+    "showPreview": "Afficher l'aperçu",
+    "hidePreview": "Masquer l'aperçu",
+    "empty": "Aucun aperçu disponible pour cette section.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "L'aperçu est intégré dans l'éditeur ci-dessus."
+  },
+  "dockerfile": {
+    "software": "Logiciels",
+    "advancedOptions": "Options avancées",
+    "softwareCount": "{{count}} sélectionnés"
   },
   "dockerCompose": {
     "platform": "Plateforme",
     "platformDesc": "Définissez une plateforme spécifique pour le conteneur (ex: linux/amd64). Laissez vide pour utiliser la plateforme par défaut. Utilisez ceci lorsque les images de base ne prennent pas en charge votre architecture.",
-    "platformPlaceholder": "Exemple : linux/amd64"
+    "platformPlaceholder": "Exemple : linux/amd64",
+    "envSection": "Variables d'environnement",
+    "protectedSection": "Fichiers protégés"
   },
   "download": {
     "button": "Télécharger ZIP",
@@ -475,8 +496,9 @@ const fr: Translations = {
       "downloadZip": "Télécharger ZIP",
       "forceSave": "Forcer la sauvegarde",
       "resetDefaults": "Réinitialiser les paramètres par défaut",
-      "togglePreview": "Basculer l'aperçu",
-      "scrollToCard": "Aller à la carte {{number}}",
+      "togglePreviewPane": "Basculer le volet d'aperçu",
+      "toggleSidebar": "Basculer la barre latérale",
+      "switchSection": "Basculer vers la section {{number}}",
       "toggleDarkMode": "Basculer le mode sombre",
       "openLanguageSwitcher": "Ouvrir le sélecteur de langue",
       "closeDialog": "Fermer le dialogue",
@@ -488,8 +510,9 @@ const fr: Translations = {
       "downloadStarted": "Téléchargement démarré",
       "configReset": "Configuration réinitialisée aux paramètres par défaut",
       "darkModeToggled": "Mode sombre basculé",
-      "previewToggled": "Aperçu basculé",
-      "scrolledToCard": "Défilement vers la carte {{number}}",
+      "previewPaneToggled": "Volet d'aperçu basculé",
+      "sectionSwitched": "Basculement vers la section {{number}}",
+      "sidebarToggled": "Barre latérale basculée",
       "undoPerformed": "Modification annulée",
       "redoPerformed": "Modification rétablie"
     }
@@ -537,6 +560,39 @@ const fr: Translations = {
       "multipleChanges": "Modifications multiples"
     }
   },
+  "header": {
+    "download": "Télécharger",
+    "downloadZip": "Télécharger ZIP",
+    "exportConfig": "Exporter la configuration",
+    "importConfig": "Importer la configuration",
+    "settings": "Paramètres",
+    "autosave": "Sauvegarde automatique",
+    "theme": "Thème",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "themeSystem": "Système",
+    "language": "Langue",
+    "history": "Historique",
+    "resetDefaults": "Réinitialiser par défaut",
+    "keyboardShortcuts": "Raccourcis clavier"
+  },
+  "sidebar": {
+    "configuration": "Configuration",
+    "actions": "Actions",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "Paramètres",
+    "devContainer": "DevContainer",
+    "import": "Importer",
+    "export": "Exporter",
+    "history": "Historique",
+    "reset": "Réinitialiser",
+    "toggle": "Basculer la barre latérale",
+    "about": "À propos",
+    "donate": "Faire un don",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "Configurez le support pour VS Code Dev Containers et GitHub Codespaces. Cela génère un fichier devcontainer.json qui définit votre environnement de développement.",
@@ -552,6 +608,11 @@ const fr: Translations = {
       "ports": "Ports",
       "preview": "Aperçu"
     },
+    "extensionsSection": "Extensions",
+    "featuresSection": "Fonctionnalités",
+    "portsSection": "Ports redirigés",
+    "scriptsSection": "Scripts de cycle de vie",
+    "settingsSection": "Paramètres VS Code",
     "extensions": {
       "title": "Extensions VS Code",
       "description": "Extensions à installer automatiquement lors de la création du conteneur.",

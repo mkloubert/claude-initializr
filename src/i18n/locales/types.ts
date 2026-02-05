@@ -31,6 +31,9 @@ export interface Translations {
     close: string;
     description: string;
     purpose: string;
+    dialogTitle: string;
+    getStarted: string;
+    dontShowAgain: string;
     features: {
       title: string;
       dockerfile: string;
@@ -170,17 +173,35 @@ export interface Translations {
     noDenyRules: string;
     help: string;
     learnMore: string;
+    summary: string;
+    denyCount: string;
+    askCount: string;
+    allowCount: string;
   };
   preview: {
     dockerfile: string;
     dockerfileDesc: string;
     dockerCompose: string;
     dockerComposeDesc: string;
+    title: string;
+    showPreview: string;
+    hidePreview: string;
+    empty: string;
+    settingsJson: string;
+    devContainer: string;
+    claudeMdIntegrated: string;
+  };
+  dockerfile: {
+    software: string;
+    advancedOptions: string;
+    softwareCount: string;
   };
   dockerCompose: {
     platform: string;
     platformDesc: string;
     platformPlaceholder: string;
+    envSection: string;
+    protectedSection: string;
   };
   download: {
     button: string;
@@ -425,8 +446,9 @@ export interface Translations {
       downloadZip: string;
       forceSave: string;
       resetDefaults: string;
-      togglePreview: string;
-      scrollToCard: string;
+      togglePreviewPane: string;
+      toggleSidebar: string;
+      switchSection: string;
       toggleDarkMode: string;
       openLanguageSwitcher: string;
       closeDialog: string;
@@ -438,8 +460,9 @@ export interface Translations {
       downloadStarted: string;
       configReset: string;
       darkModeToggled: string;
-      previewToggled: string;
-      scrolledToCard: string;
+      previewPaneToggled: string;
+      sectionSwitched: string;
+      sidebarToggled: string;
       undoPerformed: string;
       redoPerformed: string;
     };
@@ -487,6 +510,39 @@ export interface Translations {
       multipleChanges: string;
     };
   };
+  header: {
+    download: string;
+    downloadZip: string;
+    exportConfig: string;
+    importConfig: string;
+    settings: string;
+    autosave: string;
+    theme: string;
+    themeLight: string;
+    themeDark: string;
+    themeSystem: string;
+    language: string;
+    history: string;
+    resetDefaults: string;
+    keyboardShortcuts: string;
+  };
+  sidebar: {
+    configuration: string;
+    actions: string;
+    dockerfile: string;
+    dockerCompose: string;
+    claudeMd: string;
+    settings: string;
+    devContainer: string;
+    import: string;
+    export: string;
+    history: string;
+    reset: string;
+    toggle: string;
+    about: string;
+    donate: string;
+    copyright: string;
+  };
   devContainer: {
     title: string;
     description: string;
@@ -502,6 +558,11 @@ export interface Translations {
       ports: string;
       preview: string;
     };
+    extensionsSection: string;
+    featuresSection: string;
+    portsSection: string;
+    scriptsSection: string;
+    settingsSection: string;
     extensions: {
       title: string;
       description: string;

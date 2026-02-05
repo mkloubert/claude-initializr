@@ -29,6 +29,9 @@ const el: Translations = {
     "close": "Κλείσιμο μηνύματος καλωσορίσματος",
     "description": "Το Claude Code είναι ο ισχυρός βοηθός προγραμματισμού AI της Anthropic που μπορεί να διαβάσει, να γράψει και να εκτελέσει κώδικα απευθείας στον υπολογιστή σας. Αν και απίστευτα χρήσιμο, η εκτέλεση AI με πρόσβαση στο σύστημα αρχείων και το τερματικό απαιτεί προσεκτική εξέταση της ασφάλειας.",
     "purpose": "Αυτό το εργαλείο δημιουργεί μια πλήρη διαμόρφωση Docker που σας επιτρέπει να εκτελείτε το Claude Code σε απομονωμένο περιβάλλον container. Ο κώδικάς σας παραμένει προστατευμένος ενώ ο Claude μπορεί ακόμα να σας βοηθήσει να αναπτύξετε, να αποσφαλματώσετε και να αναδιαμορφώσετε.",
+    "dialogTitle": "Καλώς ήρθατε στο Claude Initializr",
+    "getStarted": "Ξεκινήστε",
+    "dontShowAgain": "Να μην εμφανιστεί ξανά",
     "features": {
       "title": "Τι μπορείτε να διαμορφώσετε:",
       "dockerfile": "Επιλέξτε ποια εργαλεία ανάπτυξης να εγκαταστήσετε (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const el: Translations = {
     "noAskRules": "Δεν έχουν οριστεί κανόνες ερώτησης.",
     "noDenyRules": "Δεν έχουν οριστεί κανόνες απόρριψης.",
     "help": "Ορίστε κανόνες δικαιωμάτων για λειτουργίες Read(), Edit() και WebFetch(). Τα μοτίβα υποστηρίζουν σύνταξη glob όπως src/** για αναδρομική αντιστοίχιση.",
-    "learnMore": "Μάθετε περισσότερα"
+    "learnMore": "Μάθετε περισσότερα",
+    "summary": "Επισκόπηση",
+    "denyCount": "{{count}} απορρίφθηκαν",
+    "askCount": "{{count}} ερώτηση",
+    "allowCount": "{{count}} επιτρέπονται"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Το Dockerfile ορίζει ποιο λογισμικό εγκαθίσταται στο container. Εκτός από το Node.js και το Claude Code, μπορούν να συμπεριληφθούν επιπλέον εργαλεία όπως TypeScript, Python, Go, ffmpeg ή ImageMagick. Το επιλεγμένο λογισμικό θα είναι διαθέσιμο όταν ο Claude εκτελεί εντολές.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "Το αρχείο docker-compose.yaml ελέγχει πώς ξεκινά το container. Οι μεταβλητές περιβάλλοντος (όπως τα κλειδιά API) μπορούν να οριστούν εδώ. Τα προστατευμένα αρχεία προσαρτώνται ως κενά αρχεία μόνο για ανάγνωση για να αποτρέψουν τον Claude από την πρόσβαση σε ευαίσθητα δεδομένα όπως αρχεία .env."
+    "dockerComposeDesc": "Το αρχείο docker-compose.yaml ελέγχει πώς ξεκινά το container. Οι μεταβλητές περιβάλλοντος (όπως τα κλειδιά API) μπορούν να οριστούν εδώ. Τα προστατευμένα αρχεία προσαρτώνται ως κενά αρχεία μόνο για ανάγνωση για να αποτρέψουν τον Claude από την πρόσβαση σε ευαίσθητα δεδομένα όπως αρχεία .env.",
+    "title": "Προεπισκόπηση",
+    "showPreview": "Εμφάνιση προεπισκόπησης",
+    "hidePreview": "Απόκρυψη προεπισκόπησης",
+    "empty": "Δεν υπάρχει διαθέσιμη προεπισκόπηση για αυτήν την ενότητα.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "Η προεπισκόπηση είναι ενσωματωμένη στον επεξεργαστή παραπάνω."
+  },
+  "dockerfile": {
+    "software": "Λογισμικό",
+    "advancedOptions": "Σύνθετες επιλογές",
+    "softwareCount": "{{count}} επιλεγμένα"
   },
   "dockerCompose": {
     "platform": "Πλατφόρμα",
     "platformDesc": "Ορίστε μια συγκεκριμένη πλατφόρμα για το container (π.χ. linux/amd64). Αφήστε κενό για να χρησιμοποιήσετε την προεπιλεγμένη πλατφόρμα. Χρησιμοποιήστε το όταν οι βασικές εικόνες δεν υποστηρίζουν την αρχιτεκτονική σας.",
-    "platformPlaceholder": "Παράδειγμα: linux/amd64"
+    "platformPlaceholder": "Παράδειγμα: linux/amd64",
+    "envSection": "Μεταβλητές περιβάλλοντος",
+    "protectedSection": "Προστατευμένα αρχεία"
   },
   "download": {
     "button": "Λήψη ZIP",
@@ -475,8 +496,9 @@ const el: Translations = {
       "downloadZip": "Λήψη ZIP",
       "forceSave": "Αναγκαστική αποθήκευση",
       "resetDefaults": "Επαναφορά προεπιλογών",
-      "togglePreview": "Εναλλαγή προεπισκόπησης",
-      "scrollToCard": "Κύλιση στην κάρτα {{number}}",
+      "togglePreviewPane": "Εναλλαγή παραθύρου προεπισκόπησης",
+      "toggleSidebar": "Εναλλαγή πλαϊνής μπάρας",
+      "switchSection": "Εναλλαγή στην ενότητα {{number}}",
       "toggleDarkMode": "Εναλλαγή σκοτεινής λειτουργίας",
       "openLanguageSwitcher": "Άνοιγμα επιλογής γλώσσας",
       "closeDialog": "Κλείσιμο διαλόγου",
@@ -488,8 +510,9 @@ const el: Translations = {
       "downloadStarted": "Η λήψη ξεκίνησε",
       "configReset": "Η διαμόρφωση επαναφέρθηκε στις προεπιλογές",
       "darkModeToggled": "Η σκοτεινή λειτουργία εναλλάχθηκε",
-      "previewToggled": "Η προεπισκόπηση εναλλάχθηκε",
-      "scrolledToCard": "Κύλιση στην κάρτα {{number}}",
+      "previewPaneToggled": "Το παράθυρο προεπισκόπησης εναλλάχθηκε",
+      "sectionSwitched": "Εναλλαγή στην ενότητα {{number}}",
+      "sidebarToggled": "Η πλαϊνή μπάρα εναλλάχθηκε",
       "undoPerformed": "Η αλλαγή αναιρέθηκε",
       "redoPerformed": "Η αλλαγή επαναλήφθηκε"
     }
@@ -537,6 +560,39 @@ const el: Translations = {
       "multipleChanges": "Πολλαπλές αλλαγές"
     }
   },
+  "header": {
+    "download": "Λήψη",
+    "downloadZip": "Λήψη ZIP",
+    "exportConfig": "Εξαγωγή ρυθμίσεων",
+    "importConfig": "Εισαγωγή ρυθμίσεων",
+    "settings": "Ρυθμίσεις",
+    "autosave": "Αυτόματη αποθήκευση",
+    "theme": "Θέμα",
+    "themeLight": "Φωτεινό",
+    "themeDark": "Σκοτεινό",
+    "themeSystem": "Σύστημα",
+    "language": "Γλώσσα",
+    "history": "Ιστορικό",
+    "resetDefaults": "Επαναφορά προεπιλογών",
+    "keyboardShortcuts": "Συντομεύσεις πληκτρολογίου"
+  },
+  "sidebar": {
+    "configuration": "Διαμόρφωση",
+    "actions": "Ενέργειες",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "Ρυθμίσεις",
+    "devContainer": "DevContainer",
+    "import": "Εισαγωγή",
+    "export": "Εξαγωγή",
+    "history": "Ιστορικό",
+    "reset": "Επαναφορά",
+    "toggle": "Εναλλαγή πλαϊνής μπάρας",
+    "about": "Σχετικά",
+    "donate": "Δωρεά",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "Διαμορφώστε την υποστήριξη για VS Code Dev Containers και GitHub Codespaces. Αυτό δημιουργεί ένα αρχείο devcontainer.json που ορίζει το περιβάλλον ανάπτυξής σας.",
@@ -552,6 +608,11 @@ const el: Translations = {
       "ports": "Θύρες",
       "preview": "Προεπισκόπηση"
     },
+    "extensionsSection": "Επεκτάσεις",
+    "featuresSection": "Χαρακτηριστικά",
+    "portsSection": "Προωθημένες θύρες",
+    "scriptsSection": "Σενάρια κύκλου ζωής",
+    "settingsSection": "Ρυθμίσεις VS Code",
     "extensions": {
       "title": "Επεκτάσεις VS Code",
       "description": "Επεκτάσεις που εγκαθίστανται αυτόματα όταν δημιουργείται το κοντέινερ.",

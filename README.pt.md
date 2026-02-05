@@ -84,9 +84,15 @@ Uma aplicação web para gerar arquivos de configuração Docker para executar o
 - **Comandos de ciclo de vida**: Configure comandos para eventos post-create, post-start e post-attach
 - **Extensões recomendadas**: Recomendações automáticas de extensões baseadas no software selecionado
 
+### Interface moderna
+
+- **Navegação de barra lateral**: Acesso rápido a todas as seções de configuração com uma barra lateral que pode ser recolhida
+- **Layout de painel dividido**: Editor lado a lado e visualização ao vivo com painéis redimensionáveis
+- **Suporte RTL**: Suporte completo da direita para esquerda para árabe, hebraico e urdu
+
 ### Funcionalidades gerais
 
-- **Visualização ao vivo**: Veja visualizações em tempo real dos arquivos de configuração gerados
+- **Visualização ao vivo**: Veja visualizações em tempo real dos arquivos de configuração gerados no painel dividido
 - **Download ZIP**: Baixe todos os arquivos como um arquivo ZIP pronto para uso
 - **Geração automática de README**: Cada ZIP inclui um README.md detalhado com:
   - Visão geral dos arquivos e descrições
@@ -140,14 +146,15 @@ Todos os atalhos usam `Ctrl` no Windows/Linux e `⌘` (Cmd) no macOS.
 | Atalho | Ação |
 | ------ | ---- |
 | `Ctrl/⌘ + S` | Baixar ZIP |
-| `Ctrl/⌘ + E` | Alternar visualização |
+| `Ctrl/⌘ + E` | Alternar painel de visualização |
+| `Ctrl/⌘ + B` | Alternar barra lateral |
 | `Ctrl/⌘ + Z` | Desfazer |
 | `Ctrl/⌘ + Y` | Refazer |
 | `Ctrl/⌘ + Shift + Z` | Refazer (alternativo) |
 | `Ctrl/⌘ + Shift + D` | Alternar modo escuro/claro |
 | `Ctrl/⌘ + Shift + X` | Restaurar padrões |
 | `Ctrl/⌘ + Shift + L` | Abrir seletor de idioma |
-| `Ctrl/⌘ + 1-5` | Rolar até o cartão (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Mudar para a seção (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Abrir ajuda de atalhos de teclado |
 | `Escape` | Fechar diálogo |
 
@@ -512,6 +519,26 @@ Os lançamentos são automatizados via GitHub Actions. Para criar um novo lança
 Tags contendo `-` (ex. `v1.0.0-beta`) são marcadas como pré-lançamentos.
 
 ## Registro de alterações
+
+### v4.0.0
+
+- **Redesign principal da interface**: Revisão completa da interface para melhor usabilidade
+  - Substituição do layout vertical baseado em cartões pelo layout Sidebar + Split Pane
+  - Navegação na barra lateral para alternância rápida de seções com atalhos de teclado (`Ctrl/⌘ + 1-5`)
+  - Painel dividido redimensionável com editor e visualização ao vivo lado a lado
+  - Barra lateral que pode ser recolhida com modo apenas ícone (`Ctrl/⌘ + B` para alternar)
+  - Divulgação progressiva com seções com acordeão para reduzir carga cognitiva
+- **Suporte de idiomas RTL**: Suporte completo da direita para esquerda para árabe, hebraico e urdu
+  - Barra lateral posiciona-se automaticamente à direita para idiomas RTL
+  - Todos os elementos da interface estão devidamente espelhados
+- **Melhorias de responsividade**:
+  - Barra lateral começa recolhida em telas de tablet (768–1023px)
+  - Layout otimizado para dispositivos móveis com pré-visualização em bottom sheet
+  - Gatilhos de acordeão amigáveis ao toque (altura mínima de 44px)
+- **Diálogo de boas-vindas**: Visitantes pela primeira vez veem um diálogo de boas-vindas em vez de um cartão estático
+  - Pode ser reaberto via "Sobre" na barra lateral
+- **Componentes herdados removidos**: Limpeza de componentes baseados em cartões antigos
+- Atalhos de teclado atualizados para funcionar com o novo layout
 
 ### v3.2.1
 

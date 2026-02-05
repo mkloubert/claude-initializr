@@ -84,9 +84,15 @@
 - **Yaşam Döngüsü Komutları**: post-create, post-start ve post-attach olayları için komutlar ayarlayın
 - **Önerilen Uzantılar**: Seçilen yazılıma dayalı otomatik uzantı önerileri
 
+### Modern Arayüz
+
+- **Kenar Çubuğu Navigasyonu**: Tüm yapılandırma bölümlerine hızlı erişim için daraltılabilir kenar çubuğu
+- **Bölme Bölmesi Düzeni**: Düzenleyici ve canlı önizlemeyi yan yana yerleştirilen panellerle görebilirsiniz
+- **RTL Dil Desteği**: Arapça, İbranice ve Urduca için tam sağdan sola desteği
+
 ### Genel Özellikler
 
-- **Canlı Önizleme**: Oluşturulan yapılandırma dosyalarının gerçek zamanlı önizlemelerini görün
+- **Canlı Önizleme**: Oluşturulan yapılandırma dosyalarının gerçek zamanlı önizlemelerini bölme paneliyle görebilirsiniz
 - **ZIP İndirme**: Tüm dosyaları kullanıma hazır ZIP arşivi olarak indirin
 - **Otomatik README Oluşturma**: Her ZIP aşağıdakileri içeren ayrıntılı bir README.md içerir:
   - Dosya genel bakışı ve açıklamaları
@@ -140,18 +146,19 @@ Tüm kısayollar Windows/Linux'ta `Ctrl` ve macOS'ta `⌘` (Cmd) kullanır.
 | Kısayol | Eylem |
 | ------- | ----- |
 | `Ctrl/⌘ + S` | ZIP İndir |
-| `Ctrl/⌘ + E` | Önizlemeyi değiştir |
+| `Ctrl/⌘ + E` | Önizleme panelini değiştir |
+| `Ctrl/⌘ + B` | Kenar çubuğunu değiştir |
 | `Ctrl/⌘ + Z` | Geri al |
 | `Ctrl/⌘ + Y` | Yinele |
 | `Ctrl/⌘ + Shift + Z` | Yinele (alternatif) |
 | `Ctrl/⌘ + Shift + D` | Koyu/açık modu değiştir |
 | `Ctrl/⌘ + Shift + X` | Varsayılanlara sıfırla |
 | `Ctrl/⌘ + Shift + L` | Dil seçiciyi aç |
-| `Ctrl/⌘ + 1-5` | Karta kaydır (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Bölüme geç (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Klavye kısayolları yardımını aç |
 | `Escape` | İletişim kutusunu kapat |
 
-Başlıktaki bir klavye simgesi de kısayol yardım iletişim kutusunu açar.
+Başlıktaki bir klavye simgesi aracılığıyla veya ayarlar menüsünde kısayol yardım iletişim kutusuna erişin.
 
 ### Otomatik Kaydetme Mekanizması
 
@@ -298,13 +305,13 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
 6. **CLAUDE.md'yi Düzenleyin**: Markdown editöründe Claude için talimatlar yazın
 
-7. **İzinleri Yapılandırın**: settings.json kartı aracılığıyla izin kurallarını ayarlayın
+7. **İzinleri Yapılandırın**: settings.json bölümü aracılığıyla izin kurallarını ayarlayın
    - Otomatik onaylanan işlemler için `Allow` kuralları ekleyin
    - Onay gerektiren işlemler için `Ask` kuralları ekleyin
    - Yasaklanan işlemler için `Deny` kuralları ekleyin
    - Korunan dosyalar otomatik olarak `Read()` reddetme kuralları olarak eklenir
 
-8. **Önizleme**: Oluşturulan yapılandırma dosyalarını önizleme sekmelerinde kontrol edin
+8. **Önizleme**: Oluşturulan yapılandırma dosyalarını canlı önizleme panelinde kontrol edin
 
 9. **İndirin**: Tüm dosyaları almak için "ZIP İndir"e tıklayın
 
@@ -516,6 +523,26 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
 
 ## Değişiklik Günlüğü
 
+### v4.0.0
+
+- **Büyük Arayüz/Kullanıcı Deneyimi Yeniden Tasarımı**: Tam arayüz yenilemesi
+  - Dikey kart tabanlı düzeni Kenar Çubuğu + Bölme Bölmesi düzeniyle değiştirildi
+  - Hızlı bölüm geçişi için kenar çubuğu navigasyonu ve kısayollar (`Ctrl/⌘ + 1-5`)
+  - Düzenleyici ve canlı önizleme yan yana yerleştirilmiş bölme paneli
+  - Daraltılabilir kenar çubuğu ve simge-yalnızca modu (`Ctrl/⌘ + B` ile değiştir)
+  - Bilişsel yükü azaltmak için akordeon bölümleri
+- **RTL Dil Desteği**: Arapça, İbranice ve Urduca için tam sağdan sola desteği
+  - RTL dilleri için kenar çubuğu otomatik olarak sağda konumlandırılır
+  - Tüm arayüz öğeleri düzgün şekilde yansıtılır
+- **Duyarlı İyileştirmeler**:
+  - Kenar çubuğu tablet ekranlarında (768–1023px) daraltılmış olarak başlar
+  - Mobil optimizasyonu alt sayfa önizlemesi ile
+  - Dokunmatik uyumlu akordeon tetikleyicileri (minimum 44px yükseklik)
+- **Hoş Geldiniz İletişim Kutusu**: İlk ziyaretchiler statik kart yerine hoş geldiniz iletişim kutusunu görür
+  - Kenar çubuğundan "Hakkında" aracılığıyla yeniden açılabilir
+- **Eski Bileşenlerin Kaldırılması**: Eski kart tabanlı bileşenlerin temizlenmesi
+- Klavye kısayolları yeni düzen ile çalışacak şekilde güncellendi
+
 ### v3.2.1
 
 - Geri al/yinele işlevselliği ile yapılandırma geçmişi eklendi
@@ -532,12 +559,12 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
   - Port yönlendirme ayarlama
   - Yaşam döngüsü komutlarını yapılandırma (post-create, post-start, post-attach)
   - Seçili yazılıma göre otomatik uzantı önerileri
-- DevContainer kartına kaydırma için klavye kısayolu `Ctrl/⌘ + 5` eklendi
+- DevContainer bölümüne geçmek için klavye kısayolu `Ctrl/⌘ + 5` eklendi
 - DevContainer özelliği ile karşılama bölümü güncellendi
 
 ### v3.1.2
 
-- Yaygın eylemler için klavye kısayolları eklendi (indirme, önizleme değiştirme, tema değiştirme, kart navigasyonu, dil seçici, sıfırlama)
+- Yaygın eylemler için klavye kısayolları eklendi (indirme, önizleme değiştirme, tema değiştirme, bölüm navigasyonu, dil seçici, sıfırlama)
 - Gruplandırılmış görüntüleme ile klavye kısayolları yardım iletişim kutusu eklendi
 - İşletim sistemine uygun değiştirici tuşlarla düğme araç ipuçlarına kısayol ipuçları eklendi
 - Kısayol eylemleri için ekran okuyucu duyuruları ARIA canlı bölgesi eklendi

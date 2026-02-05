@@ -18,203 +18,80 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
-import { useTranslation } from 'react-i18next';
-import { MainLayout } from '@/components/layout';
+import { lazy, Suspense } from 'react';
+import { SidebarLayout, EditorPreviewSplitPane } from '@/components/layout';
 import {
-  DockerfileCard,
-  DockerComposeCard,
+  DockerfileEditor,
+  DockerComposeEditor,
 } from '@/components/config';
-import { DownloadButton } from '@/components/common';
 import {
   Card,
   CardContent,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import {
-  Shield,
-  Settings,
-  FileCode,
-  Network,
-  Container,
-  FileX,
-  Lock,
-  X,
-  Info,
-  Loader2,
-  Box,
-} from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import type { SectionId } from '@/hooks/useActiveSection';
 
-// Lazy load the markdown editor card to reduce initial bundle size (~1.7MB)
-const ClaudeMdCard = lazy(() =>
-  import('@/components/config/ClaudeMdCard').then((m) => ({ default: m.ClaudeMdCard }))
+// Lazy load heavy components to reduce initial bundle size
+const ClaudeMdEditor = lazy(() =>
+  import('@/components/config/ClaudeMdEditor').then((m) => ({ default: m.ClaudeMdEditor }))
 );
 
-// Lazy load the settings card
-const SettingsJsonCard = lazy(() =>
-  import('@/components/config/SettingsJsonCard').then((m) => ({ default: m.SettingsJsonCard }))
+const SettingsEditor = lazy(() =>
+  import('@/components/config/SettingsEditor').then((m) => ({ default: m.SettingsEditor }))
 );
 
-// Lazy load the DevContainer card
-const DevContainerCard = lazy(() =>
-  import('@/components/config/DevContainerCard').then((m) => ({ default: m.DevContainerCard }))
+const DevContainerEditor = lazy(() =>
+  import('@/components/config/DevContainerEditor').then((m) => ({ default: m.DevContainerEditor }))
 );
 
-const WELCOME_DISMISSED_KEY = 'claude-initializr-welcome-dismissed';
+function LoadingFallback() {
+  return (
+    <Card>
+      <CardContent className="flex items-center justify-center py-12">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </CardContent>
+    </Card>
+  );
+}
+
+function SectionContent({ activeSection }: { activeSection: SectionId }) {
+  switch (activeSection) {
+    case 'dockerfile':
+      return <DockerfileEditor />;
+    case 'docker-compose':
+      return <DockerComposeEditor />;
+    case 'claude-md':
+      return (
+        <Suspense fallback={<LoadingFallback />}>
+          <ClaudeMdEditor />
+        </Suspense>
+      );
+    case 'settings':
+      return (
+        <Suspense fallback={<LoadingFallback />}>
+          <SettingsEditor />
+        </Suspense>
+      );
+    case 'devcontainer':
+      return (
+        <Suspense fallback={<LoadingFallback />}>
+          <DevContainerEditor />
+        </Suspense>
+      );
+  }
+}
 
 /**
- * Home page with file-based configuration cards.
+ * Home page with sidebar navigation, editor content, and live preview split pane.
  */
 export default function Home() {
-  const { t } = useTranslation();
-  const [welcomeDismissed, setWelcomeDismissed] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return localStorage.getItem(WELCOME_DISMISSED_KEY) === 'true';
-  });
-
-  useEffect(() => {
-    localStorage.setItem(WELCOME_DISMISSED_KEY, String(welcomeDismissed));
-  }, [welcomeDismissed]);
-
-  const dismissWelcome = useCallback(() => {
-    setWelcomeDismissed(true);
-  }, []);
-
   return (
-    <MainLayout>
-      <div className="container mx-auto px-4 py-6">
-        {/* Welcome Section */}
-        {!welcomeDismissed && (
-          <Card className="mb-6 relative">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-2 right-2 h-8 w-8"
-              onClick={dismissWelcome}
-              aria-label={t('welcome.close')}
-            >
-              <X className="h-4 w-4" aria-hidden="true" />
-            </Button>
-            <CardContent className="space-y-6 pt-6">
-              {/* Introduction */}
-              <div className="space-y-3 text-muted-foreground">
-                <p>{t('welcome.description')}</p>
-                <p>{t('welcome.purpose')}</p>
-              </div>
-
-              {/* Features and Security Grid */}
-              <div className="grid gap-6 md:grid-cols-2">
-                {/* Configuration Features */}
-                <div className="space-y-3">
-                  <h3 className="flex items-center gap-2 font-semibold">
-                    <Settings className="h-5 w-5" aria-hidden="true" />
-                    {t('welcome.features.title')}
-                  </h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex gap-2">
-                      <FileCode className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-                      <span>{t('welcome.features.dockerfile')}</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <Container className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-                      <span>{t('welcome.features.compose')}</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <FileCode className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-                      <span>{t('welcome.features.claudeMd')}</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <Box className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-                      <span>{t('welcome.features.devContainer')}</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Security Features */}
-                <div className="space-y-3">
-                  <h3 className="flex items-center gap-2 font-semibold">
-                    <Shield className="h-5 w-5" aria-hidden="true" />
-                    {t('welcome.security.title')}
-                  </h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex gap-2">
-                      <Network className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-                      <span>{t('welcome.security.firewall')}</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <Container className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-                      <span>{t('welcome.security.isolation')}</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <FileX className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-                      <span>{t('welcome.security.readonly')}</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <Lock className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
-                      <span>{t('welcome.security.capabilities')}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Privacy Notice */}
-              <div className="rounded-lg border border-border bg-muted/50 p-4">
-                <h3 className="flex items-center gap-2 font-semibold text-sm mb-2">
-                  <Info className="h-4 w-4" aria-hidden="true" />
-                  {t('welcome.privacy.title')}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {t('welcome.privacy.description')}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Download Button */}
-        <div className="mb-6 flex justify-end">
-          <DownloadButton />
-        </div>
-
-        {/* Configuration Cards */}
-        <div className="space-y-6">
-          <DockerfileCard />
-          <DockerComposeCard />
-          <Suspense
-            fallback={
-              <Card>
-                <CardContent className="flex items-center justify-center py-12">
-                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-                </CardContent>
-              </Card>
-            }
-          >
-            <ClaudeMdCard />
-          </Suspense>
-          <Suspense
-            fallback={
-              <Card>
-                <CardContent className="flex items-center justify-center py-12">
-                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-                </CardContent>
-              </Card>
-            }
-          >
-            <SettingsJsonCard />
-          </Suspense>
-          <Suspense
-            fallback={
-              <Card>
-                <CardContent className="flex items-center justify-center py-12">
-                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-                </CardContent>
-              </Card>
-            }
-          >
-            <DevContainerCard />
-          </Suspense>
-        </div>
-      </div>
-    </MainLayout>
+    <SidebarLayout>
+      {(activeSection, togglePreviewRef) => (
+        <EditorPreviewSplitPane activeSection={activeSection} togglePreviewRef={togglePreviewRef}>
+          <SectionContent activeSection={activeSection} />
+        </EditorPreviewSplitPane>
+      )}
+    </SidebarLayout>
   );
 }

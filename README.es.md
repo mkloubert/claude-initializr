@@ -84,9 +84,15 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
 - **Comandos de ciclo de vida**: Configura comandos para eventos post-create, post-start y post-attach
 - **Extensiones recomendadas**: Recomendaciones automáticas de extensiones basadas en el software seleccionado
 
+### Interfaz moderna
+
+- **Navegación de Sidebar**: Acceso rápido a todas las secciones de configuración con una barra lateral plegable
+- **Diseño de panel dividido**: Editor y vista previa en vivo lado a lado con paneles redimensionables
+- **Soporte de idiomas RTL**: Compatibilidad completa de derecha a izquierda para árabe, hebreo y urdu
+
 ### Características generales
 
-- **Vista previa en vivo**: Vea vistas previas en tiempo real de los archivos de configuración generados
+- **Vista previa en vivo**: Vea vistas previas en tiempo real de los archivos de configuración generados en el panel dividido
 - **Descarga ZIP**: Descargue todos los archivos como un archivo ZIP listo para usar
 - **Generación automática de README**: Cada ZIP incluye un README.md detallado con:
   - Descripción general de archivos y descripciones
@@ -140,18 +146,19 @@ Todos los atajos usan `Ctrl` en Windows/Linux y `⌘` (Cmd) en macOS.
 | Atajo | Acción |
 | ----- | ------ |
 | `Ctrl/⌘ + S` | Descargar ZIP |
-| `Ctrl/⌘ + E` | Alternar vista previa |
+| `Ctrl/⌘ + E` | Alternar panel de vista previa |
+| `Ctrl/⌘ + B` | Alternar barra lateral |
 | `Ctrl/⌘ + Z` | Deshacer |
 | `Ctrl/⌘ + Y` | Rehacer |
 | `Ctrl/⌘ + Shift + Z` | Rehacer (alternativo) |
 | `Ctrl/⌘ + Shift + D` | Alternar modo oscuro/claro |
 | `Ctrl/⌘ + Shift + X` | Restablecer valores predeterminados |
 | `Ctrl/⌘ + Shift + L` | Abrir selector de idioma |
-| `Ctrl/⌘ + 1-5` | Desplazarse a la tarjeta (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Cambiar a sección (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Abrir ayuda de atajos de teclado |
 | `Escape` | Cerrar diálogo |
 
-Un icono de teclado en el encabezado también abre el diálogo de ayuda de atajos.
+Acceder a la ayuda de atajos de teclado a través del menú de configuración en el encabezado.
 
 ### Mecanismo de guardado automático
 
@@ -298,13 +305,13 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
 6. **Editar CLAUDE.md**: Escriba instrucciones para Claude en el editor Markdown
 
-7. **Configurar permisos**: Configura las reglas de permisos en la tarjeta settings.json
+7. **Configurar permisos**: Configura las reglas de permisos en la sección settings.json
    - Agrega reglas `Allow` para operaciones auto-aprobadas
    - Agrega reglas `Ask` para operaciones que requieren confirmación
    - Agrega reglas `Deny` para operaciones prohibidas
    - Los archivos protegidos se agregan automáticamente como reglas de denegación `Read()`
 
-8. **Vista previa**: Verifique los archivos de configuración generados en las pestañas de vista previa
+8. **Vista previa**: Verifique los archivos de configuración generados en el panel de vista previa
 
 9. **Descargar**: Haga clic en "Descargar ZIP" para obtener todos los archivos
 
@@ -508,6 +515,26 @@ Los lanzamientos se automatizan a través de GitHub Actions. Para crear un nuevo
 Las etiquetas que contienen `-` (ej. `v1.0.0-beta`) se marcan como pre-lanzamientos.
 
 ## Registro de cambios
+
+### v4.0.0
+
+- **Rediseño importante de UI/UX**: Renovación completa de la interfaz para mejorar la usabilidad
+  - Reemplazo del diseño vertical basado en tarjetas con diseño Sidebar + Split Pane
+  - Navegación de barra lateral para cambio rápido de secciones con atajos de teclado (`Ctrl/⌘ + 1-5`)
+  - Panel dividido redimensionable con editor y vista previa en vivo lado a lado
+  - Barra lateral plegable con modo solo iconos (`Ctrl/⌘ + B` para alternar)
+  - Divulgación progresiva con secciones de acordeón para reducir la carga cognitiva
+- **Soporte de idiomas RTL**: Compatibilidad completa de derecha a izquierda para árabe, hebreo y urdu
+  - La barra lateral se posiciona automáticamente en la derecha para idiomas RTL
+  - Todos los elementos de la interfaz están correctamente reflejados
+- **Mejoras de capacidad de respuesta**:
+  - La barra lateral comienza contraída en pantallas de tablet (768–1023px)
+  - Diseño optimizado para móviles con vista previa de hoja inferior
+  - Activadores de acordeón amigables para tocar (altura mínima de 44px)
+- **Diálogo de bienvenida**: Los visitantes por primera vez ven un diálogo de bienvenida en lugar de una tarjeta estática
+  - Se puede reabrir a través de "Acerca de" en la barra lateral
+- **Componentes heredados eliminados**: Limpieza de componentes antiguos basados en tarjetas
+- Atajos de teclado actualizados para funcionar con el nuevo diseño
 
 ### v3.2.1
 

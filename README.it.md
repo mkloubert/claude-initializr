@@ -84,9 +84,15 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
 - **Comandi del ciclo di vita**: Configura comandi per eventi post-create, post-start e post-attach
 - **Estensioni consigliate**: Raccomandazioni automatiche di estensioni basate sul software selezionato
 
+### Interfaccia moderna
+
+- **Navigazione sidebar**: Accesso rapido a tutte le sezioni di configurazione con una barra laterale che si può comprimere
+- **Layout split pane**: Editor side-by-side e anteprima in tempo reale con pannelli ridimensionabili
+- **Supporto RTL**: Supporto completo da destra a sinistra per arabo, ebraico e urdu
+
 ### Funzionalità generali
 
-- **Anteprima live**: Visualizza anteprime in tempo reale dei file di configurazione generati
+- **Anteprima live**: Visualizza anteprime in tempo reale dei file di configurazione generati nello split pane
 - **Download ZIP**: Scarica tutti i file come archivio ZIP pronto all'uso
 - **Generazione automatica README**: Ogni ZIP include un README.md dettagliato con:
   - Panoramica dei file e descrizioni
@@ -140,14 +146,15 @@ Tutte le scorciatoie usano `Ctrl` su Windows/Linux e `⌘` (Cmd) su macOS.
 | Scorciatoia | Azione |
 | ----------- | ------ |
 | `Ctrl/⌘ + S` | Scarica ZIP |
-| `Ctrl/⌘ + E` | Attiva/disattiva anteprima |
+| `Ctrl/⌘ + E` | Attiva/disattiva pannello anteprima |
+| `Ctrl/⌘ + B` | Attiva/disattiva barra laterale |
 | `Ctrl/⌘ + Z` | Annulla |
 | `Ctrl/⌘ + Y` | Ripristina |
 | `Ctrl/⌘ + Shift + Z` | Ripristina (alternativo) |
 | `Ctrl/⌘ + Shift + D` | Attiva/disattiva tema scuro/chiaro |
 | `Ctrl/⌘ + Shift + X` | Ripristina impostazioni predefinite |
 | `Ctrl/⌘ + Shift + L` | Apri selettore lingua |
-| `Ctrl/⌘ + 1-5` | Scorri alla scheda (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Passa alla sezione (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Apri guida scorciatoie da tastiera |
 | `Escape` | Chiudi finestra di dialogo |
 
@@ -508,6 +515,26 @@ I rilasci sono automatizzati tramite GitHub Actions. Per creare un nuovo rilasci
 I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
 ## Registro delle modifiche
+
+### v4.0.0
+
+- **Redesign maggiore dell'interfaccia utente**: Completa revisione dell'interfaccia per una migliore usabilità
+  - Sostituzione del layout verticale basato su schede con layout Sidebar + Split Pane
+  - Navigazione sidebar per il passaggio rapido alle sezioni con scorciatoie da tastiera (`Ctrl/⌘ + 1-5`)
+  - Split pane ridimensionabile con editor e anteprima live affiancati
+  - Barra laterale comprimibile con modalità solo icone (`Ctrl/⌘ + B` per attivare/disattivare)
+  - Divulgazione progressiva con sezioni a fisarmonica per ridurre il carico cognitivo
+- **Supporto lingue RTL**: Supporto completo da destra a sinistra per arabo, ebraico e urdu
+  - La barra laterale si posiziona automaticamente a destra per le lingue RTL
+  - Tutti gli elementi dell'interfaccia sono correttamente specchiati
+- **Miglioramenti della reattività**:
+  - La barra laterale inizia compressa sui schermi tablet (768–1023px)
+  - Layout ottimizzato per dispositivi mobili con anteprima in bottom sheet
+  - Trigger accordion con tocco intuitivo (altezza minima 44px)
+- **Finestra di dialogo di benvenuto**: I visitatori che arrivano per la prima volta vedono una finestra di dialogo di benvenuto invece di una scheda statica
+  - Può essere riaperta tramite "Informazioni" nella barra laterale
+- **Componenti legacy rimossi**: Pulizia di vecchi componenti basati su schede
+- Scorciatoie da tastiera aggiornate per funzionare con il nuovo layout
 
 ### v3.2.1
 

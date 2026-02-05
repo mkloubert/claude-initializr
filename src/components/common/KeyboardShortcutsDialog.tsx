@@ -67,10 +67,11 @@ export function KeyboardShortcutsDialog({ open, onOpenChange }: KeyboardShortcut
     { keys: ['mod', 'Z'], label: t('keyboardShortcuts.shortcuts.undo'), category: 'actions' },
     { keys: ['mod', 'Y'], label: t('keyboardShortcuts.shortcuts.redo'), category: 'actions' },
     { keys: ['mod', 'Shift', 'X'], label: t('keyboardShortcuts.shortcuts.resetDefaults'), category: 'actions' },
-    { keys: ['mod', 'E'], label: t('keyboardShortcuts.shortcuts.togglePreview'), category: 'actions' },
+    { keys: ['mod', 'E'], label: t('keyboardShortcuts.shortcuts.togglePreviewPane'), category: 'actions' },
     { keys: ['mod', 'Shift', 'D'], label: t('keyboardShortcuts.shortcuts.toggleDarkMode'), category: 'actions' },
     { keys: ['mod', 'Shift', 'L'], label: t('keyboardShortcuts.shortcuts.openLanguageSwitcher'), category: 'actions' },
-    { keys: ['mod', '1-5'], label: t('keyboardShortcuts.shortcuts.scrollToCard', { number: '1-5' }), category: 'navigation' },
+    { keys: ['mod', 'B'], label: t('keyboardShortcuts.shortcuts.toggleSidebar'), category: 'navigation' },
+    { keys: ['mod', '1-5'], label: t('keyboardShortcuts.shortcuts.switchSection', { number: '1-5' }), category: 'navigation' },
     { keys: ['mod', '/'], label: t('keyboardShortcuts.shortcuts.openShortcutsHelp'), category: 'actions' },
     { keys: ['Escape'], label: t('keyboardShortcuts.shortcuts.closeDialog'), category: 'navigation' },
   ], [t]);

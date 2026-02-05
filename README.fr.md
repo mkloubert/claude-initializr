@@ -84,9 +84,15 @@ Une application web pour générer des fichiers de configuration Docker permetta
 - **Commandes de cycle de vie**: Configurez les commandes pour les événements post-create, post-start et post-attach
 - **Extensions recommandées**: Recommandations automatiques d'extensions basées sur le logiciel sélectionné
 
+### Interface moderne
+
+- **Navigation de barre latérale**: Accès rapide à toutes les sections de configuration avec une barre latérale réductible
+- **Disposition en volet divisé**: Éditeur et aperçu en direct côte à côte avec panneaux redimensionnables
+- **Support des langues RTL**: Support complet de droite à gauche pour l'arabe, l'hébreu et l'ourdou
+
 ### Fonctionnalités générales
 
-- **Prévisualisation en direct** : Visualisez les aperçus en temps réel des fichiers de configuration générés
+- **Prévisualisation en direct** : Visualisez les aperçus en temps réel des fichiers de configuration générés dans le volet divisé
 - **Téléchargement ZIP** : Téléchargez tous les fichiers sous forme d'archive ZIP prête à l'emploi
 - **Génération automatique du README** : Chaque ZIP comprend un README.md détaillé avec :
   - Vue d'ensemble des fichiers et descriptions
@@ -140,18 +146,19 @@ Tous les raccourcis utilisent `Ctrl` sous Windows/Linux et `⌘` (Cmd) sous macO
 | Raccourci | Action |
 | --------- | ------ |
 | `Ctrl/⌘ + S` | Télécharger le ZIP |
-| `Ctrl/⌘ + E` | Basculer la prévisualisation |
+| `Ctrl/⌘ + E` | Basculer le volet de prévisualisation |
+| `Ctrl/⌘ + B` | Basculer la barre latérale |
 | `Ctrl/⌘ + Z` | Annuler |
 | `Ctrl/⌘ + Y` | Rétablir |
 | `Ctrl/⌘ + Shift + Z` | Rétablir (alternative) |
 | `Ctrl/⌘ + Shift + D` | Basculer le mode sombre/clair |
 | `Ctrl/⌘ + Shift + X` | Réinitialiser les paramètres par défaut |
 | `Ctrl/⌘ + Shift + L` | Ouvrir le sélecteur de langue |
-| `Ctrl/⌘ + 1-5` | Défiler jusqu'à la carte (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Basculer vers la section (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Ouvrir l'aide des raccourcis clavier |
 | `Escape` | Fermer le dialogue |
 
-Une icône de clavier dans l'en-tête ouvre également le dialogue d'aide des raccourcis.
+Accédez à l'aide des raccourcis clavier via le menu des paramètres dans l'en-tête.
 
 ### Mécanisme de sauvegarde automatique
 
@@ -298,13 +305,13 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
 6. **Modifier CLAUDE.md** : Rédigez les instructions pour Claude dans l'éditeur Markdown
 
-7. **Configurer les permissions**: Configurez les règles de permission dans la carte settings.json
+7. **Configurer les permissions**: Configurez les règles de permission dans la section settings.json
    - Ajoutez des règles `Allow` pour les opérations auto-approuvées
    - Ajoutez des règles `Ask` pour les opérations nécessitant confirmation
    - Ajoutez des règles `Deny` pour les opérations interdites
    - Les fichiers protégés sont automatiquement ajoutés comme règles de refus `Read()`
 
-8. **Prévisualiser** : Vérifiez les fichiers de configuration générés dans les onglets de prévisualisation
+8. **Prévisualiser** : Vérifiez les fichiers de configuration générés dans le volet de prévisualisation
 
 9. **Télécharger** : Cliquez sur "Télécharger ZIP" pour obtenir tous les fichiers
 
@@ -508,6 +515,26 @@ Les versions sont automatisées via GitHub Actions. Pour créer une nouvelle ver
 Les tags contenant `-` (ex. `v1.0.0-beta`) sont marqués comme pré-versions.
 
 ## Journal des modifications
+
+### v4.0.0
+
+- **Refonte majeure de l'interface utilisateur/UX** : Surcharge complète de l'interface pour une meilleure utilisabilité
+  - Remplacement de la disposition verticale basée sur des cartes par une disposition Barre latérale + Volet divisé
+  - Navigation par barre latérale pour basculer rapidement entre sections avec raccourcis clavier (`Ctrl/⌘ + 1-5`)
+  - Volet divisé redimensionnable avec éditeur et aperçu en direct côte à côte
+  - Barre latérale réductible avec mode icônes uniquement (`Ctrl/⌘ + B` pour basculer)
+  - Divulgation progressive avec sections d'accordéon pour réduire la charge cognitive
+- **Support des langues RTL** : Support complet de droite à gauche pour l'arabe, l'hébreu et l'ourdou
+  - La barre latérale se positionne automatiquement à droite pour les langues RTL
+  - Tous les éléments de l'interface sont correctement en miroir
+- **Améliorations de la réactivité** :
+  - La barre latérale commence repliée sur les écrans de tablette (768–1023px)
+  - Mise en page optimisée pour les appareils mobiles avec aperçu en feuille inférieure
+  - Déclencheurs d'accordéon tactiles (hauteur minimale de 44px)
+- **Dialogue de bienvenue** : Les visiteurs pour la première fois voient un dialogue de bienvenue au lieu d'une carte statique
+  - Peut être rouvert via « À propos » dans la barre latérale
+- **Composants hérités supprimés** : Nettoyage des anciens composants basés sur des cartes
+- Raccourcis clavier mis à jour pour fonctionner avec la nouvelle mise en page
 
 ### v3.2.1
 

@@ -23,6 +23,8 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import { useTranslation } from 'react-i18next';
 import { useConfig, useTheme } from '@/contexts';
 import { downloadZipFile, type ReadmeLanguageConfig } from '@/services';
+import { SECTION_IDS } from '@/hooks/useActiveSection';
+import type { SectionId } from '@/hooks/useActiveSection';
 
 export type ShortcutCategory = 'navigation' | 'actions';
 
@@ -31,14 +33,6 @@ export interface ShortcutDefinition {
   labelKey: string;
   category: ShortcutCategory;
 }
-
-const CARD_IDS = [
-  'card-dockerfile',
-  'card-docker-compose',
-  'card-claude-md',
-  'card-settings-json',
-  'card-devcontainer',
-] as const;
 
 const languageNames: Record<string, string> = {
   en: 'English',
@@ -76,14 +70,15 @@ export const SHORTCUT_DEFINITIONS: ShortcutDefinition[] = [
   { keys: ['mod', 'Shift', 'Z'], labelKey: 'keyboardShortcuts.shortcuts.redo', category: 'actions' },
   { keys: ['mod', 'S'], labelKey: 'keyboardShortcuts.shortcuts.downloadZip', category: 'actions' },
   { keys: ['mod', 'Shift', 'X'], labelKey: 'keyboardShortcuts.shortcuts.resetDefaults', category: 'actions' },
-  { keys: ['mod', 'E'], labelKey: 'keyboardShortcuts.shortcuts.togglePreview', category: 'actions' },
+  { keys: ['mod', 'E'], labelKey: 'keyboardShortcuts.shortcuts.togglePreviewPane', category: 'actions' },
+  { keys: ['mod', 'B'], labelKey: 'keyboardShortcuts.shortcuts.toggleSidebar', category: 'navigation' },
   { keys: ['mod', 'Shift', 'D'], labelKey: 'keyboardShortcuts.shortcuts.toggleDarkMode', category: 'actions' },
   { keys: ['mod', 'Shift', 'L'], labelKey: 'keyboardShortcuts.shortcuts.openLanguageSwitcher', category: 'actions' },
-  { keys: ['mod', '1'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
-  { keys: ['mod', '2'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
-  { keys: ['mod', '3'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
-  { keys: ['mod', '4'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
-  { keys: ['mod', '5'], labelKey: 'keyboardShortcuts.shortcuts.scrollToCard', category: 'navigation' },
+  { keys: ['mod', '1'], labelKey: 'keyboardShortcuts.shortcuts.switchSection', category: 'navigation' },
+  { keys: ['mod', '2'], labelKey: 'keyboardShortcuts.shortcuts.switchSection', category: 'navigation' },
+  { keys: ['mod', '3'], labelKey: 'keyboardShortcuts.shortcuts.switchSection', category: 'navigation' },
+  { keys: ['mod', '4'], labelKey: 'keyboardShortcuts.shortcuts.switchSection', category: 'navigation' },
+  { keys: ['mod', '5'], labelKey: 'keyboardShortcuts.shortcuts.switchSection', category: 'navigation' },
   { keys: ['mod', '/'], labelKey: 'keyboardShortcuts.shortcuts.openShortcutsHelp', category: 'actions' },
   { keys: ['Escape'], labelKey: 'keyboardShortcuts.shortcuts.closeDialog', category: 'navigation' },
 ];
@@ -92,6 +87,8 @@ export interface UseKeyboardShortcutsOptions {
   onOpenResetDialog: () => void;
   onOpenLanguageSwitcher: () => void;
   onOpenShortcutsHelp: () => void;
+  onSwitchSection: (section: SectionId) => void;
+  onTogglePreview?: () => void;
   onAnnounce: (message: string) => void;
   onUndo?: () => void;
   onRedo?: () => void;
@@ -103,6 +100,8 @@ export function useKeyboardShortcuts({
   onOpenResetDialog,
   onOpenLanguageSwitcher,
   onOpenShortcutsHelp,
+  onSwitchSection,
+  onTogglePreview,
   onAnnounce,
   onUndo,
   onRedo,
@@ -128,19 +127,18 @@ export function useKeyboardShortcuts({
     onAnnounce(t('keyboardShortcuts.announced.downloadStarted'));
   }, [config, t, i18n, onAnnounce]);
 
-  const scrollToCard = useCallback((index: number) => {
-    const cardId = CARD_IDS[index];
-    if (cardId) {
-      const element = document.getElementById(cardId);
-      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      onAnnounce(t('keyboardShortcuts.announced.scrolledToCard', { number: index + 1 }));
+  const switchSection = useCallback((index: number) => {
+    const sectionId = SECTION_IDS[index];
+    if (sectionId) {
+      onSwitchSection(sectionId);
+      onAnnounce(t('keyboardShortcuts.announced.sectionSwitched', { number: index + 1 }));
     }
-  }, [t, onAnnounce]);
+  }, [t, onAnnounce, onSwitchSection]);
 
   const togglePreview = useCallback(() => {
-    window.dispatchEvent(new CustomEvent('toggle-preview'));
-    onAnnounce(t('keyboardShortcuts.announced.previewToggled'));
-  }, [t, onAnnounce]);
+    onTogglePreview?.();
+    onAnnounce(t('keyboardShortcuts.announced.previewPaneToggled'));
+  }, [t, onAnnounce, onTogglePreview]);
 
   const toggleDarkMode = useCallback(() => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
@@ -180,7 +178,7 @@ export function useKeyboardShortcuts({
     onAnnounce(t('keyboardShortcuts.announced.configReset'));
   }, hotkeyOptions);
 
-  // Ctrl/Cmd + E — Toggle preview
+  // Ctrl/Cmd + E — Toggle preview pane
   useHotkeys('mod+e', togglePreview, hotkeyOptions);
 
   // Ctrl/Cmd + Shift + D — Toggle dark mode
@@ -189,12 +187,12 @@ export function useKeyboardShortcuts({
   // Ctrl/Cmd + Shift + L — Open language switcher
   useHotkeys('mod+shift+l', () => { onOpenLanguageSwitcher(); }, hotkeyOptions);
 
-  // Ctrl/Cmd + 1-5 — Scroll to card
-  useHotkeys('mod+1', () => scrollToCard(0), hotkeyOptions);
-  useHotkeys('mod+2', () => scrollToCard(1), hotkeyOptions);
-  useHotkeys('mod+3', () => scrollToCard(2), hotkeyOptions);
-  useHotkeys('mod+4', () => scrollToCard(3), hotkeyOptions);
-  useHotkeys('mod+5', () => scrollToCard(4), hotkeyOptions);
+  // Ctrl/Cmd + 1-5 — Switch to section
+  useHotkeys('mod+1', () => switchSection(0), hotkeyOptions);
+  useHotkeys('mod+2', () => switchSection(1), hotkeyOptions);
+  useHotkeys('mod+3', () => switchSection(2), hotkeyOptions);
+  useHotkeys('mod+4', () => switchSection(3), hotkeyOptions);
+  useHotkeys('mod+5', () => switchSection(4), hotkeyOptions);
 
   // Ctrl/Cmd + / — Open shortcuts help
   useHotkeys('mod+/', () => { onOpenShortcutsHelp(); }, hotkeyOptions);

@@ -84,9 +84,15 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
 - **Polecenia cyklu życia**: Ustaw polecenia dla zdarzeń post-create, post-start i post-attach
 - **Zalecane rozszerzenia**: Automatyczne zalecenia rozszerzeń na podstawie wybranego oprogramowania
 
+### Nowoczesny Interfejs
+
+- **Nawigacja Paska Bocznego**: Szybki dostęp do wszystkich sekcji konfiguracji z zwijającym się paskiem bocznym
+- **Układ Podzielonego Okna**: Edytor i podgląd na żywo obok siebie z zmiennymi rozmiarami paneli
+- **Obsługa Języków RTL**: Pełna obsługa od prawej do lewej dla arabskiego, hebrajskiego i urdu
+
 ### Funkcje ogólne
 
-- **Podgląd na żywo**: Zobacz podglądy generowanych plików konfiguracyjnych w czasie rzeczywistym
+- **Podgląd na żywo**: Zobacz podglądy generowanych plików konfiguracyjnych w czasie rzeczywistym w podzielonym oknie
 - **Pobieranie ZIP**: Pobierz wszystkie pliki jako gotowe do użycia archiwum ZIP
 - **Automatyczne generowanie README**: Każdy plik ZIP zawiera szczegółowy README.md z:
   - Przeglądem plików i opisami
@@ -140,18 +146,19 @@ Wszystkie skróty używają `Ctrl` na Windows/Linux i `⌘` (Cmd) na macOS.
 | Skrót | Akcja |
 | ----- | ----- |
 | `Ctrl/⌘ + S` | Pobierz ZIP |
-| `Ctrl/⌘ + E` | Przełącz podgląd |
+| `Ctrl/⌘ + B` | Przełącz pasek boczny |
+| `Ctrl/⌘ + E` | Przełącz panel podglądu |
 | `Ctrl/⌘ + Z` | Cofnij |
 | `Ctrl/⌘ + Y` | Ponów |
 | `Ctrl/⌘ + Shift + Z` | Ponów (alternatywny) |
 | `Ctrl/⌘ + Shift + D` | Przełącz tryb ciemny/jasny |
 | `Ctrl/⌘ + Shift + X` | Przywróć ustawienia domyślne |
 | `Ctrl/⌘ + Shift + L` | Otwórz przełącznik języka |
-| `Ctrl/⌘ + 1-5` | Przewiń do karty (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Przełącz sekcję (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Otwórz pomoc skrótów klawiaturowych |
 | `Escape` | Zamknij okno dialogowe |
 
-Ikona klawiatury w nagłówku również otwiera okno dialogowe pomocy skrótów.
+Otwórz pomoc skrótów klawiaturowych z menu ustawień w nagłówku.
 
 ### Mechanizm automatycznego zapisywania
 
@@ -515,6 +522,26 @@ Wydania są zautomatyzowane przez GitHub Actions. Aby utworzyć nowe wydanie:
 Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
 ## Dziennik zmian
+
+### v4.0.0
+
+- **Duża przeprojektowanie interfejsu użytkownika/doświadczenia**: Całkowita przebudowa interfejsu dla lepszej użyteczności
+  - Zastąpienie pionowego układu opartego na kartach układem Paska Bocznego + Podzielonego Okna
+  - Nawigacja paska bocznego do szybkiego przełączania sekcji ze skrótami klawiaturowymi (`Ctrl/⌘ + 1-5`)
+  - Zmienne rozmiary podzielonego okna z edytorem i podglądem na żywo obok siebie
+  - Zwijający się pasek boczny z trybem tylko ikon (`Ctrl/⌘ + B` do przełączania)
+  - Stopniowe ujawnianie z sekcjami accordion w celu zmniejszenia obciążenia poznawczego
+- **Obsługa Języków RTL**: Pełna obsługa od prawej do lewej dla arabskiego, hebrajskiego i urdu
+  - Pasek boczny jest automatycznie umieszczany po prawej dla języków RTL
+  - Wszystkie elementy interfejsu użytkownika są prawidłowo odbijane
+- **Ulepszenia Responsywności**:
+  - Pasek boczny zaczyna się zwinięty na ekranach tablet (768–1023px)
+  - Układ zoptymalizowany dla urządzeń mobilnych z podglądem dolnego arkusza
+  - Przyjazne dla dotyku triggery accordion (минimalna wysokość 44px)
+- **Dialog Powitania**: Odwiedzający po raz pierwszy widzą dialog powitania zamiast statycznej karty
+  - Można go otworzyć ponownie za pośrednictwem "O nas" na pasku bocznym
+- **Usunięcie Starszych Komponentów**: Czyszczenie starych komponentów opartych na kartach
+- Aktualizacja skrótów klawiaturowych do pracy z nowym układem
 
 ### v3.2.1
 

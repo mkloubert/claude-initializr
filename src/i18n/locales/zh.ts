@@ -29,6 +29,9 @@ const zh: Translations = {
     "close": "关闭欢迎消息",
     "description": "Claude Code是Anthropic强大的AI编程助手，可以直接在您的机器上读取、编写和执行代码。虽然非常有用，但运行具有文件系统和终端访问权限的AI需要仔细考虑安全性。",
     "purpose": "此工具生成完整的Docker配置，允许您在隔离的容器环境中运行Claude Code。您的代码保持受保护状态，同时Claude仍可帮助您开发、调试和重构。",
+    "dialogTitle": "欢迎使用 Claude Initializr",
+    "getStarted": "开始使用",
+    "dontShowAgain": "不再显示",
     "features": {
       "title": "您可以配置的内容：",
       "dockerfile": "选择要安装的开发工具（TypeScript、Python、Go、ffmpeg、ImageMagick）",
@@ -167,18 +170,36 @@ const zh: Translations = {
     "noAskRules": "未定义询问规则。",
     "noDenyRules": "未定义拒绝规则。",
     "help": "为 Read()、Edit() 和 WebFetch() 操作定义权限规则。模式支持 glob 语法，如 src/** 用于递归匹配。",
-    "learnMore": "了解更多"
+    "learnMore": "了解更多",
+    "summary": "概览",
+    "denyCount": "{{count}} 条拒绝",
+    "askCount": "{{count}} 条询问",
+    "allowCount": "{{count}} 条允许"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile定义在容器中安装哪些软件。除了Node.js和Claude Code外，还可以包含TypeScript、Python、Go、ffmpeg或ImageMagick等附加工具。当Claude执行命令时，所选软件将可用。",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "docker-compose.yaml文件控制容器的启动方式。可以在此定义环境变量（如API密钥）。受保护文件挂载为空的只读文件，以防止Claude访问.env文件等敏感数据。"
+    "dockerComposeDesc": "docker-compose.yaml文件控制容器的启动方式。可以在此定义环境变量（如API密钥）。受保护文件挂载为空的只读文件，以防止Claude访问.env文件等敏感数据。",
+    "title": "预览",
+    "showPreview": "显示预览",
+    "hidePreview": "隐藏预览",
+    "empty": "此部分没有可用的预览。",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "预览已集成在上方的编辑器中。"
+  },
+  "dockerfile": {
+    "software": "软件",
+    "advancedOptions": "高级选项",
+    "softwareCount": "已选择 {{count}} 项"
   },
   "dockerCompose": {
     "platform": "平台",
     "platformDesc": "为容器设置特定平台（例如linux/amd64）。留空以使用默认平台。当基础镜像不支持您的架构时使用此选项。",
-    "platformPlaceholder": "示例: linux/amd64"
+    "platformPlaceholder": "示例: linux/amd64",
+    "envSection": "环境变量",
+    "protectedSection": "受保护的文件"
   },
   "download": {
     "button": "下载ZIP",
@@ -475,8 +496,9 @@ const zh: Translations = {
       "downloadZip": "下载 ZIP",
       "forceSave": "强制保存",
       "resetDefaults": "重置为默认值",
-      "togglePreview": "切换预览",
-      "scrollToCard": "滚动到卡片 {{number}}",
+      "togglePreviewPane": "切换预览窗格",
+      "toggleSidebar": "切换侧边栏",
+      "switchSection": "切换到部分 {{number}}",
       "toggleDarkMode": "切换深色模式",
       "openLanguageSwitcher": "打开语言切换器",
       "closeDialog": "关闭对话框",
@@ -488,8 +510,9 @@ const zh: Translations = {
       "downloadStarted": "下载已开始",
       "configReset": "配置已重置为默认值",
       "darkModeToggled": "深色模式已切换",
-      "previewToggled": "预览已切换",
-      "scrolledToCard": "已滚动到卡片 {{number}}",
+      "previewPaneToggled": "预览窗格已切换",
+      "sectionSwitched": "已切换到部分 {{number}}",
+      "sidebarToggled": "侧边栏已切换",
       "undoPerformed": "已撤销更改",
       "redoPerformed": "已重做更改"
     }
@@ -537,6 +560,39 @@ const zh: Translations = {
       "multipleChanges": "多项更改"
     }
   },
+  "header": {
+    "download": "下载",
+    "downloadZip": "下载 ZIP",
+    "exportConfig": "导出配置",
+    "importConfig": "导入配置",
+    "settings": "设置",
+    "autosave": "自动保存",
+    "theme": "主题",
+    "themeLight": "浅色",
+    "themeDark": "深色",
+    "themeSystem": "系统",
+    "language": "语言",
+    "history": "历史记录",
+    "resetDefaults": "恢复默认设置",
+    "keyboardShortcuts": "键盘快捷键"
+  },
+  "sidebar": {
+    "configuration": "配置",
+    "actions": "操作",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "设置",
+    "devContainer": "DevContainer",
+    "import": "导入",
+    "export": "导出",
+    "history": "历史记录",
+    "reset": "重置",
+    "toggle": "切换侧边栏",
+    "about": "关于",
+    "donate": "捐赠",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "配置 VS Code Dev Containers 和 GitHub Codespaces 支持。这将生成一个定义开发环境的 devcontainer.json 文件。",
@@ -552,6 +608,11 @@ const zh: Translations = {
       "ports": "端口",
       "preview": "预览"
     },
+    "extensionsSection": "扩展",
+    "featuresSection": "功能",
+    "portsSection": "转发端口",
+    "scriptsSection": "生命周期脚本",
+    "settingsSection": "VS Code 设置",
     "extensions": {
       "title": "VS Code 扩展",
       "description": "创建容器时自动安装的扩展。",

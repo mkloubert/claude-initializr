@@ -29,6 +29,9 @@ const uk: Translations = {
     "close": "Закрити вітальне повідомлення",
     "description": "Claude Code — це потужний AI-асистент для програмування від Anthropic, який може читати, писати та виконувати код безпосередньо на вашій машині. Хоча він неймовірно корисний, запуск AI з доступом до файлової системи та терміналу вимагає ретельного врахування питань безпеки.",
     "purpose": "Цей інструмент генерує повну конфігурацію Docker, яка дозволяє запускати Claude Code в ізольованому контейнерному середовищі. Ваш код залишається захищеним, поки Claude все ще може допомагати вам розробляти, налагоджувати та рефакторити.",
+    "dialogTitle": "Ласкаво просимо до Claude Initializr",
+    "getStarted": "Почати",
+    "dontShowAgain": "Більше не показувати",
     "features": {
       "title": "Що ви можете налаштувати:",
       "dockerfile": "Виберіть, які інструменти розробки встановити (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const uk: Translations = {
     "noAskRules": "Правила запиту не визначено.",
     "noDenyRules": "Правила заборони не визначено.",
     "help": "Визначте правила дозволів для операцій Read(), Edit() та WebFetch(). Шаблони підтримують синтаксис glob, наприклад src/** для рекурсивного збігу.",
-    "learnMore": "Дізнатися більше"
+    "learnMore": "Дізнатися більше",
+    "summary": "Огляд",
+    "denyCount": "{{count}} відхилено",
+    "askCount": "{{count}} запит",
+    "allowCount": "{{count}} дозволено"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile визначає, яке програмне забезпечення встановлюється в контейнері. Окрім Node.js та Claude Code, можна додати додаткові інструменти, такі як TypeScript, Python, Go, ffmpeg або ImageMagick. Вибране програмне забезпечення буде доступне, коли Claude виконує команди.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "Файл docker-compose.yaml контролює, як запускається контейнер. Тут можна визначити змінні середовища (наприклад, API-ключі). Захищені файли монтуються як порожні файли лише для читання, щоб запобігти доступу Claude до конфіденційних даних, таких як файли .env."
+    "dockerComposeDesc": "Файл docker-compose.yaml контролює, як запускається контейнер. Тут можна визначити змінні середовища (наприклад, API-ключі). Захищені файли монтуються як порожні файли лише для читання, щоб запобігти доступу Claude до конфіденційних даних, таких як файли .env.",
+    "title": "Попередній перегляд",
+    "showPreview": "Показати попередній перегляд",
+    "hidePreview": "Сховати попередній перегляд",
+    "empty": "Для цього розділу попередній перегляд недоступний.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "Попередній перегляд інтегровано в редактор вище."
+  },
+  "dockerfile": {
+    "software": "Програмне забезпечення",
+    "advancedOptions": "Розширені параметри",
+    "softwareCount": "{{count}} обрано"
   },
   "dockerCompose": {
     "platform": "Платформа",
     "platformDesc": "Встановіть конкретну платформу для контейнера (напр. linux/amd64). Залиште порожнім для використання платформи за замовчуванням. Використовуйте, коли базові образи не підтримують вашу архітектуру.",
-    "platformPlaceholder": "Приклад: linux/amd64"
+    "platformPlaceholder": "Приклад: linux/amd64",
+    "envSection": "Змінні середовища",
+    "protectedSection": "Захищені файли"
   },
   "download": {
     "button": "Завантажити ZIP",
@@ -475,8 +496,9 @@ const uk: Translations = {
       "downloadZip": "Завантажити ZIP",
       "forceSave": "Примусове збереження",
       "resetDefaults": "Скинути до стандартних",
-      "togglePreview": "Перемкнути попередній перегляд",
-      "scrollToCard": "Прокрутити до картки {{number}}",
+      "togglePreviewPane": "Перемкнути панель попереднього перегляду",
+      "toggleSidebar": "Перемкнути бічну панель",
+      "switchSection": "Перейти до розділу {{number}}",
       "toggleDarkMode": "Перемкнути темний режим",
       "openLanguageSwitcher": "Відкрити перемикач мови",
       "closeDialog": "Закрити діалог",
@@ -488,8 +510,9 @@ const uk: Translations = {
       "downloadStarted": "Завантаження розпочато",
       "configReset": "Конфігурацію скинуто до стандартних значень",
       "darkModeToggled": "Темний режим перемкнуто",
-      "previewToggled": "Попередній перегляд перемкнуто",
-      "scrolledToCard": "Прокручено до картки {{number}}",
+      "previewPaneToggled": "Панель попереднього перегляду перемкнута",
+      "sectionSwitched": "Переміщено до розділу {{number}}",
+      "sidebarToggled": "Бічна панель перемкнута",
       "undoPerformed": "Зміну скасовано",
       "redoPerformed": "Зміну повторено"
     }
@@ -537,6 +560,39 @@ const uk: Translations = {
       "multipleChanges": "Кілька змін"
     }
   },
+  "header": {
+    "download": "Завантажити",
+    "downloadZip": "Завантажити ZIP",
+    "exportConfig": "Експорт конфігурації",
+    "importConfig": "Імпорт конфігурації",
+    "settings": "Налаштування",
+    "autosave": "Автозбереження",
+    "theme": "Тема",
+    "themeLight": "Світла",
+    "themeDark": "Темна",
+    "themeSystem": "Системна",
+    "language": "Мова",
+    "history": "Історія",
+    "resetDefaults": "Скинути до стандартних",
+    "keyboardShortcuts": "Гарячі клавіші"
+  },
+  "sidebar": {
+    "configuration": "Конфігурація",
+    "actions": "Дії",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "Налаштування",
+    "devContainer": "DevContainer",
+    "import": "Імпорт",
+    "export": "Експорт",
+    "history": "Історія",
+    "reset": "Скинути",
+    "toggle": "Перемкнути бічну панель",
+    "about": "Про програму",
+    "donate": "Підтримати",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "Налаштуйте підтримку VS Code Dev Containers та GitHub Codespaces. Це генерує файл devcontainer.json, який визначає ваше середовище розробки.",
@@ -552,6 +608,11 @@ const uk: Translations = {
       "ports": "Порти",
       "preview": "Попередній перегляд"
     },
+    "extensionsSection": "Розширення",
+    "featuresSection": "Функції",
+    "portsSection": "Переадресовані порти",
+    "scriptsSection": "Скрипти життєвого циклу",
+    "settingsSection": "Налаштування VS Code",
     "extensions": {
       "title": "Розширення VS Code",
       "description": "Розширення, які автоматично встановлюються при створенні контейнера.",

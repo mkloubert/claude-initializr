@@ -35,7 +35,6 @@ interface MainLayoutProps {
 export function MainLayout({ children }: MainLayoutProps) {
   const [shortcutsHelpOpen, setShortcutsHelpOpen] = useState(false);
   const [resetDialogOpen, setResetDialogOpen] = useState(false);
-  const [languageSwitcherOpen, setLanguageSwitcherOpen] = useState(false);
   const [announcement, setAnnouncement] = useState('');
 
   const { undo, redo, canUndo, canRedo } = useHistory();
@@ -47,8 +46,9 @@ export function MainLayout({ children }: MainLayoutProps) {
 
   useKeyboardShortcuts({
     onOpenResetDialog: () => setResetDialogOpen(true),
-    onOpenLanguageSwitcher: () => setLanguageSwitcherOpen(true),
+    onOpenLanguageSwitcher: () => { /* Language is now in the Settings dropdown submenu */ },
     onOpenShortcutsHelp: () => setShortcutsHelpOpen(true),
+    onSwitchSection: () => { /* No sidebar sections in legacy layout */ },
     onAnnounce: handleAnnounce,
     onUndo: undo,
     onRedo: redo,
@@ -61,8 +61,6 @@ export function MainLayout({ children }: MainLayoutProps) {
       <Header
         resetDialogOpen={resetDialogOpen}
         onResetDialogOpenChange={setResetDialogOpen}
-        languageSwitcherOpen={languageSwitcherOpen}
-        onLanguageSwitcherOpenChange={setLanguageSwitcherOpen}
         onOpenShortcutsHelp={() => setShortcutsHelpOpen(true)}
       />
       <main className="flex-1 pb-14">

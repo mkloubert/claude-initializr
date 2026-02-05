@@ -84,9 +84,15 @@ A web application to generate Docker configuration files for running [Claude Cod
 - **Lifecycle Commands**: Set up commands for post-create, post-start, and post-attach events
 - **Recommended Extensions**: Automatic extension recommendations based on selected software
 
+### Modern Interface
+
+- **Sidebar Navigation**: Quick access to all configuration sections with a collapsible sidebar
+- **Split Pane Layout**: Side-by-side editor and live preview with resizable panels
+- **RTL Language Support**: Full right-to-left support for Arabic, Hebrew, and Urdu
+
 ### General Features
 
-- **Live Preview**: See real-time previews of generated configuration files
+- **Live Preview**: See real-time previews of generated configuration files in the split pane
 - **ZIP Download**: Download all files as a ready-to-use ZIP archive
 - **Automatic README Generation**: Each ZIP includes a detailed README.md with:
   - File overview and descriptions
@@ -140,18 +146,19 @@ All shortcuts use `Ctrl` on Windows/Linux and `⌘` (Cmd) on macOS.
 | Shortcut | Action |
 | -------- | ------ |
 | `Ctrl/⌘ + S` | Download ZIP |
-| `Ctrl/⌘ + E` | Toggle preview |
+| `Ctrl/⌘ + E` | Toggle preview pane |
+| `Ctrl/⌘ + B` | Toggle sidebar |
 | `Ctrl/⌘ + Z` | Undo |
 | `Ctrl/⌘ + Y` | Redo |
 | `Ctrl/⌘ + Shift + Z` | Redo (alternative) |
 | `Ctrl/⌘ + Shift + D` | Toggle dark/light mode |
 | `Ctrl/⌘ + Shift + X` | Reset to defaults |
 | `Ctrl/⌘ + Shift + L` | Open language switcher |
-| `Ctrl/⌘ + 1-5` | Scroll to card (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Switch to section (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Open keyboard shortcuts help |
 | `Escape` | Close dialog |
 
-A keyboard icon in the header also opens the shortcuts help dialog.
+Access keyboard shortcuts help via the settings menu in the header.
 
 ### Autosave Mechanism
 
@@ -309,13 +316,13 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
 6. **Edit CLAUDE.md**: Write instructions for Claude in the Markdown editor
 
-7. **Configure Permissions**: Set up permission rules in the settings.json card
+7. **Configure Permissions**: Set up permission rules in the settings.json section
    - Add `Allow` rules for operations that should be auto-approved
    - Add `Ask` rules for operations requiring confirmation
    - Add `Deny` rules for forbidden operations
    - Protected files are automatically added as `Read()` deny rules
 
-8. **Preview**: Check the generated configuration files in the preview tabs
+8. **Preview**: Check the generated configuration files in the live preview pane
 
 9. **Download**: Click "Download ZIP" to get all files
 
@@ -526,6 +533,26 @@ Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
 ## Changelog
 
+### v4.0.0
+
+- **Major UI/UX Redesign**: Complete interface overhaul for improved usability
+  - Replaced vertical card-based layout with Sidebar + Split Pane layout
+  - Sidebar navigation for quick section switching with keyboard shortcuts (`Ctrl/⌘ + 1-5`)
+  - Resizable split pane with editor and live preview side by side
+  - Collapsible sidebar with icon-only mode (`Ctrl/⌘ + B` to toggle)
+  - Progressive disclosure with accordion sections to reduce cognitive load
+- **RTL Language Support**: Full right-to-left support for Arabic, Hebrew, and Urdu
+  - Sidebar automatically positions on the right for RTL languages
+  - All UI elements properly mirrored
+- **Responsive Improvements**:
+  - Sidebar starts collapsed on tablet screens (768–1023px)
+  - Mobile-optimized layout with bottom sheet preview
+  - Touch-friendly accordion triggers (44px minimum height)
+- **Welcome Dialog**: First-time visitors see a welcome dialog instead of a static card
+  - Can be reopened via "About" in the sidebar
+- **Removed Legacy Components**: Cleaned up old card-based components
+- Updated keyboard shortcuts to work with new layout
+
 ### v3.2.1
 
 - Added Configuration History with undo/redo functionality
@@ -542,7 +569,7 @@ Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
   - Set up port forwarding
   - Configure lifecycle commands (post-create, post-start, post-attach)
   - Automatic extension recommendations based on selected software
-- Added keyboard shortcut `Ctrl/⌘ + 5` to scroll to DevContainer card
+- Added keyboard shortcut `Ctrl/⌘ + 5` to access DevContainer section
 - Updated welcome section with DevContainer feature
 
 ### v3.1.2

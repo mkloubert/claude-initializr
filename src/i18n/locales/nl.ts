@@ -29,6 +29,9 @@ const nl: Translations = {
     "close": "Welkomstbericht sluiten",
     "description": "Claude Code is Anthropic's krachtige AI-codeerassistent die code direct op je machine kan lezen, schrijven en uitvoeren. Hoewel ongelooflijk nuttig, vereist het uitvoeren van een AI met toegang tot het bestandssysteem en de terminal zorgvuldige overweging van beveiliging.",
     "purpose": "Deze tool genereert een complete Docker-configuratie waarmee je Claude Code in een geïsoleerde containeromgeving kunt uitvoeren. Je code blijft beschermd terwijl Claude je nog steeds kan helpen met ontwikkelen, debuggen en refactoren.",
+    "dialogTitle": "Welkom bij Claude Initializr",
+    "getStarted": "Aan de slag",
+    "dontShowAgain": "Niet meer tonen",
     "features": {
       "title": "Wat je kunt configureren:",
       "dockerfile": "Kies welke ontwikkeltools te installeren (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const nl: Translations = {
     "noAskRules": "Geen vraagregels gedefinieerd.",
     "noDenyRules": "Geen weigeringsregels gedefinieerd.",
     "help": "Definieer machtigingsregels voor Read(), Edit() en WebFetch() operaties. Patronen ondersteunen glob-syntaxis zoals src/** voor recursieve matching.",
-    "learnMore": "Meer informatie"
+    "learnMore": "Meer informatie",
+    "summary": "Overzicht",
+    "denyCount": "{{count}} geweigerd",
+    "askCount": "{{count}} vragen",
+    "allowCount": "{{count}} toegestaan"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Het Dockerfile definieert welke software in de container wordt geïnstalleerd. Naast Node.js en Claude Code kunnen extra tools zoals TypeScript, Python, Go, ffmpeg of ImageMagick worden toegevoegd. De geselecteerde software is beschikbaar wanneer Claude commando's uitvoert.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "Het docker-compose.yaml-bestand regelt hoe de container wordt gestart. Omgevingsvariabelen (zoals API-sleutels) kunnen hier worden gedefinieerd. Beschermde bestanden worden gemount als lege alleen-lezen bestanden om te voorkomen dat Claude toegang krijgt tot gevoelige gegevens zoals .env-bestanden."
+    "dockerComposeDesc": "Het docker-compose.yaml-bestand regelt hoe de container wordt gestart. Omgevingsvariabelen (zoals API-sleutels) kunnen hier worden gedefinieerd. Beschermde bestanden worden gemount als lege alleen-lezen bestanden om te voorkomen dat Claude toegang krijgt tot gevoelige gegevens zoals .env-bestanden.",
+    "title": "Voorbeeld",
+    "showPreview": "Voorbeeld tonen",
+    "hidePreview": "Voorbeeld verbergen",
+    "empty": "Geen voorbeeld beschikbaar voor deze sectie.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "Het voorbeeld is geïntegreerd in de editor hierboven."
+  },
+  "dockerfile": {
+    "software": "Software",
+    "advancedOptions": "Geavanceerde opties",
+    "softwareCount": "{{count}} geselecteerd"
   },
   "dockerCompose": {
     "platform": "Platform",
     "platformDesc": "Stel een specifiek platform in voor de container (bijv. linux/amd64). Laat leeg om het standaardplatform te gebruiken. Gebruik dit wanneer basis-images je architectuur niet ondersteunen.",
-    "platformPlaceholder": "Voorbeeld: linux/amd64"
+    "platformPlaceholder": "Voorbeeld: linux/amd64",
+    "envSection": "Omgevingsvariabelen",
+    "protectedSection": "Beschermde bestanden"
   },
   "download": {
     "button": "ZIP downloaden",
@@ -475,8 +496,9 @@ const nl: Translations = {
       "downloadZip": "ZIP downloaden",
       "forceSave": "Opslaan forceren",
       "resetDefaults": "Standaardwaarden herstellen",
-      "togglePreview": "Voorbeeld wisselen",
-      "scrollToCard": "Naar kaart {{number}} scrollen",
+      "togglePreviewPane": "Voorbeeldpaneel wisselen",
+      "toggleSidebar": "Zijbalk wisselen",
+      "switchSection": "Naar sectie {{number}} overschakelen",
       "toggleDarkMode": "Donkere modus wisselen",
       "openLanguageSwitcher": "Taalkiezer openen",
       "closeDialog": "Dialoogvenster sluiten",
@@ -488,8 +510,9 @@ const nl: Translations = {
       "downloadStarted": "Download gestart",
       "configReset": "Configuratie hersteld naar standaardwaarden",
       "darkModeToggled": "Donkere modus gewisseld",
-      "previewToggled": "Voorbeeld gewisseld",
-      "scrolledToCard": "Gescrold naar kaart {{number}}",
+      "previewPaneToggled": "Voorbeeldpaneel gewisseld",
+      "sectionSwitched": "Overschakeld naar sectie {{number}}",
+      "sidebarToggled": "Zijbalk gewisseld",
       "undoPerformed": "Wijziging ongedaan gemaakt",
       "redoPerformed": "Wijziging opnieuw toegepast"
     }
@@ -537,6 +560,39 @@ const nl: Translations = {
       "multipleChanges": "Meerdere wijzigingen"
     }
   },
+  "header": {
+    "download": "Downloaden",
+    "downloadZip": "ZIP downloaden",
+    "exportConfig": "Configuratie exporteren",
+    "importConfig": "Configuratie importeren",
+    "settings": "Instellingen",
+    "autosave": "Automatisch opslaan",
+    "theme": "Thema",
+    "themeLight": "Licht",
+    "themeDark": "Donker",
+    "themeSystem": "Systeem",
+    "language": "Taal",
+    "history": "Geschiedenis",
+    "resetDefaults": "Standaardwaarden herstellen",
+    "keyboardShortcuts": "Sneltoetsen"
+  },
+  "sidebar": {
+    "configuration": "Configuratie",
+    "actions": "Acties",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "Instellingen",
+    "devContainer": "DevContainer",
+    "import": "Importeren",
+    "export": "Exporteren",
+    "history": "Geschiedenis",
+    "reset": "Herstellen",
+    "toggle": "Zijbalk in-/uitklappen",
+    "about": "Over",
+    "donate": "Doneren",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "Configureer ondersteuning voor VS Code Dev Containers en GitHub Codespaces. Dit genereert een devcontainer.json bestand dat je ontwikkelomgeving definieert.",
@@ -552,6 +608,11 @@ const nl: Translations = {
       "ports": "Poorten",
       "preview": "Voorbeeld"
     },
+    "extensionsSection": "Extensies",
+    "featuresSection": "Functies",
+    "portsSection": "Doorgestuurde poorten",
+    "scriptsSection": "Levenscyclus-scripts",
+    "settingsSection": "VS Code-instellingen",
     "extensions": {
       "title": "VS Code extensies",
       "description": "Extensies die automatisch worden geïnstalleerd wanneer de container wordt aangemaakt.",

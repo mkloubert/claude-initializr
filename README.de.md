@@ -84,9 +84,15 @@ Eine Webanwendung zur Generierung von Docker-Konfigurationsdateien, um [Claude C
 - **Lifecycle-Befehle**: Richte Befehle für Post-Create, Post-Start und Post-Attach Events ein
 - **Empfohlene Erweiterungen**: Automatische Erweiterungsempfehlungen basierend auf ausgewählter Software
 
+### Modernes Interface
+
+- **Sidebar-Navigation**: Schneller Zugriff auf alle Konfigurationsabschnitte mit einer ausklappbaren Sidebar
+- **Split-Pane-Layout**: Nebeneinander angeordneter Editor und Live-Vorschau mit veränderbaren Fenstern
+- **RTL-Sprachunterstützung**: Vollständige Unterstützung für Sprachen von rechts nach links (Arabisch, Hebräisch, Urdu)
+
 ### Allgemeine Funktionen
 
-- **Live-Vorschau**: Echtzeit-Vorschauen der generierten Konfigurationsdateien
+- **Live-Vorschau**: Echtzeit-Vorschauen der generierten Konfigurationsdateien in der Split-Pane
 - **ZIP-Download**: Lade alle Dateien als einsatzbereites ZIP-Archiv herunter
 - **Automatische README-Generierung**: Jedes ZIP enthält eine detaillierte README.md mit:
   - Dateiübersicht und Beschreibungen
@@ -140,18 +146,19 @@ Alle Kürzel verwenden `Ctrl` unter Windows/Linux und `⌘` (Cmd) unter macOS.
 | Kürzel | Aktion |
 | ------ | ------ |
 | `Ctrl/⌘ + S` | ZIP herunterladen |
-| `Ctrl/⌘ + E` | Vorschau umschalten |
+| `Ctrl/⌘ + E` | Vorschau-Fenster umschalten |
+| `Ctrl/⌘ + B` | Sidebar umschalten |
 | `Ctrl/⌘ + Z` | Rückgängig |
 | `Ctrl/⌘ + Y` | Wiederherstellen |
 | `Ctrl/⌘ + Shift + Z` | Wiederherstellen (alternativ) |
 | `Ctrl/⌘ + Shift + D` | Dunkles/Helles Design umschalten |
 | `Ctrl/⌘ + Shift + X` | Auf Standardwerte zurücksetzen |
 | `Ctrl/⌘ + Shift + L` | Sprachumschalter öffnen |
-| `Ctrl/⌘ + 1-5` | Zur Karte scrollen (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Zum Abschnitt wechseln (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Tastaturkürzel-Hilfe öffnen |
 | `Escape` | Dialog schließen |
 
-Ein Tastatursymbol in der Kopfzeile öffnet ebenfalls den Tastaturkürzel-Hilfedialog.
+Tastaturkürzel-Hilfe über das Einstellungsmenü in der Kopfzeile öffnen.
 
 ### Automatisches Speichern
 
@@ -298,13 +305,13 @@ VITE_AUTHOR_NAME=Marcel Joachim Kloubert
 
 6. **CLAUDE.md bearbeiten**: Schreibe Anweisungen für Claude im Markdown-Editor
 
-7. **Berechtigungen konfigurieren**: Richte Berechtigungsregeln in der settings.json Karte ein
+7. **Berechtigungen konfigurieren**: Richte Berechtigungsregeln im Abschnitt settings.json ein
    - Füge `Allow` Regeln für automatisch genehmigte Operationen hinzu
    - Füge `Ask` Regeln für Operationen mit Bestätigung hinzu
    - Füge `Deny` Regeln für verbotene Operationen hinzu
    - Geschützte Dateien werden automatisch als `Read()` Deny-Regeln hinzugefügt
 
-8. **Vorschau**: Überprüfe die generierten Konfigurationsdateien in den Vorschau-Tabs
+8. **Vorschau**: Überprüfe die generierten Konfigurationsdateien in der Vorschau-Pane
 
 9. **Herunterladen**: Klicke auf "ZIP herunterladen", um alle Dateien zu erhalten
 
@@ -507,6 +514,26 @@ Releases werden automatisch über GitHub Actions erstellt. Um ein neues Release 
 Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
 ## Änderungsprotokoll
+
+### v4.0.0
+
+- **Großes UI/UX-Redesign**: Vollständiger Interface-Überarbeitungen für verbesserte Benutzerfreundlichkeit
+  - Ersatz des vertikalen Karten-basierten Layouts durch Sidebar + Split-Pane-Layout
+  - Sidebar-Navigation für schnelle Abschnittswechsel mit Tastaturkürzeln (`Ctrl/⌘ + 1-5`)
+  - Veränderbares Split-Pane mit Editor und Live-Vorschau nebeneinander
+  - Ausklappbare Sidebar mit Symbol-Only-Modus (`Ctrl/⌘ + B` zum Umschalten)
+  - Progressive Offenbarung mit Accordion-Abschnitten zur Reduzierung der kognitiven Last
+- **RTL-Sprachunterstützung**: Vollständige Unterstützung für Arabisch, Hebräisch und Urdu
+  - Sidebar positioniert sich automatisch auf der rechten Seite für RTL-Sprachen
+  - Alle UI-Elemente sind korrekt gespiegelt
+- **Responsive-Verbesserungen**:
+  - Sidebar ist auf Tablet-Bildschirmen (768–1023px) zusammengeklappt
+  - Mobile-optimiertes Layout mit Bottom-Sheet-Vorschau
+  - Touch-freundliche Accordion-Trigger (mindestens 44px Höhe)
+- **Willkommens-Dialog**: Erstbesucher sehen einen Willkommens-Dialog statt einer statischen Karte
+  - Kann über "Über" in der Sidebar erneut geöffnet werden
+- **Veraltete Komponenten entfernt**: Aufräumung alter Karten-basierten Komponenten
+- Tastaturkürzel für neues Layout aktualisiert
 
 ### v3.2.1
 

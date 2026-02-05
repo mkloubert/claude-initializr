@@ -18,40 +18,15 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useTheme } from '@/contexts';
-
-interface CodePreviewProps {
-  code: string;
-  language: string;
-}
+export const WELCOME_STORAGE_KEY = 'claude-initializr-welcome-dismissed';
 
 /**
- * Generic code preview component with syntax highlighting.
- * Fills the available height of its parent container.
+ * Checks if the welcome dialog should be shown (not previously dismissed).
  */
-export function CodePreview({
-  code,
-  language,
-}: CodePreviewProps) {
-  const { resolvedTheme } = useTheme();
-  const syntaxTheme = resolvedTheme === 'dark' ? oneDark : oneLight;
-
-  return (
-    <div className="code-preview-wrapper overflow-auto rounded-md border">
-      <SyntaxHighlighter
-        language={language}
-        style={syntaxTheme}
-        customStyle={{
-          margin: 0,
-          borderRadius: '0.375rem',
-          fontSize: '0.875rem',
-        }}
-        showLineNumbers
-      >
-        {code}
-      </SyntaxHighlighter>
-    </div>
-  );
+export function shouldShowWelcome(): boolean {
+  try {
+    return localStorage.getItem(WELCOME_STORAGE_KEY) !== 'true';
+  } catch {
+    return true;
+  }
 }

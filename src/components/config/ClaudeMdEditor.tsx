@@ -23,13 +23,6 @@ import { useTranslation } from 'react-i18next';
 import MDEditor, { commands, type ICommand } from '@uiw/react-md-editor';
 import { useConfig, useTheme } from '@/contexts';
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import {
   baseAptPackages,
   baseNpmPackages,
   optionalAptPackages,
@@ -45,45 +38,36 @@ function generateSoftwareList(
   customAptPackages: string[],
   customNpmPackages: CustomNpmPackage[]
 ): string {
-  // Collect all APT packages
   const aptPackages = [...baseAptPackages];
 
-  // Add optional APT packages based on config
   for (const [key, packages] of Object.entries(optionalAptPackages)) {
     if (software[key as keyof SoftwareConfig]?.enabled) {
       aptPackages.push(...packages);
     }
   }
 
-  // Add custom APT packages
   aptPackages.push(...customAptPackages);
 
-  // Sort and deduplicate APT packages
   const uniqueAptPackages = [...new Set(aptPackages)].sort((a, b) =>
     a.localeCompare(b, undefined, { sensitivity: 'base' })
   );
 
-  // Collect all NPM packages
   const npmPackages = [...baseNpmPackages];
 
-  // Add optional NPM packages based on config
   for (const [key, packages] of Object.entries(optionalNpmPackages)) {
     if (software[key as keyof SoftwareConfig]?.enabled) {
       npmPackages.push(...packages);
     }
   }
 
-  // Add custom NPM packages
   customNpmPackages.forEach((pkg) => {
     npmPackages.push(pkg.name);
   });
 
-  // Sort and deduplicate NPM packages
   const sortedNpmPackages = [...new Set(npmPackages)].sort((a, b) =>
     a.localeCompare(b, undefined, { sensitivity: 'base' })
   );
 
-  // Build the software list text
   const lines: string[] = [
     '',
     'The following software is available to you:',
@@ -129,15 +113,13 @@ function createSoftwareListCommand(
 }
 
 /**
- * Card component for CLAUDE.md file editing.
- * No preview tab as the editor has built-in preview functionality.
+ * CLAUDE.md editor with markdown editing and built-in preview.
  */
-export function ClaudeMdCard() {
+export function ClaudeMdEditor() {
   const { t } = useTranslation();
   const { config, setClaudeMdContent } = useConfig();
   const { resolvedTheme } = useTheme();
 
-  // Create the toolbar commands with the software list command
   const toolbarCommands = useMemo(() => [
     commands.title,
     commands.bold,
@@ -165,24 +147,23 @@ export function ClaudeMdCard() {
   ], []);
 
   return (
-    <Card id="card-claude-md">
-      <CardHeader>
-        <CardTitle>{t('claudeMd.title')}</CardTitle>
-        <CardDescription>{t('claudeMd.description')}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div data-color-mode={resolvedTheme} className="wmde-markdown-var">
-          <MDEditor
-            value={config.claudeMdContent}
-            onChange={(value) => setClaudeMdContent(value ?? '')}
-            height={400}
-            preview="edit"
-            commands={toolbarCommands}
-            extraCommands={extraCommands}
-            aria-label={t('claudeMd.title')}
-          />
-        </div>
-      </CardContent>
-    </Card>
+    <div className="space-y-4">
+      <div>
+        <p className="text-sm text-muted-foreground">
+          {t('claudeMd.description')}
+        </p>
+      </div>
+      <div data-color-mode={resolvedTheme} className="wmde-markdown-var">
+        <MDEditor
+          value={config.claudeMdContent}
+          onChange={(value) => setClaudeMdContent(value ?? '')}
+          height={400}
+          preview="edit"
+          commands={toolbarCommands}
+          extraCommands={extraCommands}
+          aria-label={t('claudeMd.title')}
+        />
+      </div>
+    </div>
   );
 }

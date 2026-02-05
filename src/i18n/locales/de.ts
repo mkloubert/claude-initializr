@@ -29,6 +29,9 @@ const de: Translations = {
     "close": "Willkommensnachricht schließen",
     "description": "Claude Code ist Anthropics leistungsstarker KI-Coding-Assistent, der Code direkt auf deinem Rechner lesen, schreiben und ausführen kann. So nützlich das ist – eine KI mit Dateisystem- und Terminal-Zugriff erfordert besondere Vorsicht bei der Sicherheit.",
     "purpose": "Dieses Tool generiert eine komplette Docker-Konfiguration, mit der du Claude Code in einer isolierten Container-Umgebung ausführen kannst. Dein Code bleibt geschützt, während Claude dir weiterhin beim Entwickeln, Debuggen und Refactoring helfen kann.",
+    "dialogTitle": "Willkommen bei Claude Initializr",
+    "getStarted": "Loslegen",
+    "dontShowAgain": "Nicht mehr anzeigen",
     "features": {
       "title": "Was du konfigurieren kannst:",
       "dockerfile": "Wähle, welche Entwicklungswerkzeuge installiert werden (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const de: Translations = {
     "noAskRules": "Keine Nachfragen-Regeln definiert.",
     "noDenyRules": "Keine Verweigern-Regeln definiert.",
     "help": "Definiere Berechtigungsregeln für Read(), Edit() und WebFetch() Operationen. Muster unterstützen Glob-Syntax wie src/** für rekursive Übereinstimmung.",
-    "learnMore": "Mehr erfahren"
+    "learnMore": "Mehr erfahren",
+    "summary": "Übersicht",
+    "denyCount": "{{count}} abgelehnt",
+    "askCount": "{{count}} nachfragen",
+    "allowCount": "{{count}} erlaubt"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Das Dockerfile legt fest, welche Software im Container installiert wird. Neben Node.js und Claude Code können zusätzliche Tools wie TypeScript, Python, Go, ffmpeg oder ImageMagick hinzugefügt werden. Die ausgewählte Software steht Claude bei der Ausführung von Befehlen zur Verfügung.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "Die docker-compose.yaml steuert, wie der Container gestartet wird. Hier können Umgebungsvariablen (wie API-Schlüssel) definiert werden. Geschützte Dateien werden als leere, schreibgeschützte Dateien eingebunden, um Claude den Zugriff auf sensible Daten wie .env-Dateien zu verwehren."
+    "dockerComposeDesc": "Die docker-compose.yaml steuert, wie der Container gestartet wird. Hier können Umgebungsvariablen (wie API-Schlüssel) definiert werden. Geschützte Dateien werden als leere, schreibgeschützte Dateien eingebunden, um Claude den Zugriff auf sensible Daten wie .env-Dateien zu verwehren.",
+    "title": "Vorschau",
+    "showPreview": "Vorschau anzeigen",
+    "hidePreview": "Vorschau ausblenden",
+    "empty": "Für diesen Bereich ist keine Vorschau verfügbar.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "Die Vorschau ist im Editor oben integriert."
+  },
+  "dockerfile": {
+    "software": "Software",
+    "advancedOptions": "Erweiterte Optionen",
+    "softwareCount": "{{count}} ausgewählt"
   },
   "dockerCompose": {
     "platform": "Plattform",
     "platformDesc": "Lege eine spezifische Plattform für den Container fest (z.B. linux/amd64). Leer lassen für die Standard-Plattform. Verwende dies, wenn Basis-Images deine Architektur nicht unterstützen.",
-    "platformPlaceholder": "Beispiel: linux/amd64"
+    "platformPlaceholder": "Beispiel: linux/amd64",
+    "envSection": "Umgebungsvariablen",
+    "protectedSection": "Geschützte Dateien"
   },
   "download": {
     "button": "ZIP herunterladen",
@@ -475,8 +496,9 @@ const de: Translations = {
       "downloadZip": "ZIP herunterladen",
       "forceSave": "Speichern erzwingen",
       "resetDefaults": "Auf Standardwerte zurücksetzen",
-      "togglePreview": "Vorschau umschalten",
-      "scrollToCard": "Zu Karte {{number}} scrollen",
+      "togglePreviewPane": "Vorschaubereich umschalten",
+      "toggleSidebar": "Seitenleiste umschalten",
+      "switchSection": "Zu Bereich {{number}} wechseln",
       "toggleDarkMode": "Dunkelmodus umschalten",
       "openLanguageSwitcher": "Sprachauswahl öffnen",
       "closeDialog": "Dialog schließen",
@@ -488,8 +510,9 @@ const de: Translations = {
       "downloadStarted": "Download gestartet",
       "configReset": "Konfiguration auf Standardwerte zurückgesetzt",
       "darkModeToggled": "Dunkelmodus umgeschaltet",
-      "previewToggled": "Vorschau umgeschaltet",
-      "scrolledToCard": "Zu Karte {{number}} gescrollt",
+      "previewPaneToggled": "Vorschaubereich umgeschaltet",
+      "sectionSwitched": "Zu Bereich {{number}} gewechselt",
+      "sidebarToggled": "Seitenleiste umgeschaltet",
       "undoPerformed": "Änderung rückgängig gemacht",
       "redoPerformed": "Änderung wiederhergestellt"
     }
@@ -537,6 +560,39 @@ const de: Translations = {
       "multipleChanges": "Mehrere Änderungen"
     }
   },
+  "header": {
+    "download": "Herunterladen",
+    "downloadZip": "ZIP herunterladen",
+    "exportConfig": "Konfiguration exportieren",
+    "importConfig": "Konfiguration importieren",
+    "settings": "Einstellungen",
+    "autosave": "Autospeichern",
+    "theme": "Design",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel",
+    "themeSystem": "System",
+    "language": "Sprache",
+    "history": "Verlauf",
+    "resetDefaults": "Auf Standard zurücksetzen",
+    "keyboardShortcuts": "Tastenkürzel"
+  },
+  "sidebar": {
+    "configuration": "Konfiguration",
+    "actions": "Aktionen",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "Einstellungen",
+    "devContainer": "DevContainer",
+    "import": "Importieren",
+    "export": "Exportieren",
+    "history": "Verlauf",
+    "reset": "Zurücksetzen",
+    "toggle": "Seitenleiste umschalten",
+    "about": "Über",
+    "donate": "Spenden",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "Konfiguriere VS Code Dev Containers und GitHub Codespaces Unterstützung. Dies generiert eine devcontainer.json-Datei, die deine Entwicklungsumgebung definiert.",
@@ -552,6 +608,11 @@ const de: Translations = {
       "ports": "Ports",
       "preview": "Vorschau"
     },
+    "extensionsSection": "Erweiterungen",
+    "featuresSection": "Features",
+    "portsSection": "Weitergeleitete Ports",
+    "scriptsSection": "Lebenszyklus-Skripte",
+    "settingsSection": "VS Code Einstellungen",
     "extensions": {
       "title": "VS Code Erweiterungen",
       "description": "Erweiterungen, die automatisch bei der Container-Erstellung installiert werden.",

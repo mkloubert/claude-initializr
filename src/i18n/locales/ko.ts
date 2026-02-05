@@ -29,6 +29,9 @@ const ko: Translations = {
     "close": "환영 메시지 닫기",
     "description": "Claude Code는 Anthropic의 강력한 AI 코딩 어시스턴트로, 컴퓨터에서 직접 코드를 읽고, 쓰고, 실행할 수 있습니다. 매우 유용하지만, 파일 시스템과 터미널 접근 권한을 가진 AI를 실행하려면 보안을 신중히 고려해야 합니다.",
     "purpose": "이 도구는 격리된 컨테이너 환경에서 Claude Code를 실행할 수 있는 완전한 Docker 구성을 생성합니다. 코드는 보호된 상태로 유지되면서 Claude가 개발, 디버깅, 리팩토링을 계속 도와줄 수 있습니다.",
+    "dialogTitle": "Claude Initializr에 오신 것을 환영합니다",
+    "getStarted": "시작하기",
+    "dontShowAgain": "다시 표시하지 않기",
     "features": {
       "title": "구성할 수 있는 항목:",
       "dockerfile": "설치할 개발 도구 선택 (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const ko: Translations = {
     "noAskRules": "확인 규칙이 정의되지 않았습니다.",
     "noDenyRules": "거부 규칙이 정의되지 않았습니다.",
     "help": "Read(), Edit(), WebFetch() 작업에 대한 권한 규칙을 정의합니다. 패턴은 재귀 매칭을 위해 src/**와 같은 glob 구문을 지원합니다.",
-    "learnMore": "자세히 알아보기"
+    "learnMore": "자세히 알아보기",
+    "summary": "개요",
+    "denyCount": "{{count}}개 거부",
+    "askCount": "{{count}}개 확인",
+    "allowCount": "{{count}}개 허용"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile은 컨테이너에 설치할 소프트웨어를 정의합니다. Node.js와 Claude Code 외에도 TypeScript, Python, Go, ffmpeg, ImageMagick 같은 추가 도구를 포함할 수 있습니다. 선택한 소프트웨어는 Claude가 명령을 실행할 때 사용 가능합니다.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "docker-compose.yaml 파일은 컨테이너 시작 방법을 제어합니다. 환경 변수(API 키 등)를 여기서 정의할 수 있습니다. 보호된 파일은 Claude가 .env 파일 같은 민감한 데이터에 접근하지 못하도록 빈 읽기 전용 파일로 마운트됩니다."
+    "dockerComposeDesc": "docker-compose.yaml 파일은 컨테이너 시작 방법을 제어합니다. 환경 변수(API 키 등)를 여기서 정의할 수 있습니다. 보호된 파일은 Claude가 .env 파일 같은 민감한 데이터에 접근하지 못하도록 빈 읽기 전용 파일로 마운트됩니다.",
+    "title": "미리보기",
+    "showPreview": "미리보기 표시",
+    "hidePreview": "미리보기 숨기기",
+    "empty": "이 섹션에 대한 미리보기가 없습니다.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "미리보기가 위의 편집기에 통합되어 있습니다."
+  },
+  "dockerfile": {
+    "software": "소프트웨어",
+    "advancedOptions": "고급 옵션",
+    "softwareCount": "{{count}}개 선택됨"
   },
   "dockerCompose": {
     "platform": "플랫폼",
     "platformDesc": "컨테이너에 특정 플랫폼을 설정합니다(예: linux/amd64). 기본 플랫폼을 사용하려면 비워 두세요. 베이스 이미지가 아키텍처를 지원하지 않을 때 사용하세요.",
-    "platformPlaceholder": "예: linux/amd64"
+    "platformPlaceholder": "예: linux/amd64",
+    "envSection": "환경 변수",
+    "protectedSection": "보호된 파일"
   },
   "download": {
     "button": "ZIP 다운로드",
@@ -475,8 +496,9 @@ const ko: Translations = {
       "downloadZip": "ZIP 다운로드",
       "forceSave": "강제 저장",
       "resetDefaults": "기본값으로 초기화",
-      "togglePreview": "미리보기 전환",
-      "scrollToCard": "카드 {{number}}로 스크롤",
+      "togglePreviewPane": "미리보기 창 전환",
+      "toggleSidebar": "사이드바 전환",
+      "switchSection": "섹션 {{number}}로 전환",
       "toggleDarkMode": "다크 모드 전환",
       "openLanguageSwitcher": "언어 선택기 열기",
       "closeDialog": "대화 상자 닫기",
@@ -488,8 +510,9 @@ const ko: Translations = {
       "downloadStarted": "다운로드가 시작되었습니다",
       "configReset": "설정이 기본값으로 초기화되었습니다",
       "darkModeToggled": "다크 모드가 전환되었습니다",
-      "previewToggled": "미리보기가 전환되었습니다",
-      "scrolledToCard": "카드 {{number}}로 스크롤되었습니다",
+      "previewPaneToggled": "미리보기 창이 전환되었습니다",
+      "sectionSwitched": "섹션 {{number}}로 전환되었습니다",
+      "sidebarToggled": "사이드바가 전환되었습니다",
       "undoPerformed": "변경 사항을 실행 취소했습니다",
       "redoPerformed": "변경 사항을 다시 실행했습니다"
     }
@@ -537,6 +560,39 @@ const ko: Translations = {
       "multipleChanges": "여러 변경 사항"
     }
   },
+  "header": {
+    "download": "다운로드",
+    "downloadZip": "ZIP 다운로드",
+    "exportConfig": "설정 내보내기",
+    "importConfig": "설정 가져오기",
+    "settings": "설정",
+    "autosave": "자동 저장",
+    "theme": "테마",
+    "themeLight": "라이트",
+    "themeDark": "다크",
+    "themeSystem": "시스템",
+    "language": "언어",
+    "history": "기록",
+    "resetDefaults": "기본값으로 재설정",
+    "keyboardShortcuts": "키보드 단축키"
+  },
+  "sidebar": {
+    "configuration": "구성",
+    "actions": "작업",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "설정",
+    "devContainer": "DevContainer",
+    "import": "가져오기",
+    "export": "내보내기",
+    "history": "기록",
+    "reset": "초기화",
+    "toggle": "사이드바 전환",
+    "about": "정보",
+    "donate": "후원",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "VS Code Dev Containers 및 GitHub Codespaces 지원을 구성합니다. 이것은 개발 환경을 정의하는 devcontainer.json 파일을 생성합니다.",
@@ -552,6 +608,11 @@ const ko: Translations = {
       "ports": "포트",
       "preview": "미리보기"
     },
+    "extensionsSection": "확장 프로그램",
+    "featuresSection": "기능",
+    "portsSection": "포워딩된 포트",
+    "scriptsSection": "라이프사이클 스크립트",
+    "settingsSection": "VS Code 설정",
     "extensions": {
       "title": "VS Code 확장",
       "description": "컨테이너 생성 시 자동으로 설치되는 확장입니다.",

@@ -29,6 +29,9 @@ const pl: Translations = {
     "close": "Zamknij wiadomość powitalną",
     "description": "Claude Code to potężny asystent programistyczny AI firmy Anthropic, który może czytać, pisać i wykonywać kod bezpośrednio na Twojej maszynie. Choć niezwykle przydatny, uruchamianie AI z dostępem do systemu plików i terminala wymaga starannego rozważenia kwestii bezpieczeństwa.",
     "purpose": "To narzędzie generuje kompletną konfigurację Docker, która pozwala uruchamiać Claude Code w izolowanym środowisku kontenera. Twój kod pozostaje chroniony, podczas gdy Claude nadal może pomagać w rozwijaniu, debugowaniu i refaktoryzacji.",
+    "dialogTitle": "Witaj w Claude Initializr",
+    "getStarted": "Rozpocznij",
+    "dontShowAgain": "Nie pokazuj ponownie",
     "features": {
       "title": "Co możesz skonfigurować:",
       "dockerfile": "Wybierz, które narzędzia deweloperskie zainstalować (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const pl: Translations = {
     "noAskRules": "Brak zdefiniowanych reguł zapytania.",
     "noDenyRules": "Brak zdefiniowanych reguł odmowy.",
     "help": "Zdefiniuj reguły uprawnień dla operacji Read(), Edit() i WebFetch(). Wzorce obsługują składnię glob, taką jak src/** dla dopasowania rekursywnego.",
-    "learnMore": "Dowiedz się więcej"
+    "learnMore": "Dowiedz się więcej",
+    "summary": "Przegląd",
+    "denyCount": "{{count}} odrzuconych",
+    "askCount": "{{count}} pytań",
+    "allowCount": "{{count}} dozwolonych"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile definiuje, jakie oprogramowanie jest instalowane w kontenerze. Oprócz Node.js i Claude Code można dołączyć dodatkowe narzędzia jak TypeScript, Python, Go, ffmpeg lub ImageMagick. Wybrane oprogramowanie będzie dostępne, gdy Claude wykonuje polecenia.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "Plik docker-compose.yaml kontroluje sposób uruchamiania kontenera. Zmienne środowiskowe (jak klucze API) mogą być tu zdefiniowane. Chronione pliki są montowane jako puste pliki tylko do odczytu, aby uniemożliwić Claude dostęp do wrażliwych danych jak pliki .env."
+    "dockerComposeDesc": "Plik docker-compose.yaml kontroluje sposób uruchamiania kontenera. Zmienne środowiskowe (jak klucze API) mogą być tu zdefiniowane. Chronione pliki są montowane jako puste pliki tylko do odczytu, aby uniemożliwić Claude dostęp do wrażliwych danych jak pliki .env.",
+    "title": "Podgląd",
+    "showPreview": "Pokaż podgląd",
+    "hidePreview": "Ukryj podgląd",
+    "empty": "Brak podglądu dla tej sekcji.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "Podgląd jest zintegrowany w edytorze powyżej."
+  },
+  "dockerfile": {
+    "software": "Oprogramowanie",
+    "advancedOptions": "Opcje zaawansowane",
+    "softwareCount": "{{count}} wybranych"
   },
   "dockerCompose": {
     "platform": "Platforma",
     "platformDesc": "Ustaw konkretną platformę dla kontenera (np. linux/amd64). Pozostaw puste, aby użyć domyślnej platformy. Użyj tego, gdy obrazy bazowe nie obsługują Twojej architektury.",
-    "platformPlaceholder": "Przykład: linux/amd64"
+    "platformPlaceholder": "Przykład: linux/amd64",
+    "envSection": "Zmienne środowiskowe",
+    "protectedSection": "Chronione pliki"
   },
   "download": {
     "button": "Pobierz ZIP",
@@ -475,8 +496,9 @@ const pl: Translations = {
       "downloadZip": "Pobierz ZIP",
       "forceSave": "Wymuś zapis",
       "resetDefaults": "Przywróć domyślne",
-      "togglePreview": "Przełącz podgląd",
-      "scrollToCard": "Przewiń do karty {{number}}",
+      "togglePreviewPane": "Przełącz panel podglądu",
+      "toggleSidebar": "Przełącz pasek boczny",
+      "switchSection": "Przejdź do sekcji {{number}}",
       "toggleDarkMode": "Przełącz tryb ciemny",
       "openLanguageSwitcher": "Otwórz przełącznik języka",
       "closeDialog": "Zamknij okno dialogowe",
@@ -488,8 +510,9 @@ const pl: Translations = {
       "downloadStarted": "Pobieranie rozpoczęte",
       "configReset": "Konfiguracja przywrócona do domyślnych",
       "darkModeToggled": "Tryb ciemny przełączony",
-      "previewToggled": "Podgląd przełączony",
-      "scrolledToCard": "Przewinięto do karty {{number}}",
+      "previewPaneToggled": "Panel podglądu przełączony",
+      "sectionSwitched": "Przejścia do sekcji {{number}}",
+      "sidebarToggled": "Pasek boczny przełączony",
       "undoPerformed": "Zmiana cofnięta",
       "redoPerformed": "Zmiana ponowiona"
     }
@@ -537,6 +560,39 @@ const pl: Translations = {
       "multipleChanges": "Wiele zmian"
     }
   },
+  "header": {
+    "download": "Pobierz",
+    "downloadZip": "Pobierz ZIP",
+    "exportConfig": "Eksportuj konfigurację",
+    "importConfig": "Importuj konfigurację",
+    "settings": "Ustawienia",
+    "autosave": "Automatyczny zapis",
+    "theme": "Motyw",
+    "themeLight": "Jasny",
+    "themeDark": "Ciemny",
+    "themeSystem": "Systemowy",
+    "language": "Język",
+    "history": "Historia",
+    "resetDefaults": "Przywróć ustawienia domyślne",
+    "keyboardShortcuts": "Skróty klawiszowe"
+  },
+  "sidebar": {
+    "configuration": "Konfiguracja",
+    "actions": "Akcje",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "Ustawienia",
+    "devContainer": "DevContainer",
+    "import": "Importuj",
+    "export": "Eksportuj",
+    "history": "Historia",
+    "reset": "Resetuj",
+    "toggle": "Przełącz pasek boczny",
+    "about": "O programie",
+    "donate": "Wspomóż",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "Skonfiguruj obsługę VS Code Dev Containers i GitHub Codespaces. To generuje plik devcontainer.json definiujący twoje środowisko programistyczne.",
@@ -552,6 +608,11 @@ const pl: Translations = {
       "ports": "Porty",
       "preview": "Podgląd"
     },
+    "extensionsSection": "Rozszerzenia",
+    "featuresSection": "Funkcje",
+    "portsSection": "Przekierowane porty",
+    "scriptsSection": "Skrypty cyklu życia",
+    "settingsSection": "Ustawienia VS Code",
     "extensions": {
       "title": "Rozszerzenia VS Code",
       "description": "Rozszerzenia instalowane automatycznie podczas tworzenia kontenera.",

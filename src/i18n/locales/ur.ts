@@ -29,6 +29,9 @@ const ur: Translations = {
     "close": "خوش آمدید پیغام بند کریں",
     "description": "Claude Code Anthropic کا طاقتور AI کوڈنگ اسسٹنٹ ہے جو آپ کی مشین پر براہ راست کوڈ پڑھ، لکھ اور چلا سکتا ہے۔ انتہائی مفید ہونے کے باوجود، فائل سسٹم اور ٹرمینل تک رسائی والے AI کو چلانے کے لیے سیکیورٹی پر محتاط غور کی ضرورت ہے۔",
     "purpose": "یہ ٹول ایک مکمل Docker کنفیگریشن بناتا ہے جو آپ کو ایک الگ تھلگ کنٹینر ماحول میں Claude Code چلانے کی اجازت دیتا ہے۔ آپ کا کوڈ محفوظ رہتا ہے جبکہ Claude آپ کی ترقی، ڈیبگنگ اور ری فیکٹرنگ میں مدد کرنا جاری رکھ سکتا ہے۔",
+    "dialogTitle": "Claude Initializr میں خوش آمدید",
+    "getStarted": "شروع کریں",
+    "dontShowAgain": "دوبارہ نہ دکھائیں",
     "features": {
       "title": "آپ کیا کنفیگر کر سکتے ہیں:",
       "dockerfile": "انسٹال کرنے کے لیے ڈیولپمنٹ ٹولز منتخب کریں (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const ur: Translations = {
     "noAskRules": "کوئی پوچھنے کا قاعدہ متعین نہیں۔",
     "noDenyRules": "کوئی انکار کا قاعدہ متعین نہیں۔",
     "help": "Read(), Edit() اور WebFetch() آپریشنز کے لیے اجازت کے قواعد متعین کریں۔ پیٹرن recursive مماثلت کے لیے src/** جیسی glob syntax کی حمایت کرتے ہیں۔",
-    "learnMore": "مزید جانیں"
+    "learnMore": "مزید جانیں",
+    "summary": "جائزہ",
+    "denyCount": "{{count}} مسترد",
+    "askCount": "{{count}} پوچھیں",
+    "allowCount": "{{count}} اجازت"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile یہ متعین کرتا ہے کہ کنٹینر میں کون سا سافٹ ویئر انسٹال ہوتا ہے۔ Node.js اور Claude Code کے علاوہ، TypeScript، Python، Go، ffmpeg یا ImageMagick جیسے اضافی ٹولز شامل کیے جا سکتے ہیں۔ منتخب سافٹ ویئر Claude کی جانب سے کمانڈز چلاتے وقت دستیاب ہوگا۔",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "docker-compose.yaml فائل کنٹرول کرتی ہے کہ کنٹینر کیسے شروع ہوتا ہے۔ ماحولیاتی متغیرات (جیسے API کلیدیں) یہاں متعین کی جا سکتی ہیں۔ محفوظ فائلیں خالی صرف پڑھنے والی فائلوں کے طور پر ماؤنٹ کی جاتی ہیں تاکہ Claude کو .env فائلوں جیسے حساس ڈیٹا تک رسائی سے روکا جا سکے۔"
+    "dockerComposeDesc": "docker-compose.yaml فائل کنٹرول کرتی ہے کہ کنٹینر کیسے شروع ہوتا ہے۔ ماحولیاتی متغیرات (جیسے API کلیدیں) یہاں متعین کی جا سکتی ہیں۔ محفوظ فائلیں خالی صرف پڑھنے والی فائلوں کے طور پر ماؤنٹ کی جاتی ہیں تاکہ Claude کو .env فائلوں جیسے حساس ڈیٹا تک رسائی سے روکا جا سکے۔",
+    "title": "پیش نظارہ",
+    "showPreview": "پیش نظارہ دکھائیں",
+    "hidePreview": "پیش نظارہ چھپائیں",
+    "empty": "اس سیکشن کے لیے کوئی پیش نظارہ دستیاب نہیں ہے۔",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "پیش نظارہ اوپر کے ایڈیٹر میں مربوط ہے۔"
+  },
+  "dockerfile": {
+    "software": "سافٹ ویئر",
+    "advancedOptions": "جدید اختیارات",
+    "softwareCount": "{{count}} منتخب"
   },
   "dockerCompose": {
     "platform": "پلیٹ فارم",
     "platformDesc": "کنٹینر کے لیے ایک مخصوص پلیٹ فارم سیٹ کریں (مثال: linux/amd64)۔ ڈیفالٹ پلیٹ فارم استعمال کرنے کے لیے خالی چھوڑیں۔ جب بیس امیجز آپ کے آرکیٹیکچر کو سپورٹ نہیں کرتے تو اسے استعمال کریں۔",
-    "platformPlaceholder": "مثال: linux/amd64"
+    "platformPlaceholder": "مثال: linux/amd64",
+    "envSection": "ماحولیاتی متغیرات",
+    "protectedSection": "محفوظ فائلیں"
   },
   "download": {
     "button": "ZIP ڈاؤن لوڈ کریں",
@@ -475,8 +496,9 @@ const ur: Translations = {
       "downloadZip": "ZIP ڈاؤن لوڈ کریں",
       "forceSave": "زبردستی محفوظ کریں",
       "resetDefaults": "ڈیفالٹ پر ری سیٹ کریں",
-      "togglePreview": "پیش نظارہ ٹوگل کریں",
-      "scrollToCard": "کارڈ {{number}} پر سکرول کریں",
+      "togglePreviewPane": "پیش نظارہ پینل ٹوگل کریں",
+      "toggleSidebar": "سائیڈبار ٹوگل کریں",
+      "switchSection": "سیکشن {{number}} پر جائیں",
       "toggleDarkMode": "ڈارک موڈ ٹوگل کریں",
       "openLanguageSwitcher": "زبان منتخب کنندہ کھولیں",
       "closeDialog": "ڈائیلاگ بند کریں",
@@ -488,8 +510,9 @@ const ur: Translations = {
       "downloadStarted": "ڈاؤن لوڈ شروع ہو گیا",
       "configReset": "کنفیگریشن ڈیفالٹ پر ری سیٹ ہو گئی",
       "darkModeToggled": "ڈارک موڈ ٹوگل ہو گیا",
-      "previewToggled": "پیش نظارہ ٹوگل ہو گیا",
-      "scrolledToCard": "کارڈ {{number}} پر سکرول ہو گیا",
+      "previewPaneToggled": "پیش نظارہ پینل ٹوگل ہو گیا",
+      "sectionSwitched": "سیکشن {{number}} پر سوئچ کیا گیا",
+      "sidebarToggled": "سائیڈبار ٹوگل ہو گیا",
       "undoPerformed": "تبدیلی واپس کی گئی",
       "redoPerformed": "تبدیلی دوبارہ کی گئی"
     }
@@ -537,6 +560,39 @@ const ur: Translations = {
       "multipleChanges": "متعدد تبدیلیاں"
     }
   },
+  "header": {
+    "download": "ڈاؤن لوڈ",
+    "downloadZip": "ZIP ڈاؤن لوڈ کریں",
+    "exportConfig": "ترتیب برآمد کریں",
+    "importConfig": "ترتیب درآمد کریں",
+    "settings": "ترتیبات",
+    "autosave": "خودکار محفوظ",
+    "theme": "تھیم",
+    "themeLight": "ہلکا",
+    "themeDark": "گہرا",
+    "themeSystem": "سسٹم",
+    "language": "زبان",
+    "history": "تاریخچہ",
+    "resetDefaults": "پہلے سے طے شدہ پر ری سیٹ کریں",
+    "keyboardShortcuts": "کی بورڈ شارٹ کٹس"
+  },
+  "sidebar": {
+    "configuration": "ترتیب",
+    "actions": "اعمال",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "ترتیبات",
+    "devContainer": "DevContainer",
+    "import": "درآمد",
+    "export": "برآمد",
+    "history": "تاریخ",
+    "reset": "ری سیٹ",
+    "toggle": "سائیڈبار ٹوگل کریں",
+    "about": "کے بارے میں",
+    "donate": "عطیہ",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "VS Code Dev Containers اور GitHub Codespaces سپورٹ کنفیگر کریں۔ یہ ایک devcontainer.json فائل بناتا ہے جو آپ کا ڈویلپمنٹ ماحول متعین کرتی ہے۔",
@@ -552,6 +608,11 @@ const ur: Translations = {
       "ports": "پورٹس",
       "preview": "پیش نظارہ"
     },
+    "extensionsSection": "ایکسٹینشنز",
+    "featuresSection": "خصوصیات",
+    "portsSection": "فارورڈ شدہ پورٹس",
+    "scriptsSection": "لائف سائیکل اسکرپٹس",
+    "settingsSection": "VS Code سیٹنگز",
     "extensions": {
       "title": "VS Code ایکسٹینشنز",
       "description": "ایکسٹینشنز جو کنٹینر بنتے وقت خودکار طور پر انسٹال ہوں گی۔",

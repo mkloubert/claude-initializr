@@ -64,6 +64,17 @@ const resources = {
 
 export const supportedLanguages = Object.keys(resources);
 
+const RTL_LANGUAGES = new Set(['ar', 'he', 'ur']);
+
+function updateDocumentDirection(language: string) {
+  document.documentElement.lang = language;
+  document.documentElement.dir = RTL_LANGUAGES.has(language) ? 'rtl' : 'ltr';
+}
+
+export function isRtlLanguage(language: string): boolean {
+  return RTL_LANGUAGES.has(language);
+}
+
 const storedLanguage = localStorage.getItem('language');
 const browserLanguage = navigator.language.split('-')[0];
 const defaultLanguage = storedLanguage || (supportedLanguages.includes(browserLanguage) ? browserLanguage : 'en');
@@ -75,6 +86,19 @@ i18n.use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
   },
+});
+
+// Set initial direction and language on the document
+updateDocumentDirection(defaultLanguage);
+
+// Update direction, language, and persist selection on language change
+i18n.on('languageChanged', (lng: string) => {
+  updateDocumentDirection(lng);
+  try {
+    localStorage.setItem('language', lng);
+  } catch {
+    // localStorage may be unavailable
+  }
 });
 
 export type { Translations };

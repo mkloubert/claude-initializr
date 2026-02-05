@@ -29,3 +29,5 @@ export { LanguageSwitcher } from './LanguageSwitcher';
 export { ResetButton } from './ResetButton';
 export { ThemeSwitcher } from './ThemeSwitcher';
 export { UndoRedoButtons } from './UndoRedoButtons';
+export { shouldShowWelcome } from './welcomeUtils';
+export { WelcomeDialog } from './WelcomeDialog';

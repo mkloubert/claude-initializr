@@ -29,6 +29,9 @@ const en: Translations = {
     "close": "Close welcome message",
     "description": "Claude Code is Anthropic's powerful AI coding assistant that can read, write, and execute code directly on your machine. While incredibly useful, running an AI with file system and terminal access requires careful consideration of security.",
     "purpose": "This tool generates a complete Docker configuration that lets you run Claude Code in an isolated container environment. Your code stays protected while Claude can still help you develop, debug, and refactor.",
+    "dialogTitle": "Welcome to Claude Initializr",
+    "getStarted": "Get Started",
+    "dontShowAgain": "Don't show this again",
     "features": {
       "title": "What you can configure:",
       "dockerfile": "Choose which development tools to install (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const en: Translations = {
     "noAskRules": "No ask rules defined.",
     "noDenyRules": "No deny rules defined.",
     "help": "Define permission rules for Read(), Edit(), and WebFetch() operations. Patterns support glob syntax like src/** for recursive matching.",
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "summary": "Overview",
+    "denyCount": "{{count}} denied",
+    "askCount": "{{count}} ask",
+    "allowCount": "{{count}} allowed"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "The Dockerfile defines which software is installed in the container. In addition to Node.js and Claude Code, additional tools like TypeScript, Python, Go, ffmpeg or ImageMagick can be included. The selected software will be available when Claude executes commands.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "The docker-compose.yaml file controls how the container is started. Environment variables (like API keys) can be defined here. Protected files are mounted as empty read-only files to prevent Claude from accessing sensitive data like .env files."
+    "dockerComposeDesc": "The docker-compose.yaml file controls how the container is started. Environment variables (like API keys) can be defined here. Protected files are mounted as empty read-only files to prevent Claude from accessing sensitive data like .env files.",
+    "title": "Preview",
+    "showPreview": "Show Preview",
+    "hidePreview": "Hide Preview",
+    "empty": "No preview available for this section.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "Preview is integrated in the editor above."
+  },
+  "dockerfile": {
+    "software": "Software",
+    "advancedOptions": "Advanced Options",
+    "softwareCount": "{{count}} selected"
   },
   "dockerCompose": {
     "platform": "Platform",
     "platformDesc": "Set a specific platform for the container (e.g., linux/amd64). Leave empty to use the default platform. Use this when base images do not support your architecture.",
-    "platformPlaceholder": "Example: linux/amd64"
+    "platformPlaceholder": "Example: linux/amd64",
+    "envSection": "Environment Variables",
+    "protectedSection": "Protected Files"
   },
   "download": {
     "button": "Download ZIP",
@@ -475,8 +496,9 @@ const en: Translations = {
       "downloadZip": "Download ZIP",
       "forceSave": "Force save",
       "resetDefaults": "Reset to defaults",
-      "togglePreview": "Toggle preview",
-      "scrollToCard": "Scroll to card {{number}}",
+      "togglePreviewPane": "Toggle preview pane",
+      "toggleSidebar": "Toggle sidebar",
+      "switchSection": "Switch to section {{number}}",
       "toggleDarkMode": "Toggle dark mode",
       "openLanguageSwitcher": "Open language switcher",
       "closeDialog": "Close dialog",
@@ -488,8 +510,9 @@ const en: Translations = {
       "downloadStarted": "Download started",
       "configReset": "Configuration reset to defaults",
       "darkModeToggled": "Dark mode toggled",
-      "previewToggled": "Preview toggled",
-      "scrolledToCard": "Scrolled to card {{number}}",
+      "previewPaneToggled": "Preview pane toggled",
+      "sectionSwitched": "Switched to section {{number}}",
+      "sidebarToggled": "Sidebar toggled",
       "undoPerformed": "Change undone",
       "redoPerformed": "Change redone"
     }
@@ -537,6 +560,39 @@ const en: Translations = {
       "multipleChanges": "Multiple changes"
     }
   },
+  "header": {
+    "download": "Download",
+    "downloadZip": "Download ZIP",
+    "exportConfig": "Export Config",
+    "importConfig": "Import Config",
+    "settings": "Settings",
+    "autosave": "Autosave",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "language": "Language",
+    "history": "History",
+    "resetDefaults": "Reset to Defaults",
+    "keyboardShortcuts": "Keyboard Shortcuts"
+  },
+  "sidebar": {
+    "configuration": "Configuration",
+    "actions": "Actions",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "Settings",
+    "devContainer": "DevContainer",
+    "import": "Import",
+    "export": "Export",
+    "history": "History",
+    "reset": "Reset",
+    "toggle": "Toggle sidebar",
+    "about": "About",
+    "donate": "Donate",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "Configure VS Code Dev Containers and GitHub Codespaces support. This generates a devcontainer.json file that defines your development environment.",
@@ -552,6 +608,11 @@ const en: Translations = {
       "ports": "Ports",
       "preview": "Preview"
     },
+    "extensionsSection": "Extensions",
+    "featuresSection": "Features",
+    "portsSection": "Forwarded Ports",
+    "scriptsSection": "Lifecycle Scripts",
+    "settingsSection": "VS Code Settings",
     "extensions": {
       "title": "VS Code Extensions",
       "description": "Extensions to install automatically when the container is created.",

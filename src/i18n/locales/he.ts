@@ -29,6 +29,9 @@ const he: Translations = {
     "close": "סגור הודעת ברוכים הבאים",
     "description": "Claude Code הוא עוזר התכנות החזק של Anthropic עם בינה מלאכותית שיכול לקרוא, לכתוב ולהריץ קוד ישירות על המחשב שלך. למרות שהוא שימושי להפליא, הפעלת AI עם גישה למערכת הקבצים ולטרמינל דורשת התייחסות זהירה לאבטחה.",
     "purpose": "כלי זה מייצר תצורת Docker מלאה שמאפשרת לך להריץ את Claude Code בסביבת קונטיינר מבודדת. הקוד שלך נשאר מוגן בעוד Claude עדיין יכול לעזור לך לפתח, לדבג ולשפר קוד.",
+    "dialogTitle": "ברוכים הבאים ל-Claude Initializr",
+    "getStarted": "התחל",
+    "dontShowAgain": "אל תציג שוב",
     "features": {
       "title": "מה אפשר להגדיר:",
       "dockerfile": "בחר אילו כלי פיתוח להתקין (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const he: Translations = {
     "noAskRules": "לא הוגדרו כללי שאלה.",
     "noDenyRules": "לא הוגדרו כללי דחייה.",
     "help": "הגדר כללי הרשאות לפעולות Read(), Edit() ו-WebFetch(). תבניות תומכות בתחביר glob כמו src/** להתאמה רקורסיבית.",
-    "learnMore": "למידע נוסף"
+    "learnMore": "למידע נוסף",
+    "summary": "סקירה",
+    "denyCount": "{{count}} נדחו",
+    "askCount": "{{count}} שאילתה",
+    "allowCount": "{{count}} מותרים"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "ה-Dockerfile מגדיר אילו תוכנות מותקנות בקונטיינר. בנוסף ל-Node.js ו-Claude Code, ניתן לכלול כלים נוספים כמו TypeScript, Python, Go, ffmpeg או ImageMagick. התוכנה שנבחרה תהיה זמינה כאשר Claude מריץ פקודות.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "קובץ docker-compose.yaml שולט באופן שבו הקונטיינר מופעל. משתני סביבה (כמו מפתחות API) יכולים להיות מוגדרים כאן. קבצים מוגנים מותקנים כקבצים ריקים לקריאה בלבד כדי למנוע מ-Claude גישה לנתונים רגישים כמו קבצי .env."
+    "dockerComposeDesc": "קובץ docker-compose.yaml שולט באופן שבו הקונטיינר מופעל. משתני סביבה (כמו מפתחות API) יכולים להיות מוגדרים כאן. קבצים מוגנים מותקנים כקבצים ריקים לקריאה בלבד כדי למנוע מ-Claude גישה לנתונים רגישים כמו קבצי .env.",
+    "title": "תצוגה מקדימה",
+    "showPreview": "הצג תצוגה מקדימה",
+    "hidePreview": "הסתר תצוגה מקדימה",
+    "empty": "אין תצוגה מקדימה זמינה עבור חלק זה.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "התצוגה המקדימה משולבת בעורך למעלה."
+  },
+  "dockerfile": {
+    "software": "תוכנות",
+    "advancedOptions": "אפשרויות מתקדמות",
+    "softwareCount": "{{count}} נבחרו"
   },
   "dockerCompose": {
     "platform": "פלטפורמה",
     "platformDesc": "הגדר פלטפורמה ספציפית לקונטיינר (לדוגמה linux/amd64). השאר ריק כדי להשתמש בפלטפורמה ברירת המחדל. השתמש בזה כאשר תמונות הבסיס אינן תומכות בארכיטקטורה שלך.",
-    "platformPlaceholder": "דוגמה: linux/amd64"
+    "platformPlaceholder": "דוגמה: linux/amd64",
+    "envSection": "משתני סביבה",
+    "protectedSection": "קבצים מוגנים"
   },
   "download": {
     "button": "הורד ZIP",
@@ -475,8 +496,9 @@ const he: Translations = {
       "downloadZip": "הורד ZIP",
       "forceSave": "שמירה מאולצת",
       "resetDefaults": "איפוס לברירת מחדל",
-      "togglePreview": "החלפת תצוגה מקדימה",
-      "scrollToCard": "גלילה לכרטיס {{number}}",
+      "togglePreviewPane": "החלפת חלונית התצוגה המקדימה",
+      "toggleSidebar": "החלפת סרגל הצד",
+      "switchSection": "עבור לחלק {{number}}",
       "toggleDarkMode": "החלפת מצב כהה",
       "openLanguageSwitcher": "פתיחת בורר שפה",
       "closeDialog": "סגירת דיאלוג",
@@ -488,8 +510,9 @@ const he: Translations = {
       "downloadStarted": "ההורדה החלה",
       "configReset": "התצורה אופסה לברירת מחדל",
       "darkModeToggled": "מצב כהה הוחלף",
-      "previewToggled": "תצוגה מקדימה הוחלפה",
-      "scrolledToCard": "גלילה לכרטיס {{number}}",
+      "previewPaneToggled": "חלונית התצוגה המקדימה הוחלפה",
+      "sectionSwitched": "עברת לחלק {{number}}",
+      "sidebarToggled": "סרגל הצד הוחלף",
       "undoPerformed": "השינוי בוטל",
       "redoPerformed": "השינוי בוצע מחדש"
     }
@@ -537,6 +560,39 @@ const he: Translations = {
       "multipleChanges": "שינויים מרובים"
     }
   },
+  "header": {
+    "download": "הורדה",
+    "downloadZip": "הורד ZIP",
+    "exportConfig": "ייצוא הגדרות",
+    "importConfig": "ייבוא הגדרות",
+    "settings": "הגדרות",
+    "autosave": "שמירה אוטומטית",
+    "theme": "ערכת נושא",
+    "themeLight": "בהיר",
+    "themeDark": "כהה",
+    "themeSystem": "מערכת",
+    "language": "שפה",
+    "history": "היסטוריה",
+    "resetDefaults": "איפוס לברירת מחדל",
+    "keyboardShortcuts": "קיצורי מקלדת"
+  },
+  "sidebar": {
+    "configuration": "תצורה",
+    "actions": "פעולות",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "הגדרות",
+    "devContainer": "DevContainer",
+    "import": "ייבוא",
+    "export": "ייצוא",
+    "history": "היסטוריה",
+    "reset": "איפוס",
+    "toggle": "הצג/הסתר סרגל צד",
+    "about": "אודות",
+    "donate": "תרומה",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "הגדר תמיכה ב-VS Code Dev Containers ו-GitHub Codespaces. פעולה זו מייצרת קובץ devcontainer.json המגדיר את סביבת הפיתוח שלך.",
@@ -552,6 +608,11 @@ const he: Translations = {
       "ports": "פורטים",
       "preview": "תצוגה מקדימה"
     },
+    "extensionsSection": "הרחבות",
+    "featuresSection": "תכונות",
+    "portsSection": "פורטים מועברים",
+    "scriptsSection": "סקריפטים של מחזור חיים",
+    "settingsSection": "הגדרות VS Code",
     "extensions": {
       "title": "הרחבות VS Code",
       "description": "הרחבות שיותקנו אוטומטית בעת יצירת המיכל.",

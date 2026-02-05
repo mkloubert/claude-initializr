@@ -29,6 +29,9 @@ const tr: Translations = {
     "close": "Hoş geldiniz mesajını kapat",
     "description": "Claude Code, Anthropic'in doğrudan makinenizde kod okuyabilen, yazabilen ve çalıştırabilen güçlü AI kodlama asistanıdır. İnanılmaz derecede yararlı olmasına rağmen, dosya sistemi ve terminal erişimine sahip bir AI çalıştırmak, güvenlik konusunda dikkatli değerlendirme gerektirir.",
     "purpose": "Bu araç, Claude Code'u izole bir konteyner ortamında çalıştırmanızı sağlayan eksiksiz bir Docker yapılandırması oluşturur. Kodunuz korunurken Claude size geliştirme, hata ayıklama ve yeniden düzenleme konularında yardımcı olmaya devam edebilir.",
+    "dialogTitle": "Claude Initializr'a Hoş Geldiniz",
+    "getStarted": "Başla",
+    "dontShowAgain": "Bir daha gösterme",
     "features": {
       "title": "Yapılandırabilecekleriniz:",
       "dockerfile": "Hangi geliştirme araçlarının kurulacağını seçin (TypeScript, Python, Go, ffmpeg, ImageMagick)",
@@ -167,18 +170,36 @@ const tr: Translations = {
     "noAskRules": "Sorma kuralı tanımlanmamış.",
     "noDenyRules": "Reddetme kuralı tanımlanmamış.",
     "help": "Read(), Edit() ve WebFetch() işlemleri için izin kuralları tanımlayın. Desenler, özyinelemeli eşleştirme için src/** gibi glob sözdizimini destekler.",
-    "learnMore": "Daha fazla bilgi"
+    "learnMore": "Daha fazla bilgi",
+    "summary": "Genel bakış",
+    "denyCount": "{{count}} reddedildi",
+    "askCount": "{{count}} sor",
+    "allowCount": "{{count}} izin verildi"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "Dockerfile, konteynere hangi yazılımın kurulacağını tanımlar. Node.js ve Claude Code'a ek olarak TypeScript, Python, Go, ffmpeg veya ImageMagick gibi ek araçlar dahil edilebilir. Seçilen yazılım, Claude komutları çalıştırdığında kullanılabilir olacaktır.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "docker-compose.yaml dosyası konteynerin nasıl başlatılacağını kontrol eder. Ortam değişkenleri (API anahtarları gibi) burada tanımlanabilir. Korumalı dosyalar, Claude'un .env dosyaları gibi hassas verilere erişmesini önlemek için boş salt okunur dosyalar olarak bağlanır."
+    "dockerComposeDesc": "docker-compose.yaml dosyası konteynerin nasıl başlatılacağını kontrol eder. Ortam değişkenleri (API anahtarları gibi) burada tanımlanabilir. Korumalı dosyalar, Claude'un .env dosyaları gibi hassas verilere erişmesini önlemek için boş salt okunur dosyalar olarak bağlanır.",
+    "title": "Önizleme",
+    "showPreview": "Önizlemeyi göster",
+    "hidePreview": "Önizlemeyi gizle",
+    "empty": "Bu bölüm için önizleme mevcut değil.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "Önizleme yukarıdaki düzenleyiciye entegre edilmiştir."
+  },
+  "dockerfile": {
+    "software": "Yazılım",
+    "advancedOptions": "Gelişmiş Seçenekler",
+    "softwareCount": "{{count}} seçili"
   },
   "dockerCompose": {
     "platform": "Platform",
     "platformDesc": "Konteyner için belirli bir platform ayarlayın (örn: linux/amd64). Varsayılan platformu kullanmak için boş bırakın. Temel imajlar mimarinizi desteklemediğinde bunu kullanın.",
-    "platformPlaceholder": "Örnek: linux/amd64"
+    "platformPlaceholder": "Örnek: linux/amd64",
+    "envSection": "Ortam Değişkenleri",
+    "protectedSection": "Korunan Dosyalar"
   },
   "download": {
     "button": "ZIP İndir",
@@ -475,8 +496,9 @@ const tr: Translations = {
       "downloadZip": "ZIP indir",
       "forceSave": "Zorla kaydet",
       "resetDefaults": "Varsayılanlara sıfırla",
-      "togglePreview": "Önizlemeyi değiştir",
-      "scrollToCard": "Kart {{number}}'e kaydır",
+      "togglePreviewPane": "Önizleme panelini değiştir",
+      "toggleSidebar": "Kenar çubuğunu değiştir",
+      "switchSection": "{{number}} bölümüne geç",
       "toggleDarkMode": "Karanlık modu değiştir",
       "openLanguageSwitcher": "Dil seçiciyi aç",
       "closeDialog": "Diyaloğu kapat",
@@ -488,8 +510,9 @@ const tr: Translations = {
       "downloadStarted": "İndirme başlatıldı",
       "configReset": "Yapılandırma varsayılanlara sıfırlandı",
       "darkModeToggled": "Karanlık mod değiştirildi",
-      "previewToggled": "Önizleme değiştirildi",
-      "scrolledToCard": "Kart {{number}}'e kaydırıldı",
+      "previewPaneToggled": "Önizleme paneli değiştirildi",
+      "sectionSwitched": "{{number}} bölümüne geçildi",
+      "sidebarToggled": "Kenar çubuğu değiştirildi",
       "undoPerformed": "Değişiklik geri alındı",
       "redoPerformed": "Değişiklik yinelendi"
     }
@@ -537,6 +560,39 @@ const tr: Translations = {
       "multipleChanges": "Birden fazla değişiklik"
     }
   },
+  "header": {
+    "download": "İndir",
+    "downloadZip": "ZIP İndir",
+    "exportConfig": "Yapılandırmayı Dışa Aktar",
+    "importConfig": "Yapılandırmayı İçe Aktar",
+    "settings": "Ayarlar",
+    "autosave": "Otomatik kaydet",
+    "theme": "Tema",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "themeSystem": "Sistem",
+    "language": "Dil",
+    "history": "Geçmiş",
+    "resetDefaults": "Varsayılanlara sıfırla",
+    "keyboardShortcuts": "Klavye kısayolları"
+  },
+  "sidebar": {
+    "configuration": "Yapılandırma",
+    "actions": "İşlemler",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "Ayarlar",
+    "devContainer": "DevContainer",
+    "import": "İçe Aktar",
+    "export": "Dışa Aktar",
+    "history": "Geçmiş",
+    "reset": "Sıfırla",
+    "toggle": "Kenar çubuğunu aç/kapat",
+    "about": "Hakkında",
+    "donate": "Bağış Yap",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "VS Code Dev Containers ve GitHub Codespaces desteğini yapılandırın. Bu, geliştirme ortamınızı tanımlayan bir devcontainer.json dosyası oluşturur.",
@@ -552,6 +608,11 @@ const tr: Translations = {
       "ports": "Portlar",
       "preview": "Önizleme"
     },
+    "extensionsSection": "Uzantılar",
+    "featuresSection": "Özellikler",
+    "portsSection": "Yönlendirilen Portlar",
+    "scriptsSection": "Yaşam Döngüsü Betikleri",
+    "settingsSection": "VS Code Ayarları",
     "extensions": {
       "title": "VS Code Uzantıları",
       "description": "Konteyner oluşturulduğunda otomatik olarak yüklenen uzantılar.",

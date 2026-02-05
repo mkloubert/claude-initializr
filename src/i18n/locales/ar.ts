@@ -29,6 +29,9 @@ const ar: Translations = {
     "close": "إغلاق رسالة الترحيب",
     "description": "Claude Code هو مساعد البرمجة الذكي القوي من Anthropic الذي يمكنه قراءة وكتابة وتنفيذ الكود مباشرة على جهازك. على الرغم من فائدته الكبيرة، فإن تشغيل ذكاء اصطناعي له صلاحية الوصول إلى نظام الملفات والطرفية يتطلب دراسة متأنية للأمان.",
     "purpose": "تنشئ هذه الأداة تكوين Docker كامل يتيح لك تشغيل Claude Code في بيئة حاوية معزولة. يبقى كودك محمياً بينما يستطيع Claude الاستمرار في مساعدتك في التطوير والتصحيح وإعادة الهيكلة.",
+    "dialogTitle": "مرحبًا بك في Claude Initializr",
+    "getStarted": "ابدأ الآن",
+    "dontShowAgain": "لا تظهر هذا مرة أخرى",
     "features": {
       "title": "ما يمكنك تكوينه:",
       "dockerfile": "اختر أدوات التطوير المراد تثبيتها (TypeScript، Python، Go، ffmpeg، ImageMagick)",
@@ -167,18 +170,36 @@ const ar: Translations = {
     "noAskRules": "لم يتم تحديد قواعد السؤال.",
     "noDenyRules": "لم يتم تحديد قواعد الرفض.",
     "help": "حدد قواعد الأذونات لعمليات Read() و Edit() و WebFetch(). تدعم الأنماط صيغة glob مثل src/** للمطابقة التكرارية.",
-    "learnMore": "اعرف المزيد"
+    "learnMore": "اعرف المزيد",
+    "summary": "نظرة عامة",
+    "denyCount": "{{count}} مرفوض",
+    "askCount": "{{count}} استفسار",
+    "allowCount": "{{count}} مسموح"
   },
   "preview": {
     "dockerfile": "Dockerfile",
     "dockerfileDesc": "يحدد Dockerfile البرامج المثبتة في الحاوية. بالإضافة إلى Node.js وClaude Code، يمكن تضمين أدوات إضافية مثل TypeScript وPython وGo وffmpeg أو ImageMagick. ستكون البرامج المختارة متاحة عندما ينفذ Claude الأوامر.",
     "dockerCompose": "docker-compose.yaml",
-    "dockerComposeDesc": "يتحكم ملف docker-compose.yaml في كيفية بدء الحاوية. يمكن تعريف متغيرات البيئة (مثل مفاتيح API) هنا. يتم تثبيت الملفات المحمية كملفات فارغة للقراءة فقط لمنع Claude من الوصول إلى البيانات الحساسة مثل ملفات .env."
+    "dockerComposeDesc": "يتحكم ملف docker-compose.yaml في كيفية بدء الحاوية. يمكن تعريف متغيرات البيئة (مثل مفاتيح API) هنا. يتم تثبيت الملفات المحمية كملفات فارغة للقراءة فقط لمنع Claude من الوصول إلى البيانات الحساسة مثل ملفات .env.",
+    "title": "معاينة",
+    "showPreview": "إظهار المعاينة",
+    "hidePreview": "إخفاء المعاينة",
+    "empty": "لا تتوفر معاينة لهذا القسم.",
+    "settingsJson": "settings.json",
+    "devContainer": "devcontainer.json",
+    "claudeMdIntegrated": "المعاينة مدمجة في المحرر أعلاه."
+  },
+  "dockerfile": {
+    "software": "البرمجيات",
+    "advancedOptions": "خيارات متقدمة",
+    "softwareCount": "{{count}} محدد"
   },
   "dockerCompose": {
     "platform": "المنصة",
     "platformDesc": "حدد منصة محددة للحاوية (مثل linux/amd64). اتركه فارغًا لاستخدام المنصة الافتراضية. استخدم هذا عندما لا تدعم الصور الأساسية معماريتك.",
-    "platformPlaceholder": "مثال: linux/amd64"
+    "platformPlaceholder": "مثال: linux/amd64",
+    "envSection": "متغيرات البيئة",
+    "protectedSection": "الملفات المحمية"
   },
   "download": {
     "button": "تحميل ZIP",
@@ -475,8 +496,9 @@ const ar: Translations = {
       "downloadZip": "تحميل ZIP",
       "forceSave": "حفظ إجباري",
       "resetDefaults": "إعادة التعيين إلى الافتراضي",
-      "togglePreview": "تبديل المعاينة",
-      "scrollToCard": "التمرير إلى البطاقة {{number}}",
+      "togglePreviewPane": "تبديل لوحة المعاينة",
+      "toggleSidebar": "تبديل الشريط الجانبي",
+      "switchSection": "التبديل إلى القسم {{number}}",
       "toggleDarkMode": "تبديل الوضع الداكن",
       "openLanguageSwitcher": "فتح محوّل اللغة",
       "closeDialog": "إغلاق الحوار",
@@ -488,8 +510,9 @@ const ar: Translations = {
       "downloadStarted": "بدأ التحميل",
       "configReset": "تمت إعادة تعيين التكوين إلى الافتراضي",
       "darkModeToggled": "تم تبديل الوضع الداكن",
-      "previewToggled": "تم تبديل المعاينة",
-      "scrolledToCard": "تم التمرير إلى البطاقة {{number}}",
+      "previewPaneToggled": "تم تبديل لوحة المعاينة",
+      "sectionSwitched": "تم التبديل إلى القسم {{number}}",
+      "sidebarToggled": "تم تبديل الشريط الجانبي",
       "undoPerformed": "تم التراجع عن التغيير",
       "redoPerformed": "تمت إعادة التغيير"
     }
@@ -537,6 +560,39 @@ const ar: Translations = {
       "multipleChanges": "تغييرات متعددة"
     }
   },
+  "header": {
+    "download": "تنزيل",
+    "downloadZip": "تنزيل ZIP",
+    "exportConfig": "تصدير الإعدادات",
+    "importConfig": "استيراد الإعدادات",
+    "settings": "الإعدادات",
+    "autosave": "حفظ تلقائي",
+    "theme": "المظهر",
+    "themeLight": "فاتح",
+    "themeDark": "داكن",
+    "themeSystem": "النظام",
+    "language": "اللغة",
+    "history": "السجل",
+    "resetDefaults": "إعادة تعيين إلى الافتراضي",
+    "keyboardShortcuts": "اختصارات لوحة المفاتيح"
+  },
+  "sidebar": {
+    "configuration": "التكوين",
+    "actions": "الإجراءات",
+    "dockerfile": "Dockerfile",
+    "dockerCompose": "Docker Compose",
+    "claudeMd": "CLAUDE.md",
+    "settings": "الإعدادات",
+    "devContainer": "DevContainer",
+    "import": "استيراد",
+    "export": "تصدير",
+    "history": "السجل",
+    "reset": "إعادة تعيين",
+    "toggle": "تبديل الشريط الجانبي",
+    "about": "حول",
+    "donate": "تبرع",
+    "copyright": "© 2026 Marcel Joachim Kloubert"
+  },
   "devContainer": {
     "title": "DevContainer",
     "description": "قم بتكوين دعم VS Code Dev Containers و GitHub Codespaces. يؤدي هذا إلى إنشاء ملف devcontainer.json الذي يحدد بيئة التطوير الخاصة بك.",
@@ -552,6 +608,11 @@ const ar: Translations = {
       "ports": "المنافذ",
       "preview": "معاينة"
     },
+    "extensionsSection": "الإضافات",
+    "featuresSection": "الميزات",
+    "portsSection": "المنافذ الموجهة",
+    "scriptsSection": "نصوص دورة الحياة",
+    "settingsSection": "إعدادات VS Code",
     "extensions": {
       "title": "إضافات VS Code",
       "description": "الإضافات التي يتم تثبيتها تلقائيًا عند إنشاء الحاوية.",

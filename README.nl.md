@@ -84,9 +84,15 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
 - **Lifecycle-commando's**: Stel commando's in voor post-create, post-start en post-attach events
 - **Aanbevolen extensies**: Automatische extensie-aanbevelingen gebaseerd op geselecteerde software
 
+### Moderne interface
+
+- **Zijbalk-navigatie**: Snelle toegang tot alle configuratiesecties met een inklapbare zijbalk
+- **Split Pane-indeling**: Editor en live preview naast elkaar met versleepbare panelen
+- **RTL-taalondersteuning**: Volledige ondersteuning van rechts naar links voor Arabisch, Hebreeuws en Urdu
+
 ### Algemene functies
 
-- **Live preview**: Bekijk real-time voorbeelden van gegenereerde configuratiebestanden
+- **Live preview**: Bekijk real-time voorbeelden van gegenereerde configuratiebestanden in het split pane
 - **ZIP-download**: Download alle bestanden als een gebruiksklaar ZIP-archief
 - **Automatische README-generatie**: Elke ZIP bevat een gedetailleerde README.md met:
   - Bestandsoverzicht en beschrijvingen
@@ -140,14 +146,15 @@ Alle sneltoetsen gebruiken `Ctrl` op Windows/Linux en `⌘` (Cmd) op macOS.
 | Sneltoets | Actie |
 | --------- | ----- |
 | `Ctrl/⌘ + S` | ZIP downloaden |
-| `Ctrl/⌘ + E` | Voorbeeld in-/uitschakelen |
+| `Ctrl/⌘ + E` | Voorbeeld paneel in-/uitschakelen |
+| `Ctrl/⌘ + B` | Zijbalk in-/uitschakelen |
 | `Ctrl/⌘ + Z` | Ongedaan maken |
 | `Ctrl/⌘ + Y` | Opnieuw |
 | `Ctrl/⌘ + Shift + Z` | Opnieuw (alternatief) |
 | `Ctrl/⌘ + Shift + D` | Donker/licht thema wisselen |
 | `Ctrl/⌘ + Shift + X` | Standaardinstellingen herstellen |
 | `Ctrl/⌘ + Shift + L` | Taalkiezer openen |
-| `Ctrl/⌘ + 1-5` | Naar kaart scrollen (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
+| `Ctrl/⌘ + 1-5` | Naar sectie gaan (1=Dockerfile, 2=Docker Compose, 3=CLAUDE.md, 4=settings.json, 5=DevContainer) |
 | `Ctrl/⌘ + /` | Sneltoetsen hulp openen |
 | `Escape` | Dialoog sluiten |
 
@@ -512,6 +519,26 @@ Releases worden geautomatiseerd via GitHub Actions. Om een nieuwe release te mak
 Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
 ## Wijzigingslogboek
+
+### v4.0.0
+
+- **Groot UI/UX-redesign**: Volledige interface-vernieuwing voor verbeterde bruikbaarheid
+  - Vervanging van verticale kaartgebaseerde indeling door Sidebar + Split Pane-indeling
+  - Zijbalk-navigatie voor snelle sectiewisseling met sneltoetsen (`Ctrl/⌘ + 1-5`)
+  - Versleepbaar split pane met editor en live preview naast elkaar
+  - Inklapbare zijbalk met alleen-pictogrammen-modus (`Ctrl/⌘ + B` om in/uit te schakelen)
+  - Progressieve openbaarmaking met accordeongedeelten voor verminderde cognitieve belasting
+- **RTL-taalondersteuning**: Volledige ondersteuning van rechts naar links voor Arabisch, Hebreeuws en Urdu
+  - Zijbalk positioneert zich automatisch rechts voor RTL-talen
+  - Alle UI-elementen zijn correct gespiegeld
+- **Responsiviteitsverbeteringen**:
+  - Zijbalk start ingeschakeld op tablet-schermen (768–1023px)
+  - Mobiel-geoptimaliseerde indeling met preview onder aan het scherm
+  - Aanraak-vriendelijke accordeontriggers (minimale hoogte 44px)
+- **Welkomdialoog**: Bezoekers die voor het eerst langskomen zien een welkomdialoog in plaats van een statische kaart
+  - Kan opnieuw worden geopend via "Over" in de zijbalk
+- **Verouderde componenten verwijderd**: Opschoning van oude kaartgebaseerde componenten
+- Sneltoetsen bijgewerkt om met de nieuwe indeling te werken
 
 ### v3.2.1
 

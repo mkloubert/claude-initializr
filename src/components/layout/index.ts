@@ -21,3 +21,7 @@
 export { Header } from './Header';
 export { Footer } from './Footer';
 export { MainLayout } from './MainLayout';
+export { AppSidebar } from './AppSidebar';
+export { SidebarLayout } from './SidebarLayout';
+export { PreviewPane } from './PreviewPane';
+export { EditorPreviewSplitPane } from './EditorPreviewSplitPane';
