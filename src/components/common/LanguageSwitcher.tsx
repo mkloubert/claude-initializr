@@ -28,7 +28,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { getModifierKey } from '@/hooks/useKeyboardShortcuts';
-import { Globe } from 'lucide-react';
 
 interface LanguageConfig {
   code: string;
@@ -92,8 +91,7 @@ export function LanguageSwitcher({ open, onOpenChange }: LanguageSwitcherProps =
           aria-label={t('language.switch')}
           title={`${t('language.switch')} (${getModifierKey()}+Shift+L)`}
         >
-          <Globe className="h-4 w-4" aria-hidden="true" />
-          <span className="ml-2 hidden sm:inline">
+          <span>
             {currentLanguage.flag} {currentLanguage.code.toUpperCase()}
           </span>
         </Button>

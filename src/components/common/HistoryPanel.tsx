@@ -160,7 +160,7 @@ export function HistoryPanel({ open, onOpenChange }: HistoryPanelProps) {
   return (
     <>
       <Sheet open={open} onOpenChange={onOpenChange}>
-        <SheetContent className="w-full sm:max-w-md flex flex-col">
+        <SheetContent className="w-full sm:max-w-md flex flex-col h-full overflow-hidden">
           <SheetHeader>
             <SheetTitle className="flex items-center gap-2">
               <History className="h-5 w-5" aria-hidden="true" />
@@ -173,7 +173,7 @@ export function HistoryPanel({ open, onOpenChange }: HistoryPanelProps) {
             </SheetDescription>
           </SheetHeader>
 
-          <div className="flex flex-col flex-1 min-h-0 px-4 pb-4">
+          <div className="flex flex-col flex-1 min-h-0 overflow-hidden px-4 pb-4">
             {entries.length === 0 ? (
               <div className="flex-1 flex items-center justify-center">
                 <p className="text-sm text-muted-foreground text-center">
@@ -181,7 +181,7 @@ export function HistoryPanel({ open, onOpenChange }: HistoryPanelProps) {
                 </p>
               </div>
             ) : (
-              <ScrollArea className="flex-1">
+              <ScrollArea className="flex-1 min-h-0">
                 <div className="relative py-2 pr-4">
                   {/* Timeline line */}
                   {entries.length > 1 && (
@@ -200,11 +200,10 @@ export function HistoryPanel({ open, onOpenChange }: HistoryPanelProps) {
                         <div key={entry.id} className="relative flex gap-4 pl-1">
                           {/* Timeline dot */}
                           <div
-                            className={`relative z-10 mt-1.5 h-2 w-2 shrink-0 rounded-full ring-[3px] ring-background ${
-                              isCurrent
+                            className={`relative z-10 mt-1.5 h-2 w-2 shrink-0 rounded-full ring-[3px] ring-background ${isCurrent
                                 ? 'bg-primary'
                                 : 'bg-muted-foreground/50'
-                            }`}
+                              }`}
                             aria-hidden="true"
                           />
 
