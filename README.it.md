@@ -509,7 +509,7 @@ I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
 ## Registro delle modifiche
 
-### v3.2.1
+### v3.2.2
 
 - Aggiunta cronologia configurazione con funzionalità annulla/ripristina
   - Tracciamento automatico delle modifiche con snapshot ritardati (500ms)

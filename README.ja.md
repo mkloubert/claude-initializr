@@ -513,7 +513,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 変更履歴
 
-### v3.2.1
+### v3.2.2
 
 - 元に戻す/やり直し機能を備えた設定履歴を追加
   - 遅延スナップショットによる自動変更追跡（500ms）

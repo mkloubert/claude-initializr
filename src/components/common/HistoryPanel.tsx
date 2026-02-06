@@ -181,7 +181,7 @@ export function HistoryPanel({ open, onOpenChange }: HistoryPanelProps) {
                 </p>
               </div>
             ) : (
-              <ScrollArea className="flex-1">
+              <ScrollArea className="flex-1 h-full overflow-hidden">
                 <div className="relative py-2 pr-4">
                   {/* Timeline line */}
                   {entries.length > 1 && (
@@ -200,11 +200,10 @@ export function HistoryPanel({ open, onOpenChange }: HistoryPanelProps) {
                         <div key={entry.id} className="relative flex gap-4 pl-1">
                           {/* Timeline dot */}
                           <div
-                            className={`relative z-10 mt-1.5 h-2 w-2 shrink-0 rounded-full ring-[3px] ring-background ${
-                              isCurrent
+                            className={`relative z-10 mt-1.5 h-2 w-2 shrink-0 rounded-full ring-[3px] ring-background ${isCurrent
                                 ? 'bg-primary'
                                 : 'bg-muted-foreground/50'
-                            }`}
+                              }`}
                             aria-hidden="true"
                           />
 

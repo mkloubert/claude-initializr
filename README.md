@@ -526,7 +526,7 @@ Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
 ## Changelog
 
-### v3.2.1
+### v3.2.2
 
 - Added Configuration History with undo/redo functionality
   - Automatic change tracking with debounced snapshots (500ms)

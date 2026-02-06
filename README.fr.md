@@ -509,7 +509,7 @@ Les tags contenant `-` (ex. `v1.0.0-beta`) sont marqués comme pré-versions.
 
 ## Journal des modifications
 
-### v3.2.1
+### v3.2.2
 
 - Ajout de l'historique de configuration avec fonctionnalité annuler/rétablir
   - Suivi automatique des modifications avec des instantanés différés (500ms)

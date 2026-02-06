@@ -513,7 +513,7 @@ Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
 ## Wijzigingslogboek
 
-### v3.2.1
+### v3.2.2
 
 - Configuratiegeschiedenis toegevoegd met ongedaan maken/opnieuw functionaliteit
   - Automatische wijzigingsregistratie met vertraagde snapshots (500ms)
