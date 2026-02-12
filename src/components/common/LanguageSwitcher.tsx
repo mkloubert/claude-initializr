@@ -91,8 +91,9 @@ export function LanguageSwitcher({ open, onOpenChange }: LanguageSwitcherProps =
           aria-label={t('language.switch')}
           title={`${t('language.switch')} (${getModifierKey()}+Shift+L)`}
         >
-          <span>
-            {currentLanguage.flag} {currentLanguage.code.toUpperCase()}
+          <span aria-hidden="true">{currentLanguage.flag}</span>
+          <span className="group-data-[collapsible=icon]:hidden">
+            {currentLanguage.code.toUpperCase()}
           </span>
         </Button>
       </DropdownMenuTrigger>
