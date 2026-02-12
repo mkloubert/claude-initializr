@@ -26,7 +26,7 @@ import tailwindcss from "@tailwindcss/vite"
 // https://vite.dev/config/
 export default defineConfig({
   define: {
-    __APP_VERSION__: JSON.stringify(process.env.VITE_APP_VERSION || 'v0.0.0-dev'),
+    __APP_VERSION__: JSON.stringify(process.env.VITE_APP_VERSION || 'v4.0.0'),
   },
   plugins: [
     react({
