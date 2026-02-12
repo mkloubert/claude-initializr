@@ -533,7 +533,7 @@ Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
 ## Changelog
 
-### v4.0.1
+### v4.0.2
 
 - **Major UI/UX Redesign**: Complete interface overhaul for improved usability
   - Replaced vertical card-based layout with Sidebar + Split Pane layout

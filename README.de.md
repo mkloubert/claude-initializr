@@ -515,7 +515,7 @@ Tags mit `-` (z.B. `v1.0.0-beta`) werden als Pre-Releases markiert.
 
 ## Änderungsprotokoll
 
-### v4.0.0
+### v4.0.2
 
 - **Großes UI/UX-Redesign**: Vollständiger Interface-Überarbeitungen für verbesserte Benutzerfreundlichkeit
   - Ersatz des vertikalen Karten-basierten Layouts durch Sidebar + Split-Pane-Layout

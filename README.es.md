@@ -516,7 +516,7 @@ Las etiquetas que contienen `-` (ej. `v1.0.0-beta`) se marcan como pre-lanzamien
 
 ## Registro de cambios
 
-### v4.0.1
+### v4.0.2
 
 - **Rediseño importante de UI/UX**: Renovación completa de la interfaz para mejorar la usabilidad
   - Reemplazo del diseño vertical basado en tarjetas con diseño Sidebar + Split Pane

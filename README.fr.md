@@ -516,7 +516,7 @@ Les tags contenant `-` (ex. `v1.0.0-beta`) sont marqués comme pré-versions.
 
 ## Journal des modifications
 
-### v4.0.1
+### v4.0.2
 
 - **Refonte majeure de l'interface utilisateur/UX** : Surcharge complète de l'interface pour une meilleure utilisabilité
   - Remplacement de la disposition verticale basée sur des cartes par une disposition Barre latérale + Volet divisé
