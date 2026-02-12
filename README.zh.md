@@ -520,7 +520,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 更新日志
 
-### v4.0.0
+### v4.0.1
 
 - **主要 UI/UX 重新设计**：完整的界面改进
   - 将竖向卡片式布局替换为侧边栏 + 分割窗格布局

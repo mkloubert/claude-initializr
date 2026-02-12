@@ -26,7 +26,7 @@ import tailwindcss from "@tailwindcss/vite"
 // https://vite.dev/config/
 export default defineConfig({
   define: {
-    __APP_VERSION__: JSON.stringify(process.env.VITE_APP_VERSION || 'v4.0.0'),
+    __APP_VERSION__: JSON.stringify(process.env.VITE_APP_VERSION || 'v0.0.0'),
   },
   plugins: [
     react({
@@ -51,18 +51,15 @@ export default defineConfig({
           // React core - foundation, rarely changes
           'vendor-react': ['react', 'react-dom', 'react-router', 'scheduler'],
 
-          // Syntax highlighter with all its heavy dependencies
-          'vendor-syntax': [
+          // Markdown editor and syntax highlighter combined
+          // (they have circular dependencies so must be in same chunk)
+          'vendor-markdown': [
+            '@uiw/react-md-editor',
+            '@uiw/react-markdown-preview',
             'react-syntax-highlighter',
             'refractor',
             'prismjs',
             'highlight.js',
-          ],
-
-          // Markdown editor
-          'vendor-markdown': [
-            '@uiw/react-md-editor',
-            '@uiw/react-markdown-preview',
           ],
 
           // Radix UI components

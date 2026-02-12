@@ -523,7 +523,7 @@ Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
 ## Dziennik zmian
 
-### v4.0.0
+### v4.0.1
 
 - **Duża przeprojektowanie interfejsu użytkownika/doświadczenia**: Całkowita przebudowa interfejsu dla lepszej użyteczności
   - Zastąpienie pionowego układu opartego na kartach układem Paska Bocznego + Podzielonego Okna

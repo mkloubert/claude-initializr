@@ -520,7 +520,7 @@ Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
 ## Wijzigingslogboek
 
-### v4.0.0
+### v4.0.1
 
 - **Groot UI/UX-redesign**: Volledige interface-vernieuwing voor verbeterde bruikbaarheid
   - Vervanging van verticale kaartgebaseerde indeling door Sidebar + Split Pane-indeling

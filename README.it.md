@@ -516,7 +516,7 @@ I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
 ## Registro delle modifiche
 
-### v4.0.0
+### v4.0.1
 
 - **Redesign maggiore dell'interfaccia utente**: Completa revisione dell'interfaccia per una migliore usabilità
   - Sostituzione del layout verticale basato su schede con layout Sidebar + Split Pane

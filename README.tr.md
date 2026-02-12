@@ -523,7 +523,7 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
 
 ## Değişiklik Günlüğü
 
-### v4.0.0
+### v4.0.1
 
 - **Büyük Arayüz/Kullanıcı Deneyimi Yeniden Tasarımı**: Tam arayüz yenilemesi
   - Dikey kart tabanlı düzeni Kenar Çubuğu + Bölme Bölmesi düzeniyle değiştirildi

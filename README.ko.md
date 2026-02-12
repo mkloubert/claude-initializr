@@ -520,7 +520,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 변경 이력
 
-### v4.0.0
+### v4.0.1
 
 - **메이저 UI/UX 리디자인**: 완전한 인터페이스 오버홀
   - 수직 카드 기반 레이아웃을 사이드바 + 분할 창 레이아웃으로 변경

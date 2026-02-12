@@ -520,7 +520,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 変更履歴
 
-### v4.0.0
+### v4.0.1
 
 - **メジャーUI/UXリデザイン**: インターフェースの完全なオーバーホール
   - 縦型カードベースのレイアウトをサイドバー + 分割ペインレイアウトに置き換え

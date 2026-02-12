@@ -520,7 +520,7 @@ Tags contendo `-` (ex. `v1.0.0-beta`) são marcadas como pré-lançamentos.
 
 ## Registro de alterações
 
-### v4.0.0
+### v4.0.1
 
 - **Redesign principal da interface**: Revisão completa da interface para melhor usabilidade
   - Substituição do layout vertical baseado em cartões pelo layout Sidebar + Split Pane
