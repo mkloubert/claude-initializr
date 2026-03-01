@@ -523,7 +523,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## تبدیلیوں کا لاگ
 
-### v4.1.0
+### v4.1.1
 
 - سافٹ ویئر پیکیج کے طور پر Ollama سپورٹ شامل کی گئی
   - Claude Code کو مقامی Ollama انسٹینسز سے منسلک کرنے کے لیے ماحولیاتی متغیرات ترتیب دیتا ہے

@@ -517,7 +517,7 @@ I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
 ## Registro delle modifiche
 
-### v4.1.0
+### v4.1.1
 
 - Aggiunto supporto Ollama come pacchetto software
   - Configura le variabili d'ambiente per connettere Claude Code a istanze Ollama locali

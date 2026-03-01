@@ -523,7 +523,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## سجل التغييرات
 
-### v4.1.0
+### v4.1.1
 
 - إضافة دعم Ollama كحزمة برمجية
   - تكوين متغيرات البيئة لربط Claude Code بنسخ Ollama المحلية

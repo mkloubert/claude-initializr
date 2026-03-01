@@ -521,7 +521,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 更新日志
 
-### v4.1.0
+### v4.1.1
 
 - 添加了 Ollama 作为软件包的支持
   - 配置环境变量以将 Claude Code 连接到本地 Ollama 实例

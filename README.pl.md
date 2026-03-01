@@ -524,7 +524,7 @@ Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
 ## Dziennik zmian
 
-### v4.1.0
+### v4.1.1
 
 - Dodano obsługę Ollama jako pakietu oprogramowania
   - Konfiguruje zmienne środowiskowe do łączenia Claude Code z lokalnymi instancjami Ollama
