@@ -100,6 +100,8 @@ const es: Translations = {
     "flutterDesc": "Instala el SDK de Flutter con Dart y herramientas de desarrollo Android. Cree aplicaciones multiplataforma para móviles, web y escritorio desde una única base de código. Incluye el SDK de Android y herramientas de línea de comandos.",
     "rust": "Rust",
     "rustDesc": "Instala el lenguaje de programación Rust con el gestor de paquetes Cargo mediante rustup. Ideal para crear software de sistema rápido y seguro en memoria, herramientas CLI, WebAssembly y aplicaciones embebidas.",
+    "ollama": "Ollama",
+    "ollamaDesc": "Configura variables de entorno para conectar Claude Code a una instancia local de Ollama en el host. Establece ANTHROPIC_BASE_URL y ANTHROPIC_AUTH_TOKEN para que Claude Code use Ollama como backend.",
     "version": "Versión",
     "latest": "última",
     "recommendsHint": "Recomendado: {{packages}}"

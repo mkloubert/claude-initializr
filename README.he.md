@@ -46,6 +46,7 @@
   - Rust (כולל מנהל החבילות Cargo)
   - TypeScript
   - uv (מתקין חבילות Python מהיר, ממליץ על Python)
+  - Ollama (חיבור למופע Ollama מקומי לשימוש במודלים בקוד פתוח)
 - **הגדרת גרסאות**: גרסאות התוכנות מוגדרות באמצעות ארגומנטי build של Docker (לדוגמה: `--build-arg GO_VERSION=1.22.0`)
 - **חבילות APT מותאמות**: הוספת חבילות Debian/Ubuntu נוספות להתקנה בקונטיינר
 - **חבילות NPM מותאמות**: הוספת חבילות NPM נוספות להתקנה גלובלית, עם אפשרות להתקנה כמשתמש `root` או `node`
@@ -521,6 +522,14 @@ localStorage.removeItem("claude-initializr-autosave");
 תגיות המכילות `-` (לדוגמה `v1.0.0-beta`) מסומנות כגרסאות מקדימות.
 
 ## יומן שינויים
+
+### v4.1.0
+
+- הוספת תמיכה ב-Ollama כחבילת תוכנה
+  - מגדיר משתני סביבה לחיבור Claude Code למופעי Ollama מקומיים
+  - מגדיר אוטומטית `ANTHROPIC_BASE_URL` ו-`ANTHROPIC_AUTH_TOKEN` כאשר מופעל
+  - משתני סביבה מוסרים כאשר Ollama מושבת
+- הוספת תצורת `extra_hosts` ל-docker-compose.yaml לגישה לרשת המארח
 
 ### v4.0.2
 

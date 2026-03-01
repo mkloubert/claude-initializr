@@ -44,6 +44,7 @@
   - Rust (Cargo 패키지 관리자 포함)
   - TypeScript
   - uv (빠른 Python 패키지 설치 도구, Python 권장)
+  - Ollama (오픈소스 모델 사용을 위해 로컬 Ollama 인스턴스에 연결)
 - **버전 구성**: 소프트웨어 버전은 Docker 빌드 인수로 구성 (예: `--build-arg GO_VERSION=1.22.0`)
 - **사용자 정의 APT 패키지**: 컨테이너에 설치할 추가 Debian/Ubuntu 패키지 추가
 - **사용자 정의 NPM 패키지**: 전역으로 설치할 추가 NPM 패키지 추가, `root` 또는 `node` 사용자로 설치 옵션
@@ -519,6 +520,14 @@ localStorage.removeItem("claude-initializr-autosave");
 `-`가 포함된 태그(예: `v1.0.0-beta`)는 프리릴리스로 표시됩니다.
 
 ## 변경 이력
+
+### v4.1.0
+
+- 소프트웨어 패키지로 Ollama 지원 추가
+  - Claude Code를 로컬 Ollama 인스턴스에 연결하기 위한 환경 변수 구성
+  - 활성화 시 `ANTHROPIC_BASE_URL` 및 `ANTHROPIC_AUTH_TOKEN` 자동 설정
+  - Ollama 비활성화 시 환경 변수 제거
+- 호스트 네트워크 액세스를 위해 docker-compose.yaml에 `extra_hosts` 구성 추가
 
 ### v4.0.2
 

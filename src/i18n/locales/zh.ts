@@ -100,6 +100,8 @@ const zh: Translations = {
     "flutterDesc": "安装包含Dart和Android开发工具的Flutter SDK。从单一代码库构建跨平台的移动、网页和桌面应用程序。包含Android SDK和命令行工具。",
     "rust": "Rust",
     "rustDesc": "通过rustup安装带有Cargo包管理器的Rust编程语言。非常适合构建快速、内存安全的系统软件、CLI工具、WebAssembly和嵌入式应用程序。",
+    "ollama": "Ollama",
+    "ollamaDesc": "配置环境变量以将 Claude Code 连接到主机上运行的本地 Ollama 实例。设置 ANTHROPIC_BASE_URL 和 ANTHROPIC_AUTH_TOKEN，使 Claude Code 使用 Ollama 作为后端。",
     "version": "版本",
     "latest": "最新",
     "recommendsHint": "推荐: {{packages}}"

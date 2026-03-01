@@ -100,6 +100,8 @@ const uk: Translations = {
     "flutterDesc": "Встановлює Flutter SDK з Dart та інструментами розробки Android. Створюйте кросплатформні додатки для мобільних пристроїв, веб та настільних комп'ютерів з однієї кодової бази. Включає Android SDK та інструменти командного рядка.",
     "rust": "Rust",
     "rustDesc": "Встановлює мову програмування Rust з менеджером пакетів Cargo через rustup. Ідеально для створення швидкого, безпечного для пам'яті системного ПЗ, CLI-інструментів, WebAssembly та вбудованих застосунків.",
+    "ollama": "Ollama",
+    "ollamaDesc": "Налаштовує змінні середовища для підключення Claude Code до локального екземпляра Ollama на хості. Встановлює ANTHROPIC_BASE_URL та ANTHROPIC_AUTH_TOKEN, щоб Claude Code використовував Ollama як бекенд.",
     "version": "Версія",
     "latest": "остання",
     "recommendsHint": "Рекомендовано: {{packages}}"

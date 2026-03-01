@@ -46,6 +46,14 @@ import {
 import { APP_VERSION } from '../config/env';
 import { ConfigContext, type ConfigContextValue } from './configContextValue';
 
+const OLLAMA_ENV_VARS: Array<{ key: string; value: string }> = [
+  { key: 'ANTHROPIC_API_KEY', value: '' },
+  { key: 'ANTHROPIC_BASE_URL', value: 'http://host.docker.internal:11434' },
+  { key: 'ANTHROPIC_AUTH_TOKEN', value: 'ollama' },
+];
+
+const OLLAMA_ENV_KEYS = new Set(OLLAMA_ENV_VARS.map((v) => v.key));
+
 const STORAGE_KEY = 'claude-initializr-config';
 const AUTOSAVE_KEY = 'claude-initializr-autosave';
 
@@ -573,16 +581,43 @@ export function ConfigProvider({ children }: ConfigProviderProps) {
 
   // Software configuration actions
   const toggleSoftware = useCallback((softwareId: keyof SoftwareConfig) => {
-    setConfig((prev) => ({
-      ...prev,
-      software: {
-        ...prev.software,
-        [softwareId]: {
-          ...prev.software[softwareId],
-          enabled: !prev.software[softwareId].enabled,
+    setConfig((prev) => {
+      const newEnabled = !prev.software[softwareId].enabled;
+      let envVariables = prev.envVariables;
+
+      if (softwareId === 'ollama') {
+        if (newEnabled) {
+          // Add Ollama env vars if not already present
+          const existingKeys = new Set((envVariables ?? []).map((v) => v.key));
+          const varsToAdd = OLLAMA_ENV_VARS.filter((v) => !existingKeys.has(v.key));
+          if (varsToAdd.length > 0) {
+            envVariables = [
+              ...(envVariables ?? []),
+              ...varsToAdd.map((v) => ({
+                id: generateId(),
+                key: v.key,
+                value: v.value,
+              })),
+            ];
+          }
+        } else {
+          // Remove all Ollama env vars regardless of current values
+          envVariables = (envVariables ?? []).filter((v) => !OLLAMA_ENV_KEYS.has(v.key));
+        }
+      }
+
+      return {
+        ...prev,
+        software: {
+          ...prev.software,
+          [softwareId]: {
+            ...prev.software[softwareId],
+            enabled: newEnabled,
+          },
         },
-      },
-    }));
+        envVariables,
+      };
+    });
   }, []);
 
   // Helper function to get all APT packages from enabled software

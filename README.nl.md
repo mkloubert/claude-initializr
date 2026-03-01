@@ -44,6 +44,7 @@ Een webapplicatie voor het genereren van Docker-configuratiebestanden om [Claude
   - Rust (inclusief Cargo-pakketbeheerder)
   - TypeScript
   - uv (snelle Python-pakketinstaller, beveelt Python aan)
+  - Ollama (verbinding met lokale Ollama-instantie voor het gebruik van open-source modellen)
 - **Versieconfiguratie**: Softwareversies worden geconfigureerd via Docker build-argumenten (bijv. `--build-arg GO_VERSION=1.22.0`)
 - **Aangepaste APT-pakketten**: Voeg extra Debian/Ubuntu-pakketten toe om in de container te installeren
 - **Aangepaste NPM-pakketten**: Voeg extra NPM-pakketten toe om globaal te installeren, met de optie om als `root` of `node` gebruiker te installeren
@@ -519,6 +520,14 @@ Releases worden geautomatiseerd via GitHub Actions. Om een nieuwe release te mak
 Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
 ## Wijzigingslogboek
+
+### v4.1.0
+
+- Ollama-ondersteuning toegevoegd als softwarepakket
+  - Configureert omgevingsvariabelen voor het verbinden van Claude Code met lokale Ollama-instanties
+  - Stelt automatisch `ANTHROPIC_BASE_URL` en `ANTHROPIC_AUTH_TOKEN` in wanneer ingeschakeld
+  - Omgevingsvariabelen worden verwijderd wanneer Ollama is uitgeschakeld
+- `extra_hosts`-configuratie toegevoegd aan docker-compose.yaml voor hostnetwerktoegang
 
 ### v4.0.2
 

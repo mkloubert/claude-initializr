@@ -100,6 +100,8 @@ const ko: Translations = {
     "flutterDesc": "Dart 및 Android 개발 도구가 포함된 Flutter SDK를 설치합니다. 단일 코드베이스에서 모바일, 웹 및 데스크톱용 크로스 플랫폼 앱을 빌드할 수 있습니다. Android SDK 및 명령줄 도구가 포함되어 있습니다.",
     "rust": "Rust",
     "rustDesc": "rustup을 통해 Cargo 패키지 관리자와 함께 Rust 프로그래밍 언어를 설치합니다. 빠르고 메모리 안전한 시스템 소프트웨어, CLI 도구, WebAssembly 및 임베디드 애플리케이션 구축에 이상적입니다.",
+    "ollama": "Ollama",
+    "ollamaDesc": "호스트에서 실행 중인 로컬 Ollama 인스턴스에 Claude Code를 연결하기 위한 환경 변수를 구성합니다. ANTHROPIC_BASE_URL과 ANTHROPIC_AUTH_TOKEN을 설정하여 Claude Code가 Ollama를 백엔드로 사용하도록 합니다.",
     "version": "버전",
     "latest": "최신",
     "recommendsHint": "권장: {{packages}}"

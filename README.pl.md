@@ -44,6 +44,7 @@ Aplikacja webowa do generowania plików konfiguracyjnych Docker w celu bezpieczn
   - Rust (zawiera menedżer pakietów Cargo)
   - TypeScript
   - uv (szybki instalator pakietów Python, zaleca Python)
+  - Ollama (połączenie z lokalną instancją Ollama do używania modeli open source)
 - **Konfiguracja wersji**: Wersje oprogramowania są konfigurowane poprzez argumenty budowania Docker (np. `--build-arg GO_VERSION=1.22.0`)
 - **Niestandardowe pakiety APT**: Dodaj dodatkowe pakiety Debian/Ubuntu do zainstalowania w kontenerze
 - **Niestandardowe pakiety NPM**: Dodaj dodatkowe pakiety NPM do zainstalowania globalnie, z opcją instalacji jako użytkownik `root` lub `node`
@@ -522,6 +523,14 @@ Wydania są zautomatyzowane przez GitHub Actions. Aby utworzyć nowe wydanie:
 Tagi zawierające `-` (np. `v1.0.0-beta`) są oznaczane jako pre-release.
 
 ## Dziennik zmian
+
+### v4.1.0
+
+- Dodano obsługę Ollama jako pakietu oprogramowania
+  - Konfiguruje zmienne środowiskowe do łączenia Claude Code z lokalnymi instancjami Ollama
+  - Automatycznie ustawia `ANTHROPIC_BASE_URL` i `ANTHROPIC_AUTH_TOKEN` po włączeniu
+  - Zmienne środowiskowe są usuwane po wyłączeniu Ollama
+- Dodano konfigurację `extra_hosts` do docker-compose.yaml dla dostępu do sieci hosta
 
 ### v4.0.2
 

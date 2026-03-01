@@ -102,6 +102,8 @@ export interface Translations {
     flutterDesc: string;
     rust: string;
     rustDesc: string;
+    ollama: string;
+    ollamaDesc: string;
     version: string;
     latest: string;
     recommendsHint: string;

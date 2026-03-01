@@ -44,6 +44,7 @@
   - Rust（包含Cargo包管理器）
   - TypeScript
   - uv（快速 Python 包安装工具，推荐 Python）
+  - Ollama（连接到本地 Ollama 实例以使用开源模型）
 - **版本配置**：软件版本通过 Docker 构建参数配置（例如：`--build-arg GO_VERSION=1.22.0`）
 - **自定义 APT 包**：添加要在容器中安装的额外 Debian/Ubuntu 软件包
 - **自定义 NPM 包**：添加要全局安装的额外 NPM 包，可选择以 `root` 或 `node` 用户身份安装
@@ -519,6 +520,14 @@ localStorage.removeItem("claude-initializr-autosave");
 包含 `-` 的标签（如 `v1.0.0-beta`）将被标记为预发布。
 
 ## 更新日志
+
+### v4.1.0
+
+- 添加了 Ollama 作为软件包的支持
+  - 配置环境变量以将 Claude Code 连接到本地 Ollama 实例
+  - 启用时自动设置 `ANTHROPIC_BASE_URL` 和 `ANTHROPIC_AUTH_TOKEN`
+  - 禁用 Ollama 时移除环境变量
+- 在 docker-compose.yaml 中添加了 `extra_hosts` 配置以支持主机网络访问
 
 ### v4.0.2
 

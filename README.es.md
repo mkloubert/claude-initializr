@@ -44,6 +44,7 @@ Una aplicación web para generar archivos de configuración Docker para ejecutar
   - Rust (incluye el gestor de paquetes Cargo)
   - TypeScript
   - uv (instalador rápido de paquetes Python, recomienda Python)
+  - Ollama (conectar a una instancia local de Ollama para usar modelos de código abierto)
 - **Configuración de versiones**: Las versiones del software se configuran mediante argumentos de compilación de Docker (ej: `--build-arg GO_VERSION=1.22.0`)
 - **Paquetes APT personalizados**: Agregue paquetes adicionales de Debian/Ubuntu para instalar en el contenedor
 - **Paquetes NPM personalizados**: Agregue paquetes NPM adicionales para instalar globalmente, con la opción de instalar como usuario `root` o `node`
@@ -515,6 +516,14 @@ Los lanzamientos se automatizan a través de GitHub Actions. Para crear un nuevo
 Las etiquetas que contienen `-` (ej. `v1.0.0-beta`) se marcan como pre-lanzamientos.
 
 ## Registro de cambios
+
+### v4.1.0
+
+- Añadido soporte de Ollama como paquete de software
+  - Configura variables de entorno para conectar Claude Code a instancias locales de Ollama
+  - Establece automáticamente `ANTHROPIC_BASE_URL` y `ANTHROPIC_AUTH_TOKEN` cuando está habilitado
+  - Las variables de entorno se eliminan cuando Ollama está deshabilitado
+- Añadida configuración `extra_hosts` a docker-compose.yaml para acceso a la red del host
 
 ### v4.0.2
 

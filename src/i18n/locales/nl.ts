@@ -100,6 +100,8 @@ const nl: Translations = {
     "flutterDesc": "Installeert de Flutter SDK met Dart en Android-ontwikkeltools. Bouw cross-platform apps voor mobiel, web en desktop vanuit één codebase. Bevat Android SDK en opdrachtregelhulpmiddelen.",
     "rust": "Rust",
     "rustDesc": "Installeert de programmeertaal Rust met de Cargo-pakketbeheerder via rustup. Ideaal voor het bouwen van snelle, geheugenveilige systeemsoftware, CLI-tools, WebAssembly en embedded applicaties.",
+    "ollama": "Ollama",
+    "ollamaDesc": "Configureert omgevingsvariabelen om Claude Code te verbinden met een lokale Ollama-instantie op de host. Stelt ANTHROPIC_BASE_URL en ANTHROPIC_AUTH_TOKEN in zodat Claude Code Ollama als backend gebruikt.",
     "version": "Versie",
     "latest": "nieuwste",
     "recommendsHint": "Aanbevolen: {{packages}}"

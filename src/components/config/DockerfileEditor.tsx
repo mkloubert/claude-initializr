@@ -41,7 +41,7 @@ import { Badge } from '@/components/ui/badge';
 import { SoftwareItem } from './SoftwareItem';
 import { Package, Wand2, Plus, X, Terminal, Layers } from 'lucide-react';
 
-import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm, SiGo, SiFlutter, SiRust } from 'react-icons/si';
+import { SiTypescript, SiPython, SiFfmpeg, SiNodedotjs, SiNpm, SiGo, SiFlutter, SiRust, SiOllama } from 'react-icons/si';
 import { TbBrandPython } from 'react-icons/tb';
 import type { DockerfileUser, SoftwareConfig } from '@/types';
 
@@ -100,6 +100,12 @@ const softwareMetadata: Record<string, SoftwareMeta> = {
     labelKey: 'software.rust',
     descriptionKey: 'software.rustDesc',
     icon: <SiRust className="h-5 w-5" aria-hidden="true" />,
+  },
+  ollama: {
+    id: 'ollama',
+    labelKey: 'software.ollama',
+    descriptionKey: 'software.ollamaDesc',
+    icon: <SiOllama className="h-5 w-5" aria-hidden="true" />,
   },
 };
 

@@ -100,6 +100,8 @@ const ur: Translations = {
     "flutterDesc": "Flutter SDK کو Dart اور Android ڈیولپمنٹ ٹولز کے ساتھ انسٹال کرتا ہے۔ ایک کوڈ بیس سے موبائل، ویب اور ڈیسک ٹاپ کے لیے کراس پلیٹ فارم ایپس بنائیں۔ Android SDK اور کمانڈ لائن ٹولز شامل ہیں۔",
     "rust": "Rust",
     "rustDesc": "rustup کے ذریعے Cargo پیکیج مینیجر کے ساتھ Rust پروگرامنگ زبان انسٹال کرتا ہے۔ تیز، میموری محفوظ سسٹم سافٹ ویئر، CLI ٹولز، WebAssembly اور ایمبیڈڈ ایپلیکیشنز بنانے کے لیے مثالی۔",
+    "ollama": "Ollama",
+    "ollamaDesc": "میزبان پر چلنے والے مقامی Ollama مثال سے Claude Code کو جوڑنے کے لیے ماحولیاتی متغیرات ترتیب دیتا ہے۔ ANTHROPIC_BASE_URL اور ANTHROPIC_AUTH_TOKEN سیٹ کرتا ہے تاکہ Claude Code بیک اینڈ کے طور پر Ollama استعمال کرے۔",
     "version": "ورژن",
     "latest": "تازہ ترین",
     "recommendsHint": "تجویز کردہ: {{packages}}"

@@ -100,6 +100,8 @@ const tr: Translations = {
     "flutterDesc": "Dart ve Android geliştirme araçlarıyla Flutter SDK'yı kurar. Tek bir kod tabanından mobil, web ve masaüstü için çapraz platform uygulamalar oluşturun. Android SDK ve komut satırı araçlarını içerir.",
     "rust": "Rust",
     "rustDesc": "rustup aracılığıyla Cargo paket yöneticisiyle Rust programlama dilini kurar. Hızlı, bellek güvenli sistem yazılımı, CLI araçları, WebAssembly ve gömülü uygulamalar oluşturmak için idealdir.",
+    "ollama": "Ollama",
+    "ollamaDesc": "Claude Code'u ana bilgisayarda çalışan yerel bir Ollama örneğine bağlamak için ortam değişkenlerini yapılandırır. Claude Code'un Ollama'yı arka uç olarak kullanması için ANTHROPIC_BASE_URL ve ANTHROPIC_AUTH_TOKEN'ı ayarlar.",
     "version": "Sürüm",
     "latest": "en son",
     "recommendsHint": "Önerilen: {{packages}}"

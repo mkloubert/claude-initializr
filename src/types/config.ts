@@ -45,6 +45,7 @@ export interface SoftwareConfig {
   golang: SoftwarePackage;
   flutter: SoftwarePackage;
   rust: SoftwarePackage;
+  ollama: SoftwarePackage;
 }
 
 /**
@@ -212,6 +213,10 @@ export const defaultSoftwareConfig: SoftwareConfig = {
   },
   rust: {
     id: 'rust',
+    enabled: false,
+  },
+  ollama: {
+    id: 'ollama',
     enabled: false,
   },
 };

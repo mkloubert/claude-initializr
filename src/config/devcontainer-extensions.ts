@@ -108,6 +108,7 @@ export const extensionsBySoftware: Record<keyof SoftwareConfig, ExtensionMetadat
       description: 'IntelliSense, linting, debugging, and more for Python',
     },
   ],
+  ollama: [],
 };
 
 /**
@@ -141,6 +142,7 @@ export const featuresBySoftware: Record<keyof SoftwareConfig, FeatureMetadata[]>
   ffmpeg: [],
   imagemagick: [],
   uv: [],
+  ollama: [],
 };
 
 /**

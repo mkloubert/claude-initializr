@@ -72,4 +72,7 @@ export const DOCKER_COMPOSE_TEMPLATE = `services:
     # network_mode: none
 
     tty: true
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 `;

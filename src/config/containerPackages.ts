@@ -82,4 +82,5 @@ export const softwareInstallOrder: string[] = [
   'typescript',
   'ffmpeg',
   'imagemagick',
+  'ollama',
 ];

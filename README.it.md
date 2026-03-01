@@ -44,6 +44,7 @@ Un'applicazione web per generare file di configurazione Docker per eseguire [Cla
   - Rust (include il gestore pacchetti Cargo)
   - TypeScript
   - uv (installatore veloce di pacchetti Python, raccomanda Python)
+  - Ollama (connessione a un'istanza Ollama locale per utilizzare modelli open source)
 - **Configurazione versioni**: Le versioni del software sono configurate tramite argomenti di build Docker (es: `--build-arg GO_VERSION=1.22.0`)
 - **Pacchetti APT personalizzati**: Aggiungi pacchetti Debian/Ubuntu aggiuntivi da installare nel container
 - **Pacchetti NPM personalizzati**: Aggiungi pacchetti NPM aggiuntivi da installare globalmente, con l'opzione di installarli come utente `root` o `node`
@@ -515,6 +516,14 @@ I rilasci sono automatizzati tramite GitHub Actions. Per creare un nuovo rilasci
 I tag contenenti `-` (es. `v1.0.0-beta`) sono contrassegnati come pre-rilasci.
 
 ## Registro delle modifiche
+
+### v4.1.0
+
+- Aggiunto supporto Ollama come pacchetto software
+  - Configura le variabili d'ambiente per connettere Claude Code a istanze Ollama locali
+  - Imposta automaticamente `ANTHROPIC_BASE_URL` e `ANTHROPIC_AUTH_TOKEN` quando abilitato
+  - Le variabili d'ambiente vengono rimosse quando Ollama è disabilitato
+- Aggiunta configurazione `extra_hosts` a docker-compose.yaml per l'accesso alla rete host
 
 ### v4.0.2
 

@@ -44,6 +44,7 @@
   - Rust (Cargo paket yöneticisi dahil)
   - TypeScript
   - uv (hızlı Python paket yükleyicisi, Python önerir)
+  - Ollama (açık kaynak modelleri kullanmak için yerel Ollama örneğine bağlanma)
 - **Sürüm Yapılandırması**: Yazılım sürümleri Docker build argümanları ile yapılandırılır (örn. `--build-arg GO_VERSION=1.22.0`)
 - **Özel APT Paketleri**: Konteynere yüklenecek ek Debian/Ubuntu paketleri ekleyin
 - **Özel NPM Paketleri**: Global olarak yüklenecek ek NPM paketleri ekleyin, `root` veya `node` kullanıcısı olarak yükleme seçeneği ile
@@ -522,6 +523,14 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
 `-` içeren etiketler (örn. `v1.0.0-beta`) ön sürüm olarak işaretlenir.
 
 ## Değişiklik Günlüğü
+
+### v4.1.0
+
+- Yazılım paketi olarak Ollama desteği eklendi
+  - Claude Code'u yerel Ollama örneklerine bağlamak için ortam değişkenlerini yapılandırır
+  - Etkinleştirildiğinde `ANTHROPIC_BASE_URL` ve `ANTHROPIC_AUTH_TOKEN` otomatik olarak ayarlanır
+  - Ollama devre dışı bırakıldığında ortam değişkenleri kaldırılır
+- Ana bilgisayar ağ erişimi için docker-compose.yaml'a `extra_hosts` yapılandırması eklendi
 
 ### v4.0.2
 

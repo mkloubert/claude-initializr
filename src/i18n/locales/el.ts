@@ -100,6 +100,8 @@ const el: Translations = {
     "flutterDesc": "Εγκαθιστά το Flutter SDK με Dart και εργαλεία ανάπτυξης Android. Δημιουργήστε εφαρμογές πολλαπλών πλατφορμών για κινητά, web και desktop από μία βάση κώδικα. Περιλαμβάνει Android SDK και εργαλεία γραμμής εντολών.",
     "rust": "Rust",
     "rustDesc": "Εγκαθιστά τη γλώσσα προγραμματισμού Rust με τον διαχειριστή πακέτων Cargo μέσω rustup. Ιδανικό για τη δημιουργία γρήγορου, ασφαλούς για τη μνήμη λογισμικού συστήματος, εργαλείων CLI, WebAssembly και ενσωματωμένων εφαρμογών.",
+    "ollama": "Ollama",
+    "ollamaDesc": "Ρυθμίζει μεταβλητές περιβάλλοντος για τη σύνδεση του Claude Code με μια τοπική εγκατάσταση Ollama στον κεντρικό υπολογιστή. Ορίζει ANTHROPIC_BASE_URL και ANTHROPIC_AUTH_TOKEN ώστε το Claude Code να χρησιμοποιεί το Ollama ως backend.",
     "version": "Έκδοση",
     "latest": "τελευταία",
     "recommendsHint": "Συνιστάται: {{packages}}"

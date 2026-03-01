@@ -100,6 +100,8 @@ const en: Translations = {
     "flutterDesc": "Installs the Flutter SDK with Dart and Android development tools. Build cross-platform apps for mobile, web, and desktop from a single codebase. Includes Android SDK and command-line tools.",
     "rust": "Rust",
     "rustDesc": "Installs the Rust programming language with Cargo package manager via rustup. Ideal for building fast, memory-safe system software, CLI tools, WebAssembly, and embedded applications.",
+    "ollama": "Ollama",
+    "ollamaDesc": "Configures environment variables for connecting Claude Code to a local Ollama instance running on the host. Sets ANTHROPIC_BASE_URL and ANTHROPIC_AUTH_TOKEN so Claude Code uses Ollama as its backend.",
     "version": "Version",
     "latest": "latest",
     "recommendsHint": "Recommended: {{packages}}"

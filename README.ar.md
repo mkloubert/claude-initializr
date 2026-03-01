@@ -46,6 +46,7 @@
   - Rust (يتضمن مدير الحزم Cargo)
   - TypeScript
   - uv (مثبّت حزم Python سريع، يوصي بـ Python)
+  - Ollama (الاتصال بنسخة Ollama محلية لاستخدام نماذج مفتوحة المصدر)
 - **تكوين الإصدارات**: يتم تكوين إصدارات البرامج عبر وسائط بناء Docker (مثال: `--build-arg GO_VERSION=1.22.0`)
 - **حزم APT مخصصة**: أضف حزم Debian/Ubuntu إضافية للتثبيت في الحاوية
 - **حزم NPM مخصصة**: أضف حزم NPM إضافية للتثبيت عالمياً، مع خيار التثبيت كمستخدم `root` أو `node`
@@ -521,6 +522,14 @@ localStorage.removeItem("claude-initializr-autosave");
 الوسوم التي تحتوي على `-` (مثل `v1.0.0-beta`) تُعلّم كإصدارات أولية.
 
 ## سجل التغييرات
+
+### v4.1.0
+
+- إضافة دعم Ollama كحزمة برمجية
+  - تكوين متغيرات البيئة لربط Claude Code بنسخ Ollama المحلية
+  - تعيين `ANTHROPIC_BASE_URL` و `ANTHROPIC_AUTH_TOKEN` تلقائياً عند التفعيل
+  - إزالة متغيرات البيئة عند تعطيل Ollama
+- إضافة تكوين `extra_hosts` إلى docker-compose.yaml للوصول إلى شبكة المضيف
 
 ### v4.0.2
 

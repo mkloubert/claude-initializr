@@ -100,6 +100,8 @@ const ar: Translations = {
     "flutterDesc": "يثبّت Flutter SDK مع Dart وأدوات تطوير Android. أنشئ تطبيقات متعددة المنصات للهاتف المحمول والويب وسطح المكتب من قاعدة كود واحدة. يتضمن Android SDK وأدوات سطر الأوامر.",
     "rust": "Rust",
     "rustDesc": "يثبّت لغة البرمجة Rust مع مدير الحزم Cargo عبر rustup. مثالي لإنشاء برامج نظام سريعة وآمنة للذاكرة وأدوات CLI وWebAssembly والتطبيقات المدمجة.",
+    "ollama": "Ollama",
+    "ollamaDesc": "يقوم بتكوين متغيرات البيئة لتوصيل Claude Code بنسخة Ollama محلية تعمل على المضيف. يضبط ANTHROPIC_BASE_URL و ANTHROPIC_AUTH_TOKEN ليستخدم Claude Code خدمة Ollama كواجهة خلفية.",
     "version": "الإصدار",
     "latest": "الأحدث",
     "recommendsHint": "موصى به: {{packages}}"
