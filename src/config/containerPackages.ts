@@ -59,7 +59,7 @@ export const optionalAptPackages: Record<string, string[]> = {
   uv: ['wget'],
   flutter: ['wget', 'xz-utils', 'zip', 'libglu1-mesa', 'openjdk-17-jdk'],
   rust: ['curl', 'build-essential', 'pkg-config', 'libssl-dev'],
-  ollama: ['wget'],
+  ollama: ['wget', 'zstd'],
 };
 
 /**

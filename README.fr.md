@@ -517,7 +517,7 @@ Les tags contenant `-` (ex. `v1.0.0-beta`) sont marqués comme pré-versions.
 
 ## Journal des modifications
 
-### v4.1.2
+### v4.1.3
 
 - Ajout du support Ollama en tant que paquet logiciel
   - Configure les variables d'environnement pour connecter Claude Code aux instances Ollama locales

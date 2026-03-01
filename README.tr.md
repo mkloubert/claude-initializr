@@ -524,7 +524,7 @@ Sürümler GitHub Actions aracılığıyla otomatikleştirilmiştir. Yeni bir s�
 
 ## Değişiklik Günlüğü
 
-### v4.1.2
+### v4.1.3
 
 - Yazılım paketi olarak Ollama desteği eklendi
   - Claude Code'u yerel Ollama örneklerine bağlamak için ortam değişkenlerini yapılandırır

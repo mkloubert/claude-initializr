@@ -524,7 +524,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## Журнал змін
 
-### v4.1.2
+### v4.1.3
 
 - Додано підтримку Ollama як програмного пакету
   - Налаштовує змінні середовища для підключення Claude Code до локальних екземплярів Ollama

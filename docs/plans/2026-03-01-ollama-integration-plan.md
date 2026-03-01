@@ -474,5 +474,5 @@ Write the milestone checklist with phases and tasks.
 
 Add Ollama to the software list in the README:
 - In the "Software Selection" features section, add Ollama entry
-- In the changelog, add a new version entry (v4.1.2 or similar)
+- In the changelog, add a new version entry (v4.1.3 or similar)
 - Mention `extra_hosts` configuration

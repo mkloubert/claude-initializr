@@ -521,7 +521,7 @@ Tags contendo `-` (ex. `v1.0.0-beta`) são marcadas como pré-lançamentos.
 
 ## Registro de alterações
 
-### v4.1.2
+### v4.1.3
 
 - Adicionado suporte ao Ollama como pacote de software
   - Configura variáveis de ambiente para conectar o Claude Code a instâncias Ollama locais
