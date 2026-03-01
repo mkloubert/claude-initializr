@@ -521,7 +521,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## 変更履歴
 
-### v4.1.1
+### v4.1.2
 
 - ソフトウェアパッケージとしてOllamaサポートを追加
   - Claude Codeをローカルの Ollamaインスタンスに接続するための環境変数を設定

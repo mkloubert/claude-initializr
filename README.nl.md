@@ -521,7 +521,7 @@ Tags met `-` (bijv. `v1.0.0-beta`) worden gemarkeerd als pre-releases.
 
 ## Wijzigingslogboek
 
-### v4.1.1
+### v4.1.2
 
 - Ollama-ondersteuning toegevoegd als softwarepakket
   - Configureert omgevingsvariabelen voor het verbinden van Claude Code met lokale Ollama-instanties

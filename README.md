@@ -534,7 +534,7 @@ Tags containing `-` (e.g., `v1.0.0-beta`) are marked as pre-releases.
 
 ## Changelog
 
-### v4.1.1
+### v4.1.2
 
 - Added Ollama support as a software package
   - Configures environment variables for connecting Claude Code to local Ollama instances

@@ -517,7 +517,7 @@ Las etiquetas que contienen `-` (ej. `v1.0.0-beta`) se marcan como pre-lanzamien
 
 ## Registro de cambios
 
-### v4.1.1
+### v4.1.2
 
 - Añadido soporte de Ollama como paquete de software
   - Configura variables de entorno para conectar Claude Code a instancias locales de Ollama

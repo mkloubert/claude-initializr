@@ -69,6 +69,11 @@ export function generateDockerArgs(software: SoftwareConfig): string {
     args.push('ARG RUSTUP_INSTALL_URL=https://sh.rustup.rs');
   }
 
+  if (software.ollama.enabled) {
+    // Ollama installer script URL (can be overridden for mirrors/proxies)
+    args.push('ARG OLLAMA_INSTALL_URL=https://ollama.com/install.sh');
+  }
+
   return args.join('\n');
 }
 
@@ -82,6 +87,7 @@ const aptPackagesByKey: Record<string, string[]> = {
   imagemagick: ['imagemagick'],
   flutter: ['wget', 'xz-utils', 'zip', 'libglu1-mesa', 'openjdk-17-jdk'],
   rust: ['curl', 'build-essential', 'pkg-config', 'libssl-dev'],
+  ollama: ['wget'],
 };
 
 /**
@@ -180,6 +186,10 @@ const rootCommandsByKey: Record<string, RootCommandGenerator> = {
       '    rustc --version && cargo --version',
     ];
   },
+  ollama: () => [
+    '# Install Ollama',
+    'RUN wget -qO- "${OLLAMA_INSTALL_URL}" | sh',
+  ],
   flutter: () => {
     const commands: string[] = [];
 

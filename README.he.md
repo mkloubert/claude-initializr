@@ -523,7 +523,7 @@ localStorage.removeItem("claude-initializr-autosave");
 
 ## יומן שינויים
 
-### v4.1.1
+### v4.1.2
 
 - הוספת תמיכה ב-Ollama כחבילת תוכנה
   - מגדיר משתני סביבה לחיבור Claude Code למופעי Ollama מקומיים
